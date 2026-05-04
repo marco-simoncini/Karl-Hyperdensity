@@ -1,5 +1,7 @@
 # KARL Hyperdensity
 
+[![CI](https://github.com/marco-simoncini/Karl-Hyperdensity/actions/workflows/ci.yml/badge.svg)](https://github.com/marco-simoncini/Karl-Hyperdensity/actions/workflows/ci.yml)
+
 KARL Hyperdensity is the resource-control plane ("Grande Padre") for Linux shells in KARL.
 
 > Phase 0 note: runtime implementation remains in `marco-simoncini/Karl-Dashboard` (branch `The-Father`). This repository is the canonical product/core home for contracts, schemas, blocker taxonomy, evidence model, overcommit model, and extraction planning.
@@ -88,3 +90,16 @@ Detailed plan: `docs/migration/dashboard-to-hyperdensity-extraction-plan.md`.
 - no Windows support claim
 - no fake compliance
 - no restart-bound support
+
+## Validation
+
+Run baseline validation locally before PRs:
+
+- `./scripts/validate.sh`
+- `go test ./...`
+
+Validation includes:
+- Go tests
+- JSON parsing for `schemas/*.json` and `examples/*.json`
+- schema metadata checks (`$schema`, `$id` or `title`, `type`)
+- required docs structure checks
