@@ -1,0 +1,31 @@
+{
+  "contractId": "hyperdensity_fleet_equilibrium_onboarding_v1",
+  "fleetMode": "recommendation_only",
+  "fleetTotalShellCount": 87,
+  "fleetCompliantShellCount": 2,
+  "fleetReadyForEquilibriumCount": 2,
+  "fleetRemediableCount": 80,
+  "fleetBlockedCount": 1,
+  "fleetExcludedCount": 4,
+  "candidates": [
+    {
+      "objectRef": "karl/linux-shell-v1-cpu-ram-reference-01",
+      "shellKind": "container_linux",
+      "candidateClass": "reference",
+      "complianceState": "linux_shell_compliance_operational",
+      "equilibriumEligibility": true,
+      "evidenceState": "evidence_sufficient",
+      "noEvidenceBorrowing": true
+    },
+    {
+      "objectRef": "karl/new-candidate-07",
+      "shellKind": "vm_linux",
+      "candidateClass": "remediable",
+      "complianceState": "linux_shell_compliance_partial",
+      "equilibriumEligibility": false,
+      "evidenceState": "missing_memory_evidence",
+      "noEvidenceBorrowing": true,
+      "blocker": "missing_evidence"
+    }
+  ]
+}

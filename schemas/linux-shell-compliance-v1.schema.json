@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/linux-shell-compliance-v1.schema.json",
+  "title": "Linux Shell Compliance v1",
+  "type": "object",
+  "required": [
+    "contractId",
+    "linuxShellComplianceState",
+    "overallCompliant",
+    "vmReferenceCompliant",
+    "containerReferenceCompliant",
+    "guarantees"
+  ],
+  "properties": {
+    "contractId": { "const": "hyperdensity_linux_shell_compliance_v1" },
+    "linuxShellComplianceState": {
+      "enum": [
+        "linux_shell_compliance_operational",
+        "linux_shell_compliance_partial",
+        "linux_shell_compliance_blocked"
+      ]
+    },
+    "overallCompliant": { "type": "boolean" },
+    "vmReferenceCompliant": { "type": "boolean" },
+    "containerReferenceCompliant": { "type": "boolean" },
+    "guarantees": {
+      "type": "object",
+      "required": [
+        "cpuUpLive",
+        "cpuDownLive",
+        "ramUpLive",
+        "ramDownLive",
+        "noReboot",
+        "noVmiRecreate",
+        "noRollout",
+        "noDestructiveMigration",
+        "sameRuntimeProof",
+        "rollbackProof"
+      ],
+      "properties": {
+        "cpuUpLive": { "type": "boolean" },
+        "cpuDownLive": { "type": "boolean" },
+        "ramUpLive": { "type": "boolean" },
+        "ramDownLive": { "type": "boolean" },
+        "noReboot": { "type": "boolean" },
+        "noVmiRecreate": { "type": "boolean" },
+        "noRollout": { "type": "boolean" },
+        "noDestructiveMigration": { "type": "boolean" },
+        "sameRuntimeProof": { "type": "boolean" },
+        "rollbackProof": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "blockers": {
+      "type": "array",
+      "items": {
+        "enum": [
+          "restart_bound",
+          "rollout_bound",
+          "migration_destructive",
+          "missing_evidence",
+          "recent_correlated_warning"
+        ]
+      }
+    }
+  },
+  "additionalProperties": true
+}

@@ -1,0 +1,19 @@
+{
+  "contractId": "kubevirt_memory_runtime_authority_v1",
+  "scope": "vm_linux_memory",
+  "runtimeAuthorityState": "authority_ready",
+  "declaredEnvelope": {
+    "baselineBytes": 8589934592,
+    "ceilingBytes": 17179869184
+  },
+  "runtimeOverlay": {
+    "requestedBytes": 9663676416,
+    "appliedBytes": 9663676416
+  },
+  "overlayMechanism": "virtio_mem_qmp_qom_requested_size",
+  "specMutationLivePath": false,
+  "notes": [
+    "Declared spec/template remains baseline envelope.",
+    "Live path uses runtime overlay, not template/spec mutation."
+  ]
+}

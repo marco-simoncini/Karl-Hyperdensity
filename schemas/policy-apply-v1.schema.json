@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/policy-apply-v1.schema.json",
+  "title": "Policy Apply v1",
+  "type": "object",
+  "required": [
+    "contractId",
+    "applyMode",
+    "requestedBy",
+    "target",
+    "resource",
+    "direction",
+    "guardState",
+    "rollbackState"
+  ],
+  "properties": {
+    "contractId": { "const": "hyperdensity_policy_apply_v1" },
+    "applyMode": { "enum": ["operator_controlled"] },
+    "requestedBy": { "type": "string" },
+    "target": { "type": "string" },
+    "resource": { "enum": ["cpu", "memory"] },
+    "direction": { "enum": ["up", "down"] },
+    "guardState": {
+      "enum": [
+        "guard_passed",
+        "guard_blocked_restart_bound",
+        "guard_blocked_rollout_bound",
+        "guard_blocked_migration_destructive",
+        "guard_blocked_missing_evidence"
+      ]
+    },
+    "rollbackState": { "enum": ["rollback_ready", "rollback_unavailable"] }
+  },
+  "additionalProperties": true
+}

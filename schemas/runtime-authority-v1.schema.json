@@ -1,0 +1,48 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/runtime-authority-v1.schema.json",
+  "title": "Runtime Authority v1",
+  "type": "object",
+  "required": [
+    "contractId",
+    "scope",
+    "runtimeAuthorityState",
+    "declaredEnvelope",
+    "runtimeOverlay",
+    "overlayMechanism",
+    "specMutationLivePath"
+  ],
+  "properties": {
+    "contractId": { "const": "kubevirt_memory_runtime_authority_v1" },
+    "scope": { "const": "vm_linux_memory" },
+    "runtimeAuthorityState": {
+      "enum": [
+        "authority_ready",
+        "authority_partial",
+        "authority_blocked"
+      ]
+    },
+    "declaredEnvelope": {
+      "type": "object",
+      "required": ["baselineBytes", "ceilingBytes"],
+      "properties": {
+        "baselineBytes": { "type": "integer", "minimum": 0 },
+        "ceilingBytes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "runtimeOverlay": {
+      "type": "object",
+      "required": ["requestedBytes", "appliedBytes"],
+      "properties": {
+        "requestedBytes": { "type": "integer", "minimum": 0 },
+        "appliedBytes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "overlayMechanism": { "const": "virtio_mem_qmp_qom_requested_size" },
+    "specMutationLivePath": { "const": false },
+    "notes": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

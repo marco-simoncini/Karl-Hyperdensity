@@ -1,0 +1,28 @@
+{
+  "contractId": "hyperdensity_resource_equilibrium_v1",
+  "state": "resource_equilibrium_operational",
+  "mode": "recommendation_only",
+  "riskState": "risk_medium",
+  "safeOvercommitBudget": {
+    "cpuMillicores": 2400,
+    "memoryBytes": 8589934592
+  },
+  "shells": [
+    {
+      "objectRef": "karl/linux-shell-v1-cpu-ram-reference-02",
+      "shellKind": "vm_linux",
+      "declared": { "cpuMillicores": 2000, "memoryBytes": 8589934592 },
+      "runtime": { "cpuMillicores": 1700, "memoryBytes": 7516192768 },
+      "observed": { "cpuMillicores": 1200, "memoryBytes": 5368709120 },
+      "floor": { "cpuMillicores": 1000, "memoryBytes": 4294967296 },
+      "baseline": { "cpuMillicores": 1400, "memoryBytes": 6442450944 },
+      "burstStep": { "cpuMillicores": 250, "memoryBytes": 536870912 },
+      "ceiling": { "cpuMillicores": 3000, "memoryBytes": 12884901888 },
+      "reclaimable": { "cpuMillicores": 500, "memoryBytes": 1073741824 },
+      "burstHeadroom": { "cpuMillicores": 1300, "memoryBytes": 5368709120 },
+      "canDonate": true,
+      "canReceive": true,
+      "recommendedRole": "donor"
+    }
+  ]
+}

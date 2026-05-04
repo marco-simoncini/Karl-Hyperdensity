@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/executor-evidence-v1.schema.json",
+  "title": "Executor Evidence v1",
+  "type": "object",
+  "required": [
+    "executorId",
+    "shellKind",
+    "resource",
+    "direction",
+    "declared",
+    "runtimeBefore",
+    "runtimeAfter",
+    "observed",
+    "sameRuntimeProof",
+    "guardResult"
+  ],
+  "properties": {
+    "executorId": {
+      "enum": [
+        "vm_linux_cpu_guest_assisted_executor_v1",
+        "vm_linux_memory_runtime_overlay_executor_v1",
+        "container_linux_live_bidirectional_executor_v1"
+      ]
+    },
+    "shellKind": { "enum": ["vm_linux", "container_linux"] },
+    "resource": { "enum": ["cpu", "memory"] },
+    "direction": { "enum": ["up", "down"] },
+    "declared": { "$ref": "#/$defs/resourcePoint" },
+    "runtimeBefore": { "$ref": "#/$defs/resourcePoint" },
+    "runtimeAfter": { "$ref": "#/$defs/resourcePoint" },
+    "observed": { "$ref": "#/$defs/resourcePoint" },
+    "sameRuntimeProof": { "type": "boolean" },
+    "guardResult": { "enum": ["passed", "blocked"] },
+    "blocker": { "type": "string" },
+    "rollbackProof": { "type": "boolean" }
+  },
+  "$defs": {
+    "resourcePoint": {
+      "type": "object",
+      "required": ["cpuMillicores", "memoryBytes"],
+      "properties": {
+        "cpuMillicores": { "type": "integer", "minimum": 0 },
+        "memoryBytes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

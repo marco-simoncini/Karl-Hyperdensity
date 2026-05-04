@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/resource-equilibrium-v1.schema.json",
+  "title": "Resource Equilibrium v1",
+  "type": "object",
+  "required": [
+    "contractId",
+    "state",
+    "mode",
+    "riskState",
+    "safeOvercommitBudget",
+    "shells"
+  ],
+  "properties": {
+    "contractId": { "const": "hyperdensity_resource_equilibrium_v1" },
+    "state": {
+      "enum": [
+        "resource_equilibrium_operational",
+        "resource_equilibrium_partial",
+        "resource_equilibrium_blocked"
+      ]
+    },
+    "mode": { "enum": ["recommendation_only"] },
+    "riskState": { "enum": ["risk_low", "risk_medium", "risk_high"] },
+    "safeOvercommitBudget": {
+      "type": "object",
+      "required": ["cpuMillicores", "memoryBytes"],
+      "properties": {
+        "cpuMillicores": { "type": "integer", "minimum": 0 },
+        "memoryBytes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    },
+    "shells": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "objectRef",
+          "shellKind",
+          "declared",
+          "runtime",
+          "observed",
+          "floor",
+          "baseline",
+          "burstStep",
+          "ceiling",
+          "reclaimable",
+          "burstHeadroom",
+          "canDonate",
+          "canReceive",
+          "recommendedRole"
+        ],
+        "properties": {
+          "objectRef": { "type": "string" },
+          "shellKind": { "enum": ["vm_linux", "container_linux"] },
+          "declared": { "$ref": "#/$defs/resourcePair" },
+          "runtime": { "$ref": "#/$defs/resourcePair" },
+          "observed": { "$ref": "#/$defs/resourcePair" },
+          "floor": { "$ref": "#/$defs/resourcePair" },
+          "baseline": { "$ref": "#/$defs/resourcePair" },
+          "burstStep": { "$ref": "#/$defs/resourcePair" },
+          "ceiling": { "$ref": "#/$defs/resourcePair" },
+          "reclaimable": { "$ref": "#/$defs/resourcePair" },
+          "burstHeadroom": { "$ref": "#/$defs/resourcePair" },
+          "canDonate": { "type": "boolean" },
+          "canReceive": { "type": "boolean" },
+          "recommendedRole": { "enum": ["donor", "receiver", "hold", "exclude"] }
+        },
+        "additionalProperties": true
+      }
+    }
+  },
+  "$defs": {
+    "resourcePair": {
+      "type": "object",
+      "required": ["cpuMillicores", "memoryBytes"],
+      "properties": {
+        "cpuMillicores": { "type": "integer", "minimum": 0 },
+        "memoryBytes": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}

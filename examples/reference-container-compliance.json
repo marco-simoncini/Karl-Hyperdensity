@@ -1,0 +1,20 @@
+{
+  "contractId": "hyperdensity_linux_shell_compliance_v1",
+  "linuxShellComplianceState": "linux_shell_compliance_operational",
+  "overallCompliant": true,
+  "vmReferenceCompliant": true,
+  "containerReferenceCompliant": true,
+  "guarantees": {
+    "cpuUpLive": true,
+    "cpuDownLive": true,
+    "ramUpLive": true,
+    "ramDownLive": true,
+    "noReboot": true,
+    "noVmiRecreate": true,
+    "noRollout": true,
+    "noDestructiveMigration": true,
+    "sameRuntimeProof": true,
+    "rollbackProof": true
+  },
+  "blockers": []
+}

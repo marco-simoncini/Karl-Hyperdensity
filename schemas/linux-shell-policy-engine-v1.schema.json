@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/linux-shell-policy-engine-v1.schema.json",
+  "title": "Linux Shell Policy Engine v1",
+  "type": "object",
+  "required": [
+    "contractId",
+    "policyMode",
+    "applyMode",
+    "autonomousMode",
+    "recommendedAction",
+    "riskState"
+  ],
+  "properties": {
+    "contractId": { "const": "hyperdensity_linux_shell_policy_engine_v1" },
+    "policyMode": { "enum": ["recommendation_only"] },
+    "applyMode": { "enum": ["operator_controlled"] },
+    "autonomousMode": { "const": false },
+    "recommendedAction": { "enum": ["hold", "reclaim", "burst", "exclude"] },
+    "riskState": { "enum": ["risk_low", "risk_medium", "risk_high"] },
+    "recommendedTarget": {
+      "type": "object",
+      "properties": {
+        "objectRef": { "type": "string" },
+        "resource": { "enum": ["cpu", "memory"] },
+        "direction": { "enum": ["up", "down"] }
+      },
+      "required": ["objectRef", "resource", "direction"],
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": true
+}
