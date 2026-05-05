@@ -19,6 +19,13 @@ Defines the canonical creation and profile-readiness model for Hyperdensity-read
   - CPU + memory floor/baseline/burstStep/ceiling.
 - `HyperdensityReadinessScore`
   - readiness score (0-100), state, missing requirements, remediation lane.
+- warmup extensions (optional on readiness):
+  - `warmupState`
+  - `warmupMissingEvidence[]`
+  - `warmupObservedSeconds`
+  - `warmupRequiredEvidence[]`
+  - `warmupNextAction`
+  - `estimatedWarmupReason`
 - `HyperdensityFactoryProfile`
   - factory mode and policy assertions (raw creation forbidden).
 
@@ -34,3 +41,17 @@ Defines the canonical creation and profile-readiness model for Hyperdensity-read
 - `single_node_edge_v1` (placeholder)
 
 All unsupported or not-yet-converged cases must map to a remediation lane, not to a definitive unsupported product state.
+
+## Warmup semantics
+
+The readiness `state` supports:
+
+- `factory_ready`
+- `factory_warming_up`
+- `factory_partial`
+- `factory_blocked`
+
+`factory_warming_up` is strictly for structurally-correct shells where only
+time/evidence maturation is missing (for example compliance/exchange/telemetry
+warmup evidence). It must not be used for structural gaps, unsupported profiles,
+or policy violations.

@@ -280,6 +280,48 @@
         "missingRequirements": [],
         "remediationLane": "hold_factory_profile"
       }
+    },
+    {
+      "claimId": "claim-liquidity-donor-warmup-example-01",
+      "profileId": "liquidity_donor_v1",
+      "shellKind": "container_linux",
+      "objectRef": "karl-hyperdensity-evidence/linux-container-liquidity-donor-warmup-example-01",
+      "envelope": {
+        "cpu": {
+          "floor": "200m",
+          "baseline": "400m",
+          "burstStep": "100m",
+          "ceiling": "600m"
+        },
+        "memory": {
+          "floor": "512Mi",
+          "baseline": "1024Mi",
+          "burstStep": "128Mi",
+          "ceiling": "1536Mi"
+        }
+      },
+      "readiness": {
+        "score": 80,
+        "state": "factory_warming_up",
+        "warmupState": "factory_warmup_evidence_pending",
+        "warmupMissingEvidence": [
+          "compliance_not_operational",
+          "exchange_eligibility_missing"
+        ],
+        "warmupObservedSeconds": 60,
+        "warmupRequiredEvidence": [
+          "compliance_operational",
+          "exchange_eligibility_ready",
+          "telemetry_fresh"
+        ],
+        "warmupNextAction": "collect_runtime_evidence_until_compliance_and_exchange_operational",
+        "estimatedWarmupReason": "structural_contract_satisfied_waiting_for_time_based_evidence_maturation",
+        "missingRequirements": [
+          "compliance_not_operational",
+          "exchange_eligibility_missing"
+        ],
+        "remediationLane": "close_compliance_gaps"
+      }
     }
   ]
 }

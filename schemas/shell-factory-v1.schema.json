@@ -104,9 +104,39 @@
           "type": "string",
           "enum": [
             "factory_ready",
+            "factory_warming_up",
             "factory_partial",
             "factory_blocked"
           ]
+        },
+        "warmupState": {
+          "type": "string",
+          "enum": [
+            "factory_warmup_evidence_pending",
+            "factory_warmup_not_applicable"
+          ]
+        },
+        "warmupMissingEvidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warmupObservedSeconds": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "warmupRequiredEvidence": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "warmupNextAction": {
+          "type": "string"
+        },
+        "estimatedWarmupReason": {
+          "type": "string"
         },
         "missingRequirements": {
           "type": "array",
