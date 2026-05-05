@@ -12,6 +12,7 @@ required_files=(
   "docs/contracts/linux-shell-compliance-v1.md"
   "docs/contracts/resource-equilibrium-v1.md"
   "docs/contracts/fleet-equilibrium-onboarding-v1.md"
+  "docs/contracts/shell-factory-v1.md"
   "docs/overcommit/resource-equilibrium-and-safe-overcommit.md"
   "docs/migration/dashboard-to-hyperdensity-extraction-plan.md"
 )

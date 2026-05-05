@@ -1,0 +1,285 @@
+{
+  "contractId": "hyperdensity_shell_factory_v1",
+  "factoryProfile": {
+    "factoryId": "hyperdensity_shell_factory_v1",
+    "factoryMode": "reference_profile_mode",
+    "rawResourceCreationAllowed": false,
+    "creationPolicy": "shell_claim_and_profile_only",
+    "notes": [
+      "No raw resource creation for Hyperdensity references.",
+      "Factory profiles are the canonical onboarding lane for KARL shells."
+    ]
+  },
+  "shellProfiles": [
+    {
+      "profileId": "liquidity_donor_v1",
+      "shellKind": "container_linux",
+      "businessPriority": "bronze",
+      "allowDonation": true,
+      "allowReceive": false,
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "complianceTarget": "linux_shell_compliance_operational",
+      "exchangeEligibilityTarget": "donor_eligible",
+      "exchangeRole": "resource_exchange_donor",
+      "envelope": {
+        "cpu": {
+          "floor": "200m",
+          "baseline": "400m",
+          "burstStep": "100m",
+          "ceiling": "600m"
+        },
+        "memory": {
+          "floor": "512Mi",
+          "baseline": "1024Mi",
+          "burstStep": "128Mi",
+          "ceiling": "1536Mi"
+        }
+      }
+    },
+    {
+      "profileId": "liquidity_receiver_v1",
+      "shellKind": "container_linux",
+      "businessPriority": "standard",
+      "allowDonation": false,
+      "allowReceive": true,
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "complianceTarget": "linux_shell_compliance_operational",
+      "exchangeEligibilityTarget": "receiver_eligible",
+      "exchangeRole": "resource_exchange_receiver",
+      "envelope": {
+        "cpu": {
+          "floor": "200m",
+          "baseline": "300m",
+          "burstStep": "100m",
+          "ceiling": "500m"
+        },
+        "memory": {
+          "floor": "512Mi",
+          "baseline": "1024Mi",
+          "burstStep": "256Mi",
+          "ceiling": "2048Mi"
+        }
+      }
+    },
+    {
+      "profileId": "linux_container_reference_v1",
+      "shellKind": "container_linux",
+      "businessPriority": "standard",
+      "allowDonation": false,
+      "allowReceive": false,
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "complianceTarget": "linux_shell_compliance_operational",
+      "exchangeEligibilityTarget": "reference_shell",
+      "exchangeRole": "reference_shell",
+      "envelope": {
+        "cpu": {
+          "floor": "100m",
+          "baseline": "300m",
+          "burstStep": "100m",
+          "ceiling": "600m"
+        },
+        "memory": {
+          "floor": "256Mi",
+          "baseline": "1024Mi",
+          "burstStep": "128Mi",
+          "ceiling": "2048Mi"
+        }
+      }
+    },
+    {
+      "profileId": "linux_vm_reference_v1",
+      "shellKind": "vm_linux",
+      "businessPriority": "standard",
+      "allowDonation": false,
+      "allowReceive": false,
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "complianceTarget": "linux_shell_compliance_operational",
+      "exchangeEligibilityTarget": "reference_shell",
+      "exchangeRole": "reference_shell",
+      "envelope": {
+        "cpu": {
+          "floor": "1000m",
+          "baseline": "2000m",
+          "burstStep": "500m",
+          "ceiling": "4000m"
+        },
+        "memory": {
+          "floor": "2Gi",
+          "baseline": "4Gi",
+          "burstStep": "1Gi",
+          "ceiling": "8Gi"
+        }
+      }
+    },
+    {
+      "profileId": "daas_interactive_v1",
+      "shellKind": "container_linux",
+      "businessPriority": "gold",
+      "allowDonation": false,
+      "allowReceive": true,
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "complianceTarget": "linux_shell_compliance_operational",
+      "exchangeEligibilityTarget": "receiver_eligible",
+      "exchangeRole": "none",
+      "envelope": {
+        "cpu": {
+          "floor": "300m",
+          "baseline": "600m",
+          "burstStep": "100m",
+          "ceiling": "900m"
+        },
+        "memory": {
+          "floor": "1Gi",
+          "baseline": "2Gi",
+          "burstStep": "256Mi",
+          "ceiling": "3Gi"
+        }
+      }
+    },
+    {
+      "profileId": "service_burstable_v1",
+      "shellKind": "container_linux",
+      "businessPriority": "standard",
+      "allowDonation": true,
+      "allowReceive": true,
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "complianceTarget": "linux_shell_compliance_operational",
+      "exchangeEligibilityTarget": "dual_role_eligible",
+      "exchangeRole": "none",
+      "envelope": {
+        "cpu": {
+          "floor": "300m",
+          "baseline": "500m",
+          "burstStep": "100m",
+          "ceiling": "800m"
+        },
+        "memory": {
+          "floor": "768Mi",
+          "baseline": "1536Mi",
+          "burstStep": "256Mi",
+          "ceiling": "3Gi"
+        }
+      }
+    },
+    {
+      "profileId": "batch_elastic_v1",
+      "shellKind": "container_linux",
+      "businessPriority": "bronze",
+      "allowDonation": true,
+      "allowReceive": false,
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "complianceTarget": "linux_shell_compliance_operational",
+      "exchangeEligibilityTarget": "donor_eligible",
+      "exchangeRole": "none",
+      "envelope": {
+        "cpu": {
+          "floor": "150m",
+          "baseline": "400m",
+          "burstStep": "100m",
+          "ceiling": "700m"
+        },
+        "memory": {
+          "floor": "512Mi",
+          "baseline": "1Gi",
+          "burstStep": "256Mi",
+          "ceiling": "2Gi"
+        }
+      }
+    },
+    {
+      "profileId": "single_node_edge_v1",
+      "shellKind": "vm_linux",
+      "businessPriority": "standard",
+      "allowDonation": false,
+      "allowReceive": true,
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "complianceTarget": "linux_shell_compliance_operational",
+      "exchangeEligibilityTarget": "receiver_eligible",
+      "exchangeRole": "none",
+      "envelope": {
+        "cpu": {
+          "floor": "500m",
+          "baseline": "1500m",
+          "burstStep": "250m",
+          "ceiling": "3000m"
+        },
+        "memory": {
+          "floor": "1Gi",
+          "baseline": "3Gi",
+          "burstStep": "512Mi",
+          "ceiling": "6Gi"
+        }
+      }
+    }
+  ],
+  "shellClaims": [
+    {
+      "claimId": "claim-liquidity-donor-reference-01",
+      "profileId": "liquidity_donor_v1",
+      "shellKind": "container_linux",
+      "objectRef": "karl-hyperdensity-evidence/linux-container-liquidity-donor-v1-reference-01",
+      "envelope": {
+        "cpu": {
+          "floor": "200m",
+          "baseline": "400m",
+          "burstStep": "100m",
+          "ceiling": "600m"
+        },
+        "memory": {
+          "floor": "512Mi",
+          "baseline": "1024Mi",
+          "burstStep": "128Mi",
+          "ceiling": "1536Mi"
+        }
+      },
+      "readiness": {
+        "score": 100,
+        "state": "factory_ready",
+        "missingRequirements": [],
+        "remediationLane": "hold_factory_profile"
+      }
+    },
+    {
+      "claimId": "claim-liquidity-receiver-reference-01",
+      "profileId": "liquidity_receiver_v1",
+      "shellKind": "container_linux",
+      "objectRef": "karl-hyperdensity-evidence/linux-container-liquidity-receiver-v1-reference-01",
+      "envelope": {
+        "cpu": {
+          "floor": "200m",
+          "baseline": "300m",
+          "burstStep": "100m",
+          "ceiling": "500m"
+        },
+        "memory": {
+          "floor": "512Mi",
+          "baseline": "1024Mi",
+          "burstStep": "256Mi",
+          "ceiling": "2048Mi"
+        }
+      },
+      "readiness": {
+        "score": 100,
+        "state": "factory_ready",
+        "missingRequirements": [],
+        "remediationLane": "hold_factory_profile"
+      }
+    }
+  ]
+}

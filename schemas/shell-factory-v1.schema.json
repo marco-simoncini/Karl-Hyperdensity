@@ -1,0 +1,251 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/shell-factory-v1.schema.json",
+  "title": "Hyperdensity Shell Factory v1",
+  "type": "object",
+  "required": [
+    "contractId",
+    "factoryProfile",
+    "shellProfiles",
+    "shellClaims"
+  ],
+  "properties": {
+    "contractId": {
+      "const": "hyperdensity_shell_factory_v1"
+    },
+    "factoryProfile": {
+      "$ref": "#/$defs/hyperdensityFactoryProfile"
+    },
+    "shellProfiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/hyperdensityShellProfile"
+      }
+    },
+    "shellClaims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/hyperdensityShellClaim"
+      }
+    }
+  },
+  "$defs": {
+    "shellKind": {
+      "type": "string",
+      "enum": [
+        "vm_linux",
+        "container_linux"
+      ]
+    },
+    "exchangeRole": {
+      "type": "string",
+      "enum": [
+        "resource_exchange_donor",
+        "resource_exchange_receiver",
+        "reference_shell",
+        "none"
+      ]
+    },
+    "resourceEnvelope": {
+      "type": "object",
+      "required": [
+        "floor",
+        "baseline",
+        "burstStep",
+        "ceiling"
+      ],
+      "properties": {
+        "floor": {
+          "type": "string"
+        },
+        "baseline": {
+          "type": "string"
+        },
+        "burstStep": {
+          "type": "string"
+        },
+        "ceiling": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hyperdensityShellEnvelope": {
+      "type": "object",
+      "required": [
+        "cpu",
+        "memory"
+      ],
+      "properties": {
+        "cpu": {
+          "$ref": "#/$defs/resourceEnvelope"
+        },
+        "memory": {
+          "$ref": "#/$defs/resourceEnvelope"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hyperdensityReadinessScore": {
+      "type": "object",
+      "required": [
+        "score",
+        "state",
+        "missingRequirements",
+        "remediationLane"
+      ],
+      "properties": {
+        "score": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "state": {
+          "type": "string",
+          "enum": [
+            "factory_ready",
+            "factory_partial",
+            "factory_blocked"
+          ]
+        },
+        "missingRequirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remediationLane": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hyperdensityShellProfile": {
+      "type": "object",
+      "required": [
+        "profileId",
+        "shellKind",
+        "businessPriority",
+        "allowDonation",
+        "allowReceive",
+        "telemetryEnabled",
+        "rollbackRequired",
+        "runtimeOverlayRequired",
+        "complianceTarget",
+        "exchangeEligibilityTarget",
+        "exchangeRole",
+        "envelope"
+      ],
+      "properties": {
+        "profileId": {
+          "type": "string"
+        },
+        "shellKind": {
+          "$ref": "#/$defs/shellKind"
+        },
+        "businessPriority": {
+          "type": "string"
+        },
+        "allowDonation": {
+          "type": "boolean"
+        },
+        "allowReceive": {
+          "type": "boolean"
+        },
+        "telemetryEnabled": {
+          "type": "boolean"
+        },
+        "rollbackRequired": {
+          "type": "boolean"
+        },
+        "runtimeOverlayRequired": {
+          "type": "boolean"
+        },
+        "complianceTarget": {
+          "type": "string"
+        },
+        "exchangeEligibilityTarget": {
+          "type": "string"
+        },
+        "exchangeRole": {
+          "$ref": "#/$defs/exchangeRole"
+        },
+        "envelope": {
+          "$ref": "#/$defs/hyperdensityShellEnvelope"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hyperdensityFactoryProfile": {
+      "type": "object",
+      "required": [
+        "factoryId",
+        "factoryMode",
+        "rawResourceCreationAllowed",
+        "creationPolicy",
+        "notes"
+      ],
+      "properties": {
+        "factoryId": {
+          "const": "hyperdensity_shell_factory_v1"
+        },
+        "factoryMode": {
+          "type": "string",
+          "enum": [
+            "reference_profile_mode"
+          ]
+        },
+        "rawResourceCreationAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "creationPolicy": {
+          "type": "string",
+          "enum": [
+            "shell_claim_and_profile_only"
+          ]
+        },
+        "notes": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      },
+      "additionalProperties": false
+    },
+    "hyperdensityShellClaim": {
+      "type": "object",
+      "required": [
+        "claimId",
+        "profileId",
+        "shellKind",
+        "objectRef",
+        "envelope",
+        "readiness"
+      ],
+      "properties": {
+        "claimId": {
+          "type": "string"
+        },
+        "profileId": {
+          "type": "string"
+        },
+        "shellKind": {
+          "$ref": "#/$defs/shellKind"
+        },
+        "objectRef": {
+          "type": "string"
+        },
+        "envelope": {
+          "$ref": "#/$defs/hyperdensityShellEnvelope"
+        },
+        "readiness": {
+          "$ref": "#/$defs/hyperdensityReadinessScore"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
