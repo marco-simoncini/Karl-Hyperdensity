@@ -132,6 +132,45 @@ def main() -> int:
     if not isinstance(consistency_example["missingSafetyGates"], list):
         fail("policy-pack-consistency-reference.json missingSafetyGates must be an array")
 
+    enforce_simulation_example = example_by_name.get("admission-guard-enforce-simulation-reference.json")
+    if enforce_simulation_example is None:
+        fail("examples/admission-guard-enforce-simulation-reference.json is missing")
+    required_enforce_simulation_fields = [
+        "simulationId",
+        "simulationVersion",
+        "simulationMode",
+        "enforcementMode",
+        "admissionGuardMode",
+        "mutatePreviewMode",
+        "autonomousApplyAllowed",
+        "policyPackId",
+        "policyConsistencyRequired",
+        "evidenceScope",
+        "productionMutationAllowed",
+        "simulatedObjects",
+        "simulatedDecisions",
+        "summary",
+        "safetyGates",
+        "nextSimulationAction",
+    ]
+    for field in required_enforce_simulation_fields:
+        if field not in enforce_simulation_example:
+            fail(f"admission-guard-enforce-simulation-reference.json missing required field '{field}'")
+    if enforce_simulation_example["simulationId"] != "hyperdensity_admission_guard_enforce_simulation_v1":
+        fail("admission-guard-enforce-simulation-reference.json simulationId must be hyperdensity_admission_guard_enforce_simulation_v1")
+    if enforce_simulation_example["simulationMode"] != "simulation_only":
+        fail("admission-guard-enforce-simulation-reference.json simulationMode must be simulation_only")
+    if enforce_simulation_example["enforcementMode"] != "disabled":
+        fail("admission-guard-enforce-simulation-reference.json enforcementMode must be disabled")
+    if enforce_simulation_example["admissionGuardMode"] != "audit_only":
+        fail("admission-guard-enforce-simulation-reference.json admissionGuardMode must be audit_only")
+    if enforce_simulation_example["mutatePreviewMode"] != "audit_preview_only":
+        fail("admission-guard-enforce-simulation-reference.json mutatePreviewMode must be audit_preview_only")
+    if enforce_simulation_example["autonomousApplyAllowed"] is not False:
+        fail("admission-guard-enforce-simulation-reference.json autonomousApplyAllowed must be false")
+    if enforce_simulation_example["productionMutationAllowed"] is not False:
+        fail("admission-guard-enforce-simulation-reference.json productionMutationAllowed must be false")
+
     print(
         f"[validate_json] OK: parsed {schema_count} schema files and {example_count} example files"
     )

@@ -1,0 +1,79 @@
+{
+  "simulationId": "hyperdensity_admission_guard_enforce_simulation_v1",
+  "simulationVersion": "v1",
+  "simulationMode": "simulation_only",
+  "enforcementMode": "disabled",
+  "admissionGuardMode": "audit_only",
+  "mutatePreviewMode": "audit_preview_only",
+  "autonomousApplyAllowed": false,
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "policyConsistencyRequired": true,
+  "evidenceScope": "evidence_namespace_only",
+  "productionMutationAllowed": false,
+  "simulatedObjects": [
+    {
+      "objectRef": "karl-hyperdensity-evidence/sample-raw",
+      "namespace": "karl-hyperdensity-evidence",
+      "kind": "Deployment",
+      "name": "sample-raw",
+      "factoryManaged": false,
+      "shellKind": "container_linux",
+      "shellProfile": "linux_container_reference_v1",
+      "readinessState": "factory_partial",
+      "policyPackCovered": true,
+      "currentAdmissionDecision": "audit_would_reject",
+      "simulatedEnforcementDecision": "reject",
+      "wouldReject": true,
+      "wouldAllow": false,
+      "wouldWarn": false,
+      "wouldMutate": true,
+      "mutatePreviewAvailable": true,
+      "rejectionReasons": [
+        "missing_hyperdensity_shell_annotation",
+        "missing_factory_managed_flag"
+      ],
+      "warningReasons": [],
+      "remediationHints": [
+        "recreate_via_shell_claim_generator_in_evidence_namespace"
+      ],
+      "sourceRules": [
+        "missing_shell_annotation",
+        "missing_factory_managed_flag"
+      ],
+      "safetyNotes": [
+        "simulation_only_no_enforcement",
+        "no_mutation_applied"
+      ]
+    }
+  ],
+  "simulatedDecisions": [
+    {
+      "decisionId": "decision-sim-001",
+      "objectId": "sim-001",
+      "decisionType": "reject",
+      "severity": "critical",
+      "state": "simulated",
+      "description": "Simulated impact if enforcement were enabled.",
+      "enforcementEffect": "reject",
+      "currentEffect": "audit_would_reject",
+      "simulatedEffect": "reject",
+      "remediation": "recreate_via_shell_claim_generator_in_evidence_namespace",
+      "sourceSurface": "hyperdensityAdmissionGuard",
+      "sourceRuleId": "missing_shell_annotation"
+    }
+  ],
+  "summary": "simulation-only projection with no enforcement activation",
+  "safetyGates": [
+    {
+      "gateId": "enforcement_disabled",
+      "state": "passed",
+      "severity": "critical",
+      "description": "Real enforcement remains disabled.",
+      "expected": "disabled",
+      "actual": "disabled",
+      "blocker": true
+    }
+  ],
+  "nextSimulationAction": "review_simulated_rejections_and_remediation_hints",
+  "simulationBlocker": ""
+}
