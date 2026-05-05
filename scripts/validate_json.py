@@ -46,9 +46,50 @@ def main() -> int:
             fail(f"{path} is missing required 'type'")
 
     example_count = 0
+    example_by_name = {}
     for path in example_paths:
-        _ = load_json(path)
+        data = load_json(path)
+        example_by_name[path.name] = data
         example_count += 1
+
+    policy_pack_example = example_by_name.get("policy-pack-reference.json")
+    if policy_pack_example is None:
+        fail("examples/policy-pack-reference.json is missing")
+    required_policy_fields = [
+        "policyPackId",
+        "policyPackVersion",
+        "policyPackMode",
+        "enforcementMode",
+        "autonomousApplyAllowed",
+        "supportedShellKinds",
+        "supportedProfiles",
+        "factoryRequirements",
+        "claimValidationRules",
+        "admissionGuardRules",
+        "mutatePreviewDefaults",
+        "exchangeEligibilityRules",
+        "stageApplyRules",
+        "shellClaimEvidenceCreateRules",
+        "safetyGates",
+        "warmupPolicy",
+    ]
+    for field in required_policy_fields:
+        if field not in policy_pack_example:
+            fail(f"policy-pack-reference.json missing required field '{field}'")
+    if policy_pack_example["policyPackId"] != "hyperdensity_policy_pack_v1":
+        fail("policy-pack-reference.json policyPackId must be hyperdensity_policy_pack_v1")
+    if policy_pack_example["policyPackMode"] != "visibility_only":
+        fail("policy-pack-reference.json policyPackMode must be visibility_only")
+    if policy_pack_example["enforcementMode"] != "disabled":
+        fail("policy-pack-reference.json enforcementMode must be disabled")
+    if policy_pack_example["autonomousApplyAllowed"] is not False:
+        fail("policy-pack-reference.json autonomousApplyAllowed must be false")
+    if not isinstance(policy_pack_example["supportedShellKinds"], list) or not policy_pack_example["supportedShellKinds"]:
+        fail("policy-pack-reference.json supportedShellKinds must be a non-empty array")
+    if not isinstance(policy_pack_example["supportedProfiles"], list) or not policy_pack_example["supportedProfiles"]:
+        fail("policy-pack-reference.json supportedProfiles must be a non-empty array")
+    if not isinstance(policy_pack_example["safetyGates"], list) or not policy_pack_example["safetyGates"]:
+        fail("policy-pack-reference.json safetyGates must be a non-empty array")
 
     print(
         f"[validate_json] OK: parsed {schema_count} schema files and {example_count} example files"

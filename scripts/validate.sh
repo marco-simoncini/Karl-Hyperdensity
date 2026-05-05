@@ -14,6 +14,7 @@ required_files=(
   "docs/contracts/fleet-equilibrium-onboarding-v1.md"
   "docs/contracts/shell-factory-v1.md"
   "docs/contracts/shell-claim-v1.md"
+  "docs/contracts/policy-pack-v1.md"
   "docs/overcommit/resource-equilibrium-and-safe-overcommit.md"
   "docs/migration/dashboard-to-hyperdensity-extraction-plan.md"
 )

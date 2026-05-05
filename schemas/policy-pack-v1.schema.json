@@ -1,0 +1,177 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/policy-pack-v1.schema.json",
+  "title": "Hyperdensity Policy Pack v1",
+  "type": "object",
+  "required": [
+    "policyPackId",
+    "policyPackVersion",
+    "policyPackMode",
+    "enforcementMode",
+    "autonomousApplyAllowed",
+    "supportedShellKinds",
+    "supportedProfiles",
+    "factoryRequirements",
+    "claimValidationRules",
+    "admissionGuardRules",
+    "mutatePreviewDefaults",
+    "exchangeEligibilityRules",
+    "stageApplyRules",
+    "shellClaimEvidenceCreateRules",
+    "safetyGates",
+    "warmupPolicy"
+  ],
+  "properties": {
+    "policyPackId": {
+      "const": "hyperdensity_policy_pack_v1"
+    },
+    "policyPackVersion": {
+      "type": "string"
+    },
+    "policyPackMode": {
+      "type": "string",
+      "enum": ["visibility_only"]
+    },
+    "enforcementMode": {
+      "type": "string",
+      "enum": ["disabled"]
+    },
+    "autonomousApplyAllowed": {
+      "type": "boolean",
+      "const": false
+    },
+    "supportedShellKinds": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "supportedProfiles": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "string"
+      }
+    },
+    "factoryRequirements": {
+      "$ref": "#/$defs/ruleList"
+    },
+    "claimValidationRules": {
+      "$ref": "#/$defs/ruleList"
+    },
+    "admissionGuardRules": {
+      "$ref": "#/$defs/ruleList"
+    },
+    "mutatePreviewDefaults": {
+      "type": "object",
+      "required": [
+        "mode",
+        "applyAllowed",
+        "recreateFallbackRequired",
+        "notes"
+      ],
+      "properties": {
+        "mode": {
+          "type": "string",
+          "enum": ["audit_preview_only"]
+        },
+        "applyAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "recreateFallbackRequired": {
+          "type": "boolean",
+          "const": true
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": false
+    },
+    "exchangeEligibilityRules": {
+      "$ref": "#/$defs/ruleList"
+    },
+    "stageApplyRules": {
+      "$ref": "#/$defs/ruleList"
+    },
+    "shellClaimEvidenceCreateRules": {
+      "$ref": "#/$defs/ruleList"
+    },
+    "safetyGates": {
+      "$ref": "#/$defs/ruleList"
+    },
+    "warmupPolicy": {
+      "type": "object",
+      "required": [
+        "warmupIsReady",
+        "partialIsReady",
+        "blockedIsReady",
+        "requiredEvidence",
+        "notes"
+      ],
+      "properties": {
+        "warmupIsReady": {
+          "type": "boolean",
+          "const": false
+        },
+        "partialIsReady": {
+          "type": "boolean",
+          "const": false
+        },
+        "blockedIsReady": {
+          "type": "boolean",
+          "const": false
+        },
+        "requiredEvidence": {
+          "$ref": "#/$defs/stringList"
+        },
+        "notes": {
+          "$ref": "#/$defs/stringList"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "$defs": {
+    "stringList": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "rule": {
+      "type": "object",
+      "required": [
+        "ruleId",
+        "description",
+        "mode",
+        "enabled"
+      ],
+      "properties": {
+        "ruleId": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": true
+    },
+    "ruleList": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "$ref": "#/$defs/rule"
+      }
+    }
+  },
+  "additionalProperties": false
+}

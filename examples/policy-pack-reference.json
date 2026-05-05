@@ -1,0 +1,247 @@
+{
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "policyPackVersion": "v1",
+  "policyPackMode": "visibility_only",
+  "enforcementMode": "disabled",
+  "autonomousApplyAllowed": false,
+  "supportedShellKinds": [
+    "container_linux",
+    "vm_linux"
+  ],
+  "supportedProfiles": [
+    "liquidity_donor_v1",
+    "liquidity_receiver_v1",
+    "linux_container_reference_v1",
+    "linux_vm_reference_v1",
+    "service_burstable_v1"
+  ],
+  "factoryRequirements": [
+    {
+      "ruleId": "factory_managed_required",
+      "description": "Factory-managed flag is required for ready shell projection.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "resource_envelope_required",
+      "description": "CPU and memory envelopes are required.",
+      "mode": "visibility_only",
+      "enabled": true
+    }
+  ],
+  "claimValidationRules": [
+    {
+      "ruleId": "shell_claim_generate_only",
+      "description": "Shell claim generation is visibility/generate-only.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "dry_run_required_before_create_or_apply",
+      "description": "Dry-run must pass before any create/apply path.",
+      "mode": "visibility_only",
+      "enabled": true
+    }
+  ],
+  "admissionGuardRules": [
+    {
+      "ruleId": "admission_guard_audit_only",
+      "description": "Admission guard runs in audit mode only.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "windows_lane_out_of_scope",
+      "description": "Windows lane remains out-of-scope.",
+      "mode": "visibility_only",
+      "enabled": true
+    }
+  ],
+  "mutatePreviewDefaults": {
+    "mode": "audit_preview_only",
+    "applyAllowed": false,
+    "recreateFallbackRequired": true,
+    "notes": [
+      "Mutate preview produces patch/recreate guidance only.",
+      "Preview must not mutate source objects."
+    ]
+  },
+  "exchangeEligibilityRules": [
+    {
+      "ruleId": "sustained_idle_evidence_required",
+      "description": "Sustained idle evidence required for safe reclaim path.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "safe_band_stage_splitting_required",
+      "description": "Safe-band splitting required for staged transfer.",
+      "mode": "visibility_only",
+      "enabled": true
+    }
+  ],
+  "stageApplyRules": [
+    {
+      "ruleId": "operator_controlled_only",
+      "description": "Apply paths are operator controlled only.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "rollback_required_where_applicable",
+      "description": "Rollback proof required for staged apply flows.",
+      "mode": "visibility_only",
+      "enabled": true
+    }
+  ],
+  "shellClaimEvidenceCreateRules": [
+    {
+      "ruleId": "evidence_namespace_only",
+      "description": "Evidence create path is restricted to evidence namespace.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "cleanup_required_where_applicable",
+      "description": "Cleanup is mandatory for evidence create proof objects.",
+      "mode": "visibility_only",
+      "enabled": true
+    }
+  ],
+  "safetyGates": [
+    {
+      "ruleId": "evidence_namespace_only",
+      "description": "Create/apply proof path is evidence namespace only.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "operator_controlled_only",
+      "description": "Apply/create paths require operator control.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "autonomous_apply_disabled",
+      "description": "Autonomous apply remains disabled.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "dry_run_required_before_create_or_apply",
+      "description": "Dry-run required before create/apply.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "rollback_required_where_applicable",
+      "description": "Rollback proof required where applicable.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "cleanup_required_where_applicable",
+      "description": "Cleanup required where applicable.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "warning_events_clean_required",
+      "description": "Warning-clean gate remains required.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "no_production_mutation",
+      "description": "No production workload mutation.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "windows_lane_out_of_scope",
+      "description": "Windows lane out-of-scope.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "no_rollout_fallback_for_live_staged_apply",
+      "description": "No rollout fallback for live staged apply.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "pod_resize_capability_required_for_container_cpu_stage_apply",
+      "description": "Pod resize capability required for container CPU staged apply.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "sustained_idle_evidence_required",
+      "description": "Sustained idle evidence required.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "safe_band_stage_splitting_required",
+      "description": "Safe-band stage splitting required.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "factory_managed_required",
+      "description": "Factory-managed flag required.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "shell_profile_required",
+      "description": "Shell profile required.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "resource_envelope_required",
+      "description": "Resource envelope required.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "telemetry_required_for_ready",
+      "description": "Telemetry required for ready state.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "compliance_required_for_ready",
+      "description": "Compliance required for ready state.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "exchange_eligibility_required_for_ready",
+      "description": "Exchange eligibility required for ready state.",
+      "mode": "visibility_only",
+      "enabled": true
+    },
+    {
+      "ruleId": "warming_up_is_not_ready",
+      "description": "Warming-up state is not ready.",
+      "mode": "visibility_only",
+      "enabled": true
+    }
+  ],
+  "warmupPolicy": {
+    "warmupIsReady": false,
+    "partialIsReady": false,
+    "blockedIsReady": false,
+    "requiredEvidence": [
+      "telemetry_fresh",
+      "compliance_operational",
+      "exchange_eligibility_ready"
+    ],
+    "notes": [
+      "Structurally correct shells can be warming_up.",
+      "warming_up and partial must not be projected as ready."
+    ]
+  }
+}
