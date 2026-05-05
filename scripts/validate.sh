@@ -17,6 +17,7 @@ required_files=(
   "docs/contracts/shell-claim-template-profile-pack-v1.md"
   "docs/contracts/release-support-matrix-v1.md"
   "docs/contracts/evidence-bundle-demo-scenario-pack-v1.md"
+  "docs/contracts/live-resource-authority-v1.md"
   "docs/contracts/policy-pack-v1.md"
   "docs/contracts/policy-pack-consistency-checker-v1.md"
   "docs/contracts/admission-guard-enforce-simulation-v1.md"

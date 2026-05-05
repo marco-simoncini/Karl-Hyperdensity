@@ -9,4 +9,5 @@ const (
 	ShellClaimTemplateProfilePackV1ID = "hyperdensity_shell_claim_templates_profile_pack_v1"
 	ReleaseSupportMatrixV1ID          = "hyperdensity_release_support_matrix_v1"
 	EvidenceBundleDemoScenarioPackV1ID = "hyperdensity_evidence_bundle_demo_scenario_pack_v1"
+	LiveResourceAuthorityV1ID         = "hyperdensity_live_resource_authority_v1"
 )

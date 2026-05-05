@@ -1,0 +1,168 @@
+{
+  "authorityId": "hyperdensity_live_resource_authority_v1",
+  "authorityName": "KARL Live Resource Authority",
+  "authorityVersion": "v1",
+  "authorityMode": "unified_runtime_control_surface",
+  "authorityState": "live_resource_authority_operational",
+  "releaseTrack": "technical_preview",
+  "operationMode": "operator_controlled_projection",
+  "autonomousApplyAllowed": false,
+  "enforcementMode": "disabled",
+  "productionMutationAllowed": false,
+  "evidenceScope": "evidence_namespace_only",
+  "supportMatrixId": "hyperdensity_release_support_matrix_v1",
+  "evidenceBundleId": "hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "profilePackId": "hyperdensity_shell_claim_templates_profile_pack_v1",
+  "uniformContract": [
+    {
+      "phaseId": "live_resource_intent",
+      "title": "Live Resource Intent"
+    },
+    {
+      "phaseId": "capability_check",
+      "title": "Capability Check"
+    },
+    {
+      "phaseId": "preflight",
+      "title": "Preflight"
+    },
+    {
+      "phaseId": "dry_run_or_dry_run_like_validation",
+      "title": "Dry-run or dry-run-like validation"
+    },
+    {
+      "phaseId": "runtime_lease_or_overlay",
+      "title": "Runtime Lease/Overlay"
+    },
+    {
+      "phaseId": "apply",
+      "title": "Apply"
+    },
+    {
+      "phaseId": "verify",
+      "title": "Verify"
+    },
+    {
+      "phaseId": "audit",
+      "title": "Audit"
+    },
+    {
+      "phaseId": "rollback",
+      "title": "Rollback"
+    },
+    {
+      "phaseId": "reconcile_or_expire",
+      "title": "Reconcile or Expire"
+    }
+  ],
+  "runtimeDrivers": [
+    {
+      "driverId": "container_linux_pod_resize_driver",
+      "shellKind": "linux_container",
+      "resources": ["cpu", "memory"],
+      "exposedAsRawControl": false
+    },
+    {
+      "driverId": "vm_linux_cpu_libvirt_qga_driver",
+      "shellKind": "linux_vm",
+      "resources": ["cpu"],
+      "exposedAsRawControl": false
+    },
+    {
+      "driverId": "vm_linux_memory_virtiomem_qmp_driver",
+      "shellKind": "linux_vm",
+      "resources": ["memory"],
+      "backendMechanism": "runtime_overlay_via_virtio_mem_qmp_qom_requested_size",
+      "exposedAsRawControl": false,
+      "limitations": [
+        "not_generic_kubevirt_template_memory_mutation",
+        "guest_kernel_device_compatibility_required"
+      ]
+    }
+  ],
+  "liveResourceIntents": [
+    {
+      "modelId": "live_resource_intent_cpu_ram_v1",
+      "dryRunRequired": true,
+      "rollbackRequired": true,
+      "verificationRequired": true
+    }
+  ],
+  "runtimeLeases": [
+    {
+      "modelId": "runtime_lease_overlay_v1",
+      "rollbackSourceRequired": true,
+      "reconcileOnRestart": true,
+      "driftHandling": "detect_and_mark_degraded_until_revalidated"
+    }
+  ],
+  "capabilityChecks": [
+    {
+      "checkId": "support_matrix_alignment",
+      "required": true
+    }
+  ],
+  "preflightChecks": [
+    "policy_pack_consistency",
+    "support_matrix_boundary",
+    "rollback_source_available"
+  ],
+  "dryRunSemantics": [
+    "containers_use_kubernetes_dry_run_or_dry_run_like_paths_where_available",
+    "vm_paths_use_capability_preflight_dry_run_like_validation"
+  ],
+  "applySemantics": [
+    "operator_controlled_only",
+    "evidence_namespace_only",
+    "no_autonomous_apply"
+  ],
+  "verificationSemantics": [
+    "runtime_convergence_required",
+    "warning_events_clean_required"
+  ],
+  "rollbackSemantics": [
+    "rollback_required",
+    "rollback_verification_required"
+  ],
+  "reconciliationSemantics": [
+    "restart_recreate_migration_requires_revalidation_or_degraded"
+  ],
+  "safetyGates": [
+    {
+      "gateId": "required_source_surfaces_present",
+      "state": "ready"
+    },
+    {
+      "gateId": "no_raw_runtime_controls_exposed",
+      "state": "ready"
+    }
+  ],
+  "supportBoundaries": [
+    {
+      "boundaryId": "general_authority_boundary",
+      "approvedWording": "KARL Live Resource Authority provides one governed and auditable live CPU/RAM control surface across Linux containers and evidence-backed Linux VMs, while using object-specific runtime drivers underneath.",
+      "rejectedWording": [
+        "KARL uses one identical low-level mechanism for containers and VMs.",
+        "KARL exposes raw QMP commands.",
+        "VM RAM live resize is generic KubeVirt template mutation.",
+        "Windows is supported."
+      ]
+    }
+  ],
+  "limitations": [
+    {
+      "limitationId": "technical_preview_only",
+      "description": "Technical Preview only."
+    }
+  ],
+  "outOfScope": [
+    {
+      "itemId": "windows_lane",
+      "supportState": "frozen"
+    }
+  ],
+  "summary": "Unified Authority projection for governed CPU/RAM live control across Linux containers and evidence-backed Linux VMs.",
+  "nextAuthorityAction": "expand_object_specific_vm_proof_coverage",
+  "authorityBlocker": ""
+}

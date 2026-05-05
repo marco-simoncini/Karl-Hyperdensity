@@ -362,6 +362,123 @@ def main() -> int:
     if not isinstance(evidence_bundle_example["safetyGates"], list) or not evidence_bundle_example["safetyGates"]:
         fail("evidence-bundle-demo-scenario-pack-reference.json safetyGates must be non-empty array")
 
+    live_resource_authority_example = example_by_name.get("live-resource-authority-reference.json")
+    if live_resource_authority_example is None:
+        fail("examples/live-resource-authority-reference.json is missing")
+    required_live_resource_authority_fields = [
+        "authorityId",
+        "authorityName",
+        "authorityVersion",
+        "authorityMode",
+        "authorityState",
+        "releaseTrack",
+        "operationMode",
+        "autonomousApplyAllowed",
+        "enforcementMode",
+        "productionMutationAllowed",
+        "evidenceScope",
+        "supportMatrixId",
+        "evidenceBundleId",
+        "policyPackId",
+        "profilePackId",
+        "uniformContract",
+        "runtimeDrivers",
+        "liveResourceIntents",
+        "runtimeLeases",
+        "capabilityChecks",
+        "preflightChecks",
+        "dryRunSemantics",
+        "applySemantics",
+        "verificationSemantics",
+        "rollbackSemantics",
+        "reconciliationSemantics",
+        "safetyGates",
+        "supportBoundaries",
+        "limitations",
+        "outOfScope",
+        "summary",
+        "nextAuthorityAction",
+        "authorityBlocker",
+    ]
+    for field in required_live_resource_authority_fields:
+        if field not in live_resource_authority_example:
+            fail(f"live-resource-authority-reference.json missing required field '{field}'")
+    if live_resource_authority_example["authorityId"] != "hyperdensity_live_resource_authority_v1":
+        fail("live-resource-authority-reference.json authorityId must be hyperdensity_live_resource_authority_v1")
+    if live_resource_authority_example["authorityName"] != "KARL Live Resource Authority":
+        fail("live-resource-authority-reference.json authorityName must be KARL Live Resource Authority")
+    if live_resource_authority_example["authorityVersion"] != "v1":
+        fail("live-resource-authority-reference.json authorityVersion must be v1")
+    if live_resource_authority_example["authorityMode"] != "unified_runtime_control_surface":
+        fail("live-resource-authority-reference.json authorityMode must be unified_runtime_control_surface")
+    if live_resource_authority_example["releaseTrack"] != "technical_preview":
+        fail("live-resource-authority-reference.json releaseTrack must be technical_preview")
+    if live_resource_authority_example["operationMode"] != "operator_controlled_projection":
+        fail("live-resource-authority-reference.json operationMode must be operator_controlled_projection")
+    if live_resource_authority_example["autonomousApplyAllowed"] is not False:
+        fail("live-resource-authority-reference.json autonomousApplyAllowed must be false")
+    if live_resource_authority_example["enforcementMode"] != "disabled":
+        fail("live-resource-authority-reference.json enforcementMode must be disabled")
+    if live_resource_authority_example["productionMutationAllowed"] is not False:
+        fail("live-resource-authority-reference.json productionMutationAllowed must be false")
+    if live_resource_authority_example["evidenceScope"] != "evidence_namespace_only":
+        fail("live-resource-authority-reference.json evidenceScope must be evidence_namespace_only")
+    if live_resource_authority_example["supportMatrixId"] != "hyperdensity_release_support_matrix_v1":
+        fail("live-resource-authority-reference.json supportMatrixId must be hyperdensity_release_support_matrix_v1")
+    if live_resource_authority_example["evidenceBundleId"] != "hyperdensity_evidence_bundle_demo_scenario_pack_v1":
+        fail("live-resource-authority-reference.json evidenceBundleId must be hyperdensity_evidence_bundle_demo_scenario_pack_v1")
+    if live_resource_authority_example["policyPackId"] != "hyperdensity_policy_pack_v1":
+        fail("live-resource-authority-reference.json policyPackId must be hyperdensity_policy_pack_v1")
+    if live_resource_authority_example["profilePackId"] != "hyperdensity_shell_claim_templates_profile_pack_v1":
+        fail("live-resource-authority-reference.json profilePackId must be hyperdensity_shell_claim_templates_profile_pack_v1")
+    if not isinstance(live_resource_authority_example["runtimeDrivers"], list) or len(live_resource_authority_example["runtimeDrivers"]) < 3:
+        fail("live-resource-authority-reference.json runtimeDrivers must include at least 3 entries")
+    driver_ids = {entry.get("driverId") for entry in live_resource_authority_example["runtimeDrivers"] if isinstance(entry, dict)}
+    for driver_id in ("container_linux_pod_resize_driver", "vm_linux_cpu_libvirt_qga_driver", "vm_linux_memory_virtiomem_qmp_driver"):
+        if driver_id not in driver_ids:
+            fail(f"live-resource-authority-reference.json runtimeDrivers must include {driver_id}")
+    for driver in live_resource_authority_example["runtimeDrivers"]:
+        if isinstance(driver, dict) and driver.get("exposedAsRawControl") is True:
+            fail("live-resource-authority-reference.json runtimeDrivers must not expose raw controls")
+    if not isinstance(live_resource_authority_example["uniformContract"], list) or len(live_resource_authority_example["uniformContract"]) < 10:
+        fail("live-resource-authority-reference.json uniformContract must contain all required phases")
+    phase_ids = {entry.get("phaseId") for entry in live_resource_authority_example["uniformContract"] if isinstance(entry, dict)}
+    for phase_id in (
+        "live_resource_intent",
+        "capability_check",
+        "preflight",
+        "dry_run_or_dry_run_like_validation",
+        "runtime_lease_or_overlay",
+        "apply",
+        "verify",
+        "audit",
+        "rollback",
+        "reconcile_or_expire",
+    ):
+        if phase_id not in phase_ids:
+            fail(f"live-resource-authority-reference.json uniformContract missing phase {phase_id}")
+    if not isinstance(live_resource_authority_example["liveResourceIntents"], list) or not live_resource_authority_example["liveResourceIntents"]:
+        fail("live-resource-authority-reference.json liveResourceIntents must be non-empty")
+    intent = live_resource_authority_example["liveResourceIntents"][0]
+    if not isinstance(intent, dict) or intent.get("rollbackRequired") is not True or intent.get("verificationRequired") is not True:
+        fail("live-resource-authority-reference.json liveResourceIntents must require rollback and verification")
+    out_of_scope_ids = {entry.get("itemId") for entry in live_resource_authority_example["outOfScope"] if isinstance(entry, dict)}
+    if "windows_lane" not in out_of_scope_ids:
+        fail("live-resource-authority-reference.json outOfScope must include windows_lane")
+    support_boundaries = live_resource_authority_example["supportBoundaries"]
+    if not isinstance(support_boundaries, list) or not support_boundaries:
+        fail("live-resource-authority-reference.json supportBoundaries must be non-empty")
+    rejected_phrases = set()
+    for boundary in support_boundaries:
+        if isinstance(boundary, dict):
+            for phrase in boundary.get("rejectedWording", []):
+                if isinstance(phrase, str):
+                    rejected_phrases.add(phrase)
+    if "VM RAM live resize is generic KubeVirt template mutation." not in rejected_phrases:
+        fail("live-resource-authority-reference.json supportBoundaries must reject generic KubeVirt memory template mutation wording")
+    if "Windows is supported." not in rejected_phrases:
+        fail("live-resource-authority-reference.json supportBoundaries must reject Windows support wording")
+
     print(
         f"[validate_json] OK: parsed {schema_count} schema files and {example_count} example files"
     )
