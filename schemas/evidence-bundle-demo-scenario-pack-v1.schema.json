@@ -1,0 +1,146 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/evidence-bundle-demo-scenario-pack-v1.schema.json",
+  "title": "Hyperdensity Evidence Bundle Demo Scenario Pack v1",
+  "type": "object",
+  "required": [
+    "evidenceBundleId",
+    "evidenceBundleVersion",
+    "releaseTrack",
+    "bundleMode",
+    "demoMode",
+    "supportMatrixId",
+    "policyPackId",
+    "profilePackId",
+    "enforcementMode",
+    "autonomousApplyAllowed",
+    "productionMutationAllowed",
+    "evidenceScope",
+    "supportedClaims",
+    "demoScenarios",
+    "evidenceCatalog",
+    "artifactIndex",
+    "proofChecks",
+    "safetyGates",
+    "demoRunbook",
+    "knownLimitations",
+    "outOfScope",
+    "nextReleaseActions",
+    "summary"
+  ],
+  "properties": {
+    "evidenceBundleId": {
+      "const": "hyperdensity_evidence_bundle_demo_scenario_pack_v1"
+    },
+    "evidenceBundleVersion": {
+      "const": "v1"
+    },
+    "releaseTrack": {
+      "const": "technical_preview"
+    },
+    "bundleMode": {
+      "const": "evidence_bundle_only"
+    },
+    "demoMode": {
+      "const": "guided_operator_demo"
+    },
+    "supportMatrixId": {
+      "const": "hyperdensity_release_support_matrix_v1"
+    },
+    "policyPackId": {
+      "const": "hyperdensity_policy_pack_v1"
+    },
+    "profilePackId": {
+      "const": "hyperdensity_shell_claim_templates_profile_pack_v1"
+    },
+    "enforcementMode": {
+      "const": "disabled"
+    },
+    "autonomousApplyAllowed": {
+      "const": false
+    },
+    "productionMutationAllowed": {
+      "const": false
+    },
+    "evidenceScope": {
+      "const": "evidence_namespace_only"
+    },
+    "supportedClaims": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "demoScenarios": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "evidenceCatalog": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "artifactIndex": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "proofChecks": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "safetyGates": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "demoRunbook": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "knownLimitations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "outOfScope": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "nextReleaseActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "summary": {
+      "type": "string"
+    },
+    "evidenceBundleBlocker": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}

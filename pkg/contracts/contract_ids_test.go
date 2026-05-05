@@ -11,6 +11,7 @@ func TestContractIDsAreNotEmpty(t *testing.T) {
 		ShellClaimV1ID,
 		ShellClaimTemplateProfilePackV1ID,
 		ReleaseSupportMatrixV1ID,
+		EvidenceBundleDemoScenarioPackV1ID,
 	}
 	for _, id := range ids {
 		if id == "" {

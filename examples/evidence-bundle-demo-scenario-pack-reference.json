@@ -1,0 +1,152 @@
+{
+  "evidenceBundleId": "hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+  "evidenceBundleVersion": "v1",
+  "releaseTrack": "technical_preview",
+  "bundleMode": "evidence_bundle_only",
+  "demoMode": "guided_operator_demo",
+  "supportMatrixId": "hyperdensity_release_support_matrix_v1",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "profilePackId": "hyperdensity_shell_claim_templates_profile_pack_v1",
+  "enforcementMode": "disabled",
+  "autonomousApplyAllowed": false,
+  "productionMutationAllowed": false,
+  "evidenceScope": "evidence_namespace_only",
+  "supportedClaims": [
+    {
+      "claimId": "linux_container_live_cpu_ram",
+      "title": "Linux container live CPU/RAM",
+      "supportLevel": "supported_for_technical_preview",
+      "proofStatus": "live_proven_within_bounds",
+      "wordingApproved": "In Technical Preview, Hyperdensity supports live CPU/RAM up/down for Linux containers within supported Hyperdensity-ready shell profiles and safety gates, with no rollout/restart/recreate observed in proof paths.",
+      "wordingRejected": [
+        "Hyperdensity supports all Kubernetes workloads.",
+        "Hyperdensity supports production autonomous resource movement."
+      ]
+    },
+    {
+      "claimId": "linux_vm_live_cpu_ram_evidence_backed",
+      "title": "Linux VM live CPU/RAM evidence-backed",
+      "supportLevel": "evidence_only",
+      "proofStatus": "object_specific_evidence_bounded",
+      "wordingApproved": "In Technical Preview, Hyperdensity supports evidence-backed Linux VM CPU/RAM live adjustment within proven object-specific paths. VM RAM uses Hyperdensity runtime overlay through virtio-mem/QMP/QOM requested-size where proven, not generic KubeVirt memory template mutation.",
+      "wordingRejected": [
+        "Hyperdensity supports VM RAM live resize through generic KubeVirt template mutation."
+      ]
+    }
+  ],
+  "demoScenarios": [
+    {
+      "scenarioId": "creation_path_demo",
+      "title": "Official creation path",
+      "objective": "Show Shell Claim Template/Profile Pack to claim generation flow.",
+      "scenarioMode": "guided_operator_demo",
+      "estimatedDurationMinutes": 2
+    },
+    {
+      "scenarioId": "admission_guard_remediation_demo",
+      "title": "Admission guard remediation chain",
+      "objective": "Show classify -> preview -> simulation -> apply dry-run no-mutation path.",
+      "scenarioMode": "guided_operator_demo",
+      "estimatedDurationMinutes": 3
+    },
+    {
+      "scenarioId": "resource_exchange_demo",
+      "title": "Resource exchange market flow",
+      "objective": "Show recommendation, dry-run, staged/chained apply, rollback, and history.",
+      "scenarioMode": "guided_operator_demo",
+      "estimatedDurationMinutes": 3
+    },
+    {
+      "scenarioId": "linux_live_resize_claim_demo",
+      "title": "Linux live resize claim boundary",
+      "objective": "Show bounded container/VM CPU-RAM support claims.",
+      "scenarioMode": "guided_operator_demo",
+      "estimatedDurationMinutes": 3
+    },
+    {
+      "scenarioId": "governance_release_boundary_demo",
+      "title": "Governance and release boundary",
+      "objective": "Show policy and support boundary controls.",
+      "scenarioMode": "guided_operator_demo",
+      "estimatedDurationMinutes": 2
+    }
+  ],
+  "evidenceCatalog": [
+    {
+      "evidenceId": "release_support_matrix_v1",
+      "milestoneId": "hyperdensity_release_support_matrix_v1_operational",
+      "evidenceType": "live_artifact_reference",
+      "artifactPath": "artifacts/the-father-release-support-matrix-v1",
+      "commitRef": "3b62a819",
+      "liveValidated": true
+    }
+  ],
+  "artifactIndex": [
+    {
+      "artifactId": "release_support_matrix_v1_artifacts",
+      "artifactPath": "artifacts/the-father-release-support-matrix-v1",
+      "artifactType": "milestone_artifact_bundle",
+      "sourceMilestone": "hyperdensity_release_support_matrix_v1_operational",
+      "sourceRepo": "Karl-Dashboard",
+      "requiredForDemo": true,
+      "freshness": "live_refreshed",
+      "validationState": "validated"
+    }
+  ],
+  "proofChecks": [
+    {
+      "checkId": "support_matrix_present",
+      "category": "surface",
+      "required": true,
+      "state": "passed"
+    },
+    {
+      "checkId": "unsafe_wording_not_approved",
+      "category": "claim",
+      "required": true,
+      "state": "passed"
+    }
+  ],
+  "safetyGates": [
+    {
+      "gateId": "safety_modes_disabled",
+      "state": "ready"
+    },
+    {
+      "gateId": "technical_preview_wording_boundary",
+      "state": "ready"
+    }
+  ],
+  "demoRunbook": [
+    "creation_path_demo",
+    "admission_guard_remediation_demo",
+    "resource_exchange_demo",
+    "linux_live_resize_claim_demo",
+    "governance_release_boundary_demo"
+  ],
+  "knownLimitations": [
+    {
+      "limitationId": "technical_preview_only",
+      "description": "Technical Preview only; not GA."
+    },
+    {
+      "limitationId": "warming_partial_blocked_not_ready",
+      "description": "warming_up, partial, blocked are not ready."
+    }
+  ],
+  "outOfScope": [
+    {
+      "itemId": "windows_lane",
+      "supportState": "frozen"
+    },
+    {
+      "itemId": "production_workload_mutation",
+      "supportState": "out_of_scope"
+    }
+  ],
+  "nextReleaseActions": [
+    "refresh_historical_proof_refs_before_beta",
+    "expand_vm_object_specific_live_proof"
+  ],
+  "summary": "Technical Preview evidence/demo packaging surface with bounded approved claims and scenario runbook."
+}

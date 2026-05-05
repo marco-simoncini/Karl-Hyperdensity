@@ -296,6 +296,72 @@ def main() -> int:
     if "windows_container" in release_support_matrix_example["supportedShellKinds"] or "windows_vm" in release_support_matrix_example["supportedShellKinds"]:
         fail("release-support-matrix-reference.json supportedShellKinds must not include Windows lanes")
 
+    evidence_bundle_example = example_by_name.get("evidence-bundle-demo-scenario-pack-reference.json")
+    if evidence_bundle_example is None:
+        fail("examples/evidence-bundle-demo-scenario-pack-reference.json is missing")
+    required_evidence_bundle_fields = [
+        "evidenceBundleId",
+        "evidenceBundleVersion",
+        "releaseTrack",
+        "bundleMode",
+        "demoMode",
+        "supportMatrixId",
+        "policyPackId",
+        "profilePackId",
+        "enforcementMode",
+        "autonomousApplyAllowed",
+        "productionMutationAllowed",
+        "evidenceScope",
+        "supportedClaims",
+        "demoScenarios",
+        "evidenceCatalog",
+        "artifactIndex",
+        "proofChecks",
+        "safetyGates",
+        "demoRunbook",
+        "knownLimitations",
+        "outOfScope",
+        "nextReleaseActions",
+        "summary",
+    ]
+    for field in required_evidence_bundle_fields:
+        if field not in evidence_bundle_example:
+            fail(f"evidence-bundle-demo-scenario-pack-reference.json missing required field '{field}'")
+    if evidence_bundle_example["evidenceBundleId"] != "hyperdensity_evidence_bundle_demo_scenario_pack_v1":
+        fail("evidence-bundle-demo-scenario-pack-reference.json evidenceBundleId must be hyperdensity_evidence_bundle_demo_scenario_pack_v1")
+    if evidence_bundle_example["evidenceBundleVersion"] != "v1":
+        fail("evidence-bundle-demo-scenario-pack-reference.json evidenceBundleVersion must be v1")
+    if evidence_bundle_example["releaseTrack"] != "technical_preview":
+        fail("evidence-bundle-demo-scenario-pack-reference.json releaseTrack must be technical_preview")
+    if evidence_bundle_example["bundleMode"] != "evidence_bundle_only":
+        fail("evidence-bundle-demo-scenario-pack-reference.json bundleMode must be evidence_bundle_only")
+    if evidence_bundle_example["demoMode"] != "guided_operator_demo":
+        fail("evidence-bundle-demo-scenario-pack-reference.json demoMode must be guided_operator_demo")
+    if evidence_bundle_example["supportMatrixId"] != "hyperdensity_release_support_matrix_v1":
+        fail("evidence-bundle-demo-scenario-pack-reference.json supportMatrixId must be hyperdensity_release_support_matrix_v1")
+    if evidence_bundle_example["policyPackId"] != "hyperdensity_policy_pack_v1":
+        fail("evidence-bundle-demo-scenario-pack-reference.json policyPackId must be hyperdensity_policy_pack_v1")
+    if evidence_bundle_example["profilePackId"] != "hyperdensity_shell_claim_templates_profile_pack_v1":
+        fail("evidence-bundle-demo-scenario-pack-reference.json profilePackId must be hyperdensity_shell_claim_templates_profile_pack_v1")
+    if evidence_bundle_example["enforcementMode"] != "disabled":
+        fail("evidence-bundle-demo-scenario-pack-reference.json enforcementMode must be disabled")
+    if evidence_bundle_example["autonomousApplyAllowed"] is not False:
+        fail("evidence-bundle-demo-scenario-pack-reference.json autonomousApplyAllowed must be false")
+    if evidence_bundle_example["productionMutationAllowed"] is not False:
+        fail("evidence-bundle-demo-scenario-pack-reference.json productionMutationAllowed must be false")
+    if evidence_bundle_example["evidenceScope"] != "evidence_namespace_only":
+        fail("evidence-bundle-demo-scenario-pack-reference.json evidenceScope must be evidence_namespace_only")
+    if not isinstance(evidence_bundle_example["supportedClaims"], list) or not evidence_bundle_example["supportedClaims"]:
+        fail("evidence-bundle-demo-scenario-pack-reference.json supportedClaims must be non-empty array")
+    if not isinstance(evidence_bundle_example["demoScenarios"], list) or len(evidence_bundle_example["demoScenarios"]) < 5:
+        fail("evidence-bundle-demo-scenario-pack-reference.json demoScenarios must contain at least 5 entries")
+    if not isinstance(evidence_bundle_example["evidenceCatalog"], list) or not evidence_bundle_example["evidenceCatalog"]:
+        fail("evidence-bundle-demo-scenario-pack-reference.json evidenceCatalog must be non-empty array")
+    if not isinstance(evidence_bundle_example["proofChecks"], list) or not evidence_bundle_example["proofChecks"]:
+        fail("evidence-bundle-demo-scenario-pack-reference.json proofChecks must be non-empty array")
+    if not isinstance(evidence_bundle_example["safetyGates"], list) or not evidence_bundle_example["safetyGates"]:
+        fail("evidence-bundle-demo-scenario-pack-reference.json safetyGates must be non-empty array")
+
     print(
         f"[validate_json] OK: parsed {schema_count} schema files and {example_count} example files"
     )
