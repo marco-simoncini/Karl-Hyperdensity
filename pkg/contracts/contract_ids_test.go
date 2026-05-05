@@ -10,6 +10,7 @@ func TestContractIDsAreNotEmpty(t *testing.T) {
 		ShellFactoryV1ID,
 		ShellClaimV1ID,
 		ShellClaimTemplateProfilePackV1ID,
+		ReleaseSupportMatrixV1ID,
 	}
 	for _, id := range ids {
 		if id == "" {

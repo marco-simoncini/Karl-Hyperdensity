@@ -230,6 +230,72 @@ def main() -> int:
     if not isinstance(mutate_preview_apply_dry_run_example["safetyGates"], list) or not mutate_preview_apply_dry_run_example["safetyGates"]:
         fail("mutate-preview-apply-dry-run-reference.json safetyGates must be a non-empty array")
 
+    release_support_matrix_example = example_by_name.get("release-support-matrix-reference.json")
+    if release_support_matrix_example is None:
+        fail("examples/release-support-matrix-reference.json is missing")
+    required_release_matrix_fields = [
+        "supportMatrixId",
+        "supportMatrixVersion",
+        "releaseTrack",
+        "matrixMode",
+        "supportClaimMode",
+        "supportMatrixState",
+        "enforcementMode",
+        "autonomousApplyAllowed",
+        "productionMutationAllowed",
+        "evidenceScope",
+        "policyPackId",
+        "policyConsistencyRequired",
+        "profilePackId",
+        "supportedShellKinds",
+        "supportedProfiles",
+        "capabilityMatrix",
+        "operationMatrix",
+        "surfaceMatrix",
+        "supportLevels",
+        "safetyGates",
+        "proofCatalog",
+        "limitations",
+        "outOfScope",
+        "nextReleaseActions",
+        "summary",
+    ]
+    for field in required_release_matrix_fields:
+        if field not in release_support_matrix_example:
+            fail(f"release-support-matrix-reference.json missing required field '{field}'")
+    if release_support_matrix_example["supportMatrixId"] != "hyperdensity_release_support_matrix_v1":
+        fail("release-support-matrix-reference.json supportMatrixId must be hyperdensity_release_support_matrix_v1")
+    if release_support_matrix_example["supportMatrixVersion"] != "v1":
+        fail("release-support-matrix-reference.json supportMatrixVersion must be v1")
+    if release_support_matrix_example["releaseTrack"] != "technical_preview":
+        fail("release-support-matrix-reference.json releaseTrack must be technical_preview")
+    if release_support_matrix_example["matrixMode"] != "release_boundary_visibility_only":
+        fail("release-support-matrix-reference.json matrixMode must be release_boundary_visibility_only")
+    if release_support_matrix_example["supportClaimMode"] != "evidence_backed_only":
+        fail("release-support-matrix-reference.json supportClaimMode must be evidence_backed_only")
+    if release_support_matrix_example["enforcementMode"] != "disabled":
+        fail("release-support-matrix-reference.json enforcementMode must be disabled")
+    if release_support_matrix_example["autonomousApplyAllowed"] is not False:
+        fail("release-support-matrix-reference.json autonomousApplyAllowed must be false")
+    if release_support_matrix_example["productionMutationAllowed"] is not False:
+        fail("release-support-matrix-reference.json productionMutationAllowed must be false")
+    if release_support_matrix_example["evidenceScope"] != "evidence_namespace_only":
+        fail("release-support-matrix-reference.json evidenceScope must be evidence_namespace_only")
+    if release_support_matrix_example["policyPackId"] != "hyperdensity_policy_pack_v1":
+        fail("release-support-matrix-reference.json policyPackId must be hyperdensity_policy_pack_v1")
+    if release_support_matrix_example["policyConsistencyRequired"] is not True:
+        fail("release-support-matrix-reference.json policyConsistencyRequired must be true")
+    if release_support_matrix_example["profilePackId"] != "hyperdensity_shell_claim_templates_profile_pack_v1":
+        fail("release-support-matrix-reference.json profilePackId must be hyperdensity_shell_claim_templates_profile_pack_v1")
+    if not isinstance(release_support_matrix_example["supportedShellKinds"], list) or not release_support_matrix_example["supportedShellKinds"]:
+        fail("release-support-matrix-reference.json supportedShellKinds must be a non-empty array")
+    if not isinstance(release_support_matrix_example["supportedProfiles"], list) or len(release_support_matrix_example["supportedProfiles"]) < 7:
+        fail("release-support-matrix-reference.json supportedProfiles must contain at least 7 entries")
+    if not isinstance(release_support_matrix_example["supportLevels"], list) or len(release_support_matrix_example["supportLevels"]) < 10:
+        fail("release-support-matrix-reference.json supportLevels must contain all required support levels")
+    if "windows_container" in release_support_matrix_example["supportedShellKinds"] or "windows_vm" in release_support_matrix_example["supportedShellKinds"]:
+        fail("release-support-matrix-reference.json supportedShellKinds must not include Windows lanes")
+
     print(
         f"[validate_json] OK: parsed {schema_count} schema files and {example_count} example files"
     )

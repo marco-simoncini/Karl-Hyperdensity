@@ -1,0 +1,171 @@
+{
+  "supportMatrixId": "hyperdensity_release_support_matrix_v1",
+  "supportMatrixVersion": "v1",
+  "releaseTrack": "technical_preview",
+  "matrixMode": "release_boundary_visibility_only",
+  "supportClaimMode": "evidence_backed_only",
+  "supportMatrixState": "release_support_matrix_operational",
+  "enforcementMode": "disabled",
+  "autonomousApplyAllowed": false,
+  "productionMutationAllowed": false,
+  "evidenceScope": "evidence_namespace_only",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "policyConsistencyRequired": true,
+  "profilePackId": "hyperdensity_shell_claim_templates_profile_pack_v1",
+  "supportedShellKinds": [
+    "linux_container",
+    "linux_vm"
+  ],
+  "supportedProfiles": [
+    "linux_container_donor",
+    "linux_container_receiver",
+    "linux_container_service",
+    "linux_container_batch",
+    "linux_vm_desktop",
+    "linux_vm_service",
+    "linux_vm_batch"
+  ],
+  "capabilityMatrix": [
+    {
+      "capabilityId": "resource_exchange_recommendation",
+      "supportLevel": "supported_for_technical_preview",
+      "evidenceStatus": "live_proof_available",
+      "proofRefs": [
+        "resource_exchange_v1"
+      ]
+    },
+    {
+      "capabilityId": "mutate_preview_apply_dry_run",
+      "supportLevel": "dry_run_only",
+      "evidenceStatus": "live_proof_available",
+      "proofRefs": [
+        "mutate_preview_apply_dry_run_v1"
+      ]
+    },
+    {
+      "capabilityId": "admission_guard_enforce_simulation",
+      "supportLevel": "simulation_only",
+      "evidenceStatus": "live_proof_available",
+      "proofRefs": [
+        "admission_guard_enforce_simulation_v1"
+      ]
+    }
+  ],
+  "operationMatrix": [
+    {
+      "operationId": "shell_claim_generate",
+      "supportLevel": "supported_for_technical_preview",
+      "applyMode": "generate_only",
+      "mutationScope": "none",
+      "proofRefs": [
+        "shell_claim_v1"
+      ]
+    },
+    {
+      "operationId": "resource_exchange_stage_apply",
+      "supportLevel": "operator_controlled_only",
+      "applyMode": "apply",
+      "mutationScope": "evidence_namespace_only",
+      "proofRefs": [
+        "staged_transfer_apply_api_v1"
+      ]
+    }
+  ],
+  "surfaceMatrix": [
+    {
+      "surfaceId": "policy_pack",
+      "mode": "visibility_only",
+      "supportLevel": "supported_for_technical_preview"
+    },
+    {
+      "surfaceId": "admission_guard_audit",
+      "mode": "audit_only",
+      "supportLevel": "preview_only"
+    },
+    {
+      "surfaceId": "mutate_preview_apply_dry_run",
+      "mode": "server_side_apply_dry_run_only",
+      "supportLevel": "dry_run_only"
+    }
+  ],
+  "supportLevels": [
+    "supported_for_technical_preview",
+    "evidence_only",
+    "preview_only",
+    "simulation_only",
+    "dry_run_only",
+    "recommendation_only",
+    "operator_controlled_only",
+    "blocked",
+    "out_of_scope",
+    "future"
+  ],
+  "safetyGates": [
+    {
+      "gateId": "policy_pack_consistency_required",
+      "state": "ready"
+    },
+    {
+      "gateId": "windows_lane_out_of_scope",
+      "state": "ready"
+    }
+  ],
+  "proofCatalog": [
+    {
+      "proofId": "policy_pack_v1",
+      "commitRef": "8060e4df",
+      "liveValidated": true
+    },
+    {
+      "proofId": "mutate_preview_apply_dry_run_v1",
+      "commitRef": "77aa3be0",
+      "liveValidated": true
+    },
+    {
+      "proofId": "shell_claim_templates_profile_pack_v1",
+      "commitRef": "4b08056e",
+      "liveValidated": true
+    }
+  ],
+  "limitations": [
+    {
+      "limitationId": "no_production_mutation",
+      "description": "Production mutation is not supported."
+    },
+    {
+      "limitationId": "no_autonomous_apply",
+      "description": "Autonomous apply is disabled."
+    },
+    {
+      "limitationId": "no_raw_resource_creation_path",
+      "description": "Raw resource creation is out of product path."
+    },
+    {
+      "limitationId": "warming_partial_blocked_not_ready",
+      "description": "warming_up, partial, blocked are not ready."
+    }
+  ],
+  "outOfScope": [
+    {
+      "itemId": "windows_lane",
+      "supportState": "frozen"
+    },
+    {
+      "itemId": "autonomous_apply",
+      "supportState": "out_of_scope"
+    },
+    {
+      "itemId": "production_workload_mutation",
+      "supportState": "out_of_scope"
+    },
+    {
+      "itemId": "real_admission_enforcement",
+      "supportState": "out_of_scope"
+    }
+  ],
+  "nextReleaseActions": [
+    "expand_object_specific_vm_evidence",
+    "prepare_beta_scope_and_exit_criteria"
+  ],
+  "summary": "Release boundary matrix for technical preview with evidence-backed support claims and explicit out-of-scope constraints."
+}

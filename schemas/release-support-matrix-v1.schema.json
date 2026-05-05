@@ -1,0 +1,171 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/release-support-matrix-v1.schema.json",
+  "title": "Hyperdensity Release Support Matrix v1",
+  "type": "object",
+  "required": [
+    "supportMatrixId",
+    "supportMatrixVersion",
+    "releaseTrack",
+    "matrixMode",
+    "supportClaimMode",
+    "supportMatrixState",
+    "enforcementMode",
+    "autonomousApplyAllowed",
+    "productionMutationAllowed",
+    "evidenceScope",
+    "policyPackId",
+    "policyConsistencyRequired",
+    "profilePackId",
+    "supportedShellKinds",
+    "supportedProfiles",
+    "capabilityMatrix",
+    "operationMatrix",
+    "surfaceMatrix",
+    "supportLevels",
+    "safetyGates",
+    "proofCatalog",
+    "limitations",
+    "outOfScope",
+    "nextReleaseActions",
+    "summary"
+  ],
+  "properties": {
+    "supportMatrixId": {
+      "const": "hyperdensity_release_support_matrix_v1"
+    },
+    "supportMatrixVersion": {
+      "const": "v1"
+    },
+    "releaseTrack": {
+      "const": "technical_preview"
+    },
+    "matrixMode": {
+      "const": "release_boundary_visibility_only"
+    },
+    "supportClaimMode": {
+      "const": "evidence_backed_only"
+    },
+    "enforcementMode": {
+      "const": "disabled"
+    },
+    "autonomousApplyAllowed": {
+      "const": false
+    },
+    "productionMutationAllowed": {
+      "const": false
+    },
+    "evidenceScope": {
+      "const": "evidence_namespace_only"
+    },
+    "policyPackId": {
+      "const": "hyperdensity_policy_pack_v1"
+    },
+    "policyConsistencyRequired": {
+      "const": true
+    },
+    "profilePackId": {
+      "const": "hyperdensity_shell_claim_templates_profile_pack_v1"
+    },
+    "supportedShellKinds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "linux_container",
+          "linux_vm"
+        ]
+      },
+      "minItems": 1
+    },
+    "supportedProfiles": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 7
+    },
+    "capabilityMatrix": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "operationMatrix": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "surfaceMatrix": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "supportLevels": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "supported_for_technical_preview",
+          "evidence_only",
+          "preview_only",
+          "simulation_only",
+          "dry_run_only",
+          "recommendation_only",
+          "operator_controlled_only",
+          "blocked",
+          "out_of_scope",
+          "future"
+        ]
+      },
+      "minItems": 10
+    },
+    "safetyGates": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "proofCatalog": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "limitations": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "outOfScope": {
+      "type": "array",
+      "items": {
+        "type": "object"
+      },
+      "minItems": 1
+    },
+    "nextReleaseActions": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "minItems": 1
+    },
+    "summary": {
+      "type": "string"
+    },
+    "supportMatrixBlocker": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
