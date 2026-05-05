@@ -171,6 +171,65 @@ def main() -> int:
     if enforce_simulation_example["productionMutationAllowed"] is not False:
         fail("admission-guard-enforce-simulation-reference.json productionMutationAllowed must be false")
 
+    mutate_preview_apply_dry_run_example = example_by_name.get("mutate-preview-apply-dry-run-reference.json")
+    if mutate_preview_apply_dry_run_example is None:
+        fail("examples/mutate-preview-apply-dry-run-reference.json is missing")
+    required_mutate_preview_apply_dry_run_fields = [
+        "dryRunId",
+        "dryRunVersion",
+        "dryRunMode",
+        "mutationAllowed",
+        "productionMutationAllowed",
+        "enforcementMode",
+        "admissionGuardMode",
+        "mutatePreviewMode",
+        "autonomousApplyAllowed",
+        "evidenceScope",
+        "policyPackId",
+        "policyConsistencyRequired",
+        "sourceSurface",
+        "dryRunTargets",
+        "dryRunResults",
+        "safetyGates",
+        "summary",
+        "nextDryRunAction",
+    ]
+    for field in required_mutate_preview_apply_dry_run_fields:
+        if field not in mutate_preview_apply_dry_run_example:
+            fail(f"mutate-preview-apply-dry-run-reference.json missing required field '{field}'")
+    if mutate_preview_apply_dry_run_example["dryRunId"] != "hyperdensity_mutate_preview_apply_dry_run_v1":
+        fail("mutate-preview-apply-dry-run-reference.json dryRunId must be hyperdensity_mutate_preview_apply_dry_run_v1")
+    if mutate_preview_apply_dry_run_example["dryRunVersion"] != "v1":
+        fail("mutate-preview-apply-dry-run-reference.json dryRunVersion must be v1")
+    if mutate_preview_apply_dry_run_example["dryRunMode"] != "server_side_apply_dry_run_only":
+        fail("mutate-preview-apply-dry-run-reference.json dryRunMode must be server_side_apply_dry_run_only")
+    if mutate_preview_apply_dry_run_example["mutationAllowed"] is not False:
+        fail("mutate-preview-apply-dry-run-reference.json mutationAllowed must be false")
+    if mutate_preview_apply_dry_run_example["productionMutationAllowed"] is not False:
+        fail("mutate-preview-apply-dry-run-reference.json productionMutationAllowed must be false")
+    if mutate_preview_apply_dry_run_example["enforcementMode"] != "disabled":
+        fail("mutate-preview-apply-dry-run-reference.json enforcementMode must be disabled")
+    if mutate_preview_apply_dry_run_example["admissionGuardMode"] != "audit_only":
+        fail("mutate-preview-apply-dry-run-reference.json admissionGuardMode must be audit_only")
+    if mutate_preview_apply_dry_run_example["mutatePreviewMode"] != "audit_preview_only":
+        fail("mutate-preview-apply-dry-run-reference.json mutatePreviewMode must be audit_preview_only")
+    if mutate_preview_apply_dry_run_example["autonomousApplyAllowed"] is not False:
+        fail("mutate-preview-apply-dry-run-reference.json autonomousApplyAllowed must be false")
+    if mutate_preview_apply_dry_run_example["evidenceScope"] != "evidence_namespace_only":
+        fail("mutate-preview-apply-dry-run-reference.json evidenceScope must be evidence_namespace_only")
+    if mutate_preview_apply_dry_run_example["policyPackId"] != "hyperdensity_policy_pack_v1":
+        fail("mutate-preview-apply-dry-run-reference.json policyPackId must be hyperdensity_policy_pack_v1")
+    if mutate_preview_apply_dry_run_example["policyConsistencyRequired"] is not True:
+        fail("mutate-preview-apply-dry-run-reference.json policyConsistencyRequired must be true")
+    if mutate_preview_apply_dry_run_example["sourceSurface"] != "admission_guard_mutate_preview":
+        fail("mutate-preview-apply-dry-run-reference.json sourceSurface must be admission_guard_mutate_preview")
+    if not isinstance(mutate_preview_apply_dry_run_example["dryRunTargets"], list) or not mutate_preview_apply_dry_run_example["dryRunTargets"]:
+        fail("mutate-preview-apply-dry-run-reference.json dryRunTargets must be a non-empty array")
+    if not isinstance(mutate_preview_apply_dry_run_example["dryRunResults"], list) or not mutate_preview_apply_dry_run_example["dryRunResults"]:
+        fail("mutate-preview-apply-dry-run-reference.json dryRunResults must be a non-empty array")
+    if not isinstance(mutate_preview_apply_dry_run_example["safetyGates"], list) or not mutate_preview_apply_dry_run_example["safetyGates"]:
+        fail("mutate-preview-apply-dry-run-reference.json safetyGates must be a non-empty array")
+
     print(
         f"[validate_json] OK: parsed {schema_count} schema files and {example_count} example files"
     )

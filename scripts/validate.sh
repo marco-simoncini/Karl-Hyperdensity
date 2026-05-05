@@ -17,6 +17,7 @@ required_files=(
   "docs/contracts/policy-pack-v1.md"
   "docs/contracts/policy-pack-consistency-checker-v1.md"
   "docs/contracts/admission-guard-enforce-simulation-v1.md"
+  "docs/contracts/mutate-preview-apply-dry-run-v1.md"
   "docs/overcommit/resource-equilibrium-and-safe-overcommit.md"
   "docs/migration/dashboard-to-hyperdensity-extraction-plan.md"
 )

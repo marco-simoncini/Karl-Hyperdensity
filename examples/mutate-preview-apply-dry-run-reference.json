@@ -1,0 +1,178 @@
+{
+  "dryRunId": "hyperdensity_mutate_preview_apply_dry_run_v1",
+  "dryRunVersion": "v1",
+  "dryRunMode": "server_side_apply_dry_run_only",
+  "mutationAllowed": false,
+  "productionMutationAllowed": false,
+  "enforcementMode": "disabled",
+  "admissionGuardMode": "audit_only",
+  "mutatePreviewMode": "audit_preview_only",
+  "autonomousApplyAllowed": false,
+  "evidenceScope": "evidence_namespace_only",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "policyConsistencyRequired": true,
+  "sourceSurface": "admission_guard_mutate_preview",
+  "dryRunTargets": [
+    {
+      "targetId": "dry-run-target-001",
+      "objectRef": "karl-hyperdensity-evidence/sample-raw",
+      "namespace": "karl-hyperdensity-evidence",
+      "kind": "Deployment",
+      "name": "sample-raw",
+      "sourcePreviewId": "hyperdensity_admission_guard_mutate_preview_v1:karl-hyperdensity-evidence/sample-raw",
+      "factoryManaged": false,
+      "shellKind": "container_linux",
+      "shellProfile": "linux_container_reference_v1",
+      "currentReadinessState": "factory_partial",
+      "previewPatchAvailable": true,
+      "patchType": "application/merge-patch+json",
+      "patchSummary": [
+        "set hyperdensity.karl.io/shell=true",
+        "set hyperdensity.karl.io/factory-managed=true"
+      ],
+      "serverSideDryRunAttempted": true,
+      "serverSideDryRunAccepted": true,
+      "serverSideDryRunRejected": false,
+      "rejectionReason": "",
+      "validationWarnings": [],
+      "remediationHints": [
+        "review_patch_and_continue_factory_remediation"
+      ],
+      "fieldManager": "hyperdensity-mutate-preview-dry-run-v1",
+      "dryRunRequestMode": "kubernetes_dry_run_all_merge_patch",
+      "mutationObserved": false,
+      "annotationsBeforeHash": "3dc8a22f30f5e4a1a8a6e3fe6d96d3f783de4fdb9cf03f3556d8a3295802c74d",
+      "annotationsAfterHash": "3dc8a22f30f5e4a1a8a6e3fe6d96d3f783de4fdb9cf03f3556d8a3295802c74d",
+      "objectBeforeHash": "6f6fa2508be4da32f68a739f339d3ce72a6d3b6e748a8dc2997f118ea11d1ca3",
+      "objectAfterHash": "6f6fa2508be4da32f68a739f339d3ce72a6d3b6e748a8dc2997f118ea11d1ca3",
+      "noMutationVerified": true,
+      "cleanupRequired": false,
+      "cleanupVerified": true,
+      "sourceRuleIds": [
+        "missing_shell_annotation",
+        "missing_factory_managed_flag"
+      ],
+      "safetyNotes": [
+        "dry_run_only_no_persistence",
+        "enforcement_disabled"
+      ]
+    },
+    {
+      "targetId": "dry-run-target-002",
+      "objectRef": "karl-hyperdensity-evidence/sample-factory",
+      "namespace": "karl-hyperdensity-evidence",
+      "kind": "Deployment",
+      "name": "sample-factory",
+      "sourcePreviewId": "hyperdensity_admission_guard_mutate_preview_v1:karl-hyperdensity-evidence/sample-factory",
+      "factoryManaged": true,
+      "shellKind": "container_linux",
+      "shellProfile": "liquidity_donor_v1",
+      "currentReadinessState": "factory_ready",
+      "previewPatchAvailable": false,
+      "patchType": "",
+      "patchSummary": [],
+      "serverSideDryRunAttempted": false,
+      "serverSideDryRunAccepted": false,
+      "serverSideDryRunRejected": false,
+      "rejectionReason": "",
+      "validationWarnings": [
+        "factory_managed_preservation_no_remediation_patch"
+      ],
+      "remediationHints": [
+        "preserve_factory_managed_shell_without_patch_apply"
+      ],
+      "fieldManager": "hyperdensity-mutate-preview-dry-run-v1",
+      "dryRunRequestMode": "kubernetes_dry_run_all_merge_patch",
+      "mutationObserved": false,
+      "annotationsBeforeHash": "",
+      "annotationsAfterHash": "",
+      "objectBeforeHash": "",
+      "objectAfterHash": "",
+      "noMutationVerified": false,
+      "cleanupRequired": false,
+      "cleanupVerified": true,
+      "sourceRuleIds": [],
+      "safetyNotes": [
+        "factory_managed_preservation_only"
+      ]
+    }
+  ],
+  "dryRunResults": [
+    {
+      "targetId": "dry-run-target-001",
+      "objectRef": "karl-hyperdensity-evidence/sample-raw",
+      "namespace": "karl-hyperdensity-evidence",
+      "kind": "Deployment",
+      "name": "sample-raw",
+      "sourcePreviewId": "hyperdensity_admission_guard_mutate_preview_v1:karl-hyperdensity-evidence/sample-raw",
+      "factoryManaged": false,
+      "shellKind": "container_linux",
+      "shellProfile": "linux_container_reference_v1",
+      "currentReadinessState": "factory_partial",
+      "previewPatchAvailable": true,
+      "patchType": "application/merge-patch+json",
+      "patchSummary": [
+        "set hyperdensity.karl.io/shell=true",
+        "set hyperdensity.karl.io/factory-managed=true"
+      ],
+      "serverSideDryRunAttempted": true,
+      "serverSideDryRunAccepted": true,
+      "serverSideDryRunRejected": false,
+      "rejectionReason": "",
+      "validationWarnings": [],
+      "remediationHints": [
+        "review_patch_and_continue_factory_remediation"
+      ],
+      "fieldManager": "hyperdensity-mutate-preview-dry-run-v1",
+      "dryRunRequestMode": "kubernetes_dry_run_all_merge_patch",
+      "mutationObserved": false,
+      "annotationsBeforeHash": "3dc8a22f30f5e4a1a8a6e3fe6d96d3f783de4fdb9cf03f3556d8a3295802c74d",
+      "annotationsAfterHash": "3dc8a22f30f5e4a1a8a6e3fe6d96d3f783de4fdb9cf03f3556d8a3295802c74d",
+      "objectBeforeHash": "6f6fa2508be4da32f68a739f339d3ce72a6d3b6e748a8dc2997f118ea11d1ca3",
+      "objectAfterHash": "6f6fa2508be4da32f68a739f339d3ce72a6d3b6e748a8dc2997f118ea11d1ca3",
+      "noMutationVerified": true,
+      "cleanupRequired": false,
+      "cleanupVerified": true,
+      "sourceRuleIds": [
+        "missing_shell_annotation",
+        "missing_factory_managed_flag"
+      ],
+      "safetyNotes": [
+        "dry_run_only_no_persistence",
+        "enforcement_disabled"
+      ]
+    }
+  ],
+  "safetyGates": [
+    {
+      "gateId": "dry_run_mode_server_side_apply_only",
+      "state": "passed",
+      "severity": "critical",
+      "description": "Mutate preview apply dry-run mode must remain server-side dry-run only.",
+      "expected": "server_side_apply_dry_run_only",
+      "actual": "server_side_apply_dry_run_only",
+      "blocker": true
+    },
+    {
+      "gateId": "policy_pack_consistency_required",
+      "state": "passed",
+      "severity": "critical",
+      "description": "Policy Pack consistency must be true.",
+      "expected": "true",
+      "actual": "true",
+      "blocker": true
+    },
+    {
+      "gateId": "mutation_observed_count_zero",
+      "state": "passed",
+      "severity": "critical",
+      "description": "No persistent mutation may be observed after dry-run.",
+      "expected": "0",
+      "actual": "0",
+      "blocker": true
+    }
+  ],
+  "summary": "mutate preview dry-run evidence captured with no persisted mutation",
+  "nextDryRunAction": "review_rejected_or_accepted_dry_run_evidence_without_apply",
+  "dryRunBlocker": ""
+}
