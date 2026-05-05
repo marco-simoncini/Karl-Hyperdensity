@@ -8,6 +8,7 @@ func TestContractIDsAreNotEmpty(t *testing.T) {
 		ResourceEquilibriumV1ID,
 		FleetEquilibriumOnboardingV1ID,
 		ShellFactoryV1ID,
+		ShellClaimV1ID,
 	}
 	for _, id := range ids {
 		if id == "" {

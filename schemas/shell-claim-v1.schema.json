@@ -1,0 +1,245 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/shell-claim-v1.schema.json",
+  "title": "Hyperdensity Shell Claim v1",
+  "type": "object",
+  "required": [
+    "contractId",
+    "claims",
+    "generatedManifests",
+    "validationResults"
+  ],
+  "properties": {
+    "contractId": {
+      "const": "hyperdensity_shell_claim_v1"
+    },
+    "claims": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/hyperdensityShellClaim"
+      }
+    },
+    "generatedManifests": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/hyperdensityGeneratedShellManifest"
+      }
+    },
+    "validationResults": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/shellClaimValidationResult"
+      }
+    }
+  },
+  "$defs": {
+    "shellKind": {
+      "type": "string",
+      "enum": [
+        "vm_linux",
+        "container_linux"
+      ]
+    },
+    "creationMode": {
+      "type": "string",
+      "enum": [
+        "generate_only",
+        "evidence_reference_only",
+        "enforce"
+      ]
+    },
+    "resourceEnvelope": {
+      "type": "object",
+      "required": [
+        "floor",
+        "baseline",
+        "burstStep",
+        "ceiling"
+      ],
+      "properties": {
+        "floor": {
+          "type": "string"
+        },
+        "baseline": {
+          "type": "string"
+        },
+        "burstStep": {
+          "type": "string"
+        },
+        "ceiling": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "shellEnvelope": {
+      "type": "object",
+      "required": [
+        "cpu",
+        "memory"
+      ],
+      "properties": {
+        "cpu": {
+          "$ref": "#/$defs/resourceEnvelope"
+        },
+        "memory": {
+          "$ref": "#/$defs/resourceEnvelope"
+        }
+      },
+      "additionalProperties": false
+    },
+    "resourceExchangePolicy": {
+      "type": "object",
+      "required": [
+        "allowDonation",
+        "allowReceive"
+      ],
+      "properties": {
+        "allowDonation": {
+          "type": "boolean"
+        },
+        "allowReceive": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hyperdensityShellClaim": {
+      "type": "object",
+      "required": [
+        "claimId",
+        "shellKind",
+        "profile",
+        "namespace",
+        "name",
+        "businessPriority",
+        "resourceExchange",
+        "envelope",
+        "telemetryEnabled",
+        "rollbackRequired",
+        "runtimeOverlayRequired",
+        "factoryManaged",
+        "creationMode"
+      ],
+      "properties": {
+        "claimId": {
+          "type": "string"
+        },
+        "shellKind": {
+          "$ref": "#/$defs/shellKind"
+        },
+        "profile": {
+          "type": "string"
+        },
+        "namespace": {
+          "type": "string"
+        },
+        "name": {
+          "type": "string"
+        },
+        "businessPriority": {
+          "type": "string"
+        },
+        "resourceExchange": {
+          "$ref": "#/$defs/resourceExchangePolicy"
+        },
+        "envelope": {
+          "$ref": "#/$defs/shellEnvelope"
+        },
+        "telemetryEnabled": {
+          "type": "boolean",
+          "const": true
+        },
+        "rollbackRequired": {
+          "type": "boolean",
+          "const": true
+        },
+        "runtimeOverlayRequired": {
+          "type": "boolean",
+          "const": true
+        },
+        "factoryManaged": {
+          "type": "boolean",
+          "const": true
+        },
+        "creationMode": {
+          "$ref": "#/$defs/creationMode"
+        }
+      },
+      "additionalProperties": false
+    },
+    "hyperdensityGeneratedShellManifest": {
+      "type": "object",
+      "required": [
+        "claimId",
+        "shellKind",
+        "profile",
+        "manifestKind",
+        "objectRef",
+        "manifestYaml"
+      ],
+      "properties": {
+        "claimId": {
+          "type": "string"
+        },
+        "shellKind": {
+          "$ref": "#/$defs/shellKind"
+        },
+        "profile": {
+          "type": "string"
+        },
+        "manifestKind": {
+          "type": "string"
+        },
+        "objectRef": {
+          "type": "string"
+        },
+        "manifestYaml": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    },
+    "shellClaimValidationResult": {
+      "type": "object",
+      "required": [
+        "claimId",
+        "validationState",
+        "validationScore",
+        "missingRequirements",
+        "remediationLane"
+      ],
+      "properties": {
+        "claimId": {
+          "type": "string"
+        },
+        "validationState": {
+          "type": "string",
+          "enum": [
+            "claim_valid",
+            "claim_blocked"
+          ]
+        },
+        "validationScore": {
+          "type": "integer",
+          "minimum": 0,
+          "maximum": 100
+        },
+        "blocker": {
+          "type": "string"
+        },
+        "missingRequirements": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "remediationLane": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

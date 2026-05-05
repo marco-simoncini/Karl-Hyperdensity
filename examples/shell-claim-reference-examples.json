@@ -1,0 +1,183 @@
+{
+  "contractId": "hyperdensity_shell_claim_v1",
+  "claims": [
+    {
+      "claimId": "claim-liquidity-donor-reference-01",
+      "shellKind": "container_linux",
+      "profile": "liquidity_donor_v1",
+      "namespace": "karl-hyperdensity-evidence",
+      "name": "linux-container-liquidity-donor-v1-reference-01",
+      "businessPriority": "bronze",
+      "resourceExchange": {
+        "allowDonation": true,
+        "allowReceive": false
+      },
+      "envelope": {
+        "cpu": {
+          "floor": "200m",
+          "baseline": "400m",
+          "burstStep": "100m",
+          "ceiling": "600m"
+        },
+        "memory": {
+          "floor": "512Mi",
+          "baseline": "1024Mi",
+          "burstStep": "128Mi",
+          "ceiling": "1536Mi"
+        }
+      },
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "factoryManaged": true,
+      "creationMode": "evidence_reference_only"
+    },
+    {
+      "claimId": "claim-liquidity-receiver-reference-01",
+      "shellKind": "container_linux",
+      "profile": "liquidity_receiver_v1",
+      "namespace": "karl-hyperdensity-evidence",
+      "name": "linux-container-liquidity-receiver-v1-reference-01",
+      "businessPriority": "standard",
+      "resourceExchange": {
+        "allowDonation": false,
+        "allowReceive": true
+      },
+      "envelope": {
+        "cpu": {
+          "floor": "200m",
+          "baseline": "300m",
+          "burstStep": "100m",
+          "ceiling": "500m"
+        },
+        "memory": {
+          "floor": "512Mi",
+          "baseline": "1024Mi",
+          "burstStep": "256Mi",
+          "ceiling": "2048Mi"
+        }
+      },
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "factoryManaged": true,
+      "creationMode": "evidence_reference_only"
+    },
+    {
+      "claimId": "claim-service-burstable-example-01",
+      "shellKind": "container_linux",
+      "profile": "service_burstable_v1",
+      "namespace": "karl-production",
+      "name": "service-burstable-example-01",
+      "businessPriority": "standard",
+      "resourceExchange": {
+        "allowDonation": true,
+        "allowReceive": true
+      },
+      "envelope": {
+        "cpu": {
+          "floor": "300m",
+          "baseline": "500m",
+          "burstStep": "100m",
+          "ceiling": "800m"
+        },
+        "memory": {
+          "floor": "768Mi",
+          "baseline": "1536Mi",
+          "burstStep": "256Mi",
+          "ceiling": "3072Mi"
+        }
+      },
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "factoryManaged": true,
+      "creationMode": "generate_only"
+    },
+    {
+      "claimId": "claim-linux-vm-reference-placeholder-01",
+      "shellKind": "vm_linux",
+      "profile": "linux_vm_reference_v1",
+      "namespace": "karl-hyperdensity-evidence",
+      "name": "linux-vm-reference-placeholder-01",
+      "businessPriority": "standard",
+      "resourceExchange": {
+        "allowDonation": false,
+        "allowReceive": false
+      },
+      "envelope": {
+        "cpu": {
+          "floor": "1000m",
+          "baseline": "2000m",
+          "burstStep": "500m",
+          "ceiling": "4000m"
+        },
+        "memory": {
+          "floor": "2Gi",
+          "baseline": "4Gi",
+          "burstStep": "1Gi",
+          "ceiling": "8Gi"
+        }
+      },
+      "telemetryEnabled": true,
+      "rollbackRequired": true,
+      "runtimeOverlayRequired": true,
+      "factoryManaged": true,
+      "creationMode": "generate_only"
+    }
+  ],
+  "generatedManifests": [
+    {
+      "claimId": "claim-liquidity-donor-reference-01",
+      "shellKind": "container_linux",
+      "profile": "liquidity_donor_v1",
+      "manifestKind": "Deployment",
+      "objectRef": "karl-hyperdensity-evidence/linux-container-liquidity-donor-v1-reference-01",
+      "manifestYaml": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: linux-container-liquidity-donor-v1-reference-01\n  namespace: karl-hyperdensity-evidence\n  annotations:\n    hyperdensity.karl.io/shell: \"true\"\n    hyperdensity.karl.io/shell-kind: \"container_linux\"\n    hyperdensity.karl.io/shell-profile: \"liquidity_donor_v1\""
+    },
+    {
+      "claimId": "claim-liquidity-receiver-reference-01",
+      "shellKind": "container_linux",
+      "profile": "liquidity_receiver_v1",
+      "manifestKind": "Deployment",
+      "objectRef": "karl-hyperdensity-evidence/linux-container-liquidity-receiver-v1-reference-01",
+      "manifestYaml": "apiVersion: apps/v1\nkind: Deployment\nmetadata:\n  name: linux-container-liquidity-receiver-v1-reference-01\n  namespace: karl-hyperdensity-evidence\n  annotations:\n    hyperdensity.karl.io/shell: \"true\"\n    hyperdensity.karl.io/shell-kind: \"container_linux\"\n    hyperdensity.karl.io/shell-profile: \"liquidity_receiver_v1\""
+    }
+  ],
+  "validationResults": [
+    {
+      "claimId": "claim-liquidity-donor-reference-01",
+      "validationState": "claim_valid",
+      "validationScore": 100,
+      "missingRequirements": [],
+      "remediationLane": "hold_claim_configuration"
+    },
+    {
+      "claimId": "claim-liquidity-receiver-reference-01",
+      "validationState": "claim_valid",
+      "validationScore": 100,
+      "missingRequirements": [],
+      "remediationLane": "hold_claim_configuration"
+    },
+    {
+      "claimId": "claim-service-burstable-example-01",
+      "validationState": "claim_blocked",
+      "validationScore": 90,
+      "blocker": "evidence_namespace_required",
+      "missingRequirements": [
+        "evidence_namespace_required"
+      ],
+      "remediationLane": "set_evidence_namespace"
+    },
+    {
+      "claimId": "claim-linux-vm-reference-placeholder-01",
+      "validationState": "claim_blocked",
+      "validationScore": 90,
+      "blocker": "vm_shell_manifest_generation_placeholder",
+      "missingRequirements": [
+        "vm_shell_manifest_generation_placeholder"
+      ],
+      "remediationLane": "use_vm_reference_placeholder_until_vm_generator_available"
+    }
+  ]
+}
