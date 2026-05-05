@@ -1,0 +1,294 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/shell-claim-template-profile-pack-v1.schema.json",
+  "title": "Hyperdensity Shell Claim Template Profile Pack v1",
+  "type": "object",
+  "required": [
+    "profilePackId",
+    "profilePackVersion",
+    "profilePackMode",
+    "generationMode",
+    "liveCreateAllowedByDefault",
+    "dryRunRequiredBeforeCreate",
+    "evidenceScope",
+    "productionMutationAllowed",
+    "autonomousApplyAllowed",
+    "enforcementMode",
+    "policyPackId",
+    "policyConsistencyRequired",
+    "supportedShellKinds",
+    "supportedProfiles",
+    "templates",
+    "templateValidationRules",
+    "safetyGates",
+    "summary",
+    "nextProfilePackAction"
+  ],
+  "properties": {
+    "profilePackId": {
+      "const": "hyperdensity_shell_claim_templates_profile_pack_v1"
+    },
+    "profilePackVersion": {
+      "const": "v1"
+    },
+    "profilePackMode": {
+      "const": "template_catalog_only"
+    },
+    "generationMode": {
+      "const": "generate_only"
+    },
+    "liveCreateAllowedByDefault": {
+      "const": false
+    },
+    "dryRunRequiredBeforeCreate": {
+      "const": true
+    },
+    "evidenceScope": {
+      "const": "evidence_namespace_only"
+    },
+    "productionMutationAllowed": {
+      "const": false
+    },
+    "autonomousApplyAllowed": {
+      "const": false
+    },
+    "enforcementMode": {
+      "const": "disabled"
+    },
+    "policyPackId": {
+      "const": "hyperdensity_policy_pack_v1"
+    },
+    "policyConsistencyRequired": {
+      "const": true
+    },
+    "supportedShellKinds": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": [
+          "linux_container",
+          "linux_vm"
+        ]
+      },
+      "minItems": 1
+    },
+    "supportedProfiles": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/profile"
+      },
+      "minItems": 1
+    },
+    "templates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/template"
+      },
+      "minItems": 1
+    },
+    "templateValidationRules": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/validationRule"
+      },
+      "minItems": 1
+    },
+    "safetyGates": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/safetyGate"
+      },
+      "minItems": 1
+    },
+    "summary": {
+      "type": "string"
+    },
+    "nextProfilePackAction": {
+      "type": "string"
+    },
+    "profilePackBlocker": {
+      "type": "string"
+    }
+  },
+  "$defs": {
+    "profile": {
+      "type": "object",
+      "required": [
+        "profileId",
+        "profileVersion",
+        "shellKind",
+        "role",
+        "displayName",
+        "description",
+        "supportState",
+        "generationMode"
+      ],
+      "properties": {
+        "profileId": {
+          "type": "string"
+        },
+        "profileVersion": {
+          "type": "string"
+        },
+        "shellKind": {
+          "type": "string",
+          "enum": [
+            "linux_container",
+            "linux_vm"
+          ]
+        },
+        "role": {
+          "type": "string"
+        },
+        "displayName": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "supportState": {
+          "type": "string"
+        },
+        "generationMode": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": true
+    },
+    "template": {
+      "type": "object",
+      "required": [
+        "templateId",
+        "templateVersion",
+        "profileId",
+        "shellKind",
+        "outputKind",
+        "templateMode",
+        "dryRunSupported",
+        "liveCreateSupported",
+        "liveCreateDefault",
+        "productionAllowed"
+      ],
+      "properties": {
+        "templateId": {
+          "type": "string"
+        },
+        "templateVersion": {
+          "type": "string"
+        },
+        "profileId": {
+          "type": "string"
+        },
+        "shellKind": {
+          "type": "string",
+          "enum": [
+            "linux_container",
+            "linux_vm"
+          ]
+        },
+        "outputKind": {
+          "type": "string"
+        },
+        "templateMode": {
+          "type": "string"
+        },
+        "dryRunSupported": {
+          "type": "boolean"
+        },
+        "liveCreateSupported": {
+          "type": "boolean"
+        },
+        "liveCreateDefault": {
+          "const": false
+        },
+        "productionAllowed": {
+          "const": false
+        }
+      },
+      "additionalProperties": true
+    },
+    "validationRule": {
+      "type": "object",
+      "required": [
+        "ruleId",
+        "category",
+        "severity",
+        "mode",
+        "description",
+        "appliesToProfiles",
+        "sourceSurface",
+        "futureAction",
+        "enabled"
+      ],
+      "properties": {
+        "ruleId": {
+          "type": "string"
+        },
+        "category": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "mode": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "appliesToProfiles": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "sourceSurface": {
+          "type": "string"
+        },
+        "futureAction": {
+          "type": "string"
+        },
+        "enabled": {
+          "type": "boolean"
+        }
+      },
+      "additionalProperties": false
+    },
+    "safetyGate": {
+      "type": "object",
+      "required": [
+        "gateId",
+        "state",
+        "severity",
+        "description",
+        "expected",
+        "actual"
+      ],
+      "properties": {
+        "gateId": {
+          "type": "string"
+        },
+        "state": {
+          "type": "string"
+        },
+        "severity": {
+          "type": "string"
+        },
+        "description": {
+          "type": "string"
+        },
+        "expected": {
+          "type": "string"
+        },
+        "actual": {
+          "type": "string"
+        },
+        "blocker": {
+          "type": "string"
+        }
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}

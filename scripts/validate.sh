@@ -14,6 +14,7 @@ required_files=(
   "docs/contracts/fleet-equilibrium-onboarding-v1.md"
   "docs/contracts/shell-factory-v1.md"
   "docs/contracts/shell-claim-v1.md"
+  "docs/contracts/shell-claim-template-profile-pack-v1.md"
   "docs/contracts/policy-pack-v1.md"
   "docs/contracts/policy-pack-consistency-checker-v1.md"
   "docs/contracts/admission-guard-enforce-simulation-v1.md"

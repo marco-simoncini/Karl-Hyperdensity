@@ -1,0 +1,149 @@
+{
+  "profilePackId": "hyperdensity_shell_claim_templates_profile_pack_v1",
+  "profilePackVersion": "v1",
+  "profilePackMode": "template_catalog_only",
+  "generationMode": "generate_only",
+  "liveCreateAllowedByDefault": false,
+  "dryRunRequiredBeforeCreate": true,
+  "evidenceScope": "evidence_namespace_only",
+  "productionMutationAllowed": false,
+  "autonomousApplyAllowed": false,
+  "enforcementMode": "disabled",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "policyConsistencyRequired": true,
+  "supportedShellKinds": [
+    "linux_container",
+    "linux_vm"
+  ],
+  "supportedProfiles": [
+    {
+      "profileId": "linux_container_donor",
+      "profileVersion": "v1",
+      "shellKind": "linux_container",
+      "role": "donor_candidate",
+      "displayName": "Linux Container Donor",
+      "description": "Golden Linux container donor profile.",
+      "supportState": "supported",
+      "generationMode": "generate_only"
+    },
+    {
+      "profileId": "linux_container_receiver",
+      "profileVersion": "v1",
+      "shellKind": "linux_container",
+      "role": "receiver_candidate",
+      "displayName": "Linux Container Receiver",
+      "description": "Golden Linux container receiver profile.",
+      "supportState": "supported",
+      "generationMode": "generate_only"
+    },
+    {
+      "profileId": "linux_container_service",
+      "profileVersion": "v1",
+      "shellKind": "linux_container",
+      "role": "service_shell",
+      "displayName": "Linux Container Service",
+      "description": "Golden Linux container service profile.",
+      "supportState": "supported",
+      "generationMode": "generate_only"
+    },
+    {
+      "profileId": "linux_container_batch",
+      "profileVersion": "v1",
+      "shellKind": "linux_container",
+      "role": "batch_shell",
+      "displayName": "Linux Container Batch",
+      "description": "Golden Linux container batch profile.",
+      "supportState": "supported",
+      "generationMode": "generate_only"
+    },
+    {
+      "profileId": "linux_vm_desktop",
+      "profileVersion": "v1",
+      "shellKind": "linux_vm",
+      "role": "desktop_shell",
+      "displayName": "Linux VM Desktop",
+      "description": "Golden Linux VM desktop profile.",
+      "supportState": "supported",
+      "generationMode": "generate_only"
+    },
+    {
+      "profileId": "linux_vm_service",
+      "profileVersion": "v1",
+      "shellKind": "linux_vm",
+      "role": "service_shell",
+      "displayName": "Linux VM Service",
+      "description": "Golden Linux VM service profile.",
+      "supportState": "supported",
+      "generationMode": "generate_only"
+    },
+    {
+      "profileId": "linux_vm_batch",
+      "profileVersion": "v1",
+      "shellKind": "linux_vm",
+      "role": "batch_shell",
+      "displayName": "Linux VM Batch",
+      "description": "Golden Linux VM batch profile.",
+      "supportState": "supported",
+      "generationMode": "generate_only"
+    }
+  ],
+  "templates": [
+    {
+      "templateId": "template-linux-container-donor-v1",
+      "templateVersion": "v1",
+      "profileId": "linux_container_donor",
+      "shellKind": "linux_container",
+      "outputKind": "Deployment",
+      "templateMode": "template_catalog_only",
+      "dryRunSupported": true,
+      "liveCreateSupported": true,
+      "liveCreateDefault": false,
+      "productionAllowed": false
+    },
+    {
+      "templateId": "template-linux-vm-service-v1",
+      "templateVersion": "v1",
+      "profileId": "linux_vm_service",
+      "shellKind": "linux_vm",
+      "outputKind": "VirtualMachine",
+      "templateMode": "template_catalog_only",
+      "dryRunSupported": true,
+      "liveCreateSupported": true,
+      "liveCreateDefault": false,
+      "productionAllowed": false
+    }
+  ],
+  "templateValidationRules": [
+    {
+      "ruleId": "dry_run_required_before_create",
+      "category": "safety_gate",
+      "severity": "critical",
+      "mode": "template_catalog_only",
+      "description": "Dry-run support is mandatory before create.",
+      "appliesToProfiles": [
+        "linux_container_donor",
+        "linux_container_receiver",
+        "linux_container_service",
+        "linux_container_batch",
+        "linux_vm_desktop",
+        "linux_vm_service",
+        "linux_vm_batch"
+      ],
+      "sourceSurface": "hyperdensityShellClaim.templateProfilePack",
+      "futureAction": "keep_dry_run_gate_enforced",
+      "enabled": true
+    }
+  ],
+  "safetyGates": [
+    {
+      "gateId": "windows_lane_excluded",
+      "state": "ready",
+      "severity": "critical",
+      "description": "Windows lane remains out-of-scope.",
+      "expected": "windows_supported_profiles=0",
+      "actual": "windows_supported_profiles=0"
+    }
+  ],
+  "summary": "Golden shell claim template/profile pack for generate-only Linux shell creation.",
+  "nextProfilePackAction": "use_shell_claim_generator_with_template_profile_pack_aliases"
+}
