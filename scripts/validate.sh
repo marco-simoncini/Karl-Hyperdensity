@@ -25,6 +25,7 @@ required_files=(
   "docs/runbooks/operator-runbook-v1.md"
   "docs/releases/technical-preview-release-notes-v1.md"
   "docs/releases/technical-preview-readiness-gate-v1.md"
+  "docs/releases/technical-preview-release-candidate-gate-v1.md"
   "docs/demos/technical-preview-demo-guide-v1.md"
   "docs/releases/technical-preview-documentation-pack-v1.md"
   "docs/overcommit/resource-equilibrium-and-safe-overcommit.md"

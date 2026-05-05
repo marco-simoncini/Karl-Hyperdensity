@@ -486,10 +486,67 @@ def main() -> int:
     if "Windows is supported." not in rejected_phrases:
         fail("live-resource-authority-reference.json supportBoundaries must reject Windows support wording")
 
+    rc_gate_example = example_by_name.get("technical-preview-release-candidate-gate-reference.json")
+    if rc_gate_example is None:
+        fail("examples/technical-preview-release-candidate-gate-reference.json is missing")
+    required_rc_gate_fields = [
+        "releaseCandidateGateId",
+        "releaseTrack",
+        "gateMode",
+        "targetReadinessState",
+        "supportMatrixId",
+        "evidenceBundleId",
+        "liveResourceAuthorityId",
+        "documentationPackId",
+        "policyPackId",
+        "profilePackId",
+        "enforcementMode",
+        "autonomousApplyAllowed",
+        "productionMutationAllowed",
+        "windowsSupportState",
+        "finalGateChecks",
+        "blockerChecks",
+        "releaseDecision",
+        "releaseBlocker",
+        "requiredFollowUps",
+        "summary",
+    ]
+    for field in required_rc_gate_fields:
+        if field not in rc_gate_example:
+            fail(f"technical-preview-release-candidate-gate-reference.json missing required field '{field}'")
+    if rc_gate_example["releaseCandidateGateId"] != "hyperdensity_technical_preview_release_candidate_gate_v1":
+        fail("technical-preview-release-candidate-gate-reference.json releaseCandidateGateId mismatch")
+    if rc_gate_example["releaseTrack"] != "technical_preview":
+        fail("technical-preview-release-candidate-gate-reference.json releaseTrack must be technical_preview")
+    if rc_gate_example["gateMode"] != "go_no_go_validation":
+        fail("technical-preview-release-candidate-gate-reference.json gateMode must be go_no_go_validation")
+    if rc_gate_example["targetReadinessState"] != "ready_for_private_technical_preview":
+        fail("technical-preview-release-candidate-gate-reference.json targetReadinessState must be ready_for_private_technical_preview")
+    if rc_gate_example["enforcementMode"] != "disabled":
+        fail("technical-preview-release-candidate-gate-reference.json enforcementMode must be disabled")
+    if rc_gate_example["autonomousApplyAllowed"] is not False:
+        fail("technical-preview-release-candidate-gate-reference.json autonomousApplyAllowed must be false")
+    if rc_gate_example["productionMutationAllowed"] is not False:
+        fail("technical-preview-release-candidate-gate-reference.json productionMutationAllowed must be false")
+    if rc_gate_example["windowsSupportState"] != "out_of_scope_frozen":
+        fail("technical-preview-release-candidate-gate-reference.json windowsSupportState must be out_of_scope_frozen")
+    if not isinstance(rc_gate_example["finalGateChecks"], list) or not rc_gate_example["finalGateChecks"]:
+        fail("technical-preview-release-candidate-gate-reference.json finalGateChecks must be non-empty")
+    if not isinstance(rc_gate_example["blockerChecks"], list) or not rc_gate_example["blockerChecks"]:
+        fail("technical-preview-release-candidate-gate-reference.json blockerChecks must be non-empty")
+    if rc_gate_example["releaseDecision"] not in (
+        "ready_for_private_technical_preview",
+        "ready_for_founder_investor_demo_only",
+        "ready_for_internal_evidence_release_only",
+        "blocked",
+    ):
+        fail("technical-preview-release-candidate-gate-reference.json releaseDecision has invalid value")
+
     doc_paths = [
         repo_root / "docs" / "runbooks" / "operator-runbook-v1.md",
         repo_root / "docs" / "releases" / "technical-preview-release-notes-v1.md",
         repo_root / "docs" / "releases" / "technical-preview-readiness-gate-v1.md",
+        repo_root / "docs" / "releases" / "technical-preview-release-candidate-gate-v1.md",
         repo_root / "docs" / "demos" / "technical-preview-demo-guide-v1.md",
         repo_root / "docs" / "releases" / "technical-preview-documentation-pack-v1.md",
     ]
@@ -543,6 +600,27 @@ def main() -> int:
     for ref in required_pack_refs:
         if ref not in pack_index:
             fail(f"technical-preview-documentation-pack-v1.md missing required reference: {ref}")
+
+    rc_gate_doc = docs_lower["technical-preview-release-candidate-gate-v1.md"]
+    required_rc_doc_refs = [
+        "releasecandidategateid=hyperdensity_technical_preview_release_candidate_gate_v1",
+        "releasetrack=technical_preview",
+        "gatemode=go_no_go_validation",
+        "targetreadinessstate=ready_for_private_technical_preview",
+        "supportmatrixid=hyperdensity_release_support_matrix_v1",
+        "evidencebundleid=hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+        "liveresourceauthorityid=hyperdensity_live_resource_authority_v1",
+        "documentationpackid=hyperdensity_technical_preview_documentation_pack_v1",
+        "policypackid=hyperdensity_policy_pack_v1",
+        "profilepackid=hyperdensity_shell_claim_templates_profile_pack_v1",
+        "enforcementmode=disabled",
+        "autonomousapplyallowed=false",
+        "productionmutationallowed=false",
+        "windowssupportstate=out_of_scope_frozen",
+    ]
+    for ref in required_rc_doc_refs:
+        if ref not in rc_gate_doc:
+            fail(f"technical-preview-release-candidate-gate-v1.md missing required reference: {ref}")
 
     forbidden_approved_phrases = [
         "windows is supported.",

@@ -1,0 +1,47 @@
+{
+  "releaseCandidateGateId": "hyperdensity_technical_preview_release_candidate_gate_v1",
+  "releaseTrack": "technical_preview",
+  "gateMode": "go_no_go_validation",
+  "targetReadinessState": "ready_for_private_technical_preview",
+  "supportMatrixId": "hyperdensity_release_support_matrix_v1",
+  "evidenceBundleId": "hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+  "liveResourceAuthorityId": "hyperdensity_live_resource_authority_v1",
+  "documentationPackId": "hyperdensity_technical_preview_documentation_pack_v1",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "profilePackId": "hyperdensity_shell_claim_templates_profile_pack_v1",
+  "enforcementMode": "disabled",
+  "autonomousApplyAllowed": false,
+  "productionMutationAllowed": false,
+  "windowsSupportState": "out_of_scope_frozen",
+  "finalGateChecks": [
+    { "checkId": "governance_gate", "required": true, "state": "passed" },
+    { "checkId": "safety_gate", "required": true, "state": "passed" },
+    { "checkId": "creation_path_gate", "required": true, "state": "passed" },
+    { "checkId": "admission_remediation_gate", "required": true, "state": "passed" },
+    { "checkId": "resource_exchange_gate", "required": true, "state": "passed" },
+    { "checkId": "live_resource_authority_gate", "required": true, "state": "passed" },
+    { "checkId": "technical_preview_claim_gate", "required": true, "state": "passed" },
+    { "checkId": "documentation_gate", "required": true, "state": "passed" },
+    { "checkId": "test_build_gate", "required": true, "state": "passed" }
+  ],
+  "blockerChecks": [
+    { "blockerId": "policy_consistency_false", "present": false },
+    { "blockerId": "enforcement_enabled", "present": false },
+    { "blockerId": "autonomous_apply_enabled", "present": false },
+    { "blockerId": "production_mutation_enabled", "present": false },
+    { "blockerId": "windows_marked_supported", "present": false },
+    { "blockerId": "raw_runtime_controls_exposed", "present": false },
+    { "blockerId": "generic_vm_ram_template_mutation_approved", "present": false },
+    { "blockerId": "unsafe_wording_approved", "present": false },
+    { "blockerId": "technical_preview_described_as_ga", "present": false }
+  ],
+  "releaseDecision": "ready_for_private_technical_preview",
+  "releaseBlocker": "",
+  "requiredFollowUps": [
+    "refresh_historical_proof_references_before_beta_ga",
+    "expand_vm_object_specific_evidence_coverage",
+    "keep_control_room_ui_redesign_separate",
+    "preserve_windows_lane_frozen_until_explicit_program"
+  ],
+  "summary": "Technical Preview release candidate gate passes with bounded evidence-backed support claims and operator-controlled safety posture."
+}

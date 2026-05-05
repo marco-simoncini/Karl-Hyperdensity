@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/technical-preview-release-candidate-gate-v1.schema.json",
+  "title": "Technical Preview Release Candidate Gate v1",
+  "type": "object",
+  "required": [
+    "releaseCandidateGateId",
+    "releaseTrack",
+    "gateMode",
+    "targetReadinessState",
+    "supportMatrixId",
+    "evidenceBundleId",
+    "liveResourceAuthorityId",
+    "documentationPackId",
+    "policyPackId",
+    "profilePackId",
+    "enforcementMode",
+    "autonomousApplyAllowed",
+    "productionMutationAllowed",
+    "windowsSupportState",
+    "finalGateChecks",
+    "blockerChecks",
+    "releaseDecision",
+    "releaseBlocker",
+    "requiredFollowUps",
+    "summary"
+  ],
+  "properties": {
+    "releaseCandidateGateId": {
+      "const": "hyperdensity_technical_preview_release_candidate_gate_v1"
+    },
+    "releaseTrack": {
+      "const": "technical_preview"
+    },
+    "gateMode": {
+      "const": "go_no_go_validation"
+    },
+    "targetReadinessState": {
+      "const": "ready_for_private_technical_preview"
+    },
+    "supportMatrixId": {
+      "const": "hyperdensity_release_support_matrix_v1"
+    },
+    "evidenceBundleId": {
+      "const": "hyperdensity_evidence_bundle_demo_scenario_pack_v1"
+    },
+    "liveResourceAuthorityId": {
+      "const": "hyperdensity_live_resource_authority_v1"
+    },
+    "documentationPackId": {
+      "const": "hyperdensity_technical_preview_documentation_pack_v1"
+    },
+    "policyPackId": {
+      "const": "hyperdensity_policy_pack_v1"
+    },
+    "profilePackId": {
+      "const": "hyperdensity_shell_claim_templates_profile_pack_v1"
+    },
+    "enforcementMode": {
+      "const": "disabled"
+    },
+    "autonomousApplyAllowed": {
+      "const": false
+    },
+    "productionMutationAllowed": {
+      "const": false
+    },
+    "windowsSupportState": {
+      "const": "out_of_scope_frozen"
+    },
+    "finalGateChecks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "object" }
+    },
+    "blockerChecks": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "object" }
+    },
+    "releaseDecision": {
+      "type": "string"
+    },
+    "releaseBlocker": {
+      "type": "string"
+    },
+    "requiredFollowUps": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "type": "string" }
+    },
+    "summary": {
+      "type": "string"
+    }
+  },
+  "additionalProperties": true
+}
