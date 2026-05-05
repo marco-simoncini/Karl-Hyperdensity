@@ -23,6 +23,13 @@ def load_json(path: Path) -> dict:
     return data
 
 
+def load_text(path: Path) -> str:
+    try:
+        return path.read_text(encoding="utf-8")
+    except Exception as exc:  # pragma: no cover
+        fail(f"{path} is not readable text: {exc}")
+
+
 def main() -> int:
     repo_root = Path(__file__).resolve().parents[1]
     schema_paths = sorted((repo_root / "schemas").glob("*.json"))
@@ -478,6 +485,77 @@ def main() -> int:
         fail("live-resource-authority-reference.json supportBoundaries must reject generic KubeVirt memory template mutation wording")
     if "Windows is supported." not in rejected_phrases:
         fail("live-resource-authority-reference.json supportBoundaries must reject Windows support wording")
+
+    doc_paths = [
+        repo_root / "docs" / "runbooks" / "operator-runbook-v1.md",
+        repo_root / "docs" / "releases" / "technical-preview-release-notes-v1.md",
+        repo_root / "docs" / "releases" / "technical-preview-readiness-gate-v1.md",
+        repo_root / "docs" / "demos" / "technical-preview-demo-guide-v1.md",
+        repo_root / "docs" / "releases" / "technical-preview-documentation-pack-v1.md",
+    ]
+    for path in doc_paths:
+        if not path.exists():
+            fail(f"required documentation file missing: {path}")
+
+    docs = {path.name: load_text(path) for path in doc_paths}
+    docs_lower = {name: body.lower() for name, body in docs.items()}
+
+    for name, body in docs_lower.items():
+        if "technical preview" not in body:
+            fail(f"{name} must explicitly mention Technical Preview")
+
+    runbook = docs_lower["operator-runbook-v1.md"]
+    if "evidence namespace" not in runbook:
+        fail("operator-runbook-v1.md must mention evidence namespace safety")
+    if "operator-controlled" not in runbook:
+        fail("operator-runbook-v1.md must mention operator-controlled safety")
+    if "warming_up" not in runbook or "not ready" not in runbook:
+        fail("operator-runbook-v1.md must state warming_up is not ready")
+    if "partial" not in runbook or "not ready" not in runbook:
+        fail("operator-runbook-v1.md must state partial is not ready")
+    if "blocked" not in runbook or "not ready" not in runbook:
+        fail("operator-runbook-v1.md must state blocked is not ready")
+
+    release_notes = docs_lower["technical-preview-release-notes-v1.md"]
+    required_release_phrases = [
+        "not ga",
+        "no enforcement enabled",
+        "no autonomous production movement",
+        "no production workload mutation",
+        "no windows support",
+        "no generic kubevirt template memory mutation claim",
+    ]
+    for phrase in required_release_phrases:
+        if phrase not in release_notes:
+            fail(f"technical-preview-release-notes-v1.md missing required non-claim phrase: {phrase}")
+
+    pack_index = docs_lower["technical-preview-documentation-pack-v1.md"]
+    required_pack_refs = [
+        "documentationpackid=hyperdensity_technical_preview_documentation_pack_v1",
+        "documentationpackversion=v1",
+        "releasetrack=technical_preview",
+        "supportmatrixid=hyperdensity_release_support_matrix_v1",
+        "evidencebundleid=hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+        "liveresourceauthorityid=hyperdensity_live_resource_authority_v1",
+        "policypackid=hyperdensity_policy_pack_v1",
+        "profilepackid=hyperdensity_shell_claim_templates_profile_pack_v1",
+    ]
+    for ref in required_pack_refs:
+        if ref not in pack_index:
+            fail(f"technical-preview-documentation-pack-v1.md missing required reference: {ref}")
+
+    forbidden_approved_phrases = [
+        "windows is supported.",
+        "production autonomous resource movement is supported",
+        "enforcement is enabled",
+        "autonomous apply is enabled",
+        "production mutation is enabled",
+        "vm ram live resize is generic kubevirt template mutation.",
+    ]
+    all_docs_merged = "\n".join(docs_lower.values())
+    for phrase in forbidden_approved_phrases:
+        if phrase in all_docs_merged:
+            fail(f"documentation contains unsafe approved wording: {phrase}")
 
     print(
         f"[validate_json] OK: parsed {schema_count} schema files and {example_count} example files"

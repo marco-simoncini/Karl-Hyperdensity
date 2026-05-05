@@ -22,6 +22,11 @@ required_files=(
   "docs/contracts/policy-pack-consistency-checker-v1.md"
   "docs/contracts/admission-guard-enforce-simulation-v1.md"
   "docs/contracts/mutate-preview-apply-dry-run-v1.md"
+  "docs/runbooks/operator-runbook-v1.md"
+  "docs/releases/technical-preview-release-notes-v1.md"
+  "docs/releases/technical-preview-readiness-gate-v1.md"
+  "docs/demos/technical-preview-demo-guide-v1.md"
+  "docs/releases/technical-preview-documentation-pack-v1.md"
   "docs/overcommit/resource-equilibrium-and-safe-overcommit.md"
   "docs/migration/dashboard-to-hyperdensity-extraction-plan.md"
 )
