@@ -1,0 +1,35 @@
+{
+  "consistencyId": "hyperdensity_policy_pack_consistency_checker_v1",
+  "consistencyVersion": "v1",
+  "consistencyMode": "validation_only",
+  "consistencyState": "policy_pack_consistency_operational",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "policyPackVersion": "v1",
+  "checkedAt": "2026-05-05T00:00:00Z",
+  "checkedSectionCount": 10,
+  "checkedRuleCount": 34,
+  "checkedSafetyGateCount": 26,
+  "expectedSectionCount": 10,
+  "expectedSafetyGateCount": 20,
+  "missingSections": [],
+  "missingRules": [],
+  "missingSafetyGates": [],
+  "driftFindings": [],
+  "sourceSurfaceFindings": [],
+  "invariantFindings": [
+    {
+      "findingId": "invariant_policy_pack_mode_visibility_only",
+      "category": "invariant",
+      "severity": "info",
+      "state": "passed",
+      "description": "Policy pack invariant check.",
+      "expected": "visibility_only",
+      "actual": "visibility_only",
+      "sourceSurface": "hyperdensityPolicyPack",
+      "remediation": "none"
+    }
+  ],
+  "consistent": true,
+  "nextConsistencyAction": "continue_validation_only_drift_monitoring",
+  "consistencyBlocker": ""
+}

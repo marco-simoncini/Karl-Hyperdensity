@@ -91,6 +91,47 @@ def main() -> int:
     if not isinstance(policy_pack_example["safetyGates"], list) or not policy_pack_example["safetyGates"]:
         fail("policy-pack-reference.json safetyGates must be a non-empty array")
 
+    consistency_example = example_by_name.get("policy-pack-consistency-reference.json")
+    if consistency_example is None:
+        fail("examples/policy-pack-consistency-reference.json is missing")
+    required_consistency_fields = [
+        "consistencyId",
+        "consistencyVersion",
+        "consistencyMode",
+        "consistencyState",
+        "policyPackId",
+        "policyPackVersion",
+        "checkedAt",
+        "checkedSectionCount",
+        "checkedRuleCount",
+        "checkedSafetyGateCount",
+        "expectedSectionCount",
+        "expectedSafetyGateCount",
+        "missingSections",
+        "missingRules",
+        "missingSafetyGates",
+        "driftFindings",
+        "sourceSurfaceFindings",
+        "invariantFindings",
+        "consistent",
+        "nextConsistencyAction",
+    ]
+    for field in required_consistency_fields:
+        if field not in consistency_example:
+            fail(f"policy-pack-consistency-reference.json missing required field '{field}'")
+    if consistency_example["consistencyId"] != "hyperdensity_policy_pack_consistency_checker_v1":
+        fail("policy-pack-consistency-reference.json consistencyId must be hyperdensity_policy_pack_consistency_checker_v1")
+    if consistency_example["consistencyMode"] != "validation_only":
+        fail("policy-pack-consistency-reference.json consistencyMode must be validation_only")
+    if consistency_example["policyPackId"] != "hyperdensity_policy_pack_v1":
+        fail("policy-pack-consistency-reference.json policyPackId must be hyperdensity_policy_pack_v1")
+    if consistency_example["consistent"] is not True:
+        fail("policy-pack-consistency-reference.json consistent must be true")
+    if not isinstance(consistency_example["missingSections"], list):
+        fail("policy-pack-consistency-reference.json missingSections must be an array")
+    if not isinstance(consistency_example["missingSafetyGates"], list):
+        fail("policy-pack-consistency-reference.json missingSafetyGates must be an array")
+
     print(
         f"[validate_json] OK: parsed {schema_count} schema files and {example_count} example files"
     )
