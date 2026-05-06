@@ -577,6 +577,127 @@ def main() -> int:
     if indexes.get("batchingMode") != "rate_limited_operator_controlled":
         fail("action-slate-reference.json indexes batchingMode must be rate_limited_operator_controlled")
 
+    guarded_auto_example = example_by_name.get("guarded-auto-sandbox-reference.json")
+    if guarded_auto_example is None:
+        fail("examples/guarded-auto-sandbox-reference.json is missing")
+    required_guarded_auto_fields = [
+        "guardedAutoSandboxId",
+        "guardedAutoSandboxVersion",
+        "releaseTrack",
+        "sandboxMode",
+        "sandboxState",
+        "allowedNamespace",
+        "productionMutationAllowed",
+        "enforcementMode",
+        "autonomousProductionApplyAllowed",
+        "sandboxAutonomousApplyAllowed",
+        "operatorKillSwitchRequired",
+        "operatorKillSwitchState",
+        "actionSlateId",
+        "policyPackId",
+        "supportMatrixId",
+        "evidenceBundleId",
+        "liveResourceAuthorityId",
+        "maxActionsPerHour",
+        "maxConcurrentActions",
+        "maxCpuMove",
+        "maxMemoryMove",
+        "dryRunRequired",
+        "rollbackRequired",
+        "auditRequired",
+        "verificationRequired",
+        "eligibleActionCount",
+        "executableActionCount",
+        "blockedActionCount",
+        "candidateActions",
+        "safetyGates",
+        "blastRadiusBudget",
+        "auditTrail",
+        "blockers",
+        "limitations",
+        "claimBoundaries",
+    ]
+    for field in required_guarded_auto_fields:
+        if field not in guarded_auto_example:
+            fail(f"guarded-auto-sandbox-reference.json missing required field '{field}'")
+    if guarded_auto_example["guardedAutoSandboxId"] != "hyperdensity_guarded_auto_sandbox_v1":
+        fail("guarded-auto-sandbox-reference.json guardedAutoSandboxId must be hyperdensity_guarded_auto_sandbox_v1")
+    if guarded_auto_example["guardedAutoSandboxVersion"] != "v1":
+        fail("guarded-auto-sandbox-reference.json guardedAutoSandboxVersion must be v1")
+    if guarded_auto_example["releaseTrack"] != "technical_preview":
+        fail("guarded-auto-sandbox-reference.json releaseTrack must be technical_preview")
+    if guarded_auto_example["sandboxMode"] != "guarded_auto_evidence_namespace_only":
+        fail("guarded-auto-sandbox-reference.json sandboxMode must be guarded_auto_evidence_namespace_only")
+    if guarded_auto_example["allowedNamespace"] != "karl-hyperdensity-evidence":
+        fail("guarded-auto-sandbox-reference.json allowedNamespace must be karl-hyperdensity-evidence")
+    if guarded_auto_example["productionMutationAllowed"] is not False:
+        fail("guarded-auto-sandbox-reference.json productionMutationAllowed must be false")
+    if guarded_auto_example["enforcementMode"] != "disabled":
+        fail("guarded-auto-sandbox-reference.json enforcementMode must be disabled")
+    if guarded_auto_example["autonomousProductionApplyAllowed"] is not False:
+        fail("guarded-auto-sandbox-reference.json autonomousProductionApplyAllowed must be false")
+    if guarded_auto_example["operatorKillSwitchRequired"] is not True:
+        fail("guarded-auto-sandbox-reference.json operatorKillSwitchRequired must be true")
+    if guarded_auto_example["dryRunRequired"] is not True:
+        fail("guarded-auto-sandbox-reference.json dryRunRequired must be true")
+    if guarded_auto_example["rollbackRequired"] is not True:
+        fail("guarded-auto-sandbox-reference.json rollbackRequired must be true")
+    if guarded_auto_example["auditRequired"] is not True:
+        fail("guarded-auto-sandbox-reference.json auditRequired must be true")
+    if guarded_auto_example["verificationRequired"] is not True:
+        fail("guarded-auto-sandbox-reference.json verificationRequired must be true")
+    if not isinstance(guarded_auto_example["candidateActions"], list):
+        fail("guarded-auto-sandbox-reference.json candidateActions must be an array")
+    for candidate in guarded_auto_example["candidateActions"]:
+        if not isinstance(candidate, dict):
+            fail("guarded-auto-sandbox-reference.json candidateActions must contain objects")
+        if candidate.get("productionMutationAllowed") is not False:
+            fail("guarded-auto-sandbox-reference.json candidate productionMutationAllowed must be false")
+        if candidate.get("namespace") not in ("karl-hyperdensity-evidence", None):
+            fail("guarded-auto-sandbox-reference.json candidate namespace must stay in evidence namespace")
+    gate_ids = {entry.get("gateId") for entry in guarded_auto_example["safetyGates"] if isinstance(entry, dict)}
+    for gate_id in (
+        "evidence_namespace_only",
+        "production_mutation_disabled",
+        "enforcement_disabled",
+        "autonomous_production_apply_disabled",
+        "operator_kill_switch_available",
+        "action_slate_ready_required",
+        "dry_run_ready_required",
+        "rollback_ready_required",
+        "low_risk_required",
+        "support_boundary_required",
+        "policy_consistency_required",
+        "blast_radius_budget_required",
+        "audit_required",
+        "verification_required",
+        "raw_runtime_controls_not_exposed",
+        "raw_resource_creation_not_allowed",
+        "windows_out_of_scope",
+    ):
+        if gate_id not in gate_ids:
+            fail(f"guarded-auto-sandbox-reference.json safetyGates must include {gate_id}")
+    claim_text = "\n".join(guarded_auto_example["claimBoundaries"]).lower()
+    for phrase in (
+        "guarded auto is evidence-namespace only.",
+        "production autonomous apply is disabled.",
+        "enforcement is disabled.",
+        "no production mutation.",
+        "dry-run is required.",
+        "rollback proof is required.",
+        "low risk is required.",
+        "operator kill switch is required.",
+        "no raw runtime controls are exposed.",
+        "no raw resource creation.",
+        "technical preview boundary active.",
+        "not ga.",
+        "not ha.",
+        "not windows.",
+        "not generic vm ram template mutation.",
+    ):
+        if phrase not in claim_text:
+            fail(f"guarded-auto-sandbox-reference.json claimBoundaries missing phrase: {phrase}")
+
     rc_gate_example = example_by_name.get("technical-preview-release-candidate-gate-reference.json")
     if rc_gate_example is None:
         fail("examples/technical-preview-release-candidate-gate-reference.json is missing")

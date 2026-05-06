@@ -14,6 +14,7 @@ func TestContractIDsAreNotEmpty(t *testing.T) {
 		EvidenceBundleDemoScenarioPackV1ID,
 		LiveResourceAuthorityV1ID,
 		ActionSlateV1ID,
+		GuardedAutoSandboxV1ID,
 	}
 	for _, id := range ids {
 		if id == "" {

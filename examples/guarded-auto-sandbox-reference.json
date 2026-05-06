@@ -1,0 +1,153 @@
+{
+  "guardedAutoSandboxId": "hyperdensity_guarded_auto_sandbox_v1",
+  "guardedAutoSandboxVersion": "v1",
+  "releaseTrack": "technical_preview",
+  "sandboxMode": "guarded_auto_evidence_namespace_only",
+  "sandboxState": "guarded_auto_sandbox_readiness_only",
+  "allowedNamespace": "karl-hyperdensity-evidence",
+  "productionMutationAllowed": false,
+  "enforcementMode": "disabled",
+  "autonomousProductionApplyAllowed": false,
+  "sandboxAutonomousApplyAllowed": false,
+  "operatorKillSwitchRequired": true,
+  "operatorKillSwitchState": "available",
+  "actionSlateId": "hyperdensity_action_slate_v1",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "supportMatrixId": "hyperdensity_release_support_matrix_v1",
+  "evidenceBundleId": "hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+  "liveResourceAuthorityId": "hyperdensity_live_resource_authority_v1",
+  "maxActionsPerHour": 4,
+  "maxConcurrentActions": 1,
+  "maxCpuMove": {
+    "quantity": "500m",
+    "millicores": 500
+  },
+  "maxMemoryMove": {
+    "quantity": "512Mi",
+    "bytes": 536870912
+  },
+  "dryRunRequired": true,
+  "rollbackRequired": true,
+  "auditRequired": true,
+  "verificationRequired": true,
+  "eligibleActionCount": 1,
+  "executableActionCount": 0,
+  "blockedActionCount": 1,
+  "candidateActions": [
+    {
+      "actionId": "resource_transfer_1_transfer_plan_1",
+      "actionSlateRef": "hyperdensity_action_slate_v1",
+      "actionKind": "resource_transfer",
+      "resource": "cpu",
+      "amount": "500m",
+      "donor": "karl-hyperdensity-evidence/donor-a",
+      "receiver": "karl-hyperdensity-evidence/receiver-b",
+      "namespace": "karl-hyperdensity-evidence",
+      "eligibilityState": "eligible",
+      "autoExecutionState": "ready_for_guarded_auto",
+      "dryRunState": "ready",
+      "rollbackState": "ready",
+      "verificationState": "required",
+      "auditState": "required",
+      "risk": "low",
+      "safetyDecision": "eligible_for_guarded_auto_sandbox",
+      "productionMutationAllowed": false
+    },
+    {
+      "actionId": "resource_transfer_blocked_high_risk",
+      "actionSlateRef": "hyperdensity_action_slate_v1",
+      "actionKind": "resource_transfer",
+      "resource": "cpu",
+      "amount": "250m",
+      "donor": "karl-hyperdensity-evidence/donor-c",
+      "receiver": "karl-hyperdensity-evidence/receiver-d",
+      "namespace": "karl-hyperdensity-evidence",
+      "eligibilityState": "risk_too_high",
+      "autoExecutionState": "blocked",
+      "dryRunState": "ready",
+      "rollbackState": "ready",
+      "verificationState": "required",
+      "auditState": "required",
+      "risk": "high",
+      "blocker": "risk_not_low",
+      "safetyDecision": "blocked_for_guarded_auto",
+      "forbiddenReason": "low_risk_required",
+      "productionMutationAllowed": false
+    }
+  ],
+  "safetyGates": [
+    { "gateId": "evidence_namespace_only", "state": "passed", "meaning": "Guarded auto is evidence-namespace only." },
+    { "gateId": "production_mutation_disabled", "state": "passed", "meaning": "No production mutation." },
+    { "gateId": "enforcement_disabled", "state": "passed", "meaning": "Enforcement is disabled." },
+    { "gateId": "autonomous_production_apply_disabled", "state": "passed", "meaning": "Production autonomous apply is disabled." },
+    { "gateId": "operator_kill_switch_available", "state": "passed", "meaning": "Operator kill switch is required." },
+    { "gateId": "action_slate_ready_required", "state": "passed", "meaning": "Action Slate ready actions are required." },
+    { "gateId": "dry_run_ready_required", "state": "passed", "meaning": "Dry-run is required." },
+    { "gateId": "rollback_ready_required", "state": "passed", "meaning": "Rollback proof is required." },
+    { "gateId": "low_risk_required", "state": "warning", "meaning": "Low risk is required." },
+    { "gateId": "support_boundary_required", "state": "passed", "meaning": "Support boundary is required." },
+    { "gateId": "policy_consistency_required", "state": "passed", "meaning": "Policy consistency is required." },
+    { "gateId": "blast_radius_budget_required", "state": "passed", "meaning": "Blast radius budget is required." },
+    { "gateId": "audit_required", "state": "passed", "meaning": "Audit is required." },
+    { "gateId": "verification_required", "state": "passed", "meaning": "Verification is required." },
+    { "gateId": "raw_runtime_controls_not_exposed", "state": "passed", "meaning": "No raw runtime controls are exposed." },
+    { "gateId": "raw_resource_creation_not_allowed", "state": "passed", "meaning": "No raw resource creation." },
+    { "gateId": "windows_out_of_scope", "state": "passed", "meaning": "Windows out-of-scope." }
+  ],
+  "blastRadiusBudget": {
+    "maxActionsPerHour": 4,
+    "maxConcurrentActions": 1,
+    "maxCpuMove": {
+      "quantity": "500m",
+      "millicores": 500
+    },
+    "maxMemoryMove": {
+      "quantity": "512Mi",
+      "bytes": 536870912
+    },
+    "budgetState": "budget_valid"
+  },
+  "auditTrail": [
+    {
+      "auditEntryId": "guarded-auto-sandbox-bootstrap",
+      "at": "2026-05-06T15:20:00Z",
+      "state": "readiness_snapshot",
+      "detail": "Guarded auto sandbox readiness snapshot generated."
+    }
+  ],
+  "blockers": [
+    {
+      "blockerId": "no_executable_candidate",
+      "state": "warning",
+      "description": "No candidate action currently satisfies all guarded auto gates.",
+      "remediation": "Collect dry-run, rollback, and low-risk ready actions in evidence namespace."
+    }
+  ],
+  "limitations": [
+    "Recommendation/projection-first guarded auto sandbox.",
+    "Evidence namespace only.",
+    "No production autonomous apply.",
+    "No enforcement.",
+    "No production mutation.",
+    "No raw runtime controls.",
+    "No raw resource creation.",
+    "Technical Preview only."
+  ],
+  "claimBoundaries": [
+    "Guarded auto is evidence-namespace only.",
+    "Production autonomous apply is disabled.",
+    "Enforcement is disabled.",
+    "No production mutation.",
+    "Dry-run is required.",
+    "Rollback proof is required.",
+    "Low risk is required.",
+    "Operator kill switch is required.",
+    "No raw runtime controls are exposed.",
+    "No raw resource creation.",
+    "Technical Preview boundary active.",
+    "Not GA.",
+    "Not HA.",
+    "Not Windows.",
+    "Not generic VM RAM template mutation."
+  ]
+}
