@@ -13,4 +13,5 @@ const (
 	ActionSlateV1ID                    = "hyperdensity_action_slate_v1"
 	GuardedAutoSandboxV1ID             = "hyperdensity_guarded_auto_sandbox_v1"
 	AutoRollbackControllerV1ID         = "hyperdensity_auto_rollback_controller_v1"
+	BlastRadiusPolicyV1ID              = "hyperdensity_blast_radius_policy_v1"
 )

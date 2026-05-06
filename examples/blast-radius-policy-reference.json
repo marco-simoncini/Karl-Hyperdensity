@@ -1,0 +1,178 @@
+{
+  "blastRadiusPolicyId": "hyperdensity_blast_radius_policy_v1",
+  "blastRadiusPolicyVersion": "v1",
+  "releaseTrack": "technical_preview",
+  "policyMode": "guarded_auto_safety_budget",
+  "policyState": "blast_radius_policy_readiness_only",
+  "productionAutonomousApplyAllowed": false,
+  "productionMutationAllowed": false,
+  "enforcementMode": "disabled",
+  "evidenceNamespace": "karl-hyperdensity-evidence",
+  "guardedAutoSandboxId": "hyperdensity_guarded_auto_sandbox_v1",
+  "actionSlateId": "hyperdensity_action_slate_v1",
+  "autoRollbackControllerId": "hyperdensity_auto_rollback_controller_v1",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "supportMatrixId": "hyperdensity_release_support_matrix_v1",
+  "evidenceBundleId": "hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+  "liveResourceAuthorityId": "hyperdensity_live_resource_authority_v1",
+  "operatorKillSwitchRequired": true,
+  "operatorKillSwitchState": "available",
+  "globalBudget": {
+    "maxConcurrentActions": 1,
+    "maxActionsPerHour": 4,
+    "maxActionsPerNamespacePerHour": 3,
+    "maxCpuMovePerAction": { "quantity": "500m", "millicores": 500 },
+    "maxMemoryMovePerAction": { "quantity": "512Mi", "bytes": 536870912 },
+    "maxCpuMovePerHour": { "quantity": "2", "millicores": 2000 },
+    "maxMemoryMovePerHour": { "quantity": "2Gi", "bytes": 2147483648 },
+    "maxFleetPercentTouchedPerHour": 10,
+    "maxNamespacePercentTouchedPerHour": 25,
+    "allowedRiskLevels": ["low"],
+    "allowedActionStates": ["ready"],
+    "requiredDryRunState": "ready",
+    "requiredRollbackState": "ready",
+    "requiredVerificationState": "required",
+    "requiredAuditState": "required"
+  },
+  "namespaceBudgets": [
+    {
+      "namespace": "karl-hyperdensity-evidence",
+      "namespaceClass": "evidence",
+      "autoMode": "guarded_auto",
+      "maxConcurrentActions": 1,
+      "maxActionsPerHour": 3,
+      "maxCpuMovePerHour": "1500m",
+      "maxMemoryMovePerHour": "1536Mi",
+      "allowedRiskLevels": ["low"],
+      "productionMutationAllowed": false,
+      "blocker": ""
+    },
+    {
+      "namespace": "production",
+      "namespaceClass": "production",
+      "autoMode": "recommendation_only",
+      "maxConcurrentActions": 0,
+      "maxActionsPerHour": 0,
+      "maxCpuMovePerHour": "0m",
+      "maxMemoryMovePerHour": "0Mi",
+      "allowedRiskLevels": ["none"],
+      "productionMutationAllowed": false,
+      "blocker": "production_scope_disabled_in_technical_preview"
+    }
+  ],
+  "resourceBudgets": [
+    {
+      "resource": "cpu",
+      "maxMovePerAction": "500m",
+      "maxMovePerHour": "2",
+      "allowedRiskLevels": ["low"],
+      "blocker": ""
+    },
+    {
+      "resource": "memory",
+      "maxMovePerAction": "512Mi",
+      "maxMovePerHour": "2Gi",
+      "allowedRiskLevels": ["low"],
+      "blocker": ""
+    }
+  ],
+  "concurrencyLimits": {
+    "maxConcurrentActions": 1,
+    "maxConcurrentPerNamespace": 1,
+    "maxConcurrentGuardedAuto": 1
+  },
+  "rateLimits": {
+    "maxActionsPerMinute": 1,
+    "maxActionsPerHour": 4,
+    "cooldownSeconds": 300
+  },
+  "freezeConditions": [
+    { "conditionId": "warning_event_detected", "state": "armed", "meaning": "Freeze when warning events cross policy threshold." },
+    { "conditionId": "rollback_failure", "state": "armed", "meaning": "Freeze when rollback fails." },
+    { "conditionId": "verification_failure", "state": "armed", "meaning": "Freeze when verification fails." },
+    { "conditionId": "donor_pressure_increased", "state": "armed", "meaning": "Freeze when donor pressure increases." },
+    { "conditionId": "receiver_not_improved", "state": "armed", "meaning": "Freeze when receiver does not improve." },
+    { "conditionId": "policy_inconsistency", "state": "disabled", "meaning": "Freeze on policy inconsistency." },
+    { "conditionId": "support_boundary_missing", "state": "disabled", "meaning": "Freeze when support boundary is missing." },
+    { "conditionId": "unknown_risk_detected", "state": "armed", "meaning": "Freeze when unknown risk appears." },
+    { "conditionId": "kill_switch_triggered", "state": "armed", "meaning": "Freeze when kill switch is triggered." },
+    { "conditionId": "audit_gap_detected", "state": "armed", "meaning": "Freeze on audit evidence gaps." }
+  ],
+  "escalationRules": [
+    { "ruleId": "medium_risk_requires_operator_review", "state": "armed", "meaning": "Medium risk requires operator review." },
+    { "ruleId": "high_risk_blocks_auto", "state": "armed", "meaning": "High risk blocks auto." },
+    { "ruleId": "unknown_risk_blocks_auto", "state": "armed", "meaning": "Unknown risk blocks auto." },
+    { "ruleId": "production_scope_blocks_auto", "state": "armed", "meaning": "Production scope blocks auto." },
+    { "ruleId": "rollback_missing_blocks_auto", "state": "armed", "meaning": "Missing rollback proof blocks auto." },
+    { "ruleId": "dry_run_missing_blocks_auto", "state": "armed", "meaning": "Missing dry-run blocks auto." }
+  ],
+  "stopConditions": [
+    { "conditionId": "max_budget_exceeded", "state": "armed", "meaning": "Stop when budget is exceeded." },
+    { "conditionId": "high_risk_action_detected", "state": "armed", "meaning": "Stop when high risk action is detected." },
+    { "conditionId": "blocked_action_detected", "state": "armed", "meaning": "Stop when blocked action appears." },
+    { "conditionId": "expired_action_detected", "state": "armed", "meaning": "Stop when expired action appears." },
+    { "conditionId": "unsupported_shell_detected", "state": "armed", "meaning": "Stop on unsupported shell." },
+    { "conditionId": "windows_lane_detected", "state": "armed", "meaning": "Stop on Windows lane detection." },
+    { "conditionId": "raw_runtime_control_requested", "state": "armed", "meaning": "Stop on raw runtime control request." },
+    { "conditionId": "production_scope_requested", "state": "armed", "meaning": "Stop on production scope request." }
+  ],
+  "safetyGates": [
+    { "gateId": "production_autonomous_apply_disabled", "state": "passed", "meaning": "Production autonomous apply is disabled." },
+    { "gateId": "production_mutation_disabled", "state": "passed", "meaning": "No production mutation." },
+    { "gateId": "enforcement_disabled", "state": "passed", "meaning": "Enforcement is disabled." },
+    { "gateId": "action_slate_required", "state": "passed", "meaning": "Action Slate is required." },
+    { "gateId": "guarded_auto_sandbox_required", "state": "passed", "meaning": "Guarded auto sandbox is required." },
+    { "gateId": "auto_rollback_controller_required", "state": "warning", "meaning": "Auto rollback controller readiness is required." },
+    { "gateId": "operator_kill_switch_required", "state": "passed", "meaning": "Operator kill switch is required." },
+    { "gateId": "policy_consistency_required", "state": "passed", "meaning": "Policy consistency is required." },
+    { "gateId": "support_boundary_required", "state": "passed", "meaning": "Support boundary is required." },
+    { "gateId": "high_unknown_risk_block_auto", "state": "warning", "meaning": "High and unknown risk block auto." },
+    { "gateId": "dry_run_required", "state": "passed", "meaning": "Dry-run is required." },
+    { "gateId": "rollback_required", "state": "passed", "meaning": "Rollback proof is required." },
+    { "gateId": "verification_required", "state": "passed", "meaning": "Verification is required." },
+    { "gateId": "audit_required", "state": "passed", "meaning": "Audit is required." },
+    { "gateId": "raw_runtime_controls_not_exposed", "state": "passed", "meaning": "No raw runtime controls are exposed." },
+    { "gateId": "windows_out_of_scope", "state": "passed", "meaning": "Windows out-of-scope." }
+  ],
+  "blockers": [
+    {
+      "blockerId": "auto_rollback_readiness_missing",
+      "state": "warning",
+      "description": "Auto rollback readiness is not currently promoted.",
+      "remediation": "Promote rollback plan readiness before guarded auto budgets are consumed."
+    }
+  ],
+  "limitations": [
+    "Policy/readiness-first blast radius surface.",
+    "No production autonomous apply.",
+    "No enforcement.",
+    "No production mutation.",
+    "Evidence namespace only for guarded auto readiness.",
+    "Technical Preview only."
+  ],
+  "claimBoundaries": [
+    "Blast radius limits are enforced before any guarded auto action.",
+    "Production autonomous apply is disabled.",
+    "Enforcement is disabled.",
+    "No production mutation.",
+    "Dry-run is required.",
+    "Rollback proof is required.",
+    "Verification is required.",
+    "Audit is required.",
+    "Operator kill switch is required.",
+    "High and unknown risk block auto.",
+    "Technical Preview boundary active.",
+    "Not GA.",
+    "Not HA.",
+    "Not Windows.",
+    "Not generic VM RAM template mutation."
+  ],
+  "auditTrail": [
+    {
+      "auditEntryId": "blast-radius-policy-bootstrap",
+      "at": "2026-05-06T15:48:00Z",
+      "state": "readiness_snapshot",
+      "detail": "Blast radius policy readiness snapshot generated."
+    }
+  ]
+}

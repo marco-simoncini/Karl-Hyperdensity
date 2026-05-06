@@ -831,6 +831,177 @@ def main() -> int:
         if phrase not in auto_claim_text:
             fail(f"auto-rollback-controller-reference.json claimBoundaries missing phrase: {phrase}")
 
+    blast_radius_example = example_by_name.get("blast-radius-policy-reference.json")
+    if blast_radius_example is None:
+        fail("examples/blast-radius-policy-reference.json is missing")
+    required_blast_radius_fields = [
+        "blastRadiusPolicyId",
+        "blastRadiusPolicyVersion",
+        "releaseTrack",
+        "policyMode",
+        "policyState",
+        "productionAutonomousApplyAllowed",
+        "productionMutationAllowed",
+        "enforcementMode",
+        "evidenceNamespace",
+        "guardedAutoSandboxId",
+        "actionSlateId",
+        "autoRollbackControllerId",
+        "policyPackId",
+        "supportMatrixId",
+        "evidenceBundleId",
+        "liveResourceAuthorityId",
+        "operatorKillSwitchRequired",
+        "operatorKillSwitchState",
+        "globalBudget",
+        "namespaceBudgets",
+        "resourceBudgets",
+        "concurrencyLimits",
+        "rateLimits",
+        "freezeConditions",
+        "escalationRules",
+        "stopConditions",
+        "safetyGates",
+        "blockers",
+        "limitations",
+        "claimBoundaries",
+        "auditTrail",
+    ]
+    for field in required_blast_radius_fields:
+        if field not in blast_radius_example:
+            fail(f"blast-radius-policy-reference.json missing required field '{field}'")
+    if blast_radius_example["blastRadiusPolicyId"] != "hyperdensity_blast_radius_policy_v1":
+        fail("blast-radius-policy-reference.json blastRadiusPolicyId must be hyperdensity_blast_radius_policy_v1")
+    if blast_radius_example["blastRadiusPolicyVersion"] != "v1":
+        fail("blast-radius-policy-reference.json blastRadiusPolicyVersion must be v1")
+    if blast_radius_example["releaseTrack"] != "technical_preview":
+        fail("blast-radius-policy-reference.json releaseTrack must be technical_preview")
+    if blast_radius_example["policyMode"] != "guarded_auto_safety_budget":
+        fail("blast-radius-policy-reference.json policyMode must be guarded_auto_safety_budget")
+    if blast_radius_example["productionAutonomousApplyAllowed"] is not False:
+        fail("blast-radius-policy-reference.json productionAutonomousApplyAllowed must be false")
+    if blast_radius_example["productionMutationAllowed"] is not False:
+        fail("blast-radius-policy-reference.json productionMutationAllowed must be false")
+    if blast_radius_example["enforcementMode"] != "disabled":
+        fail("blast-radius-policy-reference.json enforcementMode must be disabled")
+    if blast_radius_example["evidenceNamespace"] != "karl-hyperdensity-evidence":
+        fail("blast-radius-policy-reference.json evidenceNamespace must be karl-hyperdensity-evidence")
+    if blast_radius_example["operatorKillSwitchRequired"] is not True:
+        fail("blast-radius-policy-reference.json operatorKillSwitchRequired must be true")
+
+    global_budget = blast_radius_example["globalBudget"]
+    required_global_budget_fields = [
+        "maxConcurrentActions",
+        "maxActionsPerHour",
+        "maxActionsPerNamespacePerHour",
+        "maxCpuMovePerAction",
+        "maxMemoryMovePerAction",
+        "maxCpuMovePerHour",
+        "maxMemoryMovePerHour",
+        "maxFleetPercentTouchedPerHour",
+        "maxNamespacePercentTouchedPerHour",
+        "allowedRiskLevels",
+        "allowedActionStates",
+        "requiredDryRunState",
+        "requiredRollbackState",
+        "requiredVerificationState",
+        "requiredAuditState",
+    ]
+    if not isinstance(global_budget, dict):
+        fail("blast-radius-policy-reference.json globalBudget must be an object")
+    for field in required_global_budget_fields:
+        if field not in global_budget:
+            fail(f"blast-radius-policy-reference.json globalBudget missing required field '{field}'")
+
+    if not isinstance(blast_radius_example["namespaceBudgets"], list) or not blast_radius_example["namespaceBudgets"]:
+        fail("blast-radius-policy-reference.json namespaceBudgets must be a non-empty array")
+    has_production_budget = False
+    for budget in blast_radius_example["namespaceBudgets"]:
+        if not isinstance(budget, dict):
+            fail("blast-radius-policy-reference.json namespaceBudgets entries must be objects")
+        for field in (
+            "namespace",
+            "namespaceClass",
+            "autoMode",
+            "maxConcurrentActions",
+            "maxActionsPerHour",
+            "maxCpuMovePerHour",
+            "maxMemoryMovePerHour",
+            "allowedRiskLevels",
+            "productionMutationAllowed",
+            "blocker",
+        ):
+            if field not in budget:
+                fail(f"blast-radius-policy-reference.json namespace budget missing field '{field}'")
+        if budget["namespaceClass"] == "production":
+            has_production_budget = True
+            if budget["productionMutationAllowed"] is not False:
+                fail("blast-radius-policy-reference.json production namespace budget must keep productionMutationAllowed=false")
+            if budget["autoMode"] not in ("disabled", "observe_only", "recommendation_only"):
+                fail("blast-radius-policy-reference.json production namespace autoMode must stay non-autonomous")
+    if not has_production_budget:
+        fail("blast-radius-policy-reference.json must include production namespace budget")
+
+    required_freeze_ids = {
+        "warning_event_detected",
+        "rollback_failure",
+        "verification_failure",
+        "donor_pressure_increased",
+        "receiver_not_improved",
+        "policy_inconsistency",
+        "support_boundary_missing",
+        "unknown_risk_detected",
+        "kill_switch_triggered",
+        "audit_gap_detected",
+    }
+    required_stop_ids = {
+        "max_budget_exceeded",
+        "high_risk_action_detected",
+        "blocked_action_detected",
+        "expired_action_detected",
+        "unsupported_shell_detected",
+        "windows_lane_detected",
+        "raw_runtime_control_requested",
+        "production_scope_requested",
+    }
+    required_escalation_ids = {
+        "medium_risk_requires_operator_review",
+        "high_risk_blocks_auto",
+        "unknown_risk_blocks_auto",
+        "production_scope_blocks_auto",
+        "rollback_missing_blocks_auto",
+        "dry_run_missing_blocks_auto",
+    }
+    freeze_ids = {entry.get("conditionId") for entry in blast_radius_example["freezeConditions"] if isinstance(entry, dict)}
+    stop_ids = {entry.get("conditionId") for entry in blast_radius_example["stopConditions"] if isinstance(entry, dict)}
+    escalation_ids = {entry.get("ruleId") for entry in blast_radius_example["escalationRules"] if isinstance(entry, dict)}
+    missing_freeze = required_freeze_ids - freeze_ids
+    missing_stop = required_stop_ids - stop_ids
+    missing_escalation = required_escalation_ids - escalation_ids
+    if missing_freeze:
+        fail(f"blast-radius-policy-reference.json freezeConditions missing: {sorted(missing_freeze)}")
+    if missing_stop:
+        fail(f"blast-radius-policy-reference.json stopConditions missing: {sorted(missing_stop)}")
+    if missing_escalation:
+        fail(f"blast-radius-policy-reference.json escalationRules missing: {sorted(missing_escalation)}")
+
+    blast_claim_text = "\n".join(blast_radius_example["claimBoundaries"]).lower()
+    for phrase in (
+        "blast radius limits are enforced before any guarded auto action.",
+        "production autonomous apply is disabled.",
+        "enforcement is disabled.",
+        "no production mutation.",
+        "dry-run is required.",
+        "rollback proof is required.",
+        "verification is required.",
+        "audit is required.",
+        "operator kill switch is required.",
+        "high and unknown risk block auto.",
+        "technical preview boundary active.",
+    ):
+        if phrase not in blast_claim_text:
+            fail(f"blast-radius-policy-reference.json claimBoundaries missing phrase: {phrase}")
+
     rc_gate_example = example_by_name.get("technical-preview-release-candidate-gate-reference.json")
     if rc_gate_example is None:
         fail("examples/technical-preview-release-candidate-gate-reference.json is missing")

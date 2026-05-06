@@ -16,6 +16,7 @@ func TestContractIDsAreNotEmpty(t *testing.T) {
 		ActionSlateV1ID,
 		GuardedAutoSandboxV1ID,
 		AutoRollbackControllerV1ID,
+		BlastRadiusPolicyV1ID,
 	}
 	for _, id := range ids {
 		if id == "" {
