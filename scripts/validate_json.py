@@ -698,6 +698,139 @@ def main() -> int:
         if phrase not in claim_text:
             fail(f"guarded-auto-sandbox-reference.json claimBoundaries missing phrase: {phrase}")
 
+    auto_rollback_example = example_by_name.get("auto-rollback-controller-reference.json")
+    if auto_rollback_example is None:
+        fail("examples/auto-rollback-controller-reference.json is missing")
+    required_auto_rollback_fields = [
+        "autoRollbackControllerId",
+        "autoRollbackControllerVersion",
+        "releaseTrack",
+        "controllerMode",
+        "controllerState",
+        "allowedNamespace",
+        "productionRollbackAllowed",
+        "productionMutationAllowed",
+        "enforcementMode",
+        "autonomousProductionApplyAllowed",
+        "autonomousSandboxRollbackAllowed",
+        "operatorKillSwitchRequired",
+        "operatorKillSwitchState",
+        "actionSlateId",
+        "guardedAutoSandboxId",
+        "policyPackId",
+        "supportMatrixId",
+        "evidenceBundleId",
+        "liveResourceAuthorityId",
+        "rollbackRequired",
+        "verificationRequired",
+        "auditRequired",
+        "rollbackTriggerCount",
+        "readyRollbackPlanCount",
+        "blockedRollbackPlanCount",
+        "rollbackPlans",
+        "rollbackTriggers",
+        "safetyGates",
+        "blockers",
+        "limitations",
+        "claimBoundaries",
+        "auditTrail",
+    ]
+    for field in required_auto_rollback_fields:
+        if field not in auto_rollback_example:
+            fail(f"auto-rollback-controller-reference.json missing required field '{field}'")
+    if auto_rollback_example["autoRollbackControllerId"] != "hyperdensity_auto_rollback_controller_v1":
+        fail("auto-rollback-controller-reference.json autoRollbackControllerId must be hyperdensity_auto_rollback_controller_v1")
+    if auto_rollback_example["autoRollbackControllerVersion"] != "v1":
+        fail("auto-rollback-controller-reference.json autoRollbackControllerVersion must be v1")
+    if auto_rollback_example["releaseTrack"] != "technical_preview":
+        fail("auto-rollback-controller-reference.json releaseTrack must be technical_preview")
+    if auto_rollback_example["controllerMode"] != "guarded_sandbox_rollback_readiness":
+        fail("auto-rollback-controller-reference.json controllerMode must be guarded_sandbox_rollback_readiness")
+    if auto_rollback_example["allowedNamespace"] != "karl-hyperdensity-evidence":
+        fail("auto-rollback-controller-reference.json allowedNamespace must be karl-hyperdensity-evidence")
+    if auto_rollback_example["productionRollbackAllowed"] is not False:
+        fail("auto-rollback-controller-reference.json productionRollbackAllowed must be false")
+    if auto_rollback_example["productionMutationAllowed"] is not False:
+        fail("auto-rollback-controller-reference.json productionMutationAllowed must be false")
+    if auto_rollback_example["enforcementMode"] != "disabled":
+        fail("auto-rollback-controller-reference.json enforcementMode must be disabled")
+    if auto_rollback_example["autonomousProductionApplyAllowed"] is not False:
+        fail("auto-rollback-controller-reference.json autonomousProductionApplyAllowed must be false")
+    if auto_rollback_example["operatorKillSwitchRequired"] is not True:
+        fail("auto-rollback-controller-reference.json operatorKillSwitchRequired must be true")
+    if auto_rollback_example["rollbackRequired"] is not True:
+        fail("auto-rollback-controller-reference.json rollbackRequired must be true")
+    if auto_rollback_example["verificationRequired"] is not True:
+        fail("auto-rollback-controller-reference.json verificationRequired must be true")
+    if auto_rollback_example["auditRequired"] is not True:
+        fail("auto-rollback-controller-reference.json auditRequired must be true")
+    if not isinstance(auto_rollback_example["rollbackPlans"], list):
+        fail("auto-rollback-controller-reference.json rollbackPlans must be an array")
+    for plan in auto_rollback_example["rollbackPlans"]:
+        if not isinstance(plan, dict):
+            fail("auto-rollback-controller-reference.json rollbackPlans must contain objects")
+        if plan.get("productionRollbackAllowed") is not False:
+            fail("auto-rollback-controller-reference.json rollback plan productionRollbackAllowed must be false")
+        if plan.get("rollbackEligibility") == "eligible" and plan.get("namespace") != "karl-hyperdensity-evidence":
+            fail("auto-rollback-controller-reference.json eligible rollback plans must stay in evidence namespace")
+    required_trigger_ids = {
+        "verification_failed",
+        "runtime_not_converged",
+        "cgroup_not_converged",
+        "qga_libvirt_qmp_not_converged",
+        "warning_event_detected",
+        "restart_count_changed",
+        "receiver_not_improved",
+        "donor_became_pressured",
+        "slo_degraded",
+        "operator_kill_switch_triggered",
+        "action_expired_before_verify",
+    }
+    trigger_ids = {entry.get("triggerId") for entry in auto_rollback_example["rollbackTriggers"] if isinstance(entry, dict)}
+    missing_trigger_ids = required_trigger_ids - trigger_ids
+    if missing_trigger_ids:
+        fail(f"auto-rollback-controller-reference.json rollbackTriggers missing: {sorted(missing_trigger_ids)}")
+    gate_ids = {entry.get("gateId") for entry in auto_rollback_example["safetyGates"] if isinstance(entry, dict)}
+    for gate_id in (
+        "evidence_namespace_only",
+        "production_rollback_disabled",
+        "production_mutation_disabled",
+        "enforcement_disabled",
+        "autonomous_production_apply_disabled",
+        "operator_kill_switch_available",
+        "rollback_source_required",
+        "verification_required",
+        "audit_required",
+        "low_risk_required",
+        "support_boundary_required",
+        "policy_consistency_required",
+        "blast_radius_budget_required",
+        "raw_runtime_controls_not_exposed",
+        "raw_resource_creation_not_allowed",
+        "windows_out_of_scope",
+    ):
+        if gate_id not in gate_ids:
+            fail(f"auto-rollback-controller-reference.json safetyGates must include {gate_id}")
+    auto_claim_text = "\n".join(auto_rollback_example["claimBoundaries"]).lower()
+    for phrase in (
+        "automatic rollback is evidence-namespace only.",
+        "production rollback is disabled.",
+        "production autonomous apply is disabled.",
+        "enforcement is disabled.",
+        "rollback source is required.",
+        "verification is required.",
+        "operator kill switch is required.",
+        "no raw runtime controls are exposed.",
+        "no raw resource creation.",
+        "technical preview boundary active.",
+        "not ga.",
+        "not ha.",
+        "not windows.",
+        "not generic vm ram template mutation.",
+    ):
+        if phrase not in auto_claim_text:
+            fail(f"auto-rollback-controller-reference.json claimBoundaries missing phrase: {phrase}")
+
     rc_gate_example = example_by_name.get("technical-preview-release-candidate-gate-reference.json")
     if rc_gate_example is None:
         fail("examples/technical-preview-release-candidate-gate-reference.json is missing")

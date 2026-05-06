@@ -12,4 +12,5 @@ const (
 	LiveResourceAuthorityV1ID          = "hyperdensity_live_resource_authority_v1"
 	ActionSlateV1ID                    = "hyperdensity_action_slate_v1"
 	GuardedAutoSandboxV1ID             = "hyperdensity_guarded_auto_sandbox_v1"
+	AutoRollbackControllerV1ID         = "hyperdensity_auto_rollback_controller_v1"
 )

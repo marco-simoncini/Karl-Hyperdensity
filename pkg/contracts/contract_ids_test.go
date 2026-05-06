@@ -15,6 +15,7 @@ func TestContractIDsAreNotEmpty(t *testing.T) {
 		LiveResourceAuthorityV1ID,
 		ActionSlateV1ID,
 		GuardedAutoSandboxV1ID,
+		AutoRollbackControllerV1ID,
 	}
 	for _, id := range ids {
 		if id == "" {

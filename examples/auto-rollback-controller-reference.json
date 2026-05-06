@@ -1,0 +1,240 @@
+{
+  "autoRollbackControllerId": "hyperdensity_auto_rollback_controller_v1",
+  "autoRollbackControllerVersion": "v1",
+  "releaseTrack": "technical_preview",
+  "controllerMode": "guarded_sandbox_rollback_readiness",
+  "controllerState": "auto_rollback_readiness_only",
+  "allowedNamespace": "karl-hyperdensity-evidence",
+  "productionRollbackAllowed": false,
+  "productionMutationAllowed": false,
+  "enforcementMode": "disabled",
+  "autonomousProductionApplyAllowed": false,
+  "autonomousSandboxRollbackAllowed": false,
+  "operatorKillSwitchRequired": true,
+  "operatorKillSwitchState": "available",
+  "actionSlateId": "hyperdensity_action_slate_v1",
+  "guardedAutoSandboxId": "hyperdensity_guarded_auto_sandbox_v1",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "supportMatrixId": "hyperdensity_release_support_matrix_v1",
+  "evidenceBundleId": "hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+  "liveResourceAuthorityId": "hyperdensity_live_resource_authority_v1",
+  "rollbackRequired": true,
+  "verificationRequired": true,
+  "auditRequired": true,
+  "rollbackTriggerCount": 11,
+  "readyRollbackPlanCount": 0,
+  "blockedRollbackPlanCount": 2,
+  "rollbackPlans": [
+    {
+      "rollbackPlanId": "rollback-plan-resource-transfer-1-transfer-plan-1",
+      "sourceActionId": "resource_transfer_1_transfer_plan_1",
+      "actionSlateRef": "hyperdensity_action_slate_v1",
+      "guardedAutoCandidateRef": "resource_transfer_1_transfer_plan_1",
+      "namespace": "karl-hyperdensity-evidence",
+      "shellKind": "linux_container",
+      "resource": "cpu",
+      "amount": "500m",
+      "donor": "karl-hyperdensity-evidence/donor-a",
+      "receiver": "karl-hyperdensity-evidence/receiver-b",
+      "rollbackSourceState": "ready",
+      "rollbackEligibility": "eligible",
+      "rollbackExecutionState": "ready_for_guarded_rollback",
+      "verificationState": "required",
+      "auditState": "required",
+      "risk": "low",
+      "triggerPolicyRefs": [
+        "verification_failed",
+        "runtime_not_converged",
+        "slo_degraded",
+        "operator_kill_switch_triggered"
+      ],
+      "evidenceRefs": [
+        "hyperdensity_action_slate_v1",
+        "resource_transfer_1_transfer_plan_1"
+      ],
+      "productionRollbackAllowed": false
+    },
+    {
+      "rollbackPlanId": "rollback-plan-resource-transfer-blocked-high-risk",
+      "sourceActionId": "resource_transfer_blocked_high_risk",
+      "actionSlateRef": "hyperdensity_action_slate_v1",
+      "guardedAutoCandidateRef": "resource_transfer_blocked_high_risk",
+      "namespace": "karl-hyperdensity-evidence",
+      "shellKind": "linux_container",
+      "resource": "cpu",
+      "amount": "250m",
+      "donor": "karl-hyperdensity-evidence/donor-c",
+      "receiver": "karl-hyperdensity-evidence/receiver-d",
+      "rollbackSourceState": "ready",
+      "rollbackEligibility": "high_risk",
+      "rollbackExecutionState": "blocked",
+      "verificationState": "required",
+      "auditState": "required",
+      "risk": "high",
+      "triggerPolicyRefs": [
+        "verification_failed",
+        "runtime_not_converged",
+        "slo_degraded",
+        "operator_kill_switch_triggered"
+      ],
+      "evidenceRefs": [
+        "hyperdensity_action_slate_v1",
+        "resource_transfer_blocked_high_risk"
+      ],
+      "blocker": "risk_not_low",
+      "forbiddenReason": "low_risk_required",
+      "productionRollbackAllowed": false
+    }
+  ],
+  "rollbackTriggers": [
+    {
+      "triggerId": "verification_failed",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when verification fails.",
+      "requiredEvidence": ["verification_events", "post_action_metrics"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "runtime_not_converged",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when runtime convergence is not achieved.",
+      "requiredEvidence": ["runtime_state_snapshot"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "cgroup_not_converged",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when cgroup state does not converge.",
+      "requiredEvidence": ["cgroup_snapshot"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "qga_libvirt_qmp_not_converged",
+      "state": "not_applicable",
+      "scope": "vm_guarded_sandbox",
+      "meaning": "Rollback when VM runtime overlay does not converge.",
+      "requiredEvidence": ["qga_or_qmp_evidence"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "warning_event_detected",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when warning events cross rollback policy threshold.",
+      "requiredEvidence": ["warning_events"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "restart_count_changed",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when restart count changes unexpectedly.",
+      "requiredEvidence": ["restart_counter"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "receiver_not_improved",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when receiver fails to improve after guarded action.",
+      "requiredEvidence": ["receiver_metrics"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "donor_became_pressured",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when donor becomes pressured after action.",
+      "requiredEvidence": ["donor_metrics"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "slo_degraded",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when SLO degradation is detected.",
+      "requiredEvidence": ["slo_signal"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "operator_kill_switch_triggered",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when operator kill switch is triggered.",
+      "requiredEvidence": ["kill_switch_audit"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    },
+    {
+      "triggerId": "action_expired_before_verify",
+      "state": "armed",
+      "scope": "guarded_sandbox",
+      "meaning": "Rollback when action expires before verification completes.",
+      "requiredEvidence": ["action_expiry_audit"],
+      "rollbackAction": "prepare_guarded_sandbox_rollback"
+    }
+  ],
+  "safetyGates": [
+    { "gateId": "evidence_namespace_only", "state": "passed", "meaning": "Automatic rollback is evidence-namespace only." },
+    { "gateId": "production_rollback_disabled", "state": "passed", "meaning": "Production rollback is disabled." },
+    { "gateId": "production_mutation_disabled", "state": "passed", "meaning": "No production mutation." },
+    { "gateId": "enforcement_disabled", "state": "passed", "meaning": "Enforcement is disabled." },
+    { "gateId": "autonomous_production_apply_disabled", "state": "passed", "meaning": "Production autonomous apply is disabled." },
+    { "gateId": "operator_kill_switch_available", "state": "passed", "meaning": "Operator kill switch is required." },
+    { "gateId": "rollback_source_required", "state": "warning", "meaning": "Rollback source is required." },
+    { "gateId": "verification_required", "state": "passed", "meaning": "Verification is required." },
+    { "gateId": "audit_required", "state": "passed", "meaning": "Audit is required." },
+    { "gateId": "low_risk_required", "state": "warning", "meaning": "Low risk is required." },
+    { "gateId": "support_boundary_required", "state": "passed", "meaning": "Support boundary is required." },
+    { "gateId": "policy_consistency_required", "state": "passed", "meaning": "Policy consistency is required." },
+    { "gateId": "blast_radius_budget_required", "state": "passed", "meaning": "Blast radius budget is required." },
+    { "gateId": "raw_runtime_controls_not_exposed", "state": "passed", "meaning": "No raw runtime controls are exposed." },
+    { "gateId": "raw_resource_creation_not_allowed", "state": "passed", "meaning": "No raw resource creation." },
+    { "gateId": "windows_out_of_scope", "state": "passed", "meaning": "Windows out-of-scope." }
+  ],
+  "blockers": [
+    {
+      "blockerId": "no_ready_rollback_plan",
+      "state": "warning",
+      "description": "No rollback plan currently satisfies all guarded gates.",
+      "remediation": "Collect rollback source + low-risk + verification-ready candidates in evidence namespace."
+    }
+  ],
+  "limitations": [
+    "Projection/readiness-first rollback controller.",
+    "Evidence namespace only.",
+    "No production rollback.",
+    "No production autonomous apply.",
+    "No enforcement.",
+    "No production mutation.",
+    "No raw runtime controls.",
+    "No raw resource creation.",
+    "Technical Preview only."
+  ],
+  "claimBoundaries": [
+    "Automatic rollback is evidence-namespace only.",
+    "Production rollback is disabled.",
+    "Production autonomous apply is disabled.",
+    "Enforcement is disabled.",
+    "Rollback source is required.",
+    "Verification is required.",
+    "Operator kill switch is required.",
+    "No raw runtime controls are exposed.",
+    "No raw resource creation.",
+    "Technical Preview boundary active.",
+    "Not GA.",
+    "Not HA.",
+    "Not Windows.",
+    "Not generic VM RAM template mutation."
+  ],
+  "auditTrail": [
+    {
+      "auditEntryId": "auto-rollback-controller-bootstrap",
+      "at": "2026-05-06T15:35:00Z",
+      "state": "readiness_snapshot",
+      "detail": "Auto rollback controller readiness snapshot generated."
+    }
+  ]
+}
