@@ -1,0 +1,138 @@
+{
+  "actionSlateId": "hyperdensity_action_slate_v1",
+  "actionSlateVersion": "v1",
+  "actionSlateState": "action_slate_operational",
+  "actionSlateMode": "prevalidated_recommendation_only",
+  "releaseTrack": "technical_preview",
+  "generatedAt": "2026-05-01T10:00:00Z",
+  "validForSeconds": 45,
+  "expiresAt": "2026-05-01T10:00:45Z",
+  "operatorControlled": true,
+  "autonomousApplyAllowed": false,
+  "enforcementMode": "disabled",
+  "productionMutationAllowed": false,
+  "evidenceScope": "evidence_namespace_only",
+  "policyPackId": "hyperdensity_policy_pack_v1",
+  "supportMatrixId": "hyperdensity_release_support_matrix_v1",
+  "liveResourceAuthorityId": "hyperdensity_live_resource_authority_v1",
+  "evidenceBundleId": "hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+  "actionCount": 2,
+  "readyActionCount": 1,
+  "blockedActionCount": 1,
+  "expiringActionCount": 0,
+  "actions": [
+    {
+      "actionId": "resource_transfer_1_transfer_plan_1",
+      "actionKind": "resource_transfer",
+      "actionState": "ready",
+      "resource": "cpu",
+      "shellKind": "linux_container",
+      "donor": "default/deploy/donor-a",
+      "receiver": "default/deploy/receiver-b",
+      "amount": "500m",
+      "recommendationMode": "recommendation_only",
+      "decisionLatencyTarget": "sub-second decisioning target (projection-only, not measured)",
+      "dryRunState": "required",
+      "rollbackState": "ready",
+      "risk": "low",
+      "supportBoundary": "operator_controlled_technical_preview",
+      "evidenceRefs": [
+        "hyperdensity_release_support_matrix_v1",
+        "hyperdensity_evidence_bundle_demo_scenario_pack_v1",
+        "hyperdensity_live_resource_authority_v1"
+      ],
+      "limitation": "Dry-run is not mutation. Preview is not apply. Simulation is not enforcement.",
+      "validForSeconds": 45,
+      "expiresAt": "2026-05-01T10:00:45Z",
+      "operatorAction": "run_dry_run",
+      "forbiddenActions": [
+        "Apply Now",
+        "Enable Autonomous",
+        "Enable Enforcement",
+        "Raw Runtime Command"
+      ],
+      "autonomousApplyAllowed": false,
+      "productionMutationAllowed": false
+    },
+    {
+      "actionId": "evidence_refresh_bundle",
+      "actionKind": "evidence_refresh",
+      "actionState": "blocked",
+      "resource": "mixed",
+      "shellKind": "linux_container",
+      "donor": "",
+      "receiver": "",
+      "amount": "not-applicable",
+      "recommendationMode": "recommendation_only",
+      "decisionLatencyTarget": "predictive prevalidation before pressure becomes outage target (projection-only, not measured)",
+      "dryRunState": "historical",
+      "rollbackState": "historical",
+      "risk": "unknown",
+      "supportBoundary": "operator_controlled_technical_preview",
+      "evidenceRefs": [
+        "hyperdensity_evidence_bundle_demo_scenario_pack_v1"
+      ],
+      "limitation": "Evidence refresh is recommendation/projection only.",
+      "validForSeconds": 45,
+      "expiresAt": "2026-05-01T10:00:45Z",
+      "operatorAction": "open_evidence",
+      "forbiddenActions": [
+        "Apply Now",
+        "Enable Autonomous",
+        "Enable Enforcement",
+        "Raw Runtime Command"
+      ],
+      "autonomousApplyAllowed": false,
+      "productionMutationAllowed": false
+    }
+  ],
+  "indexes": {
+    "donorIndexState": "ready",
+    "receiverIndexState": "ready",
+    "riskIndexState": "ready",
+    "priorityIndexState": "ready",
+    "blockedRemediableIndexState": "degraded",
+    "topDonorCount": 2,
+    "topReceiverCount": 2,
+    "pairingStrategy": "top_k_pairing",
+    "fullFleetScanRequired": false,
+    "batchingMode": "rate_limited_operator_controlled"
+  },
+  "safetyGates": [
+    { "gateId": "autonomous_apply_disabled", "state": "passed", "meaning": "Autonomous apply is disabled." },
+    { "gateId": "enforcement_disabled", "state": "passed", "meaning": "Enforcement is disabled." },
+    { "gateId": "production_mutation_disabled", "state": "passed", "meaning": "No production mutation." },
+    { "gateId": "raw_runtime_controls_not_exposed", "state": "passed", "meaning": "No raw runtime controls are exposed." },
+    { "gateId": "raw_resource_creation_not_allowed", "state": "passed", "meaning": "No raw resource creation." },
+    { "gateId": "dry_run_required_or_ready", "state": "passed", "meaning": "Dry-run is not mutation." },
+    { "gateId": "rollback_required_or_ready", "state": "passed", "meaning": "Preview is not apply." },
+    { "gateId": "technical_preview_boundary_active", "state": "passed", "meaning": "Technical Preview boundary active." },
+    { "gateId": "support_claims_evidence_backed_only", "state": "passed", "meaning": "Support claims are evidence-backed only." },
+    { "gateId": "windows_out_of_scope", "state": "warning", "meaning": "Simulation is not enforcement." }
+  ],
+  "blockers": [
+    {
+      "blockerId": "resource_exchange_blocker",
+      "state": "blocked",
+      "description": "safe_liquidity_blocked_missing_fresh_telemetry",
+      "remediation": "collect_telemetry_for_compliant_shells"
+    }
+  ],
+  "limitations": [
+    "Recommendation/projection only.",
+    "No autonomous apply.",
+    "No enforcement.",
+    "No production mutation.",
+    "No raw runtime controls.",
+    "No raw resource creation.",
+    "Performance targets are targets unless measured.",
+    "Predictive Resource Futures are out-of-scope for this milestone.",
+    "Windows remains out-of-scope."
+  ],
+  "claimBoundaries": [
+    "Technical Preview boundary active.",
+    "Support claims are evidence-backed only.",
+    "No GA claim.",
+    "Single-node proof is not HA."
+  ]
+}

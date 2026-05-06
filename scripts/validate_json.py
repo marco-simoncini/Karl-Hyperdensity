@@ -486,6 +486,97 @@ def main() -> int:
     if "Windows is supported." not in rejected_phrases:
         fail("live-resource-authority-reference.json supportBoundaries must reject Windows support wording")
 
+    action_slate_example = example_by_name.get("action-slate-reference.json")
+    if action_slate_example is None:
+        fail("examples/action-slate-reference.json is missing")
+    required_action_slate_fields = [
+        "actionSlateId",
+        "actionSlateVersion",
+        "actionSlateState",
+        "actionSlateMode",
+        "releaseTrack",
+        "generatedAt",
+        "validForSeconds",
+        "expiresAt",
+        "operatorControlled",
+        "autonomousApplyAllowed",
+        "enforcementMode",
+        "productionMutationAllowed",
+        "evidenceScope",
+        "policyPackId",
+        "supportMatrixId",
+        "liveResourceAuthorityId",
+        "evidenceBundleId",
+        "actionCount",
+        "readyActionCount",
+        "blockedActionCount",
+        "expiringActionCount",
+        "actions",
+        "indexes",
+        "safetyGates",
+        "blockers",
+        "limitations",
+        "claimBoundaries",
+    ]
+    for field in required_action_slate_fields:
+        if field not in action_slate_example:
+            fail(f"action-slate-reference.json missing required field '{field}'")
+    if action_slate_example["actionSlateId"] != "hyperdensity_action_slate_v1":
+        fail("action-slate-reference.json actionSlateId must be hyperdensity_action_slate_v1")
+    if action_slate_example["actionSlateVersion"] != "v1":
+        fail("action-slate-reference.json actionSlateVersion must be v1")
+    if action_slate_example["actionSlateMode"] != "prevalidated_recommendation_only":
+        fail("action-slate-reference.json actionSlateMode must be prevalidated_recommendation_only")
+    if action_slate_example["releaseTrack"] != "technical_preview":
+        fail("action-slate-reference.json releaseTrack must be technical_preview")
+    if action_slate_example["operatorControlled"] is not True:
+        fail("action-slate-reference.json operatorControlled must be true")
+    if action_slate_example["autonomousApplyAllowed"] is not False:
+        fail("action-slate-reference.json autonomousApplyAllowed must be false")
+    if action_slate_example["enforcementMode"] != "disabled":
+        fail("action-slate-reference.json enforcementMode must be disabled")
+    if action_slate_example["productionMutationAllowed"] is not False:
+        fail("action-slate-reference.json productionMutationAllowed must be false")
+    if action_slate_example["evidenceScope"] != "evidence_namespace_only":
+        fail("action-slate-reference.json evidenceScope must be evidence_namespace_only")
+    if not isinstance(action_slate_example["actions"], list) or not action_slate_example["actions"]:
+        fail("action-slate-reference.json actions must be non-empty")
+    if not isinstance(action_slate_example["safetyGates"], list) or len(action_slate_example["safetyGates"]) < 10:
+        fail("action-slate-reference.json safetyGates must include all required safety gates")
+    gate_ids = {entry.get("gateId") for entry in action_slate_example["safetyGates"] if isinstance(entry, dict)}
+    for gate_id in (
+        "autonomous_apply_disabled",
+        "enforcement_disabled",
+        "production_mutation_disabled",
+        "raw_runtime_controls_not_exposed",
+        "raw_resource_creation_not_allowed",
+        "dry_run_required_or_ready",
+        "rollback_required_or_ready",
+        "technical_preview_boundary_active",
+        "support_claims_evidence_backed_only",
+        "windows_out_of_scope",
+    ):
+        if gate_id not in gate_ids:
+            fail(f"action-slate-reference.json safetyGates must include {gate_id}")
+    for action in action_slate_example["actions"]:
+        if not isinstance(action, dict):
+            fail("action-slate-reference.json actions must contain objects")
+        if action.get("recommendationMode") != "recommendation_only":
+            fail("action-slate-reference.json actions must be recommendation_only")
+        if action.get("autonomousApplyAllowed") is not False:
+            fail("action-slate-reference.json action autonomousApplyAllowed must be false")
+        if action.get("productionMutationAllowed") is not False:
+            fail("action-slate-reference.json action productionMutationAllowed must be false")
+    indexes = action_slate_example["indexes"]
+    if not isinstance(indexes, dict):
+        fail("action-slate-reference.json indexes must be an object")
+    if indexes.get("pairingStrategy") != "top_k_pairing":
+        fail("action-slate-reference.json indexes pairingStrategy must be top_k_pairing")
+    if indexes.get("fullFleetScanRequired") is not False:
+        fail("action-slate-reference.json indexes fullFleetScanRequired must be false")
+    if indexes.get("batchingMode") != "rate_limited_operator_controlled":
+        fail("action-slate-reference.json indexes batchingMode must be rate_limited_operator_controlled")
+
     rc_gate_example = example_by_name.get("technical-preview-release-candidate-gate-reference.json")
     if rc_gate_example is None:
         fail("examples/technical-preview-release-candidate-gate-reference.json is missing")

@@ -10,4 +10,5 @@ const (
 	ReleaseSupportMatrixV1ID          = "hyperdensity_release_support_matrix_v1"
 	EvidenceBundleDemoScenarioPackV1ID = "hyperdensity_evidence_bundle_demo_scenario_pack_v1"
 	LiveResourceAuthorityV1ID         = "hyperdensity_live_resource_authority_v1"
+	ActionSlateV1ID                   = "hyperdensity_action_slate_v1"
 )

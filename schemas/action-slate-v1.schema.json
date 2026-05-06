@@ -1,0 +1,155 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/action-slate-v1.schema.json",
+  "title": "KARL Hyperdensity Action Slate v1",
+  "type": "object",
+  "required": [
+    "actionSlateId",
+    "actionSlateVersion",
+    "actionSlateState",
+    "actionSlateMode",
+    "releaseTrack",
+    "generatedAt",
+    "validForSeconds",
+    "expiresAt",
+    "operatorControlled",
+    "autonomousApplyAllowed",
+    "enforcementMode",
+    "productionMutationAllowed",
+    "evidenceScope",
+    "policyPackId",
+    "supportMatrixId",
+    "liveResourceAuthorityId",
+    "evidenceBundleId",
+    "actionCount",
+    "readyActionCount",
+    "blockedActionCount",
+    "expiringActionCount",
+    "actions",
+    "indexes",
+    "safetyGates",
+    "blockers",
+    "limitations",
+    "claimBoundaries"
+  ],
+  "properties": {
+    "actionSlateId": { "const": "hyperdensity_action_slate_v1" },
+    "actionSlateVersion": { "const": "v1" },
+    "actionSlateState": {
+      "enum": [
+        "action_slate_operational",
+        "action_slate_degraded",
+        "action_slate_unavailable"
+      ]
+    },
+    "actionSlateMode": { "const": "prevalidated_recommendation_only" },
+    "releaseTrack": { "const": "technical_preview" },
+    "generatedAt": { "type": "string" },
+    "validForSeconds": { "type": "integer", "minimum": 1 },
+    "expiresAt": { "type": "string" },
+    "operatorControlled": { "const": true },
+    "autonomousApplyAllowed": { "const": false },
+    "enforcementMode": { "const": "disabled" },
+    "productionMutationAllowed": { "const": false },
+    "evidenceScope": { "const": "evidence_namespace_only" },
+    "policyPackId": { "type": "string", "minLength": 1 },
+    "supportMatrixId": { "type": "string", "minLength": 1 },
+    "liveResourceAuthorityId": { "type": "string", "minLength": 1 },
+    "evidenceBundleId": { "type": "string", "minLength": 1 },
+    "actionCount": { "type": "integer", "minimum": 0 },
+    "readyActionCount": { "type": "integer", "minimum": 0 },
+    "blockedActionCount": { "type": "integer", "minimum": 0 },
+    "expiringActionCount": { "type": "integer", "minimum": 0 },
+    "actions": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "actionId",
+          "actionKind",
+          "actionState",
+          "resource",
+          "shellKind",
+          "donor",
+          "receiver",
+          "amount",
+          "recommendationMode",
+          "decisionLatencyTarget",
+          "dryRunState",
+          "rollbackState",
+          "risk",
+          "supportBoundary",
+          "evidenceRefs",
+          "limitation",
+          "validForSeconds",
+          "expiresAt",
+          "operatorAction",
+          "forbiddenActions",
+          "autonomousApplyAllowed",
+          "productionMutationAllowed"
+        ],
+        "properties": {
+          "actionKind": {
+            "enum": [
+              "resource_transfer",
+              "donor_reclaim",
+              "receiver_burst_prepare",
+              "rollback_prepare",
+              "evidence_refresh"
+            ]
+          },
+          "actionState": {
+            "enum": [
+              "ready",
+              "warming",
+              "blocked",
+              "expired",
+              "historical",
+              "unavailable"
+            ]
+          },
+          "resource": { "enum": ["cpu", "memory", "mixed"] },
+          "shellKind": { "enum": ["linux_container", "linux_vm"] },
+          "recommendationMode": { "const": "recommendation_only" },
+          "dryRunState": { "enum": ["ready", "required", "blocked", "historical", "unavailable"] },
+          "rollbackState": { "enum": ["ready", "required", "blocked", "historical", "unavailable"] },
+          "risk": { "enum": ["low", "medium", "high", "unknown"] },
+          "operatorAction": {
+            "enum": ["review", "run_dry_run", "open_evidence", "view_rollback", "resolve_blocker"]
+          },
+          "autonomousApplyAllowed": { "const": false },
+          "productionMutationAllowed": { "const": false },
+          "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+          "forbiddenActions": { "type": "array", "items": { "type": "string" } }
+        },
+        "additionalProperties": true
+      }
+    },
+    "indexes": {
+      "type": "object",
+      "required": [
+        "donorIndexState",
+        "receiverIndexState",
+        "riskIndexState",
+        "priorityIndexState",
+        "blockedRemediableIndexState",
+        "topDonorCount",
+        "topReceiverCount",
+        "pairingStrategy",
+        "fullFleetScanRequired",
+        "batchingMode"
+      ],
+      "properties": {
+        "pairingStrategy": { "const": "top_k_pairing" },
+        "fullFleetScanRequired": { "const": false },
+        "batchingMode": { "const": "rate_limited_operator_controlled" }
+      },
+      "additionalProperties": true
+    },
+    "safetyGates": { "type": "array", "minItems": 10, "items": { "type": "object" } },
+    "blockers": { "type": "array", "items": { "type": "object" } },
+    "limitations": { "type": "array", "items": { "type": "string" } },
+    "claimBoundaries": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

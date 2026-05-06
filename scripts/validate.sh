@@ -18,6 +18,7 @@ required_files=(
   "docs/contracts/release-support-matrix-v1.md"
   "docs/contracts/evidence-bundle-demo-scenario-pack-v1.md"
   "docs/contracts/live-resource-authority-v1.md"
+  "docs/contracts/action-slate-v1.md"
   "docs/contracts/policy-pack-v1.md"
   "docs/contracts/policy-pack-consistency-checker-v1.md"
   "docs/contracts/admission-guard-enforce-simulation-v1.md"
