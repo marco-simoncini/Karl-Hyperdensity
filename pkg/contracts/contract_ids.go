@@ -14,4 +14,8 @@ const (
 	GuardedAutoSandboxV1ID             = "hyperdensity_guarded_auto_sandbox_v1"
 	AutoRollbackControllerV1ID         = "hyperdensity_auto_rollback_controller_v1"
 	BlastRadiusPolicyV1ID              = "hyperdensity_blast_radius_policy_v1"
+	WindowsFluidShellV1ID              = "hyperdensity_windows_fluid_shell_v1"
+	FluidResourceLeaseV1ID             = "hyperdensity_fluid_resource_lease_v1"
+	WindowsFluidEvidenceV1ID           = "hyperdensity_windows_fluid_evidence_v1"
+	WindowsFluidBlockerV1ID            = "hyperdensity_windows_fluid_blocker_v1"
 )

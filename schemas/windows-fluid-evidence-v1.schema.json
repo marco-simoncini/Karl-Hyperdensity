@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karl.dev/schemas/windows-fluid-evidence-v1.schema.json",
+  "title": "WindowsFluidEvidenceV1",
+  "type": "object",
+  "required": [
+    "beforeCpu",
+    "afterCpu",
+    "beforeMemory",
+    "afterMemory",
+    "runtimeTarget",
+    "runtimeActual",
+    "qmpEvidence",
+    "guestEvidence",
+    "qemuPidBefore",
+    "qemuPidAfter",
+    "virtLauncherPodBefore",
+    "virtLauncherPodAfter",
+    "nodeBefore",
+    "nodeAfter",
+    "lastBootBefore",
+    "lastBootAfter",
+    "machineGuidBefore",
+    "machineGuidAfter",
+    "vmiUidBefore",
+    "vmiUidAfter",
+    "noReboot",
+    "noRecreate",
+    "noMigration",
+    "rollbackResult",
+    "returnToFloorResult",
+    "blockerList",
+    "timestamps"
+  ],
+  "properties": {
+    "beforeCpu": { "type": "integer", "minimum": 1 },
+    "afterCpu": { "type": "integer", "minimum": 1 },
+    "beforeMemory": { "type": "integer", "minimum": 1 },
+    "afterMemory": { "type": "integer", "minimum": 1 },
+    "runtimeTarget": { "$ref": "#/$defs/resource" },
+    "runtimeActual": { "$ref": "#/$defs/resource" },
+    "qmpEvidence": { "type": "object" },
+    "guestEvidence": { "type": "object" },
+    "qemuPidBefore": { "type": "string", "minLength": 1 },
+    "qemuPidAfter": { "type": "string", "minLength": 1 },
+    "virtLauncherPodBefore": { "type": "string", "minLength": 1 },
+    "virtLauncherPodAfter": { "type": "string", "minLength": 1 },
+    "nodeBefore": { "type": "string", "minLength": 1 },
+    "nodeAfter": { "type": "string", "minLength": 1 },
+    "lastBootBefore": { "type": "string", "minLength": 1 },
+    "lastBootAfter": { "type": "string", "minLength": 1 },
+    "machineGuidBefore": { "type": "string", "minLength": 1 },
+    "machineGuidAfter": { "type": "string", "minLength": 1 },
+    "vmiUidBefore": { "type": "string", "minLength": 1 },
+    "vmiUidAfter": { "type": "string", "minLength": 1 },
+    "noReboot": { "type": "boolean" },
+    "noRecreate": { "type": "boolean" },
+    "noMigration": { "type": "boolean" },
+    "rollbackResult": { "type": "object" },
+    "returnToFloorResult": { "type": "object" },
+    "blockerList": {
+      "type": "array",
+      "items": { "type": "string" }
+    },
+    "timestamps": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string",
+        "format": "date-time"
+      }
+    }
+  },
+  "$defs": {
+    "resource": {
+      "type": "object",
+      "required": [
+        "cpu",
+        "memory"
+      ],
+      "properties": {
+        "cpu": { "type": "integer", "minimum": 1 },
+        "memory": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

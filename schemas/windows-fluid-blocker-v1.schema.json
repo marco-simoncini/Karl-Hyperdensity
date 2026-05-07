@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karl.dev/schemas/windows-fluid-blocker-v1.schema.json",
+  "title": "WindowsFluidBlockerV1",
+  "type": "object",
+  "required": [
+    "items"
+  ],
+  "properties": {
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "id",
+          "severity",
+          "category",
+          "message",
+          "remediable",
+          "resultingPhase"
+        ],
+        "properties": {
+          "id": {
+            "type": "string",
+            "enum": [
+              "qmp_socket_unavailable",
+              "guest_agent_unavailable",
+              "karl_agent_fluid_module_missing",
+              "pending_reboot_detected",
+              "qemu_pid_changed",
+              "last_boot_changed",
+              "machine_guid_changed",
+              "live_migration_required",
+              "vmi_recreate_required",
+              "virt_launcher_pod_changed",
+              "node_changed",
+              "memory_driver_unverified",
+              "memory_return_not_safe",
+              "cpu_topology_not_confirmed",
+              "guest_memory_not_confirmed",
+              "rollback_not_ready",
+              "return_to_floor_not_ready",
+              "qmp_ack_missing",
+              "guest_ack_missing",
+              "hotplug_error_detected",
+              "critical_windows_event_detected",
+              "dashboard_443_touch_risk",
+              "candidate_8888_unavailable",
+              "windows_agent_repo_not_present_in_target_repos"
+            ]
+          },
+          "severity": {
+            "type": "string",
+            "enum": ["critical", "high", "medium"]
+          },
+          "category": {
+            "type": "string"
+          },
+          "message": {
+            "type": "string",
+            "minLength": 1
+          },
+          "remediable": {
+            "type": "boolean"
+          },
+          "resultingPhase": {
+            "type": "string",
+            "enum": ["BLOCKED", "QUARANTINED"]
+          },
+          "evidenceRequirement": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  }
+}

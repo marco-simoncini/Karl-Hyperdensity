@@ -1,0 +1,31 @@
+spec:
+  shellRef: "windows-fluid-shell/win11-shell-01"
+  mode: "in-place"
+  grant:
+    cpu: 2
+    memory: 4096
+  ttlSeconds: 300
+  rollbackTarget:
+    cpu: 2
+    memory: 8192
+guarantees:
+  noLiveMigration: true
+  noReboot: true
+  noRecreate: true
+  sameNode: true
+  sameVirtLauncherPod: true
+  sameQemuProcess: true
+  sameMachineGuid: true
+  sameLastBoot: true
+  guestAckRequired: true
+  qmpAckRequired: true
+status:
+  phase: "LEASE_PREPARED"
+  qmpAck: true
+  guestAck: true
+  lastBootUnchanged: true
+  qemuPidUnchanged: true
+  rollbackReady: true
+  returnToFloorReady: true
+  blockers: []
+  evidenceRef: "windows-fluid-evidence/win11-shell-01"

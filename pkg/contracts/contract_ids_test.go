@@ -17,6 +17,10 @@ func TestContractIDsAreNotEmpty(t *testing.T) {
 		GuardedAutoSandboxV1ID,
 		AutoRollbackControllerV1ID,
 		BlastRadiusPolicyV1ID,
+		WindowsFluidShellV1ID,
+		FluidResourceLeaseV1ID,
+		WindowsFluidEvidenceV1ID,
+		WindowsFluidBlockerV1ID,
 	}
 	for _, id := range ids {
 		if id == "" {

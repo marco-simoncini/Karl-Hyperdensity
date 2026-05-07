@@ -1,0 +1,193 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karl.dev/schemas/windows-fluid-shell-v1.schema.json",
+  "title": "WindowsFluidShellV1",
+  "type": "object",
+  "required": [
+    "spec",
+    "status"
+  ],
+  "properties": {
+    "spec": {
+      "type": "object",
+      "required": [
+        "vmRef",
+        "runtimeMode",
+        "migrationRequired",
+        "rebootAllowed",
+        "recreateAllowed",
+        "floor",
+        "envelope",
+        "runtimeTarget",
+        "runtimeActual",
+        "fluidDevices",
+        "guest"
+      ],
+      "properties": {
+        "vmRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "runtimeMode": {
+          "type": "string",
+          "const": "in-place-qmp"
+        },
+        "migrationRequired": {
+          "type": "boolean",
+          "const": false
+        },
+        "rebootAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "recreateAllowed": {
+          "type": "boolean",
+          "const": false
+        },
+        "floor": {
+          "$ref": "#/$defs/resource"
+        },
+        "envelope": {
+          "type": "object",
+          "required": [
+            "maxCpu",
+            "maxMemory"
+          ],
+          "properties": {
+            "maxCpu": {
+              "type": "integer",
+              "minimum": 1
+            },
+            "maxMemory": {
+              "type": "integer",
+              "minimum": 1
+            }
+          }
+        },
+        "runtimeTarget": {
+          "$ref": "#/$defs/resource"
+        },
+        "runtimeActual": {
+          "$ref": "#/$defs/resource"
+        },
+        "fluidDevices": {
+          "type": "object",
+          "required": [
+            "cpu",
+            "memory"
+          ],
+          "properties": {
+            "cpu": {
+              "type": "object",
+              "required": [
+                "mode",
+                "maxCpu"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "const": "qmp-hotplug"
+                },
+                "maxCpu": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            },
+            "memory": {
+              "type": "object",
+              "required": [
+                "mode",
+                "blockSize"
+              ],
+              "properties": {
+                "mode": {
+                  "type": "string",
+                  "const": "karl-fluid-memory-envelope"
+                },
+                "blockSize": {
+                  "type": "integer",
+                  "minimum": 1
+                }
+              }
+            }
+          }
+        },
+        "guest": {
+          "type": "object",
+          "required": [
+            "agentModule",
+            "requireAck",
+            "requireNoPendingReboot"
+          ],
+          "properties": {
+            "agentModule": {
+              "type": "string",
+              "const": "fluidShell"
+            },
+            "requireAck": {
+              "type": "boolean",
+              "const": true
+            },
+            "requireNoPendingReboot": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "status": {
+      "type": "object",
+      "required": [
+        "phase",
+        "conditions",
+        "blockers",
+        "evidenceRef",
+        "lastTransitionTime"
+      ],
+      "properties": {
+        "phase": {
+          "type": "string"
+        },
+        "conditions": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "blockers": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "evidenceRef": {
+          "type": "string"
+        },
+        "lastTransitionTime": {
+          "type": "string",
+          "format": "date-time"
+        }
+      }
+    }
+  },
+  "$defs": {
+    "resource": {
+      "type": "object",
+      "required": [
+        "cpu",
+        "memory"
+      ],
+      "properties": {
+        "cpu": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "memory": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    }
+  }
+}

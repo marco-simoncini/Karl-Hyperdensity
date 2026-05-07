@@ -1,0 +1,11 @@
+{
+  "status": "BLOCKED",
+  "verdict": "fluidvirt_windows_contract_agent_validation_blocked",
+  "reason": "inventory_dotnet_test_toolchain_missing",
+  "details": {
+    "missing_tool": "dotnet",
+    "hyperdensity_go_test": "passed",
+    "hyperdensity_json_validation": "passed",
+    "inventory_tests_implemented": true
+  }
+}
