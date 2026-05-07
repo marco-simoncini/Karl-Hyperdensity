@@ -20,26 +20,32 @@ const (
 	DryRunIncomplete  DryRunState = "incomplete"
 )
 
+type WindowsFluidActionStepType string
+
 type WindowsFluidActionSlate struct {
-	ActionID           string      `json:"actionId"`
-	ShellRef           string      `json:"shellRef"`
-	ActionType         ActionType  `json:"actionType"`
-	DryRunState        DryRunState `json:"dryRunState"`
-	RuntimeMode        string      `json:"runtimeMode"`
-	MutationAllowed    bool        `json:"mutationAllowed"`
-	ApplyAllowed       bool        `json:"applyAllowed"`
-	RollbackReady      bool        `json:"rollbackReady"`
-	ReturnToFloorReady bool        `json:"returnToFloorReady"`
-	QMPReady           bool        `json:"qmpReady"`
-	GuestAckReady      bool        `json:"guestAckReady"`
-	NoRebootProof      bool        `json:"noRebootProof"`
-	SameQemuProof      bool        `json:"sameQemuProof"`
-	SameNodeProof      bool        `json:"sameNodeProof"`
-	SamePodProof       bool        `json:"samePodProof"`
-	Blockers           []string    `json:"blockers"`
-	EvidenceRefs       []string    `json:"evidenceRefs"`
-	ValidForSeconds    int64       `json:"validForSeconds"`
-	CreatedAt          string      `json:"createdAt"`
+	ActionID                string               `json:"actionId"`
+	ShellRef                string               `json:"shellRef"`
+	ActionType              ActionType           `json:"actionType"`
+	DryRunState             DryRunState          `json:"dryRunState"`
+	RuntimeMode             string               `json:"runtimeMode"`
+	MutationAllowed         bool                 `json:"mutationAllowed"`
+	ApplyAllowed            bool                 `json:"applyAllowed"`
+	RollbackReady           bool                 `json:"rollbackReady"`
+	ReturnToFloorReady      bool                 `json:"returnToFloorReady"`
+	QMPReady                bool                 `json:"qmpReady"`
+	GuestAckReady           bool                 `json:"guestAckReady"`
+	NoRebootProof           bool                 `json:"noRebootProof"`
+	SameQemuProof           bool                 `json:"sameQemuProof"`
+	SameNodeProof           bool                 `json:"sameNodeProof"`
+	SamePodProof            bool                 `json:"samePodProof"`
+	Blockers                []string             `json:"blockers"`
+	EvidenceRefs            []string             `json:"evidenceRefs"`
+	ValidForSeconds         int64                `json:"validForSeconds"`
+	CreatedAt               string               `json:"createdAt"`
+	TargetRef               string               `json:"targetRef,omitempty"`
+	LeaseRef                string               `json:"leaseRef,omitempty"`
+	Actions                 []WindowsFluidAction `json:"actions,omitempty"`
+	RuntimeMutationExecuted bool                 `json:"runtimeMutationExecuted,omitempty"`
 }
 
 func BuildDryRunActionSlate(

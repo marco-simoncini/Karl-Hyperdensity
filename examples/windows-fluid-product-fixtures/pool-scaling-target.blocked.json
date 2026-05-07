@@ -1,0 +1,32 @@
+{
+  "targetId": "target-master-win11-blocked-pool",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "targetKind": "standalone-windows-vm",
+  "runtimeMode": "prearmed-fluid-envelope-v2",
+  "hyperdensityReady": false,
+  "compliancePhase": "BLOCKED_WITH_REMEDIATION",
+  "poolScalingRequested": true,
+  "cpu": {
+    "mechanism": "cgroup-v2-cpu-max",
+    "actuatorRequired": true
+  },
+  "memory": {
+    "mechanism": "qmp-balloon",
+    "qmpRequired": true
+  },
+  "guest": {
+    "fluidShellRequired": true,
+    "guestAckRequired": true
+  },
+  "guarantees": {
+    "rollbackRequired": true,
+    "returnToFloorRequired": true
+  },
+  "blockers": [
+    "pool_scaling_as_mechanism"
+  ],
+  "evidenceRefs": [
+    "fixture://pool-scaling-blocked"
+  ]
+}

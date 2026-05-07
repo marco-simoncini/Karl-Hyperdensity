@@ -1,0 +1,28 @@
+{
+  "targetId": "target-master-win11-missing-actuator",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "targetKind": "standalone-windows-vm",
+  "runtimeMode": "prearmed-fluid-envelope-v2",
+  "hyperdensityReady": false,
+  "compliancePhase": "BLOCKED_WITH_REMEDIATION",
+  "cpu": {
+    "mechanism": "cgroup-v2-cpu-max",
+    "actuatorRequired": false
+  },
+  "memory": {
+    "mechanism": "qmp-balloon",
+    "qmpRequired": true
+  },
+  "guest": {
+    "fluidShellRequired": true,
+    "guestAckRequired": true
+  },
+  "guarantees": {
+    "rollbackRequired": true,
+    "returnToFloorRequired": true
+  },
+  "blockers": [
+    "node_fluid_actuator_unavailable"
+  ]
+}

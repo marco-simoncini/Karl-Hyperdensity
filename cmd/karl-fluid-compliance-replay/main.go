@@ -22,6 +22,7 @@ func main() {
 	var emitBundleIndex bool
 	var appendBundleIn string
 	var appendBundle bool
+	var bundleOut string
 
 	flag.StringVar(&inputPath, "input", "", "Path to replay input JSON fixture or direct input payload.")
 	flag.StringVar(&evaluationTimeRaw, "evaluation-time", "", "Deterministic replay time in RFC3339 format (UTC recommended).")
@@ -34,6 +35,7 @@ func main() {
 	flag.BoolVar(&emitBundleIndex, "emit-bundle-index", false, "Emit single-run replay bundle index (read-only, local hash chain).")
 	flag.StringVar(&appendBundleIn, "append-bundle-in", "", "Path to existing bundle index JSON used for append workflow.")
 	flag.BoolVar(&appendBundle, "append-bundle", false, "Append run to existing bundle provided by -append-bundle-in.")
+	flag.StringVar(&bundleOut, "bundle-out", "", "Optional output path for writing resulting bundle index JSON.")
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "karl-fluid-compliance-replay (read-only)\n\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "This CLI performs read-only compliance replay and never mutates runtime.\n")
@@ -131,6 +133,14 @@ func main() {
 	if err := encoder.Encode(output); err != nil {
 		fatalf("encode output: %v", err)
 	}
+	if bundleOut != "" {
+		if output.BundleIndex == nil {
+			fatalf("-bundle-out requires either -emit-bundle-index or -append-bundle")
+		}
+		if err := writeBundleIndex(bundleOut, *output.BundleIndex); err != nil {
+			fatalf("write bundle index: %v", err)
+		}
+	}
 }
 
 func loadBundleIndex(path string) (windowsfluidvirt.WindowsComplianceReplayBundleIndex, error) {
@@ -143,6 +153,14 @@ func loadBundleIndex(path string) (windowsfluidvirt.WindowsComplianceReplayBundl
 		return windowsfluidvirt.WindowsComplianceReplayBundleIndex{}, err
 	}
 	return index, nil
+}
+
+func writeBundleIndex(path string, bundle windowsfluidvirt.WindowsComplianceReplayBundleIndex) error {
+	data, err := json.MarshalIndent(bundle, "", "  ")
+	if err != nil {
+		return err
+	}
+	return os.WriteFile(path, data, 0o644)
 }
 
 func parseEvaluationTime(raw string) (time.Time, error) {

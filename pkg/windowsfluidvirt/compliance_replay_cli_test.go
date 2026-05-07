@@ -428,6 +428,42 @@ func TestComplianceReplayAppendDeterministicFixedTime(t *testing.T) {
 	}
 }
 
+func TestComplianceReplayBundleAppendWriteBackValidatesChain(t *testing.T) {
+	first := runComplianceReplayCLI(t,
+		"-input", windowsComplianceFixtureAbsPath(t, "master-win11-real-evidence.ready.json"),
+		"-evaluation-time", "2026-05-07T20:45:00Z",
+		"-emit-bundle-index",
+		"-bundle-subject", "windows-shell/karl/master-win11",
+	)
+	bundlePath := writeBundleFixture(t, *first.BundleIndex)
+	outPath := filepath.Join(t.TempDir(), "bundle-out.json")
+	cmd := exec.Command(
+		"go", "run", "./cmd/karl-fluid-compliance-replay",
+		"-input", windowsComplianceFixtureAbsPath(t, "master-win11-pool-child-real-evidence.ready.json"),
+		"-evaluation-time", "2026-05-07T20:46:00Z",
+		"-append-bundle",
+		"-append-bundle-in", bundlePath,
+		"-bundle-subject", "windows-shell/karl/master-win11",
+		"-bundle-out", outPath,
+	)
+	cmd.Dir = admissionRepoRoot(t)
+	if out, err := cmd.CombinedOutput(); err != nil {
+		t.Fatalf("append write-back failed: %v\n%s", err, string(out))
+	}
+	data, err := os.ReadFile(outPath)
+	if err != nil {
+		t.Fatalf("read bundle out: %v", err)
+	}
+	var index WindowsComplianceReplayBundleIndex
+	if err := json.Unmarshal(data, &index); err != nil {
+		t.Fatalf("parse bundle out: %v", err)
+	}
+	validated := ValidateWindowsComplianceReplayBundleIndex(index)
+	if !validated.Chain.ChainValid || validated.RunCount != 2 {
+		t.Fatalf("expected valid chain with 2 runs, got valid=%v runCount=%d", validated.Chain.ChainValid, validated.RunCount)
+	}
+}
+
 func runComplianceReplayCLI(t *testing.T, args ...string) WindowsComplianceReplayCLIOutput {
 	t.Helper()
 	raw := runComplianceReplayCLIRaw(t, args...)

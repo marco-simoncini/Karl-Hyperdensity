@@ -1,0 +1,28 @@
+{
+  "targetId": "target-master-win11-missing-qmp",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "targetKind": "standalone-windows-vm",
+  "runtimeMode": "prearmed-fluid-envelope-v2",
+  "hyperdensityReady": false,
+  "compliancePhase": "BLOCKED_WITH_REMEDIATION",
+  "cpu": {
+    "mechanism": "cgroup-v2-cpu-max",
+    "actuatorRequired": true
+  },
+  "memory": {
+    "mechanism": "qmp-balloon",
+    "qmpRequired": false
+  },
+  "guest": {
+    "fluidShellRequired": true,
+    "guestAckRequired": true
+  },
+  "guarantees": {
+    "rollbackRequired": true,
+    "returnToFloorRequired": true
+  },
+  "blockers": [
+    "ram_balloon_unavailable"
+  ]
+}
