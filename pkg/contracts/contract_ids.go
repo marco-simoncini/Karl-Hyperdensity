@@ -21,4 +21,5 @@ const (
 	WindowsFluidQMPEvidenceV1ID        = "hyperdensity_windows_fluid_qmp_evidence_v1"
 	WindowsFluidRuntimeBundleV1ID      = "hyperdensity_windows_fluid_runtime_evidence_bundle_v1"
 	WindowsFluidDryRunEvaluationV1ID   = "hyperdensity_windows_fluid_dryrun_evaluation_v1"
+	WindowsFluidAdmissionPolicyV1ID    = "hyperdensity_windows_fluid_admission_policy_v1"
 )
