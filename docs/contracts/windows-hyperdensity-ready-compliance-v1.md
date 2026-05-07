@@ -44,3 +44,29 @@ Each action declares required evidence, rollback direction, risk, and resolved b
 - No VM spec patch mutation path.
 - No LiveMigration/VMIM mechanism.
 - No replica/pool scaling as runtime mechanism.
+
+## Real Master-Win11 Replay Classification
+
+Using evidence from `WINDOWS_PREARMED_FLUID_ENVELOPE_CONFIRMED`, `master-win11` is expected to classify as `HYPERDENSITY_READY_WINDOWS_SHELL` when:
+
+- QMP evidence is present.
+- `fluidShell` guest evidence is present with guest ACK.
+- RAM balloon capability is present and return-to-floor is verified.
+- Node-local CPU actuator capability is present and allowlisted.
+- continuity invariants remain true (same QEMU, same boot, same node/pod, no migration/recreate/rollout).
+
+## Prearmed Fluid Envelope v2 Target
+
+Compliance target for Windows readiness is the Prearmed Fluid Envelope v2 model:
+
+- CPU liquidity by entitlement lease (`cgroup v2 cpu.max` via authorized node-local actuator).
+- RAM liquidity by QMP balloon lease.
+- rollback and return-to-floor evidence mandatory.
+
+This target does not claim logical CPU count scaling and does not claim vCPU hotplug success.
+
+## Standalone and Pool-Child Semantics
+
+- Standalone Windows VM: eligible for direct readiness classification.
+- Pool-child Windows VM: eligible when treated as individual shell identity.
+- Pool context is accepted only for provisioning lineage and blocked if requested as runtime scaling mechanism.
