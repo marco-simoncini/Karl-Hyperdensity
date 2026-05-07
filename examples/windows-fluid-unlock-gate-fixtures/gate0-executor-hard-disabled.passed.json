@@ -1,0 +1,74 @@
+{
+  "name": "gate0-executor-hard-disabled-passed",
+  "gateId": "GATE_0_EXECUTOR_HARD_DISABLED",
+  "governanceContract": {
+    "contractId": "gc-master-win11-gates",
+    "shellRef": "karl/master-win11",
+    "requestedAction": "future-cpu-apply",
+    "governancePhase": "CONTRACT_PREPARED",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "runtimeMode": "in-place-qmp",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "rollbackRequirement": "mandatory",
+    "returnToFloorRequirement": "mandatory",
+    "blockers": [],
+    "createdAt": "2026-05-07T18:15:00Z"
+  },
+  "executorOutput": {
+    "executionResult": {
+      "executorId": "karl-fluid-executor-disabled-v1",
+      "shellRef": "karl/master-win11",
+      "requestedAction": "future-cpu-apply",
+      "executionPhase": "EXECUTION_HARD_DISABLED",
+      "applyAttempted": false,
+      "mutationPerformed": false,
+      "qmpCommandSent": false,
+      "clusterMutationSent": false,
+      "blockers": [
+        "future_apply_executor_disabled"
+      ],
+      "attestationRefs": [
+        "att-master-win11-gates"
+      ],
+      "createdAt": "2026-05-07T18:20:00Z"
+    },
+    "preApplyGuard": {
+      "guardId": "guard-master-win11-gates",
+      "governanceContractRef": "gc-master-win11-gates",
+      "revalidationRef": "reval-master-win11-gates",
+      "attestationRef": "att-master-win11-gates",
+      "killSwitchReady": true,
+      "executorEnabled": false,
+      "mutationWindowOpen": false,
+      "qmpMutationAllowed": false,
+      "clusterMutationAllowed": false,
+      "guardPhase": "GUARD_READY_BUT_EXECUTOR_DISABLED"
+    },
+    "killSwitchSnapshot": {
+      "killSwitchId": "ks-master-win11-gates",
+      "enabled": true,
+      "source": "policy",
+      "mode": "hard-disabled",
+      "reason": "future apply executor disabled by policy",
+      "requiredForApply": true,
+      "observedAt": "2026-05-07T18:20:00Z"
+    },
+    "commandEnvelope": {
+      "envelopeId": "env-master-win11-gates",
+      "shellRef": "karl/master-win11",
+      "requestedAction": "future-cpu-apply",
+      "commandClass": "cpu-lease",
+      "runtimeMode": "in-place-qmp",
+      "commandPreviewOnly": true,
+      "containsExecutableCommand": false,
+      "qmpCommands": [],
+      "clusterMutations": [],
+      "guestMutations": [],
+      "deniedReason": "future_apply_executor_disabled",
+      "createdAt": "2026-05-07T18:20:00Z"
+    }
+  },
+  "expectedGateStatus": "PASSED",
+  "expectedBlockers": []
+}

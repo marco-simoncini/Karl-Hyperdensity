@@ -27,6 +27,7 @@ func TestContractIDsAreNotEmpty(t *testing.T) {
 		WindowsFluidAdmissionPolicyV1ID,
 		WindowsFluidApplyGovernanceV1ID,
 		WindowsFluidFutureApplyExecutorV1ID,
+		WindowsFluidUnlockGateVerificationV1ID,
 	}
 	for _, id := range ids {
 		if id == "" {

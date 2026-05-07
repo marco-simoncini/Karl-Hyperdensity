@@ -1,0 +1,18 @@
+{
+  "milestone": "the-father-windows-fluidvirt-gate-0-2-verification-v1",
+  "status": "ready_for_commit",
+  "nonExecutable": true,
+  "executorHardDisabledUnchanged": true,
+  "validation": {
+    "go_test_all": "pass",
+    "validate_json": "pass",
+    "git_diff_check": "pass",
+    "cli_replays": "pass",
+    "safety_scan": "pass"
+  },
+  "commit": {
+    "sha": "",
+    "pushed": false,
+    "remote": "origin/The-Father-Windows"
+  }
+}

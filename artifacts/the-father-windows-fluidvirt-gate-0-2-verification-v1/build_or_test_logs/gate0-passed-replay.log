@@ -1,0 +1,30 @@
+{
+  "verificationId": "windows-fluid-unlock-gate-gate_0_executor_hard_disabled-20260507T182000",
+  "gateId": "GATE_0_EXECUTOR_HARD_DISABLED",
+  "gateStatus": "PASSED",
+  "executorMustRemainDisabled": true,
+  "mutationAllowed": false,
+  "applyAllowed": false,
+  "checkedInputs": [
+    "executor_output",
+    "preapply_guard",
+    "command_envelope",
+    "execution_result"
+  ],
+  "requiredInputs": [
+    "executor_output",
+    "disabled_executor_proof",
+    "governance_contract_flags"
+  ],
+  "missingInputs": [],
+  "blockerList": [],
+  "negativeTestRefs": [],
+  "evidenceRefs": [
+    "karl/master-win11"
+  ],
+  "attestationRefs": [
+    "att-master-win11-gates"
+  ],
+  "deterministicHash": "b353c64b4c1300248e79e4e562fec673b64a78e71fd7fb12b34ec7f72e5b370d",
+  "evaluatedAt": "2026-05-07T18:20:00Z"
+}

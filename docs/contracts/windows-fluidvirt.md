@@ -67,9 +67,11 @@ Integration mapping is defined in `docs/contracts/windows-fluidvirt-integration-
 - Apply governance contract: `docs/contracts/windows-fluid-apply-governance-v1.md`
 - Future apply executor hard-disabled contract: `docs/contracts/windows-fluid-future-apply-executor-v1.md`
 - Future apply unlock readiness contract: `docs/contracts/windows-fluid-future-apply-unlock-readiness-v1.md`
+- Unlock gate 0-2 verification contract: `docs/contracts/windows-fluid-unlock-gate-verification-v1.md`
 - Read-only cluster discovery runbook: `docs/runbooks/windows-fluidvirt-readonly-cluster-discovery-v1.md`
 - Lab evidence replay runbook: `docs/runbooks/windows-fluidvirt-lab-evidence-replay-v1.md`
 - Admission replay runbook: `docs/runbooks/windows-fluidvirt-admission-replay-v1.md`
 - Apply governance replay runbook: `docs/runbooks/windows-fluidvirt-apply-governance-replay-v1.md`
 - Executor hard-disabled replay runbook: `docs/runbooks/windows-fluidvirt-executor-hard-disabled-replay-v1.md`
 - Future apply unlock readiness runbook: `docs/runbooks/windows-fluidvirt-future-apply-unlock-readiness-v1.md`
+- Gate 0-2 verification replay runbook: `docs/runbooks/windows-fluidvirt-gate-0-2-verification-replay-v1.md`
