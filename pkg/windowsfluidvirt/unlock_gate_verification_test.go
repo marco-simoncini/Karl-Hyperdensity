@@ -19,6 +19,11 @@ func TestUnlockGateFixtureMatrix(t *testing.T) {
 		"gate2-attestation-future-signable.passed.json",
 		"gate2-attestation-malformed.blocked.json",
 		"gate2-attestation-replayed-stale.blocked.json",
+		"gate-hyperdensity-parity-complete.passed.json",
+		"gate-hyperdensity-parity-cpu-only.blocked.json",
+		"gate-hyperdensity-parity-ram-down-missing.blocked.json",
+		"gate-hyperdensity-parity-reboot-detected.blocked.json",
+		"gate-hyperdensity-parity-qemu-changed.blocked.json",
 	}
 	for _, fixtureName := range fixtures {
 		t.Run(fixtureName, func(t *testing.T) {
@@ -45,6 +50,80 @@ func TestUnlockGateFixtureMatrix(t *testing.T) {
 				t.Fatal("gate verification must stay non-executable")
 			}
 		})
+	}
+}
+
+func TestUnlockGateStandaloneParityFixtureReplay(t *testing.T) {
+	evalTime := time.Date(2026, 5, 7, 18, 20, 0, 0, time.UTC)
+	cases := []struct {
+		fixtureName       string
+		expectedStatus    UnlockGateStatus
+		expectedGateID    UnlockGateID
+		expectedBlockers  []string
+		requirePartialTag bool
+	}{
+		{"gate-hyperdensity-parity-complete.passed.json", UnlockGatePassed, GateHyperdensityParityComplete, []string{}, false},
+		{"gate-hyperdensity-parity-cpu-only.blocked.json", UnlockGateBlocked, GateHyperdensityParityComplete, []string{GateBlockerParityRAMScaleUpMissing, GateBlockerParityRAMScaleDownMissing}, true},
+		{"gate-hyperdensity-parity-ram-down-missing.blocked.json", UnlockGateBlocked, GateHyperdensityParityComplete, []string{GateBlockerParityRAMScaleDownMissing}, true},
+		{"gate-hyperdensity-parity-reboot-detected.blocked.json", UnlockGateBlocked, GateHyperdensityParityComplete, []string{GateBlockerParityCPUScaleDownFailed}, false},
+		{"gate-hyperdensity-parity-qemu-changed.blocked.json", UnlockGateBlocked, GateHyperdensityParityComplete, []string{GateBlockerParityCPUScaleUpFailed}, false},
+	}
+	for _, tc := range cases {
+		t.Run(tc.fixtureName, func(t *testing.T) {
+			fixture, err := LoadUnlockGateReplayFixture(unlockGateFixtureAbsPath(t, tc.fixtureName))
+			if err != nil {
+				t.Fatalf("load fixture: %v", err)
+			}
+			result := EvaluateWindowsFluidUnlockGate(UnlockGateEvaluationInput{
+				GateID:         fixture.GateID,
+				ParityEvidence: fixture.ParityEvidence,
+				EvaluationTime: evalTime,
+			})
+			if result.GateStatus != tc.expectedStatus {
+				t.Fatalf("expected status %s got %s blockers=%v", tc.expectedStatus, result.GateStatus, result.BlockerList)
+			}
+			if result.GateID != tc.expectedGateID {
+				t.Fatalf("expected gate id %s got %s", tc.expectedGateID, result.GateID)
+			}
+			for _, blocker := range tc.expectedBlockers {
+				assertHas(t, result.BlockerList, blocker)
+			}
+			if tc.requirePartialTag {
+				assertHas(t, result.BlockerList, GateBlockerHyperdensityParityPartialSuccessNotTotalFeasibility)
+			}
+			if !result.ExecutorMustRemainDisabled || result.MutationAllowed || result.ApplyAllowed {
+				t.Fatal("standalone parity replay must remain non-executable")
+			}
+		})
+	}
+}
+
+func TestDeprecatedParityAliasRemainsCompatibleAndNormalized(t *testing.T) {
+	evalTime := time.Date(2026, 5, 7, 18, 20, 0, 0, time.UTC)
+	parity := completeParityEvidence()
+
+	official := EvaluateWindowsFluidUnlockGate(UnlockGateEvaluationInput{
+		GateID:         GateHyperdensityParityComplete,
+		ParityEvidence: parity,
+		EvaluationTime: evalTime,
+	})
+	legacyAlias := EvaluateWindowsFluidUnlockGate(UnlockGateEvaluationInput{
+		GateID:         Gate3HyperdensityParity,
+		ParityEvidence: parity,
+		EvaluationTime: evalTime,
+	})
+
+	if official.GateStatus != legacyAlias.GateStatus {
+		t.Fatalf("alias status mismatch official=%s alias=%s", official.GateStatus, legacyAlias.GateStatus)
+	}
+	if legacyAlias.GateID != GateHyperdensityParityComplete {
+		t.Fatalf("legacy alias must normalize to official gate id, got %s", legacyAlias.GateID)
+	}
+	if official.DeterministicHash != legacyAlias.DeterministicHash {
+		t.Fatalf("alias hash mismatch official=%s alias=%s", official.DeterministicHash, legacyAlias.DeterministicHash)
+	}
+	if len(official.BlockerList) != len(legacyAlias.BlockerList) {
+		t.Fatalf("alias blockers mismatch official=%v alias=%v", official.BlockerList, legacyAlias.BlockerList)
 	}
 }
 

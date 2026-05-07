@@ -1,6 +1,6 @@
 # windows-fluid-unlock-gate-verification-v1
 
-Deterministic non-executable verification contract for readiness Gate 0, Gate 1, and Gate 2.
+Deterministic non-executable verification contract for readiness Gate 0, Gate 1, Gate 2, and Hyperdensity parity completion.
 
 ## Purpose
 
@@ -48,6 +48,40 @@ Passes only when:
 - deterministic replay hash can be reproduced
 - attestation is neither stale nor replayed nor malformed
 
+### Hyperdensity parity gate — `GATE_HYPERDENSITY_PARITY_COMPLETE`
+
+This is the final non-numbered parity gate used to validate Hyperdensity completeness.
+
+Passes only when all four parity proofs are present and complete:
+
+- `cpu_scale_up`
+- `cpu_scale_down`
+- `ram_scale_up`
+- `ram_scale_down`
+
+Each proof must confirm all invariants:
+
+- QMP-confirmed runtime state
+- Windows guest-confirmed actual state
+- same VM, namespace, node, virt-launcher pod, QEMU process, Windows boot, and machine identity
+- no reboot, no rollout, no recreate, no migration, no destructive migration
+- rollback verified
+- return-to-floor verified
+- evidence-backed audit
+
+If any one proof is missing or fails, parity is blocked and emits:
+
+- `hyperdensity_parity_partial_success_not_total_feasibility`
+
+`partial success` is not `total feasibility`.
+
+### Deprecated legacy alias
+
+- `Gate3HyperdensityParity` is accepted only as a deprecated compatibility alias.
+- The alias is normalized to `GATE_HYPERDENSITY_PARITY_COMPLETE` during evaluation.
+- The alias does not redefine architectural Gate 3 semantics.
+- Architectural Gate 3 remains reserved for QMP sidecar read-only socket proof.
+
 ## Gate status semantics
 
 - `PASSED`
@@ -66,7 +100,7 @@ Passes only when:
 
 ## Aggregate gate-set semantics
 
-`GATE_SET_PASSED` means Gate 0, Gate 1, Gate 2 are verified for current replay inputs.
+`GATE_SET_PASSED` means Gate 0, Gate 1, Gate 2, and `GATE_HYPERDENSITY_PARITY_COMPLETE` are verified for current replay inputs.
 
 `GATE_SET_PASSED` does **not** mean unlock execution.
 

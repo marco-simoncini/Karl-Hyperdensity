@@ -1,0 +1,50 @@
+{
+  "name": "gate-hyperdensity-parity-cpu-only-blocked",
+  "gateId": "GATE_HYPERDENSITY_PARITY_COMPLETE",
+  "parityEvidence": {
+    "cpuScaleUp": {
+      "operation": "cpu_scale_up",
+      "qmpConfirmedRuntimeState": true,
+      "guestConfirmedActualState": true,
+      "sameVm": true,
+      "sameNamespace": true,
+      "sameNode": true,
+      "sameVirtLauncherPod": true,
+      "sameQemuProcess": true,
+      "sameWindowsBoot": true,
+      "sameMachineIdentity": true,
+      "noReboot": true,
+      "noRollout": true,
+      "noRecreate": true,
+      "noLiveMigration": true,
+      "noDestructiveMigration": true,
+      "rollbackVerified": true,
+      "returnToFloorVerified": true,
+      "evidenceBackedAudit": true
+    },
+    "cpuScaleDown": {
+      "operation": "cpu_scale_down",
+      "qmpConfirmedRuntimeState": true,
+      "guestConfirmedActualState": true,
+      "sameVm": true,
+      "sameNamespace": true,
+      "sameNode": true,
+      "sameVirtLauncherPod": true,
+      "sameQemuProcess": true,
+      "sameWindowsBoot": true,
+      "sameMachineIdentity": true,
+      "noReboot": true,
+      "noRollout": true,
+      "noRecreate": true,
+      "noLiveMigration": true,
+      "noDestructiveMigration": true,
+      "rollbackVerified": true,
+      "returnToFloorVerified": true,
+      "evidenceBackedAudit": true
+    }
+  },
+  "expectedGateStatus": "BLOCKED",
+  "expectedBlockers": [
+    "hyperdensity_parity_partial_success_not_total_feasibility"
+  ]
+}
