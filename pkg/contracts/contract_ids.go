@@ -18,4 +18,5 @@ const (
 	FluidResourceLeaseV1ID             = "hyperdensity_fluid_resource_lease_v1"
 	WindowsFluidEvidenceV1ID           = "hyperdensity_windows_fluid_evidence_v1"
 	WindowsFluidBlockerV1ID            = "hyperdensity_windows_fluid_blocker_v1"
+	WindowsFluidQMPEvidenceV1ID        = "hyperdensity_windows_fluid_qmp_evidence_v1"
 )

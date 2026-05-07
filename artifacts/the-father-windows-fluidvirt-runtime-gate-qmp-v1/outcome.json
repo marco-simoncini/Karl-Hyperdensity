@@ -1,0 +1,22 @@
+{
+  "status": "READY",
+  "verdict": "fluidvirt_windows_runtime_gate_qmp_ready",
+  "cluster_probe": {
+    "status": "run",
+    "context": "karl-metal-01@ovh"
+  },
+  "checks": {
+    "runtime_gate": "implemented",
+    "kubevirt_identity_model": "implemented",
+    "qmp_evidence_contract": "implemented",
+    "qmp_sidecar_readonly_skeleton": "implemented",
+    "tests": "passed",
+    "safety_scan": "passed",
+    "frontend_modified": false,
+    "dashboard_modified": false,
+    "port_443_touched": false,
+    "port_8888_touched": false,
+    "deploy_executed": false,
+    "qmp_mutating_apply_executable": false
+  }
+}

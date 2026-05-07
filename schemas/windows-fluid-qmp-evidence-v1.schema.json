@@ -1,0 +1,86 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karl.dev/schemas/windows-fluid-qmp-evidence-v1.schema.json",
+  "title": "WindowsFluidQMPEvidenceV1",
+  "type": "object",
+  "required": [
+    "sidecarVersion",
+    "qmpConnected",
+    "qmpGreetingObserved",
+    "qmpCapabilitiesNegotiated",
+    "qmpSocketPath",
+    "qemuPid",
+    "cpuTopologyObserved",
+    "maxCpusObserved",
+    "hotpluggableCpusObserved",
+    "memoryDevicesObserved",
+    "memoryBackendsObserved",
+    "qmpCommandsExecuted",
+    "qmpReadOnly",
+    "qmpErrors",
+    "timestamps"
+  ],
+  "properties": {
+    "sidecarVersion": {
+      "type": "string",
+      "minLength": 1
+    },
+    "qmpConnected": {
+      "type": "boolean"
+    },
+    "qmpGreetingObserved": {
+      "type": "boolean"
+    },
+    "qmpCapabilitiesNegotiated": {
+      "type": "boolean"
+    },
+    "qmpSocketPath": {
+      "type": "string"
+    },
+    "qemuPid": {
+      "type": "string"
+    },
+    "qemuProcessStartTime": {
+      "type": "string"
+    },
+    "cpuTopologyObserved": {
+      "type": "boolean"
+    },
+    "maxCpusObserved": {
+      "type": "integer",
+      "minimum": 0
+    },
+    "hotpluggableCpusObserved": {
+      "type": "boolean"
+    },
+    "memoryDevicesObserved": {
+      "type": "boolean"
+    },
+    "memoryBackendsObserved": {
+      "type": "boolean"
+    },
+    "qmpCommandsExecuted": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "qmpReadOnly": {
+      "type": "boolean",
+      "const": true
+    },
+    "qmpErrors": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "timestamps": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "format": "date-time"
+      }
+    }
+  }
+}

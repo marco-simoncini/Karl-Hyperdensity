@@ -55,3 +55,11 @@ Evidence-only contract pack for certified Windows Fluid Shells in KARL Hyperdens
 
 Guest-side evidence source is `Karl-Inventory modules.fluidShell`.
 Integration mapping is defined in `docs/contracts/windows-fluidvirt-integration-contract-v1.md`.
+
+## Runtime Gate and QMP discovery
+
+- Runtime gate contract: `docs/contracts/windows-fluid-runtime-gate-v1.md`
+- KubeVirt identity model: `docs/contracts/windows-fluid-kubevirt-identity-v1.md`
+- QMP evidence contract: `docs/contracts/windows-fluid-qmp-evidence-v1.md`
+- QMP command policy: `docs/contracts/windows-fluid-qmp-command-policy-v1.md`
+- Read-only cluster discovery runbook: `docs/runbooks/windows-fluidvirt-readonly-cluster-discovery-v1.md`

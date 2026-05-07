@@ -1,0 +1,91 @@
+## Bearer 
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:5:- `Bearer `
+## kubeconfig
+docs/runbooks/windows-fluidvirt-readonly-cluster-discovery-v1.md:9:- Never print tokens, kubeconfig content, secret payloads, bearer credentials.
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:6:- `kubeconfig`
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/cluster_discovery_runbook.md:19:- no kubeconfig dump
+## client-secret
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:7:- `client-secret`
+## password
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:8:- `password`
+## BEGIN PRIVATE KEY
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:9:- `BEGIN PRIVATE KEY`
+## kubectl apply
+docs/runbooks/windows-fluidvirt-readonly-cluster-discovery-v1.md:8:- Never run `kubectl apply`, `kubectl patch`, `kubectl rollout`, `helm upgrade`.
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:10:- `kubectl apply`
+## kubectl patch
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:11:- `kubectl patch`
+docs/runbooks/windows-fluidvirt-readonly-cluster-discovery-v1.md:8:- Never run `kubectl apply`, `kubectl patch`, `kubectl rollout`, `helm upgrade`.
+## helm upgrade
+docs/runbooks/windows-fluidvirt-readonly-cluster-discovery-v1.md:8:- Never run `kubectl apply`, `kubectl patch`, `kubectl rollout`, `helm upgrade`.
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/implementation_summary.md:21:- deploy / kubectl mutating / helm upgrade
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:12:- `helm upgrade`
+## frontend-next
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:13:- `frontend-next`
+## React
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:14:- `React`
+## tsx
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:15:- `tsx`
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/build_or_test_logs/cluster-probe.log:92:kube-system                     pod/ovn-central-74b498666b-ptsx2                                      1/1     Running            0                 16d
+## css
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:16:- `css`
+## :443
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:17:- `:443`
+## port: 443
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:18:- `port: 443`
+## :8888
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:19:- `:8888`
+## port: 8888
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:20:- `port: 8888`
+## device_add
+pkg/windowsfluidvirt/runtime_gate_test.go:159:		QMPCommandsExecuted:       []string{"device_add"},
+pkg/windowsfluidvirt/qmp_contract.go:36:	"device_add":       {},
+docs/contracts/windows-fluid-qmp-command-policy-v1.md:18:- `device_add`
+pkg/windowsfluidvirt/sidecar/readonly_executor_test.go:16:	if _, err := executor.Execute("device_add"); err == nil {
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/qmp_command_allowlist.md:21:- `device_add`, `device_del`, `qom-set`, `set_link`
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:21:- `device_add`
+## qom-set
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/qmp_command_allowlist.md:21:- `device_add`, `device_del`, `qom-set`, `set_link`
+pkg/windowsfluidvirt/qmp_contract.go:38:	"qom-set":          {},
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:22:- `qom-set`
+docs/contracts/windows-fluid-qmp-command-policy-v1.md:20:- `qom-set`
+## system_powerdown
+docs/contracts/windows-fluid-qmp-command-policy-v1.md:22:- `system_powerdown`
+pkg/windowsfluidvirt/qmp_contract.go:40:	"system_powerdown": {},
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/qmp_command_allowlist.md:22:- `system_powerdown`, `stop`, `cont`, `quit`
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:23:- `system_powerdown`
+## shutdown
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:24:- `shutdown`
+## reboot
+pkg/windowsfluidvirt/runtime_gate.go:6:	AnnotationNoReboot             = "hyperdensity.karl.io/no-reboot"
+docs/contracts/windows-fluidvirt.md:9:- No live migration/recreate/reboot flow in this phase.
+docs/contracts/windows-fluidvirt.md:16:  - Enforces `runtimeMode=in-place-qmp`, no reboot/recreate/migration.
+docs/contracts/windows-fluidvirt.md:39:  - no reboot proof
+docs/contracts/windows-fluidvirt.md:47:  - no reboot proof
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/guest_evidence_integration.md:7:- pending reboot -> `pending_reboot_detected`
+docs/contracts/windows-fluid-runtime-gate-v1.md:10:- No live migration/recreate/reboot rollout execution.
+docs/contracts/windows-fluid-runtime-gate-v1.md:16:- `hyperdensity.karl.io/no-reboot: "required"`
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:25:- `reboot`
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/runtime_gate_design.md:19:- `hyperdensity.karl.io/no-reboot=required`
+## cpu-add
+docs/contracts/windows-fluid-qmp-command-policy-v1.md:30:- `cpu-add`
+pkg/windowsfluidvirt/qmp_contract.go:48:	"cpu-add":          {},
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:26:- `cpu-add`
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/qmp_command_allowlist.md:25:- `cpu-add`, `balloon`, `memsave`, `pmemsave`
+## object-add
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/qmp_command_allowlist.md:24:- `object-add`, `object-del`
+docs/contracts/windows-fluid-qmp-command-policy-v1.md:28:- `object-add`
+pkg/windowsfluidvirt/qmp_contract.go:46:	"object-add":       {},
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:27:- `object-add`
+## object-del
+docs/contracts/windows-fluid-qmp-command-policy-v1.md:29:- `object-del`
+pkg/windowsfluidvirt/qmp_contract.go:47:	"object-del":       {},
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:28:- `object-del`
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/qmp_command_allowlist.md:24:- `object-add`, `object-del`
+## migrate
+pkg/windowsfluidvirt/qmp_contract.go:44:	"migrate":          {},
+pkg/windowsfluidvirt/qmp_contract.go:45:	"migrate_cancel":   {},
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/qmp_command_allowlist.md:23:- `migrate`, `migrate_cancel`
+docs/contracts/windows-fluid-qmp-command-policy-v1.md:26:- `migrate`
+docs/contracts/windows-fluid-qmp-command-policy-v1.md:27:- `migrate_cancel`
+artifacts/the-father-windows-fluidvirt-runtime-gate-qmp-v1/safety_scan.md:29:- `migrate`

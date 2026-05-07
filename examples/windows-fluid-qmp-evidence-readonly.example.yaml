@@ -1,0 +1,23 @@
+sidecarVersion: "v0-readonly"
+qmpConnected: true
+qmpGreetingObserved: true
+qmpCapabilitiesNegotiated: true
+qmpSocketPath: "/var/run/kubevirt-private/qemu.sock"
+qemuPid: "24411"
+qemuProcessStartTime: "2026-05-07T10:10:00Z"
+cpuTopologyObserved: true
+maxCpusObserved: 8
+hotpluggableCpusObserved: true
+memoryDevicesObserved: true
+memoryBackendsObserved: true
+qmpCommandsExecuted:
+  - "qmp_capabilities"
+  - "query-status"
+  - "query-cpus-fast"
+  - "query-hotpluggable-cpus"
+  - "query-memory-devices"
+  - "query-memory-size-summary"
+qmpReadOnly: true
+qmpErrors: []
+timestamps:
+  - "2026-05-07T10:10:05Z"
