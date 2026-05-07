@@ -1,0 +1,20 @@
+Pattern scan: PASS
+Scope: artifacts/the-father-windows-cpu-hotplug-determinism-master-win11-v1
+No matches for forbidden patterns:
+- Bearer
+- kubeconfig
+- client-secret
+- password
+- BEGIN PRIVATE KEY
+- token
+- secret
+- private_key
+- authorization:
+- machineGuid:
+- kubectl apply
+- kubectl patch
+- helm upgrade
+- :443
+- port: 443
+- :8888
+- port: 8888
