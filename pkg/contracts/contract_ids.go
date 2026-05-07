@@ -19,4 +19,6 @@ const (
 	WindowsFluidEvidenceV1ID           = "hyperdensity_windows_fluid_evidence_v1"
 	WindowsFluidBlockerV1ID            = "hyperdensity_windows_fluid_blocker_v1"
 	WindowsFluidQMPEvidenceV1ID        = "hyperdensity_windows_fluid_qmp_evidence_v1"
+	WindowsFluidRuntimeBundleV1ID      = "hyperdensity_windows_fluid_runtime_evidence_bundle_v1"
+	WindowsFluidDryRunEvaluationV1ID   = "hyperdensity_windows_fluid_dryrun_evaluation_v1"
 )

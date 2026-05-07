@@ -62,4 +62,6 @@ Integration mapping is defined in `docs/contracts/windows-fluidvirt-integration-
 - KubeVirt identity model: `docs/contracts/windows-fluid-kubevirt-identity-v1.md`
 - QMP evidence contract: `docs/contracts/windows-fluid-qmp-evidence-v1.md`
 - QMP command policy: `docs/contracts/windows-fluid-qmp-command-policy-v1.md`
+- Dry-run evaluation contract: `docs/contracts/windows-fluid-dryrun-evaluation-v1.md`
 - Read-only cluster discovery runbook: `docs/runbooks/windows-fluidvirt-readonly-cluster-discovery-v1.md`
+- Lab evidence replay runbook: `docs/runbooks/windows-fluidvirt-lab-evidence-replay-v1.md`

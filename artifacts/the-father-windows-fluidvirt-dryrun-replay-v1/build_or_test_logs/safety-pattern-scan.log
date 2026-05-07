@@ -1,0 +1,45 @@
+examples/windows-fluid-dryrun-fixtures/identity-change.quarantined.json:15:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-dryrun-fixtures/identity-change.quarantined.json:40:      "PendingReboot": false,
+examples/windows-fluid-dryrun-fixtures/identity-change.quarantined.json:51:        "hyperdensity.karl.io/no-reboot": "required",
+artifacts/the-father-windows-fluidvirt-dryrun-replay-v1/fixture_summary.md:14:All fixtures are sanitized and contain no tokens, kubeconfig material, or credentials.
+docs/contracts/windows-fluidvirt.md:9:- No live migration/recreate/reboot flow in this phase.
+docs/contracts/windows-fluidvirt.md:16:  - Enforces `runtimeMode=in-place-qmp`, no reboot/recreate/migration.
+docs/contracts/windows-fluidvirt.md:39:  - no reboot proof
+docs/contracts/windows-fluidvirt.md:47:  - no reboot proof
+examples/windows-fluid-dryrun-fixtures/lease-memory-return-not-ready.blocked.json:15:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-dryrun-fixtures/lease-memory-return-not-ready.blocked.json:40:      "PendingReboot": false,
+examples/windows-fluid-dryrun-fixtures/lease-memory-return-not-ready.blocked.json:58:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-dryrun-fixtures/lease-prepared-cpu.dryrun.json:15:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-dryrun-fixtures/lease-prepared-cpu.dryrun.json:40:      "PendingReboot": false,
+examples/windows-fluid-dryrun-fixtures/lease-prepared-cpu.dryrun.json:58:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-dryrun-fixtures/master-win11-certification-ready.ready.json:15:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-dryrun-fixtures/master-win11-certification-ready.ready.json:40:      "PendingReboot": false,
+examples/windows-fluid-dryrun-fixtures/master-win11-certification-ready.ready.json:51:        "hyperdensity.karl.io/no-reboot": "required",
+artifacts/the-father-windows-fluidvirt-dryrun-replay-v1/action_slate_model.md:10:- proof flags (`qmpReady`, `guestAckReady`, `sameQemuProof`, `sameNodeProof`, `samePodProof`, `noRebootProof`)
+examples/windows-fluid-dryrun-fixtures/master-win11-missing-annotations.blocked.json:14:        "rebootAllowed": false,
+examples/windows-fluid-dryrun-fixtures/master-win11-missing-annotations.blocked.json:27:          "requireNoPendingReboot": true
+examples/windows-fluid-dryrun-fixtures/master-win11-missing-annotations.blocked.json:100:      "PendingReboot": false,
+examples/windows-fluid-dryrun-fixtures/master-win11-missing-guest.blocked.json:15:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-dryrun-fixtures/master-win11-missing-guest.blocked.json:43:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-dryrun-fixtures/master-win11-missing-qmp.blocked.json:15:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-dryrun-fixtures/master-win11-missing-qmp.blocked.json:24:      "PendingReboot": false,
+examples/windows-fluid-dryrun-fixtures/master-win11-missing-qmp.blocked.json:35:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-dryrun-fixtures/win11-pool-context-only.blocked.json:15:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-dryrun-fixtures/win11-pool-context-only.blocked.json:40:      "PendingReboot": false,
+examples/windows-fluid-dryrun-fixtures/win11-pool-context-only.blocked.json:51:        "hyperdensity.karl.io/no-reboot": "required",
+artifacts/the-father-windows-fluidvirt-dryrun-replay-v1/build_or_test_logs/master-win11-dryrun-output.json:8:    "noRebootProof": true,
+artifacts/the-father-windows-fluidvirt-dryrun-replay-v1/build_or_test_logs/master-win11-dryrun-output.json:69:    "noRebootProof": true,
+pkg/windowsfluidvirt/action_slate.go:35:	NoRebootProof      bool        `json:"noRebootProof"`
+pkg/windowsfluidvirt/action_slate.go:91:		NoRebootProof:      conditions["noRebootProof"],
+artifacts/the-father-windows-fluidvirt-dryrun-replay-v1/safety_scan.md:5:- secrets (`Bearer`, `kubeconfig`, `client-secret`, `password`, private keys)
+artifacts/the-father-windows-fluidvirt-dryrun-replay-v1/safety_scan.md:6:- forbidden operations (`kubectl apply/patch`, `helm upgrade`, deploy paths)
+artifacts/the-father-windows-fluidvirt-dryrun-replay-v1/safety_scan.md:17:- No `:443` or `:8888` operational changes introduced.
+artifacts/the-father-windows-fluidvirt-dryrun-replay-v1/build_or_test_logs/win11-pool-dryrun-output.json:8:    "noRebootProof": true,
+artifacts/the-father-windows-fluidvirt-dryrun-replay-v1/build_or_test_logs/win11-pool-dryrun-output.json:69:    "noRebootProof": true,
+docs/runbooks/windows-fluidvirt-lab-evidence-replay-v1.md:9:- No `kubectl apply/patch/rollout`, no `helm upgrade`.
+docs/runbooks/windows-fluidvirt-lab-evidence-replay-v1.md:60:- No live migration, no recreate, no reboot.
+docs/contracts/windows-fluid-dryrun-evaluation-v1.md:82:- No migration / no recreate / no reboot proofs.
+pkg/windowsfluidvirt/dryrun_pipeline_test.go:75:func TestDryRunPendingRebootBlocked(t *testing.T) {
+pkg/windowsfluidvirt/dryrun_pipeline_test.go:88:		GuestAck: true, PendingReboot: true, LastBootTime: "2026-05-01T11:00:00Z", MachineGUIDHash: "hash", MemoryAdapterVerified: true, ReturnToFloorReady: true,
+pkg/windowsfluidvirt/dryrun_pipeline_test.go:94:		t.Fatalf("expected BLOCKED for pending reboot, got %s", result.Phase)
+pkg/windowsfluidvirt/dryrun_pipeline_test.go:96:	assertHas(t, result.Blockers, BlockerPendingRebootDetected)

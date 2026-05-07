@@ -1,0 +1,81 @@
+{
+  "phase": "READY",
+  "classification": "READY_FOR_FLUID_SHELL_CERTIFICATION",
+  "conditions": {
+    "fluidRuntimeReady": true,
+    "guestAckReady": true,
+    "noMigrationRequired": true,
+    "noRebootProof": true,
+    "qmpReady": true,
+    "returnToFloorReady": true,
+    "rollbackReady": true,
+    "sameNode": true,
+    "sameQemuProcess": true,
+    "sameVirtLauncherPod": true
+  },
+  "blockers": [],
+  "evidenceSummary": {
+    "guestAck": true,
+    "kubevirtIdentity": {
+      "evidenceTimestamps": null,
+      "migrationObserved": false,
+      "nodeName": "karl-metal-01",
+      "podRestartCount": 0,
+      "qemuPid": "5120",
+      "qmpSocketPath": "",
+      "recreateOrRollout": false,
+      "virtLauncherPod": "",
+      "vmRef": "karl-system/master-win11",
+      "vmiRef": "master-win11"
+    },
+    "qmp": {
+      "sidecarVersion": "v0-readonly",
+      "qmpConnected": true,
+      "qmpGreetingObserved": true,
+      "qmpCapabilitiesNegotiated": true,
+      "qmpSocketPath": "/var/run/kubevirt-private/master-win11/qmp.sock",
+      "qemuPid": "5120",
+      "qemuProcessStartTime": "",
+      "cpuTopologyObserved": true,
+      "maxCpusObserved": 8,
+      "hotpluggableCpusObserved": true,
+      "memoryDevicesObserved": true,
+      "memoryBackendsObserved": true,
+      "qmpCommandsExecuted": [
+        "qmp_capabilities",
+        "query-status",
+        "query-cpus-fast",
+        "query-memory-devices"
+      ],
+      "qmpReadOnly": true,
+      "qmpErrors": [],
+      "timestamps": [
+        "2026-05-07T14:01:05Z"
+      ]
+    }
+  },
+  "actionSlate": {
+    "actionId": "windows-fluid-dryrun-20260507T143300",
+    "shellRef": "karl-system/master-win11",
+    "actionType": "certify-shell",
+    "dryRunState": "ready",
+    "runtimeMode": "in-place-qmp",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "rollbackReady": true,
+    "returnToFloorReady": true,
+    "qmpReady": true,
+    "guestAckReady": true,
+    "noRebootProof": true,
+    "sameQemuProof": true,
+    "sameNodeProof": true,
+    "samePodProof": true,
+    "blockers": [],
+    "evidenceRefs": [
+      "evidence/master-win11/ready"
+    ],
+    "validForSeconds": 300,
+    "createdAt": "2026-05-07T14:00:00Z"
+  },
+  "recommendedNextSafeStep": "review-certification-gate-and-prepare-non-mutating-lease"
+}
