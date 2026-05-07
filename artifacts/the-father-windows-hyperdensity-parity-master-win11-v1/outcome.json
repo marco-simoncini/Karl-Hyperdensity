@@ -1,0 +1,37 @@
+{
+  "milestone": "the-father-windows-hyperdensity-parity-master-win11-v1",
+  "cluster": "karl-metal-01@ovh",
+  "vm": "master-win11",
+  "namespace": "karl",
+  "status": "WINDOWS_HYPERDENSITY_PARITY_NOT_CONFIRMED",
+  "runtimePreflight": "blocked",
+  "nonDestructiveOnly": true,
+  "mutationsAttempted": false,
+  "results": {
+    "cpu_up_confirmed": false,
+    "cpu_down_confirmed": false,
+    "ram_up_confirmed": false,
+    "ram_down_confirmed": false,
+    "rollback_verified": false,
+    "return_to_floor_verified": false,
+    "gate_hyperdensity_parity_complete": "blocked"
+  },
+  "blockers": [
+    "WINDOWS_HYPERDENSITY_PARITY_BLOCKED_BY_KUBEVIRT_RUNTIME",
+    "WINDOWS_HYPERDENSITY_PARITY_BLOCKED_BY_QMP",
+    "WINDOWS_HYPERDENSITY_PARITY_BLOCKED_BY_GUEST_AGENT",
+    "hyperdensity_parity_partial_success_not_total_feasibility"
+  ],
+  "safety": {
+    "reboot": "not-attempted",
+    "rollout": "not-attempted",
+    "recreate": "not-attempted",
+    "liveMigration": "not-observed",
+    "vmim": "not-observed"
+  },
+  "commit": {
+    "sha": "",
+    "pushed": false,
+    "remote": "origin/The-Father-Windows"
+  }
+}
