@@ -1,0 +1,21 @@
+# Sanitized command/evidence log
+
+## Live recovery phase
+
+- before: libvirt/QMP CPU `7`, guest CPU `6`
+- command: `{"execute":"device_del","arguments":{"id":"vcpu6"}}`
+- immediate response: `{ "return": {} }`
+- after: libvirt/QMP CPU `7`, guest CPU `6` (no change)
+
+## Controlled lab reset phase
+
+- `virtctl stop master-win11 -n karl` => scheduled stop
+- VM stopped and prior VMI/pod deleted
+- `virtctl start master-win11 -n karl` => scheduled start
+- new VMI/pod running on same node
+
+## Post-reset coherent baseline
+
+- libvirt/QMP CPU `6`
+- guest CPU `6`
+- guest agent reconnected

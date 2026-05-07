@@ -1,0 +1,62 @@
+{
+  "verdict": "WINDOWS_CPU_STATE_RECOVERED_BY_LAB_RESET",
+  "rootCauseClassification": "WINDOWS_CPU_HOTPLUG_ROOT_CAUSE_IDENTIFIED",
+  "cluster": "karl-metal-01@ovh",
+  "namespace": "karl",
+  "vm": "master-win11",
+  "liveRecovery": {
+    "attempted": true,
+    "strategy": "qmp_device_del_vcpu6",
+    "before": {
+      "pod": "virt-launcher-master-win11-w7mxv",
+      "podUid": "6e0a597f-b508-450d-a4ac-d5e4262c8615",
+      "vmiUid": "a565fc95-d79f-4cbd-a852-e0467e5f2110",
+      "node": "karl-lab-metal-01",
+      "qemuPid": 92,
+      "qemuStart": "Thu May 7 18:16:51 2026",
+      "qmpCpu": 7,
+      "libvirtCpu": 7,
+      "guestCpu": 6,
+      "windowsLastBoot": "/Date(1778177812500)/"
+    },
+    "commandAccepted": true,
+    "after": {
+      "qmpCpu": 7,
+      "libvirtCpu": 7,
+      "guestCpu": 6,
+      "mismatch": true
+    },
+    "result": "failed_no_state_change"
+  },
+  "controlledLabReset": {
+    "executed": true,
+    "method": "virtctl stop/start",
+    "outsideHyperdensityCriteria": true,
+    "after": {
+      "pod": "virt-launcher-master-win11-kmwgg",
+      "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+      "vmiUid": "b31dcab6-5a99-432e-a6fe-21607a9e3403",
+      "node": "karl-lab-metal-01",
+      "qemuPid": 96,
+      "qemuStart": "Thu May 7 18:58:03 2026",
+      "qmpCpu": 6,
+      "libvirtCpu": 6,
+      "guestCpu": 6,
+      "windowsLastBoot": "/Date(1778180311500)/",
+      "machineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+      "pendingReboot": false
+    }
+  },
+  "safety": {
+    "ramTested": false,
+    "hyperdensityParityDeclared": false,
+    "vmimObjectsPresent": false,
+    "liveMigrationObserved": false,
+    "poolReplicaUsed": false
+  },
+  "rootCauseHypothesis": [
+    "windows_guest_does_not_online_hotplugged_cpu",
+    "guest_offline_control_unavailable_can_offline_false",
+    "cpu_unplug_non_deterministic_in_current_windows_profile"
+  ]
+}
