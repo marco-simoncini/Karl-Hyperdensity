@@ -32,6 +32,7 @@ func TestUnlockGateFixtureMatrix(t *testing.T) {
 				GovernanceContract: fixture.GovernanceContract,
 				ExecutorOutput:     fixture.ExecutorOutput,
 				Attestation:        fixture.Attestation,
+				ParityEvidence:     fixture.ParityEvidence,
 				EvaluationTime:     time.Date(2026, 5, 7, 18, 20, 0, 0, time.UTC),
 			})
 			if result.GateStatus != fixture.ExpectedGateStatus {
@@ -63,6 +64,7 @@ func TestUnlockGateSetFixtureMatrix(t *testing.T) {
 				GovernanceContract: fixture.GovernanceContract,
 				ExecutorOutput:     fixture.ExecutorOutput,
 				Attestation:        fixture.Attestation,
+				ParityEvidence:     fixture.ParityEvidence,
 				EvaluationTime:     time.Date(2026, 5, 7, 18, 20, 0, 0, time.UTC),
 			})
 			if result.AggregateStatus != fixture.ExpectedAggregateStatus {
@@ -135,6 +137,12 @@ func TestUnlockGateNegativeMatrixMapping(t *testing.T) {
 		{"command envelope contains QMP command", func(in *UnlockGateSetEvaluationInput) {
 			in.ExecutorOutput.CommandEnvelope.QMPCommands = []string{"query-status"}
 		}, Gate0ExecutorHardDisabled, UnlockGateFailed, GateBlockerEnvelopeNotEmpty, false},
+		{"parity evidence missing", func(in *UnlockGateSetEvaluationInput) {
+			in.ParityEvidence = nil
+		}, GateHyperdensityParityComplete, UnlockGateBlocked, GateBlockerParityEvidenceMissing, false},
+		{"parity partial success cpu down failed", func(in *UnlockGateSetEvaluationInput) {
+			in.ParityEvidence.CPUScaleDown.GuestConfirmedActualState = false
+		}, GateHyperdensityParityComplete, UnlockGateBlocked, GateBlockerHyperdensityParityPartialSuccessNotTotalFeasibility, false},
 	}
 
 	for _, tc := range cases {
@@ -165,6 +173,55 @@ func TestUnlockGateNegativeMatrixMapping(t *testing.T) {
 				if !gr.ExecutorMustRemainDisabled || gr.MutationAllowed || gr.ApplyAllowed {
 					t.Fatal("gate results must never enable execution")
 				}
+			}
+		})
+	}
+}
+
+func TestHyperdensityParityGateRequirementMatrix(t *testing.T) {
+	evalTime := time.Date(2026, 5, 7, 18, 20, 0, 0, time.UTC)
+	cases := []struct {
+		name          string
+		mutate        func(*HyperdensityParityEvidence)
+		expectedState UnlockGateStatus
+		expectedBlock string
+	}{
+		{"all four proofs complete", nil, UnlockGatePassed, ""},
+		{"missing cpu_scale_up", func(e *HyperdensityParityEvidence) { e.CPUScaleUp = nil }, UnlockGateBlocked, GateBlockerParityCPUScaleUpMissing},
+		{"missing cpu_scale_down", func(e *HyperdensityParityEvidence) { e.CPUScaleDown = nil }, UnlockGateBlocked, GateBlockerParityCPUScaleDownMissing},
+		{"missing ram_scale_up", func(e *HyperdensityParityEvidence) { e.RAMScaleUp = nil }, UnlockGateBlocked, GateBlockerParityRAMScaleUpMissing},
+		{"missing ram_scale_down", func(e *HyperdensityParityEvidence) { e.RAMScaleDown = nil }, UnlockGateBlocked, GateBlockerParityRAMScaleDownMissing},
+		{"cpu_scale_up guest confirm missing", func(e *HyperdensityParityEvidence) { e.CPUScaleUp.GuestConfirmedActualState = false }, UnlockGateBlocked, GateBlockerParityCPUScaleUpFailed},
+		{"ram_scale_down return-to-floor missing", func(e *HyperdensityParityEvidence) { e.RAMScaleDown.ReturnToFloorVerified = false }, UnlockGateBlocked, GateBlockerParityRAMScaleDownFailed},
+		{"any proof reboot true", func(e *HyperdensityParityEvidence) { e.RAMScaleUp.NoReboot = false }, UnlockGateBlocked, GateBlockerParityRAMScaleUpFailed},
+		{"any proof rollout true", func(e *HyperdensityParityEvidence) { e.CPUScaleDown.NoRollout = false }, UnlockGateBlocked, GateBlockerParityCPUScaleDownFailed},
+		{"any proof recreate true", func(e *HyperdensityParityEvidence) { e.CPUScaleDown.NoRecreate = false }, UnlockGateBlocked, GateBlockerParityCPUScaleDownFailed},
+		{"any proof migration true", func(e *HyperdensityParityEvidence) { e.CPUScaleUp.NoLiveMigration = false }, UnlockGateBlocked, GateBlockerParityCPUScaleUpFailed},
+		{"any proof sameQemu false", func(e *HyperdensityParityEvidence) { e.CPUScaleUp.SameQEMUProcess = false }, UnlockGateBlocked, GateBlockerParityCPUScaleUpFailed},
+		{"partial CPU-only success", func(e *HyperdensityParityEvidence) { e.RAMScaleUp, e.RAMScaleDown = nil, nil }, UnlockGateBlocked, GateBlockerHyperdensityParityPartialSuccessNotTotalFeasibility},
+		{"CPU up/down ok RAM missing", func(e *HyperdensityParityEvidence) { e.RAMScaleUp, e.RAMScaleDown = nil, nil }, UnlockGateBlocked, GateBlockerParityRAMScaleUpMissing},
+		{"RAM up ok RAM down missing", func(e *HyperdensityParityEvidence) { e.RAMScaleDown = nil }, UnlockGateBlocked, GateBlockerParityRAMScaleDownMissing},
+	}
+
+	for _, tc := range cases {
+		t.Run(tc.name, func(t *testing.T) {
+			parity := completeParityEvidence()
+			if tc.mutate != nil {
+				tc.mutate(parity)
+			}
+			result := EvaluateWindowsFluidUnlockGate(UnlockGateEvaluationInput{
+				GateID:         GateHyperdensityParityComplete,
+				ParityEvidence: parity,
+				EvaluationTime: evalTime,
+			})
+			if result.GateStatus != tc.expectedState {
+				t.Fatalf("expected %s got %s blockers=%v", tc.expectedState, result.GateStatus, result.BlockerList)
+			}
+			if tc.expectedBlock != "" {
+				assertHas(t, result.BlockerList, tc.expectedBlock)
+			}
+			if tc.expectedState == UnlockGateBlocked {
+				assertHas(t, result.BlockerList, GateBlockerHyperdensityParityPartialSuccessNotTotalFeasibility)
 			}
 		})
 	}
@@ -389,11 +446,73 @@ func baseUnlockGateSetInput(evalTime time.Time) UnlockGateSetEvaluationInput {
 		GovernanceContract: governance,
 		ExecutorOutput:     executor,
 		Attestation:        attestation,
-		EvaluationTime:     evalTime,
+		ParityEvidence: &HyperdensityParityEvidence{
+			CPUScaleUp: &HyperdensityParityOperationProof{
+				Operation:                ParityCPUScaleUp,
+				QMPConfirmedRuntimeState: true, GuestConfirmedActualState: true, SameVM: true, SameNamespace: true, SameNode: true,
+				SameVirtLauncherPod: true, SameQEMUProcess: true, SameWindowsBoot: true, SameMachineIdentity: true,
+				NoReboot: true, NoRollout: true, NoRecreate: true, NoLiveMigration: true, NoDestructiveMigration: true,
+				RollbackVerified: true, ReturnToFloorVerified: true, EvidenceBackedAudit: true,
+			},
+			CPUScaleDown: &HyperdensityParityOperationProof{
+				Operation:                ParityCPUScaleDown,
+				QMPConfirmedRuntimeState: true, GuestConfirmedActualState: true, SameVM: true, SameNamespace: true, SameNode: true,
+				SameVirtLauncherPod: true, SameQEMUProcess: true, SameWindowsBoot: true, SameMachineIdentity: true,
+				NoReboot: true, NoRollout: true, NoRecreate: true, NoLiveMigration: true, NoDestructiveMigration: true,
+				RollbackVerified: true, ReturnToFloorVerified: true, EvidenceBackedAudit: true,
+			},
+			RAMScaleUp: &HyperdensityParityOperationProof{
+				Operation:                ParityRAMScaleUp,
+				QMPConfirmedRuntimeState: true, GuestConfirmedActualState: true, SameVM: true, SameNamespace: true, SameNode: true,
+				SameVirtLauncherPod: true, SameQEMUProcess: true, SameWindowsBoot: true, SameMachineIdentity: true,
+				NoReboot: true, NoRollout: true, NoRecreate: true, NoLiveMigration: true, NoDestructiveMigration: true,
+				RollbackVerified: true, ReturnToFloorVerified: true, EvidenceBackedAudit: true,
+			},
+			RAMScaleDown: &HyperdensityParityOperationProof{
+				Operation:                ParityRAMScaleDown,
+				QMPConfirmedRuntimeState: true, GuestConfirmedActualState: true, SameVM: true, SameNamespace: true, SameNode: true,
+				SameVirtLauncherPod: true, SameQEMUProcess: true, SameWindowsBoot: true, SameMachineIdentity: true,
+				NoReboot: true, NoRollout: true, NoRecreate: true, NoLiveMigration: true, NoDestructiveMigration: true,
+				RollbackVerified: true, ReturnToFloorVerified: true, EvidenceBackedAudit: true,
+			},
+		},
+		EvaluationTime: evalTime,
 	}
 }
 
 func unlockGateFixtureAbsPath(t *testing.T, name string) string {
 	t.Helper()
 	return filepath.Join(governanceRepoRoot(t), "examples", "windows-fluid-unlock-gate-fixtures", name)
+}
+
+func completeParityEvidence() *HyperdensityParityEvidence {
+	return &HyperdensityParityEvidence{
+		CPUScaleUp:   completeParityProof(ParityCPUScaleUp),
+		CPUScaleDown: completeParityProof(ParityCPUScaleDown),
+		RAMScaleUp:   completeParityProof(ParityRAMScaleUp),
+		RAMScaleDown: completeParityProof(ParityRAMScaleDown),
+	}
+}
+
+func completeParityProof(op HyperdensityParityOperation) *HyperdensityParityOperationProof {
+	return &HyperdensityParityOperationProof{
+		Operation:                 op,
+		QMPConfirmedRuntimeState:  true,
+		GuestConfirmedActualState: true,
+		SameVM:                    true,
+		SameNamespace:             true,
+		SameNode:                  true,
+		SameVirtLauncherPod:       true,
+		SameQEMUProcess:           true,
+		SameWindowsBoot:           true,
+		SameMachineIdentity:       true,
+		NoReboot:                  true,
+		NoRollout:                 true,
+		NoRecreate:                true,
+		NoLiveMigration:           true,
+		NoDestructiveMigration:    true,
+		RollbackVerified:          true,
+		ReturnToFloorVerified:     true,
+		EvidenceBackedAudit:       true,
+	}
 }

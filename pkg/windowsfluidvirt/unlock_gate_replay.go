@@ -13,6 +13,7 @@ type UnlockGateReplayFixture struct {
 	GovernanceContract      *WindowsFluidApplyGovernanceContract `json:"governanceContract,omitempty"`
 	ExecutorOutput          *FutureApplyExecutorEvaluationResult `json:"executorOutput,omitempty"`
 	Attestation             *WindowsFluidPolicyAttestation       `json:"attestation,omitempty"`
+	ParityEvidence          *HyperdensityParityEvidence          `json:"parityEvidence,omitempty"`
 	ExpectedGateStatus      UnlockGateStatus                     `json:"expectedGateStatus,omitempty"`
 	ExpectedAggregateStatus UnlockGateSetAggregateStatus         `json:"expectedAggregateStatus,omitempty"`
 	ExpectedBlockers        []string                             `json:"expectedBlockers,omitempty"`
@@ -41,6 +42,7 @@ func EvaluateUnlockGateReplayFixture(path string, evaluationTime time.Time) (Win
 		GovernanceContract: fixture.GovernanceContract,
 		ExecutorOutput:     fixture.ExecutorOutput,
 		Attestation:        fixture.Attestation,
+		ParityEvidence:     fixture.ParityEvidence,
 		EvaluationTime:     evaluationTime,
 	})
 	return result, fixture, nil
@@ -56,6 +58,7 @@ func EvaluateUnlockGateSetReplayFixture(path string, evaluationTime time.Time) (
 		GovernanceContract: fixture.GovernanceContract,
 		ExecutorOutput:     fixture.ExecutorOutput,
 		Attestation:        fixture.Attestation,
+		ParityEvidence:     fixture.ParityEvidence,
 		EvaluationTime:     evaluationTime,
 	})
 	return result, fixture, nil

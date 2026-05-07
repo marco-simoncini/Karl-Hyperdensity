@@ -68,6 +68,7 @@ func main() {
 			GovernanceContract: fixture.GovernanceContract,
 			ExecutorOutput:     fixture.ExecutorOutput,
 			Attestation:        fixture.Attestation,
+			ParityEvidence:     fixture.ParityEvidence,
 			EvaluationTime:     evalTime,
 		})
 		if err := enc.Encode(result); err != nil {
@@ -80,6 +81,7 @@ func main() {
 			GovernanceContract: fixture.GovernanceContract,
 			ExecutorOutput:     fixture.ExecutorOutput,
 			Attestation:        fixture.Attestation,
+			ParityEvidence:     fixture.ParityEvidence,
 			EvaluationTime:     evalTime,
 		})
 		if err := enc.Encode(result); err != nil {

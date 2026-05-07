@@ -14,6 +14,9 @@ const (
 	Gate0ExecutorHardDisabled      UnlockGateID = "GATE_0_EXECUTOR_HARD_DISABLED"
 	Gate1LabReadOnlyEvidence       UnlockGateID = "GATE_1_LAB_READONLY_EVIDENCE_COMPLETE"
 	Gate2FutureSignableAttestation UnlockGateID = "GATE_2_FUTURE_SIGNABLE_ATTESTATION_REPLAY"
+	GateHyperdensityParityComplete UnlockGateID = "GATE_HYPERDENSITY_PARITY_COMPLETE"
+	// Deprecated: use GateHyperdensityParityComplete.
+	Gate3HyperdensityParity UnlockGateID = "GATE_3_HYPERDENSITY_PARITY_COMPLETE"
 )
 
 type UnlockGateStatus string
@@ -65,6 +68,19 @@ const (
 	GateBlockerAttestationReplayed      = "gate2_attestation_replayed"
 	GateBlockerAttestationSubjectDrift  = "gate2_attestation_subject_mismatch"
 	GateBlockerAttestationEvidenceDrift = "gate2_attestation_evidence_ref_mismatch"
+
+	GateBlockerParityEvidenceMissing                               = "gate3_parity_evidence_missing"
+	GateBlockerParityCPUScaleUpMissing                             = "gate3_cpu_scale_up_missing"
+	GateBlockerParityCPUScaleDownMissing                           = "gate3_cpu_scale_down_missing"
+	GateBlockerParityRAMScaleUpMissing                             = "gate3_ram_scale_up_missing"
+	GateBlockerParityRAMScaleDownMissing                           = "gate3_ram_scale_down_missing"
+	GateBlockerParityCPUScaleUpFailed                              = "gate3_cpu_scale_up_failed"
+	GateBlockerParityCPUScaleDownFailed                            = "gate3_cpu_scale_down_failed"
+	GateBlockerParityRAMScaleUpFailed                              = "gate3_ram_scale_up_failed"
+	GateBlockerParityRAMScaleDownFailed                            = "gate3_ram_scale_down_failed"
+	GateBlockerHyperdensityParityPartialSuccessNotTotalFeasibility = "hyperdensity_parity_partial_success_not_total_feasibility"
+	// Deprecated: use GateBlockerHyperdensityParityPartialSuccessNotTotalFeasibility.
+	GateBlockerPartialSuccessNotFeasible = GateBlockerHyperdensityParityPartialSuccessNotTotalFeasibility
 )
 
 type WindowsFluidUnlockGateVerification struct {
@@ -91,6 +107,7 @@ type UnlockGateEvaluationInput struct {
 	GovernanceContract *WindowsFluidApplyGovernanceContract `json:"governanceContract,omitempty"`
 	ExecutorOutput     *FutureApplyExecutorEvaluationResult `json:"executorOutput,omitempty"`
 	Attestation        *WindowsFluidPolicyAttestation       `json:"attestation,omitempty"`
+	ParityEvidence     *HyperdensityParityEvidence          `json:"parityEvidence,omitempty"`
 	EvaluationTime     time.Time                            `json:"evaluationTime"`
 }
 
@@ -109,6 +126,7 @@ type UnlockGateSetEvaluationInput struct {
 	GovernanceContract *WindowsFluidApplyGovernanceContract `json:"governanceContract,omitempty"`
 	ExecutorOutput     *FutureApplyExecutorEvaluationResult `json:"executorOutput,omitempty"`
 	Attestation        *WindowsFluidPolicyAttestation       `json:"attestation,omitempty"`
+	ParityEvidence     *HyperdensityParityEvidence          `json:"parityEvidence,omitempty"`
 	EvaluationTime     time.Time                            `json:"evaluationTime"`
 }
 
@@ -142,6 +160,8 @@ func EvaluateWindowsFluidUnlockGate(input UnlockGateEvaluationInput) WindowsFlui
 		return evaluateGate1(result, input, evaluationTime)
 	case Gate2FutureSignableAttestation:
 		return evaluateGate2(result, input, evaluationTime)
+	case GateHyperdensityParityComplete, Gate3HyperdensityParity:
+		return EvaluateHyperdensityParityGate(result, input, evaluationTime)
 	default:
 		result.GateStatus = UnlockGateNotApplicable
 		return result
@@ -170,10 +190,18 @@ func EvaluateWindowsFluidUnlockGateSet(input UnlockGateSetEvaluationInput) Windo
 		EvidenceBundle:     input.EvidenceBundle,
 		GovernanceContract: input.GovernanceContract,
 		Attestation:        input.Attestation,
+		ParityEvidence:     input.ParityEvidence,
+		EvaluationTime:     evaluationTime,
+	})
+	gate3 := EvaluateWindowsFluidUnlockGate(UnlockGateEvaluationInput{
+		GateID:             GateHyperdensityParityComplete,
+		EvidenceBundle:     input.EvidenceBundle,
+		GovernanceContract: input.GovernanceContract,
+		ParityEvidence:     input.ParityEvidence,
 		EvaluationTime:     evaluationTime,
 	})
 
-	gates := []WindowsFluidUnlockGateVerification{gate0, gate1, gate2}
+	gates := []WindowsFluidUnlockGateVerification{gate0, gate1, gate2, gate3}
 	aggregate := GateSetPassed
 	if gate0.GateStatus != UnlockGatePassed {
 		aggregate = GateSetBlocked
@@ -206,7 +234,7 @@ func EvaluateWindowsFluidUnlockGateSet(input UnlockGateSetEvaluationInput) Windo
 	next := "keep_executor_hard_disabled_and_collect_missing_gate_evidence"
 	switch aggregate {
 	case GateSetPassed:
-		next = "document_gate_set_pass_without_unlock_and_prepare_next_non_executable_gate_pack"
+		next = "document_full_hyperdensity_parity_evidence_without_unlock_and_prepare_next_non_executable_gate_pack"
 	case GateSetQuarantined:
 		next = "freeze_candidate_and_rebuild_identity_continuity_proofs"
 	case GateSetFailed:
