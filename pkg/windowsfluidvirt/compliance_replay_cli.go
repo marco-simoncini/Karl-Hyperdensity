@@ -85,6 +85,50 @@ type WindowsComplianceReplayAttestation struct {
 type WindowsComplianceReplayCLIOutput struct {
 	WindowsComplianceReplayOutput
 	Attestation *WindowsComplianceReplayAttestation `json:"attestation,omitempty"`
+	BundleIndex *WindowsComplianceReplayBundleIndex `json:"bundleIndex,omitempty"`
+}
+
+type WindowsComplianceReplayBundleRun struct {
+	RunID                     string                   `json:"runId"`
+	InputRef                  string                   `json:"inputRef"`
+	OutputRef                 string                   `json:"outputRef"`
+	AttestationRef            string                   `json:"attestationRef,omitempty"`
+	EvidenceHash              string                   `json:"evidenceHash"`
+	ReplayHash                string                   `json:"replayHash"`
+	AttestationHash           string                   `json:"attestationHash,omitempty"`
+	PreviousRunHash           string                   `json:"previousRunHash,omitempty"`
+	RunHash                   string                   `json:"runHash"`
+	EvaluationTime            string                   `json:"evaluationTime"`
+	CompliancePhase           string                   `json:"compliancePhase"`
+	HyperdensityReady         bool                     `json:"hyperdensityReady"`
+	Blockers                  []string                 `json:"blockers"`
+	RemediationActions        []string                 `json:"remediationActions"`
+	AttestationMode           AttestationSignatureMode `json:"attestationMode,omitempty"`
+	AttestationSignatureValue string                   `json:"attestationSignatureValue,omitempty"`
+}
+
+type WindowsComplianceReplayHashChain struct {
+	ChainMode     string `json:"chainMode"`
+	FirstRunHash  string `json:"firstRunHash,omitempty"`
+	LatestRunHash string `json:"latestRunHash,omitempty"`
+	ChainValid    bool   `json:"chainValid"`
+	BrokenAtRunID string `json:"brokenAtRunId,omitempty"`
+	Notes         string `json:"notes,omitempty"`
+}
+
+type WindowsComplianceReplayBundleIndex struct {
+	BundleID                string                             `json:"bundleId"`
+	BundleVersion           string                             `json:"bundleVersion"`
+	CreatedAt               string                             `json:"createdAt"`
+	SubjectRef              string                             `json:"subjectRef"`
+	SubjectType             string                             `json:"subjectType"`
+	RunCount                int                                `json:"runCount"`
+	Runs                    []WindowsComplianceReplayBundleRun `json:"runs"`
+	Chain                   WindowsComplianceReplayHashChain   `json:"chain"`
+	AggregateStatus         string                             `json:"aggregateStatus"`
+	LatestCompliancePhase   string                             `json:"latestCompliancePhase"`
+	LatestHyperdensityReady bool                               `json:"latestHyperdensityReady"`
+	AuditRefs               []string                           `json:"auditRefs"`
 }
 
 func EvaluateWindowsComplianceReplay(
@@ -188,6 +232,190 @@ func BuildWindowsComplianceReplayAttestation(
 	}, nil
 }
 
+func BuildWindowsComplianceReplayBundleRun(
+	replay WindowsComplianceReplayOutput,
+	attestation *WindowsComplianceReplayAttestation,
+	previousRunHash string,
+	evaluationTime time.Time,
+) (WindowsComplianceReplayBundleRun, error) {
+	evaluationTime = evaluationTime.UTC()
+	if evaluationTime.IsZero() {
+		evaluationTime = time.Now().UTC()
+	}
+	if replay.EvidenceHash == "" || replay.ReplayHash == "" {
+		return WindowsComplianceReplayBundleRun{}, errors.New("replay evidence/replay hash are required")
+	}
+	run := WindowsComplianceReplayBundleRun{
+		RunID:              "windows-compliance-run-" + shortHash(replay.ReplayID+"|"+replay.ReplayHash+"|"+previousRunHash),
+		InputRef:           replay.InputRef,
+		OutputRef:          "stdout://replay",
+		EvidenceHash:       replay.EvidenceHash,
+		ReplayHash:         replay.ReplayHash,
+		PreviousRunHash:    previousRunHash,
+		EvaluationTime:     replay.EvaluationTime,
+		CompliancePhase:    replay.CompliancePhase,
+		HyperdensityReady:  replay.HyperdensityReady,
+		Blockers:           replay.Blockers,
+		RemediationActions: replay.RemediationActions,
+	}
+	if attestation != nil {
+		hash, err := computeDeterministicHash(attestation)
+		if err != nil {
+			return WindowsComplianceReplayBundleRun{}, err
+		}
+		run.AttestationRef = "stdout://attestation"
+		run.AttestationHash = hash
+		run.AttestationMode = attestation.Signature.Mode
+		run.AttestationSignatureValue = attestation.Signature.Value
+	}
+	runHash, err := computeBundleRunHash(run)
+	if err != nil {
+		return WindowsComplianceReplayBundleRun{}, err
+	}
+	run.RunHash = runHash
+	return run, nil
+}
+
+func BuildWindowsComplianceReplayBundleIndex(
+	subjectRef string,
+	bundleVersion string,
+	runs []WindowsComplianceReplayBundleRun,
+	evaluationTime time.Time,
+) (WindowsComplianceReplayBundleIndex, error) {
+	evaluationTime = evaluationTime.UTC()
+	if evaluationTime.IsZero() {
+		evaluationTime = time.Now().UTC()
+	}
+	if bundleVersion == "" {
+		return WindowsComplianceReplayBundleIndex{}, errors.New("bundleVersion is required")
+	}
+	if subjectRef == "" {
+		return WindowsComplianceReplayBundleIndex{}, errors.New("subjectRef is required")
+	}
+	bundle := WindowsComplianceReplayBundleIndex{
+		BundleID:      "windows-compliance-bundle-" + shortHash(subjectRef+"|"+bundleVersion+"|"+evaluationTime.Format(time.RFC3339)),
+		BundleVersion: bundleVersion,
+		CreatedAt:     evaluationTime.Format(time.RFC3339),
+		SubjectRef:    subjectRef,
+		SubjectType:   "windows-hyperdensity-ready-compliance-replay-bundle",
+		RunCount:      len(runs),
+		Runs:          runs,
+		Chain: WindowsComplianceReplayHashChain{
+			ChainMode:  "local-deterministic-hash-chain",
+			ChainValid: true,
+		},
+		AuditRefs: []string{
+			"subject://" + subjectRef,
+			"bundle-version://" + bundleVersion,
+		},
+	}
+	if len(runs) > 0 {
+		bundle.Chain.FirstRunHash = runs[0].RunHash
+		bundle.Chain.LatestRunHash = runs[len(runs)-1].RunHash
+		last := runs[len(runs)-1]
+		bundle.LatestCompliancePhase = last.CompliancePhase
+		bundle.LatestHyperdensityReady = last.HyperdensityReady
+		if last.HyperdensityReady {
+			bundle.AggregateStatus = "latest-ready"
+		} else {
+			bundle.AggregateStatus = "latest-blocked-or-not-ready"
+		}
+	} else {
+		bundle.AggregateStatus = "empty"
+		bundle.Chain.Notes = "no runs in bundle"
+	}
+	validation := ValidateWindowsComplianceReplayBundleIndex(bundle)
+	if !validation.Chain.ChainValid {
+		return validation, errors.New("constructed bundle index failed validation")
+	}
+	return validation, nil
+}
+
+func ValidateWindowsComplianceReplayBundleIndex(index WindowsComplianceReplayBundleIndex) WindowsComplianceReplayBundleIndex {
+	index.Chain.ChainMode = "local-deterministic-hash-chain"
+	index.Chain.ChainValid = true
+	index.Chain.BrokenAtRunID = ""
+	index.Chain.Notes = ""
+
+	if index.BundleVersion == "" {
+		index.Chain.ChainValid = false
+		index.Chain.Notes = "bundleVersion is required"
+		return index
+	}
+	if index.RunCount != len(index.Runs) {
+		index.Chain.ChainValid = false
+		index.Chain.Notes = "runCount mismatch"
+		return index
+	}
+	if len(index.Runs) == 0 {
+		if index.Chain.FirstRunHash != "" || index.Chain.LatestRunHash != "" {
+			index.Chain.ChainValid = false
+			index.Chain.Notes = "empty runs must not define first/latest hashes"
+		}
+		return index
+	}
+
+	for i := range index.Runs {
+		run := index.Runs[i]
+		if run.EvidenceHash == "" || run.ReplayHash == "" {
+			index.Chain.ChainValid = false
+			index.Chain.BrokenAtRunID = run.RunID
+			index.Chain.Notes = "missing evidenceHash or replayHash"
+			return index
+		}
+		if i > 0 && run.PreviousRunHash != index.Runs[i-1].RunHash {
+			index.Chain.ChainValid = false
+			index.Chain.BrokenAtRunID = run.RunID
+			index.Chain.Notes = "previousRunHash mismatch"
+			return index
+		}
+		expectedRunHash, err := computeBundleRunHash(run)
+		if err != nil {
+			index.Chain.ChainValid = false
+			index.Chain.BrokenAtRunID = run.RunID
+			index.Chain.Notes = "run hash computation failed"
+			return index
+		}
+		if run.RunHash != expectedRunHash {
+			index.Chain.ChainValid = false
+			index.Chain.BrokenAtRunID = run.RunID
+			index.Chain.Notes = "runHash mismatch"
+			return index
+		}
+		if run.AttestationSignatureValue != "" {
+			index.Chain.ChainValid = false
+			index.Chain.BrokenAtRunID = run.RunID
+			index.Chain.Notes = "attestation signature value must be empty"
+			return index
+		}
+		if run.AttestationMode != "" &&
+			run.AttestationMode != AttestationModeUnsignedDev &&
+			run.AttestationMode != AttestationModeFutureSignable {
+			index.Chain.ChainValid = false
+			index.Chain.BrokenAtRunID = run.RunID
+			index.Chain.Notes = "attestation mode invalid"
+			return index
+		}
+	}
+
+	index.Chain.FirstRunHash = index.Runs[0].RunHash
+	index.Chain.LatestRunHash = index.Runs[len(index.Runs)-1].RunHash
+	if index.Chain.LatestRunHash != index.Runs[len(index.Runs)-1].RunHash {
+		index.Chain.ChainValid = false
+		index.Chain.BrokenAtRunID = index.Runs[len(index.Runs)-1].RunID
+		index.Chain.Notes = "latestRunHash mismatch"
+	}
+	last := index.Runs[len(index.Runs)-1]
+	index.LatestCompliancePhase = last.CompliancePhase
+	index.LatestHyperdensityReady = last.HyperdensityReady
+	if last.HyperdensityReady {
+		index.AggregateStatus = "latest-ready"
+	} else {
+		index.AggregateStatus = "latest-blocked-or-not-ready"
+	}
+	return index
+}
+
 func ParseAttestationMode(raw string) (AttestationSignatureMode, error) {
 	mode := AttestationSignatureMode(raw)
 	if mode != AttestationModeUnsignedDev && mode != AttestationModeFutureSignable {
@@ -245,4 +473,9 @@ func deriveShellRef(namespace, vmRef string) string {
 		return "windows-shell/" + vmRef
 	}
 	return "windows-shell/" + namespace + "/" + vmRef
+}
+
+func computeBundleRunHash(run WindowsComplianceReplayBundleRun) (string, error) {
+	run.RunHash = ""
+	return computeDeterministicHash(run)
 }

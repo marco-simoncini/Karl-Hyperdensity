@@ -1,0 +1,7 @@
+{
+  "name": "two run chain ready to ready",
+  "bundleVersion": "windows-fluid-compliance-replay-bundle-index-v1",
+  "expectedChainValid": true,
+  "expectedLatestHyperdensityReady": true,
+  "expectedRunCount": 2
+}

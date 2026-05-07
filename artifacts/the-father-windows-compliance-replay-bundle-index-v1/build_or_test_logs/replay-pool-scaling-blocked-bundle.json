@@ -1,0 +1,130 @@
+{
+  "replayId": "windows-compliance-replay-9b142602ffe4df3f",
+  "inputRef": "examples/windows-fluid-compliance-fixtures/master-win11-pool-scaling-mechanism.blocked.json",
+  "evaluationTime": "2026-05-07T22:00:00Z",
+  "compliancePhase": "BLOCKED_WITH_REMEDIATION",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "shellRef": "windows-shell/karl/master-win11",
+  "evidenceSummary": {
+    "cgroupPath": "/",
+    "cpuActuatorReady": true,
+    "guestAck": true,
+    "guestFluidShellAvailable": true,
+    "isPoolChild": true,
+    "namespace": "karl",
+    "poolProvisioningOnly": false,
+    "qmpAvailable": true,
+    "ramBalloonReady": true,
+    "sameBoot": true,
+    "vmRef": "master-win11"
+  },
+  "blockers": [
+    "pool_scaling_as_mechanism"
+  ],
+  "remediationActions": [
+    "block_pool_scaling_as_mechanism"
+  ],
+  "automatableActions": [
+    "block_pool_scaling_as_mechanism"
+  ],
+  "manualActions": [],
+  "risk": "high",
+  "poolContext": {
+    "isPoolChild": true,
+    "requestedAsMechanism": true,
+    "treatedAsProvisionOnly": false
+  },
+  "poolScalingMechanismBlocked": true,
+  "hyperdensityReady": false,
+  "evidenceHash": "df68afb1dfc6da3b1bd747ed381f67f8c95ca386bba665e2a3a3bafe849b462b",
+  "replayHash": "56f63dfecb3325929df96c51e98aaa4d7e87526515f2709bc5d50aa1926e30e1",
+  "auditRefs": [
+    "input://examples/windows-fluid-compliance-fixtures/master-win11-pool-scaling-mechanism.blocked.json",
+    "evidence-hash://df68afb1dfc6da3b1bd747ed381f67f8c95ca386bba665e2a3a3bafe849b462b",
+    "replay-id://windows-compliance-replay-9b142602ffe4df3f",
+    "replay-hash://56f63dfecb3325929df96c51e98aaa4d7e87526515f2709bc5d50aa1926e30e1"
+  ],
+  "mutationFlags": {
+    "runtimeMutation": false,
+    "cpuApply": false,
+    "ramApply": false,
+    "actuatorApply": false,
+    "clusterCalls": false,
+    "qmpCalls": false
+  },
+  "attestation": {
+    "attestationId": "windows-compliance-attestation-819cfa519aa73e52",
+    "replayId": "windows-compliance-replay-9b142602ffe4df3f",
+    "subjectType": "windows-hyperdensity-ready-compliance-replay",
+    "subjectRef": "windows-shell/karl/master-win11",
+    "policyVersion": "windows-hyperdensity-ready-compliance-v1",
+    "evaluatorVersion": "windows-compliance-replay-cli-v1",
+    "evidenceHash": "df68afb1dfc6da3b1bd747ed381f67f8c95ca386bba665e2a3a3bafe849b462b",
+    "replayHash": "56f63dfecb3325929df96c51e98aaa4d7e87526515f2709bc5d50aa1926e30e1",
+    "decisionSnapshot": {
+      "compliancePhase": "BLOCKED_WITH_REMEDIATION",
+      "hyperdensityReady": false,
+      "poolScalingMechanismBlocked": true,
+      "risk": "high"
+    },
+    "blockerSnapshot": [
+      "pool_scaling_as_mechanism"
+    ],
+    "remediationSnapshot": [
+      "block_pool_scaling_as_mechanism"
+    ],
+    "createdAt": "2026-05-07T22:00:00Z",
+    "attestor": {
+      "componentName": "karl-fluid-compliance-replay",
+      "componentVersion": "v1"
+    },
+    "signature": {
+      "mode": "future-signable",
+      "value": ""
+    }
+  },
+  "bundleIndex": {
+    "bundleId": "windows-compliance-bundle-3667367a5cea491b",
+    "bundleVersion": "windows-fluid-compliance-replay-bundle-index-v1",
+    "createdAt": "2026-05-07T22:00:00Z",
+    "subjectRef": "windows-shell/karl/master-win11",
+    "subjectType": "windows-hyperdensity-ready-compliance-replay-bundle",
+    "runCount": 1,
+    "runs": [
+      {
+        "runId": "windows-compliance-run-216951bc966cc10d",
+        "inputRef": "examples/windows-fluid-compliance-fixtures/master-win11-pool-scaling-mechanism.blocked.json",
+        "outputRef": "stdout://replay",
+        "attestationRef": "stdout://attestation",
+        "evidenceHash": "df68afb1dfc6da3b1bd747ed381f67f8c95ca386bba665e2a3a3bafe849b462b",
+        "replayHash": "56f63dfecb3325929df96c51e98aaa4d7e87526515f2709bc5d50aa1926e30e1",
+        "attestationHash": "b3b8c77941b29161c49434bbf338f0cbf7fe79799c127007f90528239271c512",
+        "runHash": "a24f93e743f633daaedd9382e512b96519b882fa25cbb8c08929a5c97ec9df9c",
+        "evaluationTime": "2026-05-07T22:00:00Z",
+        "compliancePhase": "BLOCKED_WITH_REMEDIATION",
+        "hyperdensityReady": false,
+        "blockers": [
+          "pool_scaling_as_mechanism"
+        ],
+        "remediationActions": [
+          "block_pool_scaling_as_mechanism"
+        ],
+        "attestationMode": "future-signable"
+      }
+    ],
+    "chain": {
+      "chainMode": "local-deterministic-hash-chain",
+      "firstRunHash": "a24f93e743f633daaedd9382e512b96519b882fa25cbb8c08929a5c97ec9df9c",
+      "latestRunHash": "a24f93e743f633daaedd9382e512b96519b882fa25cbb8c08929a5c97ec9df9c",
+      "chainValid": true
+    },
+    "aggregateStatus": "latest-blocked-or-not-ready",
+    "latestCompliancePhase": "BLOCKED_WITH_REMEDIATION",
+    "latestHyperdensityReady": false,
+    "auditRefs": [
+      "subject://windows-shell/karl/master-win11",
+      "bundle-version://windows-fluid-compliance-replay-bundle-index-v1"
+    ]
+  }
+}

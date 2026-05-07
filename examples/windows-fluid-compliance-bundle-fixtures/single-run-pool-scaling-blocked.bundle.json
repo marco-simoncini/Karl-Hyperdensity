@@ -1,0 +1,7 @@
+{
+  "name": "single run pool scaling blocked bundle",
+  "bundleVersion": "windows-fluid-compliance-replay-bundle-index-v1",
+  "expectedLatestCompliancePhase": "BLOCKED_WITH_REMEDIATION",
+  "expectedLatestHyperdensityReady": false,
+  "expectedRunCount": 1
+}

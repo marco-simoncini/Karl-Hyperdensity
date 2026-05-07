@@ -16,12 +16,20 @@ func main() {
 	var emitAttestation bool
 	var pretty bool
 	var attestationModeRaw string
+	var bundleIndexVersion string
+	var bundleSubject string
+	var previousRunHash string
+	var emitBundleIndex bool
 
 	flag.StringVar(&inputPath, "input", "", "Path to replay input JSON fixture or direct input payload.")
 	flag.StringVar(&evaluationTimeRaw, "evaluation-time", "", "Deterministic replay time in RFC3339 format (UTC recommended).")
 	flag.BoolVar(&emitAttestation, "emit-attestation", false, "Emit future-signable attestation envelope (no real signature).")
 	flag.BoolVar(&pretty, "pretty", false, "Print JSON output in pretty format.")
 	flag.StringVar(&attestationModeRaw, "attestation-mode", string(windowsfluidvirt.AttestationModeFutureSignable), "Attestation signature mode: unsigned-dev or future-signable.")
+	flag.StringVar(&bundleIndexVersion, "bundle-index", "windows-fluid-compliance-replay-bundle-index-v1", "Bundle index version label (used with -emit-bundle-index).")
+	flag.StringVar(&bundleSubject, "bundle-subject", "", "Bundle subject reference. Defaults to replay shellRef.")
+	flag.StringVar(&previousRunHash, "previous-run-hash", "", "Optional previous run hash for single-run chain linkage.")
+	flag.BoolVar(&emitBundleIndex, "emit-bundle-index", false, "Emit single-run replay bundle index (read-only, local hash chain).")
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "karl-fluid-compliance-replay (read-only)\n\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "This CLI performs read-only compliance replay and never mutates runtime.\n")
@@ -31,6 +39,10 @@ func main() {
 		fmt.Fprintf(flag.CommandLine.Output(), "- no actuator apply\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "- no cluster calls\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "- future-signable attestation only (no real signature)\n\n")
+		fmt.Fprintf(flag.CommandLine.Output(), "Bundle index notes:\n")
+		fmt.Fprintf(flag.CommandLine.Output(), "- emits local deterministic hash chain metadata\n")
+		fmt.Fprintf(flag.CommandLine.Output(), "- no keys, no KMS, no real signatures\n")
+		fmt.Fprintf(flag.CommandLine.Output(), "- single-run bundle index in this version\n\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "Flags:\n")
 		flag.PrintDefaults()
 	}
@@ -64,6 +76,21 @@ func main() {
 			fatalf("build attestation: %v", attErr)
 		}
 		output.Attestation = &attestation
+	}
+	if emitBundleIndex {
+		subject := bundleSubject
+		if subject == "" {
+			subject = replay.ShellRef
+		}
+		run, runErr := windowsfluidvirt.BuildWindowsComplianceReplayBundleRun(replay, output.Attestation, previousRunHash, evaluationTime)
+		if runErr != nil {
+			fatalf("build bundle run: %v", runErr)
+		}
+		bundle, bundleErr := windowsfluidvirt.BuildWindowsComplianceReplayBundleIndex(subject, bundleIndexVersion, []windowsfluidvirt.WindowsComplianceReplayBundleRun{run}, evaluationTime)
+		if bundleErr != nil {
+			fatalf("build bundle index: %v", bundleErr)
+		}
+		output.BundleIndex = &bundle
 	}
 
 	encoder := json.NewEncoder(os.Stdout)
