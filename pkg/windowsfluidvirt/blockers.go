@@ -18,6 +18,7 @@ const (
 	CategorySafety      BlockerCategory = "safety"
 	CategoryEnvironment BlockerCategory = "environment"
 	CategoryIntegration BlockerCategory = "integration"
+	CategoryExecution   BlockerCategory = "execution_safety"
 )
 
 type ResultingPhase string
@@ -62,6 +63,7 @@ const (
 	BlockerDashboard443TouchRisk              = "dashboard_443_touch_risk"
 	BlockerCandidate8888Unavailable           = "candidate_8888_unavailable"
 	BlockerWindowsAgentRepoNotPresentInTarget = "windows_agent_repo_not_present_in_target_repos"
+	BlockerFutureApplyExecutorDisabled        = "future_apply_executor_disabled"
 )
 
 var CanonicalBlockers = map[string]BlockerDefinition{
@@ -280,6 +282,15 @@ var CanonicalBlockers = map[string]BlockerDefinition{
 		Remediable:          true,
 		ResultingPhase:      PhaseBlocked,
 		EvidenceRequirement: "repository discovery evidence",
+	},
+	BlockerFutureApplyExecutorDisabled: {
+		ID:                  BlockerFutureApplyExecutorDisabled,
+		Severity:            SeverityCritical,
+		Category:            CategoryExecution,
+		Message:             "Future apply executor is hard-disabled in this phase.",
+		Remediable:          false,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "governance contract + disabled executor evidence",
 	},
 }
 

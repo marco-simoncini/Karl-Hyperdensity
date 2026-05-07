@@ -31,6 +31,7 @@ func TestCanonicalBlockersContainMandatoryIDs(t *testing.T) {
 		BlockerDashboard443TouchRisk,
 		BlockerCandidate8888Unavailable,
 		BlockerWindowsAgentRepoNotPresentInTarget,
+		BlockerFutureApplyExecutorDisabled,
 	}
 	for _, id := range required {
 		if _, ok := LookupBlocker(id); !ok {

@@ -171,6 +171,7 @@ func DefaultBlockerPriorityPolicyMap() map[string]string {
 		BlockerRollbackNotReady:            string(BlockerPriorityP1HardBlock),
 		BlockerReturnToFloorNotReady:       string(BlockerPriorityP1HardBlock),
 		BlockerMemoryReturnNotSafe:         string(BlockerPriorityP1HardBlock),
+		BlockerFutureApplyExecutorDisabled: string(BlockerPriorityP1HardBlock),
 
 		BlockerMemoryDriverUnverified:  string(BlockerPriorityP2Capability),
 		BlockerCPUTopologyNotConfirmed: string(BlockerPriorityP2Capability),

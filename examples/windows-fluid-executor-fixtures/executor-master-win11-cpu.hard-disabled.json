@@ -1,0 +1,100 @@
+{
+  "name": "master-win11-cpu-hard-disabled",
+  "governanceContract": {
+    "contractId": "gc-master-win11-prepared",
+    "shellRef": "master-win11",
+    "sourceAdmissionDecisionId": "admission-master-win11",
+    "sourceActionSlateId": "action-slate-master-win11",
+    "requestedAction": "future-cpu-apply",
+    "governancePhase": "CONTRACT_PREPARED",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "runtimeMode": "in-place-qmp",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "evidenceScoreAtAdmission": 95,
+    "requiredEvidenceAtApplyTime": [
+      "fresh_kubevirt_identity_evidence",
+      "fresh_qmp_evidence",
+      "fresh_guest_evidence"
+    ],
+    "requiredFreshnessWindowSeconds": 900,
+    "requiredPreApplyRevalidation": true,
+    "requiredPostApplyVerification": [
+      "continuity_post_apply_proof"
+    ],
+    "rollbackRequirement": "mandatory",
+    "returnToFloorRequirement": "mandatory",
+    "blastRadiusLimit": "single-vm",
+    "killSwitchRequirement": true,
+    "auditRequirement": "mandatory-audit-trail",
+    "invariantSetRef": "invariant-master-win11",
+    "transitionProofRef": "proof-master-win11",
+    "blockers": [],
+    "denialReasons": [],
+    "createdAt": "2026-05-07T15:00:00Z"
+  },
+  "revalidation": {
+    "revalidationId": "reval-master-win11",
+    "shellRef": "master-win11",
+    "governanceContractRef": "gc-master-win11-prepared",
+    "maxEvidenceAgeSeconds": 900,
+    "requiredFreshEvidence": {
+      "kubeVirtIdentity": true,
+      "qmpEvidence": true,
+      "guestEvidence": true,
+      "rollbackReadiness": true,
+      "returnToFloorReadiness": true,
+      "killSwitchReadiness": true
+    },
+    "requiredComparisons": {
+      "nodeUnchanged": true,
+      "virtLauncherPodUnchanged": true,
+      "qemuPidUnchanged": true,
+      "lastBootUnchanged": true,
+      "machineIdentityUnchanged": true,
+      "noVmimObserved": true,
+      "noLiveMigrationObserved": true,
+      "noRecreateObserved": true
+    },
+    "staleEvidencePolicy": "NEEDS_REVALIDATION",
+    "outputAllowed": "REVALIDATION_READY"
+  },
+  "attestation": {
+    "attestationId": "att-master-win11",
+    "subjectRef": "gc-master-win11-prepared",
+    "subjectType": "governance-contract",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "evidenceRefs": [
+      "master-win11"
+    ],
+    "blockerSnapshot": [],
+    "invariantSnapshot": {
+      "same_node_invariant": true
+    },
+    "decisionSnapshot": {
+      "governancePhase": "CONTRACT_PREPARED"
+    },
+    "createdAt": "2026-05-07T15:00:00Z",
+    "attestor": {
+      "componentName": "karl-fluid-governance-evaluator",
+      "componentVersion": "v1"
+    },
+    "signature": {
+      "mode": "unsigned-dev",
+      "value": ""
+    }
+  },
+  "killSwitch": {
+    "killSwitchId": "ks-master-win11",
+    "enabled": true,
+    "source": "policy",
+    "mode": "hard-disabled",
+    "reason": "future apply executor disabled by policy",
+    "requiredForApply": true,
+    "observedAt": "2026-05-07T15:00:00Z"
+  },
+  "expectedExecutionPhase": "EXECUTION_HARD_DISABLED",
+  "expectedBlockers": [
+    "future_apply_executor_disabled"
+  ]
+}

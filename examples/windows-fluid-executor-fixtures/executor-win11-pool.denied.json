@@ -1,0 +1,80 @@
+{
+  "name": "win11-pool-denied",
+  "governanceContract": {
+    "contractId": "gc-win11-pool-denied",
+    "shellRef": "win11-pool-a",
+    "sourceAdmissionDecisionId": "admission-win11-pool",
+    "sourceActionSlateId": "action-slate-win11-pool",
+    "requestedAction": "future-cpu-apply",
+    "governancePhase": "CONTRACT_BLOCKED",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "runtimeMode": "in-place-qmp",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "evidenceScoreAtAdmission": 40,
+    "requiredEvidenceAtApplyTime": ["fresh_kubevirt_identity_evidence"],
+    "requiredFreshnessWindowSeconds": 900,
+    "requiredPreApplyRevalidation": true,
+    "requiredPostApplyVerification": ["continuity_post_apply_proof"],
+    "rollbackRequirement": "mandatory",
+    "returnToFloorRequirement": "mandatory",
+    "blastRadiusLimit": "single-vm",
+    "killSwitchRequirement": true,
+    "auditRequirement": "mandatory-audit-trail",
+    "invariantSetRef": "invariant-win11-pool",
+    "transitionProofRef": "proof-win11-pool",
+    "blockers": ["live_migration_required"],
+    "denialReasons": ["pool_replica_context_only"],
+    "createdAt": "2026-05-07T15:00:00Z"
+  },
+  "revalidation": {
+    "revalidationId": "reval-win11-pool-denied",
+    "shellRef": "win11-pool-a",
+    "governanceContractRef": "gc-win11-pool-denied",
+    "maxEvidenceAgeSeconds": 900,
+    "requiredFreshEvidence": {
+      "kubeVirtIdentity": true,
+      "qmpEvidence": true,
+      "guestEvidence": true,
+      "rollbackReadiness": true,
+      "returnToFloorReadiness": true,
+      "killSwitchReadiness": true
+    },
+    "requiredComparisons": {
+      "nodeUnchanged": true,
+      "virtLauncherPodUnchanged": true,
+      "qemuPidUnchanged": true,
+      "lastBootUnchanged": true,
+      "machineIdentityUnchanged": true,
+      "noVmimObserved": true,
+      "noLiveMigrationObserved": true,
+      "noRecreateObserved": true
+    },
+    "staleEvidencePolicy": "NEEDS_REVALIDATION",
+    "outputAllowed": "REVALIDATION_BLOCKED"
+  },
+  "attestation": {
+    "attestationId": "att-win11-pool-denied",
+    "subjectRef": "gc-win11-pool-denied",
+    "subjectType": "governance-contract",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "evidenceRefs": ["win11-pool-a"],
+    "blockerSnapshot": ["live_migration_required"],
+    "invariantSnapshot": {"same_node_invariant": false},
+    "decisionSnapshot": {"governancePhase": "CONTRACT_BLOCKED"},
+    "createdAt": "2026-05-07T15:00:00Z",
+    "attestor": {"componentName": "karl-fluid-governance-evaluator", "componentVersion": "v1"},
+    "signature": {"mode": "unsigned-dev", "value": ""}
+  },
+  "killSwitch": {
+    "killSwitchId": "ks-win11-pool-denied",
+    "enabled": true,
+    "source": "policy",
+    "mode": "hard-disabled",
+    "reason": "future apply executor disabled by policy",
+    "requiredForApply": true,
+    "observedAt": "2026-05-07T15:00:00Z"
+  },
+  "expectedExecutionPhase": "EXECUTION_DENIED",
+  "expectedBlockers": ["live_migration_required", "future_apply_executor_disabled"]
+}
