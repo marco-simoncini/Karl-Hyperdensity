@@ -1,0 +1,14 @@
+# Sanitized runtime command log
+
+kubectl get pod virt-launcher-master-win11-kmwgg -n karl -o yaml
+kubectl exec -n karl virt-launcher-master-win11-kmwgg -c compute -- virsh -c qemu:///session schedinfo karl_master-win11 --current
+kubectl exec -n karl virt-launcher-master-win11-kmwgg -c compute -- cat /sys/fs/cgroup/cpu.max
+kubectl run karl-cpu-actuator-lab -n karl --image=ubuntu:24.04 ...
+kubectl exec -n karl karl-cpu-actuator-lab -- cat /host-proc/<qemu-host-pid>/cgroup
+kubectl exec -n karl karl-cpu-actuator-lab -- echo '300000 100000' > <target-cgroup>/cpu.max
+kubectl exec -n karl karl-cpu-actuator-lab -- echo '600000 100000' > <target-cgroup>/cpu.max
+kubectl exec -n karl virt-launcher-master-win11-kmwgg -c compute -- virsh -c qemu:///session qemu-agent-command karl_master-win11 '{"execute":"guest-ping"}'
+guest-exec workload: winsat cpu -compression
+guest-exec workload: 20s multi-worker cpu loop
+kubectl exec -n karl karl-cpu-actuator-lab -- cat <target-cgroup>/cpu.stat
+kubectl delete pod karl-cpu-actuator-lab -n karl
