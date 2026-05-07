@@ -1,0 +1,13 @@
+# Sanitized runtime command log
+
+kubectl get vm master-win11 -n karl -o yaml
+kubectl get vmi master-win11 -n karl -o yaml
+kubectl get pods -n karl -l vm.kubevirt.io/name=master-win11 -o wide
+kubectl get vmim -n karl
+virsh -c qemu:///session dominfo karl_master-win11
+virsh -c qemu:///session domstats karl_master-win11 --vcpu --balloon
+virsh -c qemu:///session schedinfo karl_master-win11 --current
+virsh -c qemu:///session qemu-monitor-command karl_master-win11 --pretty '{"execute":"query-balloon"}'
+virsh -c qemu:///session qemu-monitor-command karl_master-win11 --pretty '{"execute":"balloon","arguments":{"value":12884901888}}'
+virsh -c qemu:///session qemu-monitor-command karl_master-win11 --pretty '{"execute":"balloon","arguments":{"value":13958643712}}'
+virsh -c qemu:///session qemu-agent-command karl_master-win11 '{"execute":"guest-ping"}'
