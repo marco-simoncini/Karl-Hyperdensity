@@ -1,0 +1,52 @@
+{
+  "milestone": "the-father-windows-hyperdensity-parity-master-win11-live-v1",
+  "cluster": "karl-metal-01@ovh",
+  "namespace": "karl",
+  "vm": "master-win11",
+  "status": "WINDOWS_HYPERDENSITY_PARITY_NOT_CONFIRMED",
+  "qmpAccess": true,
+  "guestAck": true,
+  "cpuUpConfirmed": false,
+  "cpuDownConfirmed": false,
+  "ramUpConfirmed": false,
+  "ramDownConfirmed": false,
+  "rollbackVerified": false,
+  "returnToFloorVerified": false,
+  "continuity": {
+    "sameVm": true,
+    "sameNamespace": true,
+    "sameNode": true,
+    "samePod": true,
+    "sameQemu": true,
+    "sameWindowsBoot": true,
+    "sameMachineIdentity": true,
+    "noVmim": true,
+    "noLiveMigration": true,
+    "noRecreate": true,
+    "noRollout": true
+  },
+  "gateResult": {
+    "name": "GATE_HYPERDENSITY_PARITY_COMPLETE",
+    "result": "BLOCKED"
+  },
+  "blockers": [
+    "cpu_scale_up_guest_not_confirmed",
+    "cpu_scale_down_live_unplug_timeout",
+    "WINDOWS_HYPERDENSITY_PARITY_BLOCKED_BY_MEMORY_RETURN",
+    "hyperdensity_parity_partial_success_not_total_feasibility"
+  ],
+  "sanitization": "passed",
+  "mutationsAttempted": [
+    "cpu_up_live_6_to_7",
+    "cpu_down_live_7_to_6_attempted_timeout"
+  ],
+  "mutationsSkipped": [
+    "ram_up",
+    "ram_down"
+  ],
+  "commit": {
+    "sha": "",
+    "pushed": false,
+    "remote": "origin/The-Father-Windows"
+  }
+}

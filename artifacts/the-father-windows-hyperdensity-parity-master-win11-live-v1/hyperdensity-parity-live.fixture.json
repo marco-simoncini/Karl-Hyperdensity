@@ -1,0 +1,30 @@
+{
+  "name": "gate-hyperdensity-parity-live-master-win11-blocked",
+  "gateId": "GATE_HYPERDENSITY_PARITY_COMPLETE",
+  "parityEvidence": {
+    "cpuScaleUp": {
+      "operation": "cpu_scale_up",
+      "qmpConfirmedRuntimeState": true,
+      "guestConfirmedActualState": false,
+      "sameVm": true,
+      "sameNamespace": true,
+      "sameNode": true,
+      "sameVirtLauncherPod": true,
+      "sameQemuProcess": true,
+      "sameWindowsBoot": true,
+      "sameMachineIdentity": true,
+      "noReboot": true,
+      "noRollout": true,
+      "noRecreate": true,
+      "noLiveMigration": true,
+      "noDestructiveMigration": true,
+      "rollbackVerified": false,
+      "returnToFloorVerified": false,
+      "evidenceBackedAudit": true
+    }
+  },
+  "expectedGateStatus": "BLOCKED",
+  "expectedBlockers": [
+    "hyperdensity_parity_partial_success_not_total_feasibility"
+  ]
+}

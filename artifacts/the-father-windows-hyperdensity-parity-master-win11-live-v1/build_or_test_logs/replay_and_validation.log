@@ -1,0 +1,7 @@
+dryrun_replay=pass (blocked decision captured)
+admission_replay=pass (blocked decision captured)
+governance_replay=pass (contract blocked captured)
+gates_replay=pass (parity gate blocked captured)
+go_test_all=pass
+validate_json=pass
+git_diff_check=pass

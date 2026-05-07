@@ -1,0 +1,9 @@
+vm_uid=c81b95dc-d955-4fb3-a1af-59d979f48bcb
+vmi_uid=a565fc95-d79f-4cbd-a852-e0467e5f2110
+pod=virt-launcher-master-win11-w7mxv
+pod_uid=6e0a597f-b508-450d-a4ac-d5e4262c8615
+node=karl-lab-metal-01
+qemu_pid=92
+qemu_start=\"Thu May 7 18:16:51 2026\"
+qmp_socket=/var/run/kubevirt-private/libvirt/qemu/lib/domain-1-karl_master-win11/monitor.sock
+sanitization=sensitive values removed
