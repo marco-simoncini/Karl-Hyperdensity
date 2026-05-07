@@ -1,0 +1,56 @@
+{
+  "replayId": "windows-compliance-replay-f5a6d47222a216c0",
+  "inputRef": "examples/windows-fluid-compliance-fixtures/master-win11-pool-scaling-mechanism.blocked.json",
+  "evaluationTime": "2026-05-07T21:00:00Z",
+  "compliancePhase": "BLOCKED_WITH_REMEDIATION",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "shellRef": "windows-shell/karl/master-win11",
+  "evidenceSummary": {
+    "cgroupPath": "/",
+    "cpuActuatorReady": true,
+    "guestAck": true,
+    "guestFluidShellAvailable": true,
+    "isPoolChild": true,
+    "namespace": "karl",
+    "poolProvisioningOnly": false,
+    "qmpAvailable": true,
+    "ramBalloonReady": true,
+    "sameBoot": true,
+    "vmRef": "master-win11"
+  },
+  "blockers": [
+    "pool_scaling_as_mechanism"
+  ],
+  "remediationActions": [
+    "block_pool_scaling_as_mechanism"
+  ],
+  "automatableActions": [
+    "block_pool_scaling_as_mechanism"
+  ],
+  "manualActions": [],
+  "risk": "high",
+  "poolContext": {
+    "isPoolChild": true,
+    "requestedAsMechanism": true,
+    "treatedAsProvisionOnly": false
+  },
+  "poolScalingMechanismBlocked": true,
+  "hyperdensityReady": false,
+  "evidenceHash": "df68afb1dfc6da3b1bd747ed381f67f8c95ca386bba665e2a3a3bafe849b462b",
+  "replayHash": "9fbdcc61cc9193cb26f5957ff746dd70759d8320c722c4b4a4167da64b2ef99b",
+  "auditRefs": [
+    "input://examples/windows-fluid-compliance-fixtures/master-win11-pool-scaling-mechanism.blocked.json",
+    "evidence-hash://df68afb1dfc6da3b1bd747ed381f67f8c95ca386bba665e2a3a3bafe849b462b",
+    "replay-id://windows-compliance-replay-f5a6d47222a216c0",
+    "replay-hash://9fbdcc61cc9193cb26f5957ff746dd70759d8320c722c4b4a4167da64b2ef99b"
+  ],
+  "mutationFlags": {
+    "runtimeMutation": false,
+    "cpuApply": false,
+    "ramApply": false,
+    "actuatorApply": false,
+    "clusterCalls": false,
+    "qmpCalls": false
+  }
+}

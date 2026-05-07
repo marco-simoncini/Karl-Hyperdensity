@@ -1,0 +1,50 @@
+{
+  "replayId": "windows-compliance-replay-7383af5a6fa74af8",
+  "inputRef": "examples/windows-fluid-compliance-fixtures/master-win11-pool-child-real-evidence.ready.json",
+  "evaluationTime": "2026-05-07T21:00:00Z",
+  "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "shellRef": "windows-shell/karl/master-win11",
+  "evidenceSummary": {
+    "cgroupPath": "/",
+    "cpuActuatorReady": true,
+    "guestAck": true,
+    "guestFluidShellAvailable": true,
+    "isPoolChild": true,
+    "namespace": "karl",
+    "poolProvisioningOnly": true,
+    "qmpAvailable": true,
+    "ramBalloonReady": true,
+    "sameBoot": true,
+    "vmRef": "master-win11"
+  },
+  "blockers": [],
+  "remediationActions": [],
+  "automatableActions": [],
+  "manualActions": [],
+  "risk": "low",
+  "poolContext": {
+    "isPoolChild": true,
+    "requestedAsMechanism": false,
+    "treatedAsProvisionOnly": true
+  },
+  "poolScalingMechanismBlocked": false,
+  "hyperdensityReady": true,
+  "evidenceHash": "af9fc97ebbde84ebc2e534f3e34aeb1c3540fb024b13f5d260a7ad3fe2cf4401",
+  "replayHash": "233c0921c87ebce55484c8c20afcbb73437ab49e418ffbc408af826f221688ef",
+  "auditRefs": [
+    "input://examples/windows-fluid-compliance-fixtures/master-win11-pool-child-real-evidence.ready.json",
+    "evidence-hash://af9fc97ebbde84ebc2e534f3e34aeb1c3540fb024b13f5d260a7ad3fe2cf4401",
+    "replay-id://windows-compliance-replay-7383af5a6fa74af8",
+    "replay-hash://233c0921c87ebce55484c8c20afcbb73437ab49e418ffbc408af826f221688ef"
+  ],
+  "mutationFlags": {
+    "runtimeMutation": false,
+    "cpuApply": false,
+    "ramApply": false,
+    "actuatorApply": false,
+    "clusterCalls": false,
+    "qmpCalls": false
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "verdict": "windows_compliance_replay_attestation_cli_ready",
+  "scope": "read_only_compliance_replay_cli_and_attestation_envelope",
+  "constraints": {
+    "runtimeMutationPerformed": false,
+    "cpuApplyPerformed": false,
+    "ramApplyPerformed": false,
+    "actuatorApplyPerformed": false,
+    "clusterMutationPerformed": false,
+    "frontendTouched": false,
+    "dashboardTouched": false,
+    "ports443or8888Touched": false
+  },
+  "attestation": {
+    "realSignatureImplemented": false,
+    "kmsIntegrated": false,
+    "signatureValueNonEmpty": false
+  },
+  "validation": {
+    "goTestAll": "pass",
+    "validateJson": "pass",
+    "gitDiffCheck": "pass"
+  }
+}
