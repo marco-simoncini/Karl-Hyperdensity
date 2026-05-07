@@ -2,6 +2,7 @@ package windowsfluidvirt
 
 import (
 	"encoding/json"
+	"os"
 	"os/exec"
 	"path/filepath"
 	"testing"
@@ -329,6 +330,104 @@ func TestComplianceReplayCLIEmitsBundleIndexDeterministically(t *testing.T) {
 	}
 }
 
+func TestComplianceReplayAppendReadyRunToExistingBundle(t *testing.T) {
+	eval1 := "2026-05-07T20:45:00Z"
+	eval2 := "2026-05-07T20:46:00Z"
+	first := runComplianceReplayCLI(t,
+		"-input", windowsComplianceFixtureAbsPath(t, "master-win11-real-evidence.ready.json"),
+		"-evaluation-time", eval1,
+		"-emit-attestation",
+		"-emit-bundle-index",
+		"-bundle-subject", "windows-shell/karl/master-win11",
+	)
+	bundlePath := writeBundleFixture(t, *first.BundleIndex)
+	second := runComplianceReplayCLI(t,
+		"-input", windowsComplianceFixtureAbsPath(t, "master-win11-pool-child-real-evidence.ready.json"),
+		"-evaluation-time", eval2,
+		"-emit-attestation",
+		"-append-bundle",
+		"-append-bundle-in", bundlePath,
+		"-bundle-subject", "windows-shell/karl/master-win11",
+	)
+	if second.BundleIndex == nil || second.BundleIndex.RunCount != 2 {
+		t.Fatalf("expected appended bundle with 2 runs, got %+v", second.BundleIndex)
+	}
+	if second.BundleIndex.Runs[1].PreviousRunHash != second.BundleIndex.Runs[0].RunHash {
+		t.Fatal("appended run previousRunHash must link to previous run hash")
+	}
+}
+
+func TestComplianceReplayAppendBlockedRun(t *testing.T) {
+	first := runComplianceReplayCLI(t,
+		"-input", windowsComplianceFixtureAbsPath(t, "master-win11-real-evidence.ready.json"),
+		"-evaluation-time", "2026-05-07T20:45:00Z",
+		"-emit-bundle-index",
+		"-bundle-subject", "windows-shell/karl/master-win11",
+	)
+	bundlePath := writeBundleFixture(t, *first.BundleIndex)
+	second := runComplianceReplayCLI(t,
+		"-input", windowsComplianceFixtureAbsPath(t, "master-win11-pool-scaling-mechanism.blocked.json"),
+		"-evaluation-time", "2026-05-07T20:46:00Z",
+		"-append-bundle",
+		"-append-bundle-in", bundlePath,
+		"-bundle-subject", "windows-shell/karl/master-win11",
+	)
+	if second.BundleIndex == nil {
+		t.Fatal("expected appended bundle output")
+	}
+	if second.BundleIndex.LatestHyperdensityReady {
+		t.Fatal("latest should be blocked after append blocked run")
+	}
+}
+
+func TestComplianceReplayAppendBrokenChainRejected(t *testing.T) {
+	cmd := exec.Command(
+		"go", "run", "./cmd/karl-fluid-compliance-replay",
+		"-input", windowsComplianceFixtureAbsPath(t, "master-win11-real-evidence.ready.json"),
+		"-evaluation-time", "2026-05-07T20:46:00Z",
+		"-append-bundle",
+		"-append-bundle-in", windowsComplianceBundleFixtureAbsPath(t, "broken-previous-hash-mismatch.chain.json"),
+		"-bundle-subject", "windows-shell/karl/master-win11",
+	)
+	cmd.Dir = admissionRepoRoot(t)
+	if _, err := cmd.CombinedOutput(); err == nil {
+		t.Fatal("expected append on broken chain to fail")
+	}
+}
+
+func TestComplianceReplayAppendDuplicateRunRejected(t *testing.T) {
+	eval := time.Date(2026, 5, 7, 20, 45, 0, 0, time.UTC)
+	in := mustLoadComplianceFixture(t, "master-win11-real-evidence.ready.json").Input
+	replay, _ := EvaluateWindowsComplianceReplay(in, "run1", eval)
+	run1, _ := BuildWindowsComplianceReplayBundleRun(replay, nil, "", eval)
+	bundle, _ := BuildWindowsComplianceReplayBundleIndex("windows-shell/karl/master-win11", "windows-fluid-compliance-replay-bundle-index-v1", []WindowsComplianceReplayBundleRun{run1}, eval)
+	if _, err := AppendWindowsComplianceReplayBundleRun(bundle, run1, eval); err == nil {
+		t.Fatal("expected duplicate run append to fail")
+	}
+}
+
+func TestComplianceReplayAppendDeterministicFixedTime(t *testing.T) {
+	first := runComplianceReplayCLI(t,
+		"-input", windowsComplianceFixtureAbsPath(t, "master-win11-real-evidence.ready.json"),
+		"-evaluation-time", "2026-05-07T20:45:00Z",
+		"-emit-bundle-index",
+		"-bundle-subject", "windows-shell/karl/master-win11",
+	)
+	bundlePath := writeBundleFixture(t, *first.BundleIndex)
+	args := []string{
+		"-input", windowsComplianceFixtureAbsPath(t, "master-win11-pool-child-real-evidence.ready.json"),
+		"-evaluation-time", "2026-05-07T20:46:00Z",
+		"-append-bundle",
+		"-append-bundle-in", bundlePath,
+		"-bundle-subject", "windows-shell/karl/master-win11",
+	}
+	raw1 := runComplianceReplayCLIRaw(t, args...)
+	raw2 := runComplianceReplayCLIRaw(t, args...)
+	if raw1 != raw2 {
+		t.Fatal("append output must be deterministic with fixed times")
+	}
+}
+
 func runComplianceReplayCLI(t *testing.T, args ...string) WindowsComplianceReplayCLIOutput {
 	t.Helper()
 	raw := runComplianceReplayCLIRaw(t, args...)
@@ -354,4 +453,22 @@ func runComplianceReplayCLIRaw(t *testing.T, args ...string) string {
 func complianceReplayArtifactAbsPath(t *testing.T, name string) string {
 	t.Helper()
 	return filepath.Join(admissionRepoRoot(t), "artifacts", "the-father-windows-compliance-replay-cli-attestation-v1", name)
+}
+
+func windowsComplianceBundleFixtureAbsPath(t *testing.T, name string) string {
+	t.Helper()
+	return filepath.Join(admissionRepoRoot(t), "examples", "windows-fluid-compliance-bundle-fixtures", name)
+}
+
+func writeBundleFixture(t *testing.T, bundle WindowsComplianceReplayBundleIndex) string {
+	t.Helper()
+	path := filepath.Join(t.TempDir(), "bundle.json")
+	data, err := json.MarshalIndent(bundle, "", "  ")
+	if err != nil {
+		t.Fatalf("marshal bundle fixture: %v", err)
+	}
+	if err := os.WriteFile(path, data, 0o644); err != nil {
+		t.Fatalf("write bundle fixture: %v", err)
+	}
+	return path
 }

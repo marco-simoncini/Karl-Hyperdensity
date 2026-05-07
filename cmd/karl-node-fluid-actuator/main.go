@@ -55,12 +55,13 @@ func main() {
 		fatalf("load allowlist: %v", err)
 	}
 	evidence, err := windowsfluidvirt.EvaluateNodeFluidActuatorMVP(windowsfluidvirt.NodeFluidActuatorMVPInput{
-		Mode:           windowsfluidvirt.NodeFluidActuatorMVPMode(mode),
-		Request:        request,
-		Allowlist:      allowlist,
-		KillSwitch:     killSwitchPath,
-		EvaluationTime: evaluationTime,
-		DryRun:         dryRun,
+		Action:          windowsfluidvirt.KARLNodeFluidActuatorAction(mode),
+		Request:         request,
+		Allowlist:       allowlist,
+		KillSwitchPath:  killSwitchPath,
+		EvaluationTime:  evaluationTime,
+		EvidenceOutPath: evidenceOut,
+		DryRun:          dryRun,
 	})
 	if err != nil {
 		fatalf("evaluate actuator request: %v", err)
@@ -75,7 +76,7 @@ func main() {
 	if err := encoder.Encode(evidence); err != nil {
 		fatalf("encode evidence: %v", err)
 	}
-	if !evidence.Allowed {
+	if evidence.Decision == windowsfluidvirt.NodeActuatorDecisionRejected || evidence.Decision == windowsfluidvirt.NodeActuatorDecisionBlocked {
 		os.Exit(2)
 	}
 }

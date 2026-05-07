@@ -131,6 +131,37 @@ type WindowsComplianceReplayBundleIndex struct {
 	AuditRefs               []string                           `json:"auditRefs"`
 }
 
+func AppendWindowsComplianceReplayBundleRun(
+	existing WindowsComplianceReplayBundleIndex,
+	run WindowsComplianceReplayBundleRun,
+	evaluationTime time.Time,
+) (WindowsComplianceReplayBundleIndex, error) {
+	validated := ValidateWindowsComplianceReplayBundleIndex(existing)
+	if !validated.Chain.ChainValid {
+		return validated, errors.New("existing bundle chain is invalid")
+	}
+	for _, existingRun := range validated.Runs {
+		if run.RunID != "" && existingRun.RunID == run.RunID {
+			return validated, fmt.Errorf("duplicate runId: %s", run.RunID)
+		}
+		if run.RunHash != "" && existingRun.RunHash == run.RunHash {
+			return validated, fmt.Errorf("duplicate runHash: %s", run.RunHash)
+		}
+	}
+	if len(validated.Runs) == 0 {
+		run.PreviousRunHash = ""
+	} else {
+		run.PreviousRunHash = validated.Chain.LatestRunHash
+	}
+	recomputedHash, err := computeBundleRunHash(run)
+	if err != nil {
+		return validated, fmt.Errorf("compute appended run hash: %w", err)
+	}
+	run.RunHash = recomputedHash
+	updatedRuns := append(validated.Runs, run)
+	return BuildWindowsComplianceReplayBundleIndex(validated.SubjectRef, validated.BundleVersion, updatedRuns, evaluationTime)
+}
+
 func EvaluateWindowsComplianceReplay(
 	input EvaluateWindowsHyperdensityReadyComplianceInput,
 	inputRef string,
@@ -357,6 +388,20 @@ func ValidateWindowsComplianceReplayBundleIndex(index WindowsComplianceReplayBun
 
 	for i := range index.Runs {
 		run := index.Runs[i]
+		if run.RunID == "" {
+			index.Chain.ChainValid = false
+			index.Chain.BrokenAtRunID = run.RunID
+			index.Chain.Notes = "runId is required"
+			return index
+		}
+		for j := 0; j < i; j++ {
+			if index.Runs[j].RunID == run.RunID {
+				index.Chain.ChainValid = false
+				index.Chain.BrokenAtRunID = run.RunID
+				index.Chain.Notes = "duplicate runId"
+				return index
+			}
+		}
 		if run.EvidenceHash == "" || run.ReplayHash == "" {
 			index.Chain.ChainValid = false
 			index.Chain.BrokenAtRunID = run.RunID

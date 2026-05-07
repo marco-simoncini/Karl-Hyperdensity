@@ -1,0 +1,24 @@
+{
+  "verdict": "windows_node_fluid_actuator_mvp_ready",
+  "scope": "node_fluid_actuator_mvp_hardening_and_multi_run_audit_append",
+  "baseProofCommit": "ce05534",
+  "checks": {
+    "requestModelHardened": true,
+    "allowlistModelHardened": true,
+    "safetyValidatorHardened": true,
+    "lifecycleModelHardened": true,
+    "cliHardened": true,
+    "bundleAppendSupport": true,
+    "fixtureAndTestsAdded": true,
+    "docsAndRunbookUpdated": true,
+    "validationPassed": true,
+    "safetyScanPassed": true
+  },
+  "constraints": {
+    "noFrontendChanges": true,
+    "noDashboardChanges": true,
+    "noPort443Changes": true,
+    "noPort8888Changes": true,
+    "noClusterMutation": true
+  }
+}

@@ -1,0 +1,4 @@
+go test ./...
+ok  	github.com/marco-simoncini/Karl-Hyperdensity/pkg/windowsfluidvirt
+ok  	github.com/marco-simoncini/Karl-Hyperdensity/pkg/windowsfluidvirt/sidecar
+ok  	github.com/marco-simoncini/Karl-Hyperdensity/pkg/contracts

@@ -20,6 +20,8 @@ func main() {
 	var bundleSubject string
 	var previousRunHash string
 	var emitBundleIndex bool
+	var appendBundleIn string
+	var appendBundle bool
 
 	flag.StringVar(&inputPath, "input", "", "Path to replay input JSON fixture or direct input payload.")
 	flag.StringVar(&evaluationTimeRaw, "evaluation-time", "", "Deterministic replay time in RFC3339 format (UTC recommended).")
@@ -30,6 +32,8 @@ func main() {
 	flag.StringVar(&bundleSubject, "bundle-subject", "", "Bundle subject reference. Defaults to replay shellRef.")
 	flag.StringVar(&previousRunHash, "previous-run-hash", "", "Optional previous run hash for single-run chain linkage.")
 	flag.BoolVar(&emitBundleIndex, "emit-bundle-index", false, "Emit single-run replay bundle index (read-only, local hash chain).")
+	flag.StringVar(&appendBundleIn, "append-bundle-in", "", "Path to existing bundle index JSON used for append workflow.")
+	flag.BoolVar(&appendBundle, "append-bundle", false, "Append run to existing bundle provided by -append-bundle-in.")
 	flag.Usage = func() {
 		fmt.Fprintf(flag.CommandLine.Output(), "karl-fluid-compliance-replay (read-only)\n\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "This CLI performs read-only compliance replay and never mutates runtime.\n")
@@ -42,7 +46,7 @@ func main() {
 		fmt.Fprintf(flag.CommandLine.Output(), "Bundle index notes:\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "- emits local deterministic hash chain metadata\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "- no keys, no KMS, no real signatures\n")
-		fmt.Fprintf(flag.CommandLine.Output(), "- single-run bundle index in this version\n\n")
+		fmt.Fprintf(flag.CommandLine.Output(), "- supports single-run emission and append to existing bundle\n\n")
 		fmt.Fprintf(flag.CommandLine.Output(), "Flags:\n")
 		flag.PrintDefaults()
 	}
@@ -77,7 +81,34 @@ func main() {
 		}
 		output.Attestation = &attestation
 	}
-	if emitBundleIndex {
+	if appendBundle {
+		if appendBundleIn == "" {
+			fatalf("append mode requires -append-bundle-in")
+		}
+		if previousRunHash != "" {
+			fatalf("-previous-run-hash is not allowed in append mode")
+		}
+		subject := bundleSubject
+		if subject == "" {
+			subject = replay.ShellRef
+		}
+		run, runErr := windowsfluidvirt.BuildWindowsComplianceReplayBundleRun(replay, output.Attestation, "", evaluationTime)
+		if runErr != nil {
+			fatalf("build bundle run: %v", runErr)
+		}
+		existingBundle, loadErr := loadBundleIndex(appendBundleIn)
+		if loadErr != nil {
+			fatalf("load existing bundle index: %v", loadErr)
+		}
+		if existingBundle.SubjectRef != subject {
+			fatalf("bundle subject mismatch: existing=%s requested=%s", existingBundle.SubjectRef, subject)
+		}
+		appended, appendErr := windowsfluidvirt.AppendWindowsComplianceReplayBundleRun(existingBundle, run, evaluationTime)
+		if appendErr != nil {
+			fatalf("append bundle run: %v", appendErr)
+		}
+		output.BundleIndex = &appended
+	} else if emitBundleIndex {
 		subject := bundleSubject
 		if subject == "" {
 			subject = replay.ShellRef
@@ -100,6 +131,18 @@ func main() {
 	if err := encoder.Encode(output); err != nil {
 		fatalf("encode output: %v", err)
 	}
+}
+
+func loadBundleIndex(path string) (windowsfluidvirt.WindowsComplianceReplayBundleIndex, error) {
+	data, err := os.ReadFile(path)
+	if err != nil {
+		return windowsfluidvirt.WindowsComplianceReplayBundleIndex{}, err
+	}
+	var index windowsfluidvirt.WindowsComplianceReplayBundleIndex
+	if err := json.Unmarshal(data, &index); err != nil {
+		return windowsfluidvirt.WindowsComplianceReplayBundleIndex{}, err
+	}
+	return index, nil
 }
 
 func parseEvaluationTime(raw string) (time.Time, error) {

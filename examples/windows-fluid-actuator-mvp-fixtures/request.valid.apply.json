@@ -1,0 +1,30 @@
+{
+  "requestId": "fixture-node-actuator-valid-apply",
+  "requestVersion": "windows-fluid-node-actuator-mvp-v1",
+  "action": "apply",
+  "namespace": "karl",
+  "vmName": "master-win11",
+  "vmUid": "vm-uid-fixture",
+  "vmiUid": "vmi-uid-fixture",
+  "podName": "virt-launcher-master-win11-kmwgg",
+  "podUid": "pod-uid-fixture",
+  "nodeName": "karl-lab-metal-01",
+  "qemuPid": "96",
+  "qemuStartTime": "Thu May 7 18:58:03 2026",
+  "cgroupPath": "/tmp/fake-cgroup-path",
+  "controller": "cpu.max",
+  "previousCpuMax": "300000 100000",
+  "requestedCpuMax": "600000 100000",
+  "rollbackCpuMax": "300000 100000",
+  "minCpuMax": "300000 100000",
+  "maxCpuMax": "600000 100000",
+  "ttlSeconds": 600,
+  "createdAt": "2026-05-07T22:00:00Z",
+  "expiresAt": "2026-05-07T22:10:00Z",
+  "reason": "fixture_valid_apply",
+  "risk": "low",
+  "evidenceRefs": [
+    "fixture://valid-apply"
+  ],
+  "policyVersion": "windows-fluid-node-actuator-v1"
+}
