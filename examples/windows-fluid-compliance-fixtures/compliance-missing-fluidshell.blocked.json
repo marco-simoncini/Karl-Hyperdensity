@@ -1,0 +1,44 @@
+{
+  "name": "generic vm missing fluid shell",
+  "input": {
+    "identity": {
+      "vmRef": "generic-win11",
+      "namespace": "karl"
+    },
+    "qmpAvailable": true,
+    "guestFluidShell": {
+      "available": false,
+      "guestAck": false,
+      "sameBoot": true,
+      "sameMachine": true
+    },
+    "ramBalloon": {
+      "available": true,
+      "balloonDriverReady": true,
+      "canReturnToFloor": true
+    },
+    "cpuActuator": {
+      "available": true,
+      "nodeLocal": true,
+      "allowlisted": true,
+      "supportsCpuMax": true,
+      "cgroupPathMatchesShell": true,
+      "actuatorAck": true
+    },
+    "policyAnnotations": {},
+    "poolContext": {
+      "isPoolChild": false,
+      "requestedAsMechanism": false,
+      "treatedAsProvisionOnly": true
+    },
+    "remediationOptions": []
+  },
+  "expectedPhase": "BLOCKED_WITH_REMEDIATION",
+  "expectedBlockers": [
+    "karl_agent_fluid_module_missing",
+    "guest_ack_missing"
+  ],
+  "expectedRemediations": [
+    "install_or_enable_fluidShell"
+  ]
+}

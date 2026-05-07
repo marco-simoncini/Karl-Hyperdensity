@@ -1,0 +1,45 @@
+{
+  "name": "cgroup path mismatch",
+  "input": {
+    "identity": {
+      "vmRef": "master-win11",
+      "namespace": "karl"
+    },
+    "qmpAvailable": true,
+    "guestFluidShell": {
+      "available": true,
+      "guestAck": true,
+      "sameBoot": true,
+      "sameMachine": true
+    },
+    "ramBalloon": {
+      "available": true,
+      "balloonDriverReady": true,
+      "canReturnToFloor": true
+    },
+    "cpuActuator": {
+      "available": true,
+      "nodeLocal": true,
+      "allowlisted": true,
+      "supportsCpuMax": true,
+      "cgroupPathMatchesShell": false,
+      "actuatorAck": true,
+      "resolvedCgroupPath": "/kubepods.slice/unrelated-pod"
+    },
+    "policyAnnotations": {},
+    "poolContext": {
+      "isPoolChild": false,
+      "requestedAsMechanism": false,
+      "treatedAsProvisionOnly": true
+    },
+    "remediationOptions": []
+  },
+  "expectedPhase": "BLOCKED_WITH_REMEDIATION",
+  "expectedBlockers": [
+    "cgroup_path_mismatch"
+  ],
+  "expectedRemediations": [
+    "authorize_cpu_cgroup_target",
+    "quarantine_identity_mismatch"
+  ]
+}

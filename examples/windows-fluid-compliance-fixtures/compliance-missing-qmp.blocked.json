@@ -1,0 +1,44 @@
+{
+  "name": "missing qmp evidence",
+  "input": {
+    "identity": {
+      "vmRef": "master-win11",
+      "namespace": "karl"
+    },
+    "qmpAvailable": false,
+    "guestFluidShell": {
+      "available": true,
+      "guestAck": true,
+      "sameBoot": true,
+      "sameMachine": true
+    },
+    "ramBalloon": {
+      "available": true,
+      "balloonDriverReady": true,
+      "canReturnToFloor": true
+    },
+    "cpuActuator": {
+      "available": true,
+      "nodeLocal": true,
+      "allowlisted": true,
+      "supportsCpuMax": true,
+      "cgroupPathMatchesShell": true,
+      "actuatorAck": true
+    },
+    "policyAnnotations": {},
+    "poolContext": {
+      "isPoolChild": false,
+      "requestedAsMechanism": false,
+      "treatedAsProvisionOnly": true
+    },
+    "remediationOptions": []
+  },
+  "expectedPhase": "BLOCKED_WITH_REMEDIATION",
+  "expectedBlockers": [
+    "qmp_socket_unavailable"
+  ],
+  "expectedRemediations": [
+    "enable_qmp_access",
+    "verify_qmp_socket_mapping"
+  ]
+}

@@ -1,0 +1,45 @@
+{
+  "name": "missing cpu actuator",
+  "input": {
+    "identity": {
+      "vmRef": "master-win11",
+      "namespace": "karl"
+    },
+    "qmpAvailable": true,
+    "guestFluidShell": {
+      "available": true,
+      "guestAck": true,
+      "sameBoot": true,
+      "sameMachine": true
+    },
+    "ramBalloon": {
+      "available": true,
+      "balloonDriverReady": true,
+      "canReturnToFloor": true
+    },
+    "cpuActuator": {
+      "available": false,
+      "nodeLocal": false,
+      "allowlisted": false,
+      "supportsCpuMax": false,
+      "cgroupPathMatchesShell": false,
+      "actuatorAck": false
+    },
+    "policyAnnotations": {},
+    "poolContext": {
+      "isPoolChild": false,
+      "requestedAsMechanism": false,
+      "treatedAsProvisionOnly": true
+    },
+    "remediationOptions": []
+  },
+  "expectedPhase": "BLOCKED_WITH_REMEDIATION",
+  "expectedBlockers": [
+    "node_fluid_actuator_unavailable",
+    "cgroup_path_mismatch"
+  ],
+  "expectedRemediations": [
+    "deploy_node_fluid_actuator",
+    "authorize_cpu_cgroup_target"
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "name": "qemu pid mismatch quarantined",
+  "input": {
+    "identity": {
+      "vmRef": "master-win11",
+      "namespace": "karl"
+    },
+    "qmpAvailable": true,
+    "guestFluidShell": {
+      "available": true,
+      "guestAck": true,
+      "sameBoot": false,
+      "sameMachine": false
+    },
+    "ramBalloon": {
+      "available": true,
+      "balloonDriverReady": true,
+      "canReturnToFloor": true
+    },
+    "cpuActuator": {
+      "available": true,
+      "nodeLocal": true,
+      "allowlisted": true,
+      "supportsCpuMax": true,
+      "cgroupPathMatchesShell": true,
+      "actuatorAck": true
+    },
+    "policyAnnotations": {},
+    "poolContext": {
+      "isPoolChild": false,
+      "requestedAsMechanism": false,
+      "treatedAsProvisionOnly": true
+    },
+    "remediationOptions": []
+  },
+  "expectedPhase": "BLOCKED_WITH_REMEDIATION",
+  "expectedBlockers": [
+    "qemu_pid_changed"
+  ],
+  "expectedRemediations": [
+    "quarantine_identity_mismatch"
+  ]
+}

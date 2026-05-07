@@ -64,6 +64,19 @@ const (
 	BlockerCandidate8888Unavailable           = "candidate_8888_unavailable"
 	BlockerWindowsAgentRepoNotPresentInTarget = "windows_agent_repo_not_present_in_target_repos"
 	BlockerFutureApplyExecutorDisabled        = "future_apply_executor_disabled"
+	BlockerRAMBalloonUnavailable              = "ram_balloon_unavailable"
+	BlockerNodeFluidActuatorUnavailable       = "node_fluid_actuator_unavailable"
+	BlockerPoolScalingAsMechanism             = "pool_scaling_as_mechanism"
+	BlockerCgroupPathMismatch                 = "cgroup_path_mismatch"
+	BlockerActuatorTargetAmbiguous            = "actuator_target_ambiguous"
+	BlockerActuatorPathEscape                 = "actuator_path_escape"
+	BlockerActuatorParentCgroupWrite          = "actuator_parent_cgroup_write_forbidden"
+	BlockerActuatorArbitraryWrite             = "actuator_arbitrary_write_forbidden"
+	BlockerActuatorCPUEntitlementOutOfBounds  = "actuator_cpu_entitlement_out_of_bounds"
+	BlockerStaleActuatorRequest               = "stale_actuator_request"
+	BlockerActuatorReplayDetected             = "actuator_replay_detected"
+	BlockerLeaseRequestsVCPUHotplug           = "lease_requests_vcpu_hotplug"
+	BlockerLeaseRequestsVMSpecPatch           = "lease_requests_vm_spec_patch"
 )
 
 var CanonicalBlockers = map[string]BlockerDefinition{
@@ -291,6 +304,123 @@ var CanonicalBlockers = map[string]BlockerDefinition{
 		Remediable:          false,
 		ResultingPhase:      PhaseBlocked,
 		EvidenceRequirement: "governance contract + disabled executor evidence",
+	},
+	BlockerRAMBalloonUnavailable: {
+		ID:                  BlockerRAMBalloonUnavailable,
+		Severity:            SeverityHigh,
+		Category:            CategoryQMP,
+		Message:             "RAM balloon capability is unavailable.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "qmp balloon capability evidence",
+	},
+	BlockerNodeFluidActuatorUnavailable: {
+		ID:                  BlockerNodeFluidActuatorUnavailable,
+		Severity:            SeverityCritical,
+		Category:            CategoryIntegration,
+		Message:             "Node fluid actuator capability is unavailable.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "node-local actuator capability evidence",
+	},
+	BlockerPoolScalingAsMechanism: {
+		ID:                  BlockerPoolScalingAsMechanism,
+		Severity:            SeverityCritical,
+		Category:            CategorySafety,
+		Message:             "Pool scaling is attempted as runtime scaling mechanism.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "pool context and scaling intent evidence",
+	},
+	BlockerCgroupPathMismatch: {
+		ID:                  BlockerCgroupPathMismatch,
+		Severity:            SeverityCritical,
+		Category:            CategoryIdentity,
+		Message:             "Resolved cgroup path does not match target VM shell.",
+		Remediable:          false,
+		ResultingPhase:      PhaseQuarantined,
+		EvidenceRequirement: "resolved cgroup path mapping evidence",
+	},
+	BlockerActuatorTargetAmbiguous: {
+		ID:                  BlockerActuatorTargetAmbiguous,
+		Severity:            SeverityCritical,
+		Category:            CategorySafety,
+		Message:             "Actuator request target mapping is ambiguous.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "vm->pod->container->cgroup->pid mapping evidence",
+	},
+	BlockerActuatorPathEscape: {
+		ID:                  BlockerActuatorPathEscape,
+		Severity:            SeverityCritical,
+		Category:            CategorySafety,
+		Message:             "Actuator cgroup path escapes allowed scope.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "path canonicalization and allowlist evidence",
+	},
+	BlockerActuatorParentCgroupWrite: {
+		ID:                  BlockerActuatorParentCgroupWrite,
+		Severity:            SeverityCritical,
+		Category:            CategorySafety,
+		Message:             "Parent cgroup write attempted without explicit allowance.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "mutation scope evidence",
+	},
+	BlockerActuatorArbitraryWrite: {
+		ID:                  BlockerActuatorArbitraryWrite,
+		Severity:            SeverityCritical,
+		Category:            CategorySafety,
+		Message:             "Actuator attempted file write outside allowlisted knobs.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "write target evidence",
+	},
+	BlockerActuatorCPUEntitlementOutOfBounds: {
+		ID:                  BlockerActuatorCPUEntitlementOutOfBounds,
+		Severity:            SeverityHigh,
+		Category:            CategorySafety,
+		Message:             "Requested cpu.max is outside configured bounds.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "requested cpu.max and policy bounds evidence",
+	},
+	BlockerStaleActuatorRequest: {
+		ID:                  BlockerStaleActuatorRequest,
+		Severity:            SeverityHigh,
+		Category:            CategorySafety,
+		Message:             "Actuator request is stale and TTL has expired.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "request timestamp + ttl evidence",
+	},
+	BlockerActuatorReplayDetected: {
+		ID:                  BlockerActuatorReplayDetected,
+		Severity:            SeverityCritical,
+		Category:            CategorySafety,
+		Message:             "Replay protection rejected duplicate request material.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "request nonce or requestId replay evidence",
+	},
+	BlockerLeaseRequestsVCPUHotplug: {
+		ID:                  BlockerLeaseRequestsVCPUHotplug,
+		Severity:            SeverityCritical,
+		Category:            CategorySafety,
+		Message:             "CPU lease requests vCPU hotplug which is forbidden.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "lease mechanism evidence",
+	},
+	BlockerLeaseRequestsVMSpecPatch: {
+		ID:                  BlockerLeaseRequestsVMSpecPatch,
+		Severity:            SeverityCritical,
+		Category:            CategorySafety,
+		Message:             "CPU lease requests Kubernetes VM spec patch which is forbidden.",
+		Remediable:          true,
+		ResultingPhase:      PhaseBlocked,
+		EvidenceRequirement: "lease mutation intent evidence",
 	},
 }
 

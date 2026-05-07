@@ -1,0 +1,33 @@
+{
+  "name": "cpu lease tries vm spec patch",
+  "lease": {
+    "leaseId": "lease-3",
+    "shellRef": "shell-master-win11",
+    "targetVm": "master-win11",
+    "mode": "prearmed-fluid-envelope",
+    "mechanism": "cgroup-v2-cpu-max",
+    "floorCpuMax": "300000 100000",
+    "ceilingCpuMax": "600000 100000",
+    "currentCpuMax": "300000 100000",
+    "requestedCpuMax": "600000 100000",
+    "ttlSeconds": 300,
+    "reason": "forbidden vm spec patch",
+    "risk": "high",
+    "rollbackTarget": "300000 100000",
+    "returnToFloorTarget": "300000 100000",
+    "requireSameQemu": true,
+    "requireSameBoot": true,
+    "requireSamePod": true,
+    "requireSameNode": true,
+    "requireGuestAck": true,
+    "requireActuatorAck": true,
+    "status": "planned",
+    "blockers": [],
+    "evidenceRefs": [],
+    "disallowedActions": ["vm-spec-patch"]
+  },
+  "expectedStatus": "rejected",
+  "expectedBlockers": [
+    "lease_requests_vm_spec_patch"
+  ]
+}

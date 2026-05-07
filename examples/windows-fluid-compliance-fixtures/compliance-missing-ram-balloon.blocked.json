@@ -1,0 +1,46 @@
+{
+  "name": "missing ram balloon",
+  "input": {
+    "identity": {
+      "vmRef": "master-win11",
+      "namespace": "karl"
+    },
+    "qmpAvailable": true,
+    "guestFluidShell": {
+      "available": true,
+      "guestAck": true,
+      "sameBoot": true,
+      "sameMachine": true
+    },
+    "ramBalloon": {
+      "available": false,
+      "balloonDriverReady": false,
+      "canReturnToFloor": false
+    },
+    "cpuActuator": {
+      "available": true,
+      "nodeLocal": true,
+      "allowlisted": true,
+      "supportsCpuMax": true,
+      "cgroupPathMatchesShell": true,
+      "actuatorAck": true
+    },
+    "policyAnnotations": {},
+    "poolContext": {
+      "isPoolChild": false,
+      "requestedAsMechanism": false,
+      "treatedAsProvisionOnly": true
+    },
+    "remediationOptions": []
+  },
+  "expectedPhase": "BLOCKED_WITH_REMEDIATION",
+  "expectedBlockers": [
+    "ram_balloon_unavailable",
+    "return_to_floor_not_ready"
+  ],
+  "expectedRemediations": [
+    "enable_ram_balloon_driver",
+    "verify_qmp_balloon",
+    "verify_return_to_floor"
+  ]
+}

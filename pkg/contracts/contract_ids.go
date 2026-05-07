@@ -25,4 +25,9 @@ const (
 	WindowsFluidApplyGovernanceV1ID        = "hyperdensity_windows_fluid_apply_governance_v1"
 	WindowsFluidFutureApplyExecutorV1ID    = "hyperdensity_windows_fluid_future_apply_executor_v1"
 	WindowsFluidUnlockGateVerificationV1ID = "hyperdensity_windows_fluid_unlock_gate_verification_v1"
+	WindowsFluidNodeActuatorV1ID           = "hyperdensity_windows_fluid_node_actuator_v1"
+	WindowsCpuEntitlementLeaseV1ID         = "hyperdensity_windows_cpu_entitlement_lease_v1"
+	WindowsHyperdensityComplianceV1ID      = "hyperdensity_windows_hyperdensity_ready_compliance_v1"
+	WindowsRemediationTaxonomyV1ID         = "hyperdensity_windows_remediation_taxonomy_v1"
+	WindowsActuatorSafetyModelV1ID         = "hyperdensity_windows_actuator_safety_model_v1"
 )

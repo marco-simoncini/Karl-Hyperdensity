@@ -1,0 +1,43 @@
+{
+  "name": "pool scaling as mechanism blocked",
+  "input": {
+    "identity": {
+      "vmRef": "win11-pool-001",
+      "namespace": "karl"
+    },
+    "qmpAvailable": true,
+    "guestFluidShell": {
+      "available": true,
+      "guestAck": true,
+      "sameBoot": true,
+      "sameMachine": true
+    },
+    "ramBalloon": {
+      "available": true,
+      "balloonDriverReady": true,
+      "canReturnToFloor": true
+    },
+    "cpuActuator": {
+      "available": true,
+      "nodeLocal": true,
+      "allowlisted": true,
+      "supportsCpuMax": true,
+      "cgroupPathMatchesShell": true,
+      "actuatorAck": true
+    },
+    "policyAnnotations": {},
+    "poolContext": {
+      "isPoolChild": true,
+      "requestedAsMechanism": true,
+      "treatedAsProvisionOnly": false
+    },
+    "remediationOptions": []
+  },
+  "expectedPhase": "BLOCKED_WITH_REMEDIATION",
+  "expectedBlockers": [
+    "pool_scaling_as_mechanism"
+  ],
+  "expectedRemediations": [
+    "block_pool_scaling_as_mechanism"
+  ]
+}
