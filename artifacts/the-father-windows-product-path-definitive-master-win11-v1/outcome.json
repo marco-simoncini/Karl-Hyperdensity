@@ -1,0 +1,70 @@
+{
+  "verdict": "WINDOWS_FLUIDVIRT_PRODUCT_PATH_CONFIRMED",
+  "statement": "KARL Windows Prearmed Fluid Envelope v2 product path confirmed on master-win11.",
+  "cpuMechanism": "entitlement_liquidity_via_controlled_node_actuator_cpu_max",
+  "ramMechanism": "balloon_liquidity_via_qmp",
+  "vm": "master-win11",
+  "namespace": "karl",
+  "node": "karl-lab-metal-01",
+  "continuity": {
+    "sameQemuPid": true,
+    "sameQemuStart": true,
+    "sameWindowsBoot": true,
+    "sameMachineIdentity": true,
+    "samePod": true,
+    "sameNode": true,
+    "noVmim": true,
+    "noLiveMigrationObserved": true,
+    "noRolloutObserved": true,
+    "noRecreateObserved": true
+  },
+  "checks": {
+    "complianceReady": true,
+    "actuatorDryRunAccepted": true,
+    "cpuEntitlementUpConfirmed": true,
+    "cpuEntitlementDownConfirmed": true,
+    "ramEntitlementUpConfirmed": true,
+    "ramEntitlementDownConfirmed": true,
+    "rollbackVerified": true,
+    "returnToFloorVerified": true,
+    "guestAck": true,
+    "evidenceSaved": true
+  },
+  "identity": {
+    "podNameBefore": "virt-launcher-master-win11-kmwgg",
+    "podNameAfter": "virt-launcher-master-win11-kmwgg",
+    "podUidBefore": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+    "podUidAfter": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+    "nodeBefore": "karl-lab-metal-01",
+    "nodeAfter": "karl-lab-metal-01",
+    "qemuPidBefore": 96,
+    "qemuPidAfter": 96,
+    "qemuStartBefore": "Thu May 7 18:58:03 2026",
+    "qemuStartAfter": "Thu May 7 18:58:03 2026",
+    "windowsBootBefore": "/Date(1778180311500)/",
+    "windowsBootAfter": "/Date(1778180311500)/",
+    "machineGuidHashBefore": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+    "machineGuidHashAfter": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e"
+  },
+  "cpu": {
+    "floor": "300000 100000",
+    "ceiling": "600000 100000",
+    "finalBaseline": "600000 100000",
+    "metrics": {
+      "floorRun1ElapsedMs": 27533,
+      "floorRun1UsageDeltaUsec": 80225139,
+      "floorRun1ThrottledDeltaUsec": 58796712,
+      "ceilingRunElapsedMs": 28501,
+      "ceilingRunUsageDeltaUsec": 142286379,
+      "ceilingRunThrottledDeltaUsec": 278773,
+      "floorRun2ElapsedMs": 28057,
+      "floorRun2UsageDeltaUsec": 81354187,
+      "floorRun2ThrottledDeltaUsec": 59507913
+    }
+  },
+  "ram": {
+    "floorBytes": 12884901888,
+    "ceilingBytes": 13958643712,
+    "returnedToFloor": true
+  }
+}

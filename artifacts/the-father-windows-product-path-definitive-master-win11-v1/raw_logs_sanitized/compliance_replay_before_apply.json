@@ -1,0 +1,116 @@
+{
+  "replayId": "windows-compliance-replay-a095327aa15540f2",
+  "inputRef": "examples/windows-fluid-compliance-fixtures/master-win11-real-evidence.ready.json",
+  "evaluationTime": "2026-05-07T21:20:00Z",
+  "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "shellRef": "windows-shell/karl/master-win11",
+  "evidenceSummary": {
+    "cgroupPath": "/",
+    "cpuActuatorReady": true,
+    "guestAck": true,
+    "guestFluidShellAvailable": true,
+    "isPoolChild": false,
+    "namespace": "karl",
+    "poolProvisioningOnly": true,
+    "qmpAvailable": true,
+    "ramBalloonReady": true,
+    "sameBoot": true,
+    "vmRef": "master-win11"
+  },
+  "blockers": [],
+  "remediationActions": [],
+  "automatableActions": [],
+  "manualActions": [],
+  "risk": "low",
+  "poolContext": {
+    "isPoolChild": false,
+    "requestedAsMechanism": false,
+    "treatedAsProvisionOnly": true
+  },
+  "poolScalingMechanismBlocked": false,
+  "hyperdensityReady": true,
+  "evidenceHash": "163bd5edf22cc810815112c7e811da63d91218e6c78a78a9e761ef013dc3c82a",
+  "replayHash": "78835321a4460a96383c4cf5523348ac54e650b0757f99239a3cae7ba22e6489",
+  "auditRefs": [
+    "input://examples/windows-fluid-compliance-fixtures/master-win11-real-evidence.ready.json",
+    "evidence-hash://163bd5edf22cc810815112c7e811da63d91218e6c78a78a9e761ef013dc3c82a",
+    "replay-id://windows-compliance-replay-a095327aa15540f2",
+    "replay-hash://78835321a4460a96383c4cf5523348ac54e650b0757f99239a3cae7ba22e6489"
+  ],
+  "mutationFlags": {
+    "runtimeMutation": false,
+    "cpuApply": false,
+    "ramApply": false,
+    "actuatorApply": false,
+    "clusterCalls": false,
+    "qmpCalls": false
+  },
+  "attestation": {
+    "attestationId": "windows-compliance-attestation-76666b6bf8323ae2",
+    "replayId": "windows-compliance-replay-a095327aa15540f2",
+    "subjectType": "windows-hyperdensity-ready-compliance-replay",
+    "subjectRef": "windows-shell/karl/master-win11",
+    "policyVersion": "windows-hyperdensity-ready-compliance-v1",
+    "evaluatorVersion": "windows-compliance-replay-cli-v1",
+    "evidenceHash": "163bd5edf22cc810815112c7e811da63d91218e6c78a78a9e761ef013dc3c82a",
+    "replayHash": "78835321a4460a96383c4cf5523348ac54e650b0757f99239a3cae7ba22e6489",
+    "decisionSnapshot": {
+      "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+      "hyperdensityReady": true,
+      "poolScalingMechanismBlocked": false,
+      "risk": "low"
+    },
+    "blockerSnapshot": [],
+    "remediationSnapshot": [],
+    "createdAt": "2026-05-07T21:20:00Z",
+    "attestor": {
+      "componentName": "karl-fluid-compliance-replay",
+      "componentVersion": "v1"
+    },
+    "signature": {
+      "mode": "future-signable",
+      "value": ""
+    }
+  },
+  "bundleIndex": {
+    "bundleId": "windows-compliance-bundle-89d73bf3d48ee7d3",
+    "bundleVersion": "windows-fluid-compliance-replay-bundle-index-v1",
+    "createdAt": "2026-05-07T21:20:00Z",
+    "subjectRef": "windows-shell/karl/master-win11",
+    "subjectType": "windows-hyperdensity-ready-compliance-replay-bundle",
+    "runCount": 1,
+    "runs": [
+      {
+        "runId": "windows-compliance-run-29446efb7353a0c1",
+        "inputRef": "examples/windows-fluid-compliance-fixtures/master-win11-real-evidence.ready.json",
+        "outputRef": "stdout://replay",
+        "attestationRef": "stdout://attestation",
+        "evidenceHash": "163bd5edf22cc810815112c7e811da63d91218e6c78a78a9e761ef013dc3c82a",
+        "replayHash": "78835321a4460a96383c4cf5523348ac54e650b0757f99239a3cae7ba22e6489",
+        "attestationHash": "d5aba2a0458b2d15059ec573c38d5f5964b85ced2155930a6ac3ab6a05ad61e1",
+        "runHash": "12cfb64c16f31657ccf44940ae71a88e1be8ab6e5e30cf0d71cc414795c30c2d",
+        "evaluationTime": "2026-05-07T21:20:00Z",
+        "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+        "hyperdensityReady": true,
+        "blockers": [],
+        "remediationActions": [],
+        "attestationMode": "future-signable"
+      }
+    ],
+    "chain": {
+      "chainMode": "local-deterministic-hash-chain",
+      "firstRunHash": "12cfb64c16f31657ccf44940ae71a88e1be8ab6e5e30cf0d71cc414795c30c2d",
+      "latestRunHash": "12cfb64c16f31657ccf44940ae71a88e1be8ab6e5e30cf0d71cc414795c30c2d",
+      "chainValid": true
+    },
+    "aggregateStatus": "latest-ready",
+    "latestCompliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+    "latestHyperdensityReady": true,
+    "auditRefs": [
+      "subject://windows-shell/karl/master-win11",
+      "bundle-version://windows-fluid-compliance-replay-bundle-index-v1"
+    ]
+  }
+}

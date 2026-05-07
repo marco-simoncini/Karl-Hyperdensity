@@ -1,0 +1,23 @@
+{
+  "requestId": "product-path-master-win11-cpu-floor-20260507t211600z",
+  "namespace": "karl",
+  "vmName": "master-win11",
+  "vmUid": "c81b95dc-d955-4fb3-a1af-59d979f48bcb",
+  "vmiUid": "b31dcab6-5a99-432e-a6fe-21607a9e3403",
+  "podName": "virt-launcher-master-win11-kmwgg",
+  "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+  "nodeName": "karl-lab-metal-01",
+  "qemuPid": "2480927",
+  "qemuStartTime": "Thu May 7 18:58:03 2026",
+  "cgroupPath": "/host-sys-fs-cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b6a904a_1c9a_4a44_9b37_1dc737304773.slice/cri-containerd-6b3736cf90a6e2f41147f27714926ac68e57ff1a2d2b22da2375a4a74fcf0c87.scope",
+  "previousCpuMax": "600000 100000",
+  "requestedCpuMax": "300000 100000",
+  "rollbackCpuMax": "600000 100000",
+  "ttlSeconds": 900,
+  "reason": "definitive_product_path_establish_floor",
+  "evidenceRefs": [
+    "artifacts/the-father-windows-prearmed-fluid-envelope-full-rerun-master-win11-v1/outcome.json"
+  ],
+  "policyVersion": "windows-fluid-node-actuator-v1",
+  "createdAt": "2026-05-07T21:16:00Z"
+}
