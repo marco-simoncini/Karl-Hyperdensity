@@ -1,0 +1,34 @@
+{
+  "targetId": "target-master-win11",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "targetKind": "standalone-windows-vm",
+  "runtimeMode": "prearmed-fluid-envelope-v2",
+  "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+  "poolScalingRequested": true,
+  "cpu": {
+    "mechanism": "cgroup-v2-cpu-max",
+    "floorCpuMax": "300000 100000",
+    "ceilingCpuMax": "600000 100000",
+    "currentCpuMax": "600000 100000",
+    "actuatorRequired": true
+  },
+  "memory": {
+    "mechanism": "qmp-balloon",
+    "floorBytes": 12884901888,
+    "ceilingBytes": 13958643712,
+    "currentBytes": 12884901888,
+    "qmpRequired": true
+  },
+  "guest": {
+    "fluidShellRequired": true,
+    "guestAckRequired": true
+  },
+  "guarantees": {
+    "noReboot": true,
+    "sameQemu": true,
+    "sameBoot": true,
+    "rollbackRequired": true,
+    "returnToFloorRequired": true
+  }
+}

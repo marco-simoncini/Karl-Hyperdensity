@@ -37,7 +37,7 @@ func TestActionSlateContainsRequiredActions(t *testing.T) {
 		ActionAuditBundleAppend,
 	}
 	for _, action := range required {
-		if !hasActionType(slate, action) {
+		if !hasActionTypeInSlate(slate, action) {
 			t.Fatalf("missing action %s", action)
 		}
 	}
@@ -240,7 +240,7 @@ func baseCombinedLease() WindowsFluidResourceLease {
 	}
 }
 
-func hasActionType(slate WindowsFluidActionSlate, actionType WindowsFluidActionType) bool {
+func hasActionTypeInSlate(slate WindowsFluidActionSlate, actionType WindowsFluidActionType) bool {
 	for _, action := range slate.Actions {
 		if action.ActionType == actionType {
 			return true

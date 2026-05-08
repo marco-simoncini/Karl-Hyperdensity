@@ -1,0 +1,123 @@
+{
+  "name": "master-win11-controlled-plan.awaiting-approval",
+  "mode": "plan",
+  "target": {
+    "targetId": "target-master-win11",
+    "vmRef": "master-win11",
+    "namespace": "karl",
+    "targetKind": "standalone-windows-vm",
+    "runtimeMode": "prearmed-fluid-envelope-v2",
+    "hyperdensityReady": true,
+    "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+    "nodeName": "karl-lab-metal-01",
+    "virtLauncherPodRef": "virt-launcher-master-win11-kmwgg",
+    "podUid": "pod-uid",
+    "qemuPid": "96",
+    "qemuStartTime": "Thu May 7 18:58:03 2026",
+    "machineGuidHash": "hash",
+    "lastBootTime": "/Date(1778180311500)/",
+    "cpu": {
+      "mechanism": "cgroup-v2-cpu-max",
+      "floorCpuMax": "300000 100000",
+      "ceilingCpuMax": "600000 100000",
+      "currentCpuMax": "600000 100000",
+      "actuatorRequired": true
+    },
+    "memory": {
+      "mechanism": "qmp-balloon",
+      "floorBytes": 12884901888,
+      "ceilingBytes": 13958643712,
+      "currentBytes": 12884901888,
+      "qmpRequired": true
+    },
+    "guest": {
+      "fluidShellRequired": true,
+      "guestAckRequired": true
+    },
+    "guarantees": {
+      "noReboot": true,
+      "noRecreate": true,
+      "noRollout": true,
+      "noLiveMigration": true,
+      "sameQemu": true,
+      "sameBoot": true,
+      "rollbackRequired": true,
+      "returnToFloorRequired": true
+    },
+    "evidenceRefs": [
+      "artifact://guest-workload"
+    ]
+  },
+  "lease": {
+    "leaseId": "lease-master-win11-combined",
+    "targetRef": "target-master-win11",
+    "leaseKind": "combined-envelope",
+    "requested": {
+      "cpuMax": "600000 100000",
+      "memoryBytes": 13958643712
+    },
+    "previous": {
+      "cpuMax": "300000 100000",
+      "memoryBytes": 12884901888
+    },
+    "rollbackTarget": {
+      "cpuMax": "300000 100000",
+      "memoryBytes": 12884901888
+    },
+    "returnToFloorTarget": {
+      "cpuMax": "300000 100000",
+      "memoryBytes": 12884901888
+    },
+    "ttlSeconds": 600,
+    "reason": "controlled apply awaiting approval",
+    "risk": "medium",
+    "policySnapshot": {
+      "killSwitchState": "allow",
+      "workloadEvidenceRef": "workload://master-win11"
+    },
+    "actionSlateRef": "slate://master-win11",
+    "actuatorRequestRef": "actuator://master-win11",
+    "qmpRequestRef": "qmp://master-win11",
+    "guestEvidenceRef": "guest://ack",
+    "auditBundleRef": "bundle://master-win11",
+    "status": "prepared",
+    "evidenceRefs": [
+      "evidence://lease"
+    ]
+  },
+  "gate": {
+    "gateId": "windows-fluid-controlled-apply-gate-v1",
+    "windowsFluidVirtEnabled": true,
+    "dryRunRequired": true,
+    "manualApprovalRequired": true,
+    "autonomousApplyEnabled": false,
+    "cpuApplyEnabled": true,
+    "ramApplyEnabled": true,
+    "nodeActuatorApplyEnabled": true,
+    "qmpBalloonApplyEnabled": true,
+    "guestVerifyRequired": true,
+    "workloadVerifyRequired": true,
+    "rollbackRequired": true,
+    "returnToFloorRequired": true,
+    "auditBundleRequired": true,
+    "killSwitchRequired": true,
+    "maxBlastRadius": 1,
+    "allowedNamespaces": [
+      "karl"
+    ],
+    "allowedTargets": [
+      "master-win11"
+    ],
+    "allowedLeaseKinds": [
+      "cpu-entitlement",
+      "ram-balloon",
+      "combined-envelope"
+    ],
+    "createdAt": "2026-05-08T00:00:00Z"
+  },
+  "expectedPlanPhase": "awaiting_approval",
+  "expectedApplyAllowed": false,
+  "expectedBlockers": [
+    "controlled_apply_manual_approval_required"
+  ]
+}
