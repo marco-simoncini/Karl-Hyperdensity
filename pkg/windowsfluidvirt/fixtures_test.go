@@ -13,6 +13,7 @@ func TestMinimalFixturesAreValidJSONObjects(t *testing.T) {
 		"product_model_minimal.json",
 		"action_slate_minimal.json",
 		"blockers_minimal.json",
+		"node_actuator_contract_minimal.json",
 	}
 	for _, fixture := range fixtures {
 		data, err := os.ReadFile(filepath.Join(root, fixture))
