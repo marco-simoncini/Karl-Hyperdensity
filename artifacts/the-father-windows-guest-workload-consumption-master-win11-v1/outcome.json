@@ -1,0 +1,72 @@
+{
+  "verdict": "WINDOWS_GUEST_WORKLOAD_RESOURCE_CONSUMPTION_CONFIRMED",
+  "statement": "A Windows guest workload consumed the additional CPU/RAM capacity exposed by KARL Windows Prearmed Fluid Envelope v2.",
+  "cpuMechanism": "entitlement_liquidity_via_controlled_node_actuator_cpu_max",
+  "ramMechanism": "balloon_liquidity_via_qmp",
+  "vm": "master-win11",
+  "namespace": "karl",
+  "node": "karl-lab-metal-01",
+  "continuity": {
+    "sameQemuPid": true,
+    "sameQemuStart": true,
+    "sameWindowsBoot": true,
+    "sameMachineIdentity": true,
+    "samePod": true,
+    "sameNode": true,
+    "noVmim": true,
+    "noLiveMigrationObserved": true,
+    "noRolloutObserved": true,
+    "noRecreateObserved": true
+  },
+  "checks": {
+    "complianceReady": true,
+    "actuatorDryRunAccepted": true,
+    "cpuEntitlementUpConfirmed": true,
+    "cpuWorkloadCeilingImproved": true,
+    "cpuEntitlementDownConfirmed": true,
+    "ramEntitlementUpConfirmed": true,
+    "ramWorkloadAllocationConfirmed": true,
+    "ramEntitlementDownConfirmed": true,
+    "guestAck": true,
+    "rollbackVerified": true,
+    "returnToFloorVerified": true,
+    "evidenceSaved": true
+  },
+  "identity": {
+    "podNameBefore": "virt-launcher-master-win11-kmwgg",
+    "podNameAfter": "virt-launcher-master-win11-kmwgg",
+    "podUidBefore": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+    "podUidAfter": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+    "nodeBefore": "karl-lab-metal-01",
+    "nodeAfter": "karl-lab-metal-01",
+    "qemuPidBefore": 2480927,
+    "qemuPidAfter": 2480927,
+    "qemuStartBefore": "Thu May 7 18:58:03 2026",
+    "qemuStartAfter": "Thu May 7 18:58:03 2026",
+    "windowsBootBefore": "/Date(1778180311500)/",
+    "windowsBootAfter": "/Date(1778180311500)/",
+    "machineGuidHashBefore": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+    "machineGuidHashAfter": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e"
+  },
+  "cpu": {
+    "floor": "300000 100000",
+    "ceiling": "600000 100000",
+    "finalBaseline": "600000 100000",
+    "metrics": {
+      "floorMedianIterationsPerSecond": 92456.54,
+      "ceilingMedianIterationsPerSecond": 163259.57,
+      "improvementPct": 76.58,
+      "returnMedianIterationsPerSecond": 91982.86,
+      "floorThrottledDeltaUsec": 112988556,
+      "ceilingThrottledDeltaUsec": 722584,
+      "returnThrottledDeltaUsec": 114318814
+    }
+  },
+  "ram": {
+    "floorBytes": 12884901888,
+    "ceilingBytesObserved": 13258194944,
+    "allocationRequestedBytes": 536870912,
+    "allocationSucceededBytes": 536870912,
+    "returnedToFloor": true
+  }
+}

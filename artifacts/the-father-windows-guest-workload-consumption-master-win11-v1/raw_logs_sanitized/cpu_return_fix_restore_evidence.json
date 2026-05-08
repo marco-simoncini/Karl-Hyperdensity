@@ -1,0 +1,22 @@
+{
+  "resultId": "node-fluid-result-3cef5d43410a048f",
+  "requestId": "guest-workload-cpu_return_fix_restore-20260508t032326z",
+  "action": "apply",
+  "decision": "applied",
+  "dryRun": false,
+  "mutationPerformed": true,
+  "previousCpuMax": "300000 100000",
+  "requestedCpuMax": "600000 100000",
+  "observedBeforeCpuMax": "300000 100000",
+  "observedAfterCpuMax": "600000 100000",
+  "rollbackCpuMax": "300000 100000",
+  "qemuPid": "2480927",
+  "qemuStartTime": "Thu May 7 18:58:03 2026",
+  "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+  "nodeName": "karl-lab-metal-01",
+  "evidenceRefs": [
+    "artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json"
+  ],
+  "auditHash": "2ec4e23c04932f9fe5109dd226369b7ea849aa47c03aaaebd6b73d9ee9dd9e0b",
+  "createdAt": "2026-05-08T02:33:48Z"
+}

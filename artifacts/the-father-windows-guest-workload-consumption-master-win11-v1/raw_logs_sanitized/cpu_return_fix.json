@@ -1,0 +1,105 @@
+{
+  "beforeCpuMax": "600000 100000",
+  "beforeGuest": {
+    "GuestAck": true,
+    "WindowsLastBoot": "/Date(1778180311500)/",
+    "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+    "PendingReboot": false
+  },
+  "downApply": {
+    "stdout": "{\n  \"resultId\": \"node-fluid-result-1092e9253371c498\",\n  \"requestId\": \"guest-workload-cpu_return_fix_down-20260508t032218z\",\n  \"action\": \"apply\",\n  \"decision\": \"applied\",\n  \"dryRun\": false,\n  \"mutationPerformed\": true,\n  \"previousCpuMax\": \"600000 100000\",\n  \"requestedCpuMax\": \"300000 100000\",\n  \"observedBeforeCpuMax\": \"600000 100000\",\n  \"observedAfterCpuMax\": \"300000 100000\",\n  \"rollbackCpuMax\": \"300000 100000\",\n  \"qemuPid\": \"2480927\",\n  \"qemuStartTime\": \"Thu May 7 18:58:03 2026\",\n  \"podUid\": \"7b6a904a-1c9a-4a44-9b37-1dc737304773\",\n  \"nodeName\": \"karl-lab-metal-01\",\n  \"evidenceRefs\": [\n    \"artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json\"\n  ],\n  \"auditHash\": \"ed695c69044d745e046645efde5c76fc1e797b4ca9000b37593e8482e19df6a8\",\n  \"createdAt\": \"2026-05-08T02:32:40Z\"\n}\n",
+    "evidence": {
+      "resultId": "node-fluid-result-1092e9253371c498",
+      "requestId": "guest-workload-cpu_return_fix_down-20260508t032218z",
+      "action": "apply",
+      "decision": "applied",
+      "dryRun": false,
+      "mutationPerformed": true,
+      "previousCpuMax": "600000 100000",
+      "requestedCpuMax": "300000 100000",
+      "observedBeforeCpuMax": "600000 100000",
+      "observedAfterCpuMax": "300000 100000",
+      "rollbackCpuMax": "300000 100000",
+      "qemuPid": "2480927",
+      "qemuStartTime": "Thu May 7 18:58:03 2026",
+      "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+      "nodeName": "karl-lab-metal-01",
+      "evidenceRefs": [
+        "artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json"
+      ],
+      "auditHash": "ed695c69044d745e046645efde5c76fc1e797b4ca9000b37593e8482e19df6a8",
+      "createdAt": "2026-05-08T02:32:40Z"
+    }
+  },
+  "afterDownCpuMax": "300000 100000",
+  "postReturnFloorRuns": [
+    {
+      "runId": "return-fix-1",
+      "durationMs": 20047,
+      "iterations": 1859800,
+      "iterationsPerSecond": 92771.99
+    },
+    {
+      "runId": "return-fix-2",
+      "durationMs": 20011,
+      "iterations": 1840669,
+      "iterationsPerSecond": 91982.86
+    },
+    {
+      "runId": "return-fix-3",
+      "durationMs": 20010,
+      "iterations": 1814687,
+      "iterationsPerSecond": 90689.01
+    }
+  ],
+  "postReturnMedian": 91982.86,
+  "postReturnCpuStatDelta": {
+    "usage_usec": 178461288,
+    "user_usec": 159210954,
+    "system_usec": 19250334,
+    "core_sched.force_idle_usec": 0,
+    "nr_periods": 650,
+    "nr_throttled": 501,
+    "throttled_usec": 114318814,
+    "nr_bursts": 0,
+    "burst_usec": 0
+  },
+  "guestAfterReturnRuns": {
+    "GuestAck": true,
+    "WindowsLastBoot": "/Date(1778180311500)/",
+    "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+    "PendingReboot": false
+  },
+  "restoreBaseline": {
+    "stdout": "{\n  \"resultId\": \"node-fluid-result-3cef5d43410a048f\",\n  \"requestId\": \"guest-workload-cpu_return_fix_restore-20260508t032326z\",\n  \"action\": \"apply\",\n  \"decision\": \"applied\",\n  \"dryRun\": false,\n  \"mutationPerformed\": true,\n  \"previousCpuMax\": \"300000 100000\",\n  \"requestedCpuMax\": \"600000 100000\",\n  \"observedBeforeCpuMax\": \"300000 100000\",\n  \"observedAfterCpuMax\": \"600000 100000\",\n  \"rollbackCpuMax\": \"300000 100000\",\n  \"qemuPid\": \"2480927\",\n  \"qemuStartTime\": \"Thu May 7 18:58:03 2026\",\n  \"podUid\": \"7b6a904a-1c9a-4a44-9b37-1dc737304773\",\n  \"nodeName\": \"karl-lab-metal-01\",\n  \"evidenceRefs\": [\n    \"artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json\"\n  ],\n  \"auditHash\": \"2ec4e23c04932f9fe5109dd226369b7ea849aa47c03aaaebd6b73d9ee9dd9e0b\",\n  \"createdAt\": \"2026-05-08T02:33:48Z\"\n}\n",
+    "evidence": {
+      "resultId": "node-fluid-result-3cef5d43410a048f",
+      "requestId": "guest-workload-cpu_return_fix_restore-20260508t032326z",
+      "action": "apply",
+      "decision": "applied",
+      "dryRun": false,
+      "mutationPerformed": true,
+      "previousCpuMax": "300000 100000",
+      "requestedCpuMax": "600000 100000",
+      "observedBeforeCpuMax": "300000 100000",
+      "observedAfterCpuMax": "600000 100000",
+      "rollbackCpuMax": "300000 100000",
+      "qemuPid": "2480927",
+      "qemuStartTime": "Thu May 7 18:58:03 2026",
+      "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+      "nodeName": "karl-lab-metal-01",
+      "evidenceRefs": [
+        "artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json"
+      ],
+      "auditHash": "2ec4e23c04932f9fe5109dd226369b7ea849aa47c03aaaebd6b73d9ee9dd9e0b",
+      "createdAt": "2026-05-08T02:33:48Z"
+    }
+  },
+  "finalCpuMax": "600000 100000",
+  "finalGuest": {
+    "GuestAck": true,
+    "WindowsLastBoot": "/Date(1778180311500)/",
+    "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+    "PendingReboot": false
+  }
+}
