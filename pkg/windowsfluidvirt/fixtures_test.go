@@ -18,6 +18,7 @@ func TestMinimalFixturesAreValidJSONObjects(t *testing.T) {
 		"compliance_replay_minimal.json",
 		"controlled_apply_plan_boundary_minimal.json",
 		"guarded_executor_boundary_minimal.json",
+		"guarded_executor_fake_runtime_replay_minimal.json",
 	}
 	for _, fixture := range fixtures {
 		data, err := os.ReadFile(filepath.Join(root, fixture))
