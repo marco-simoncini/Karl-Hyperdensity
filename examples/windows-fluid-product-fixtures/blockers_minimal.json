@@ -1,0 +1,65 @@
+{
+  "catalogVersion": "v1",
+  "blockers": [
+    {
+      "id": "missing_guest_witness",
+      "severity": "high",
+      "description": "Guest witness evidence is missing."
+    },
+    {
+      "id": "missing_same_boot_proof",
+      "severity": "high",
+      "description": "Same-boot proof is missing."
+    },
+    {
+      "id": "missing_return_to_floor_plan",
+      "severity": "critical",
+      "description": "Return-to-floor plan is missing."
+    },
+    {
+      "id": "missing_rollback_plan",
+      "severity": "critical",
+      "description": "Rollback plan is missing."
+    },
+    {
+      "id": "missing_audit_chain",
+      "severity": "high",
+      "description": "Audit chain reference is missing."
+    },
+    {
+      "id": "no_manual_approval",
+      "severity": "high",
+      "description": "Manual approval is required."
+    },
+    {
+      "id": "raw_runtime_control_forbidden",
+      "severity": "critical",
+      "description": "Raw runtime controls are forbidden."
+    },
+    {
+      "id": "autonomous_apply_forbidden",
+      "severity": "critical",
+      "description": "Autonomous apply is forbidden."
+    },
+    {
+      "id": "production_ready_claim_forbidden",
+      "severity": "critical",
+      "description": "Production-ready claim is forbidden."
+    },
+    {
+      "id": "vcpu_hotplug_claim_forbidden",
+      "severity": "critical",
+      "description": "vCPU hotplug claim is forbidden."
+    },
+    {
+      "id": "logical_cpu_scaling_claim_forbidden",
+      "severity": "critical",
+      "description": "Logical CPU scaling claim is forbidden."
+    },
+    {
+      "id": "pool_scaling_claim_forbidden",
+      "severity": "critical",
+      "description": "Pool scaling claim is forbidden."
+    }
+  ]
+}
