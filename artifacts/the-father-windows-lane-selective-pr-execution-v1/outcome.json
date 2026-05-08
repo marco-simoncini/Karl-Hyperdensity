@@ -1,0 +1,28 @@
+{
+  "verdict": "hyperdensity_windows_lane_selective_pr_execution_v1_operational",
+  "milestone": "hyperdensity_windows_lane_selective_pr_execution_v1",
+  "repo": "marco-simoncini/Karl-Hyperdensity",
+  "sourceBranch": "The-Father-FluidVirt-Windows-Integration",
+  "sourceHead": "a60516a",
+  "targetBranch": "windows-fluidvirt-gated-tp-selective-pr-v1",
+  "branchCreated": true,
+  "selectiveMergeUsed": true,
+  "directMergeUsed": false,
+  "dashboardTouched": false,
+  "osIsoTouched": false,
+  "runtimeMutationEnabled": false,
+  "controlledApplyEnabled": false,
+  "executorEnabled": false,
+  "actuatorRuntimeEnabled": false,
+  "cgroupWriteEnabled": false,
+  "qmpCommandExecutionAllowed": false,
+  "qgaCommandExecutionAllowed": false,
+  "windowsGaClaimAllowed": false,
+  "windowsProductionReadyClaimAllowed": false,
+  "testsRun": [
+    "go test ./... (passed)",
+    "git diff --check (passed)",
+    "python3 fixture JSON validation (passed)"
+  ],
+  "safetyPreserved": true
+}
