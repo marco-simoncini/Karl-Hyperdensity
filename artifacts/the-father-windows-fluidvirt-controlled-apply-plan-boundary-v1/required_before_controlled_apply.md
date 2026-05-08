@@ -1,0 +1,21 @@
+# Required Before Controlled Apply
+
+- manual_approval_flow
+- active_lease_model
+- lease_ttl
+- lease_expiry_return_to_floor
+- guest_witness_integration
+- same_boot_proof
+- same_qemu_proof
+- rollback_plan
+- rollback_baseline
+- return_to_floor_plan
+- audit_hash_chain_verified
+- compliance_replay_for_every_candidate
+- kill_switch
+- node_allowlist
+- cgroup_path_validation_strategy
+- no_raw_runtime_control_surface
+- no_autonomous_apply
+- no_production_apply
+- operator_identity_audit
