@@ -1,0 +1,19 @@
+# replayed_blocking_reasons
+
+- executor_fake_runtime_replay_only
+- executor_runtime_not_enabled
+- controlled_apply_not_ready
+- manual_approval_missing
+- active_lease_missing
+- guest_witness_missing
+- rollback_plan_not_proven
+- return_to_floor_plan_not_proven
+- kill_switch_not_verified
+- node_allowlist_missing
+- cgroup_path_validation_missing
+- cgroup_write_disabled
+- qmp_execution_disabled
+- qga_execution_disabled
+- production_ready_claim_forbidden
+- autonomous_apply_forbidden
+- raw_runtime_control_forbidden
