@@ -1,0 +1,43 @@
+{
+  "slateId": "windows-fluidvirt-action-slate-core-v1",
+  "slateVersion": "v1",
+  "planningOnly": true,
+  "applyEnabled": false,
+  "runtimeMutationEnabled": false,
+  "autonomousApplyEnabled": false,
+  "rawRuntimeControlsExposed": false,
+  "actions": [
+    {
+      "actionId": "a1",
+      "kind": "observe_runtime",
+      "status": "candidate",
+      "planningOnly": true,
+      "runtimeMutationEnabled": false,
+      "autonomousApplyEnabled": false,
+      "rawRuntimeControlsExposed": false,
+      "evidenceRefs": [
+        "evidence://runtime-observation"
+      ],
+      "blockers": []
+    },
+    {
+      "actionId": "a2",
+      "kind": "assess_compliance",
+      "status": "gated",
+      "planningOnly": true,
+      "runtimeMutationEnabled": false,
+      "autonomousApplyEnabled": false,
+      "rawRuntimeControlsExposed": false,
+      "evidenceRefs": [
+        "evidence://compliance-assessment"
+      ],
+      "blockers": [
+        "no_manual_approval"
+      ]
+    }
+  ],
+  "blockers": [
+    "no_manual_approval",
+    "missing_rollback_plan"
+  ]
+}

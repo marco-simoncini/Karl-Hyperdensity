@@ -1,0 +1,50 @@
+{
+  "verdict": "hyperdensity_windows_fluidvirt_core_contracts_port_v1_operational",
+  "milestone": "hyperdensity_windows_fluidvirt_core_contracts_port_v1",
+  "repo": "marco-simoncini/Karl-Hyperdensity",
+  "branch": "The-Father-FluidVirt-Windows-Integration",
+  "sourceBranch": "The-Father-Windows",
+  "sourceHead": "970ae03",
+  "targetBranch": "The-Father-FluidVirt-Windows-Integration",
+  "filesPorted": [
+    "pkg/windowsfluidvirt/product_model.go",
+    "pkg/windowsfluidvirt/action_slate.go",
+    "pkg/windowsfluidvirt/blockers.go",
+    "docs/contracts/windows-fluidvirt-product-model-v1.md",
+    "examples/windows-fluid-product-fixtures/product_model_minimal.json",
+    "examples/windows-fluid-product-fixtures/action_slate_minimal.json",
+    "examples/windows-fluid-product-fixtures/blockers_minimal.json",
+    "pkg/windowsfluidvirt/product_model_test.go",
+    "pkg/windowsfluidvirt/action_slate_test.go",
+    "pkg/windowsfluidvirt/blockers_test.go",
+    "pkg/windowsfluidvirt/fixtures_test.go"
+  ],
+  "filesExcluded": [
+    "pkg/windowsfluidvirt/node_actuator_mvp.go",
+    "pkg/windowsfluidvirt/node_actuator_compliance.go",
+    "pkg/windowsfluidvirt/compliance_replay_cli.go",
+    "pkg/windowsfluidvirt/controlled_apply_plan.go",
+    "cmd/karl-node-fluid-actuator/*",
+    "cmd/karl-fluid-compliance-replay/*",
+    "cmd/karl-fluid-windows-executor/*",
+    "docs/contracts/windows-fluid-node-actuator-v1.md",
+    "docs/contracts/windows-fluidvirt-controlled-apply-plan-v1.md",
+    "examples/windows-fluid-actuator-mvp-fixtures/*",
+    "examples/windows-fluid-controlled-apply-fixtures/*",
+    "artifacts/the-father-windows-*",
+    "Karl-Dashboard",
+    "Karl-Inventory",
+    "Karl-OS-ISO"
+  ],
+  "testsRun": [
+    "go test ./...",
+    "git diff --check",
+    "python3 json parse validation for minimal fixtures"
+  ],
+  "safetyPreserved": true,
+  "directMergeUsed": false,
+  "runtimeMutationEnabled": false,
+  "dashboardTouched": false,
+  "osIsoTouched": false,
+  "inventoryTouched": false
+}
