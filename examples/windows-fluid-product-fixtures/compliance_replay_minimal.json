@@ -1,0 +1,150 @@
+{
+  "complianceReplayId": "windows_fluidvirt_compliance_replay_audit_chain_v1",
+  "complianceReplayVersion": "v1",
+  "releaseTrack": "technical_preview",
+  "laneStatus": "gated_preview",
+  "replayMode": "deterministic_compliance_replay_only",
+  "sourceProductModelRef": "windows-fluidvirt-product-model-v1",
+  "sourceNodeActuatorBoundaryRef": "windows_fluidvirt_node_actuator_contract_boundary_v1",
+  "sourceNodeActuatorReadonlyReplayRef": "windows_fluidvirt_node_actuator_mvp_readonly_replay_v1",
+  "complianceReplayAvailable": true,
+  "complianceReplayExecuted": true,
+  "complianceReplayDeterministic": true,
+  "auditHashChainAvailable": true,
+  "auditHashChainVerified": true,
+  "runtimeMutationEnabled": false,
+  "actuatorRuntimeEnabled": false,
+  "cgroupWriteEnabled": false,
+  "qmpCommandExecutionAllowed": false,
+  "qgaCommandExecutionAllowed": false,
+  "rawRuntimeControlsExposed": false,
+  "productionMutationAllowed": false,
+  "autonomousApplyAllowed": false,
+  "enforcementMode": "disabled",
+  "windowsGaClaimAllowed": false,
+  "windowsProductionReadyClaimAllowed": false,
+  "windowsExecutionReadyByDefault": false,
+  "replayInput": {
+    "inputId": "compliance_replay_input_minimal",
+    "inputVersion": "v1",
+    "sourceFixtureRef": "examples/windows-fluid-product-fixtures/compliance_replay_minimal.json",
+    "sourceReplayRef": "windows_fluidvirt_node_actuator_mvp_readonly_replay_v1",
+    "sourceContractRef": "windows_fluidvirt_node_actuator_contract_boundary_v1",
+    "deterministic": true,
+    "containsSecretMaterial": false,
+    "touchesRuntime": false,
+    "touchesRealCgroup": false,
+    "touchesRealQmp": false,
+    "touchesRealQga": false,
+    "claimBoundary": "technical_preview_boundary_active"
+  },
+  "replayedEvents": [
+    {
+      "eventId": "e1",
+      "eventType": "compliance_replay_started",
+      "eventState": "replayed",
+      "deterministicOrder": 1,
+      "previousHash": "",
+      "eventHash": "placeholder",
+      "containsSecretMaterial": false,
+      "touchesRuntime": false,
+      "claimBoundary": "technical_preview_boundary_active"
+    },
+    {
+      "eventId": "e2",
+      "eventType": "compliance_replay_completed",
+      "eventState": "replayed",
+      "deterministicOrder": 2,
+      "previousHash": "placeholder",
+      "eventHash": "placeholder",
+      "containsSecretMaterial": false,
+      "touchesRuntime": false,
+      "claimBoundary": "technical_preview_boundary_active"
+    }
+  ],
+  "complianceChecks": [
+    {
+      "checkId": "product_model_claim_boundary_valid",
+      "checkState": "passed",
+      "required": true,
+      "sourceRef": "windows-fluidvirt-product-model-v1",
+      "claimBoundary": "technical_preview_boundary_active"
+    },
+    {
+      "checkId": "audit_hash_chain_verified",
+      "checkState": "passed",
+      "required": true,
+      "sourceRef": "audit_hash_chain",
+      "claimBoundary": "technical_preview_boundary_active"
+    }
+  ],
+  "auditHashChain": {
+    "chainId": "windows_fluidvirt_compliance_audit_hash_chain_v1",
+    "chainVersion": "v1",
+    "hashAlgorithm": "sha256",
+    "deterministic": true,
+    "eventCount": 2,
+    "rootHash": "placeholder",
+    "terminalHash": "placeholder",
+    "verified": true,
+    "containsSecretMaterial": false,
+    "mutable": false,
+    "replayOnly": true,
+    "claimBoundary": "audit_hash_chain_replay_only"
+  },
+  "replayValidationResult": {
+    "validationState": "passed",
+    "deterministicReplay": true,
+    "auditHashChainVerified": true,
+    "contractBoundaryRespected": true,
+    "readonlyReplayBoundaryRespected": true,
+    "forbiddenClaimsRespected": true,
+    "realRuntimeTouched": false,
+    "realCgroupTouched": false,
+    "realQmpTouched": false,
+    "realQgaTouched": false,
+    "runtimeMutationEnabled": false,
+    "actuatorRuntimeEnabled": false,
+    "controlledApplyReady": false,
+    "runtimeMvpReady": false,
+    "nextRequiredState": "controlled_apply_plan_boundary_or_guarded_fake_runtime_mvp"
+  },
+  "requiredBeforeControlledApply": [
+    "controlled_apply_plan_boundary",
+    "audit_hash_chain_required",
+    "compliance_replay_required_for_every_candidate"
+  ],
+  "allowedComplianceReplayActions": [
+    "run_deterministic_compliance_replay",
+    "build_audit_hash_chain",
+    "verify_audit_hash_chain"
+  ],
+  "forbiddenComplianceReplayActions": [
+    "execute_node_actuator_runtime",
+    "write_cgroup_cpu_max",
+    "mutate_qmp_balloon",
+    "execute_qmp_command",
+    "execute_qga_command",
+    "enable_controlled_apply",
+    "enable_autonomous_apply",
+    "enable_production_auto",
+    "mark_windows_execution_ready",
+    "claim_windows_ga",
+    "claim_windows_production_ready",
+    "expose_raw_runtime_controls",
+    "touch_dashboard",
+    "touch_inventory"
+  ],
+  "claimBoundaries": [
+    "deterministic compliance replay is model-only",
+    "not windows ga",
+    "not windows production ready"
+  ],
+  "evidenceRefs": [
+    "compliance://windows_fluidvirt_compliance_replay_audit_chain_v1"
+  ],
+  "auditTrail": [
+    "audit://compliance-replay-started",
+    "audit://compliance-replay-completed"
+  ]
+}
