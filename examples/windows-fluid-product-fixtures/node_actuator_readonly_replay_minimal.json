@@ -1,0 +1,166 @@
+{
+  "replayId": "windows_fluidvirt_node_actuator_mvp_readonly_replay_v1",
+  "replayVersion": "v1",
+  "releaseTrack": "technical_preview",
+  "laneStatus": "gated_preview",
+  "replayMode": "readonly_replay_only",
+  "sourceContractRef": "windows_fluidvirt_node_actuator_contract_boundary_v1",
+  "nodeActuatorMvpReplayAvailable": true,
+  "nodeActuatorMvpPortedAsRuntime": false,
+  "actuatorRuntimeEnabled": false,
+  "runtimeMutationEnabled": false,
+  "cgroupWriteEnabled": false,
+  "cpuMaxMutationEnabled": false,
+  "qmpCommandExecutionAllowed": false,
+  "qgaCommandExecutionAllowed": false,
+  "rawRuntimeControlsExposed": false,
+  "productionMutationAllowed": false,
+  "autonomousApplyAllowed": false,
+  "enforcementMode": "disabled",
+  "windowsGaClaimAllowed": false,
+  "windowsProductionReadyClaimAllowed": false,
+  "windowsExecutionReadyByDefault": false,
+  "vcpuHotplugClaimAllowed": false,
+  "logicalCpuScalingClaimAllowed": false,
+  "poolScalingClaimAllowed": false,
+  "liveMigrationClaimAllowed": false,
+  "rebootRecreateRolloutMechanismAllowed": false,
+  "replayScenario": {
+    "scenarioId": "node_actuator_replay_minimal",
+    "scenarioVersion": "v1",
+    "scenarioState": "replay_completed",
+    "sourceFixtureRef": "examples/windows-fluid-product-fixtures/node_actuator_readonly_replay_minimal.json",
+    "cpuMechanism": "cgroup_v2_cpu_max_entitlement_liquidity",
+    "ramMechanism": "qmp_balloon_liquidity_model_reference_only",
+    "sameBootRequired": true,
+    "sameQemuRequired": true,
+    "guestWitnessRequired": true,
+    "returnToFloorRequired": true,
+    "rollbackRequired": true,
+    "auditRequired": true,
+    "manualApprovalRequired": true,
+    "leaseTtlRequired": true,
+    "runtimeMutationAllowed": false,
+    "claimBoundary": "technical_preview_boundary_active"
+  },
+  "fakeRuntimeBoundary": {
+    "fakeRuntimeOnly": true,
+    "usesTemporaryFilesOnly": true,
+    "touchesRealCgroup": false,
+    "touchesRealQmp": false,
+    "touchesRealQga": false,
+    "touchesHostRuntime": false,
+    "requiresNoPrivileges": true,
+    "deterministicReplay": true,
+    "safeForCi": true,
+    "claimBoundary": "fake_runtime_boundary_only"
+  },
+  "replayedCpuEntitlementTransitions": [
+    {
+      "transitionId": "t1",
+      "transitionState": "replayed_model_only",
+      "fromCpuMax": "100000 100000",
+      "toCpuMax": "200000 100000",
+      "appliedToRealCgroup": false,
+      "fakeRuntimeOnly": true,
+      "requiresApproval": true,
+      "requiresRollback": true,
+      "requiresReturnToFloor": true,
+      "validationState": "floor_to_ceiling_candidate",
+      "claimBoundary": "technical_preview_boundary_active"
+    }
+  ],
+  "replayedSafetyChecks": [
+    {
+      "checkId": "contract_boundary_loaded",
+      "checkState": "passed",
+      "sourceContractGate": "node_allowlist_defined",
+      "requiredBeforeRuntimeMvp": true,
+      "claimBoundary": "technical_preview_boundary_active"
+    },
+    {
+      "checkId": "manual_approval_required",
+      "checkState": "replayed",
+      "sourceContractGate": "manual_approval_required",
+      "requiredBeforeRuntimeMvp": true,
+      "claimBoundary": "technical_preview_boundary_active"
+    }
+  ],
+  "replayedBlockers": [
+    "actuator_runtime_not_ported",
+    "cgroup_write_path_not_enabled",
+    "manual_approval_missing",
+    "raw_runtime_control_forbidden"
+  ],
+  "replayedAuditEvents": [
+    {
+      "eventId": "e1",
+      "eventType": "replay_started",
+      "eventState": "replayed",
+      "timestampPolicy": "deterministic_or_not_available",
+      "containsSecretMaterial": false,
+      "claimBoundary": "technical_preview_boundary_active"
+    },
+    {
+      "eventId": "e2",
+      "eventType": "no_runtime_mutation_attested",
+      "eventState": "replayed",
+      "timestampPolicy": "deterministic_or_not_available",
+      "containsSecretMaterial": false,
+      "claimBoundary": "technical_preview_boundary_active"
+    }
+  ],
+  "replayValidationResult": {
+    "validationState": "passed",
+    "fakeRuntimeOnly": true,
+    "realRuntimeTouched": false,
+    "realCgroupTouched": false,
+    "realQmpTouched": false,
+    "realQgaTouched": false,
+    "contractBoundaryRespected": true,
+    "forbiddenClaimsRespected": true,
+    "replayDeterministic": true,
+    "runtimeMvpReady": false,
+    "nextRequiredState": "node_actuator_mvp_port_with_guarded_fake_runtime_or_compliance_replay"
+  },
+  "requiredBeforeRuntimeMvp": [
+    "explicit_runtime_mvp_milestone",
+    "node_allowlist_design",
+    "no_raw_runtime_control_surface"
+  ],
+  "allowedReplayActions": [
+    "run_readonly_replay",
+    "run_fake_runtime_simulation",
+    "validate_contract_boundary",
+    "validate_no_runtime_mutation"
+  ],
+  "forbiddenReplayActions": [
+    "execute_node_actuator_runtime",
+    "write_cgroup_cpu_max",
+    "mutate_qmp_balloon",
+    "execute_qmp_command",
+    "execute_qga_command",
+    "enable_runtime_actuator",
+    "enable_autonomous_apply",
+    "enable_production_auto",
+    "mark_windows_execution_ready",
+    "claim_windows_ga",
+    "claim_windows_production_ready",
+    "expose_raw_runtime_controls",
+    "touch_dashboard",
+    "touch_inventory"
+  ],
+  "claimBoundaries": [
+    "readonly replay does not imply runtime actuator enablement",
+    "not windows ga",
+    "not windows production ready"
+  ],
+  "evidenceRefs": [
+    "contract://windows_fluidvirt_node_actuator_contract_boundary_v1",
+    "replay://node_actuator_readonly_replay"
+  ],
+  "auditTrail": [
+    "audit://replay-started",
+    "audit://replay-completed"
+  ]
+}
