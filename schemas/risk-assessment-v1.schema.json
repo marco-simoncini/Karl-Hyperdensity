@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/risk-assessment-v1.schema.json",
+  "title": "KARL Hyperdensity Risk Assessment v1",
+  "type": "object",
+  "required": ["assessmentId", "actionId", "riskScore", "riskStatus", "blastRadiusClass", "approvalMode", "evidenceRefs", "observedAt"],
+  "properties": {
+    "assessmentId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "riskScore": { "type": "number" },
+    "riskStatus": { "type": "string" },
+    "blastRadiusClass": { "type": "string" },
+    "approvalMode": { "type": "string" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "observedAt": { "type": "string" }
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/rollback-readiness-v1.schema.json",
+  "title": "KARL Hyperdensity Rollback Readiness v1",
+  "type": "object",
+  "required": ["rollbackId", "shellId", "rollbackStatus", "rollbackPlanKnown", "degradedRollback", "evidenceRefs", "observedAt"],
+  "properties": {
+    "rollbackId": { "type": "string" },
+    "shellId": { "type": "string" },
+    "rollbackStatus": { "type": "string" },
+    "rollbackPlanKnown": { "type": "boolean" },
+    "degradedRollback": { "type": "boolean" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "observedAt": { "type": "string" }
+  }
+}

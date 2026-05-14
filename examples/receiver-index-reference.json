@@ -1,0 +1,47 @@
+{
+  "indexId": "hyperdensity_receiver_index_v1",
+  "indexVersion": "v1",
+  "sourceRegistryRef": "hyperdensity_shell_registry_v1",
+  "observedAt": "2026-05-14T14:00:00Z",
+  "receiverCount": 1,
+  "remediableReceiverCount": 2,
+  "excludedCount": 3,
+  "receivers": [
+    {
+      "shellId": "shell-container-replica-b",
+      "shellKind": "container_linux_replica",
+      "targetRef": "karl/Deployment/receiver-b",
+      "tenant": "karl",
+      "namespace": "karl",
+      "requestedResourceTypes": ["cpu", "memory_envelope"],
+      "requestedCpuMillis": 750,
+      "requestedMemoryBytes": 134217728,
+      "receiverScore": 0.88,
+      "pressureClass": "moderate",
+      "confidence": 0.89,
+      "sloProfile": "infra_only",
+      "evidenceRefs": ["hyperdensity_shell_capability_surface_v1"],
+      "claimBoundary": ["receiver burst prepare only with operator approval"]
+    }
+  ],
+  "exclusions": [
+    {
+      "shellId": "shell-linux-vm-hd-receiver-v1",
+      "reason": "blocked_receiver",
+      "blockerCodes": ["cpu_hotplug_headroom_missing"],
+      "remediationCodes": ["provision_cpu_hotplug_headroom_in_vm_template"]
+    },
+    {
+      "shellId": "shell-daas-win11-pool-member",
+      "reason": "protected_slo_excluded",
+      "blockerCodes": [],
+      "remediationCodes": []
+    },
+    {
+      "shellId": "shell-container-donor-a",
+      "reason": "not_receiver_profile",
+      "blockerCodes": [],
+      "remediationCodes": []
+    }
+  ]
+}

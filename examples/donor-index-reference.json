@@ -1,0 +1,58 @@
+{
+  "indexId": "hyperdensity_donor_index_v1",
+  "indexVersion": "v1",
+  "sourceRegistryRef": "hyperdensity_shell_registry_v1",
+  "observedAt": "2026-05-14T14:00:00Z",
+  "donorCount": 1,
+  "excludedCount": 5,
+  "donors": [
+    {
+      "shellId": "shell-container-donor-a",
+      "shellKind": "container_linux",
+      "targetRef": "karl/Deployment/donor-a",
+      "tenant": "karl",
+      "namespace": "karl",
+      "resourceTypes": ["cpu", "memory_envelope"],
+      "lendableCpuMillis": 1500,
+      "lendableMemoryBytes": 268435456,
+      "donorScore": 0.82,
+      "riskScore": 0.18,
+      "confidence": 0.91,
+      "rollbackReadiness": "ready",
+      "evidenceRefs": ["hyperdensity_shell_capability_surface_v1", "hyperdensity_action_dryrun_readiness_surface_v1"],
+      "claimBoundary": ["no savings guarantee", "operator approval required before apply"]
+    }
+  ],
+  "exclusions": [
+    {
+      "shellId": "shell-linux-vm-hd-receiver-v1",
+      "reason": "blocked_donor_ineligible",
+      "blockerCodes": ["cpu_hotplug_headroom_missing"],
+      "remediationCodes": ["provision_cpu_hotplug_headroom_in_vm_template"]
+    },
+    {
+      "shellId": "shell-windows-hyper",
+      "reason": "not_donor_profile",
+      "blockerCodes": ["guest_cpu_delta_not_visible"],
+      "remediationCodes": ["fluidvirt_windows_live_cpu_unplug_actuator"]
+    },
+    {
+      "shellId": "shell-win11-pool-0",
+      "reason": "not_donor_profile",
+      "blockerCodes": ["guest_cpu_delta_not_visible"],
+      "remediationCodes": ["fluidvirt_pool_replica_cpu_guest_proof"]
+    },
+    {
+      "shellId": "shell-daas-win11-pool-member",
+      "reason": "protected_shell",
+      "blockerCodes": [],
+      "remediationCodes": []
+    },
+    {
+      "shellId": "shell-container-replica-b",
+      "reason": "not_donor_profile",
+      "blockerCodes": [],
+      "remediationCodes": []
+    }
+  ]
+}

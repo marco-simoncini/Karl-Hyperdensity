@@ -1,0 +1,9 @@
+{
+  "rollbackId": "rollback-shell-container-donor-a",
+  "shellId": "shell-container-donor-a",
+  "rollbackStatus": "ready",
+  "rollbackPlanKnown": true,
+  "degradedRollback": false,
+  "evidenceRefs": ["hyperdensity_action_dryrun_readiness_surface_v1"],
+  "observedAt": "2026-05-14T14:00:00Z"
+}

@@ -1,0 +1,22 @@
+{
+  "actionId": "action-cpu-lease-001",
+  "leaseCandidateId": "lease-candidate-cpu-001",
+  "donorShellId": "shell-container-donor-a",
+  "receiverShellId": "shell-container-replica-b",
+  "actionType": "resource_lease_cpu_entitlement",
+  "resource": "cpu",
+  "amount": "500m",
+  "runtimeLayer": "kubernetes_cgroup_fluidvirt",
+  "dryRunStatus": "valid",
+  "rollbackStatus": "ready",
+  "sloPrecheckStatus": "passed",
+  "riskStatus": "low",
+  "approvalMode": "operator_required",
+  "readyForApply": "operator_controlled_ready",
+  "autoApplyAllowed": false,
+  "productionMutationAllowed": false,
+  "blockers": [],
+  "remediations": [],
+  "evidenceRefs": ["hyperdensity_action_dryrun_readiness_surface_v1"],
+  "claimBoundary": ["operator approval required; Dashboard projection only"]
+}

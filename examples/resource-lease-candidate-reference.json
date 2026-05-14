@@ -1,0 +1,25 @@
+{
+  "leaseCandidateId": "lease-candidate-cpu-001",
+  "donorShellId": "shell-container-donor-a",
+  "receiverShellId": "shell-container-replica-b",
+  "resource": "cpu",
+  "amount": "500m",
+  "durationSeconds": 300,
+  "state": "operator_approval_required",
+  "dryRunRequired": true,
+  "rollbackRequired": true,
+  "sloPrecheckRequired": true,
+  "approvalMode": "operator_required",
+  "autoApplyAllowed": false,
+  "productionMutationAllowed": false,
+  "risk": "low",
+  "confidence": 0.87,
+  "evidenceRefs": [
+    "hyperdensity_action_dryrun_readiness_surface_v1",
+    "hyperdensity_shell_capability_surface_v1"
+  ],
+  "claimBoundary": [
+    "operator-controlled lease candidate only; no autonomous apply in Sprint 3",
+    "dry-run and rollback gates must pass before operator may approve"
+  ]
+}

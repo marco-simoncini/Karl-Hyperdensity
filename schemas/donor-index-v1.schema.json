@@ -1,0 +1,49 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/donor-index-v1.schema.json",
+  "title": "KARL Hyperdensity Donor Index v1",
+  "type": "object",
+  "required": ["indexId", "indexVersion", "sourceRegistryRef", "observedAt", "donorCount", "excludedCount", "donors", "exclusions"],
+  "properties": {
+    "indexId": { "const": "hyperdensity_donor_index_v1" },
+    "indexVersion": { "const": "v1" },
+    "sourceRegistryRef": { "type": "string" },
+    "observedAt": { "type": "string" },
+    "donorCount": { "type": "integer", "minimum": 0 },
+    "excludedCount": { "type": "integer", "minimum": 0 },
+    "donors": { "type": "array", "items": { "$ref": "#/$defs/donor" } },
+    "exclusions": { "type": "array", "items": { "$ref": "#/$defs/exclusion" } }
+  },
+  "$defs": {
+    "donor": {
+      "type": "object",
+      "required": ["shellId", "shellKind", "targetRef", "tenant", "namespace", "resourceTypes", "lendableCpuMillis", "lendableMemoryBytes", "donorScore", "riskScore", "confidence", "rollbackReadiness", "evidenceRefs", "claimBoundary"],
+      "properties": {
+        "shellId": { "type": "string" },
+        "shellKind": { "type": "string" },
+        "targetRef": { "type": "string" },
+        "tenant": { "type": "string" },
+        "namespace": { "type": "string" },
+        "resourceTypes": { "type": "array", "items": { "type": "string" } },
+        "lendableCpuMillis": { "type": "integer", "minimum": 0 },
+        "lendableMemoryBytes": { "type": "integer", "minimum": 0 },
+        "donorScore": { "type": "number" },
+        "riskScore": { "type": "number" },
+        "confidence": { "type": "number" },
+        "rollbackReadiness": { "type": "string" },
+        "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+        "claimBoundary": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "exclusion": {
+      "type": "object",
+      "required": ["shellId", "reason", "blockerCodes", "remediationCodes"],
+      "properties": {
+        "shellId": { "type": "string" },
+        "reason": { "type": "string" },
+        "blockerCodes": { "type": "array", "items": { "type": "string" } },
+        "remediationCodes": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

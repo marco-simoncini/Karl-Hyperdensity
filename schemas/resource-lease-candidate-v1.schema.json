@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/resource-lease-candidate-v1.schema.json",
+  "title": "KARL Hyperdensity Resource Lease Candidate v1",
+  "type": "object",
+  "required": ["leaseCandidateId", "donorShellId", "receiverShellId", "resource", "amount", "durationSeconds", "state", "dryRunRequired", "rollbackRequired", "sloPrecheckRequired", "approvalMode", "autoApplyAllowed", "productionMutationAllowed", "risk", "confidence", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "leaseCandidateId": { "type": "string" },
+    "donorShellId": { "type": "string" },
+    "receiverShellId": { "type": "string" },
+    "resource": { "type": "string" },
+    "amount": { "type": "string" },
+    "durationSeconds": { "type": "integer", "minimum": 0 },
+    "state": { "enum": ["proposed", "dry_run_required", "dry_run_valid", "blocked", "expired", "operator_approval_required"] },
+    "dryRunRequired": { "type": "boolean" },
+    "rollbackRequired": { "type": "boolean" },
+    "sloPrecheckRequired": { "type": "boolean" },
+    "approvalMode": { "type": "string" },
+    "autoApplyAllowed": { "const": false },
+    "productionMutationAllowed": { "const": false },
+    "risk": { "type": "string" },
+    "confidence": { "type": "number" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

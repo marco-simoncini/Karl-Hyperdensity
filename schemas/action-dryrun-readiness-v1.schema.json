@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/action-dryrun-readiness-v1.schema.json",
+  "title": "KARL Hyperdensity Action Dry-Run Readiness v1",
+  "type": "object",
+  "required": ["readinessId", "actionId", "source", "actuator", "dryRunStatus", "cgroupPathResolvable", "libvirtDomainResolvable", "guestEvidenceAvailable", "rollbackCapabilityKnown", "disruptiveActionRequired", "mutationExecuted", "evidenceRefs", "observedAt"],
+  "properties": {
+    "readinessId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "source": { "const": "FluidVirt" },
+    "actuator": { "const": "FluidVirt" },
+    "dryRunStatus": { "type": "string" },
+    "cgroupPathResolvable": { "type": "boolean" },
+    "libvirtDomainResolvable": { "type": "boolean" },
+    "guestEvidenceAvailable": { "type": "boolean" },
+    "rollbackCapabilityKnown": { "type": "boolean" },
+    "disruptiveActionRequired": { "type": "boolean" },
+    "mutationExecuted": { "const": false },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "observedAt": { "type": "string" }
+  }
+}

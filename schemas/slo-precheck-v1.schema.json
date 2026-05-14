@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/slo-precheck-v1.schema.json",
+  "title": "KARL Hyperdensity SLO Precheck v1",
+  "type": "object",
+  "required": ["precheckId", "actionId", "sloProfile", "precheckStatus", "endpointEvidenceGated", "evidenceRefs", "observedAt"],
+  "properties": {
+    "precheckId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "sloProfile": { "type": "string" },
+    "precheckStatus": { "type": "string" },
+    "endpointEvidenceGated": { "type": "boolean" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "observedAt": { "type": "string" }
+  }
+}

@@ -1,0 +1,15 @@
+{
+  "readinessId": "dryrun-readiness-action-cpu-001",
+  "actionId": "action-cpu-lease-001",
+  "source": "FluidVirt",
+  "actuator": "FluidVirt",
+  "dryRunStatus": "valid",
+  "cgroupPathResolvable": true,
+  "libvirtDomainResolvable": false,
+  "guestEvidenceAvailable": true,
+  "rollbackCapabilityKnown": true,
+  "disruptiveActionRequired": false,
+  "mutationExecuted": false,
+  "evidenceRefs": ["hyperdensity_action_dryrun_readiness_surface_v1"],
+  "observedAt": "2026-05-14T14:00:00Z"
+}

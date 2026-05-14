@@ -1,0 +1,50 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/receiver-index-v1.schema.json",
+  "title": "KARL Hyperdensity Receiver Index v1",
+  "type": "object",
+  "required": ["indexId", "indexVersion", "sourceRegistryRef", "observedAt", "receiverCount", "remediableReceiverCount", "excludedCount", "receivers", "exclusions"],
+  "properties": {
+    "indexId": { "const": "hyperdensity_receiver_index_v1" },
+    "indexVersion": { "const": "v1" },
+    "sourceRegistryRef": { "type": "string" },
+    "observedAt": { "type": "string" },
+    "receiverCount": { "type": "integer", "minimum": 0 },
+    "remediableReceiverCount": { "type": "integer", "minimum": 0 },
+    "excludedCount": { "type": "integer", "minimum": 0 },
+    "receivers": { "type": "array", "items": { "$ref": "#/$defs/receiver" } },
+    "exclusions": { "type": "array", "items": { "$ref": "#/$defs/exclusion" } }
+  },
+  "$defs": {
+    "receiver": {
+      "type": "object",
+      "required": ["shellId", "shellKind", "targetRef", "tenant", "namespace", "requestedResourceTypes", "requestedCpuMillis", "requestedMemoryBytes", "receiverScore", "pressureClass", "confidence", "sloProfile", "evidenceRefs", "claimBoundary"],
+      "properties": {
+        "shellId": { "type": "string" },
+        "shellKind": { "type": "string" },
+        "targetRef": { "type": "string" },
+        "tenant": { "type": "string" },
+        "namespace": { "type": "string" },
+        "requestedResourceTypes": { "type": "array", "items": { "type": "string" } },
+        "requestedCpuMillis": { "type": "integer", "minimum": 0 },
+        "requestedMemoryBytes": { "type": "integer", "minimum": 0 },
+        "receiverScore": { "type": "number" },
+        "pressureClass": { "type": "string" },
+        "confidence": { "type": "number" },
+        "sloProfile": { "type": "string" },
+        "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+        "claimBoundary": { "type": "array", "items": { "type": "string" } }
+      }
+    },
+    "exclusion": {
+      "type": "object",
+      "required": ["shellId", "reason", "blockerCodes", "remediationCodes"],
+      "properties": {
+        "shellId": { "type": "string" },
+        "reason": { "type": "string" },
+        "blockerCodes": { "type": "array", "items": { "type": "string" } },
+        "remediationCodes": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

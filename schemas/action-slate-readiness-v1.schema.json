@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/action-slate-readiness-v1.schema.json",
+  "title": "KARL Hyperdensity Action Slate Readiness v1",
+  "type": "object",
+  "required": ["milestone", "surfaceVersion", "slateId", "sourceRegistryRef", "donorIndexRef", "receiverIndexRef", "generatedAt", "actionCount", "readyForOperatorCount", "blockedCount", "remediationOnlyCount", "protectedExcludedCount", "fullPairSpace", "evaluatedPairCount", "noFullNxNPairing", "topKDonorCount", "topKReceiverCount", "actionEntries", "claimPolicyRef", "sourceOfTruth", "safetyInvariants", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_resource_lease_action_slate_readiness_v1" },
+    "surfaceVersion": { "type": "string" },
+    "slateId": { "type": "string" },
+    "sourceRegistryRef": { "type": "string" },
+    "donorIndexRef": { "type": "string" },
+    "receiverIndexRef": { "type": "string" },
+    "generatedAt": { "type": "string" },
+    "actionCount": { "type": "integer", "minimum": 0 },
+    "readyForOperatorCount": { "type": "integer", "minimum": 0 },
+    "blockedCount": { "type": "integer", "minimum": 0 },
+    "remediationOnlyCount": { "type": "integer", "minimum": 0 },
+    "protectedExcludedCount": { "type": "integer", "minimum": 0 },
+    "fullPairSpace": { "type": "integer", "minimum": 0 },
+    "evaluatedPairCount": { "type": "integer", "minimum": 0 },
+    "noFullNxNPairing": { "const": true },
+    "avoidedPairCount": { "type": "integer", "minimum": 0 },
+    "maxEvaluatedPairs": { "type": "integer", "minimum": 1 },
+    "topKDonorCount": { "type": "integer", "minimum": 0 },
+    "topKReceiverCount": { "type": "integer", "minimum": 0 },
+    "actionEntries": { "type": "array", "items": { "$ref": "action-slate-entry-v1.schema.json" } },
+    "claimPolicyRef": { "type": "string" },
+    "sourceOfTruth": { "type": "object" },
+    "safetyInvariants": { "type": "object" },
+    "claimBoundaries": { "type": "array", "items": { "type": "string" } }
+  }
+}

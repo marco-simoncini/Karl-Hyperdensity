@@ -1309,6 +1309,77 @@ def main() -> int:
             if phrase in merged2:
                 fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
 
+    # --- Sprint 3: resource lease + action slate readiness v1 ---
+    sprint3_schemas = [
+        "donor-index-v1.schema.json",
+        "receiver-index-v1.schema.json",
+        "resource-lease-candidate-v1.schema.json",
+        "action-slate-readiness-v1.schema.json",
+        "action-slate-entry-v1.schema.json",
+        "action-dryrun-readiness-v1.schema.json",
+        "rollback-readiness-v1.schema.json",
+        "slo-precheck-v1.schema.json",
+        "risk-assessment-v1.schema.json",
+    ]
+    for name in sprint3_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 3 schema: {name}")
+
+    slate_readiness = example_by_name.get("action-slate-readiness-reference.json")
+    if slate_readiness is None:
+        fail("examples/action-slate-readiness-reference.json is missing")
+    if slate_readiness.get("milestone") != "hyperdensity_resource_lease_action_slate_readiness_v1":
+        fail("action slate readiness milestone invalid")
+    if slate_readiness.get("noFullNxNPairing") is not True:
+        fail("action slate readiness noFullNxNPairing must be true")
+    inv = slate_readiness.get("safetyInvariants") or {}
+    if inv.get("autoApplyAllowed") is not False:
+        fail("action slate safetyInvariants.autoApplyAllowed must be false")
+    if inv.get("productionMutationAllowed") is not False:
+        fail("action slate safetyInvariants.productionMutationAllowed must be false")
+
+    donor_idx = example_by_name.get("donor-index-reference.json")
+    if donor_idx is None:
+        fail("examples/donor-index-reference.json is missing")
+    if donor_idx.get("indexId") != "hyperdensity_donor_index_v1":
+        fail("donor index indexId invalid")
+
+    receiver_idx = example_by_name.get("receiver-index-reference.json")
+    if receiver_idx is None:
+        fail("examples/receiver-index-reference.json is missing")
+    if receiver_idx.get("indexId") != "hyperdensity_receiver_index_v1":
+        fail("receiver index indexId invalid")
+
+    dryrun_ref = example_by_name.get("action-dryrun-readiness-reference.json")
+    if dryrun_ref is None:
+        fail("examples/action-dryrun-readiness-reference.json is missing")
+    if dryrun_ref.get("source") != "FluidVirt":
+        fail("dry-run readiness source must be FluidVirt")
+    if dryrun_ref.get("mutationExecuted") is not False:
+        fail("dry-run readiness mutationExecuted must be false")
+
+    sprint3_examples = [
+        "donor-index-reference.json",
+        "receiver-index-reference.json",
+        "resource-lease-candidate-reference.json",
+        "action-slate-readiness-reference.json",
+        "action-slate-entry-reference.json",
+        "action-dryrun-readiness-reference.json",
+        "rollback-readiness-reference.json",
+        "slo-precheck-reference.json",
+        "risk-assessment-reference.json",
+    ]
+    for name in sprint3_examples:
+        ex = example_by_name.get(name)
+        if ex is None:
+            fail(f"missing Sprint 3 example: {name}")
+        positives3: list[str] = []
+        collect_positive_strings(ex, positives3)
+        merged3 = "\n".join(positives3).lower()
+        for phrase in forbidden_positive_claims:
+            if phrase in merged3:
+                fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

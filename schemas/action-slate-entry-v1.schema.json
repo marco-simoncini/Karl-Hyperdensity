@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/action-slate-entry-v1.schema.json",
+  "title": "KARL Hyperdensity Action Slate Entry v1",
+  "type": "object",
+  "required": ["actionId", "leaseCandidateId", "donorShellId", "receiverShellId", "actionType", "resource", "amount", "runtimeLayer", "dryRunStatus", "rollbackStatus", "sloPrecheckStatus", "riskStatus", "approvalMode", "readyForApply", "autoApplyAllowed", "productionMutationAllowed", "blockers", "remediations", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "actionId": { "type": "string" },
+    "leaseCandidateId": { "type": "string" },
+    "donorShellId": { "type": "string" },
+    "receiverShellId": { "type": "string" },
+    "actionType": { "type": "string" },
+    "resource": { "type": "string" },
+    "amount": { "type": "string" },
+    "runtimeLayer": { "type": "string" },
+    "dryRunStatus": { "type": "string" },
+    "rollbackStatus": { "type": "string" },
+    "sloPrecheckStatus": { "type": "string" },
+    "riskStatus": { "type": "string" },
+    "approvalMode": { "type": "string" },
+    "readyForApply": { "type": "string" },
+    "autoApplyAllowed": { "const": false },
+    "productionMutationAllowed": { "const": false },
+    "blockers": { "type": "array", "items": { "type": "string" } },
+    "remediations": { "type": "array", "items": { "type": "string" } },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

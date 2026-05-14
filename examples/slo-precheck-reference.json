@@ -1,0 +1,9 @@
+{
+  "precheckId": "slo-precheck-action-cpu-001",
+  "actionId": "action-cpu-lease-001",
+  "sloProfile": "infra_only",
+  "precheckStatus": "passed",
+  "endpointEvidenceGated": true,
+  "evidenceRefs": ["hyperdensity_application_slo_endpoint_contract_v1"],
+  "observedAt": "2026-05-14T14:00:00Z"
+}
