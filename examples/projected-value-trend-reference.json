@@ -1,0 +1,12 @@
+{
+  "claimBoundary": "projected value trend only",
+  "evidenceRefs": [
+    "artifact://value-trend"
+  ],
+  "firstProjectedValue": 1100,
+  "lastProjectedValue": 1250,
+  "projectedValueCountedAsRealized": false,
+  "projectedValueDelta": 150,
+  "projectedValueTrendId": "pvt-1",
+  "trendDirection": "increasing"
+}

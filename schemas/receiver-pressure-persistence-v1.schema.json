@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "receiver-pressure-persistence-v1",
+  "type": "object",
+  "required": [
+    "receiverPressurePersistenceId",
+    "pressurePersistenceRate",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

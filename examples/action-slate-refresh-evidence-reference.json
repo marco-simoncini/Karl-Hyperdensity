@@ -1,0 +1,14 @@
+{
+  "actionSlateRefreshId": "asr-1",
+  "allActionsNoApply": true,
+  "claimBoundary": "action slate refresh only",
+  "evidenceRefs": [
+    "artifact://action-refresh"
+  ],
+  "expiredActionCount": 0,
+  "finalActionCount": 3,
+  "initialActionCount": 3,
+  "refreshedActionCount": 2,
+  "selectedForExecutionCount": 0,
+  "stableActionCount": 1
+}

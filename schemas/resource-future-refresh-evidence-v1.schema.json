@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "resource-future-refresh-evidence-v1",
+  "type": "object",
+  "required": [
+    "futureRefreshId",
+    "futureRefreshRate",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "changedShellCount": 1,
+  "claimBoundary": "input stability only",
+  "disappearedShellCount": 0,
+  "evidenceRefs": [
+    "artifact://input-stability"
+  ],
+  "inputStabilityAnalysisId": "isa-1",
+  "inputStabilityAnalyzed": true,
+  "newShellCount": 1,
+  "stabilityRate": 0.92,
+  "stableShellCount": 11
+}

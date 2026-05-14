@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "observation-window-metrics-v1",
+  "type": "object",
+  "required": [
+    "metricsId",
+    "generalProductionAutoEnabledGauge",
+    "productionAutoWithPolicyEnabledGauge",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

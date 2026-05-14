@@ -1,0 +1,23 @@
+{
+  "blockerDecayRateGauge": 0.75,
+  "candidateStabilityRateGauge": 0.82,
+  "claimBoundary": "observation window metrics only",
+  "donorStabilityRateGauge": 0.75,
+  "emittedAt": "2026-05-14T18:16:00Z",
+  "evidenceRefs": [
+    "artifact://window-metrics"
+  ],
+  "failedTickCount": 0,
+  "futureRefreshRateGauge": 0.5,
+  "generalProductionAutoEnabledGauge": 0,
+  "inputStabilityRateGauge": 0.92,
+  "metricsId": "metrics-1",
+  "pressurePersistenceRateGauge": 0.67,
+  "productionAutoWithPolicyEnabledGauge": 0,
+  "projectedCompressionDeltaGauge": 0.03,
+  "projectedMovedIdleValueGauge": 1250,
+  "realizedMovedIdleValueGauge": 0,
+  "staleInputDecayRateGauge": 1,
+  "successfulTickCount": 4,
+  "windowTickCount": 4
+}

@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "no-apply-observation-safety-window-v1",
+  "type": "object",
+  "required": [
+    "safetyWindowId",
+    "productionMovementExecuted",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

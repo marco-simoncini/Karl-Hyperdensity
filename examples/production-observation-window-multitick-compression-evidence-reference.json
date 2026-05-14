@@ -1,0 +1,467 @@
+{
+  "actionSlateRefreshEvidence": {
+    "actionSlateRefreshId": "asr-1",
+    "allActionsNoApply": true,
+    "claimBoundary": "action slate refresh only",
+    "evidenceRefs": [
+      "artifact://action-refresh"
+    ],
+    "expiredActionCount": 0,
+    "finalActionCount": 3,
+    "initialActionCount": 3,
+    "refreshedActionCount": 2,
+    "selectedForExecutionCount": 0,
+    "stableActionCount": 1
+  },
+  "actionSlateRefreshed": true,
+  "blockerDecayAnalysis": {
+    "blockerDecayAnalysisId": "bda-1",
+    "blockerDecayRate": 0.75,
+    "blockersAdded": 0,
+    "blockersResolved": 3,
+    "claimBoundary": "blocker decay only",
+    "evidenceRefs": [
+      "artifact://blocker-decay"
+    ],
+    "finalBlockerCount": 1,
+    "initialBlockerCount": 4,
+    "persistentBlockers": [
+      {
+        "blockerCode": "stale_input"
+      }
+    ],
+    "resolvedBlockers": [
+      {
+        "blockerCode": "missing_slo"
+      },
+      {
+        "blockerCode": "missing_rollback"
+      }
+    ]
+  },
+  "blockerDecayAnalyzed": true,
+  "blockerDecayRate": 0.75,
+  "blockers": [],
+  "broadProductionMutationExecuted": false,
+  "candidateStabilityRate": 0.82,
+  "claimBoundaries": [
+    "observation window generates projected trends only",
+    "no broad production mutation claim",
+    "realized value requires movement evidence"
+  ],
+  "controllerMode": "production_canary_only",
+  "dashboardExecutor": false,
+  "dashboardProjectionUpdated": true,
+  "donorStabilityAnalysis": {
+    "claimBoundary": "donor stability only",
+    "donorStabilityAnalysisId": "dsa-1",
+    "donorStabilityRate": 0.75,
+    "evidenceRefs": [
+      "artifact://donor-stability"
+    ],
+    "newDonorCount": 1,
+    "persistentDonorCount": 3,
+    "removedDonorCount": 0,
+    "topPersistentDonors": [
+      {
+        "shellId": "d1",
+        "ticksPresent": 4
+      },
+      {
+        "shellId": "d2",
+        "ticksPresent": 4
+      }
+    ]
+  },
+  "donorStabilityAnalyzed": true,
+  "estimatedIdleCountedAsMoved": false,
+  "failedTickCount": 0,
+  "firstTickAt": "2026-05-14T18:00:00Z",
+  "fluidvirtObservationWindowAuthority": false,
+  "fluidvirtPolicyAuthority": false,
+  "futureRefreshRate": 0.5,
+  "generalProductionAutoAllowed": false,
+  "generatedAt": "2026-05-14T18:16:00Z",
+  "idleOpportunityPersistence": {
+    "claimBoundary": "idle opportunity persistence only",
+    "evidenceRefs": [
+      "artifact://idle-persistence"
+    ],
+    "idleOpportunityPersistenceId": "iop-1",
+    "idleOpportunityPersistenceRate": 0.8,
+    "persistentIdleShellCount": 3,
+    "persistentIdleValue": 3200,
+    "topPersistentIdleShells": [
+      {
+        "persistentIdleValue": 1600,
+        "shellId": "sh-1"
+      }
+    ],
+    "transientIdleValue": 400
+  },
+  "idleOpportunityPersistenceAnalyzed": true,
+  "inputStabilityAnalysis": {
+    "changedShellCount": 1,
+    "claimBoundary": "input stability only",
+    "disappearedShellCount": 0,
+    "evidenceRefs": [
+      "artifact://input-stability"
+    ],
+    "inputStabilityAnalysisId": "isa-1",
+    "inputStabilityAnalyzed": true,
+    "newShellCount": 1,
+    "stabilityRate": 0.92,
+    "stableShellCount": 11
+  },
+  "inputStabilityAnalyzed": true,
+  "inventoryRuntimeExecutor": false,
+  "lastTickAt": "2026-05-14T18:15:38Z",
+  "milestone": "hyperdensity_production_observation_window_multitick_compression_evidence_v1",
+  "multiTickWindowObserved": true,
+  "noApplyMode": true,
+  "noApplySafetyWindow": {
+    "broadProductionMutationExecuted": false,
+    "claimBoundary": "no-apply safety window only",
+    "dashboardExecutor": false,
+    "evidenceRefs": [
+      "artifact://safety-window"
+    ],
+    "fluidvirtObservationWindowAuthority": false,
+    "generalProductionAutoAllowed": false,
+    "inventoryRuntimeExecutor": false,
+    "productionAutoWithPolicy": false,
+    "productionMovementExecuted": false,
+    "rawRuntimeControlsExposed": false,
+    "safetyWindowId": "safety-1",
+    "selectedForExecutionCount": 0
+  },
+  "noApplySafetyWindowVerified": true,
+  "observationEvents": [
+    {
+      "claimBoundary": "observation event only",
+      "eventId": "evt-1",
+      "eventType": "observation_window_started",
+      "evidenceRefs": [
+        "artifact://evt-1"
+      ],
+      "involvedObjectKind": "ConfigMap",
+      "involvedObjectName": "hyperdensity-production-observation-window-v1",
+      "occurredAt": "2026-05-14T18:00:00Z",
+      "sourceComponent": "Karl-Hyperdensity",
+      "summary": "observation window started"
+    },
+    {
+      "claimBoundary": "observation event only",
+      "eventId": "evt-2",
+      "eventType": "observation_window_passed",
+      "evidenceRefs": [
+        "artifact://evt-2"
+      ],
+      "involvedObjectKind": "ConfigMap",
+      "involvedObjectName": "hyperdensity-production-observation-window-v1",
+      "occurredAt": "2026-05-14T18:16:00Z",
+      "sourceComponent": "Karl-Hyperdensity",
+      "summary": "no-apply observation window passed"
+    }
+  ],
+  "observationMetrics": {
+    "blockerDecayRateGauge": 0.75,
+    "candidateStabilityRateGauge": 0.82,
+    "claimBoundary": "observation window metrics only",
+    "donorStabilityRateGauge": 0.75,
+    "emittedAt": "2026-05-14T18:16:00Z",
+    "evidenceRefs": [
+      "artifact://window-metrics"
+    ],
+    "failedTickCount": 0,
+    "futureRefreshRateGauge": 0.5,
+    "generalProductionAutoEnabledGauge": 0,
+    "inputStabilityRateGauge": 0.92,
+    "metricsId": "metrics-1",
+    "pressurePersistenceRateGauge": 0.67,
+    "productionAutoWithPolicyEnabledGauge": 0,
+    "projectedCompressionDeltaGauge": 0.03,
+    "projectedMovedIdleValueGauge": 1250,
+    "realizedMovedIdleValueGauge": 0,
+    "staleInputDecayRateGauge": 1,
+    "successfulTickCount": 4,
+    "windowTickCount": 4
+  },
+  "observationWindowId": "obs-win-s20-v1",
+  "observationWindowPassed": true,
+  "persistentIdleValue": 3200,
+  "persistentPressureValue": 1600,
+  "productionAutoWithPolicy": false,
+  "productionMovementExecuted": false,
+  "productionObservationMode": true,
+  "productionObservationWindowEnabled": true,
+  "projectedCompressionCountedAsRealized": false,
+  "projectedCompressionDelta": 0.03,
+  "projectedCompressionTrend": {
+    "claimBoundary": "projected compression trend only",
+    "evidenceRefs": [
+      "artifact://compression-trend"
+    ],
+    "firstProjectedCompressionRate": 0.16,
+    "lastProjectedCompressionRate": 0.19,
+    "projectedCompressionCountedAsRealized": false,
+    "projectedCompressionDelta": 0.03,
+    "projectedCompressionTrendId": "pct-1",
+    "trendDirection": "increasing"
+  },
+  "projectedCompressionTrendComputed": true,
+  "projectedMovedIdleValue": 1250,
+  "projectedValueCountedAsRealized": false,
+  "projectedValueOpportunity": 4800,
+  "projectedValueTrend": {
+    "claimBoundary": "projected value trend only",
+    "evidenceRefs": [
+      "artifact://value-trend"
+    ],
+    "firstProjectedValue": 1100,
+    "lastProjectedValue": 1250,
+    "projectedValueCountedAsRealized": false,
+    "projectedValueDelta": 150,
+    "projectedValueTrendId": "pvt-1",
+    "trendDirection": "increasing"
+  },
+  "projectedValueTrendComputed": true,
+  "realInputTicksObserved": true,
+  "realizedCompressionDelta": 0,
+  "realizedMovedIdleValue": 0,
+  "realizedMovementCount": 0,
+  "realizedValueSeparated": true,
+  "realizedValueSeparation": {
+    "claimBoundary": "realized value separation only",
+    "estimatedValueExcludedFromRealized": true,
+    "evidenceRefs": [
+      "artifact://realized-separation"
+    ],
+    "movementEvidencePresent": false,
+    "projectedValueExcludedFromRealized": true,
+    "realizedCompressionDelta": 0,
+    "realizedMovedIdleValue": 0,
+    "realizedMovementCount": 0,
+    "realizedValueSeparated": true,
+    "realizedValueSeparationId": "rvs-1",
+    "referenceValueExcludedFromRealized": true,
+    "syntheticValueExcludedFromRealized": true
+  },
+  "receiverPressurePersistence": {
+    "claimBoundary": "receiver pressure persistence only",
+    "evidenceRefs": [
+      "artifact://pressure-persistence"
+    ],
+    "persistentPressureReceiverCount": 2,
+    "pressurePersistenceRate": 0.67,
+    "receiverPressurePersistenceId": "rpp-1",
+    "topPersistentReceivers": [
+      {
+        "shellId": "r1",
+        "ticksPresent": 4
+      }
+    ],
+    "transientPressureReceiverCount": 1
+  },
+  "receiverPressurePersistenceAnalyzed": true,
+  "referenceFleetCountedAsProduction": false,
+  "referenceScenarios": [
+    {
+      "observationWindowPassed": true,
+      "scenarioId": "success",
+      "tickCount": 4
+    },
+    {
+      "observationWindowPassed": false,
+      "scenarioId": "too_few_ticks",
+      "tickCount": 2
+    },
+    {
+      "observationWindowPassed": false,
+      "productionMovementExecuted": true,
+      "scenarioId": "tick_production_movement"
+    },
+    {
+      "observationWindowPassed": false,
+      "scenarioId": "action_selected",
+      "selectedForExecutionCount": 1
+    },
+    {
+      "observationWindowPassed": false,
+      "projectedCompressionCountedAsRealized": true,
+      "scenarioId": "projected_realized"
+    },
+    {
+      "estimatedIdleCountedAsMoved": true,
+      "observationWindowPassed": false,
+      "scenarioId": "estimated_moved"
+    },
+    {
+      "observationWindowPassed": false,
+      "scenarioId": "synthetic_reference_prod",
+      "syntheticFleetCountedAsProduction": true
+    },
+    {
+      "generalProductionAutoAllowed": true,
+      "observationWindowPassed": false,
+      "scenarioId": "general_auto"
+    },
+    {
+      "observationWindowPassed": false,
+      "productionAutoWithPolicy": true,
+      "scenarioId": "prod_auto_policy"
+    },
+    {
+      "dashboardExecutor": true,
+      "observationWindowPassed": false,
+      "scenarioId": "dashboard_executor"
+    }
+  ],
+  "resourceFutureRefreshEvidence": {
+    "claimBoundary": "future refresh only",
+    "evidenceRefs": [
+      "artifact://future-refresh"
+    ],
+    "expiredFutureCount": 0,
+    "finalFutureCount": 2,
+    "futureRefreshId": "frr-1",
+    "futureRefreshRate": 0.5,
+    "initialFutureCount": 2,
+    "refreshedFutureCount": 1
+  },
+  "resourceFuturesRefreshed": true,
+  "safetyInvariants": [
+    "no production movement in observation window",
+    "projected value never counted as realized",
+    "dashboard projection read-only"
+  ],
+  "sourceOfTruth": {
+    "identitySignals": "Karl-Inventory",
+    "marketDecision": "Karl-Hyperdensity",
+    "operatorUI": "Karl-Dashboard (projection only)",
+    "runtimeMutation": "FluidVirt"
+  },
+  "sourceRealInputMarketTickRef": "configmap://karl-system/hyperdensity-runtime-market-real-inputs-no-apply-v1",
+  "staleInputDecayAnalysis": {
+    "claimBoundary": "stale input decay only",
+    "evidenceRefs": [
+      "artifact://stale-decay"
+    ],
+    "finalStaleInputCount": 0,
+    "initialStaleInputCount": 2,
+    "staleInputDecayAnalysisId": "sida-1",
+    "staleInputDecayRate": 1,
+    "staleInputsInvalidated": 2
+  },
+  "staleInputDecayAnalyzed": true,
+  "staleInputDecayRate": 1,
+  "successfulTickCount": 4,
+  "surfaceVersion": "v1",
+  "syntheticFleetCountedAsProduction": false,
+  "tickCount": 4,
+  "tickSequence": {
+    "allTicksNoApply": true,
+    "claimBoundary": "tick sequence only",
+    "evidenceRefs": [
+      "artifact://tick-sequence"
+    ],
+    "monotonicSequence": true,
+    "noMissingTicks": true,
+    "tickCount": 4,
+    "tickSequenceId": "seq-1",
+    "ticks": [
+      {
+        "claimBoundary": "tick record only",
+        "completedAt": "2026-05-14T18:00:45Z",
+        "eligibleDonorCount": 4,
+        "evidenceRefs": [
+          "artifact://tick-1"
+        ],
+        "generatedActionCount": 3,
+        "generatedFutureCount": 2,
+        "invalidatedInputCount": 1,
+        "observedShellCount": 12,
+        "pressureReceiverCount": 3,
+        "productionMovementExecuted": false,
+        "projectedCompressionDelta": 0.16,
+        "projectedMovedIdleValue": 1100,
+        "selectedForExecutionCount": 0,
+        "sequenceNumber": 1,
+        "staleInputCount": 1,
+        "startedAt": "2026-05-14T18:00:00Z",
+        "status": "passed",
+        "tickId": "tick-1"
+      },
+      {
+        "claimBoundary": "tick record only",
+        "completedAt": "2026-05-14T18:05:42Z",
+        "eligibleDonorCount": 4,
+        "evidenceRefs": [
+          "artifact://tick-2"
+        ],
+        "generatedActionCount": 3,
+        "generatedFutureCount": 2,
+        "invalidatedInputCount": 0,
+        "observedShellCount": 12,
+        "pressureReceiverCount": 3,
+        "productionMovementExecuted": false,
+        "projectedCompressionDelta": 0.17,
+        "projectedMovedIdleValue": 1150,
+        "selectedForExecutionCount": 0,
+        "sequenceNumber": 2,
+        "staleInputCount": 1,
+        "startedAt": "2026-05-14T18:05:00Z",
+        "status": "passed",
+        "tickId": "tick-2"
+      },
+      {
+        "claimBoundary": "tick record only",
+        "completedAt": "2026-05-14T18:10:40Z",
+        "eligibleDonorCount": 4,
+        "evidenceRefs": [
+          "artifact://tick-3"
+        ],
+        "generatedActionCount": 3,
+        "generatedFutureCount": 2,
+        "invalidatedInputCount": 0,
+        "observedShellCount": 13,
+        "pressureReceiverCount": 3,
+        "productionMovementExecuted": false,
+        "projectedCompressionDelta": 0.18,
+        "projectedMovedIdleValue": 1200,
+        "selectedForExecutionCount": 0,
+        "sequenceNumber": 3,
+        "staleInputCount": 0,
+        "startedAt": "2026-05-14T18:10:00Z",
+        "status": "passed",
+        "tickId": "tick-3"
+      },
+      {
+        "claimBoundary": "tick record only",
+        "completedAt": "2026-05-14T18:15:38Z",
+        "eligibleDonorCount": 5,
+        "evidenceRefs": [
+          "artifact://tick-4"
+        ],
+        "generatedActionCount": 3,
+        "generatedFutureCount": 2,
+        "invalidatedInputCount": 0,
+        "observedShellCount": 13,
+        "pressureReceiverCount": 3,
+        "productionMovementExecuted": false,
+        "projectedCompressionDelta": 0.19,
+        "projectedMovedIdleValue": 1250,
+        "selectedForExecutionCount": 0,
+        "sequenceNumber": 4,
+        "staleInputCount": 0,
+        "startedAt": "2026-05-14T18:15:00Z",
+        "status": "passed",
+        "tickId": "tick-4"
+      }
+    ]
+  },
+  "universalGuaranteedSavingsAllowed": false,
+  "universalGuaranteedSavingsClaimed": false,
+  "warnings": [],
+  "windowDurationSeconds": 938
+}

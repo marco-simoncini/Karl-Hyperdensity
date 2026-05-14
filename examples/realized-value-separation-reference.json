@@ -1,0 +1,16 @@
+{
+  "claimBoundary": "realized value separation only",
+  "estimatedValueExcludedFromRealized": true,
+  "evidenceRefs": [
+    "artifact://realized-separation"
+  ],
+  "movementEvidencePresent": false,
+  "projectedValueExcludedFromRealized": true,
+  "realizedCompressionDelta": 0,
+  "realizedMovedIdleValue": 0,
+  "realizedMovementCount": 0,
+  "realizedValueSeparated": true,
+  "realizedValueSeparationId": "rvs-1",
+  "referenceValueExcludedFromRealized": true,
+  "syntheticValueExcludedFromRealized": true
+}

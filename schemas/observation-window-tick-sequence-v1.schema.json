@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "observation-window-tick-sequence-v1",
+  "type": "object",
+  "required": [
+    "tickSequenceId",
+    "tickCount",
+    "ticks",
+    "allTicksNoApply",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

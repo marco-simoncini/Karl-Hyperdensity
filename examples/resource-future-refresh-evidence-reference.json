@@ -1,0 +1,12 @@
+{
+  "claimBoundary": "future refresh only",
+  "evidenceRefs": [
+    "artifact://future-refresh"
+  ],
+  "expiredFutureCount": 0,
+  "finalFutureCount": 2,
+  "futureRefreshId": "frr-1",
+  "futureRefreshRate": 0.5,
+  "initialFutureCount": 2,
+  "refreshedFutureCount": 1
+}

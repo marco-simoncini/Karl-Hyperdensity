@@ -1,0 +1,16 @@
+{
+  "claimBoundary": "receiver pressure persistence only",
+  "evidenceRefs": [
+    "artifact://pressure-persistence"
+  ],
+  "persistentPressureReceiverCount": 2,
+  "pressurePersistenceRate": 0.67,
+  "receiverPressurePersistenceId": "rpp-1",
+  "topPersistentReceivers": [
+    {
+      "shellId": "r1",
+      "ticksPresent": 4
+    }
+  ],
+  "transientPressureReceiverCount": 1
+}

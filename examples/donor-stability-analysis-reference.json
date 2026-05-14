@@ -1,0 +1,21 @@
+{
+  "claimBoundary": "donor stability only",
+  "donorStabilityAnalysisId": "dsa-1",
+  "donorStabilityRate": 0.75,
+  "evidenceRefs": [
+    "artifact://donor-stability"
+  ],
+  "newDonorCount": 1,
+  "persistentDonorCount": 3,
+  "removedDonorCount": 0,
+  "topPersistentDonors": [
+    {
+      "shellId": "d1",
+      "ticksPresent": 4
+    },
+    {
+      "shellId": "d2",
+      "ticksPresent": 4
+    }
+  ]
+}

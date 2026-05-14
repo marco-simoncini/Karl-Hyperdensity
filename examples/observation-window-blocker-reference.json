@@ -1,0 +1,8 @@
+{
+  "blockerId": "blk-1",
+  "blockerCode": "stale_input",
+  "evidenceRefs": [
+    "artifact://blk"
+  ],
+  "claimBoundary": "blocker only"
+}

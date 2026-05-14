@@ -1,0 +1,12 @@
+{
+  "claimBoundary": "projected compression trend only",
+  "evidenceRefs": [
+    "artifact://compression-trend"
+  ],
+  "firstProjectedCompressionRate": 0.16,
+  "lastProjectedCompressionRate": 0.19,
+  "projectedCompressionCountedAsRealized": false,
+  "projectedCompressionDelta": 0.03,
+  "projectedCompressionTrendId": "pct-1",
+  "trendDirection": "increasing"
+}

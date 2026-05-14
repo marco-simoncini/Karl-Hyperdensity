@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "production-observation-window-multitick-compression-evidence-v1",
+  "type": "object",
+  "required": [
+    "milestone",
+    "surfaceVersion",
+    "observationWindowId",
+    "productionObservationWindowEnabled",
+    "observationWindowPassed",
+    "claimBoundaries"
+  ],
+  "properties": {
+    "milestone": {
+      "const": "hyperdensity_production_observation_window_multitick_compression_evidence_v1"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "action-slate-refresh-evidence-v1",
+  "type": "object",
+  "required": [
+    "actionSlateRefreshId",
+    "selectedForExecutionCount",
+    "allActionsNoApply",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

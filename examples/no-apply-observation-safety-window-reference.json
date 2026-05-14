@@ -1,0 +1,16 @@
+{
+  "broadProductionMutationExecuted": false,
+  "claimBoundary": "no-apply safety window only",
+  "dashboardExecutor": false,
+  "evidenceRefs": [
+    "artifact://safety-window"
+  ],
+  "fluidvirtObservationWindowAuthority": false,
+  "generalProductionAutoAllowed": false,
+  "inventoryRuntimeExecutor": false,
+  "productionAutoWithPolicy": false,
+  "productionMovementExecuted": false,
+  "rawRuntimeControlsExposed": false,
+  "safetyWindowId": "safety-1",
+  "selectedForExecutionCount": 0
+}

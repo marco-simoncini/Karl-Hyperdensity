@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "observation-window-event-v1",
+  "type": "object",
+  "required": [
+    "eventId",
+    "eventType",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "claimBoundary": "idle opportunity persistence only",
+  "evidenceRefs": [
+    "artifact://idle-persistence"
+  ],
+  "idleOpportunityPersistenceId": "iop-1",
+  "idleOpportunityPersistenceRate": 0.8,
+  "persistentIdleShellCount": 3,
+  "persistentIdleValue": 3200,
+  "topPersistentIdleShells": [
+    {
+      "persistentIdleValue": 1600,
+      "shellId": "sh-1"
+    }
+  ],
+  "transientIdleValue": 400
+}

@@ -1,0 +1,11 @@
+{
+  "claimBoundary": "stale input decay only",
+  "evidenceRefs": [
+    "artifact://stale-decay"
+  ],
+  "finalStaleInputCount": 0,
+  "initialStaleInputCount": 2,
+  "staleInputDecayAnalysisId": "sida-1",
+  "staleInputDecayRate": 1,
+  "staleInputsInvalidated": 2
+}

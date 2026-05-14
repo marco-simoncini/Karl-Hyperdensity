@@ -1,0 +1,25 @@
+{
+  "blockerDecayAnalysisId": "bda-1",
+  "blockerDecayRate": 0.75,
+  "blockersAdded": 0,
+  "blockersResolved": 3,
+  "claimBoundary": "blocker decay only",
+  "evidenceRefs": [
+    "artifact://blocker-decay"
+  ],
+  "finalBlockerCount": 1,
+  "initialBlockerCount": 4,
+  "persistentBlockers": [
+    {
+      "blockerCode": "stale_input"
+    }
+  ],
+  "resolvedBlockers": [
+    {
+      "blockerCode": "missing_slo"
+    },
+    {
+      "blockerCode": "missing_rollback"
+    }
+  ]
+}

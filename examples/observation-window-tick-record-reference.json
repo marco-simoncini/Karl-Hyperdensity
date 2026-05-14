@@ -1,0 +1,22 @@
+{
+  "claimBoundary": "tick record only",
+  "completedAt": "2026-05-14T18:00:45Z",
+  "eligibleDonorCount": 4,
+  "evidenceRefs": [
+    "artifact://tick-1"
+  ],
+  "generatedActionCount": 3,
+  "generatedFutureCount": 2,
+  "invalidatedInputCount": 1,
+  "observedShellCount": 12,
+  "pressureReceiverCount": 3,
+  "productionMovementExecuted": false,
+  "projectedCompressionDelta": 0.16,
+  "projectedMovedIdleValue": 1100,
+  "selectedForExecutionCount": 0,
+  "sequenceNumber": 1,
+  "staleInputCount": 1,
+  "startedAt": "2026-05-14T18:00:00Z",
+  "status": "passed",
+  "tickId": "tick-1"
+}

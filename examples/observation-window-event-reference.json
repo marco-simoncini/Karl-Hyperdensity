@@ -1,0 +1,13 @@
+{
+  "claimBoundary": "observation event only",
+  "eventId": "evt-1",
+  "eventType": "observation_window_started",
+  "evidenceRefs": [
+    "artifact://evt-1"
+  ],
+  "involvedObjectKind": "ConfigMap",
+  "involvedObjectName": "hyperdensity-production-observation-window-v1",
+  "occurredAt": "2026-05-14T18:00:00Z",
+  "sourceComponent": "Karl-Hyperdensity",
+  "summary": "observation window started"
+}
