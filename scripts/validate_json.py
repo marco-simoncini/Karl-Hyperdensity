@@ -1730,6 +1730,75 @@ def main() -> int:
             if phrase in merged9:
                 fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
 
+    # --- Sprint 10: dashboard enterprise cleanup + GA release gate v1 ---
+    sprint10_schemas = [
+        "dashboard-enterprise-surface-manifest-v1.schema.json",
+        "dashboard-surface-classification-v1.schema.json",
+        "ga-release-gate-v1.schema.json",
+        "release-gate-check-v1.schema.json",
+        "release-gate-decision-v1.schema.json",
+        "release-blocker-v1.schema.json",
+        "claim-gate-v1.schema.json",
+        "evidence-gate-v1.schema.json",
+        "reference-payload-gate-v1.schema.json",
+        "synthetic-proof-gate-v1.schema.json",
+        "dashboard-cleanup-policy-v1.schema.json",
+        "dashboard-navigation-policy-v1.schema.json",
+        "dashboard-count-consistency-gate-v1.schema.json",
+        "ga-readiness-rollup-v1.schema.json",
+    ]
+    for name in sprint10_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 10 schema: {name}")
+
+    ga_gate = example_by_name.get("ga-release-gate-reference.json")
+    if ga_gate is None:
+        fail("examples/ga-release-gate-reference.json is missing")
+    if ga_gate.get("milestone") != "hyperdensity_dashboard_enterprise_cleanup_ga_release_gate_v1":
+        fail("GA release gate milestone invalid")
+    for key in [
+        "generalProductionAutoAllowed",
+        "productionAutoWithPolicy",
+        "guaranteedSavingsClaimed",
+        "universalPerformanceImprovementClaimed",
+        "referencePayloadCountedAsProduction",
+        "syntheticProofCountedAsProduction",
+        "dashboardRuntimeControlsExposed",
+        "dashboardExecutor",
+        "fluidvirtPolicyAuthority",
+        "inventoryRuntimeExecutor",
+    ]:
+        if ga_gate.get(key) is not False:
+            fail(f"ga-release-gate-reference.json {key} must be false")
+    decision = ga_gate.get("releaseDecision")
+    if decision not in ("canary_only", "ga_blocked"):
+        if not ga_gate.get("gaReady"):
+            fail("releaseDecision must be canary_only or ga_blocked unless all GA gates pass")
+    if ga_gate.get("canaryReady") is not True:
+        fail("ga-release-gate-reference.json canaryReady must be true")
+    if ga_gate.get("gaReady") is not False:
+        fail("ga-release-gate-reference.json gaReady must be false for Sprint 10 reference")
+
+    sprint10_examples = [
+        "ga-release-gate-reference.json",
+        "dashboard-enterprise-surface-manifest-reference.json",
+        "dashboard-surface-classification-reference.json",
+        "release-gate-check-reference.json",
+        "release-gate-decision-reference.json",
+        "release-blocker-reference.json",
+        "claim-gate-reference.json",
+        "evidence-gate-reference.json",
+        "reference-payload-gate-reference.json",
+        "synthetic-proof-gate-reference.json",
+        "dashboard-cleanup-policy-reference.json",
+        "dashboard-navigation-policy-reference.json",
+        "dashboard-count-consistency-gate-reference.json",
+        "ga-readiness-rollup-reference.json",
+    ]
+    for name in sprint10_examples:
+        if example_by_name.get(name) is None:
+            fail(f"missing Sprint 10 example: {name}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

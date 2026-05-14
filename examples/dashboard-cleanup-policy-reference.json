@@ -1,0 +1,18 @@
+{
+  "cleanupPolicyId": "dashboard-cleanup-policy-sprint10",
+  "enterpriseModeDefault": true,
+  "hideLabByDefault": true,
+  "hideDebugByDefault": true,
+  "hideArchivedByDefault": true,
+  "hideReferenceOnlyByDefault": true,
+  "hideSyntheticShadowByDefault": true,
+  "forbidDemoMockTestExecutiveRoutes": true,
+  "forbidRawControls": true,
+  "forbidApplyButtonsInProjectionSurfaces": true,
+  "requireReleaseTrackLabel": true,
+  "requireClaimBoundaryLabel": true,
+  "evidenceRefs": [
+    "hyperdensity-ga-release-gate-v1"
+  ],
+  "claimBoundary": "enterprise cockpit hides lab/debug/reference/synthetic/demo surfaces by default"
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/dashboard-surface-classification-v1.schema.json",
+  "title": "KARL Hyperdensity Dashboard Surface Classification v1",
+  "type": "object",
+  "required": ["surfaceId", "surfaceName", "releaseTrack", "visibleInExecutive", "referenceOnly", "syntheticOrShadow", "canBeUsedForProductionProof", "claimBoundary"],
+  "properties": {
+    "releaseTrack": { "enum": ["ga", "preview", "production_canary", "lab", "debug", "archived", "reference_only", "synthetic_shadow"] }
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/release-gate-check-v1.schema.json",
+  "title": "KARL Hyperdensity Release Gate Check v1",
+  "type": "object",
+  "required": ["checkId", "checkName", "status", "claimBoundary"],
+  "properties": {
+    "status": { "enum": ["passed", "failed", "warning", "not_applicable", "evidence_missing"] }
+  }
+}

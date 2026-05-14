@@ -1,0 +1,17 @@
+{
+  "syntheticProofGateId": "synthetic-proof-gate-sprint10",
+  "evaluatedAt": "2026-05-14T14:30:00Z",
+  "syntheticProofs": [
+    {
+      "proofId": "action-synthetic-shadow-009",
+      "label": "synthetic_shadow",
+      "route": "/lab/evidence/synthetic-shadow"
+    }
+  ],
+  "countedAsProduction": false,
+  "decision": "synthetic_separated",
+  "evidenceRefs": [
+    "action-synthetic-shadow-009"
+  ],
+  "claimBoundary": "synthetic shadow proof is not production proof"
+}

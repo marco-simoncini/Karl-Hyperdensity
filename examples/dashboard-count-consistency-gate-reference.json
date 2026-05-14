@@ -1,0 +1,31 @@
+{
+  "countConsistencyGateId": "count-consistency-gate-sprint10",
+  "evaluatedAt": "2026-05-14T14:30:00Z",
+  "surfacesChecked": [
+    "hyperdensityGuardedAutoApplySandbox",
+    "hyperdensityProductionCanaryAutoApply"
+  ],
+  "mismatches": [
+    {
+      "surfaceId": "hyperdensityGuardedAutoApplySandbox",
+      "declaredCount": 3,
+      "actualCount": 2,
+      "field": "executedAutoApplyCount",
+      "blockerCode": "sandbox_executed_count_mismatch"
+    },
+    {
+      "surfaceId": "hyperdensityProductionCanaryAutoApply",
+      "declaredCount": 2,
+      "actualCount": 1,
+      "field": "executedProductionCanaryCount",
+      "blockerCode": "canary_executed_count_mismatch"
+    }
+  ],
+  "mismatchCount": 2,
+  "decision": "blocked_example",
+  "evidenceRefs": [
+    "hyperdensity-guarded-auto-apply-sandbox-v1",
+    "hyperdensity-production-canary-auto-apply-v1"
+  ],
+  "claimBoundary": "declared executed counts must match mutationExecuted invocation records"
+}

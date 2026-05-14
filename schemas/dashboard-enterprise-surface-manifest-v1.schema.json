@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/dashboard-enterprise-surface-manifest-v1.schema.json",
+  "title": "KARL Hyperdensity Dashboard Enterprise Surface Manifest v1",
+  "type": "object",
+  "required": ["milestone", "manifestId", "enterpriseMode", "defaultNavigationMode", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_dashboard_enterprise_cleanup_ga_release_gate_v1" },
+    "enterpriseMode": { "const": true },
+    "defaultNavigationMode": { "const": "enterprise" }
+  }
+}

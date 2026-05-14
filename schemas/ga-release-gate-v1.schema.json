@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/ga-release-gate-v1.schema.json",
+  "title": "KARL Hyperdensity GA Release Gate v1",
+  "type": "object",
+  "required": ["milestone", "surfaceVersion", "releaseGateId", "releaseDecision", "generalProductionAutoAllowed", "productionAutoWithPolicy", "guaranteedSavingsClaimed", "universalPerformanceImprovementClaimed", "referencePayloadCountedAsProduction", "syntheticProofCountedAsProduction", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_dashboard_enterprise_cleanup_ga_release_gate_v1" },
+    "generalProductionAutoAllowed": { "const": false },
+    "productionAutoWithPolicy": { "const": false },
+    "guaranteedSavingsClaimed": { "const": false },
+    "universalPerformanceImprovementClaimed": { "const": false },
+    "referencePayloadCountedAsProduction": { "const": false },
+    "syntheticProofCountedAsProduction": { "const": false },
+    "dashboardRuntimeControlsExposed": { "const": false },
+    "dashboardExecutor": { "const": false },
+    "releaseDecision": { "enum": ["ga_pass", "ga_blocked", "canary_only", "preview_only", "lab_only"] }
+  }
+}

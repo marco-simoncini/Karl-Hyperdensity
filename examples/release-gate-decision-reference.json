@@ -1,0 +1,23 @@
+{
+  "decisionId": "release-decision-sprint10",
+  "releaseGateId": "ga-release-gate-sprint10-reference",
+  "decision": "canary_only",
+  "decidedAt": "2026-05-14T14:30:00Z",
+  "decidedByComponent": "Karl-Hyperdensity",
+  "gaReady": false,
+  "canaryReady": true,
+  "reason": "general production auto remains disabled; canary only",
+  "blockers": [
+    "general_production_auto_disabled",
+    "ga_evidence_incomplete",
+    "dashboard_raw_control_blocked"
+  ],
+  "warnings": [
+    "count_mismatch_example"
+  ],
+  "nextAllowedState": "production_canary_only",
+  "evidenceRefs": [
+    "hyperdensity-ga-release-gate-v1"
+  ],
+  "claimBoundary": "Sprint 10 release decision; production_auto_with_policy forbidden"
+}

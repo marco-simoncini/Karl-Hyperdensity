@@ -1,0 +1,60 @@
+{
+  "navigationPolicyId": "navigation-policy-sprint10",
+  "defaultMode": "enterprise",
+  "executiveRoutes": [
+    "/hyperdensity/kernel",
+    "/hyperdensity/shells",
+    "/hyperdensity/actions",
+    "/hyperdensity/operator-gate",
+    "/hyperdensity/savings",
+    "/hyperdensity/slo",
+    "/hyperdensity/canary",
+    "/hyperdensity/ga-release-gate"
+  ],
+  "operatorRoutes": [
+    "/hyperdensity/guarded-auto-policy",
+    "/hyperdensity/sandbox-auto-apply"
+  ],
+  "evidenceRoutes": [
+    "/hyperdensity/evidence"
+  ],
+  "canaryRoutes": [
+    "/hyperdensity/production-canary"
+  ],
+  "previewRoutes": [
+    "/hyperdensity/preview/guarded-auto-policy",
+    "/hyperdensity/preview/sandbox-auto-apply"
+  ],
+  "labRoutes": [
+    "/lab/hyperdensity"
+  ],
+  "debugRoutes": [
+    "/debug/hyperdensity"
+  ],
+  "archivedRoutes": [
+    "/archive/hyperdensity"
+  ],
+  "hiddenRoutes": [
+    "/demo/hyperdensity",
+    "/mock/hyperdensity",
+    "/test/hyperdensity",
+    "/lab/reference/configmap-sample",
+    "/lab/evidence/synthetic-shadow"
+  ],
+  "forbiddenExecutivePatterns": [
+    "demo",
+    "mock",
+    "test",
+    "synthetic",
+    "shadow",
+    "debug",
+    "lab",
+    "reference",
+    "fake",
+    "sample"
+  ],
+  "evidenceRefs": [
+    "hyperdensity-ga-release-gate-v1"
+  ],
+  "claimBoundary": "executive navigation excludes demo/mock/test/lab/debug/reference patterns"
+}

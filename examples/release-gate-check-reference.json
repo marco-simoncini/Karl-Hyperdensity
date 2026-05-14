@@ -1,0 +1,12 @@
+{
+  "checkId": "production-kernel-boundary",
+  "checkName": "production kernel boundary",
+  "status": "passed",
+  "severity": "critical",
+  "requiredForGA": true,
+  "evidenceRefs": [
+    "hyperdensity-production-kernel-boundary-v1"
+  ],
+  "sourceComponent": "Karl-Hyperdensity",
+  "claimBoundary": "production kernel boundary enforced"
+}

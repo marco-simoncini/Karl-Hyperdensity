@@ -1,0 +1,11 @@
+{
+  "rollupId": "ga-readiness-rollup-sprint10",
+  "gaReady": false,
+  "canaryReady": true,
+  "previewReady": true,
+  "labOnly": false,
+  "evidenceRefs": [
+    "hyperdensity-ga-release-gate-v1"
+  ],
+  "claimBoundary": "canary ready; GA blocked"
+}

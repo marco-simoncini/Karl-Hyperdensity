@@ -1,0 +1,31 @@
+{
+  "claimGateId": "claim-gate-sprint10",
+  "evaluatedAt": "2026-05-14T14:30:00Z",
+  "forbiddenClaimsPresent": false,
+  "conditionalClaimsPresent": true,
+  "allowedClaimsPresent": true,
+  "forbiddenClaims": [
+    "guaranteed savings active",
+    "universal performance improvement",
+    "general production auto",
+    "production auto with policy",
+    "Windows total RAM hotplug supported",
+    "logical vCPU hotplug supported",
+    "1000 production workloads proven",
+    "dashboard executes runtime changes",
+    "reference payload as production proof",
+    "synthetic proof as production proof"
+  ],
+  "conditionalClaims": [
+    "production canary auto apply",
+    "sandbox nonprod auto apply"
+  ],
+  "allowedClaims": [
+    "KARL Hyperdensity exposes an enterprise-grade cockpit with GA/Preview/Lab separation and a strict release gate that blocks unproven claims, reference-only evidence, synthetic proof, unsafe auto modes and Dashboard runtime controls."
+  ],
+  "claimDecision": "allowed_with_canary_scope",
+  "evidenceRefs": [
+    "hyperdensity-ga-release-gate-v1"
+  ],
+  "claimBoundary": "Sprint 10 allowed claim only; forbidden claims rejected"
+}

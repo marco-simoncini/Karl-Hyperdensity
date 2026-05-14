@@ -1,0 +1,17 @@
+{
+  "referencePayloadGateId": "reference-payload-gate-sprint10",
+  "evaluatedAt": "2026-05-14T14:30:00Z",
+  "referencePayloads": [
+    {
+      "payloadId": "hyperdensity-reference-configmap-sample-v1",
+      "label": "reference_only",
+      "route": "/lab/reference/configmap-sample"
+    }
+  ],
+  "countedAsProduction": false,
+  "decision": "reference_separated",
+  "evidenceRefs": [
+    "hyperdensity-reference-configmap-sample-v1"
+  ],
+  "claimBoundary": "reference ConfigMap sample payload is not production proof"
+}

@@ -1,0 +1,13 @@
+{
+  "blockerId": "blocker-general-production-auto",
+  "blockerCode": "general_production_auto_disabled",
+  "severity": "critical",
+  "sourceComponent": "Karl-Hyperdensity",
+  "reason": "general production auto remains disabled; production canary only",
+  "remediable": false,
+  "remediation": "do not enable general production auto in Sprint 10",
+  "evidenceRefs": [
+    "hyperdensity-production-canary-auto-apply-v1"
+  ],
+  "claimBoundary": "general production auto remains disabled"
+}

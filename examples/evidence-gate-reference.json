@@ -1,0 +1,31 @@
+{
+  "evidenceGateId": "evidence-gate-sprint10",
+  "evaluatedAt": "2026-05-14T14:30:00Z",
+  "productionEvidenceCount": 9,
+  "referenceOnlyEvidenceCount": 1,
+  "syntheticShadowEvidenceCount": 1,
+  "missingEvidenceCount": 0,
+  "productionEvidenceRefs": [
+    "hyperdensity-production-kernel-boundary-v1",
+    "hyperdensity-shell-passport-factory-v1",
+    "hyperdensity-action-slate-readiness-v1",
+    "hyperdensity-operator-apply-gate-v1",
+    "hyperdensity-realized-savings-ledger-v1",
+    "hyperdensity-slo-performance-proof-v1",
+    "hyperdensity-guarded-auto-policy-engine-v1",
+    "hyperdensity-guarded-auto-apply-sandbox-v1",
+    "hyperdensity-production-canary-auto-apply-v1"
+  ],
+  "referenceOnlyRefs": [
+    "hyperdensity-reference-configmap-sample-v1"
+  ],
+  "syntheticShadowRefs": [
+    "action-synthetic-shadow-009"
+  ],
+  "missingEvidence": [],
+  "evidenceDecision": "separated",
+  "evidenceRefs": [
+    "hyperdensity-ga-release-gate-v1"
+  ],
+  "claimBoundary": "reference and synthetic evidence never counted as production proof"
+}

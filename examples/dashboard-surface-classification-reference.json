@@ -1,0 +1,24 @@
+{
+  "surfaceId": "hyperdensityProductionKernelBoundary",
+  "surfaceName": "Production Kernel Boundary",
+  "route": "/hyperdensity/kernel",
+  "apiField": "hyperdensityProductionKernelBoundary",
+  "sourceComponent": "Karl-Dashboard",
+  "releaseTrack": "ga",
+  "visibleInExecutive": true,
+  "visibleInOperator": true,
+  "visibleInEvidence": true,
+  "visibleInLab": false,
+  "visibleInDebug": false,
+  "hiddenByDefault": false,
+  "referenceOnly": false,
+  "syntheticOrShadow": false,
+  "productionEvidence": true,
+  "canBeUsedForGAClaim": true,
+  "canBeUsedForProductionProof": true,
+  "claimBoundary": "production kernel boundary projected",
+  "blockers": [],
+  "evidenceRefs": [
+    "hyperdensity-production-kernel-boundary-v1"
+  ]
+}
