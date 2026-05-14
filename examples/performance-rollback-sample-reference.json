@@ -1,0 +1,16 @@
+{
+  "rollbackSampleId": "rollback-sample-mem-002",
+  "rollbackWindowRef": "rollback-window-mem-002",
+  "shellId": "shell-container-replica-b",
+  "workloadId": "workload-receiver-b",
+  "actionId": "action-mem-lease-002",
+  "rollbackExecuted": true,
+  "rollbackPassed": true,
+  "sampledAt": "2026-05-14T15:20:00Z",
+  "latencyP95Ms": 115.0,
+  "errorRate": 0.004,
+  "throughputRps": 106.0,
+  "healthRestored": true,
+  "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+  "claimBoundary": ["rollback sample after memory envelope rollback"]
+}

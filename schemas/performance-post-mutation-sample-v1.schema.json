@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/performance-post-mutation-sample-v1.schema.json",
+  "title": "KARL Hyperdensity Performance Post-Mutation Sample v1",
+  "type": "object",
+  "required": ["postMutationSampleId", "baselineSampleId", "mutationObservationId", "shellId", "workloadId", "actionId", "sampledAt", "sampleWindowSeconds", "latencyP95Ms", "throughputRps", "errorRate", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "postMutationSampleId": { "type": "string" },
+    "baselineSampleId": { "type": "string" },
+    "mutationObservationId": { "type": "string" },
+    "shellId": { "type": "string" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/donor-health-guard-v1.schema.json",
+  "title": "KARL Hyperdensity Donor Health Guard v1",
+  "type": "object",
+  "required": ["donorHealthGuardId", "donorShellId", "actionId", "resource", "healthStatus", "degradationPercent", "degradationThreshold", "donorHealthPreserved", "rollbackRequired", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "donorHealthGuardId": { "type": "string" },
+    "donorShellId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "resource": { "type": "string" },
+    "healthStatus": { "enum": ["preserved", "degraded", "failed", "evidence_gated", "insufficient_evidence"] },
+    "donorHealthPreserved": { "type": "boolean" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

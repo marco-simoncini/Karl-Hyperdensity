@@ -1,0 +1,13 @@
+{
+  "rollbackTriggerId": "rollback-trigger-mem-002",
+  "actionId": "action-mem-lease-002",
+  "shellId": "shell-container-replica-b",
+  "sloEvaluationRef": "slo-eval-mem-regression-002",
+  "triggerType": "latency_regression",
+  "thresholdBreached": true,
+  "triggerFired": true,
+  "rollbackWindowRef": "rollback-window-mem-002",
+  "rollbackRequired": true,
+  "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+  "claimBoundary": ["rollback trigger fired on latency regression threshold breach"]
+}

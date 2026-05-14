@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/performance-rollback-trigger-v1.schema.json",
+  "title": "KARL Hyperdensity Performance Rollback Trigger v1",
+  "type": "object",
+  "required": ["rollbackTriggerId", "actionId", "shellId", "triggerType", "thresholdBreached", "triggerFired", "rollbackRequired", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "rollbackTriggerId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "triggerType": { "type": "string" },
+    "triggerFired": { "type": "boolean" },
+    "rollbackRequired": { "type": "boolean" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

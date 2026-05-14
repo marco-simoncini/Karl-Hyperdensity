@@ -1,0 +1,22 @@
+{
+  "sloProfileId": "slo-profile-receiver-b",
+  "shellId": "shell-container-replica-b",
+  "workloadId": "workload-receiver-b",
+  "tenant": "karl",
+  "namespace": "karl",
+  "app": "donor-receiver-pair-a",
+  "serviceTier": "standard",
+  "sloTargets": { "latencyP95Ms": 120, "errorRateMax": 0.01, "availabilityMin": 0.999 },
+  "latencyP95Ms": 120,
+  "latencyP99Ms": 250,
+  "errorRateMax": 0.01,
+  "availabilityMin": 0.999,
+  "throughputMin": 100,
+  "donorHealthThresholds": { "degradationPercentMax": 5 },
+  "receiverHealthThresholds": { "improvementPercentMin": 5 },
+  "rollbackTriggerThresholds": { "latencyRegressionPercent": 10, "errorRateRegressionPercent": 5 },
+  "businessWindow": "24x7",
+  "incidentState": "normal",
+  "evidenceRefs": ["hyperdensity_shell_registry_v1"],
+  "claimBoundary": ["enrolled workload SLO profile for universal guard evaluation"]
+}

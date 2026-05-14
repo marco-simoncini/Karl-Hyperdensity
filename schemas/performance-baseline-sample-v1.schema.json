@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/performance-baseline-sample-v1.schema.json",
+  "title": "KARL Hyperdensity Performance Baseline Sample v1",
+  "type": "object",
+  "required": ["baselineSampleId", "shellId", "workloadId", "actionId", "sampledAt", "sampleWindowSeconds", "latencyP95Ms", "throughputRps", "errorRate", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "baselineSampleId": { "type": "string" },
+    "shellId": { "type": "string" },
+    "workloadId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "sampledAt": { "type": "string" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

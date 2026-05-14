@@ -1,0 +1,14 @@
+{
+  "receiverHealthGuardId": "receiver-health-guard-replica-b-001",
+  "receiverShellId": "shell-container-replica-b",
+  "actionId": "action-cpu-lease-001",
+  "resource": "cpu",
+  "before": { "latencyP95Ms": 118.0, "throughputRps": 105.0 },
+  "after": { "latencyP95Ms": 92.0, "throughputRps": 128.0 },
+  "healthStatus": "preserved",
+  "improvementPercent": 22.0,
+  "expectedImprovement": 15.0,
+  "receiverHealthPreserved": true,
+  "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+  "claimBoundary": ["receiver health improved after CPU entitlement increase"]
+}

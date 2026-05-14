@@ -1,0 +1,17 @@
+{
+  "noRegressionResultId": "no-regression-donor-a-001",
+  "actionId": "action-cpu-lease-001",
+  "shellId": "shell-container-donor-a",
+  "workloadId": "workload-donor-a",
+  "donorShellId": "shell-container-donor-a",
+  "receiverShellId": "shell-container-replica-b",
+  "sloEvaluationRef": "slo-eval-donor-a-001",
+  "donorHealthGuardRef": "donor-health-guard-donor-a-001",
+  "receiverHealthGuardRef": "receiver-health-guard-replica-b-001",
+  "noRegressionCertified": true,
+  "regressionBlocked": false,
+  "rollbackRequired": false,
+  "confidence": 0.89,
+  "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+  "claimBoundary": ["donor no-regression certified; degradation below threshold"]
+}

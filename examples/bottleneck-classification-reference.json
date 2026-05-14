@@ -1,0 +1,19 @@
+{
+  "bottleneckClassificationId": "bottleneck-receiver-cpu-001",
+  "shellId": "shell-container-replica-b",
+  "actionId": "action-cpu-lease-001",
+  "workloadId": "workload-receiver-b",
+  "pressureClass": "high",
+  "bottleneckType": "cpu_bound",
+  "bottleneckConfidence": 0.91,
+  "cpuPressure": 0.92,
+  "memoryPressure": 0.35,
+  "ioPressure": 0.12,
+  "networkPressure": 0.08,
+  "storagePressure": 0.05,
+  "appLockPressure": 0.02,
+  "databasePressure": 0.01,
+  "classificationSource": "FluidVirt cgroup + workload metrics",
+  "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+  "claimBoundary": ["CPU-bound bottleneck proven; scoped uplift certification allowed"]
+}

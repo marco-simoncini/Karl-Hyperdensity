@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/receiver-health-guard-v1.schema.json",
+  "title": "KARL Hyperdensity Receiver Health Guard v1",
+  "type": "object",
+  "required": ["receiverHealthGuardId", "receiverShellId", "actionId", "resource", "healthStatus", "receiverHealthPreserved", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "receiverHealthGuardId": { "type": "string" },
+    "receiverShellId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "resource": { "type": "string" },
+    "healthStatus": { "type": "string" },
+    "receiverHealthPreserved": { "type": "boolean" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

@@ -1,0 +1,174 @@
+{
+  "milestone": "hyperdensity_universal_slo_guard_certified_uplift_v1",
+  "surfaceVersion": "v1",
+  "guardId": "universal-slo-guard-2026-05-14",
+  "sourceShellRegistryRef": "hyperdensity_shell_registry_v1",
+  "sourceApplyGateRef": "hyperdensity_operator_controlled_apply_gate_v1",
+  "sourceLedgerRef": "hyperdensity_realized_savings_ledger_v1",
+  "evaluatedAt": "2026-05-14T16:30:00Z",
+  "enrolledWorkloadCount": 4,
+  "sloProfileCount": 4,
+  "guardEvaluationCount": 6,
+  "universalSloProtectionAllowed": true,
+  "universalPerformanceImprovementClaimed": false,
+  "certifiedPerformanceUpliftAllowed": true,
+  "autoApplyAllowed": false,
+  "productionAutonomousApplyAllowed": false,
+  "guaranteedSavingsClaimed": false,
+  "certifiedUpliftCount": 1,
+  "noRegressionCertifiedCount": 1,
+  "neutralNoClaimCount": 1,
+  "regressionBlockedCount": 1,
+  "insufficientEvidenceCount": 1,
+  "rollbackTriggerCount": 1,
+  "workloadEvaluations": [
+    {
+      "evaluationId": "slo-eval-receiver-cpu-001",
+      "shellId": "shell-container-replica-b",
+      "actionId": "action-cpu-lease-001",
+      "sloGuardStatus": "passed",
+      "scenario": "cpu_bound_uplift_certified"
+    },
+    {
+      "evaluationId": "slo-eval-donor-a-001",
+      "shellId": "shell-container-donor-a",
+      "actionId": "action-cpu-lease-001",
+      "sloGuardStatus": "passed",
+      "scenario": "donor_no_regression"
+    },
+    {
+      "evaluationId": "slo-eval-io-neutral-003",
+      "shellId": "shell-api-gateway",
+      "actionId": "action-io-neutral-003",
+      "sloGuardStatus": "passed",
+      "scenario": "neutral_no_claim_io_bound"
+    },
+    {
+      "evaluationId": "slo-eval-mem-regression-002",
+      "shellId": "shell-container-replica-b",
+      "actionId": "action-mem-lease-002",
+      "sloGuardStatus": "rollback_required",
+      "regressionDetected": true,
+      "scenario": "regression_blocked"
+    },
+    {
+      "evaluationId": "slo-eval-windows-gated-004",
+      "shellId": "shell-windows-hyper",
+      "actionId": "action-windows-remediation-004",
+      "sloGuardStatus": "insufficient_evidence",
+      "scenario": "windows_evidence_gated"
+    }
+  ],
+  "certifiedUpliftResults": [
+    {
+      "upliftId": "uplift-receiver-cpu-001",
+      "actionId": "action-cpu-lease-001",
+      "shellId": "shell-container-replica-b",
+      "workloadId": "workload-receiver-b",
+      "bottleneckClassificationRef": "bottleneck-receiver-cpu-001",
+      "baselineSampleRef": "baseline-receiver-cpu-001",
+      "postMutationSampleRef": "post-mutation-receiver-cpu-001",
+      "resource": "cpu",
+      "resourceDelta": "500m",
+      "bottleneckType": "cpu_bound",
+      "metric": "latencyP95Ms",
+      "beforeValue": 118.0,
+      "afterValue": 92.0,
+      "improvementPercent": 22.0,
+      "confidence": 0.88,
+      "certified": true,
+      "certificationScope": "cpu_bound_receiver_scoped",
+      "excludedFromUniversalClaim": true,
+      "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+      "claimBoundary": ["scoped CPU-bound uplift certified; scoped uplift only, not a platform-wide performance claim"]
+    }
+  ],
+  "noRegressionResults": [
+    {
+      "noRegressionResultId": "no-regression-donor-a-001",
+      "actionId": "action-cpu-lease-001",
+      "shellId": "shell-container-donor-a",
+      "donorShellId": "shell-container-donor-a",
+      "receiverShellId": "shell-container-replica-b",
+      "noRegressionCertified": true,
+      "degradationPercent": 4.4,
+      "degradationThreshold": 5.0,
+      "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+      "claimBoundary": ["donor no-regression certified; degradation below threshold"]
+    }
+  ],
+  "neutralNoClaimResults": [
+    {
+      "classificationId": "proof-class-io-neutral-003",
+      "actionId": "action-io-neutral-003",
+      "shellId": "shell-api-gateway",
+      "proofStatus": "neutral_no_claim",
+      "bottleneckType": "io_bound",
+      "certifiedUplift": false,
+      "claimBoundary": ["IO-bound workload; neutral no-claim; no certified uplift"]
+    }
+  ],
+  "regressionBlockedResults": [
+    {
+      "classificationId": "proof-class-mem-regression-002",
+      "actionId": "action-mem-lease-002",
+      "shellId": "shell-container-replica-b",
+      "proofStatus": "regression_blocked",
+      "certifiedUplift": false,
+      "regressionBlocked": true,
+      "latencyP95Before": 118.0,
+      "latencyP95After": 145.0,
+      "rollbackRequired": true
+    }
+  ],
+  "windowsEvidenceGatedResults": [
+    {
+      "classificationId": "proof-class-windows-gated-004",
+      "actionId": "action-windows-remediation-004",
+      "shellId": "shell-windows-hyper",
+      "proofStatus": "insufficient_evidence",
+      "certifiedUplift": false,
+      "insufficientEvidence": true,
+      "blockers": ["guest_performance_metrics_incomplete"],
+      "claimBoundary": ["Windows guest performance evidence gated; no hotplug overclaim; no platform-wide performance claim"]
+    }
+  ],
+  "rollbackTriggers": [
+    {
+      "rollbackTriggerId": "rollback-trigger-mem-002",
+      "actionId": "action-mem-lease-002",
+      "shellId": "shell-container-replica-b",
+      "triggerType": "latency_regression",
+      "thresholdBreached": true,
+      "triggerFired": true,
+      "rollbackWindowRef": "rollback-window-mem-002",
+      "rollbackRequired": true
+    }
+  ],
+  "bottleneckSummary": {
+    "cpu_bound": 1,
+    "io_bound": 1,
+    "insufficient_evidence": 1
+  },
+  "claimPolicyRef": "hyperdensity_claim_policy_v2",
+  "sourceOfTruth": {
+    "sloGuardContracts": "Karl-Hyperdensity",
+    "performanceMeasurements": "FluidVirt",
+    "sloPerformanceProjection": "Karl-Dashboard",
+    "identitySignals": "Karl-Inventory"
+  },
+  "safetyInvariants": {
+    "universalPerformanceImprovementClaimed": false,
+    "guaranteedSavingsClaimed": false,
+    "autoApplyAllowed": false,
+    "productionAutonomousApplyAllowed": false,
+    "dashboardPerformanceSourceOfTruth": false,
+    "fluidvirtPerformanceClaimAuthority": false
+  },
+  "claimBoundaries": [
+    "KARL Hyperdensity can universally protect enrolled workload SLOs and certify performance uplift only where CPU/RAM pressure is proven, while blocking regressions and keeping auto-apply disabled.",
+    "certified uplift is scoped to proven CPU/RAM bottlenecks only; excluded from platform-wide performance claims",
+    "neutral/no-claim required for non-CPU/RAM-bound workloads"
+  ],
+  "blockers": []
+}

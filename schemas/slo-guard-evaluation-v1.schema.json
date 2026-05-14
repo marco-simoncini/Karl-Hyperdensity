@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/slo-guard-evaluation-v1.schema.json",
+  "title": "KARL Hyperdensity SLO Guard Evaluation v1",
+  "type": "object",
+  "required": ["evaluationId", "sloProfileId", "shellId", "actionId", "evaluationPhase", "sloGuardStatus", "regressionDetected", "rollbackRequired", "confidence", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "evaluationId": { "type": "string" },
+    "sloProfileId": { "type": "string" },
+    "shellId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "evaluationPhase": { "type": "string" },
+    "sloGuardStatus": { "enum": ["passed", "failed", "evidence_gated", "insufficient_evidence", "rollback_required", "not_enrolled"] },
+    "regressionDetected": { "type": "boolean" },
+    "rollbackRequired": { "type": "boolean" },
+    "confidence": { "type": "number" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" },
+    "blockers": { "type": "array" }
+  }
+}

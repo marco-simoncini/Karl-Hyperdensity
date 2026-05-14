@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/no-regression-result-v1.schema.json",
+  "title": "KARL Hyperdensity No Regression Result v1",
+  "type": "object",
+  "required": ["noRegressionResultId", "actionId", "shellId", "workloadId", "noRegressionCertified", "regressionBlocked", "rollbackRequired", "confidence", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "noRegressionResultId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "noRegressionCertified": { "type": "boolean" },
+    "regressionBlocked": { "type": "boolean" },
+    "rollbackRequired": { "type": "boolean" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

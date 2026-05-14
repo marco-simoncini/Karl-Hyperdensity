@@ -1,0 +1,21 @@
+{
+  "upliftId": "uplift-receiver-cpu-001",
+  "actionId": "action-cpu-lease-001",
+  "shellId": "shell-container-replica-b",
+  "workloadId": "workload-receiver-b",
+  "bottleneckClassificationRef": "bottleneck-receiver-cpu-001",
+  "baselineSampleRef": "baseline-receiver-cpu-001",
+  "postMutationSampleRef": "post-mutation-receiver-cpu-001",
+  "resource": "cpu",
+  "resourceDelta": "500m",
+  "metric": "latencyP95Ms",
+  "beforeValue": 118.0,
+  "afterValue": 92.0,
+  "improvementPercent": 22.0,
+  "confidence": 0.88,
+  "certified": true,
+  "certificationScope": "cpu_bound_receiver_scoped",
+  "excludedFromUniversalClaim": true,
+  "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+  "claimBoundary": ["scoped CPU-bound uplift certified; scoped uplift only, not a platform-wide performance claim"]
+}

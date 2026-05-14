@@ -1,0 +1,15 @@
+{
+  "donorHealthGuardId": "donor-health-guard-donor-a-001",
+  "donorShellId": "shell-container-donor-a",
+  "actionId": "action-cpu-lease-001",
+  "resource": "cpu",
+  "before": { "latencyP95Ms": 45.0, "cpuUsage": 0.62 },
+  "after": { "latencyP95Ms": 47.0, "cpuUsage": 0.48 },
+  "healthStatus": "preserved",
+  "degradationPercent": 4.4,
+  "degradationThreshold": 5.0,
+  "donorHealthPreserved": true,
+  "rollbackRequired": false,
+  "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+  "claimBoundary": ["donor health preserved below degradation threshold"]
+}

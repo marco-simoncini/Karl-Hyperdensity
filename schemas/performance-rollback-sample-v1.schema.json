@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/performance-rollback-sample-v1.schema.json",
+  "title": "KARL Hyperdensity Performance Rollback Sample v1",
+  "type": "object",
+  "required": ["rollbackSampleId", "rollbackWindowRef", "shellId", "workloadId", "actionId", "rollbackExecuted", "rollbackPassed", "sampledAt", "healthRestored", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "rollbackSampleId": { "type": "string" },
+    "rollbackWindowRef": { "type": "string" },
+    "shellId": { "type": "string" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

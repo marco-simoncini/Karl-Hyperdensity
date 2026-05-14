@@ -1,0 +1,16 @@
+{
+  "classificationId": "proof-class-receiver-cpu-001",
+  "actionId": "action-cpu-lease-001",
+  "shellId": "shell-container-replica-b",
+  "workloadId": "workload-receiver-b",
+  "proofStatus": "uplift_certified",
+  "certifiedUplift": true,
+  "noRegressionCertified": true,
+  "neutralNoClaim": false,
+  "regressionBlocked": false,
+  "insufficientEvidence": false,
+  "notCpuRamBound": false,
+  "exclusionReason": "",
+  "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+  "claimBoundary": ["uplift certified for CPU-bound receiver only"]
+}

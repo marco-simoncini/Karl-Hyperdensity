@@ -1500,6 +1500,64 @@ def main() -> int:
             if phrase in merged5:
                 fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
 
+    # --- Sprint 6: universal SLO guard + certified uplift v1 ---
+    sprint6_schemas = [
+        "universal-slo-guard-v1.schema.json",
+        "enrolled-workload-slo-profile-v1.schema.json",
+        "slo-guard-evaluation-v1.schema.json",
+        "donor-health-guard-v1.schema.json",
+        "receiver-health-guard-v1.schema.json",
+        "bottleneck-classification-v1.schema.json",
+        "performance-baseline-sample-v1.schema.json",
+        "performance-post-mutation-sample-v1.schema.json",
+        "performance-rollback-sample-v1.schema.json",
+        "no-regression-result-v1.schema.json",
+        "certified-performance-uplift-v1.schema.json",
+        "performance-proof-classification-v1.schema.json",
+        "performance-rollback-trigger-v1.schema.json",
+    ]
+    for name in sprint6_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 6 schema: {name}")
+
+    slo_guard = example_by_name.get("universal-slo-guard-reference.json")
+    if slo_guard is None:
+        fail("examples/universal-slo-guard-reference.json is missing")
+    if slo_guard.get("milestone") != "hyperdensity_universal_slo_guard_certified_uplift_v1":
+        fail("universal SLO guard milestone invalid")
+    if slo_guard.get("universalPerformanceImprovementClaimed") is not False:
+        fail("universalPerformanceImprovementClaimed must be false")
+    if slo_guard.get("guaranteedSavingsClaimed") is not False:
+        fail("guaranteedSavingsClaimed must be false")
+    if slo_guard.get("autoApplyAllowed") is not False:
+        fail("autoApplyAllowed must be false")
+
+    sprint6_examples = [
+        "universal-slo-guard-reference.json",
+        "enrolled-workload-slo-profile-reference.json",
+        "slo-guard-evaluation-reference.json",
+        "donor-health-guard-reference.json",
+        "receiver-health-guard-reference.json",
+        "bottleneck-classification-reference.json",
+        "performance-baseline-sample-reference.json",
+        "performance-post-mutation-sample-reference.json",
+        "performance-rollback-sample-reference.json",
+        "no-regression-result-reference.json",
+        "certified-performance-uplift-reference.json",
+        "performance-proof-classification-reference.json",
+        "performance-rollback-trigger-reference.json",
+    ]
+    for name in sprint6_examples:
+        ex = example_by_name.get(name)
+        if ex is None:
+            fail(f"missing Sprint 6 example: {name}")
+        positives6: list[str] = []
+        collect_positive_strings(ex, positives6)
+        merged6 = "\n".join(positives6).lower()
+        for phrase in forbidden_positive_claims:
+            if phrase in merged6:
+                fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

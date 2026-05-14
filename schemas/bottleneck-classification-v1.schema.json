@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/bottleneck-classification-v1.schema.json",
+  "title": "KARL Hyperdensity Bottleneck Classification v1",
+  "type": "object",
+  "required": ["bottleneckClassificationId", "shellId", "actionId", "workloadId", "pressureClass", "bottleneckType", "bottleneckConfidence", "classificationSource", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "bottleneckClassificationId": { "type": "string" },
+    "shellId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "workloadId": { "type": "string" },
+    "bottleneckType": { "enum": ["cpu_bound", "memory_bound", "cpu_memory_bound", "io_bound", "network_bound", "storage_bound", "database_bound", "app_lock_bound", "unknown", "mixed_insufficient_evidence"] },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

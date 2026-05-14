@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/enrolled-workload-slo-profile-v1.schema.json",
+  "title": "KARL Hyperdensity Enrolled Workload SLO Profile v1",
+  "type": "object",
+  "required": ["sloProfileId", "shellId", "workloadId", "tenant", "namespace", "app", "serviceTier", "sloTargets", "latencyP95Ms", "latencyP99Ms", "errorRateMax", "availabilityMin", "throughputMin", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "sloProfileId": { "type": "string" },
+    "shellId": { "type": "string" },
+    "workloadId": { "type": "string" },
+    "tenant": { "type": "string" },
+    "namespace": { "type": "string" },
+    "app": { "type": "string" },
+    "serviceTier": { "type": "string" },
+    "sloTargets": { "type": "object" },
+    "latencyP95Ms": { "type": "number" },
+    "latencyP99Ms": { "type": "number" },
+    "errorRateMax": { "type": "number" },
+    "availabilityMin": { "type": "number" },
+    "throughputMin": { "type": "number" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

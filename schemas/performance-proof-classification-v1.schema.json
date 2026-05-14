@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/performance-proof-classification-v1.schema.json",
+  "title": "KARL Hyperdensity Performance Proof Classification v1",
+  "type": "object",
+  "required": ["classificationId", "actionId", "shellId", "workloadId", "proofStatus", "certifiedUplift", "noRegressionCertified", "neutralNoClaim", "regressionBlocked", "insufficientEvidence", "notCpuRamBound", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "classificationId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "proofStatus": { "enum": ["uplift_certified", "no_regression_certified", "neutral_no_claim", "regression_blocked", "insufficient_evidence", "not_cpu_ram_bound"] },
+    "certifiedUplift": { "type": "boolean" },
+    "evidenceRefs": { "type": "array" },
+    "claimBoundary": { "type": "array" }
+  }
+}

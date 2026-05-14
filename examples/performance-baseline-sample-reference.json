@@ -1,0 +1,23 @@
+{
+  "baselineSampleId": "baseline-receiver-cpu-001",
+  "shellId": "shell-container-replica-b",
+  "workloadId": "workload-receiver-b",
+  "actionId": "action-cpu-lease-001",
+  "sampledAt": "2026-05-14T15:05:00Z",
+  "sampleWindowSeconds": 300,
+  "latencyP50Ms": 62.0,
+  "latencyP95Ms": 118.0,
+  "latencyP99Ms": 245.0,
+  "throughputRps": 105.0,
+  "errorRate": 0.004,
+  "cpuUsage": 0.88,
+  "memoryUsage": 0.42,
+  "ioWait": 0.03,
+  "networkWait": 0.02,
+  "guestObserved": true,
+  "cgroupObserved": true,
+  "libvirtObserved": false,
+  "qgaObserved": false,
+  "evidenceRefs": ["hyperdensity_performance_measurement_evidence_v1"],
+  "claimBoundary": ["baseline sample before operator-controlled CPU apply"]
+}

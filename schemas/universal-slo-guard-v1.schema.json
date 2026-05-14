@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/universal-slo-guard-v1.schema.json",
+  "title": "KARL Hyperdensity Universal SLO Guard v1",
+  "type": "object",
+  "required": ["milestone", "surfaceVersion", "guardId", "sourceShellRegistryRef", "evaluatedAt", "enrolledWorkloadCount", "sloProfileCount", "guardEvaluationCount", "universalSloProtectionAllowed", "universalPerformanceImprovementClaimed", "certifiedPerformanceUpliftAllowed", "autoApplyAllowed", "productionAutonomousApplyAllowed", "guaranteedSavingsClaimed", "claimPolicyRef", "sourceOfTruth", "safetyInvariants", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_universal_slo_guard_certified_uplift_v1" },
+    "surfaceVersion": { "type": "string" },
+    "guardId": { "type": "string" },
+    "universalSloProtectionAllowed": { "const": true },
+    "universalPerformanceImprovementClaimed": { "const": false },
+    "certifiedPerformanceUpliftAllowed": { "const": true },
+    "autoApplyAllowed": { "const": false },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "guaranteedSavingsClaimed": { "const": false }
+  }
+}
