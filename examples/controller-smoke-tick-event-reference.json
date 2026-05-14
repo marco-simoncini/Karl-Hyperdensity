@@ -1,0 +1,1 @@
+{"eventId":"evt-1","eventType":"smoke_tick_passed","occurredAt":"2026-05-14T13:59:45Z","sourceComponent":"Karl-Hyperdensity","involvedObjectKind":"ConfigMap","involvedObjectName":"hyperdensity-controller-runtime-smoke-tick-v1","summary":"smoke tick passed","evidenceRefs":["artifact://evt-1"],"claimBoundary":"tick event only"}

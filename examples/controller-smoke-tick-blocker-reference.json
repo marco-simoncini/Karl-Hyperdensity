@@ -1,0 +1,1 @@
+{"blockerId":"blk-1","blockerCode":"state_read_failed","severity":"high","reason":"durable state read failed during smoke tick","remediable":true,"remediation":"verify ConfigMap RBAC and state object presence","evidenceRefs":["artifact://blocker"],"claimBoundary":"blocker only"}

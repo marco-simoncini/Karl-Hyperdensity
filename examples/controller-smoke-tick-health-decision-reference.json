@@ -1,0 +1,1 @@
+{"healthDecisionId":"health-1","decision":"passed","smokeTickPassed":true,"requiredCheckCount":11,"passedCheckCount":11,"failedCheckCount":0,"blockers":[],"warnings":[],"evidenceRefs":["artifact://health"],"claimBoundary":"health decision only"}

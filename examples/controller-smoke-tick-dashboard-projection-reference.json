@@ -1,0 +1,1 @@
+{"dashboardProjectionId":"dash-1","configMapName":"hyperdensity-controller-runtime-smoke-tick-v1","configMapNamespace":"karl-system","projectionUpdated":true,"projectionReadOnly":true,"surfacePath":"surface.json","evidenceRefs":["artifact://dashboard"],"claimBoundary":"dashboard projection only"}

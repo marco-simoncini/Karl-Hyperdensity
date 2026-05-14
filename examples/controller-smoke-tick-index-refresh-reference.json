@@ -1,0 +1,1 @@
+{"indexRefreshId":"idx-1","donorIndexRefreshed":true,"receiverIndexRefreshed":true,"idleValueIndexRefreshed":true,"pressureIndexRefreshed":true,"riskIndexRefreshed":true,"sloReadinessIndexRefreshed":true,"rollbackReadinessIndexRefreshed":true,"indicesRefreshed":true,"evidenceRefs":["artifact://indices"],"claimBoundary":"index refresh only"}

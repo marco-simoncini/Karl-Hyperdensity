@@ -1,0 +1,1 @@
+{"pairingWindowId":"pair-1","fullPairSpace":100,"evaluatedPairCount":25,"avoidedPairCount":75,"avoidancePercent":75,"topKDonors":5,"topKReceivers":5,"noFullNxNPairing":true,"evaluatedPairs":[{"donorShellId":"d1","receiverShellId":"r1"}],"evidenceRefs":["artifact://pairing"],"claimBoundary":"pairing window only"}

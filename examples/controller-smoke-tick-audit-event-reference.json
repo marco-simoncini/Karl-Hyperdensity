@@ -1,0 +1,1 @@
+{"auditEventId":"aud-1","eventType":"smoke_tick_passed","occurredAt":"2026-05-14T13:59:45Z","sourceComponent":"Karl-Hyperdensity","actorType":"controller","summary":"first safe market tick completed","evidenceRefs":["artifact://aud-1"],"claimBoundary":"audit only"}
