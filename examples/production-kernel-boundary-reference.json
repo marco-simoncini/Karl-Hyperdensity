@@ -1,0 +1,84 @@
+{
+  "boundaryId": "hyperdensity_production_kernel_boundary_v1",
+  "boundaryVersion": "v1",
+  "releaseTrack": "technical_preview",
+  "repositories": {
+    "fluidVirt": "marco-simoncini/FluidVirt",
+    "hyperdensity": "marco-simoncini/Karl-Hyperdensity",
+    "dashboard": "marco-simoncini/Karl-Dashboard",
+    "inventory": "marco-simoncini/Karl-Inventory"
+  },
+  "components": [
+    {
+      "componentId": "FluidVirt",
+      "role": "runtime_actuator",
+      "runtimeActuator": true,
+      "marketController": false,
+      "projectionOnly": false
+    },
+    {
+      "componentId": "Karl-Hyperdensity",
+      "role": "market_controller_and_contracts",
+      "runtimeActuator": false,
+      "marketController": true,
+      "projectionOnly": false
+    },
+    {
+      "componentId": "Karl-Dashboard",
+      "role": "read_only_cockpit",
+      "runtimeActuator": false,
+      "marketController": false,
+      "projectionOnly": true
+    },
+    {
+      "componentId": "Karl-Inventory",
+      "role": "identity_and_signals",
+      "runtimeActuator": false,
+      "marketController": false,
+      "projectionOnly": false
+    }
+  ],
+  "allowedResponsibilities": [
+    "Hyperdensity governs donor/receiver/risk/priority indexes and action slate",
+    "FluidVirt actuates CPU entitlement and RAM envelope via libvirt/cgroup",
+    "Dashboard projects evidence and claim policy read-only",
+    "Inventory provides identity, access, and guest/agent signals only"
+  ],
+  "forbiddenResponsibilities": [
+    "Dashboard must not author runtime mutation truth",
+    "Inventory must not declare Hyperdensity runtime apply",
+    "Raw libvirt or cgroup controls exposed in Dashboard UI",
+    "Autonomous production movement in Sprint 1"
+  ],
+  "requiredSurfaces": [
+    "karl-system/hyperdensity-production-kernel-boundary-v1/surface.json",
+    "hyperdensity_runtime_actuator_boundary_v1"
+  ],
+  "requiredSchemas": [
+    "shell-passport-v1",
+    "runtime-mutation-result-v1",
+    "resource-lease-v1",
+    "hyperdensity-claim-policy-v2",
+    "production-kernel-boundary-v1"
+  ],
+  "requiredEvidence": [
+    "runtime_mutation_result_with_guest_and_runtime_observation",
+    "rollback_result_when_mutation_executed",
+    "claim_boundary_on_every_shell_and_lease"
+  ],
+  "safetyInvariants": {
+    "productionAutonomousApplyAllowed": false,
+    "guaranteedSavingsAllowed": false,
+    "universalPerformanceImprovementAllowed": false,
+    "dashboardMutationSourceOfTruth": false,
+    "inventoryHyperdensityEngine": false
+  },
+  "claimPolicyRef": "hyperdensity_claim_policy_v2",
+  "claimBoundaries": [
+    "KARL Hyperdensity is a governed runtime resource market powered by FluidVirt runtime actuation, with evidence-backed claim boundaries.",
+    "Sprint 1 disables autonomous production movement",
+    "no savings guarantee in Sprint 1",
+    "no fleet-wide performance uplift claim",
+    "Dashboard is projection only; FluidVirt is the runtime actuator"
+  ]
+}

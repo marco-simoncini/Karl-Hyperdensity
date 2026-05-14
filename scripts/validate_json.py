@@ -1138,6 +1138,121 @@ def main() -> int:
         if ref not in rc_gate_doc:
             fail(f"technical-preview-release-candidate-gate-v1.md missing required reference: {ref}")
 
+    # --- Sprint 1: production kernel boundary v1 ---
+    sprint1_schemas = [
+        "shell-passport-v1.schema.json",
+        "runtime-mutation-result-v1.schema.json",
+        "resource-lease-v1.schema.json",
+        "hyperdensity-claim-policy-v2.schema.json",
+        "production-kernel-boundary-v1.schema.json",
+    ]
+    for name in sprint1_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 1 schema: {name}")
+
+    claim_policy_v2 = example_by_name.get("hyperdensity-claim-policy-v2-reference.json")
+    if claim_policy_v2 is None:
+        fail("examples/hyperdensity-claim-policy-v2-reference.json is missing")
+    if claim_policy_v2.get("claimPolicyId") != "hyperdensity_claim_policy_v2":
+        fail("claim policy v2 reference claimPolicyId invalid")
+    for field in (
+        "guaranteedSavingsAllowed",
+        "universalPerformanceImprovementAllowed",
+        "logicalVcpuHotplugClaimAllowed",
+        "windowsTotalRamHotplugClaimAllowed",
+        "ramAboveOriginalClaimAllowed",
+        "productionAutonomousApplyAllowed",
+        "syntheticFleetProductionClaimAllowed",
+    ):
+        if claim_policy_v2.get(field) is not False:
+            fail(f"hyperdensity-claim-policy-v2-reference.json {field} must be false")
+
+    boundary_ref = example_by_name.get("production-kernel-boundary-reference.json")
+    if boundary_ref is None:
+        fail("examples/production-kernel-boundary-reference.json is missing")
+    if boundary_ref.get("boundaryId") != "hyperdensity_production_kernel_boundary_v1":
+        fail("production-kernel-boundary-reference.json boundaryId invalid")
+    safety = boundary_ref.get("safetyInvariants") or {}
+    for field in (
+        "productionAutonomousApplyAllowed",
+        "guaranteedSavingsAllowed",
+        "universalPerformanceImprovementAllowed",
+        "dashboardMutationSourceOfTruth",
+        "inventoryHyperdensityEngine",
+    ):
+        if safety.get(field) is not False:
+            fail(f"production-kernel-boundary safetyInvariants.{field} must be false")
+
+    mutation_ref = example_by_name.get("runtime-mutation-result-reference.json")
+    if mutation_ref is None:
+        fail("examples/runtime-mutation-result-reference.json is missing")
+    if mutation_ref.get("actuator") != "FluidVirt":
+        fail("runtime mutation result actuator must be FluidVirt")
+
+    lease_ref = example_by_name.get("resource-lease-reference.json")
+    if lease_ref is None:
+        fail("examples/resource-lease-reference.json is missing")
+    if lease_ref.get("autoApplyAllowed") is not False:
+        fail("resource lease autoApplyAllowed must be false")
+    if lease_ref.get("productionMutationAllowed") is not False:
+        fail("resource lease productionMutationAllowed must be false")
+
+    forbidden_positive_claims = [
+        "guaranteed savings active",
+        "universal performance improvement",
+        "production autonomous apply",
+        "windows total ram hotplug supported",
+        "logical vcpu hotplug supported",
+        "1000 production workloads proven",
+        "dashboard is source of truth",
+        "inventory hyperdensity engine",
+    ]
+    sprint1_examples = [
+        "hyperdensity-claim-policy-v2-reference.json",
+        "production-kernel-boundary-reference.json",
+        "runtime-mutation-result-reference.json",
+        "resource-lease-reference.json",
+        "shell-passport-reference.json",
+    ]
+    positive_claim_keys = {
+        "allowedPhrases",
+        "conditionalPhrases",
+        "claimBoundary",
+        "claimBoundaries",
+        "allowedResponsibilities",
+        "limitation",
+        "limitations",
+    }
+
+    def collect_positive_strings(obj, out: list[str]) -> None:
+        if isinstance(obj, dict):
+            for k, v in obj.items():
+                if k in ("forbiddenPhrases", "forbiddenResponsibilities", "forbiddenActions"):
+                    continue
+                if k in positive_claim_keys or k.endswith("Phrases") and not k.startswith("forbidden"):
+                    if isinstance(v, str):
+                        out.append(v)
+                    elif isinstance(v, list):
+                        for item in v:
+                            if isinstance(item, str):
+                                out.append(item)
+                else:
+                    collect_positive_strings(v, out)
+        elif isinstance(obj, list):
+            for item in obj:
+                collect_positive_strings(item, out)
+
+    for name in sprint1_examples:
+        ex = example_by_name.get(name)
+        if ex is None:
+            fail(f"missing Sprint 1 example: {name}")
+        positives: list[str] = []
+        collect_positive_strings(ex, positives)
+        merged = "\n".join(positives).lower()
+        for phrase in forbidden_positive_claims:
+            if phrase in merged:
+                fail(f"{name} contains forbidden positive claim phrase in allowed copy: {phrase}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

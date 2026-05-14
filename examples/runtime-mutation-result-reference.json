@@ -1,0 +1,38 @@
+{
+  "mutationId": "mutation-cpu-up-windows-hyper-001",
+  "movementId": "movement-lease-preview-001",
+  "leaseId": "lease-dryrun-001",
+  "targetShellId": "shell-windows-hyper",
+  "actuator": "FluidVirt",
+  "actuatorVersion": "v1.8.1-fluidvirt.1",
+  "resource": "cpu",
+  "direction": "up",
+  "requestedAmount": "1vcpu",
+  "appliedAmount": "1vcpu",
+  "runtimeObserved": true,
+  "guestObserved": false,
+  "cgroupObserved": false,
+  "libvirtObserved": true,
+  "qgaObserved": true,
+  "identityPreserved": true,
+  "rebootUsed": false,
+  "recreateUsed": false,
+  "rolloutUsed": false,
+  "migrationUsed": false,
+  "rollbackReady": false,
+  "rollbackExecuted": false,
+  "rollbackPassed": false,
+  "sloGuardPassed": false,
+  "donorHealthPreserved": true,
+  "safetyPreserved": true,
+  "evidenceRefs": [
+    "fluidvirt_live_cpu_control_v1",
+    "hyperdensity_production_kernel_boundary_v1"
+  ],
+  "claimBoundary": [
+    "runtime CPU increased in libvirt; guest-visible delta not certified in this artifact",
+    "no performance improvement claimed",
+    "no guaranteed savings claimed"
+  ],
+  "blockers": ["guest_cpu_delta_not_visible", "libvirt_vcpu_unplug_timeout_on_rollback"]
+}

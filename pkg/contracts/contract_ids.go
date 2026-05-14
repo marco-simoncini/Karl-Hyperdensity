@@ -14,4 +14,9 @@ const (
 	GuardedAutoSandboxV1ID             = "hyperdensity_guarded_auto_sandbox_v1"
 	AutoRollbackControllerV1ID         = "hyperdensity_auto_rollback_controller_v1"
 	BlastRadiusPolicyV1ID              = "hyperdensity_blast_radius_policy_v1"
+	ProductionKernelBoundaryV1ID       = "hyperdensity_production_kernel_boundary_v1"
+	ClaimPolicyV2ID                    = "hyperdensity_claim_policy_v2"
+	ShellPassportV1ID                  = "hyperdensity_shell_passport_v1"
+	RuntimeMutationResultV1ID          = "hyperdensity_runtime_mutation_result_v1"
+	ResourceLeaseV1ID                  = "hyperdensity_resource_lease_v1"
 )

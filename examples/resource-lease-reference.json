@@ -1,0 +1,26 @@
+{
+  "leaseId": "lease-preview-cpu-001",
+  "donorShellId": "shell-linux-container-donor-a",
+  "receiverShellId": "shell-linux-vm-receiver-v1",
+  "resource": "cpu",
+  "amount": "500m",
+  "durationSeconds": 300,
+  "validFrom": "2026-05-14T12:00:00Z",
+  "expiresAt": "2026-05-14T12:05:00Z",
+  "state": "dry_run",
+  "dryRunState": "ready",
+  "rollbackState": "required",
+  "risk": "medium",
+  "approvalMode": "operator_required",
+  "autoApplyAllowed": false,
+  "productionMutationAllowed": false,
+  "evidenceRefs": [
+    "hyperdensity_action_slate_v1",
+    "hyperdensity_production_kernel_boundary_v1"
+  ],
+  "accountingRef": "hyperdensity_resource_accounting_preview_only",
+  "claimBoundary": [
+    "dry-run lease only; autonomous production movement disabled in Sprint 1",
+    "FluidVirt executes mutation only when operator-approved and evidence-complete"
+  ]
+}

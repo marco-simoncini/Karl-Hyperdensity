@@ -1,0 +1,44 @@
+{
+  "claimPolicyId": "hyperdensity_claim_policy_v2",
+  "claimPolicyVersion": "v2",
+  "estimatedValueAllowed": true,
+  "guaranteedSavingsAllowed": false,
+  "universalPerformanceImprovementAllowed": false,
+  "universalSloProtectionAllowed": false,
+  "certifiedPerformanceUpliftAllowed": false,
+  "logicalVcpuHotplugClaimAllowed": false,
+  "windowsTotalRamHotplugClaimAllowed": false,
+  "ramAboveOriginalClaimAllowed": false,
+  "productionAutonomousApplyAllowed": false,
+  "syntheticFleetProductionClaimAllowed": false,
+  "requiredEvidenceForSavingsGuarantee": [
+    "multi_lane_runtime_mutation_result_with_accounting_reconciliation",
+    "lease_accounting_with_rollback_proof",
+    "slo_guard_pass_on_donor_and_receiver"
+  ],
+  "requiredEvidenceForPerformanceUplift": [
+    "certified_benchmark_before_after_with_guest_visibility",
+    "slo_endpoint_contract_complete",
+    "no_disruptive_action_used"
+  ],
+  "forbiddenPhrases": [
+    "guaranteed savings active",
+    "universal performance improvement",
+    "production autonomous apply",
+    "Windows total RAM hotplug supported",
+    "logical vCPU hotplug supported",
+    "1000 production workloads proven",
+    "Dashboard is source of truth",
+    "Inventory Hyperdensity engine"
+  ],
+  "allowedPhrases": [
+    "KARL Hyperdensity is a governed runtime resource market powered by FluidVirt runtime actuation, with evidence-backed claim boundaries.",
+    "estimated value projection only",
+    "operator-controlled technical preview",
+    "evidence-backed claim boundaries"
+  ],
+  "conditionalPhrases": [
+    "universal SLO protection may be contracted but is not GA without endpoint evidence",
+    "certified performance uplift may be contracted but is not GA without benchmark and SLO evidence"
+  ]
+}

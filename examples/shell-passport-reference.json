@@ -1,0 +1,36 @@
+{
+  "shellId": "shell-linux-vm-hd-receiver-v1",
+  "shellKind": "linux_vm",
+  "runtimeLayer": "kubevirt_fluidvirt",
+  "tenant": "karl-hyperdensity-playground",
+  "namespace": "karl-hyperdensity-playground",
+  "targetRef": "karl-hyperdensity-playground/VirtualMachine/linux-vm-hd-receiver-v1",
+  "identityStable": true,
+  "supportProfile": "technical_preview_linux_vm",
+  "cpuEntitlement": {
+    "currentMillicores": 1000,
+    "maxMillicores": 1000,
+    "hotplugHeadroom": false,
+    "actuator": "FluidVirt"
+  },
+  "memoryEnvelope": {
+    "guestBytes": 536870912,
+    "envelopeBytes": 536870912,
+    "actuator": "FluidVirt"
+  },
+  "donorEligibility": "blocked_cpu_hotplug_headroom_missing",
+  "receiverEligibility": "eligible_when_headroom_and_slo_evidence",
+  "rollbackReadiness": "required_before_lease",
+  "sloProfile": "infra_only",
+  "evidenceRefs": [
+    "hyperdensity_production_kernel_boundary_v1",
+    "fluidvirt_runtime_actuator_boundary_v1"
+  ],
+  "claimBoundary": [
+    "no savings guarantee",
+    "no fleet-wide performance uplift claim",
+    "FluidVirt is runtime actuator"
+  ],
+  "blockers": ["cpu_hotplug_headroom_missing"],
+  "remediations": ["provision_cpu_hotplug_headroom_in_vm_template"]
+}

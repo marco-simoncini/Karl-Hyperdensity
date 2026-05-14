@@ -1,0 +1,72 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/production-kernel-boundary-v1.schema.json",
+  "title": "KARL Hyperdensity Production Kernel Boundary v1",
+  "type": "object",
+  "required": [
+    "boundaryId",
+    "boundaryVersion",
+    "releaseTrack",
+    "repositories",
+    "components",
+    "allowedResponsibilities",
+    "forbiddenResponsibilities",
+    "requiredSurfaces",
+    "requiredSchemas",
+    "requiredEvidence",
+    "safetyInvariants",
+    "claimPolicyRef"
+  ],
+  "properties": {
+    "boundaryId": { "const": "hyperdensity_production_kernel_boundary_v1" },
+    "boundaryVersion": { "const": "v1" },
+    "releaseTrack": { "const": "technical_preview" },
+    "repositories": {
+      "type": "object",
+      "required": ["fluidVirt", "hyperdensity", "dashboard", "inventory"],
+      "properties": {
+        "fluidVirt": { "type": "string" },
+        "hyperdensity": { "type": "string" },
+        "dashboard": { "type": "string" },
+        "inventory": { "type": "string" }
+      }
+    },
+    "components": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["componentId", "role", "runtimeActuator", "marketController", "projectionOnly"],
+        "properties": {
+          "componentId": { "type": "string" },
+          "role": { "type": "string" },
+          "runtimeActuator": { "type": "boolean" },
+          "marketController": { "type": "boolean" },
+          "projectionOnly": { "type": "boolean" }
+        }
+      }
+    },
+    "allowedResponsibilities": { "type": "array", "items": { "type": "string" } },
+    "forbiddenResponsibilities": { "type": "array", "items": { "type": "string" } },
+    "requiredSurfaces": { "type": "array", "items": { "type": "string" } },
+    "requiredSchemas": { "type": "array", "items": { "type": "string" } },
+    "requiredEvidence": { "type": "array", "items": { "type": "string" } },
+    "safetyInvariants": {
+      "type": "object",
+      "required": [
+        "productionAutonomousApplyAllowed",
+        "guaranteedSavingsAllowed",
+        "universalPerformanceImprovementAllowed",
+        "dashboardMutationSourceOfTruth",
+        "inventoryHyperdensityEngine"
+      ],
+      "properties": {
+        "productionAutonomousApplyAllowed": { "const": false },
+        "guaranteedSavingsAllowed": { "const": false },
+        "universalPerformanceImprovementAllowed": { "const": false },
+        "dashboardMutationSourceOfTruth": { "const": false },
+        "inventoryHyperdensityEngine": { "const": false }
+      }
+    },
+    "claimPolicyRef": { "const": "hyperdensity_claim_policy_v2" }
+  }
+}
