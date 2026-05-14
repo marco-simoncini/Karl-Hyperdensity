@@ -1,0 +1,21 @@
+{
+  "autoApplyRequestId": "auto-request-sandbox-005",
+  "actionId": "action-sandbox-ready-005",
+  "leaseCandidateId": "lease-candidate-sandbox-005",
+  "candidateId": "candidate-sandbox-ready-005",
+  "donorShellId": "shell-container-donor-c",
+  "receiverShellId": "shell-container-replica-d",
+  "resource": "cpu",
+  "amount": "250m",
+  "durationSeconds": 300,
+  "requestedAt": "2026-05-14T17:57:00Z",
+  "requestedBy": "guarded-auto-engine",
+  "requestedByComponent": "Karl-Hyperdensity",
+  "autoExecutionScope": "sandbox",
+  "productionScope": false,
+  "productionAutonomousApplyAllowed": false,
+  "actuator": "FluidVirt",
+  "actuatorRequestFamily": "cpu_entitlement",
+  "evidenceRefs": ["hyperdensity_guarded_auto_apply_sandbox_evidence_v1"],
+  "claimBoundary": ["request from Karl-Hyperdensity to FluidVirt"]
+}

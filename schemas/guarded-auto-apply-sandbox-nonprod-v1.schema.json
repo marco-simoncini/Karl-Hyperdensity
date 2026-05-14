@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/guarded-auto-apply-sandbox-nonprod-v1.schema.json",
+  "title": "KARL Hyperdensity Guarded Auto Apply Sandbox NonProd v1",
+  "type": "object",
+  "required": ["milestone", "surfaceVersion", "executionId", "autoExecutionScope", "sandboxAutoApplyAllowed", "nonProdAutoApplyAllowed", "autoApplyExecutionEnabled", "productionAutonomousApplyAllowed", "productionScope", "claimPolicyRef", "sourceOfTruth", "safetyInvariants", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_guarded_auto_apply_sandbox_nonprod_v1" },
+    "sandboxAutoApplyAllowed": { "const": true },
+    "nonProdAutoApplyAllowed": { "const": true },
+    "autoApplyExecutionEnabled": { "const": true },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "productionScope": { "const": false },
+    "productionMutationAllowed": { "const": false },
+    "rawRuntimeControlsExposed": { "const": false },
+    "autoExecutionScope": { "enum": ["sandbox", "nonprod", "sandbox_and_nonprod"] }
+  }
+}

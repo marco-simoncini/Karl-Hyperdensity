@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/auto-apply-execution-policy-v1.schema.json",
+  "title": "KARL Hyperdensity Auto Apply Execution Policy v1",
+  "type": "object",
+  "required": ["autoExecutionPolicyId", "policyId", "autoExecutionScope", "sandboxAutoApplyAllowed", "nonProdAutoApplyAllowed", "productionAutonomousApplyAllowed", "productionScope", "claimBoundary"],
+  "properties": {
+    "productionAutonomousApplyAllowed": { "const": false },
+    "productionScope": { "const": false },
+    "allowWindowsEvidenceGatedAuto": { "const": false },
+    "allowSyntheticProductionProof": { "const": false }
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/auto-apply-selection-v1.schema.json",
+  "title": "KARL Hyperdensity Auto Apply Selection v1",
+  "type": "object",
+  "required": ["selectionId", "actionId", "selected", "candidateState", "productionScope", "claimBoundary"]
+}

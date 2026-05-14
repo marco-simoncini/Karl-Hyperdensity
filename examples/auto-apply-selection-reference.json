@@ -1,0 +1,15 @@
+{
+  "selectionId": "selection-sandbox-005",
+  "actionId": "action-sandbox-ready-005",
+  "leaseCandidateId": "lease-candidate-sandbox-005",
+  "candidateId": "candidate-sandbox-ready-005",
+  "policyId": "policy-guarded-auto-default-v1",
+  "selected": true,
+  "selectionReason": "sandbox_ready",
+  "autoExecutionScope": "sandbox",
+  "candidateState": "sandbox_ready",
+  "productionScope": false,
+  "sandboxOrNonProd": true,
+  "evidenceRefs": ["hyperdensity_guarded_auto_apply_sandbox_evidence_v1"],
+  "claimBoundary": ["sandbox selection"]
+}

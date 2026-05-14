@@ -1,0 +1,20 @@
+{
+  "invocationId": "invocation-sandbox-005",
+  "autoApplyRequestId": "auto-request-sandbox-005",
+  "actuator": "FluidVirt",
+  "invocationMode": "guarded_auto_sandbox_or_nonprod",
+  "mutationFamily": "cpu_entitlement",
+  "targetDonor": "shell-container-donor-c",
+  "targetReceiver": "shell-container-replica-d",
+  "resource": "cpu",
+  "amount": "250m",
+  "invokedAt": "2026-05-14T17:57:05Z",
+  "invokedByComponent": "Karl-Hyperdensity",
+  "requestAccepted": true,
+  "mutationExecuted": true,
+  "productionScope": false,
+  "productionAutonomousApplyAllowed": false,
+  "rawRuntimeControlsExposed": false,
+  "evidenceRefs": ["hyperdensity_guarded_auto_apply_sandbox_evidence_v1"],
+  "claimBoundary": ["FluidVirt sandbox invocation"]
+}

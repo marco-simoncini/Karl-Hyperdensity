@@ -1,0 +1,16 @@
+{
+  "autoPostVerifyId": "post-verify-sandbox-005",
+  "mutationObservationId": "mutation-obs-sandbox-005",
+  "actionId": "action-sandbox-ready-005",
+  "candidateId": "candidate-sandbox-ready-005",
+  "verifyStatus": "passed",
+  "runtimeDeltaVerified": true,
+  "sloGuardStatus": "passed",
+  "donorHealthStatus": "preserved",
+  "noRegressionStatus": "certified",
+  "rollbackReady": true,
+  "rollbackRequired": false,
+  "verifiedAt": "2026-05-14T17:57:30Z",
+  "evidenceRefs": ["hyperdensity_guarded_auto_apply_sandbox_evidence_v1"],
+  "claimBoundary": ["post-verify passed"]
+}

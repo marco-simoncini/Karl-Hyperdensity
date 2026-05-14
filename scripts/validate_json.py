@@ -1614,6 +1614,62 @@ def main() -> int:
             if phrase in merged7:
                 fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
 
+    # --- Sprint 8: guarded auto apply sandbox/nonprod v1 ---
+    sprint8_schemas = [
+        "guarded-auto-apply-sandbox-nonprod-v1.schema.json",
+        "auto-apply-execution-policy-v1.schema.json",
+        "auto-apply-selection-v1.schema.json",
+        "auto-preflight-recheck-v1.schema.json",
+        "auto-apply-request-v1.schema.json",
+        "auto-fluidvirt-invocation-v1.schema.json",
+        "auto-mutation-observation-v1.schema.json",
+        "auto-post-verify-result-v1.schema.json",
+        "auto-rollback-decision-v1.schema.json",
+        "auto-rollback-execution-v1.schema.json",
+        "auto-apply-audit-trail-v1.schema.json",
+        "auto-apply-safety-reservation-v1.schema.json",
+    ]
+    for name in sprint8_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 8 schema: {name}")
+
+    auto_apply_surface = example_by_name.get("guarded-auto-apply-sandbox-nonprod-reference.json")
+    if auto_apply_surface is None:
+        fail("examples/guarded-auto-apply-sandbox-nonprod-reference.json is missing")
+    if auto_apply_surface.get("milestone") != "hyperdensity_guarded_auto_apply_sandbox_nonprod_v1":
+        fail("guarded auto apply sandbox milestone invalid")
+    if auto_apply_surface.get("autoApplyExecutionEnabled") is not True:
+        fail("autoApplyExecutionEnabled must be true for Sprint 8")
+    if auto_apply_surface.get("productionAutonomousApplyAllowed") is not False:
+        fail("productionAutonomousApplyAllowed must be false")
+    if auto_apply_surface.get("productionScope") is not False:
+        fail("productionScope must be false")
+
+    sprint8_examples = [
+        "guarded-auto-apply-sandbox-nonprod-reference.json",
+        "auto-apply-execution-policy-reference.json",
+        "auto-apply-selection-reference.json",
+        "auto-preflight-recheck-reference.json",
+        "auto-apply-request-reference.json",
+        "auto-fluidvirt-invocation-reference.json",
+        "auto-mutation-observation-reference.json",
+        "auto-post-verify-result-reference.json",
+        "auto-rollback-decision-reference.json",
+        "auto-rollback-execution-reference.json",
+        "auto-apply-audit-trail-reference.json",
+        "auto-apply-safety-reservation-reference.json",
+    ]
+    for name in sprint8_examples:
+        ex = example_by_name.get(name)
+        if ex is None:
+            fail(f"missing Sprint 8 example: {name}")
+        positives8: list[str] = []
+        collect_positive_strings(ex, positives8)
+        merged8 = "\n".join(positives8).lower()
+        for phrase in forbidden_positive_claims:
+            if phrase in merged8:
+                fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

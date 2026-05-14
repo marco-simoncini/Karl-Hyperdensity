@@ -1,0 +1,12 @@
+{
+  "preflightRecheckId": "preflight-sandbox-005",
+  "actionId": "action-sandbox-ready-005",
+  "candidateId": "candidate-sandbox-ready-005",
+  "checkedAt": "2026-05-14T17:55:00Z",
+  "policyStillValid": true,
+  "killSwitchStillClear": true,
+  "circuitBreakerStillClosed": true,
+  "preflightStatus": "passed",
+  "evidenceRefs": ["hyperdensity_guarded_auto_apply_sandbox_evidence_v1"],
+  "claimBoundary": ["preflight passed"]
+}

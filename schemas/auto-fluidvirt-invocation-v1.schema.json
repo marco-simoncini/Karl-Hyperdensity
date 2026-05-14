@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/auto-fluidvirt-invocation-v1.schema.json",
+  "title": "KARL Hyperdensity Auto FluidVirt Invocation v1",
+  "type": "object",
+  "required": ["invocationId", "actuator", "invocationMode", "productionScope", "productionAutonomousApplyAllowed", "rawRuntimeControlsExposed", "claimBoundary"],
+  "properties": {
+    "actuator": { "const": "FluidVirt" },
+    "invocationMode": { "const": "guarded_auto_sandbox_or_nonprod" },
+    "productionScope": { "const": false },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "rawRuntimeControlsExposed": { "const": false }
+  }
+}

@@ -1,0 +1,14 @@
+{
+  "rollbackExecutionId": "rollback-exec-011",
+  "rollbackDecisionId": "rollback-decision-011",
+  "actionId": "action-sandbox-regression-011",
+  "candidateId": "candidate-regression-011",
+  "executed": true,
+  "executedAt": "2026-05-14T17:59:45Z",
+  "actuator": "FluidVirt",
+  "rollbackPassed": true,
+  "healthRestored": true,
+  "runtimeRestored": true,
+  "evidenceRefs": ["hyperdensity_guarded_auto_apply_sandbox_evidence_v1"],
+  "claimBoundary": ["rollback executed"]
+}

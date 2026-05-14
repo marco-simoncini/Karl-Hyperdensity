@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/auto-apply-safety-reservation-v1.schema.json",
+  "title": "KARL Hyperdensity Auto Apply Safety Reservation v1",
+  "type": "object",
+  "required": ["reservationId", "actionId", "reservationStatus", "claimBoundary"],
+  "properties": {
+    "reservationStatus": { "enum": ["reserved", "failed", "expired", "released"] }
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "mutationObservationId": "mutation-obs-sandbox-005",
+  "mutationId": "mutation-sandbox-005",
+  "autoApplyRequestId": "auto-request-sandbox-005",
+  "invocationId": "invocation-sandbox-005",
+  "donorShellId": "shell-container-donor-c",
+  "receiverShellId": "shell-container-replica-d",
+  "resource": "cpu",
+  "requestedAmount": "250m",
+  "appliedAmount": "250m",
+  "identityPreserved": true,
+  "rebootUsed": false,
+  "recreateUsed": false,
+  "rolloutUsed": false,
+  "migrationUsed": false,
+  "mutationMatchesPlan": true,
+  "observedAt": "2026-05-14T17:57:10Z",
+  "evidenceRefs": ["hyperdensity_guarded_auto_apply_sandbox_evidence_v1"],
+  "claimBoundary": ["mutation observed"]
+}

@@ -1,0 +1,15 @@
+{
+  "reservationId": "reservation-sandbox-005",
+  "actionId": "action-sandbox-ready-005",
+  "candidateId": "candidate-sandbox-ready-005",
+  "blastRadiusReservationId": "blast-res-sandbox-005",
+  "rateLimitReservationId": "rate-res-sandbox-005",
+  "cooldownReservationId": "cooldown-res-sandbox-005",
+  "reservedAt": "2026-05-14T17:56:00Z",
+  "blastRadiusReserved": true,
+  "rateLimitReserved": true,
+  "cooldownReserved": true,
+  "reservationStatus": "reserved",
+  "evidenceRefs": ["hyperdensity_guarded_auto_apply_sandbox_evidence_v1"],
+  "claimBoundary": ["safety reservation"]
+}
