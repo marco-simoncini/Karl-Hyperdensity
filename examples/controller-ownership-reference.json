@@ -1,0 +1,14 @@
+{
+  "blockOwnerDeletion": true,
+  "claimBoundary": "controller ownership reference",
+  "controller": true,
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "namespace": "karl-system",
+  "ownedKind": "ConfigMap",
+  "ownedName": "hyperdensity-controller-state",
+  "ownerKind": "Deployment",
+  "ownerName": "hyperdensity-controller",
+  "ownershipReferenceId": "owner-sprint14"
+}

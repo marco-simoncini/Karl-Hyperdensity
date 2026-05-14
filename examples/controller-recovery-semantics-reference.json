@@ -1,0 +1,16 @@
+{
+  "backoffSeconds": 30,
+  "claimBoundary": "recovery preserves idempotency",
+  "degradedModeRef": "degraded-sprint14",
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "maxRetries": 3,
+  "preservesActions": true,
+  "preservesFutures": true,
+  "preservesIdempotency": true,
+  "preservesLeases": true,
+  "recoveryMode": "retry_with_idempotency",
+  "recoverySemanticsId": "recovery-sprint14",
+  "retryPolicyRef": "retry-sprint13"
+}

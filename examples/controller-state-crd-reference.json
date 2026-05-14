@@ -1,0 +1,19 @@
+{
+  "crdId": "crd-sprint14",
+  "group": "hyperdensity.karl.io",
+  "version": "v1",
+  "kind": "HyperdensityControllerState",
+  "plural": "hyperdensitycontrollerstates",
+  "scope": "Namespaced",
+  "specFields": [
+    "state"
+  ],
+  "statusFields": [
+    "conditions"
+  ],
+  "implementationStatus": "reference_defined",
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "claimBoundary": "CRD reference_defined only"
+}

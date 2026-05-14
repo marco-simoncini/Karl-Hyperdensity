@@ -1,0 +1,15 @@
+{
+  "claimBoundary": "leader election configured; not HA production proven",
+  "enabled": true,
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "identity": "hyperdensity-controller-sprint14",
+  "leaderElectionId": "leader-election-sprint14",
+  "leaseDurationSeconds": 15,
+  "leaseName": "hyperdensity-controller-leader",
+  "leaseNamespace": "karl-system",
+  "readinessStatus": "ready",
+  "renewDeadlineSeconds": 10,
+  "retryPeriodSeconds": 2
+}

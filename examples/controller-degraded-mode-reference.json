@@ -1,0 +1,15 @@
+{
+  "active": true,
+  "claimBoundary": "degraded fail-closed mode",
+  "degradedModeId": "degraded-sprint14",
+  "eventRef": "ReconcileDegraded",
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "executionSelectionDisabled": true,
+  "failClosed": true,
+  "generalProductionAutoAllowed": false,
+  "productionAutoWithPolicy": false,
+  "reason": "StateSaveFailed",
+  "statusConditionRef": "Degraded"
+}

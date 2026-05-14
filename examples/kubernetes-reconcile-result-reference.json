@@ -1,0 +1,25 @@
+{
+  "actionsCreated": 9,
+  "actionsInvalidated": 0,
+  "claimBoundary": "reconcile result",
+  "completedAt": "2026-05-14T15:29:24Z",
+  "duplicateActionsSuppressed": false,
+  "durationMs": 1,
+  "eventsEmitted": 0,
+  "evidenceRefs": [
+    "reconcile-result-req-sprint14-001"
+  ],
+  "futuresCreated": 9,
+  "idempotentReplay": false,
+  "leasesCreated": 9,
+  "loadedStateVersion": 1,
+  "metricsUpdated": true,
+  "newResourceVersion": "2",
+  "reconcileRequestId": "req-sprint14-001",
+  "reconcileResultId": "reconcile-result-req-sprint14-001",
+  "savedStateVersion": 2,
+  "staleWriteRejected": false,
+  "startedAt": "2026-05-14T15:29:24Z",
+  "status": "success",
+  "statusConditionsUpdated": 7
+}

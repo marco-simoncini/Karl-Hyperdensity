@@ -1,0 +1,540 @@
+{
+  "blockers": [],
+  "claimBoundaries": [
+    "durable Kubernetes ConfigMap state; CRD reference_defined only",
+    "leader election configured; not HA production proven",
+    "manifests reference_only; not_production_install"
+  ],
+  "configMapBackedStateEnabled": true,
+  "controllerMode": "production_canary_only",
+  "controllerStatusConditionsEnabled": true,
+  "crdBackedStateDefined": true,
+  "dashboardExecutor": false,
+  "degradedMode": {
+    "active": true,
+    "claimBoundary": "degraded fail-closed mode",
+    "degradedModeId": "degraded-sprint14",
+    "eventRef": "ReconcileDegraded",
+    "evidenceRefs": [
+      "hyperdensity-durable-controller-reconciler-v1"
+    ],
+    "executionSelectionDisabled": true,
+    "failClosed": true,
+    "generalProductionAutoAllowed": false,
+    "productionAutoWithPolicy": false,
+    "reason": "StateSaveFailed",
+    "statusConditionRef": "Degraded"
+  },
+  "durableControllerId": "durable-controller-sprint14",
+  "durableIdempotencyRecords": [
+    {
+      "claimBoundary": "durable idempotency",
+      "duplicateSuppressed": true,
+      "durableIdempotencyRecordId": "durable-idem-tick-idem-sprint14-001",
+      "evidenceRefs": [
+        "tick-idem-sprint14-001"
+      ],
+      "firstSeenAt": "2026-05-14T18:15:00Z",
+      "idempotencyKey": "tick-idem-sprint14-001",
+      "lastSeenAt": "2026-05-14T18:16:00Z",
+      "objectId": "req-sprint14-002",
+      "objectType": "reconcile_request",
+      "persisted": true,
+      "replayCount": 1,
+      "resourceVersion": ""
+    }
+  ],
+  "durableStateStoreEnabled": true,
+  "estimatedIdleCountedAsMoved": false,
+  "fakeClientTestsEnabled": true,
+  "fluidvirtPolicyAuthority": false,
+  "generalProductionAutoAllowed": false,
+  "generatedAt": "2026-05-14T18:15:00Z",
+  "inventoryRuntimeExecutor": false,
+  "kubernetesEvents": [
+    {
+      "claimBoundary": "kubernetes event",
+      "emittedAt": "2026-05-14T15:29:24Z",
+      "eventId": "evt-ControllerTickCompleted-1778772564087831996",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "involvedObjectKind": "ConfigMap",
+      "involvedObjectName": "hyperdensity-controller-state",
+      "message": "controller tick completed",
+      "namespace": "karl-system",
+      "reason": "ControllerTickCompleted",
+      "sourceComponent": "hyperdensity-controller",
+      "type": "Normal"
+    },
+    {
+      "claimBoundary": "kubernetes event",
+      "emittedAt": "2026-05-14T15:29:24Z",
+      "eventId": "evt-StatePersisted-1778772564087834606",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "involvedObjectKind": "ConfigMap",
+      "involvedObjectName": "hyperdensity-controller-state",
+      "message": "durable state persisted",
+      "namespace": "karl-system",
+      "reason": "StatePersisted",
+      "sourceComponent": "hyperdensity-controller",
+      "type": "Normal"
+    },
+    {
+      "claimBoundary": "kubernetes event",
+      "emittedAt": "2026-05-14T15:29:24Z",
+      "eventId": "evt-IdempotentReplaySuppressed-1778772564090126487",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "involvedObjectKind": "ConfigMap",
+      "involvedObjectName": "hyperdensity-controller-state",
+      "message": "duplicate reconcile suppressed",
+      "namespace": "karl-system",
+      "reason": "IdempotentReplaySuppressed",
+      "sourceComponent": "hyperdensity-controller",
+      "type": "Normal"
+    },
+    {
+      "claimBoundary": "kubernetes event",
+      "emittedAt": "2026-05-14T15:29:24Z",
+      "eventId": "evt-ReconcileDegraded-1778772564092755622",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "involvedObjectKind": "ConfigMap",
+      "involvedObjectName": "hyperdensity-controller-state",
+      "message": "stale write rejected",
+      "namespace": "karl-system",
+      "reason": "ReconcileDegraded",
+      "sourceComponent": "hyperdensity-controller",
+      "type": "Warning"
+    }
+  ],
+  "kubernetesEventsEnabled": true,
+  "kubernetesReconcilerEnabled": true,
+  "leaderElectionReadiness": {
+    "claimBoundary": "leader election configured; not HA production proven",
+    "enabled": true,
+    "evidenceRefs": [
+      "hyperdensity-durable-controller-reconciler-v1"
+    ],
+    "identity": "hyperdensity-controller-sprint14",
+    "leaderElectionId": "leader-election-sprint14",
+    "leaseDurationSeconds": 15,
+    "leaseName": "hyperdensity-controller-leader",
+    "leaseNamespace": "karl-system",
+    "readinessStatus": "ready",
+    "renewDeadlineSeconds": 10,
+    "retryPeriodSeconds": 2
+  },
+  "leaderElectionReady": true,
+  "metrics": {
+    "actionsCreatedTotal": 18,
+    "actionsInvalidatedTotal": 0,
+    "claimBoundary": "controller metrics snapshot",
+    "emittedAt": "2026-05-14T15:29:24Z",
+    "evidenceRefs": [
+      "hyperdensity-durable-controller-reconciler-v1"
+    ],
+    "futuresExpiredTotal": 3,
+    "generalProductionAutoEnabledGauge": 0,
+    "idempotentReplayTotal": 1,
+    "leasesExpiredTotal": 0,
+    "metricsId": "metrics-sprint14",
+    "productionAutoWithPolicyEnabledGauge": 0,
+    "projectedCompressionRate": 0,
+    "realizedCompressionRate": 0,
+    "reconcileDurationP95Ms": 2,
+    "reconcileFailureTotal": 1,
+    "reconcileSuccessTotal": 2,
+    "reconcileTotal": 3,
+    "staleWriteRejectTotal": 1,
+    "stateLoadTotal": 3,
+    "stateSaveTotal": 1
+  },
+  "metricsExportDefined": true,
+  "milestone": "hyperdensity_durable_controller_state_kubernetes_reconciler_v1",
+  "ownershipReferences": [
+    {
+      "blockOwnerDeletion": true,
+      "claimBoundary": "controller ownership reference",
+      "controller": true,
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "namespace": "karl-system",
+      "ownedKind": "ConfigMap",
+      "ownedName": "hyperdensity-controller-state",
+      "ownerKind": "Deployment",
+      "ownerName": "hyperdensity-controller",
+      "ownershipReferenceId": "owner-sprint14"
+    }
+  ],
+  "productionAutoWithPolicy": false,
+  "projectedCompressionCountedAsRealized": false,
+  "rbacBoundary": {
+    "allowedResources": [
+      "configmaps",
+      "events",
+      "hyperdensitycontrollerstates"
+    ],
+    "allowedVerbs": [
+      "get",
+      "list",
+      "watch",
+      "create",
+      "update",
+      "patch"
+    ],
+    "claimBoundary": "namespace-scoped RBAC; no raw runtime controls",
+    "clusterAdmin": false,
+    "deniedResources": [
+      "nodes",
+      "pods/exec",
+      "libvirt",
+      "cgroups"
+    ],
+    "directCgroupAllowed": false,
+    "directLibvirtAllowed": false,
+    "evidenceRefs": [
+      "hyperdensity-durable-controller-reconciler-v1"
+    ],
+    "namespace": "karl-system",
+    "namespaceScoped": true,
+    "rawRuntimeControlsAllowed": false,
+    "rbacBoundaryId": "rbac-sprint14",
+    "serviceAccount": "hyperdensity-controller"
+  },
+  "rbacManifestsDefined": true,
+  "reconcileRequests": [
+    {
+      "claimBoundary": "reconcile request",
+      "evidenceRefs": [
+        "req-sprint14-001"
+      ],
+      "idempotencyKey": "tick-idem-sprint14-001",
+      "name": "hyperdensity-controller-state",
+      "namespace": "karl-system",
+      "previousResourceVersion": "",
+      "reason": "scheduled_tick",
+      "reconcileRequestId": "req-sprint14-001",
+      "requestedAt": "2026-05-14T18:15:00Z",
+      "sourceEvent": "scheduled"
+    },
+    {
+      "claimBoundary": "reconcile request",
+      "evidenceRefs": [
+        "req-sprint14-002"
+      ],
+      "idempotencyKey": "tick-idem-sprint14-001",
+      "name": "hyperdensity-controller-state",
+      "namespace": "karl-system",
+      "previousResourceVersion": "",
+      "reason": "scheduled_tick",
+      "reconcileRequestId": "req-sprint14-002",
+      "requestedAt": "2026-05-14T18:16:00Z",
+      "sourceEvent": "scheduled"
+    },
+    {
+      "claimBoundary": "reconcile request",
+      "evidenceRefs": [
+        "req-sprint14-stale"
+      ],
+      "idempotencyKey": "tick-idem-stale-001",
+      "name": "hyperdensity-controller-state",
+      "namespace": "karl-system",
+      "previousResourceVersion": "1",
+      "reason": "scheduled_tick",
+      "reconcileRequestId": "req-sprint14-stale",
+      "requestedAt": "2026-05-14T18:00:00Z",
+      "sourceEvent": "scheduled"
+    }
+  ],
+  "reconcileResults": [
+    {
+      "actionsCreated": 9,
+      "actionsInvalidated": 0,
+      "claimBoundary": "reconcile result",
+      "completedAt": "2026-05-14T15:29:24Z",
+      "duplicateActionsSuppressed": false,
+      "durationMs": 1,
+      "eventsEmitted": 0,
+      "evidenceRefs": [
+        "reconcile-result-req-sprint14-001"
+      ],
+      "futuresCreated": 9,
+      "idempotentReplay": false,
+      "leasesCreated": 9,
+      "loadedStateVersion": 1,
+      "metricsUpdated": true,
+      "newResourceVersion": "2",
+      "reconcileRequestId": "req-sprint14-001",
+      "reconcileResultId": "reconcile-result-req-sprint14-001",
+      "savedStateVersion": 2,
+      "staleWriteRejected": false,
+      "startedAt": "2026-05-14T15:29:24Z",
+      "status": "success",
+      "statusConditionsUpdated": 7
+    },
+    {
+      "actionsCreated": 0,
+      "actionsInvalidated": 0,
+      "claimBoundary": "reconcile result",
+      "completedAt": "2026-05-14T15:29:24Z",
+      "duplicateActionsSuppressed": true,
+      "durationMs": 2,
+      "eventsEmitted": 0,
+      "evidenceRefs": [
+        "reconcile-result-req-sprint14-002"
+      ],
+      "futuresCreated": 0,
+      "idempotentReplay": true,
+      "leasesCreated": 0,
+      "loadedStateVersion": 2,
+      "metricsUpdated": true,
+      "newResourceVersion": "",
+      "reconcileRequestId": "req-sprint14-002",
+      "reconcileResultId": "reconcile-result-req-sprint14-002",
+      "savedStateVersion": 0,
+      "staleWriteRejected": false,
+      "startedAt": "2026-05-14T15:29:24Z",
+      "status": "idempotent_replay",
+      "statusConditionsUpdated": 0
+    },
+    {
+      "actionsCreated": 9,
+      "actionsInvalidated": 0,
+      "claimBoundary": "reconcile result",
+      "completedAt": "2026-05-14T15:29:24Z",
+      "duplicateActionsSuppressed": true,
+      "durationMs": 2,
+      "eventsEmitted": 0,
+      "evidenceRefs": [
+        "reconcile-result-req-sprint14-stale"
+      ],
+      "futuresCreated": 9,
+      "idempotentReplay": false,
+      "leasesCreated": 9,
+      "loadedStateVersion": 2,
+      "message": "stale resourceVersion write rejected",
+      "metricsUpdated": true,
+      "newResourceVersion": "",
+      "reconcileRequestId": "req-sprint14-stale",
+      "reconcileResultId": "reconcile-result-req-sprint14-stale",
+      "savedStateVersion": 3,
+      "staleWriteRejected": true,
+      "startedAt": "2026-05-14T15:29:24Z",
+      "status": "failed",
+      "statusConditionsUpdated": 0
+    },
+    {
+      "actionsCreated": 9,
+      "actionsInvalidated": 0,
+      "claimBoundary": "reconcile result",
+      "completedAt": "2026-05-14T15:29:24Z",
+      "duplicateActionsSuppressed": false,
+      "durationMs": 1,
+      "eventsEmitted": 0,
+      "evidenceRefs": [
+        "reconcile-result-req-001"
+      ],
+      "futuresCreated": 9,
+      "idempotentReplay": false,
+      "leasesCreated": 9,
+      "loadedStateVersion": 1,
+      "metricsUpdated": true,
+      "newResourceVersion": "2",
+      "reconcileRequestId": "req-001",
+      "reconcileResultId": "reconcile-result-req-001",
+      "savedStateVersion": 2,
+      "staleWriteRejected": false,
+      "startedAt": "2026-05-14T15:29:24Z",
+      "status": "success",
+      "statusConditionsUpdated": 7
+    }
+  ],
+  "recoverySemantics": {
+    "backoffSeconds": 30,
+    "claimBoundary": "recovery preserves idempotency",
+    "degradedModeRef": "degraded-sprint14",
+    "evidenceRefs": [
+      "hyperdensity-durable-controller-reconciler-v1"
+    ],
+    "maxRetries": 3,
+    "preservesActions": true,
+    "preservesFutures": true,
+    "preservesIdempotency": true,
+    "preservesLeases": true,
+    "recoveryMode": "retry_with_idempotency",
+    "recoverySemanticsId": "recovery-sprint14",
+    "retryPolicyRef": "retry-sprint13"
+  },
+  "recoverySemanticsDefined": true,
+  "referenceFleetCountedAsProduction": false,
+  "safetyInvariants": {
+    "dashboardExecutor": false,
+    "fluidvirtPolicyAuthority": false,
+    "generalProductionAutoAllowed": false,
+    "projectedCompressionCountedAsRealized": false
+  },
+  "sourceContinuousControllerRef": "hyperdensity-continuous-resource-market-controller-v1",
+  "sourceGaReleaseGateRef": "hyperdensity-ga-release-gate-v1",
+  "sourceIdleCompressionRef": "hyperdensity-idle-time-compression-fleet-value-v1",
+  "sourceLiveControllerRef": "hyperdensity-live-controller-reconciliation-v1",
+  "sourceOfTruth": {
+    "durableState": "Karl-Hyperdensity",
+    "kubernetesReconciler": "Karl-Hyperdensity",
+    "operatorUI": "Karl-Dashboard (projection only)",
+    "runtimeActuator": "FluidVirt"
+  },
+  "stateMigrations": [
+    {
+      "actionsMigrated": 9,
+      "auditMigrated": true,
+      "claimBoundary": "state migration from Sprint 13 in-memory to Sprint 14 ConfigMap",
+      "evidenceRefs": [
+        "hyperdensity-live-controller-reconciliation-v1"
+      ],
+      "fromStoreType": "in_memory_reference",
+      "futuresMigrated": 9,
+      "idempotencyRecordsMigrated": 1,
+      "leasesMigrated": 9,
+      "migratedStateVersion": 2,
+      "migrationId": "migration-sprint13-to-14",
+      "migrationStatus": "completed",
+      "toStoreType": "kubernetes_configmap"
+    }
+  ],
+  "stateStore": {
+    "actionPersistenceEnabled": true,
+    "auditPersistenceEnabled": true,
+    "claimBoundary": "kubernetes_configmap implemented; crd reference_defined",
+    "eventEmissionEnabled": true,
+    "evidenceRefs": [
+      "hyperdensity-durable-controller-reconciler-v1"
+    ],
+    "futurePersistenceEnabled": true,
+    "idempotencyPersists": true,
+    "implementationStatus": "implemented",
+    "invalidationPersistenceEnabled": true,
+    "leasePersistenceEnabled": true,
+    "namespace": "karl-system",
+    "objectKind": "ConfigMap",
+    "objectName": "hyperdensity-controller-state",
+    "optimisticLockEnabled": true,
+    "resourceVersion": "2",
+    "staleWriteRejected": true,
+    "stateStoreId": "k8s-state-store-sprint14",
+    "stateSurvivesReconcile": true,
+    "statusConditionPersistenceEnabled": true,
+    "storeType": "kubernetes_configmap"
+  },
+  "statusConditions": [
+    {
+      "claimBoundary": "controller status condition",
+      "conditionId": "cond-Reconciling",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "lastTransitionTime": "2026-05-14T15:29:24Z",
+      "message": "reconcile in progress",
+      "observedGeneration": 1,
+      "reason": "Reconciling",
+      "severity": "info",
+      "status": "True",
+      "type": "Reconciling"
+    },
+    {
+      "claimBoundary": "controller status condition",
+      "conditionId": "cond-StateStoreReady",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "lastTransitionTime": "2026-05-14T15:29:24Z",
+      "message": "kubernetes_configmap store implemented",
+      "observedGeneration": 1,
+      "reason": "ConfigMapStoreReady",
+      "severity": "info",
+      "status": "True",
+      "type": "StateStoreReady"
+    },
+    {
+      "claimBoundary": "controller status condition",
+      "conditionId": "cond-LeaderElectionReady",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "lastTransitionTime": "2026-05-14T15:29:24Z",
+      "message": "leader election reference configured; not HA production proven",
+      "observedGeneration": 1,
+      "reason": "LeaderElectionConfigured",
+      "severity": "info",
+      "status": "True",
+      "type": "LeaderElectionReady"
+    },
+    {
+      "claimBoundary": "controller status condition",
+      "conditionId": "cond-GeneralProductionAutoDisabled",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "lastTransitionTime": "2026-05-14T15:29:24Z",
+      "message": "general production auto disabled",
+      "observedGeneration": 1,
+      "reason": "PolicyEnforced",
+      "severity": "info",
+      "status": "True",
+      "type": "GeneralProductionAutoDisabled"
+    },
+    {
+      "claimBoundary": "controller status condition",
+      "conditionId": "cond-Backpressure",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "lastTransitionTime": "2026-05-14T15:29:24Z",
+      "message": "no backpressure active",
+      "observedGeneration": 1,
+      "reason": "NoBackpressure",
+      "severity": "info",
+      "status": "False",
+      "type": "Backpressure"
+    },
+    {
+      "claimBoundary": "controller status condition",
+      "conditionId": "cond-Ready",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "lastTransitionTime": "2026-05-14T15:29:24Z",
+      "message": "idempotent replay suppressed",
+      "observedGeneration": 1,
+      "reason": "IdempotentReplay",
+      "severity": "info",
+      "status": "True",
+      "type": "Ready"
+    },
+    {
+      "claimBoundary": "controller status condition",
+      "conditionId": "cond-Degraded",
+      "evidenceRefs": [
+        "hyperdensity-durable-controller-reconciler-v1"
+      ],
+      "lastTransitionTime": "2026-05-14T15:29:24Z",
+      "message": "not degraded",
+      "observedGeneration": 1,
+      "reason": "Healthy",
+      "severity": "info",
+      "status": "False",
+      "type": "Degraded"
+    }
+  ],
+  "surfaceVersion": "v1",
+  "syntheticFleetCountedAsProduction": false,
+  "universalGuaranteedSavingsAllowed": false,
+  "universalGuaranteedSavingsClaimed": false,
+  "warnings": []
+}

@@ -1,0 +1,15 @@
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: hyperdensity-controller
+  namespace: karl-system
+  labels:
+    reference_only: "true"
+    not_production_install: "true"
+rules:
+  - apiGroups: [""]
+    resources: ["configmaps", "events"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]
+  - apiGroups: ["hyperdensity.karl.io"]
+    resources: ["hyperdensitycontrollerstates"]
+    verbs: ["get", "list", "watch", "create", "update", "patch"]

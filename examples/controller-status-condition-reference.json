@@ -1,0 +1,14 @@
+{
+  "claimBoundary": "controller status condition",
+  "conditionId": "cond-Reconciling",
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "lastTransitionTime": "2026-05-14T15:29:24Z",
+  "message": "reconcile in progress",
+  "observedGeneration": 1,
+  "reason": "Reconciling",
+  "severity": "info",
+  "status": "True",
+  "type": "Reconciling"
+}

@@ -1,0 +1,16 @@
+{
+  "actionsMigrated": 9,
+  "auditMigrated": true,
+  "claimBoundary": "state migration from Sprint 13 in-memory to Sprint 14 ConfigMap",
+  "evidenceRefs": [
+    "hyperdensity-live-controller-reconciliation-v1"
+  ],
+  "fromStoreType": "in_memory_reference",
+  "futuresMigrated": 9,
+  "idempotencyRecordsMigrated": 1,
+  "leasesMigrated": 9,
+  "migratedStateVersion": 2,
+  "migrationId": "migration-sprint13-to-14",
+  "migrationStatus": "completed",
+  "toStoreType": "kubernetes_configmap"
+}

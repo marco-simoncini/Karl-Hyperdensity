@@ -2076,6 +2076,71 @@ def main() -> int:
         if example_by_name.get(name) is None:
             fail(f"missing Sprint 13 example: {name}")
 
+    # --- Sprint 14: durable controller state kubernetes reconciler v1 ---
+    sprint14_schemas = [
+        "durable-controller-state-kubernetes-reconciler-v1.schema.json",
+        "kubernetes-controller-state-store-v1.schema.json",
+        "controller-state-configmap-v1.schema.json",
+        "controller-state-crd-v1.schema.json",
+        "kubernetes-reconcile-request-v1.schema.json",
+        "kubernetes-reconcile-result-v1.schema.json",
+        "controller-status-condition-v1.schema.json",
+        "controller-kubernetes-event-v1.schema.json",
+        "controller-leader-election-readiness-v1.schema.json",
+        "controller-rbac-boundary-v1.schema.json",
+        "controller-metrics-v1.schema.json",
+        "controller-recovery-semantics-v1.schema.json",
+        "controller-degraded-mode-v1.schema.json",
+        "controller-ownership-reference-v1.schema.json",
+        "controller-state-migration-v1.schema.json",
+        "controller-durable-idempotency-record-v1.schema.json",
+    ]
+    for name in sprint14_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 14 schema: {name}")
+
+    durable_surface = example_by_name.get("durable-controller-state-kubernetes-reconciler-reference.json")
+    if durable_surface is None:
+        fail("examples/durable-controller-state-kubernetes-reconciler-reference.json is missing")
+    if durable_surface.get("milestone") != "hyperdensity_durable_controller_state_kubernetes_reconciler_v1":
+        fail("durable controller reconciler milestone invalid")
+    for key in [
+        "durableStateStoreEnabled", "kubernetesReconcilerEnabled", "fakeClientTestsEnabled",
+        "controllerStatusConditionsEnabled", "kubernetesEventsEnabled", "leaderElectionReady",
+        "rbacManifestsDefined", "metricsExportDefined", "recoverySemanticsDefined",
+    ]:
+        if durable_surface.get(key) is not True:
+            fail(f"durable-controller-state-kubernetes-reconciler-reference.json {key} must be true")
+    for key in [
+        "generalProductionAutoAllowed", "productionAutoWithPolicy",
+        "estimatedIdleCountedAsMoved", "projectedCompressionCountedAsRealized",
+        "syntheticFleetCountedAsProduction", "dashboardExecutor", "fluidvirtPolicyAuthority",
+    ]:
+        if durable_surface.get(key) is not False:
+            fail(f"durable-controller-state-kubernetes-reconciler-reference.json {key} must be false")
+
+    sprint14_examples = [
+        "durable-controller-state-kubernetes-reconciler-reference.json",
+        "kubernetes-controller-state-store-reference.json",
+        "controller-state-configmap-reference.json",
+        "controller-state-crd-reference.json",
+        "kubernetes-reconcile-request-reference.json",
+        "kubernetes-reconcile-result-reference.json",
+        "controller-status-condition-reference.json",
+        "controller-kubernetes-event-reference.json",
+        "controller-leader-election-readiness-reference.json",
+        "controller-rbac-boundary-reference.json",
+        "controller-metrics-reference.json",
+        "controller-recovery-semantics-reference.json",
+        "controller-degraded-mode-reference.json",
+        "controller-ownership-reference.json",
+        "controller-state-migration-reference.json",
+        "controller-durable-idempotency-record-reference.json",
+    ]
+    for name in sprint14_examples:
+        if example_by_name.get(name) is None:
+            fail(f"missing Sprint 14 example: {name}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

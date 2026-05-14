@@ -1,0 +1,19 @@
+{
+  "configMapStateId": "cm-sprint14",
+  "namespace": "karl-system",
+  "name": "hyperdensity-controller-state",
+  "key": "state.json",
+  "resourceVersion": "2",
+  "stateVersion": 2,
+  "containsControllerState": true,
+  "containsIdempotencyRecords": true,
+  "containsLeases": true,
+  "containsActions": true,
+  "containsFutures": true,
+  "containsInvalidations": true,
+  "containsAuditTrail": true,
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "claimBoundary": "configmap state"
+}

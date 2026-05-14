@@ -1,0 +1,30 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: hyperdensitycontrollerstates.hyperdensity.karl.io
+  labels:
+    reference_only: "true"
+    not_production_install: "true"
+spec:
+  group: hyperdensity.karl.io
+  scope: Namespaced
+  names:
+    plural: hyperdensitycontrollerstates
+    singular: hyperdensitycontrollerstate
+    kind: HyperdensityControllerState
+    shortNames:
+      - hdcs
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+            status:
+              type: object
+      subresources:
+        status: {}

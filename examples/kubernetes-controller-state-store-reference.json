@@ -1,0 +1,24 @@
+{
+  "actionPersistenceEnabled": true,
+  "auditPersistenceEnabled": true,
+  "claimBoundary": "kubernetes_configmap implemented; crd reference_defined",
+  "eventEmissionEnabled": true,
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "futurePersistenceEnabled": true,
+  "idempotencyPersists": true,
+  "implementationStatus": "implemented",
+  "invalidationPersistenceEnabled": true,
+  "leasePersistenceEnabled": true,
+  "namespace": "karl-system",
+  "objectKind": "ConfigMap",
+  "objectName": "hyperdensity-controller-state",
+  "optimisticLockEnabled": true,
+  "resourceVersion": "2",
+  "staleWriteRejected": true,
+  "stateStoreId": "k8s-state-store-sprint14",
+  "stateSurvivesReconcile": true,
+  "statusConditionPersistenceEnabled": true,
+  "storeType": "kubernetes_configmap"
+}

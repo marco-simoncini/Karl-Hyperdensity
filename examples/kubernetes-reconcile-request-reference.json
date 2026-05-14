@@ -1,0 +1,14 @@
+{
+  "claimBoundary": "reconcile request",
+  "evidenceRefs": [
+    "req-sprint14-001"
+  ],
+  "idempotencyKey": "tick-idem-sprint14-001",
+  "name": "hyperdensity-controller-state",
+  "namespace": "karl-system",
+  "previousResourceVersion": "",
+  "reason": "scheduled_tick",
+  "reconcileRequestId": "req-sprint14-001",
+  "requestedAt": "2026-05-14T18:15:00Z",
+  "sourceEvent": "scheduled"
+}

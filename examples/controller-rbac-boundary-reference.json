@@ -1,0 +1,33 @@
+{
+  "allowedResources": [
+    "configmaps",
+    "events",
+    "hyperdensitycontrollerstates"
+  ],
+  "allowedVerbs": [
+    "get",
+    "list",
+    "watch",
+    "create",
+    "update",
+    "patch"
+  ],
+  "claimBoundary": "namespace-scoped RBAC; no raw runtime controls",
+  "clusterAdmin": false,
+  "deniedResources": [
+    "nodes",
+    "pods/exec",
+    "libvirt",
+    "cgroups"
+  ],
+  "directCgroupAllowed": false,
+  "directLibvirtAllowed": false,
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "namespace": "karl-system",
+  "namespaceScoped": true,
+  "rawRuntimeControlsAllowed": false,
+  "rbacBoundaryId": "rbac-sprint14",
+  "serviceAccount": "hyperdensity-controller"
+}

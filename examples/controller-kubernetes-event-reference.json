@@ -1,0 +1,15 @@
+{
+  "claimBoundary": "kubernetes event",
+  "emittedAt": "2026-05-14T15:29:24Z",
+  "eventId": "evt-ControllerTickCompleted-1778772564087831996",
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "involvedObjectKind": "ConfigMap",
+  "involvedObjectName": "hyperdensity-controller-state",
+  "message": "controller tick completed",
+  "namespace": "karl-system",
+  "reason": "ControllerTickCompleted",
+  "sourceComponent": "hyperdensity-controller",
+  "type": "Normal"
+}

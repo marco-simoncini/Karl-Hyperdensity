@@ -1,0 +1,16 @@
+{
+  "claimBoundary": "durable idempotency",
+  "duplicateSuppressed": true,
+  "durableIdempotencyRecordId": "durable-idem-tick-idem-sprint14-001",
+  "evidenceRefs": [
+    "tick-idem-sprint14-001"
+  ],
+  "firstSeenAt": "2026-05-14T18:15:00Z",
+  "idempotencyKey": "tick-idem-sprint14-001",
+  "lastSeenAt": "2026-05-14T18:16:00Z",
+  "objectId": "req-sprint14-002",
+  "objectType": "reconcile_request",
+  "persisted": true,
+  "replayCount": 1,
+  "resourceVersion": ""
+}

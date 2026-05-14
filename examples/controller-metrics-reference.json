@@ -1,0 +1,24 @@
+{
+  "actionsCreatedTotal": 18,
+  "actionsInvalidatedTotal": 0,
+  "claimBoundary": "controller metrics snapshot",
+  "emittedAt": "2026-05-14T15:29:24Z",
+  "evidenceRefs": [
+    "hyperdensity-durable-controller-reconciler-v1"
+  ],
+  "futuresExpiredTotal": 3,
+  "generalProductionAutoEnabledGauge": 0,
+  "idempotentReplayTotal": 1,
+  "leasesExpiredTotal": 0,
+  "metricsId": "metrics-sprint14",
+  "productionAutoWithPolicyEnabledGauge": 0,
+  "projectedCompressionRate": 0,
+  "realizedCompressionRate": 0,
+  "reconcileDurationP95Ms": 2,
+  "reconcileFailureTotal": 1,
+  "reconcileSuccessTotal": 2,
+  "reconcileTotal": 3,
+  "staleWriteRejectTotal": 1,
+  "stateLoadTotal": 3,
+  "stateSaveTotal": 1
+}
