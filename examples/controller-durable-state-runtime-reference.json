@@ -1,0 +1,1 @@
+{"durableStateRuntimeId":"state-1","stateStoreType":"configmap","namespace":"karl-system","objectName":"hyperdensity-controller-durable-state","readVerified":true,"writeVerified":true,"optimisticLockVerified":true,"idempotencyRecordVerified":true,"durableStateReadWriteVerified":true,"evidenceRefs":["artifact://state"],"claimBoundary":"durable state runtime only"}

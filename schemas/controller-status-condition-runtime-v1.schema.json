@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-status-condition-runtime-v1","type":"object","required":["statusConditionRuntimeId","readyConditionObserved","reconcilingConditionObserved","degradedConditionObserved","generalProductionAutoDisabledConditionObserved","statusConditionsObserved","evidenceRefs","claimBoundary"]}

@@ -1,0 +1,1 @@
+{"podReadinessId":"pod-1","namespace":"karl-system","selector":"app=hyperdensity-controller","observedPodCount":1,"readyPodCount":1,"restartCount":0,"podsReady":true,"podNames":["hyperdensity-controller-abc123"],"evidenceRefs":["artifact://pods"],"claimBoundary":"pod readiness only"}

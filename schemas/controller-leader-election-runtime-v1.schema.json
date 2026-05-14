@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-leader-election-runtime-v1","type":"object","required":["leaderElectionRuntimeId","leaseName","leaseNamespace","leaseObserved","holderIdentity","renewTimeObserved","leaderElectionLeaseObserved","haProductionProven","evidenceRefs","claimBoundary"]}

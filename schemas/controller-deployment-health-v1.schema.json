@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-deployment-health-v1","type":"object","required":["deploymentHealthId","namespace","deploymentName","observedGeneration","desiredReplicas","availableReplicas","readyReplicas","updatedReplicas","deploymentAvailable","progressing","degraded","evidenceRefs","claimBoundary"]}

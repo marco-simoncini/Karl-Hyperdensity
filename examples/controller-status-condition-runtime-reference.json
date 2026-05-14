@@ -1,0 +1,1 @@
+{"statusConditionRuntimeId":"status-1","readyConditionObserved":true,"reconcilingConditionObserved":true,"degradedConditionObserved":false,"generalProductionAutoDisabledConditionObserved":true,"statusConditionsObserved":true,"evidenceRefs":["artifact://status"],"claimBoundary":"status conditions only"}

@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"applied-manifest-inventory-v1","type":"object","required":["inventoryId","namespace","appliedResources","deploymentName","serviceAccountName","roleName","roleBindingName","configMapName","metricsServiceName","leaderElectionLeaseName","crdName","rollbackPlanRef","evidenceRefs","claimBoundary"]}

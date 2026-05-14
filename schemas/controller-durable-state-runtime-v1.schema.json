@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-durable-state-runtime-v1","type":"object","required":["durableStateRuntimeId","stateStoreType","namespace","objectName","readVerified","writeVerified","optimisticLockVerified","idempotencyRecordVerified","durableStateReadWriteVerified","evidenceRefs","claimBoundary"]}

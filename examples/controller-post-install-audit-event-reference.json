@@ -1,0 +1,1 @@
+{"auditEventId":"evt-1","eventType":"install_apply_succeeded","occurredAt":"2026-05-14T11:59:30Z","sourceComponent":"Karl-Hyperdensity","actorType":"controller","summary":"controlled install apply succeeded","evidenceRefs":["artifact://evt-1"],"claimBoundary":"audit only"}

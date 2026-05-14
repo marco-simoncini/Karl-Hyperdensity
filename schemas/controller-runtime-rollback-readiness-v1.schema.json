@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-runtime-rollback-readiness-v1","type":"object","required":["rollbackReadinessId","rollbackPlanPresent","rollbackDryRunPassed","previousImageAvailable","previousConfigAvailable","rollbackReady","failClosedOnRollbackFailure","evidenceRefs","claimBoundary"]}

@@ -1,0 +1,1 @@
+{"rollbackReadinessId":"rollback-1","rollbackPlanPresent":true,"rollbackDryRunPassed":true,"previousImageAvailable":true,"previousConfigAvailable":true,"rollbackReady":true,"failClosedOnRollbackFailure":true,"evidenceRefs":["artifact://rollback"],"claimBoundary":"rollback readiness only"}

@@ -1,0 +1,1 @@
+{"metricsReachabilityId":"metrics-1","serviceName":"hyperdensity-controller-metrics","namespace":"karl-system","endpoint":"/metrics","reachable":true,"scrapeStatus":"ok","generalProductionAutoEnabledGauge":0,"productionAutoWithPolicyEnabledGauge":0,"evidenceRefs":["artifact://metrics"],"claimBoundary":"metrics reachability only"}

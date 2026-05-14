@@ -1,0 +1,1 @@
+{"leaderElectionRuntimeId":"leader-1","leaseName":"hyperdensity-controller-leader","leaseNamespace":"karl-system","leaseObserved":true,"holderIdentity":"hyperdensity-controller-abc123","renewTimeObserved":"2026-05-14T12:00:00Z","leaderElectionLeaseObserved":true,"haProductionProven":false,"evidenceRefs":["artifact://leader"],"claimBoundary":"leader election runtime only"}

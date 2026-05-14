@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-rbac-runtime-verification-v1","type":"object","required":["rbacRuntimeVerificationId","namespaceScoped","clusterAdmin","podsExecAllowed","nodesWriteAllowed","rawRuntimeControlsAllowed","directLibvirtAllowed","directCgroupAllowed","runtimeRbacSafe","evidenceRefs","claimBoundary"]}

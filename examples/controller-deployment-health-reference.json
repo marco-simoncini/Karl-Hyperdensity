@@ -1,0 +1,1 @@
+{"deploymentHealthId":"dep-1","namespace":"karl-system","deploymentName":"hyperdensity-controller","observedGeneration":1,"desiredReplicas":1,"availableReplicas":1,"readyReplicas":1,"updatedReplicas":1,"deploymentAvailable":true,"progressing":true,"degraded":false,"evidenceRefs":["artifact://deployment"],"claimBoundary":"deployment health only"}

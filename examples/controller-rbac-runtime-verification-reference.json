@@ -1,0 +1,1 @@
+{"rbacRuntimeVerificationId":"rbac-1","namespaceScoped":true,"clusterAdmin":false,"podsExecAllowed":false,"nodesWriteAllowed":false,"rawRuntimeControlsAllowed":false,"directLibvirtAllowed":false,"directCgroupAllowed":false,"runtimeRbacSafe":true,"evidenceRefs":["artifact://rbac"],"claimBoundary":"rbac runtime only"}

@@ -1,0 +1,1 @@
+{"eventRuntimeId":"event-1","controllerTickCompletedEventObserved":true,"statePersistedEventObserved":true,"installAppliedEventObserved":true,"runtimeHealthCheckedEventObserved":true,"eventsObserved":true,"evidenceRefs":["artifact://events"],"claimBoundary":"event runtime only"}

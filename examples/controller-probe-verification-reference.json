@@ -1,0 +1,1 @@
+{"probeVerificationId":"probe-1","livenessProbeHealthy":true,"readinessProbeHealthy":true,"startupProbeHealthy":true,"lastProbeCheckAt":"2026-05-14T12:00:00Z","probesHealthy":true,"evidenceRefs":["artifact://probes"],"claimBoundary":"probe verification only"}

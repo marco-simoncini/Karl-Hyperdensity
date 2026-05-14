@@ -1,0 +1,1 @@
+{"healthGateId":"health-gate-1","evaluatedAt":"2026-05-14T12:00:00Z","decision":"healthy","runtimeHealthGatePassed":true,"requiredCheckCount":9,"passedCheckCount":9,"failedCheckCount":0,"blockers":[],"warnings":[],"evidenceRefs":["artifact://health-gate"],"claimBoundary":"runtime health decision only"}
