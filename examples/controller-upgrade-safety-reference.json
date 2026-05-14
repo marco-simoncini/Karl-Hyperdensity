@@ -1,0 +1,1 @@
+{"upgradeSafetyId":"upgrade-safety-sprint15","strategy":"RollingUpdate","maxUnavailable":"0","preUpgradeBackupRequired":true,"stateMigrationRequired":false,"rollbackOnFailedReadiness":true,"evidenceRefs":["deployment.yaml"],"claimBoundary":"upgrade safety"}

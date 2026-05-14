@@ -1,0 +1,1 @@
+{"metricsEndpointId":"metrics-sprint15","enabled":true,"bindAddress":":8080","serviceName":"hyperdensity-controller-metrics","servicePort":8080,"metricsPath":"/metrics","exposesForbiddenAutoGauges":false,"generalProductionAutoEnabledGauge":0,"productionAutoWithPolicyEnabledGauge":0,"evidenceRefs":["service-metrics.yaml"],"claimBoundary":"metrics endpoint"}

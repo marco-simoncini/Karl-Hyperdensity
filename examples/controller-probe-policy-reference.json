@@ -1,0 +1,1 @@
+{"probePolicyId":"probe-policy-sprint15","livenessProbeConfigured":true,"readinessProbeConfigured":true,"startupProbeConfigured":true,"livenessPath":"/healthz","readinessPath":"/readyz","startupPath":"/startupz","port":8081,"evidenceRefs":["deployment.yaml"],"claimBoundary":"probe policy"}

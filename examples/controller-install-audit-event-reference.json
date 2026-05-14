@@ -1,0 +1,1 @@
+{"auditEventId":"audit-install-gate-passed","eventType":"install_gate_passed","occurredAt":"2026-05-14T18:31:00Z","sourceComponent":"hyperdensity-install-gate","actorType":"system","summary":"install gate passed","evidenceRefs":["install-gate.yaml"],"claimBoundary":"install audit event"}

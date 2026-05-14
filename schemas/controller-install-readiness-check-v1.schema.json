@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-install-readiness-check-v1","type":"object","required":["checkId","checkName","status","requiredForInstall","severity","source","evidenceRefs","claimBoundary"],"properties":{"status":{"type":"string","enum":["passed","failed","warning","not_applicable","evidence_missing"]}}}

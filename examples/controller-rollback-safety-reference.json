@@ -1,0 +1,1 @@
+{"rollbackSafetyId":"rollback-safety-sprint15","rollbackPlanPresent":true,"rollbackManifestPath":"deploy/kubernetes/controller/install-gate/rollback-plan.yaml","previousImageRetained":true,"previousConfigRetained":true,"stateRollbackSupported":true,"failClosedOnRollbackFailure":true,"evidenceRefs":["rollback-plan.yaml"],"claimBoundary":"rollback safety"}

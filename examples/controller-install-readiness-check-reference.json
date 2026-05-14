@@ -1,0 +1,1 @@
+{"checkId":"manifest-lint","checkName":"manifest lint","status":"passed","requiredForInstall":true,"severity":"critical","source":"manifest_lint","evidenceRefs":["deploy/kubernetes/controller/install-gate"],"blockerCode":"","warningCode":"","claimBoundary":"readiness check"}

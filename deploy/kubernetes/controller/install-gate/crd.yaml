@@ -1,0 +1,28 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: hyperdensitycontrollerstates.hyperdensity.karl.io
+  labels:
+    hyperdensity.karl.io/component: controller
+    hyperdensity.karl.io/install-gate: production-candidate
+    hyperdensity.karl.io/general-production-auto-allowed: "false"
+    hyperdensity.karl.io/production-auto-with-policy: "false"
+spec:
+  group: hyperdensity.karl.io
+  names:
+    kind: HyperdensityControllerState
+    plural: hyperdensitycontrollerstates
+    singular: hyperdensitycontrollerstate
+  scope: Namespaced
+  versions:
+    - name: v1
+      served: true
+      storage: true
+      schema:
+        openAPIV3Schema:
+          type: object
+          properties:
+            spec:
+              type: object
+            status:
+              type: object

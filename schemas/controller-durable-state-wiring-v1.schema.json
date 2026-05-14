@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-durable-state-wiring-v1","type":"object","required":["durableStateWiringId","stateStoreType","configMapName","crdKind","namespace","optimisticLockEnabled","stateMigrationSupported","backupSupported","restoreSupported","evidenceRefs","claimBoundary"]}

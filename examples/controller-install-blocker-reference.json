@@ -1,0 +1,1 @@
+{"blockerId":"blocker-unsafe-rbac","blockerCode":"unsafe_rbac","severity":"critical","reason":"cluster-admin or forbidden runtime controls detected","remediable":true,"remediation":"replace with namespace-scoped Role and remove forbidden verbs/resources","evidenceRefs":["role.yaml"],"claimBoundary":"install blocker"}

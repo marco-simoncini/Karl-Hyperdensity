@@ -1,0 +1,22 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hyperdensity-controller-rollback-plan
+  namespace: karl-system
+  labels:
+    hyperdensity.karl.io/component: controller
+    hyperdensity.karl.io/install-gate: production-candidate
+    hyperdensity.karl.io/general-production-auto-allowed: "false"
+    hyperdensity.karl.io/production-auto-with-policy: "false"
+data:
+  plan.yaml: |
+    rollbackPlanId: rollback-sprint15
+    failClosedOnRollbackFailure: true
+    previousImageRetained: true
+    previousConfigRetained: true
+    stateRollbackSupported: true
+    rollbackSteps:
+      - scale down new controller revision
+      - restore previous deployment image
+      - restore previous controller config
+      - validate readiness and metrics

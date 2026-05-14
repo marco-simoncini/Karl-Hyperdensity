@@ -1,0 +1,1 @@
+{"leaderElectionWiringId":"leader-election-sprint15","enabled":true,"leaseResource":"leases","leaseName":"hyperdensity-controller-leader","leaseNamespace":"karl-system","rbacConfigured":true,"haProductionProven":false,"evidenceRefs":["leader-election-role.yaml"],"claimBoundary":"leader election configured, HA not proven"}

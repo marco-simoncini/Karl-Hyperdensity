@@ -1,0 +1,92 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hyperdensity-controller
+  namespace: karl-system
+  labels:
+    app.kubernetes.io/name: hyperdensity-controller
+    hyperdensity.karl.io/component: controller
+    hyperdensity.karl.io/install-gate: production-candidate
+    hyperdensity.karl.io/general-production-auto-allowed: "false"
+    hyperdensity.karl.io/production-auto-with-policy: "false"
+spec:
+  replicas: 1
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailable: 0
+      maxSurge: 1
+  selector:
+    matchLabels:
+      app.kubernetes.io/name: hyperdensity-controller
+  template:
+    metadata:
+      labels:
+        app.kubernetes.io/name: hyperdensity-controller
+        hyperdensity.karl.io/component: controller
+        hyperdensity.karl.io/install-gate: production-candidate
+        hyperdensity.karl.io/general-production-auto-allowed: "false"
+        hyperdensity.karl.io/production-auto-with-policy: "false"
+    spec:
+      serviceAccountName: hyperdensity-controller
+      hostPID: false
+      hostNetwork: false
+      hostIPC: false
+      containers:
+        - name: controller
+          image: ghcr.io/marco-simoncini/hyperdensity-controller:v1.15.0
+          imagePullPolicy: IfNotPresent
+          args:
+            - --leader-elect=true
+            - --metrics-bind-address=$(METRICS_BIND_ADDRESS)
+            - --health-probe-bind-address=$(HEALTH_PROBE_BIND_ADDRESS)
+          env:
+            - name: GENERAL_PRODUCTION_AUTO_ALLOWED
+              value: "false"
+            - name: PRODUCTION_AUTO_WITH_POLICY
+              value: "false"
+            - name: STATE_STORE_TYPE
+              value: "kubernetes_configmap"
+            - name: LEADER_ELECTION_ENABLED
+              value: "true"
+            - name: METRICS_BIND_ADDRESS
+              value: ":8080"
+            - name: HEALTH_PROBE_BIND_ADDRESS
+              value: ":8081"
+          ports:
+            - name: metrics
+              containerPort: 8080
+            - name: health
+              containerPort: 8081
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "256Mi"
+            limits:
+              cpu: "500m"
+              memory: "512Mi"
+          livenessProbe:
+            httpGet:
+              path: /healthz
+              port: health
+            initialDelaySeconds: 10
+            periodSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readyz
+              port: health
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          startupProbe:
+            httpGet:
+              path: /startupz
+              port: health
+            failureThreshold: 30
+            periodSeconds: 5
+          securityContext:
+            runAsNonRoot: true
+            allowPrivilegeEscalation: false
+            privileged: false
+            readOnlyRootFilesystem: true
+            capabilities:
+              drop: ["ALL"]

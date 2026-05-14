@@ -1,0 +1,1 @@
+{"decisionId":"decision-sprint15","decidedAt":"2026-05-14T18:31:00Z","decision":"install_allowed","productionInstallAllowed":true,"reason":"all checks passed and blockers empty","blockers":[],"warnings":[],"nextAllowedState":"production_canary_only","evidenceRefs":["install-gate.yaml"],"claimBoundary":"production install decision"}

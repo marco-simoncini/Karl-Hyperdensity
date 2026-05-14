@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-leader-election-wiring-v1","type":"object","required":["leaderElectionWiringId","enabled","leaseResource","leaseName","leaseNamespace","rbacConfigured","haProductionProven","evidenceRefs","claimBoundary"]}

@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hyperdensity-controller-config
+  namespace: karl-system
+  labels:
+    hyperdensity.karl.io/component: controller
+    hyperdensity.karl.io/install-gate: production-candidate
+    hyperdensity.karl.io/general-production-auto-allowed: "false"
+    hyperdensity.karl.io/production-auto-with-policy: "false"
+data:
+  STATE_STORE_TYPE: kubernetes_configmap
+  STATE_CONFIGMAP_NAME: hyperdensity-controller-state
+  LEADER_ELECTION_ENABLED: "true"
+  METRICS_BIND_ADDRESS: ":8080"
+  HEALTH_PROBE_BIND_ADDRESS: ":8081"
+  GENERAL_PRODUCTION_AUTO_ALLOWED: "false"
+  PRODUCTION_AUTO_WITH_POLICY: "false"

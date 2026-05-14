@@ -1,0 +1,18 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: hyperdensity-controller-metrics
+  namespace: karl-system
+  labels:
+    app.kubernetes.io/name: hyperdensity-controller
+    hyperdensity.karl.io/component: controller
+    hyperdensity.karl.io/install-gate: production-candidate
+    hyperdensity.karl.io/general-production-auto-allowed: "false"
+    hyperdensity.karl.io/production-auto-with-policy: "false"
+spec:
+  selector:
+    app.kubernetes.io/name: hyperdensity-controller
+  ports:
+    - name: metrics
+      port: 8080
+      targetPort: metrics

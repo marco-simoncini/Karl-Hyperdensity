@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: hyperdensity-controller-install-gate-v1
+  namespace: karl-system
+  labels:
+    hyperdensity.karl.io/component: controller
+    hyperdensity.karl.io/install-gate: production-candidate
+    hyperdensity.karl.io/general-production-auto-allowed: "false"
+    hyperdensity.karl.io/production-auto-with-policy: "false"
+data:
+  gate.yaml: |
+    productionInstallGateEnabled: true
+    installFailClosed: true
+    productionInstallCandidate: true
+    productionInstallAllowed: false
+    reason: pending-validation

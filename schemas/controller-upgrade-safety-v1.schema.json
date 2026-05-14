@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"controller-upgrade-safety-v1","type":"object","required":["upgradeSafetyId","strategy","maxUnavailable","preUpgradeBackupRequired","stateMigrationRequired","rollbackOnFailedReadiness","evidenceRefs","claimBoundary"]}
