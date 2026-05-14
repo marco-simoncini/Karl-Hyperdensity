@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "observed_risk_signal_set_v1",
+  "type": "object",
+  "required": [
+    "riskSignalSetId",
+    "entries",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

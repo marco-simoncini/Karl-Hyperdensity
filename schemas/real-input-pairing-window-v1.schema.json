@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "real_input_pairing_window_v1",
+  "type": "object",
+  "required": [
+    "pairingWindowId",
+    "noFullNxNPairing",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

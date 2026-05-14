@@ -1,0 +1,27 @@
+{
+  "claimBoundary": "idle signals only",
+  "collectedAt": "2026-05-14T17:59:00Z",
+  "eligibleIdleSignalCount": 5,
+  "evidenceRefs": [
+    "artifact://idle"
+  ],
+  "idleSignalSetId": "idle-1",
+  "idleSignals": [
+    {
+      "claimBoundary": "idle signal only",
+      "eligible": true,
+      "evidenceRefs": [
+        "artifact://idle-1"
+      ],
+      "freshnessSeconds": 15,
+      "idleAmount": "500m",
+      "idleValue": 400,
+      "observedAt": "2026-05-14T17:58:45Z",
+      "resource": "cpu",
+      "shellId": "sh-1",
+      "stale": false
+    }
+  ],
+  "signalCount": 6,
+  "staleIdleSignalCount": 1
+}

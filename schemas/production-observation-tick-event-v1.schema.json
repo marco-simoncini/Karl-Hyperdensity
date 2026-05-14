@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "production_observation_tick_event_v1",
+  "type": "object",
+  "required": [
+    "eventId",
+    "eventType",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

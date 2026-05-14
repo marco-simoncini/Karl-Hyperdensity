@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "input_freshness_validation_v1",
+  "type": "object",
+  "required": [
+    "freshnessValidationId",
+    "inputFreshnessValidated",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

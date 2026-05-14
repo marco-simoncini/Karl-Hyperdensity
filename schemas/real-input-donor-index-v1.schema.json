@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "real_input_donor_index_v1",
+  "type": "object",
+  "required": [
+    "donorIndexId",
+    "donors",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

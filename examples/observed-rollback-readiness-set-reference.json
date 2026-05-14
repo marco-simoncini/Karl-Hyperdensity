@@ -1,0 +1,17 @@
+{
+  "claimBoundary": "rollback readiness only",
+  "collectedAt": "2026-05-14T17:59:00Z",
+  "entries": [
+    {
+      "ready": true,
+      "shellId": "sh-1"
+    }
+  ],
+  "evidenceRefs": [
+    "artifact://rollback"
+  ],
+  "missingCount": 1,
+  "readyCount": 5,
+  "rollbackReadinessSetId": "rb-1",
+  "staleCount": 0
+}

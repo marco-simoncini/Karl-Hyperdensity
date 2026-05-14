@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "no_apply_safety_boundary_v1",
+  "type": "object",
+  "required": [
+    "safetyBoundaryId",
+    "productionMovementExecuted",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

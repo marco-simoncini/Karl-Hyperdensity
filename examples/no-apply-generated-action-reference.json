@@ -1,0 +1,22 @@
+{
+  "actionId": "act-1",
+  "amount": "500m",
+  "claimBoundary": "generated action only",
+  "donorShellId": "d1",
+  "evidenceRefs": [
+    "artifact://act-1"
+  ],
+  "executionScopeRecommendation": "operator_controlled_candidate",
+  "expectedCompressionGain": 0.02,
+  "expectedMovedIdleValue": 400,
+  "generalProductionAutoAllowed": false,
+  "noApplyReason": "production_observation_mode",
+  "operatorControlledScope": true,
+  "productionAutoWithPolicy": false,
+  "productionCanaryScope": false,
+  "productionScope": false,
+  "receiverShellId": "r1",
+  "resource": "cpu",
+  "sandboxNonprodScope": false,
+  "selectedForExecution": false
+}

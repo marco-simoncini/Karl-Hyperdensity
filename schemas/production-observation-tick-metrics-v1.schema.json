@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "production_observation_tick_metrics_v1",
+  "type": "object",
+  "required": [
+    "metricsId",
+    "generalProductionAutoEnabledGauge",
+    "productionAutoWithPolicyEnabledGauge",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

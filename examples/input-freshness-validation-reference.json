@@ -1,0 +1,17 @@
+{
+  "claimBoundary": "freshness validation only",
+  "evaluatedAt": "2026-05-14T17:59:05Z",
+  "evidenceRefs": [
+    "artifact://freshness"
+  ],
+  "freshnessValidationId": "fresh-1",
+  "idleSignalsFresh": true,
+  "inputFreshnessValidated": true,
+  "maxAllowedFreshnessSeconds": 120,
+  "pressureSignalsFresh": true,
+  "riskSignalsFresh": true,
+  "rollbackReadinessFresh": true,
+  "shellInputsFresh": true,
+  "sloReadinessFresh": true,
+  "staleInputCount": 1
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "observed_rollback_readiness_set_v1",
+  "type": "object",
+  "required": [
+    "rollbackReadinessSetId",
+    "entries",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

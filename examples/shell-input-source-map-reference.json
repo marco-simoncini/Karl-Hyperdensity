@@ -1,0 +1,19 @@
+{
+  "claimBoundary": "source map only",
+  "evidenceRefs": [
+    "artifact://source-map"
+  ],
+  "fluidvirtMeasurementSource": "configmap://karl-system/fluidvirt-measurement-v1",
+  "inventorySignalSource": "configmap://karl-system/inventory-signals-v1",
+  "kubernetesObjectSource": "k8s://deployments",
+  "riskSource": "configmap://karl-system/risk-signals-v1",
+  "rollbackSource": "configmap://karl-system/rollback-readiness-v1",
+  "shellRegistrySource": "configmap://karl-system/shell-registry-v1",
+  "sloSource": "configmap://karl-system/slo-readiness-v1",
+  "sourceFreshnessSeconds": 60,
+  "sourceMapId": "src-1",
+  "sourceOfTruth": {
+    "identity": "Karl-Inventory",
+    "measurement": "FluidVirt"
+  }
+}

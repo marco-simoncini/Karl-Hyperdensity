@@ -1,0 +1,13 @@
+{
+  "claimBoundary": "observation event only",
+  "eventId": "evt-1",
+  "eventType": "real_input_tick_started",
+  "evidenceRefs": [
+    "artifact://evt-1"
+  ],
+  "involvedObjectKind": "ConfigMap",
+  "involvedObjectName": "hyperdensity-runtime-market-real-inputs-no-apply-v1",
+  "occurredAt": "2026-05-14T17:59:00Z",
+  "sourceComponent": "Karl-Hyperdensity",
+  "summary": "real-input observation tick started"
+}

@@ -1,0 +1,37 @@
+{
+  "canaryObservedShellCount": 2,
+  "claimBoundary": "shell snapshot only",
+  "collectedAt": "2026-05-14T17:59:00Z",
+  "evidenceRefs": [
+    "artifact://snapshot"
+  ],
+  "observedShellCount": 12,
+  "productionObservedShellCount": 7,
+  "referenceOnlyShellCount": 2,
+  "sandboxNonprodObservedShellCount": 3,
+  "shells": [
+    {
+      "blocked": false,
+      "claimBoundary": "shell only",
+      "evidenceRefs": [
+        "artifact://sh-1"
+      ],
+      "freshnessSeconds": 30,
+      "identityStable": true,
+      "namespace": "prod",
+      "observedAt": "2026-05-14T17:58:30Z",
+      "productionEvidence": true,
+      "protected": false,
+      "referenceOnly": false,
+      "shellId": "sh-1",
+      "shellKind": "deployment",
+      "sourceKind": "shell_registry",
+      "syntheticShadow": false,
+      "workloadName": "api"
+    }
+  ],
+  "snapshotId": "snap-1",
+  "source": "shell-registry+inventory+k8s",
+  "staleShellCount": 1,
+  "syntheticShadowShellCount": 1
+}

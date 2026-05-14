@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "no_apply_generated_action_v1",
+  "type": "object",
+  "required": [
+    "actionId",
+    "executionScopeRecommendation",
+    "selectedForExecution",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

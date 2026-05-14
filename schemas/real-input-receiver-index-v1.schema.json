@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "real_input_receiver_index_v1",
+  "type": "object",
+  "required": [
+    "receiverIndexId",
+    "receivers",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

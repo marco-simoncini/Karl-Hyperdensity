@@ -1,0 +1,21 @@
+{
+  "avoidancePercent": 75,
+  "avoidedPairCount": 75,
+  "claimBoundary": "pairing window only",
+  "evaluatedPairCount": 25,
+  "evaluatedPairs": [
+    {
+      "donorShellId": "d1",
+      "receiverShellId": "r1"
+    }
+  ],
+  "evidenceRefs": [
+    "artifact://pairing"
+  ],
+  "fullPairSpace": 100,
+  "noFullNxNPairing": true,
+  "pairingWindowId": "pair-1",
+  "skippedPairsSummary": "top-K bounded",
+  "topKDonors": 5,
+  "topKReceivers": 5
+}

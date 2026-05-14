@@ -1,0 +1,584 @@
+{
+  "avoidedPairCount": 75,
+  "blockedActionCount": 0,
+  "blockers": [],
+  "boundedPairingVerified": true,
+  "broadProductionMutationExecuted": false,
+  "claimBoundaries": [
+    "real-input market tick generates candidates only",
+    "no broad production mutation claim",
+    "projected compression is not realized without movement evidence"
+  ],
+  "controllerMode": "production_canary_only",
+  "currentIdleCompressionRate": 0.12,
+  "dashboardExecutor": false,
+  "dashboardProjectionUpdated": true,
+  "donorIndex": {
+    "claimBoundary": "donor index only",
+    "donorCount": 4,
+    "donorIndexId": "donor-1",
+    "donors": [
+      {
+        "idleValue": 400,
+        "shellId": "d1"
+      }
+    ],
+    "eligibleDonorCount": 3,
+    "evidenceRefs": [
+      "artifact://donor-index"
+    ],
+    "excludedDonorCount": 1,
+    "excludedDonors": [
+      {
+        "reason": "blocked",
+        "shellId": "d-x"
+      }
+    ],
+    "generatedAt": "2026-05-14T17:59:10Z",
+    "topK": 5
+  },
+  "eligibleDonorCount": 4,
+  "estimatedIdleCountedAsMoved": false,
+  "evaluatedPairCount": 25,
+  "fluidvirtPolicyAuthority": false,
+  "fluidvirtTickAuthority": false,
+  "fullPairSpace": 100,
+  "generalProductionAutoAllowed": false,
+  "generatedActionCount": 3,
+  "generatedActions": [
+    {
+      "actionId": "act-1",
+      "amount": "500m",
+      "claimBoundary": "generated action only",
+      "donorShellId": "d1",
+      "evidenceRefs": [
+        "artifact://act-1"
+      ],
+      "executionScopeRecommendation": "operator_controlled_candidate",
+      "expectedCompressionGain": 0.02,
+      "expectedMovedIdleValue": 400,
+      "generalProductionAutoAllowed": false,
+      "noApplyReason": "production_observation_mode",
+      "operatorControlledScope": true,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "receiverShellId": "r1",
+      "resource": "cpu",
+      "sandboxNonprodScope": false,
+      "selectedForExecution": false
+    },
+    {
+      "actionId": "act-2",
+      "amount": "256Mi",
+      "claimBoundary": "generated action only",
+      "donorShellId": "d2",
+      "evidenceRefs": [
+        "artifact://act-2"
+      ],
+      "executionScopeRecommendation": "sandbox_nonprod_candidate",
+      "expectedCompressionGain": 0.01,
+      "expectedMovedIdleValue": 250,
+      "generalProductionAutoAllowed": false,
+      "noApplyReason": "production_observation_mode",
+      "operatorControlledScope": false,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "receiverShellId": "r2",
+      "resource": "memory",
+      "sandboxNonprodScope": true,
+      "selectedForExecution": false
+    },
+    {
+      "actionId": "act-3",
+      "amount": "250m",
+      "claimBoundary": "generated action only",
+      "donorShellId": "d3",
+      "evidenceRefs": [
+        "artifact://act-3"
+      ],
+      "executionScopeRecommendation": "production_canary_candidate",
+      "expectedCompressionGain": 0.01,
+      "expectedMovedIdleValue": 200,
+      "generalProductionAutoAllowed": false,
+      "noApplyReason": "production_observation_mode",
+      "operatorControlledScope": false,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": true,
+      "productionScope": false,
+      "receiverShellId": "r3",
+      "resource": "cpu",
+      "sandboxNonprodScope": false,
+      "selectedForExecution": false
+    }
+  ],
+  "generatedAt": "2026-05-14T18:00:00Z",
+  "generatedFutureCount": 2,
+  "generatedFutures": [
+    {
+      "amount": "512Mi",
+      "claimBoundary": "generated future only",
+      "confidence": 0.72,
+      "donorAvailabilityProbability": 0.8,
+      "donorShellId": "d1",
+      "evidenceRefs": [
+        "artifact://fut-1"
+      ],
+      "executionScopeRecommendation": "production_canary_candidate",
+      "expectedCompressionGain": 0.01,
+      "expectedMovedIdleValue": 300,
+      "expiration": "2026-05-14T22:00:00Z",
+      "futureId": "fut-1",
+      "horizonSeconds": 3600,
+      "invalidationReasons": [],
+      "pressureProbability": 0.6,
+      "receiverShellId": "r2",
+      "resource": "memory",
+      "triggerCondition": "pressure_above_threshold"
+    },
+    {
+      "amount": "300m",
+      "claimBoundary": "generated future only",
+      "confidence": 0.65,
+      "donorAvailabilityProbability": 0.75,
+      "donorShellId": "d2",
+      "evidenceRefs": [
+        "artifact://fut-2"
+      ],
+      "executionScopeRecommendation": "operator_controlled_candidate",
+      "expectedCompressionGain": 0.008,
+      "expectedMovedIdleValue": 180,
+      "expiration": "2026-05-15T00:00:00Z",
+      "futureId": "fut-2",
+      "horizonSeconds": 7200,
+      "invalidationReasons": [],
+      "pressureProbability": 0.55,
+      "receiverShellId": "r1",
+      "resource": "cpu",
+      "triggerCondition": "idle_above_threshold"
+    }
+  ],
+  "inputFreshnessValidated": true,
+  "inputFreshnessValidation": {
+    "claimBoundary": "freshness validation only",
+    "evaluatedAt": "2026-05-14T17:59:05Z",
+    "evidenceRefs": [
+      "artifact://freshness"
+    ],
+    "freshnessValidationId": "fresh-1",
+    "idleSignalsFresh": true,
+    "inputFreshnessValidated": true,
+    "maxAllowedFreshnessSeconds": 120,
+    "pressureSignalsFresh": true,
+    "riskSignalsFresh": true,
+    "rollbackReadinessFresh": true,
+    "shellInputsFresh": true,
+    "sloReadinessFresh": true,
+    "staleInputCount": 1
+  },
+  "invalidatedInputCount": 1,
+  "inventoryRuntimeExecutor": false,
+  "milestone": "hyperdensity_runtime_market_tick_real_shell_inputs_no_apply_v1",
+  "noApplyActionSlateGenerated": true,
+  "noApplyFuturesGenerated": true,
+  "noApplyMode": true,
+  "noApplySafetyBoundary": {
+    "broadProductionMutationExecuted": false,
+    "claimBoundary": "no-apply safety boundary only",
+    "dashboardExecutor": false,
+    "evidenceRefs": [
+      "artifact://safety"
+    ],
+    "fluidvirtTickAuthority": false,
+    "generalProductionAutoAllowed": false,
+    "inventoryRuntimeExecutor": false,
+    "productionAutoWithPolicy": false,
+    "productionMovementExecuted": false,
+    "rawRuntimeControlsExposed": false,
+    "safetyBoundaryId": "safety-1",
+    "selectedProductionExecution": false
+  },
+  "noFullNxNPairing": true,
+  "observationEvents": [
+    {
+      "claimBoundary": "observation event only",
+      "eventId": "evt-1",
+      "eventType": "real_input_tick_started",
+      "evidenceRefs": [
+        "artifact://evt-1"
+      ],
+      "involvedObjectKind": "ConfigMap",
+      "involvedObjectName": "hyperdensity-runtime-market-real-inputs-no-apply-v1",
+      "occurredAt": "2026-05-14T17:59:00Z",
+      "sourceComponent": "Karl-Hyperdensity",
+      "summary": "real-input observation tick started"
+    },
+    {
+      "claimBoundary": "observation event only",
+      "eventId": "evt-2",
+      "eventType": "observation_tick_passed",
+      "evidenceRefs": [
+        "artifact://evt-2"
+      ],
+      "involvedObjectKind": "ConfigMap",
+      "involvedObjectName": "hyperdensity-runtime-market-real-inputs-no-apply-v1",
+      "occurredAt": "2026-05-14T17:59:45Z",
+      "sourceComponent": "Karl-Hyperdensity",
+      "summary": "real-input no-apply tick passed"
+    }
+  ],
+  "observationEventsEmitted": true,
+  "observationMetrics": {
+    "avoidedPairCountGauge": 75,
+    "claimBoundary": "observation metrics only",
+    "currentIdleCompressionRateGauge": 0.12,
+    "eligibleDonorCountGauge": 4,
+    "emittedAt": "2026-05-14T17:59:45Z",
+    "evaluatedPairCountGauge": 25,
+    "evidenceRefs": [
+      "artifact://metrics"
+    ],
+    "generalProductionAutoEnabledGauge": 0,
+    "generatedActionsGauge": 3,
+    "generatedFuturesGauge": 2,
+    "metricsId": "metrics-1",
+    "observedShellCountGauge": 12,
+    "pressureReceiverCountGauge": 3,
+    "productionAutoWithPolicyEnabledGauge": 0,
+    "projectedIdleCompressionRateGauge": 0.18,
+    "realizedIdleCompressionRateGauge": 0,
+    "staleInputCountGauge": 1,
+    "tickFailureTotal": 0,
+    "tickSuccessTotal": 1,
+    "tickTotal": 1
+  },
+  "observationMetricsEmitted": true,
+  "observedIdleSignals": {
+    "claimBoundary": "idle signals only",
+    "collectedAt": "2026-05-14T17:59:00Z",
+    "eligibleIdleSignalCount": 5,
+    "evidenceRefs": [
+      "artifact://idle"
+    ],
+    "idleSignalSetId": "idle-1",
+    "idleSignals": [
+      {
+        "claimBoundary": "idle signal only",
+        "eligible": true,
+        "evidenceRefs": [
+          "artifact://idle-1"
+        ],
+        "freshnessSeconds": 15,
+        "idleAmount": "500m",
+        "idleValue": 400,
+        "observedAt": "2026-05-14T17:58:45Z",
+        "resource": "cpu",
+        "shellId": "sh-1",
+        "stale": false
+      }
+    ],
+    "signalCount": 6,
+    "staleIdleSignalCount": 1
+  },
+  "observedPressureSignals": {
+    "claimBoundary": "pressure signals only",
+    "collectedAt": "2026-05-14T17:59:00Z",
+    "eligiblePressureSignalCount": 4,
+    "evidenceRefs": [
+      "artifact://pressure"
+    ],
+    "pressureSignalSetId": "press-1",
+    "pressureSignals": [
+      {
+        "claimBoundary": "pressure signal only",
+        "eligible": true,
+        "evidenceRefs": [
+          "artifact://press-1"
+        ],
+        "freshnessSeconds": 10,
+        "observedAt": "2026-05-14T17:58:50Z",
+        "pressureClass": "high",
+        "requestedAmount": "256Mi",
+        "resource": "memory",
+        "shellId": "sh-2",
+        "stale": false
+      }
+    ],
+    "signalCount": 5,
+    "stalePressureSignalCount": 1
+  },
+  "observedRiskSignals": {
+    "claimBoundary": "risk signals only",
+    "collectedAt": "2026-05-14T17:59:00Z",
+    "entries": [
+      {
+        "riskClass": "low",
+        "shellId": "sh-1"
+      }
+    ],
+    "evidenceRefs": [
+      "artifact://risk"
+    ],
+    "highRiskCount": 0,
+    "lowRiskCount": 4,
+    "mediumRiskCount": 2,
+    "riskSignalSetId": "risk-1",
+    "staleCount": 0
+  },
+  "observedRollbackReadiness": {
+    "claimBoundary": "rollback readiness only",
+    "collectedAt": "2026-05-14T17:59:00Z",
+    "entries": [
+      {
+        "ready": true,
+        "shellId": "sh-1"
+      }
+    ],
+    "evidenceRefs": [
+      "artifact://rollback"
+    ],
+    "missingCount": 1,
+    "readyCount": 5,
+    "rollbackReadinessSetId": "rb-1",
+    "staleCount": 0
+  },
+  "observedShellCount": 12,
+  "observedSloReadiness": {
+    "claimBoundary": "slo readiness only",
+    "collectedAt": "2026-05-14T17:59:00Z",
+    "entries": [
+      {
+        "ready": true,
+        "shellId": "sh-1"
+      }
+    ],
+    "evidenceRefs": [
+      "artifact://slo"
+    ],
+    "missingCount": 1,
+    "readyCount": 5,
+    "sloReadinessSetId": "slo-1",
+    "staleCount": 0
+  },
+  "operatorControlledCandidateCount": 1,
+  "pairingWindow": {
+    "avoidancePercent": 75,
+    "avoidedPairCount": 75,
+    "claimBoundary": "pairing window only",
+    "evaluatedPairCount": 25,
+    "evaluatedPairs": [
+      {
+        "donorShellId": "d1",
+        "receiverShellId": "r1"
+      }
+    ],
+    "evidenceRefs": [
+      "artifact://pairing"
+    ],
+    "fullPairSpace": 100,
+    "noFullNxNPairing": true,
+    "pairingWindowId": "pair-1",
+    "skippedPairsSummary": "top-K bounded",
+    "topKDonors": 5,
+    "topKReceivers": 5
+  },
+  "pressureReceiverCount": 3,
+  "productionAutoWithPolicy": false,
+  "productionCanaryCandidateCount": 1,
+  "productionMovementExecuted": false,
+  "productionObservationMode": true,
+  "productionObservedShellCount": 7,
+  "projectedCompressionCountedAsRealized": false,
+  "projectedIdleCompressionRate": 0.18,
+  "projectedMovedIdleValue": 1200,
+  "realIdleSignalsObserved": true,
+  "realInputDonorIndexGenerated": true,
+  "realInputMarketTickEnabled": true,
+  "realInputMarketTickExecuted": true,
+  "realInputMarketTickPassed": true,
+  "realInputReceiverIndexGenerated": true,
+  "realMarketTickId": "real-tick-s19-v1",
+  "realPressureSignalsObserved": true,
+  "realRiskSignalsObserved": true,
+  "realRollbackReadinessObserved": true,
+  "realShellInputSnapshot": {
+    "canaryObservedShellCount": 2,
+    "claimBoundary": "shell snapshot only",
+    "collectedAt": "2026-05-14T17:59:00Z",
+    "evidenceRefs": [
+      "artifact://snapshot"
+    ],
+    "observedShellCount": 12,
+    "productionObservedShellCount": 7,
+    "referenceOnlyShellCount": 2,
+    "sandboxNonprodObservedShellCount": 3,
+    "shells": [
+      {
+        "blocked": false,
+        "claimBoundary": "shell only",
+        "evidenceRefs": [
+          "artifact://sh-1"
+        ],
+        "freshnessSeconds": 30,
+        "identityStable": true,
+        "namespace": "prod",
+        "observedAt": "2026-05-14T17:58:30Z",
+        "productionEvidence": true,
+        "protected": false,
+        "referenceOnly": false,
+        "shellId": "sh-1",
+        "shellKind": "deployment",
+        "sourceKind": "shell_registry",
+        "syntheticShadow": false,
+        "workloadName": "api"
+      }
+    ],
+    "snapshotId": "snap-1",
+    "source": "shell-registry+inventory+k8s",
+    "staleShellCount": 1,
+    "syntheticShadowShellCount": 1
+  },
+  "realShellInputsObserved": true,
+  "realSloReadinessObserved": true,
+  "realizedIdleCompressionRate": 0,
+  "realizedMovedIdleValue": 0,
+  "receiverIndex": {
+    "claimBoundary": "receiver index only",
+    "eligibleReceiverCount": 3,
+    "evidenceRefs": [
+      "artifact://receiver-index"
+    ],
+    "excludedReceiverCount": 0,
+    "excludedReceivers": [],
+    "generatedAt": "2026-05-14T17:59:10Z",
+    "receiverCount": 3,
+    "receiverIndexId": "recv-1",
+    "receivers": [
+      {
+        "pressureClass": "high",
+        "shellId": "r1"
+      }
+    ],
+    "topK": 5
+  },
+  "referenceFleetCountedAsProduction": false,
+  "referenceOnlyShellCount": 2,
+  "referenceScenarios": [
+    {
+      "productionMovementExecuted": false,
+      "realInputMarketTickPassed": true,
+      "scenarioId": "success"
+    },
+    {
+      "realInputMarketTickPassed": false,
+      "realShellInputsObserved": false,
+      "scenarioId": "missing_shell_input"
+    },
+    {
+      "realIdleSignalsObserved": false,
+      "realInputMarketTickPassed": false,
+      "scenarioId": "missing_idle_signals"
+    },
+    {
+      "realInputMarketTickPassed": false,
+      "realPressureSignalsObserved": false,
+      "scenarioId": "missing_pressure_signals"
+    },
+    {
+      "realInputMarketTickPassed": false,
+      "scenarioId": "stale_not_invalidated",
+      "staleInputsInvalidated": false
+    },
+    {
+      "noFullNxNPairing": false,
+      "realInputMarketTickPassed": false,
+      "scenarioId": "full_nxn_attempted"
+    },
+    {
+      "executionScopeRecommendation": "general_production_auto",
+      "realInputMarketTickPassed": false,
+      "scenarioId": "forbidden_auto_scope"
+    },
+    {
+      "realInputMarketTickPassed": false,
+      "scenarioId": "action_selected",
+      "selectedForExecution": true
+    },
+    {
+      "realInputMarketTickPassed": false,
+      "scenarioId": "synthetic_reference_prod",
+      "syntheticFleetCountedAsProduction": true
+    },
+    {
+      "projectedCompressionCountedAsRealized": true,
+      "realInputMarketTickPassed": false,
+      "scenarioId": "projected_realized"
+    }
+  ],
+  "remediationOnlyCount": 0,
+  "safetyInvariants": [
+    "no production movement in observation tick",
+    "bounded top-K pairing only",
+    "dashboard projection read-only"
+  ],
+  "sandboxNonprodCandidateCount": 1,
+  "shellInputSourceMap": {
+    "claimBoundary": "source map only",
+    "evidenceRefs": [
+      "artifact://source-map"
+    ],
+    "fluidvirtMeasurementSource": "configmap://karl-system/fluidvirt-measurement-v1",
+    "inventorySignalSource": "configmap://karl-system/inventory-signals-v1",
+    "kubernetesObjectSource": "k8s://deployments",
+    "riskSource": "configmap://karl-system/risk-signals-v1",
+    "rollbackSource": "configmap://karl-system/rollback-readiness-v1",
+    "shellRegistrySource": "configmap://karl-system/shell-registry-v1",
+    "sloSource": "configmap://karl-system/slo-readiness-v1",
+    "sourceFreshnessSeconds": 60,
+    "sourceMapId": "src-1",
+    "sourceOfTruth": {
+      "identity": "Karl-Inventory",
+      "measurement": "FluidVirt"
+    }
+  },
+  "sourceIdleMeasurementRef": "configmap://karl-system/fluidvirt-idle-measurement-v1",
+  "sourceInventorySignalsRef": "configmap://karl-system/inventory-signals-v1",
+  "sourceOfTruth": {
+    "identitySignals": "Karl-Inventory",
+    "marketDecision": "Karl-Hyperdensity",
+    "operatorUI": "Karl-Dashboard (projection only)",
+    "runtimeMutation": "FluidVirt"
+  },
+  "sourcePressureSignalsRef": "configmap://karl-system/pressure-signals-v1",
+  "sourceRiskSignalsRef": "configmap://karl-system/risk-signals-v1",
+  "sourceRollbackReadinessRef": "configmap://karl-system/rollback-readiness-v1",
+  "sourceShellRegistryRef": "configmap://karl-system/shell-registry-v1",
+  "sourceSloReadinessRef": "configmap://karl-system/slo-readiness-v1",
+  "sourceSmokeTickRef": "configmap://karl-system/hyperdensity-controller-runtime-smoke-tick-v1",
+  "staleInputCount": 1,
+  "staleInputInvalidations": [
+    {
+      "claimBoundary": "stale invalidation only",
+      "evidenceRefs": [
+        "artifact://inv-1"
+      ],
+      "inputId": "idle-stale-1",
+      "inputType": "idle_signal",
+      "invalidatedAt": "2026-05-14T17:59:05Z",
+      "invalidationId": "inv-1",
+      "reason": "freshness_exceeded",
+      "replacementAvailable": false,
+      "shellId": "sh-3"
+    }
+  ],
+  "staleInputsInvalidated": true,
+  "surfaceVersion": "v1",
+  "syntheticFleetCountedAsProduction": false,
+  "syntheticShadowShellCount": 1,
+  "topKDonors": 5,
+  "topKReceivers": 5,
+  "universalGuaranteedSavingsAllowed": false,
+  "universalGuaranteedSavingsClaimed": false,
+  "warnings": []
+}

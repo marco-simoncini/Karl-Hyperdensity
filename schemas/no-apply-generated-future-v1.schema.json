@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "no_apply_generated_future_v1",
+  "type": "object",
+  "required": [
+    "futureId",
+    "executionScopeRecommendation",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

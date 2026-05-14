@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "real_shell_input_snapshot_v1",
+  "type": "object",
+  "required": [
+    "snapshotId",
+    "observedShellCount",
+    "shells",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

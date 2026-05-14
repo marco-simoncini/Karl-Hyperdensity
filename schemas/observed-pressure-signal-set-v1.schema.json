@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "observed_pressure_signal_set_v1",
+  "type": "object",
+  "required": [
+    "pressureSignalSetId",
+    "pressureSignals",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

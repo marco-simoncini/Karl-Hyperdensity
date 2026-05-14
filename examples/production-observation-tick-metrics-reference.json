@@ -1,0 +1,24 @@
+{
+  "avoidedPairCountGauge": 75,
+  "claimBoundary": "observation metrics only",
+  "currentIdleCompressionRateGauge": 0.12,
+  "eligibleDonorCountGauge": 4,
+  "emittedAt": "2026-05-14T17:59:45Z",
+  "evaluatedPairCountGauge": 25,
+  "evidenceRefs": [
+    "artifact://metrics"
+  ],
+  "generalProductionAutoEnabledGauge": 0,
+  "generatedActionsGauge": 3,
+  "generatedFuturesGauge": 2,
+  "metricsId": "metrics-1",
+  "observedShellCountGauge": 12,
+  "pressureReceiverCountGauge": 3,
+  "productionAutoWithPolicyEnabledGauge": 0,
+  "projectedIdleCompressionRateGauge": 0.18,
+  "realizedIdleCompressionRateGauge": 0,
+  "staleInputCountGauge": 1,
+  "tickFailureTotal": 0,
+  "tickSuccessTotal": 1,
+  "tickTotal": 1
+}

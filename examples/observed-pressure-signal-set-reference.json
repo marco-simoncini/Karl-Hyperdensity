@@ -1,0 +1,27 @@
+{
+  "claimBoundary": "pressure signals only",
+  "collectedAt": "2026-05-14T17:59:00Z",
+  "eligiblePressureSignalCount": 4,
+  "evidenceRefs": [
+    "artifact://pressure"
+  ],
+  "pressureSignalSetId": "press-1",
+  "pressureSignals": [
+    {
+      "claimBoundary": "pressure signal only",
+      "eligible": true,
+      "evidenceRefs": [
+        "artifact://press-1"
+      ],
+      "freshnessSeconds": 10,
+      "observedAt": "2026-05-14T17:58:50Z",
+      "pressureClass": "high",
+      "requestedAmount": "256Mi",
+      "resource": "memory",
+      "shellId": "sh-2",
+      "stale": false
+    }
+  ],
+  "signalCount": 5,
+  "stalePressureSignalCount": 1
+}

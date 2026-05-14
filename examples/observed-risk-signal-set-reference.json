@@ -1,0 +1,18 @@
+{
+  "claimBoundary": "risk signals only",
+  "collectedAt": "2026-05-14T17:59:00Z",
+  "entries": [
+    {
+      "riskClass": "low",
+      "shellId": "sh-1"
+    }
+  ],
+  "evidenceRefs": [
+    "artifact://risk"
+  ],
+  "highRiskCount": 0,
+  "lowRiskCount": 4,
+  "mediumRiskCount": 2,
+  "riskSignalSetId": "risk-1",
+  "staleCount": 0
+}

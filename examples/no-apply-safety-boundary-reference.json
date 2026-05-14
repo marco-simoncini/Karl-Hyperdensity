@@ -1,0 +1,16 @@
+{
+  "broadProductionMutationExecuted": false,
+  "claimBoundary": "no-apply safety boundary only",
+  "dashboardExecutor": false,
+  "evidenceRefs": [
+    "artifact://safety"
+  ],
+  "fluidvirtTickAuthority": false,
+  "generalProductionAutoAllowed": false,
+  "inventoryRuntimeExecutor": false,
+  "productionAutoWithPolicy": false,
+  "productionMovementExecuted": false,
+  "rawRuntimeControlsExposed": false,
+  "safetyBoundaryId": "safety-1",
+  "selectedProductionExecution": false
+}

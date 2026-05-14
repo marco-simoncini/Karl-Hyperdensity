@@ -1,0 +1,24 @@
+{
+  "claimBoundary": "donor index only",
+  "donorCount": 4,
+  "donorIndexId": "donor-1",
+  "donors": [
+    {
+      "idleValue": 400,
+      "shellId": "d1"
+    }
+  ],
+  "eligibleDonorCount": 3,
+  "evidenceRefs": [
+    "artifact://donor-index"
+  ],
+  "excludedDonorCount": 1,
+  "excludedDonors": [
+    {
+      "reason": "blocked",
+      "shellId": "d-x"
+    }
+  ],
+  "generatedAt": "2026-05-14T17:59:10Z",
+  "topK": 5
+}

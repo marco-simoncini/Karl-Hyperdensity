@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "shell_input_source_map_v1",
+  "type": "object",
+  "required": [
+    "sourceMapId",
+    "shellRegistrySource",
+    "evidenceRefs",
+    "claimBoundary"
+  ],
+  "properties": {}
+}

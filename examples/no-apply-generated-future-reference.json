@@ -1,0 +1,21 @@
+{
+  "amount": "512Mi",
+  "claimBoundary": "generated future only",
+  "confidence": 0.72,
+  "donorAvailabilityProbability": 0.8,
+  "donorShellId": "d1",
+  "evidenceRefs": [
+    "artifact://fut-1"
+  ],
+  "executionScopeRecommendation": "production_canary_candidate",
+  "expectedCompressionGain": 0.01,
+  "expectedMovedIdleValue": 300,
+  "expiration": "2026-05-14T22:00:00Z",
+  "futureId": "fut-1",
+  "horizonSeconds": 3600,
+  "invalidationReasons": [],
+  "pressureProbability": 0.6,
+  "receiverShellId": "r2",
+  "resource": "memory",
+  "triggerCondition": "pressure_above_threshold"
+}
