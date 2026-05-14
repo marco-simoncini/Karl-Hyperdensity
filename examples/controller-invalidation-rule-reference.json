@@ -1,0 +1,10 @@
+{
+  "invalidationRuleId": "inv-shell-identity",
+  "trigger": "shell_identity_changed",
+  "invalidates": "generated_actions_and_futures",
+  "reason": "identity drift",
+  "evidenceRefs": [
+    "hyperdensity-continuous-resource-market-controller-v1"
+  ],
+  "claimBoundary": "invalidation"
+}

@@ -1,0 +1,27 @@
+{
+  "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "amount": "2300m",
+  "approvalMode": "canary_policy",
+  "blockers": null,
+  "claimBoundary": "controller-generated action; not general production auto",
+  "donorShellId": "shell-container-donor-a",
+  "dryRunRequired": true,
+  "evidenceRefs": [
+    "shell-container-donor-a",
+    "shell-container-replica-c"
+  ],
+  "executionScopeRecommendation": "sandbox_auto_eligible",
+  "expectedGuaranteeEligibleValue": 0.004032000000000001,
+  "expectedMovedIdleValue": 0.005600000000000001,
+  "expectedRealizedValue": 0.005040000000000001,
+  "generalProductionAutoAllowed": false,
+  "noRegressionRequired": true,
+  "priorityRank": 1,
+  "productionAutoWithPolicy": false,
+  "productionCanaryScope": true,
+  "productionScope": true,
+  "receiverShellId": "shell-container-replica-c",
+  "resource": "cpu",
+  "rollbackRequired": true,
+  "sloGuardRequired": true
+}

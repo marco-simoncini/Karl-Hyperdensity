@@ -1,0 +1,1032 @@
+{
+  "milestone": "hyperdensity_continuous_resource_market_controller_v1",
+  "surfaceVersion": "v1",
+  "controllerId": "continuous-resource-market-controller-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "controllerMode": "production_canary_only",
+  "continuousControllerEnabled": true,
+  "controllerTickExecuted": true,
+  "actionSlateGeneratedByController": true,
+  "resourceFuturesGeneratedByController": true,
+  "controllerCoverageExpanded": true,
+  "idleCompressionTargetTracked": true,
+  "sourceShellRegistryRef": "hyperdensity-shell-passport-factory-v1",
+  "sourceIdleCompressionRef": "hyperdensity-idle-time-compression-fleet-value-v1",
+  "sourceSloPerformanceProofRef": "hyperdensity-slo-performance-proof-v1",
+  "sourceGuaranteedEligibleSavingsRef": "hyperdensity-guaranteed-eligible-savings-v1",
+  "sourceGuardedAutoPolicyRef": "hyperdensity-guarded-auto-policy-engine-v1",
+  "sourceProductionCanaryRef": "hyperdensity-production-canary-auto-apply-v1",
+  "sourceGaReleaseGateRef": "hyperdensity-ga-release-gate-v1",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "tickIntervalSeconds": 60,
+  "shardCount": 1,
+  "evaluatedShardCount": 1,
+  "enrolledShellCount": 12,
+  "observedShellCount": 12,
+  "eligibleDonorCount": 3,
+  "pressureReceiverCount": 3,
+  "blockedShellCount": 1,
+  "protectedShellCount": 1,
+  "fullPairSpace": 96,
+  "evaluatedPairCount": 9,
+  "avoidedPairCount": 87,
+  "noFullNxNPairing": true,
+  "topKDonors": 3,
+  "topKReceivers": 3,
+  "generatedActionCount": 9,
+  "generatedFutureCount": 6,
+  "operatorControlledActionCount": 1,
+  "sandboxAutoEligibleCount": 1,
+  "nonProdAutoEligibleCount": 0,
+  "productionCanaryEligibleCount": 1,
+  "manualOnlyCount": 0,
+  "remediationOnlyCount": 3,
+  "blockedActionCount": 3,
+  "currentIdleCompressionRate": 0.04941176470588235,
+  "targetIdleCompressionRate": 0.25,
+  "projectedIdleCompressionRate": 0.22352941176470587,
+  "currentUnmovedEligibleIdleValue": 0.0808,
+  "projectedMovedIdleValue": 0.019,
+  "projectedUnmovedEligibleIdleValue": 0.0702,
+  "projectedGuaranteeEligibleValue": 0.0152,
+  "controllerCoveragePercent": 0.8941176470588235,
+  "highSavingsOpportunityAddressed": true,
+  "generalProductionAutoAllowed": false,
+  "productionAutoWithPolicy": false,
+  "universalGuaranteedSavingsAllowed": false,
+  "universalGuaranteedSavingsClaimed": false,
+  "estimatedIdleCountedAsMoved": false,
+  "syntheticFleetCountedAsProduction": false,
+  "referenceFleetCountedAsProduction": false,
+  "dashboardExecutor": false,
+  "fluidvirtPolicyAuthority": false,
+  "inventoryRuntimeExecutor": false,
+  "controllerTicks": [
+    {
+      "tickId": "tick-sprint12-001",
+      "controllerId": "continuous-resource-market-controller-sprint12",
+      "startedAt": "2026-05-14T16:59:00Z",
+      "completedAt": "2026-05-14T17:00:00Z",
+      "durationMs": 120,
+      "inputSnapshotRef": "snapshot-sprint12-001",
+      "generatedActionSlateRef": "generated-slate-sprint12",
+      "generatedFutureRefs": [
+        "ctrl-future-001",
+        "ctrl-future-002",
+        "ctrl-future-003"
+      ],
+      "shardCount": 1,
+      "evaluatedShardCount": 1,
+      "evaluatedPairCount": 9,
+      "avoidedPairCount": 87,
+      "generatedActionCount": 9,
+      "generatedFutureCount": 6,
+      "backpressureApplied": false,
+      "tickStatus": "completed",
+      "evidenceRefs": [
+        "hyperdensity-continuous-resource-market-controller-v1"
+      ],
+      "claimBoundary": "controller tick completed; projected not realized"
+    }
+  ],
+  "inputSnapshots": [
+    {
+      "inputSnapshotId": "snapshot-sprint12-001",
+      "collectedAt": "2026-05-14T16:59:00Z",
+      "shellRegistryRef": "hyperdensity-shell-passport-factory-v1",
+      "idleCompressionRef": "hyperdensity-idle-time-compression-fleet-value-v1",
+      "sloPerformanceProofRef": "hyperdensity-slo-performance-proof-v1",
+      "savingsLedgerRef": "hyperdensity-realized-savings-ledger-v1",
+      "guaranteedSavingsRef": "hyperdensity-guaranteed-eligible-savings-v1",
+      "policyEngineRef": "hyperdensity-guarded-auto-policy-engine-v1",
+      "productionCanaryRef": "hyperdensity-production-canary-auto-apply-v1",
+      "shellCount": 12,
+      "donorCandidateCount": 6,
+      "receiverCandidateCount": 3,
+      "pressureSignalCount": 3,
+      "idleObservationCount": 12,
+      "policyConstraintCount": 5,
+      "evidenceRefs": [
+        "hyperdensity-idle-time-compression-fleet-value-v1"
+      ],
+      "claimBoundary": "controller input snapshot from Sprint 11B surfaces"
+    }
+  ],
+  "donorIndex": {
+    "donorIndexId": "donor-index-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "sourceIdleCompressionRef": "hyperdensity-idle-time-compression-fleet-value-v1",
+    "shardKey": "karl/karl-system",
+    "donorCount": 3,
+    "topK": 3,
+    "donors": [
+      {
+        "blockerCodes": null,
+        "claimBoundary": "top-K donor",
+        "donorShellId": "shell-container-donor-a",
+        "eligibleIdleValue": 0.056,
+        "rank": 1,
+        "riskScore": 0.1
+      },
+      {
+        "blockerCodes": null,
+        "claimBoundary": "top-K donor",
+        "donorShellId": "shell-container-donor-b",
+        "eligibleIdleValue": 0.018,
+        "rank": 2,
+        "riskScore": 0.2
+      },
+      {
+        "blockerCodes": null,
+        "claimBoundary": "top-K donor",
+        "donorShellId": "shell-windows-hyper",
+        "eligibleIdleValue": 0.008,
+        "rank": 3,
+        "riskScore": 0
+      }
+    ],
+    "excludedDonors": [
+      {
+        "donorShellId": "shell-reference-sample-001",
+        "reason": "reference_only"
+      },
+      {
+        "donorShellId": "shell-synthetic-fleet-1000",
+        "reason": "synthetic_shadow"
+      },
+      {
+        "donorShellId": "shell-protected-core-001",
+        "reason": "protected_shell"
+      }
+    ],
+    "evidenceRefs": [
+      "shell-container-donor-a"
+    ],
+    "claimBoundary": "incremental donor index; top-K only"
+  },
+  "receiverIndex": {
+    "receiverIndexId": "receiver-index-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "sourcePressureRef": "hyperdensity-idle-time-compression-fleet-value-v1",
+    "shardKey": "karl/karl-system",
+    "receiverCount": 3,
+    "topK": 3,
+    "receivers": [
+      {
+        "blockerCodes": null,
+        "claimBoundary": "top-K receiver",
+        "potentialValueCapture": 0.011,
+        "rank": 1,
+        "receiverShellId": "shell-container-replica-c"
+      },
+      {
+        "blockerCodes": null,
+        "claimBoundary": "top-K receiver",
+        "potentialValueCapture": 0.005,
+        "rank": 2,
+        "receiverShellId": "shell-container-replica-d"
+      },
+      {
+        "blockerCodes": null,
+        "claimBoundary": "top-K receiver",
+        "potentialValueCapture": 0.0042,
+        "rank": 3,
+        "receiverShellId": "shell-container-replica-b"
+      }
+    ],
+    "excludedReceivers": [],
+    "evidenceRefs": [
+      "shell-container-replica-b"
+    ],
+    "claimBoundary": "incremental receiver index; top-K only"
+  },
+  "idleValueIndex": {
+    "idleValueIndexId": "idle-value-index-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "totalIdleValue": 0.125,
+    "eligibleIdleValue": 0.085,
+    "unmovedEligibleIdleValue": 0.0808,
+    "blockedIdleValue": 0.015,
+    "protectedIdleValue": 0.025,
+    "highValueIdleShells": [
+      {
+        "shellId": "shell-container-donor-a",
+        "eligibleIdleValue": 0.056
+      }
+    ],
+    "evidenceRefs": [
+      "hyperdensity-idle-time-compression-fleet-value-v1"
+    ],
+    "claimBoundary": "idle value index from Sprint 11B baseline"
+  },
+  "pressureIndex": {
+    "pressureIndexId": "pressure-index-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "pressureReceiverCount": 3,
+    "cpuBoundCount": 3,
+    "memoryBoundCount": 0,
+    "cpuMemoryBoundCount": 0,
+    "unknownPressureCount": 0,
+    "topPressureReceivers": [
+      {
+        "blockerCodes": null,
+        "claimBoundary": "top-K receiver",
+        "potentialValueCapture": 0.011,
+        "rank": 1,
+        "receiverShellId": "shell-container-replica-c"
+      },
+      {
+        "blockerCodes": null,
+        "claimBoundary": "top-K receiver",
+        "potentialValueCapture": 0.005,
+        "rank": 2,
+        "receiverShellId": "shell-container-replica-d"
+      },
+      {
+        "blockerCodes": null,
+        "claimBoundary": "top-K receiver",
+        "potentialValueCapture": 0.0042,
+        "rank": 3,
+        "receiverShellId": "shell-container-replica-b"
+      }
+    ],
+    "evidenceRefs": [
+      "shell-container-replica-b"
+    ],
+    "claimBoundary": "pressure index"
+  },
+  "riskIndex": {
+    "riskIndexId": "risk-index-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "riskThreshold": 0.5,
+    "evaluatedRiskCount": 3,
+    "lowRiskCount": 3,
+    "mediumRiskCount": 0,
+    "highRiskCount": 0,
+    "excludedHighRiskCount": 0,
+    "riskEntries": [],
+    "evidenceRefs": [
+      "hyperdensity-continuous-resource-market-controller-v1"
+    ],
+    "claimBoundary": "risk index"
+  },
+  "sloReadinessIndex": {
+    "sloReadinessIndexId": "slo-readiness-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "evaluatedShellCount": 12,
+    "readyCount": 10,
+    "missingCount": 1,
+    "evidenceGatedCount": 1,
+    "entries": [],
+    "evidenceRefs": [
+      "hyperdensity-slo-performance-proof-v1"
+    ],
+    "claimBoundary": "SLO readiness index"
+  },
+  "rollbackReadinessIndex": {
+    "rollbackReadinessIndexId": "rollback-readiness-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "evaluatedShellCount": 12,
+    "readyCount": 11,
+    "missingCount": 1,
+    "failedCount": 0,
+    "entries": [],
+    "evidenceRefs": [
+      "hyperdensity-production-canary-auto-apply-v1"
+    ],
+    "claimBoundary": "rollback readiness index"
+  },
+  "priorityQueue": {
+    "priorityQueueId": "priority-queue-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "queueLength": 9,
+    "priorityFormula": "eligibleIdleValue * pressure * (1-risk) * rollbackReady * sloReady",
+    "entries": [
+      {
+        "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+        "amount": "2300m",
+        "blockerCodes": null,
+        "claimBoundary": "priority queue entry; projected not realized",
+        "donorShellId": "shell-container-donor-a",
+        "evidenceRefs": [
+          "ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+        ],
+        "executionScopeRecommendation": "production_canary_eligible",
+        "expectedIdleCompressionImprovement": 0.06588235294117648,
+        "expectedMovedIdleValue": 0.005600000000000001,
+        "guaranteePotential": 0.8,
+        "queueRank": 1,
+        "receiverShellId": "shell-container-replica-c",
+        "resource": "cpu",
+        "riskScore": 0.1,
+        "rollbackReady": true,
+        "sloReady": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+        "amount": "2300m",
+        "blockerCodes": null,
+        "claimBoundary": "priority queue entry; projected not realized",
+        "donorShellId": "shell-container-donor-a",
+        "evidenceRefs": [
+          "ctrl-action-shell-container-donor-a-shell-container-replica-d-002"
+        ],
+        "executionScopeRecommendation": "production_canary_eligible",
+        "expectedIdleCompressionImprovement": 0.058823529411764705,
+        "expectedMovedIdleValue": 0.005,
+        "guaranteePotential": 0.8,
+        "queueRank": 2,
+        "receiverShellId": "shell-container-replica-d",
+        "resource": "cpu",
+        "riskScore": 0.1,
+        "rollbackReady": true,
+        "sloReady": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+        "amount": "2300m",
+        "blockerCodes": null,
+        "claimBoundary": "priority queue entry; projected not realized",
+        "donorShellId": "shell-container-donor-a",
+        "evidenceRefs": [
+          "ctrl-action-shell-container-donor-a-shell-container-replica-b-003"
+        ],
+        "executionScopeRecommendation": "operator_controlled",
+        "expectedIdleCompressionImprovement": 0.04941176470588235,
+        "expectedMovedIdleValue": 0.0042,
+        "guaranteePotential": 0.8,
+        "queueRank": 3,
+        "receiverShellId": "shell-container-replica-b",
+        "resource": "cpu",
+        "riskScore": 0.1,
+        "rollbackReady": true,
+        "sloReady": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+        "amount": "800m",
+        "blockerCodes": [
+          "cooldown_active"
+        ],
+        "claimBoundary": "priority queue entry; projected not realized",
+        "donorShellId": "shell-container-donor-b",
+        "evidenceRefs": [
+          "ctrl-action-shell-container-donor-b-shell-container-replica-c-004"
+        ],
+        "executionScopeRecommendation": "blocked",
+        "expectedIdleCompressionImprovement": 0.021176470588235293,
+        "expectedMovedIdleValue": 0.0018,
+        "guaranteePotential": 0.5,
+        "queueRank": 4,
+        "receiverShellId": "shell-container-replica-c",
+        "resource": "cpu",
+        "riskScore": 0.2,
+        "rollbackReady": true,
+        "sloReady": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+        "amount": "800m",
+        "blockerCodes": [
+          "cooldown_active"
+        ],
+        "claimBoundary": "priority queue entry; projected not realized",
+        "donorShellId": "shell-container-donor-b",
+        "evidenceRefs": [
+          "ctrl-action-shell-container-donor-b-shell-container-replica-d-005"
+        ],
+        "executionScopeRecommendation": "blocked",
+        "expectedIdleCompressionImprovement": 0.021176470588235293,
+        "expectedMovedIdleValue": 0.0018,
+        "guaranteePotential": 0.5,
+        "queueRank": 5,
+        "receiverShellId": "shell-container-replica-d",
+        "resource": "cpu",
+        "riskScore": 0.2,
+        "rollbackReady": true,
+        "sloReady": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+        "amount": "800m",
+        "blockerCodes": [
+          "cooldown_active"
+        ],
+        "claimBoundary": "priority queue entry; projected not realized",
+        "donorShellId": "shell-container-donor-b",
+        "evidenceRefs": [
+          "ctrl-action-shell-container-donor-b-shell-container-replica-b-006"
+        ],
+        "executionScopeRecommendation": "blocked",
+        "expectedIdleCompressionImprovement": 0.021176470588235293,
+        "expectedMovedIdleValue": 0.0018,
+        "guaranteePotential": 0.5,
+        "queueRank": 6,
+        "receiverShellId": "shell-container-replica-b",
+        "resource": "cpu",
+        "riskScore": 0.2,
+        "rollbackReady": true,
+        "sloReady": true
+      },
+      {
+        "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-c-007",
+        "amount": "",
+        "blockerCodes": [
+          "windows_evidence_gated"
+        ],
+        "claimBoundary": "priority queue entry; projected not realized",
+        "donorShellId": "shell-windows-hyper",
+        "evidenceRefs": [
+          "ctrl-action-shell-windows-hyper-shell-container-replica-c-007"
+        ],
+        "executionScopeRecommendation": "remediation_only",
+        "expectedIdleCompressionImprovement": 0.009411764705882352,
+        "expectedMovedIdleValue": 0.0008,
+        "guaranteePotential": 0,
+        "queueRank": 7,
+        "receiverShellId": "shell-container-replica-c",
+        "resource": "cpu",
+        "riskScore": 0,
+        "rollbackReady": false,
+        "sloReady": false
+      },
+      {
+        "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-d-008",
+        "amount": "",
+        "blockerCodes": [
+          "windows_evidence_gated"
+        ],
+        "claimBoundary": "priority queue entry; projected not realized",
+        "donorShellId": "shell-windows-hyper",
+        "evidenceRefs": [
+          "ctrl-action-shell-windows-hyper-shell-container-replica-d-008"
+        ],
+        "executionScopeRecommendation": "remediation_only",
+        "expectedIdleCompressionImprovement": 0.009411764705882352,
+        "expectedMovedIdleValue": 0.0008,
+        "guaranteePotential": 0,
+        "queueRank": 8,
+        "receiverShellId": "shell-container-replica-d",
+        "resource": "cpu",
+        "riskScore": 0,
+        "rollbackReady": false,
+        "sloReady": false
+      },
+      {
+        "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-b-009",
+        "amount": "",
+        "blockerCodes": [
+          "windows_evidence_gated"
+        ],
+        "claimBoundary": "priority queue entry; projected not realized",
+        "donorShellId": "shell-windows-hyper",
+        "evidenceRefs": [
+          "ctrl-action-shell-windows-hyper-shell-container-replica-b-009"
+        ],
+        "executionScopeRecommendation": "remediation_only",
+        "expectedIdleCompressionImprovement": 0.009411764705882352,
+        "expectedMovedIdleValue": 0.0008,
+        "guaranteePotential": 0,
+        "queueRank": 9,
+        "receiverShellId": "shell-container-replica-b",
+        "resource": "cpu",
+        "riskScore": 0,
+        "rollbackReady": false,
+        "sloReady": false
+      }
+    ],
+    "evidenceRefs": [
+      "hyperdensity-continuous-resource-market-controller-v1"
+    ],
+    "claimBoundary": "action priority queue; projected not realized"
+  },
+  "generatedActionSlate": {
+    "generatedActionSlateId": "generated-slate-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "sourceControllerTickRef": "tick-sprint12-001",
+    "generatedActionCount": 9,
+    "actions": [
+      {
+        "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+        "amount": "2300m",
+        "approvalMode": "canary_policy",
+        "blockers": null,
+        "claimBoundary": "controller-generated action; not general production auto",
+        "donorShellId": "shell-container-donor-a",
+        "dryRunRequired": true,
+        "evidenceRefs": [
+          "shell-container-donor-a",
+          "shell-container-replica-c"
+        ],
+        "executionScopeRecommendation": "sandbox_auto_eligible",
+        "expectedGuaranteeEligibleValue": 0.004032000000000001,
+        "expectedMovedIdleValue": 0.005600000000000001,
+        "expectedRealizedValue": 0.005040000000000001,
+        "generalProductionAutoAllowed": false,
+        "noRegressionRequired": true,
+        "priorityRank": 1,
+        "productionAutoWithPolicy": false,
+        "productionCanaryScope": true,
+        "productionScope": true,
+        "receiverShellId": "shell-container-replica-c",
+        "resource": "cpu",
+        "rollbackRequired": true,
+        "sloGuardRequired": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+        "amount": "2300m",
+        "approvalMode": "canary_policy",
+        "blockers": null,
+        "claimBoundary": "controller-generated action; not general production auto",
+        "donorShellId": "shell-container-donor-a",
+        "dryRunRequired": true,
+        "evidenceRefs": [
+          "shell-container-donor-a",
+          "shell-container-replica-d"
+        ],
+        "executionScopeRecommendation": "production_canary_eligible",
+        "expectedGuaranteeEligibleValue": 0.0036,
+        "expectedMovedIdleValue": 0.005,
+        "expectedRealizedValue": 0.0045000000000000005,
+        "generalProductionAutoAllowed": false,
+        "noRegressionRequired": true,
+        "priorityRank": 2,
+        "productionAutoWithPolicy": false,
+        "productionCanaryScope": true,
+        "productionScope": true,
+        "receiverShellId": "shell-container-replica-d",
+        "resource": "cpu",
+        "rollbackRequired": true,
+        "sloGuardRequired": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+        "amount": "2300m",
+        "approvalMode": "operator_required",
+        "blockers": null,
+        "claimBoundary": "controller-generated action; not general production auto",
+        "donorShellId": "shell-container-donor-a",
+        "dryRunRequired": true,
+        "evidenceRefs": [
+          "shell-container-donor-a",
+          "shell-container-replica-b"
+        ],
+        "executionScopeRecommendation": "operator_controlled",
+        "expectedGuaranteeEligibleValue": 0.0030239999999999998,
+        "expectedMovedIdleValue": 0.0042,
+        "expectedRealizedValue": 0.00378,
+        "generalProductionAutoAllowed": false,
+        "noRegressionRequired": true,
+        "priorityRank": 3,
+        "productionAutoWithPolicy": false,
+        "productionCanaryScope": false,
+        "productionScope": false,
+        "receiverShellId": "shell-container-replica-b",
+        "resource": "cpu",
+        "rollbackRequired": true,
+        "sloGuardRequired": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+        "amount": "800m",
+        "approvalMode": "policy_classified",
+        "blockers": [
+          "cooldown_active"
+        ],
+        "claimBoundary": "controller-generated action; not general production auto",
+        "donorShellId": "shell-container-donor-b",
+        "dryRunRequired": true,
+        "evidenceRefs": [
+          "shell-container-donor-b",
+          "shell-container-replica-c"
+        ],
+        "executionScopeRecommendation": "blocked",
+        "expectedGuaranteeEligibleValue": 0.0012959999999999998,
+        "expectedMovedIdleValue": 0.0018,
+        "expectedRealizedValue": 0.00162,
+        "generalProductionAutoAllowed": false,
+        "noRegressionRequired": true,
+        "priorityRank": 4,
+        "productionAutoWithPolicy": false,
+        "productionCanaryScope": false,
+        "productionScope": false,
+        "receiverShellId": "shell-container-replica-c",
+        "resource": "cpu",
+        "rollbackRequired": true,
+        "sloGuardRequired": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+        "amount": "800m",
+        "approvalMode": "policy_classified",
+        "blockers": [
+          "cooldown_active"
+        ],
+        "claimBoundary": "controller-generated action; not general production auto",
+        "donorShellId": "shell-container-donor-b",
+        "dryRunRequired": true,
+        "evidenceRefs": [
+          "shell-container-donor-b",
+          "shell-container-replica-d"
+        ],
+        "executionScopeRecommendation": "blocked",
+        "expectedGuaranteeEligibleValue": 0.0012959999999999998,
+        "expectedMovedIdleValue": 0.0018,
+        "expectedRealizedValue": 0.00162,
+        "generalProductionAutoAllowed": false,
+        "noRegressionRequired": true,
+        "priorityRank": 5,
+        "productionAutoWithPolicy": false,
+        "productionCanaryScope": false,
+        "productionScope": false,
+        "receiverShellId": "shell-container-replica-d",
+        "resource": "cpu",
+        "rollbackRequired": true,
+        "sloGuardRequired": true
+      },
+      {
+        "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+        "amount": "800m",
+        "approvalMode": "policy_classified",
+        "blockers": [
+          "cooldown_active"
+        ],
+        "claimBoundary": "controller-generated action; not general production auto",
+        "donorShellId": "shell-container-donor-b",
+        "dryRunRequired": true,
+        "evidenceRefs": [
+          "shell-container-donor-b",
+          "shell-container-replica-b"
+        ],
+        "executionScopeRecommendation": "blocked",
+        "expectedGuaranteeEligibleValue": 0.0012959999999999998,
+        "expectedMovedIdleValue": 0.0018,
+        "expectedRealizedValue": 0.00162,
+        "generalProductionAutoAllowed": false,
+        "noRegressionRequired": true,
+        "priorityRank": 6,
+        "productionAutoWithPolicy": false,
+        "productionCanaryScope": false,
+        "productionScope": false,
+        "receiverShellId": "shell-container-replica-b",
+        "resource": "cpu",
+        "rollbackRequired": true,
+        "sloGuardRequired": true
+      }
+    ],
+    "noFullNxNPairing": true,
+    "evidenceRefs": [
+      "hyperdensity-continuous-resource-market-controller-v1"
+    ],
+    "claimBoundary": "controller-generated action slate; no general production auto"
+  },
+  "generatedResourceFutures": [
+    {
+      "amount": "2300m",
+      "claimBoundary": "resource future; projected not realized",
+      "confidence": 0.75,
+      "donorAvailabilityProbability": 0.8,
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+      ],
+      "executionScopeRecommendation": "production_canary_eligible",
+      "expectedCompressionGain": 0.06588235294117648,
+      "expectedMovedIdleValue": 0.005600000000000001,
+      "expiration": "2026-05-14T16:01:12Z",
+      "futureId": "ctrl-future-001",
+      "horizonSeconds": 3600,
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "2300m",
+      "claimBoundary": "resource future; projected not realized",
+      "confidence": 0.75,
+      "donorAvailabilityProbability": 0.8,
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-d-002"
+      ],
+      "executionScopeRecommendation": "production_canary_eligible",
+      "expectedCompressionGain": 0.058823529411764705,
+      "expectedMovedIdleValue": 0.005,
+      "expiration": "2026-05-14T17:01:12Z",
+      "futureId": "ctrl-future-002",
+      "horizonSeconds": 7200,
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "2300m",
+      "claimBoundary": "resource future; projected not realized",
+      "confidence": 0.75,
+      "donorAvailabilityProbability": 0.8,
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-b-003"
+      ],
+      "executionScopeRecommendation": "operator_controlled",
+      "expectedCompressionGain": 0.04941176470588235,
+      "expectedMovedIdleValue": 0.0042,
+      "expiration": "2026-05-14T18:01:12Z",
+      "futureId": "ctrl-future-003",
+      "horizonSeconds": 10800,
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "512Mi",
+      "claimBoundary": "resource future; projected not realized",
+      "confidence": 0.7,
+      "donorAvailabilityProbability": 0.75,
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-mem-010"
+      ],
+      "executionScopeRecommendation": "operator_controlled",
+      "expectedCompressionGain": 0.03529411764705882,
+      "expectedMovedIdleValue": 0.003,
+      "expiration": "2026-05-14T19:01:12Z",
+      "futureId": "ctrl-future-mem-005",
+      "horizonSeconds": 14400,
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.65,
+      "receiverShellId": "shell-container-replica-mem",
+      "resource": "memory",
+      "triggerCondition": "memory_pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "0",
+      "claimBoundary": "resource future; projected not realized; Windows evidence-gated remediation only",
+      "confidence": 0.4,
+      "donorAvailabilityProbability": 0.3,
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-action-shell-windows-hyper-shell-container-replica-c-007"
+      ],
+      "executionScopeRecommendation": "remediation_only",
+      "expectedCompressionGain": 0.0,
+      "expectedMovedIdleValue": 0.0,
+      "expiration": "2026-05-14T20:01:12Z",
+      "futureId": "ctrl-future-win-remediation-006",
+      "horizonSeconds": 18000,
+      "invalidationReasons": [
+        "Windows_evidence_gated",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.5,
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "triggerCondition": "windows_evidence_gate_cleared"
+    },
+    {
+      "amount": "800m",
+      "claimBoundary": "resource future; projected not realized",
+      "confidence": 0.75,
+      "donorAvailabilityProbability": 0.8,
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-c-004"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expectedCompressionGain": 0.021176470588235293,
+      "expectedMovedIdleValue": 0.0018,
+      "expiration": "2026-05-14T17:01:12Z",
+      "futureId": "ctrl-future-004",
+      "horizonSeconds": 7200,
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    }
+  ],
+  "topKPairingWindows": [
+    {
+      "pairingWindowId": "pairing-window-sprint12",
+      "shardKey": "karl/karl-system",
+      "topKDonors": 3,
+      "topKReceivers": 3,
+      "fullPairSpace": 96,
+      "evaluatedPairCount": 9,
+      "avoidedPairCount": 87,
+      "noFullNxNPairing": true,
+      "evaluatedPairs": [],
+      "skippedPairsSummary": {
+        "reason": "top_k_bounded_evaluation"
+      },
+      "evidenceRefs": [
+        "hyperdensity-continuous-resource-market-controller-v1"
+      ],
+      "claimBoundary": "top-K pairing window; no full N\u00d7N"
+    }
+  ],
+  "pairSpaceAvoidance": {
+    "pairSpaceAvoidanceId": "pair-avoidance-sprint12",
+    "fullPairSpace": 96,
+    "evaluatedPairCount": 9,
+    "avoidedPairCount": 87,
+    "avoidancePercent": 0.90625,
+    "noFullNxNPairing": true,
+    "evidenceRefs": [
+      "hyperdensity-continuous-resource-market-controller-v1"
+    ],
+    "claimBoundary": "pair space avoidance metrics"
+  },
+  "coverageMetrics": {
+    "coverageMetricsId": "coverage-metrics-sprint12",
+    "previousControllerCoveragePercent": 0.198,
+    "controllerCoveragePercent": 0.8941176470588235,
+    "controllerCoverageExpanded": true,
+    "previousIdleCompressionRate": 0.04941176470588235,
+    "projectedIdleCompressionRate": 0.22352941176470587,
+    "currentUnmovedEligibleIdleValue": 0.0808,
+    "projectedUnmovedEligibleIdleValue": 0.0702,
+    "projectedMovedIdleValue": 0.019,
+    "highSavingsOpportunityAddressed": true,
+    "evidenceRefs": [
+      "hyperdensity-continuous-resource-market-controller-v1"
+    ],
+    "claimBoundary": "controller coverage expanded over Sprint 11B insufficient_controller_coverage blocker"
+  },
+  "marketLiquidityScore": {
+    "marketLiquidityScoreId": "liquidity-score-sprint12",
+    "generatedAt": "2026-05-14T17:00:00Z",
+    "liquidityScore": 0.68,
+    "eligibleIdleValue": 0.085,
+    "pressureValue": 0.0202,
+    "movedIdleValue": 0.0042,
+    "unmovedEligibleIdleValue": 0.0808,
+    "blockerPenalty": 0.015,
+    "riskPenalty": 0.01,
+    "scoreClass": "medium",
+    "evidenceRefs": [
+      "hyperdensity-idle-time-compression-fleet-value-v1"
+    ],
+    "claimBoundary": "market liquidity score"
+  },
+  "invalidationRules": [
+    {
+      "invalidationRuleId": "inv-shell-identity",
+      "trigger": "shell_identity_changed",
+      "invalidates": "generated_actions_and_futures",
+      "reason": "identity drift",
+      "evidenceRefs": [
+        "hyperdensity-continuous-resource-market-controller-v1"
+      ],
+      "claimBoundary": "invalidation"
+    },
+    {
+      "invalidationRuleId": "inv-slo-regression",
+      "trigger": "SLO_regression",
+      "invalidates": "auto_eligible_actions",
+      "reason": "SLO regression",
+      "evidenceRefs": [
+        "hyperdensity-slo-performance-proof-v1"
+      ],
+      "claimBoundary": "invalidation"
+    },
+    {
+      "invalidationRuleId": "inv-rollback",
+      "trigger": "rollback_not_ready",
+      "invalidates": "auto_eligible_actions",
+      "reason": "rollback not ready",
+      "evidenceRefs": [
+        "hyperdensity-production-canary-auto-apply-v1"
+      ],
+      "claimBoundary": "invalidation"
+    },
+    {
+      "invalidationRuleId": "inv-kill-switch",
+      "trigger": "kill_switch_active",
+      "invalidates": "all_auto_scopes",
+      "reason": "kill switch",
+      "evidenceRefs": [
+        "hyperdensity-guarded-auto-policy-engine-v1"
+      ],
+      "claimBoundary": "invalidation"
+    },
+    {
+      "invalidationRuleId": "inv-circuit-breaker",
+      "trigger": "circuit_breaker_open",
+      "invalidates": "all_auto_scopes",
+      "reason": "circuit breaker",
+      "evidenceRefs": [
+        "hyperdensity-guarded-auto-policy-engine-v1"
+      ],
+      "claimBoundary": "invalidation"
+    },
+    {
+      "invalidationRuleId": "inv-entitlement",
+      "trigger": "entitlement_missing",
+      "invalidates": "guarantee_eligible_actions",
+      "reason": "entitlement missing",
+      "evidenceRefs": [
+        "hyperdensity-guaranteed-eligible-savings-v1"
+      ],
+      "claimBoundary": "invalidation"
+    },
+    {
+      "invalidationRuleId": "inv-unit-price",
+      "trigger": "unit_price_missing",
+      "invalidates": "guarantee_eligible_actions",
+      "reason": "unit price missing",
+      "evidenceRefs": [
+        "hyperdensity-guaranteed-eligible-savings-v1"
+      ],
+      "claimBoundary": "invalidation"
+    },
+    {
+      "invalidationRuleId": "inv-windows",
+      "trigger": "Windows_evidence_gated",
+      "invalidates": "auto_eligible_windows_actions",
+      "reason": "Windows evidence gated",
+      "evidenceRefs": [
+        "mov-acct-windows-gated-004"
+      ],
+      "claimBoundary": "invalidation"
+    },
+    {
+      "invalidationRuleId": "inv-expired",
+      "trigger": "candidate_expired",
+      "invalidates": "stale_futures",
+      "reason": "candidate expired",
+      "evidenceRefs": [
+        "hyperdensity-continuous-resource-market-controller-v1"
+      ],
+      "claimBoundary": "invalidation"
+    }
+  ],
+  "backpressure": {
+    "backpressureId": "backpressure-sprint12",
+    "active": false,
+    "reason": "within_rate_limits",
+    "maxActionsPerTick": 12,
+    "maxFuturesPerTick": 12,
+    "rateLimitRemaining": 5,
+    "cooldownBlockedCount": 1,
+    "killSwitchActive": false,
+    "circuitBreakerOpen": false,
+    "evidenceRefs": [
+      "hyperdensity-guarded-auto-policy-engine-v1"
+    ],
+    "claimBoundary": "backpressure awareness; cooldown blocks donor-b actions"
+  },
+  "sourceOfTruth": {
+    "controllerDecision": "Karl-Hyperdensity",
+    "idleMeasurements": "FluidVirt",
+    "fleetProjection": "Karl-Dashboard",
+    "identitySignals": "Karl-Inventory"
+  },
+  "safetyInvariants": {
+    "generalProductionAutoAllowed": false,
+    "productionAutoWithPolicy": false,
+    "noFullNxNPairing": true,
+    "dashboardExecutor": false,
+    "fluidvirtPolicyAuthority": false,
+    "inventoryRuntimeExecutor": false
+  },
+  "claimBoundaries": [
+    "KARL Hyperdensity can continuously maintain a bounded runtime resource market by indexing idle donors, pressure receivers, risk, rollback and SLO readiness, generating prioritized action slate and resource futures without full N\u00d7N pairing, while keeping general production auto disabled.",
+    "projected idle compression and moved value are projections only; not realized",
+    "insufficient_controller_coverage blocker addressed by controller-generated actions for shell-container-donor-a",
+    "production canary eligible is not general production auto"
+  ],
+  "blockers": [],
+  "warnings": [
+    {
+      "warningCode": "projected_not_realized",
+      "reason": "projectedIdleCompressionRate and projectedMovedIdleValue are projections only"
+    },
+    {
+      "warningCode": "cooldown_downgraded_action",
+      "reason": "shell-container-donor-b actions may be blocked by cooldown_active"
+    }
+  ]
+}

@@ -1,0 +1,16 @@
+{
+  "marketLiquidityScoreId": "liquidity-score-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "liquidityScore": 0.68,
+  "eligibleIdleValue": 0.085,
+  "pressureValue": 0.0202,
+  "movedIdleValue": 0.0042,
+  "unmovedEligibleIdleValue": 0.0808,
+  "blockerPenalty": 0.015,
+  "riskPenalty": 0.01,
+  "scoreClass": "medium",
+  "evidenceRefs": [
+    "hyperdensity-idle-time-compression-fleet-value-v1"
+  ],
+  "claimBoundary": "market liquidity score"
+}

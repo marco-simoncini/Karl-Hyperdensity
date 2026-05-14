@@ -1,0 +1,26 @@
+{
+  "tickId": "tick-sprint12-001",
+  "controllerId": "continuous-resource-market-controller-sprint12",
+  "startedAt": "2026-05-14T16:59:00Z",
+  "completedAt": "2026-05-14T17:00:00Z",
+  "durationMs": 120,
+  "inputSnapshotRef": "snapshot-sprint12-001",
+  "generatedActionSlateRef": "generated-slate-sprint12",
+  "generatedFutureRefs": [
+    "ctrl-future-001",
+    "ctrl-future-002",
+    "ctrl-future-003"
+  ],
+  "shardCount": 1,
+  "evaluatedShardCount": 1,
+  "evaluatedPairCount": 9,
+  "avoidedPairCount": 87,
+  "generatedActionCount": 9,
+  "generatedFutureCount": 9,
+  "backpressureApplied": false,
+  "tickStatus": "completed",
+  "evidenceRefs": [
+    "hyperdensity-continuous-resource-market-controller-v1"
+  ],
+  "claimBoundary": "controller tick completed; projected not realized"
+}

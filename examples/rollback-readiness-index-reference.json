@@ -1,0 +1,13 @@
+{
+  "rollbackReadinessIndexId": "rollback-readiness-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "evaluatedShellCount": 12,
+  "readyCount": 11,
+  "missingCount": 1,
+  "failedCount": 0,
+  "entries": [],
+  "evidenceRefs": [
+    "hyperdensity-production-canary-auto-apply-v1"
+  ],
+  "claimBoundary": "rollback readiness index"
+}

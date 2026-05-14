@@ -1,0 +1,15 @@
+{
+  "backpressureId": "backpressure-sprint12",
+  "active": false,
+  "reason": "within_rate_limits",
+  "maxActionsPerTick": 12,
+  "maxFuturesPerTick": 12,
+  "rateLimitRemaining": 5,
+  "cooldownBlockedCount": 1,
+  "killSwitchActive": false,
+  "circuitBreakerOpen": false,
+  "evidenceRefs": [
+    "hyperdensity-guarded-auto-policy-engine-v1"
+  ],
+  "claimBoundary": "backpressure awareness; cooldown blocks donor-b actions"
+}

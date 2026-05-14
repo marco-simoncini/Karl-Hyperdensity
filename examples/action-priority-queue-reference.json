@@ -1,0 +1,204 @@
+{
+  "priorityQueueId": "priority-queue-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "queueLength": 9,
+  "priorityFormula": "eligibleIdleValue * pressure * (1-risk) * rollbackReady * sloReady",
+  "entries": [
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "amount": "2300m",
+      "blockerCodes": null,
+      "claimBoundary": "priority queue entry; projected not realized",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+      ],
+      "executionScopeRecommendation": "production_canary_eligible",
+      "expectedIdleCompressionImprovement": 0.06588235294117648,
+      "expectedMovedIdleValue": 0.005600000000000001,
+      "guaranteePotential": 0.8,
+      "queueRank": 1,
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "riskScore": 0.1,
+      "rollbackReady": true,
+      "sloReady": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "amount": "2300m",
+      "blockerCodes": null,
+      "claimBoundary": "priority queue entry; projected not realized",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-d-002"
+      ],
+      "executionScopeRecommendation": "production_canary_eligible",
+      "expectedIdleCompressionImprovement": 0.058823529411764705,
+      "expectedMovedIdleValue": 0.005,
+      "guaranteePotential": 0.8,
+      "queueRank": 2,
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "riskScore": 0.1,
+      "rollbackReady": true,
+      "sloReady": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "amount": "2300m",
+      "blockerCodes": null,
+      "claimBoundary": "priority queue entry; projected not realized",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-b-003"
+      ],
+      "executionScopeRecommendation": "operator_controlled",
+      "expectedIdleCompressionImprovement": 0.04941176470588235,
+      "expectedMovedIdleValue": 0.0042,
+      "guaranteePotential": 0.8,
+      "queueRank": 3,
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "riskScore": 0.1,
+      "rollbackReady": true,
+      "sloReady": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "amount": "800m",
+      "blockerCodes": [
+        "cooldown_active"
+      ],
+      "claimBoundary": "priority queue entry; projected not realized",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-c-004"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expectedIdleCompressionImprovement": 0.021176470588235293,
+      "expectedMovedIdleValue": 0.0018,
+      "guaranteePotential": 0.5,
+      "queueRank": 4,
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "riskScore": 0.2,
+      "rollbackReady": true,
+      "sloReady": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "amount": "800m",
+      "blockerCodes": [
+        "cooldown_active"
+      ],
+      "claimBoundary": "priority queue entry; projected not realized",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-d-005"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expectedIdleCompressionImprovement": 0.021176470588235293,
+      "expectedMovedIdleValue": 0.0018,
+      "guaranteePotential": 0.5,
+      "queueRank": 5,
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "riskScore": 0.2,
+      "rollbackReady": true,
+      "sloReady": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "amount": "800m",
+      "blockerCodes": [
+        "cooldown_active"
+      ],
+      "claimBoundary": "priority queue entry; projected not realized",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-b-006"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expectedIdleCompressionImprovement": 0.021176470588235293,
+      "expectedMovedIdleValue": 0.0018,
+      "guaranteePotential": 0.5,
+      "queueRank": 6,
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "riskScore": 0.2,
+      "rollbackReady": true,
+      "sloReady": true
+    },
+    {
+      "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-c-007",
+      "amount": "",
+      "blockerCodes": [
+        "windows_evidence_gated"
+      ],
+      "claimBoundary": "priority queue entry; projected not realized",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-action-shell-windows-hyper-shell-container-replica-c-007"
+      ],
+      "executionScopeRecommendation": "remediation_only",
+      "expectedIdleCompressionImprovement": 0.009411764705882352,
+      "expectedMovedIdleValue": 0.0008,
+      "guaranteePotential": 0,
+      "queueRank": 7,
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "riskScore": 0,
+      "rollbackReady": false,
+      "sloReady": false
+    },
+    {
+      "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-d-008",
+      "amount": "",
+      "blockerCodes": [
+        "windows_evidence_gated"
+      ],
+      "claimBoundary": "priority queue entry; projected not realized",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-action-shell-windows-hyper-shell-container-replica-d-008"
+      ],
+      "executionScopeRecommendation": "remediation_only",
+      "expectedIdleCompressionImprovement": 0.009411764705882352,
+      "expectedMovedIdleValue": 0.0008,
+      "guaranteePotential": 0,
+      "queueRank": 8,
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "riskScore": 0,
+      "rollbackReady": false,
+      "sloReady": false
+    },
+    {
+      "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-b-009",
+      "amount": "",
+      "blockerCodes": [
+        "windows_evidence_gated"
+      ],
+      "claimBoundary": "priority queue entry; projected not realized",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-action-shell-windows-hyper-shell-container-replica-b-009"
+      ],
+      "executionScopeRecommendation": "remediation_only",
+      "expectedIdleCompressionImprovement": 0.009411764705882352,
+      "expectedMovedIdleValue": 0.0008,
+      "guaranteePotential": 0,
+      "queueRank": 9,
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "riskScore": 0,
+      "rollbackReady": false,
+      "sloReady": false
+    }
+  ],
+  "evidenceRefs": [
+    "hyperdensity-continuous-resource-market-controller-v1"
+  ],
+  "claimBoundary": "action priority queue; projected not realized"
+}

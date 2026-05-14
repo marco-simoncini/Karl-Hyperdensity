@@ -1,0 +1,18 @@
+{
+  "pairingWindowId": "pairing-window-sprint12",
+  "shardKey": "karl/karl-system",
+  "topKDonors": 3,
+  "topKReceivers": 3,
+  "fullPairSpace": 96,
+  "evaluatedPairCount": 9,
+  "avoidedPairCount": 87,
+  "noFullNxNPairing": true,
+  "evaluatedPairs": [],
+  "skippedPairsSummary": {
+    "reason": "top_k_bounded_evaluation"
+  },
+  "evidenceRefs": [
+    "hyperdensity-continuous-resource-market-controller-v1"
+  ],
+  "claimBoundary": "top-K pairing window; no full N\u00d7N"
+}

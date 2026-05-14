@@ -1,0 +1,12 @@
+{
+  "pairSpaceAvoidanceId": "pair-avoidance-sprint12",
+  "fullPairSpace": 96,
+  "evaluatedPairCount": 9,
+  "avoidedPairCount": 87,
+  "avoidancePercent": 0.90625,
+  "noFullNxNPairing": true,
+  "evidenceRefs": [
+    "hyperdensity-continuous-resource-market-controller-v1"
+  ],
+  "claimBoundary": "pair space avoidance metrics"
+}

@@ -1,0 +1,13 @@
+{
+  "sloReadinessIndexId": "slo-readiness-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "evaluatedShellCount": 12,
+  "readyCount": 10,
+  "missingCount": 1,
+  "evidenceGatedCount": 1,
+  "entries": [],
+  "evidenceRefs": [
+    "hyperdensity-slo-performance-proof-v1"
+  ],
+  "claimBoundary": "SLO readiness index"
+}

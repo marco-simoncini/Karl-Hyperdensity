@@ -1,0 +1,36 @@
+{
+  "pressureIndexId": "pressure-index-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "pressureReceiverCount": 3,
+  "cpuBoundCount": 3,
+  "memoryBoundCount": 0,
+  "cpuMemoryBoundCount": 0,
+  "unknownPressureCount": 0,
+  "topPressureReceivers": [
+    {
+      "blockerCodes": null,
+      "claimBoundary": "top-K receiver",
+      "potentialValueCapture": 0.011,
+      "rank": 1,
+      "receiverShellId": "shell-container-replica-c"
+    },
+    {
+      "blockerCodes": null,
+      "claimBoundary": "top-K receiver",
+      "potentialValueCapture": 0.005,
+      "rank": 2,
+      "receiverShellId": "shell-container-replica-d"
+    },
+    {
+      "blockerCodes": null,
+      "claimBoundary": "top-K receiver",
+      "potentialValueCapture": 0.0042,
+      "rank": 3,
+      "receiverShellId": "shell-container-replica-b"
+    }
+  ],
+  "evidenceRefs": [
+    "shell-container-replica-b"
+  ],
+  "claimBoundary": "pressure index"
+}

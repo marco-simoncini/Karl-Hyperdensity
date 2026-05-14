@@ -1,0 +1,52 @@
+{
+  "donorIndexId": "donor-index-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "sourceIdleCompressionRef": "hyperdensity-idle-time-compression-fleet-value-v1",
+  "shardKey": "karl/karl-system",
+  "donorCount": 3,
+  "topK": 3,
+  "donors": [
+    {
+      "blockerCodes": null,
+      "claimBoundary": "top-K donor",
+      "donorShellId": "shell-container-donor-a",
+      "eligibleIdleValue": 0.056,
+      "rank": 1,
+      "riskScore": 0.1
+    },
+    {
+      "blockerCodes": null,
+      "claimBoundary": "top-K donor",
+      "donorShellId": "shell-container-donor-b",
+      "eligibleIdleValue": 0.018,
+      "rank": 2,
+      "riskScore": 0.2
+    },
+    {
+      "blockerCodes": null,
+      "claimBoundary": "top-K donor",
+      "donorShellId": "shell-windows-hyper",
+      "eligibleIdleValue": 0.008,
+      "rank": 3,
+      "riskScore": 0
+    }
+  ],
+  "excludedDonors": [
+    {
+      "donorShellId": "shell-reference-sample-001",
+      "reason": "reference_only"
+    },
+    {
+      "donorShellId": "shell-synthetic-fleet-1000",
+      "reason": "synthetic_shadow"
+    },
+    {
+      "donorShellId": "shell-protected-core-001",
+      "reason": "protected_shell"
+    }
+  ],
+  "evidenceRefs": [
+    "shell-container-donor-a"
+  ],
+  "claimBoundary": "incremental donor index; top-K only"
+}

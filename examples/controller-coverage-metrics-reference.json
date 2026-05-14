@@ -1,0 +1,16 @@
+{
+  "coverageMetricsId": "coverage-metrics-sprint12",
+  "previousControllerCoveragePercent": 0.198,
+  "controllerCoveragePercent": 0.8941176470588235,
+  "controllerCoverageExpanded": true,
+  "previousIdleCompressionRate": 0.04941176470588235,
+  "projectedIdleCompressionRate": 0.22352941176470587,
+  "currentUnmovedEligibleIdleValue": 0.0808,
+  "projectedUnmovedEligibleIdleValue": 0.0702,
+  "projectedMovedIdleValue": 0.019,
+  "highSavingsOpportunityAddressed": true,
+  "evidenceRefs": [
+    "hyperdensity-continuous-resource-market-controller-v1"
+  ],
+  "claimBoundary": "controller coverage expanded over Sprint 11B insufficient_controller_coverage blocker"
+}

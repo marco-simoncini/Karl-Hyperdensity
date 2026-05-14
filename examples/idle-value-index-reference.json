@@ -1,0 +1,19 @@
+{
+  "idleValueIndexId": "idle-value-index-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "totalIdleValue": 0.125,
+  "eligibleIdleValue": 0.085,
+  "unmovedEligibleIdleValue": 0.0808,
+  "blockedIdleValue": 0.015,
+  "protectedIdleValue": 0.025,
+  "highValueIdleShells": [
+    {
+      "shellId": "shell-container-donor-a",
+      "eligibleIdleValue": 0.056
+    }
+  ],
+  "evidenceRefs": [
+    "hyperdensity-idle-time-compression-fleet-value-v1"
+  ],
+  "claimBoundary": "idle value index from Sprint 11B baseline"
+}

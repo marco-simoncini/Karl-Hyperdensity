@@ -1,0 +1,36 @@
+{
+  "receiverIndexId": "receiver-index-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "sourcePressureRef": "hyperdensity-idle-time-compression-fleet-value-v1",
+  "shardKey": "karl/karl-system",
+  "receiverCount": 3,
+  "topK": 3,
+  "receivers": [
+    {
+      "blockerCodes": null,
+      "claimBoundary": "top-K receiver",
+      "potentialValueCapture": 0.011,
+      "rank": 1,
+      "receiverShellId": "shell-container-replica-c"
+    },
+    {
+      "blockerCodes": null,
+      "claimBoundary": "top-K receiver",
+      "potentialValueCapture": 0.005,
+      "rank": 2,
+      "receiverShellId": "shell-container-replica-d"
+    },
+    {
+      "blockerCodes": null,
+      "claimBoundary": "top-K receiver",
+      "potentialValueCapture": 0.0042,
+      "rank": 3,
+      "receiverShellId": "shell-container-replica-b"
+    }
+  ],
+  "excludedReceivers": [],
+  "evidenceRefs": [
+    "shell-container-replica-b"
+  ],
+  "claimBoundary": "incremental receiver index; top-K only"
+}

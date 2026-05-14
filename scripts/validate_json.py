@@ -1926,6 +1926,86 @@ def main() -> int:
         if example_by_name.get(name) is None:
             fail(f"missing Sprint 11B example: {name}")
 
+    # --- Sprint 12: continuous resource market controller v1 ---
+    sprint12_schemas = [
+        "continuous-resource-market-controller-v1.schema.json",
+        "controller-tick-v1.schema.json",
+        "controller-input-snapshot-v1.schema.json",
+        "incremental-donor-index-v1.schema.json",
+        "incremental-receiver-index-v1.schema.json",
+        "idle-value-index-v1.schema.json",
+        "pressure-index-v1.schema.json",
+        "risk-index-v1.schema.json",
+        "slo-readiness-index-v1.schema.json",
+        "rollback-readiness-index-v1.schema.json",
+        "action-priority-queue-v1.schema.json",
+        "controller-generated-action-slate-v1.schema.json",
+        "controller-generated-action-v1.schema.json",
+        "controller-generated-resource-future-v1.schema.json",
+        "top-k-pairing-window-v1.schema.json",
+        "pair-space-avoidance-v1.schema.json",
+        "controller-coverage-metrics-v1.schema.json",
+        "market-liquidity-score-v1.schema.json",
+        "controller-invalidation-rule-v1.schema.json",
+        "controller-backpressure-v1.schema.json",
+    ]
+    for name in sprint12_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 12 schema: {name}")
+
+    ctrl_surface = example_by_name.get("continuous-resource-market-controller-reference.json")
+    if ctrl_surface is None:
+        fail("examples/continuous-resource-market-controller-reference.json is missing")
+    if ctrl_surface.get("milestone") != "hyperdensity_continuous_resource_market_controller_v1":
+        fail("continuous resource market controller milestone invalid")
+    if ctrl_surface.get("continuousControllerEnabled") is not True:
+        fail("continuousControllerEnabled must be true in Sprint 12")
+    if ctrl_surface.get("noFullNxNPairing") is not True:
+        fail("noFullNxNPairing must be true")
+    for key in [
+        "generalProductionAutoAllowed",
+        "productionAutoWithPolicy",
+        "universalGuaranteedSavingsAllowed",
+        "estimatedIdleCountedAsMoved",
+        "syntheticFleetCountedAsProduction",
+        "referenceFleetCountedAsProduction",
+        "dashboardExecutor",
+        "fluidvirtPolicyAuthority",
+    ]:
+        if ctrl_surface.get(key) is not False:
+            fail(f"continuous-resource-market-controller-reference.json {key} must be false")
+    full = int(ctrl_surface.get("fullPairSpace", 0))
+    ev = int(ctrl_surface.get("evaluatedPairCount", 0))
+    av = int(ctrl_surface.get("avoidedPairCount", 0))
+    if av != full - ev:
+        fail("avoidedPairCount must equal fullPairSpace - evaluatedPairCount")
+
+    sprint12_examples = [
+        "continuous-resource-market-controller-reference.json",
+        "controller-tick-reference.json",
+        "controller-input-snapshot-reference.json",
+        "incremental-donor-index-reference.json",
+        "incremental-receiver-index-reference.json",
+        "idle-value-index-reference.json",
+        "pressure-index-reference.json",
+        "risk-index-reference.json",
+        "slo-readiness-index-reference.json",
+        "rollback-readiness-index-reference.json",
+        "action-priority-queue-reference.json",
+        "controller-generated-action-slate-reference.json",
+        "controller-generated-action-reference.json",
+        "controller-generated-resource-future-reference.json",
+        "top-k-pairing-window-reference.json",
+        "pair-space-avoidance-reference.json",
+        "controller-coverage-metrics-reference.json",
+        "market-liquidity-score-reference.json",
+        "controller-invalidation-rule-reference.json",
+        "controller-backpressure-reference.json",
+    ]
+    for name in sprint12_examples:
+        if example_by_name.get(name) is None:
+            fail(f"missing Sprint 12 example: {name}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

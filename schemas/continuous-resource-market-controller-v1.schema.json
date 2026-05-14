@@ -1,0 +1,13 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/continuous-resource-market-controller-v1.schema.json",
+  "title": "KARL Hyperdensity Continuous Resource Market Controller v1",
+  "type": "object",
+  "required": ["milestone", "controllerId", "continuousControllerEnabled", "noFullNxNPairing", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_continuous_resource_market_controller_v1" },
+    "noFullNxNPairing": { "const": true },
+    "generalProductionAutoAllowed": { "const": false },
+    "productionAutoWithPolicy": { "const": false }
+  }
+}

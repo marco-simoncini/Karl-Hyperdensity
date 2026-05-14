@@ -1,0 +1,181 @@
+{
+  "generatedActionSlateId": "generated-slate-sprint12",
+  "generatedAt": "2026-05-14T17:00:00Z",
+  "sourceControllerTickRef": "tick-sprint12-001",
+  "generatedActionCount": 9,
+  "actions": [
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "amount": "2300m",
+      "approvalMode": "canary_policy",
+      "blockers": null,
+      "claimBoundary": "controller-generated action; not general production auto",
+      "donorShellId": "shell-container-donor-a",
+      "dryRunRequired": true,
+      "evidenceRefs": [
+        "shell-container-donor-a",
+        "shell-container-replica-c"
+      ],
+      "executionScopeRecommendation": "sandbox_auto_eligible",
+      "expectedGuaranteeEligibleValue": 0.004032000000000001,
+      "expectedMovedIdleValue": 0.005600000000000001,
+      "expectedRealizedValue": 0.005040000000000001,
+      "generalProductionAutoAllowed": false,
+      "noRegressionRequired": true,
+      "priorityRank": 1,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": true,
+      "productionScope": true,
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "rollbackRequired": true,
+      "sloGuardRequired": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "amount": "2300m",
+      "approvalMode": "canary_policy",
+      "blockers": null,
+      "claimBoundary": "controller-generated action; not general production auto",
+      "donorShellId": "shell-container-donor-a",
+      "dryRunRequired": true,
+      "evidenceRefs": [
+        "shell-container-donor-a",
+        "shell-container-replica-d"
+      ],
+      "executionScopeRecommendation": "production_canary_eligible",
+      "expectedGuaranteeEligibleValue": 0.0036,
+      "expectedMovedIdleValue": 0.005,
+      "expectedRealizedValue": 0.0045000000000000005,
+      "generalProductionAutoAllowed": false,
+      "noRegressionRequired": true,
+      "priorityRank": 2,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": true,
+      "productionScope": true,
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "rollbackRequired": true,
+      "sloGuardRequired": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "amount": "2300m",
+      "approvalMode": "operator_required",
+      "blockers": null,
+      "claimBoundary": "controller-generated action; not general production auto",
+      "donorShellId": "shell-container-donor-a",
+      "dryRunRequired": true,
+      "evidenceRefs": [
+        "shell-container-donor-a",
+        "shell-container-replica-b"
+      ],
+      "executionScopeRecommendation": "operator_controlled",
+      "expectedGuaranteeEligibleValue": 0.0030239999999999998,
+      "expectedMovedIdleValue": 0.0042,
+      "expectedRealizedValue": 0.00378,
+      "generalProductionAutoAllowed": false,
+      "noRegressionRequired": true,
+      "priorityRank": 3,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "rollbackRequired": true,
+      "sloGuardRequired": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "amount": "800m",
+      "approvalMode": "policy_classified",
+      "blockers": [
+        "cooldown_active"
+      ],
+      "claimBoundary": "controller-generated action; not general production auto",
+      "donorShellId": "shell-container-donor-b",
+      "dryRunRequired": true,
+      "evidenceRefs": [
+        "shell-container-donor-b",
+        "shell-container-replica-c"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expectedGuaranteeEligibleValue": 0.0012959999999999998,
+      "expectedMovedIdleValue": 0.0018,
+      "expectedRealizedValue": 0.00162,
+      "generalProductionAutoAllowed": false,
+      "noRegressionRequired": true,
+      "priorityRank": 4,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "rollbackRequired": true,
+      "sloGuardRequired": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "amount": "800m",
+      "approvalMode": "policy_classified",
+      "blockers": [
+        "cooldown_active"
+      ],
+      "claimBoundary": "controller-generated action; not general production auto",
+      "donorShellId": "shell-container-donor-b",
+      "dryRunRequired": true,
+      "evidenceRefs": [
+        "shell-container-donor-b",
+        "shell-container-replica-d"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expectedGuaranteeEligibleValue": 0.0012959999999999998,
+      "expectedMovedIdleValue": 0.0018,
+      "expectedRealizedValue": 0.00162,
+      "generalProductionAutoAllowed": false,
+      "noRegressionRequired": true,
+      "priorityRank": 5,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "rollbackRequired": true,
+      "sloGuardRequired": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "amount": "800m",
+      "approvalMode": "policy_classified",
+      "blockers": [
+        "cooldown_active"
+      ],
+      "claimBoundary": "controller-generated action; not general production auto",
+      "donorShellId": "shell-container-donor-b",
+      "dryRunRequired": true,
+      "evidenceRefs": [
+        "shell-container-donor-b",
+        "shell-container-replica-b"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expectedGuaranteeEligibleValue": 0.0012959999999999998,
+      "expectedMovedIdleValue": 0.0018,
+      "expectedRealizedValue": 0.00162,
+      "generalProductionAutoAllowed": false,
+      "noRegressionRequired": true,
+      "priorityRank": 6,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "rollbackRequired": true,
+      "sloGuardRequired": true
+    }
+  ],
+  "noFullNxNPairing": true,
+  "evidenceRefs": [
+    "hyperdensity-continuous-resource-market-controller-v1"
+  ],
+  "claimBoundary": "controller-generated action slate; no general production auto"
+}

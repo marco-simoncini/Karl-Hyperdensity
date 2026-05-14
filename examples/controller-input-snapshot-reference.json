@@ -1,0 +1,21 @@
+{
+  "inputSnapshotId": "snapshot-sprint12-001",
+  "collectedAt": "2026-05-14T16:59:00Z",
+  "shellRegistryRef": "hyperdensity-shell-passport-factory-v1",
+  "idleCompressionRef": "hyperdensity-idle-time-compression-fleet-value-v1",
+  "sloPerformanceProofRef": "hyperdensity-slo-performance-proof-v1",
+  "savingsLedgerRef": "hyperdensity-realized-savings-ledger-v1",
+  "guaranteedSavingsRef": "hyperdensity-guaranteed-eligible-savings-v1",
+  "policyEngineRef": "hyperdensity-guarded-auto-policy-engine-v1",
+  "productionCanaryRef": "hyperdensity-production-canary-auto-apply-v1",
+  "shellCount": 12,
+  "donorCandidateCount": 6,
+  "receiverCandidateCount": 3,
+  "pressureSignalCount": 3,
+  "idleObservationCount": 12,
+  "policyConstraintCount": 5,
+  "evidenceRefs": [
+    "hyperdensity-idle-time-compression-fleet-value-v1"
+  ],
+  "claimBoundary": "controller input snapshot from Sprint 11B surfaces"
+}
