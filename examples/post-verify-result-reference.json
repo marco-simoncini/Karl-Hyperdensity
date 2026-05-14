@@ -1,0 +1,20 @@
+{
+  "postVerifyId": "post-verify-cpu-001",
+  "mutationObservationId": "mutation-observation-cpu-001",
+  "actionId": "action-cpu-lease-001",
+  "leaseCandidateId": "lease-candidate-cpu-001",
+  "verifyStatus": "passed",
+  "runtimeDeltaVerified": true,
+  "guestDeltaVerified": true,
+  "sloGuardStatus": "passed",
+  "donorHealthStatus": "preserved",
+  "receiverHealthStatus": "preserved",
+  "rollbackReady": true,
+  "rollbackRequired": false,
+  "mutationKept": true,
+  "mutationRolledBack": false,
+  "verifiedAt": "2026-05-14T15:07:30Z",
+  "evidenceRefs": ["hyperdensity_guarded_apply_invocation_surface_v1"],
+  "claimBoundary": ["post-verify passed for technical preview operator-controlled apply only"],
+  "blockers": []
+}

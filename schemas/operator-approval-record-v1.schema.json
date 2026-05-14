@@ -1,0 +1,29 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/operator-approval-record-v1.schema.json",
+  "title": "KARL Hyperdensity Operator Approval Record v1",
+  "type": "object",
+  "required": ["approvalId", "actionId", "leaseCandidateId", "operatorId", "operatorDisplayName", "approvedAt", "approvalMode", "approvalReason", "riskAccepted", "riskAssessmentRef", "blastRadiusClass", "scope", "expiresAt", "mfaObserved", "approvalSource", "productionScope", "autoApplyAllowed", "productionAutonomousApplyAllowed", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "approvalId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "leaseCandidateId": { "type": "string" },
+    "operatorId": { "type": "string" },
+    "operatorDisplayName": { "type": "string" },
+    "approvedAt": { "type": "string" },
+    "approvalMode": { "const": "operator_required" },
+    "approvalReason": { "type": "string" },
+    "riskAccepted": { "const": true },
+    "riskAssessmentRef": { "type": "string" },
+    "blastRadiusClass": { "type": "string" },
+    "scope": { "type": "string" },
+    "expiresAt": { "type": "string" },
+    "mfaObserved": { "type": "boolean" },
+    "approvalSource": { "type": "string" },
+    "productionScope": { "const": false },
+    "autoApplyAllowed": { "const": false },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

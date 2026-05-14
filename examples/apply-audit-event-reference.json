@@ -1,0 +1,14 @@
+{
+  "auditEventId": "audit-post-verify-passed-001",
+  "eventType": "post_verify_passed",
+  "actionId": "action-cpu-lease-001",
+  "leaseCandidateId": "lease-candidate-cpu-001",
+  "operatorId": "operator/karl-admin",
+  "actorType": "operator",
+  "occurredAt": "2026-05-14T15:07:30Z",
+  "sourceComponent": "Karl-Hyperdensity",
+  "targetComponent": "FluidVirt",
+  "eventSummary": "Post-verify passed for operator-controlled CPU lease apply",
+  "evidenceRefs": ["post-verify-cpu-001"],
+  "claimBoundary": ["audit event only; Dashboard does not execute mutation"]
+}

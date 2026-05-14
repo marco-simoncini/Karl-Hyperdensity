@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/apply-request-v1.schema.json",
+  "title": "KARL Hyperdensity Apply Request v1",
+  "type": "object",
+  "required": ["applyRequestId", "actionId", "leaseCandidateId", "donorShellId", "receiverShellId", "resource", "amount", "durationSeconds", "requestedAt", "requestedBy", "approvalRef", "dryRunRef", "rollbackReadinessRef", "sloPrecheckRef", "riskAssessmentRef", "actuator", "actuatorRequestFamily", "mutationScope", "productionScope", "autoApplyAllowed", "productionAutonomousApplyAllowed", "rawRuntimeControlsExposed", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "applyRequestId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "leaseCandidateId": { "type": "string" },
+    "donorShellId": { "type": "string" },
+    "receiverShellId": { "type": "string" },
+    "resource": { "type": "string" },
+    "amount": { "type": "string" },
+    "durationSeconds": { "type": "integer" },
+    "requestedAt": { "type": "string" },
+    "requestedBy": { "type": "string" },
+    "approvalRef": { "type": "string" },
+    "dryRunRef": { "type": "string" },
+    "rollbackReadinessRef": { "type": "string" },
+    "sloPrecheckRef": { "type": "string" },
+    "riskAssessmentRef": { "type": "string" },
+    "actuator": { "const": "FluidVirt" },
+    "actuatorRequestFamily": { "type": "string" },
+    "mutationScope": { "type": "string" },
+    "productionScope": { "const": false },
+    "autoApplyAllowed": { "const": false },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "rawRuntimeControlsExposed": { "const": false },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

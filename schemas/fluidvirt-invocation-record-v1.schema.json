@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/fluidvirt-invocation-record-v1.schema.json",
+  "title": "KARL Hyperdensity FluidVirt Invocation Record v1",
+  "type": "object",
+  "required": ["invocationId", "applyRequestId", "actuator", "actuatorRole", "actuatorEndpointClass", "invocationMode", "mutationFamily", "targetDonor", "targetReceiver", "resource", "amount", "invokedAt", "invokedBy", "requestAccepted", "mutationExecuted", "rawRuntimeControlsExposed", "productionScope", "autoApplyAllowed", "productionAutonomousApplyAllowed", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "invocationId": { "type": "string" },
+    "applyRequestId": { "type": "string" },
+    "actuator": { "const": "FluidVirt" },
+    "actuatorRole": { "type": "string" },
+    "actuatorEndpointClass": { "type": "string" },
+    "invocationMode": { "type": "string" },
+    "mutationFamily": { "type": "string" },
+    "targetDonor": { "type": "string" },
+    "targetReceiver": { "type": "string" },
+    "resource": { "type": "string" },
+    "amount": { "type": "string" },
+    "invokedAt": { "type": "string" },
+    "invokedBy": { "type": "string" },
+    "requestAccepted": { "type": "boolean" },
+    "mutationExecuted": { "type": "boolean" },
+    "mutationResultRef": { "type": "string" },
+    "rollbackPlanRef": { "type": "string" },
+    "rawRuntimeControlsExposed": { "const": false },
+    "productionScope": { "const": false },
+    "autoApplyAllowed": { "const": false },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

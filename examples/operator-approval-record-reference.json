@@ -1,0 +1,22 @@
+{
+  "approvalId": "approval-action-cpu-lease-001",
+  "actionId": "action-cpu-lease-001",
+  "leaseCandidateId": "lease-candidate-cpu-001",
+  "operatorId": "operator/karl-admin",
+  "operatorDisplayName": "KARL Platform Admin",
+  "approvedAt": "2026-05-14T15:05:00Z",
+  "approvalMode": "operator_required",
+  "approvalReason": "technical preview CPU lease from container donor to replica receiver after dry-run valid",
+  "riskAccepted": true,
+  "riskAssessmentRef": "risk-action-cpu-001",
+  "blastRadiusClass": "single_namespace",
+  "scope": "technical_preview_operator_controlled",
+  "expiresAt": "2026-05-14T15:35:00Z",
+  "mfaObserved": true,
+  "approvalSource": "Karl-Hyperdensity apply gate",
+  "productionScope": false,
+  "autoApplyAllowed": false,
+  "productionAutonomousApplyAllowed": false,
+  "evidenceRefs": ["hyperdensity_action_slate_readiness_v1", "hyperdensity_action_dryrun_readiness_surface_v1"],
+  "claimBoundary": ["explicit operator approval required; no autonomous apply"]
+}

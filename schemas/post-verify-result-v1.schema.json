@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/post-verify-result-v1.schema.json",
+  "title": "KARL Hyperdensity Post Verify Result v1",
+  "type": "object",
+  "required": ["postVerifyId", "mutationObservationId", "actionId", "leaseCandidateId", "verifyStatus", "runtimeDeltaVerified", "guestDeltaVerified", "sloGuardStatus", "donorHealthStatus", "receiverHealthStatus", "rollbackReady", "rollbackRequired", "mutationKept", "mutationRolledBack", "verifiedAt", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "postVerifyId": { "type": "string" },
+    "mutationObservationId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "leaseCandidateId": { "type": "string" },
+    "verifyStatus": { "enum": ["passed", "failed", "partial", "evidence_gated", "rollback_required"] },
+    "runtimeDeltaVerified": { "type": "boolean" },
+    "guestDeltaVerified": { "type": "boolean" },
+    "sloGuardStatus": { "type": "string" },
+    "donorHealthStatus": { "type": "string" },
+    "receiverHealthStatus": { "type": "string" },
+    "rollbackReady": { "type": "boolean" },
+    "rollbackRequired": { "type": "boolean" },
+    "mutationKept": { "type": "boolean" },
+    "mutationRolledBack": { "type": "boolean" },
+    "verifiedAt": { "type": "string" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } },
+    "blockers": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,17 @@
+{
+  "rollbackWindowId": "rollback-window-cpu-001",
+  "actionId": "action-cpu-lease-001",
+  "leaseCandidateId": "lease-candidate-cpu-001",
+  "mutationObservationId": "mutation-observation-cpu-001",
+  "state": "open",
+  "openedAt": "2026-05-14T15:07:30Z",
+  "expiresAt": "2026-05-14T15:37:30Z",
+  "rollbackAvailable": true,
+  "rollbackTested": false,
+  "rollbackExecuted": false,
+  "rollbackPassed": false,
+  "rollbackPlanRef": "rollback-plan-cpu-001",
+  "rollbackTriggerPolicy": "operator_initiated_within_window",
+  "evidenceRefs": ["hyperdensity_guarded_apply_invocation_surface_v1"],
+  "claimBoundary": ["rollback window open; operator may initiate rollback within window"]
+}

@@ -1,0 +1,21 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/apply-audit-event-v1.schema.json",
+  "title": "KARL Hyperdensity Apply Audit Event v1",
+  "type": "object",
+  "required": ["auditEventId", "eventType", "actionId", "leaseCandidateId", "operatorId", "actorType", "occurredAt", "sourceComponent", "targetComponent", "eventSummary", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "auditEventId": { "type": "string" },
+    "eventType": { "type": "string" },
+    "actionId": { "type": "string" },
+    "leaseCandidateId": { "type": "string" },
+    "operatorId": { "type": "string" },
+    "actorType": { "type": "string" },
+    "occurredAt": { "type": "string" },
+    "sourceComponent": { "type": "string" },
+    "targetComponent": { "type": "string" },
+    "eventSummary": { "type": "string" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

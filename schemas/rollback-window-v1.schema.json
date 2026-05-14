@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/rollback-window-v1.schema.json",
+  "title": "KARL Hyperdensity Rollback Window v1",
+  "type": "object",
+  "required": ["rollbackWindowId", "actionId", "leaseCandidateId", "mutationObservationId", "state", "openedAt", "expiresAt", "rollbackAvailable", "rollbackTested", "rollbackExecuted", "rollbackPassed", "rollbackPlanRef", "rollbackTriggerPolicy", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "rollbackWindowId": { "type": "string" },
+    "actionId": { "type": "string" },
+    "leaseCandidateId": { "type": "string" },
+    "mutationObservationId": { "type": "string" },
+    "state": { "enum": ["open", "closed", "rollback_executed", "expired", "rollback_unavailable", "rollback_failed"] },
+    "openedAt": { "type": "string" },
+    "expiresAt": { "type": "string" },
+    "rollbackAvailable": { "type": "boolean" },
+    "rollbackTested": { "type": "boolean" },
+    "rollbackExecuted": { "type": "boolean" },
+    "rollbackPassed": { "type": "boolean" },
+    "rollbackPlanRef": { "type": "string" },
+    "rollbackTriggerPolicy": { "type": "string" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

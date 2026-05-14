@@ -1380,6 +1380,72 @@ def main() -> int:
             if phrase in merged3:
                 fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
 
+    # --- Sprint 4: operator-controlled apply gate v1 ---
+    sprint4_schemas = [
+        "operator-apply-gate-v1.schema.json",
+        "operator-approval-record-v1.schema.json",
+        "apply-request-v1.schema.json",
+        "fluidvirt-invocation-record-v1.schema.json",
+        "runtime-mutation-observation-v1.schema.json",
+        "post-verify-result-v1.schema.json",
+        "rollback-window-v1.schema.json",
+        "apply-audit-event-v1.schema.json",
+    ]
+    for name in sprint4_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 4 schema: {name}")
+
+    apply_gate = example_by_name.get("operator-apply-gate-reference.json")
+    if apply_gate is None:
+        fail("examples/operator-apply-gate-reference.json is missing")
+    if apply_gate.get("milestone") != "hyperdensity_operator_controlled_apply_gate_v1":
+        fail("operator apply gate milestone invalid")
+    if apply_gate.get("operatorControlledApplyAllowed") is not True:
+        fail("operatorControlledApplyAllowed must be true")
+    if apply_gate.get("autoApplyAllowed") is not False:
+        fail("operator apply gate autoApplyAllowed must be false")
+    if apply_gate.get("productionScope") is not False:
+        fail("operator apply gate productionScope must be false")
+
+    approval_ref = example_by_name.get("operator-approval-record-reference.json")
+    if approval_ref is None:
+        fail("examples/operator-approval-record-reference.json is missing")
+    if approval_ref.get("approvalMode") != "operator_required":
+        fail("approval mode must be operator_required")
+
+    apply_req = example_by_name.get("apply-request-reference.json")
+    if apply_req is None:
+        fail("examples/apply-request-reference.json is missing")
+    if apply_req.get("actuator") != "FluidVirt":
+        fail("apply request actuator must be FluidVirt")
+
+    invocation_ref = example_by_name.get("fluidvirt-invocation-record-reference.json")
+    if invocation_ref is None:
+        fail("examples/fluidvirt-invocation-record-reference.json is missing")
+    if invocation_ref.get("rawRuntimeControlsExposed") is not False:
+        fail("invocation rawRuntimeControlsExposed must be false")
+
+    sprint4_examples = [
+        "operator-apply-gate-reference.json",
+        "operator-approval-record-reference.json",
+        "apply-request-reference.json",
+        "fluidvirt-invocation-record-reference.json",
+        "runtime-mutation-observation-reference.json",
+        "post-verify-result-reference.json",
+        "rollback-window-reference.json",
+        "apply-audit-event-reference.json",
+    ]
+    for name in sprint4_examples:
+        ex = example_by_name.get(name)
+        if ex is None:
+            fail(f"missing Sprint 4 example: {name}")
+        positives4: list[str] = []
+        collect_positive_strings(ex, positives4)
+        merged4 = "\n".join(positives4).lower()
+        for phrase in forbidden_positive_claims:
+            if phrase in merged4:
+                fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

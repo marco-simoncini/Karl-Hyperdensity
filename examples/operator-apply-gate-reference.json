@@ -1,0 +1,131 @@
+{
+  "milestone": "hyperdensity_operator_controlled_apply_gate_v1",
+  "surfaceVersion": "v1",
+  "gateId": "apply-gate-cpu-001",
+  "sourceActionSlateRef": "hyperdensity_action_slate_readiness_v1",
+  "sourceActionId": "action-cpu-lease-001",
+  "sourceLeaseCandidateId": "lease-candidate-cpu-001",
+  "state": "rollback_window_open",
+  "mutationScope": "technical_preview_operator_controlled",
+  "productionScope": false,
+  "operatorControlledApplyAllowed": true,
+  "autoApplyAllowed": false,
+  "productionAutonomousApplyAllowed": false,
+  "rawRuntimeControlsExposed": false,
+  "operatorApprovalRequired": true,
+  "operatorApprovalRef": "approval-action-cpu-lease-001",
+  "applyRequestRef": "apply-request-cpu-001",
+  "fluidvirtInvocationRef": "fluidvirt-invocation-cpu-001",
+  "mutationObservationRef": "mutation-observation-cpu-001",
+  "postVerifyRef": "post-verify-cpu-001",
+  "rollbackWindowRef": "rollback-window-cpu-001",
+  "auditEventRefs": [
+    "audit-operator-approved-001",
+    "audit-apply-requested-001",
+    "audit-fluidvirt-invoked-001",
+    "audit-mutation-observed-001",
+    "audit-post-verify-passed-001",
+    "audit-rollback-window-opened-001"
+  ],
+  "operatorApproval": {
+    "approvalId": "approval-action-cpu-lease-001",
+    "operatorId": "operator/karl-admin",
+    "approvedAt": "2026-05-14T15:05:00Z",
+    "approvalMode": "operator_required",
+    "riskAccepted": true,
+    "productionScope": false
+  },
+  "applyRequest": {
+    "applyRequestId": "apply-request-cpu-001",
+    "donorShellId": "shell-container-donor-a",
+    "receiverShellId": "shell-container-replica-b",
+    "resource": "cpu",
+    "amount": "500m",
+    "actuator": "FluidVirt",
+    "mutationScope": "technical_preview_operator_controlled",
+    "productionScope": false
+  },
+  "fluidvirtInvocation": {
+    "invocationId": "fluidvirt-invocation-cpu-001",
+    "mutationExecuted": true,
+    "mutationFamily": "cpu_entitlement",
+    "productionScope": false
+  },
+  "mutationObservation": {
+    "mutationObservationId": "mutation-observation-cpu-001",
+    "mutationMatchesPlan": true,
+    "identityPreserved": true,
+    "rebootUsed": false,
+    "recreateUsed": false
+  },
+  "postVerify": {
+    "postVerifyId": "post-verify-cpu-001",
+    "verifyStatus": "passed",
+    "runtimeDeltaVerified": true,
+    "sloGuardStatus": "passed",
+    "rollbackReady": true
+  },
+  "rollbackWindow": {
+    "rollbackWindowId": "rollback-window-cpu-001",
+    "state": "open",
+    "rollbackAvailable": true
+  },
+  "safetyInvariants": {
+    "autoApplyAllowed": false,
+    "productionAutonomousApplyAllowed": false,
+    "rawRuntimeControlsExposed": false,
+    "operatorControlledApplyAllowed": true,
+    "productionScope": false,
+    "dashboardAppliesRuntimeChanges": false,
+    "inventoryRuntimeApply": false
+  },
+  "claimPolicyRef": "hyperdensity_claim_policy_v2",
+  "sourceOfTruth": {
+    "applyGateContracts": "Karl-Hyperdensity",
+    "runtimeMutation": "FluidVirt",
+    "applyGateProjection": "Karl-Dashboard",
+    "identitySignals": "Karl-Inventory"
+  },
+  "claimBoundaries": [
+    "KARL Hyperdensity can execute operator-approved resource movements through a guarded apply gate, producing runtime mutation, post-verify and rollback evidence without enabling autonomous production apply.",
+    "technical preview operator-controlled scope only; productionScope=false",
+    "FluidVirt is guarded runtime actuator; Dashboard is read-only projection"
+  ],
+  "blockers": [],
+  "scenarioSummaries": {
+    "successfulOperatorControlled": {
+      "gateId": "apply-gate-cpu-001",
+      "pair": "shell-container-donor-a → shell-container-replica-b",
+      "resource": "cpu",
+      "state": "rollback_window_open"
+    },
+    "blockedApply": {
+      "gateId": "apply-gate-blocked-vm-003",
+      "sourceActionId": "action-blocked-vm-003",
+      "state": "apply_blocked",
+      "blockers": ["cpu_hotplug_headroom_missing", "receiver_shell_blocked"],
+      "mutationExecuted": false,
+      "productionScope": false
+    },
+    "rollbackRequired": {
+      "gateId": "apply-gate-mem-rollback-002",
+      "sourceActionId": "action-mem-lease-002",
+      "state": "rollback_required",
+      "postVerifyStatus": "rollback_required",
+      "rollbackWindowState": "open",
+      "productionScope": false
+    },
+    "windowsEvidenceGated": {
+      "gateId": "apply-gate-windows-gated-004",
+      "sourceActionId": "action-windows-remediation-004",
+      "receiverShellId": "shell-windows-hyper",
+      "state": "post_verify_failed",
+      "postVerifyStatus": "evidence_gated",
+      "guestDeltaVerified": false,
+      "blockers": ["guest_cpu_delta_not_visible"],
+      "claimBoundary": ["memory envelope guest_usable scoped only; no Windows total RAM hotplug claim"],
+      "mutationExecuted": false,
+      "productionScope": false
+    }
+  }
+}
