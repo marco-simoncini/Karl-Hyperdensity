@@ -1,0 +1,19 @@
+{
+  "unmovedIdleResourceId": "unmoved-donor-a-cpu-2300m",
+  "shellId": "shell-container-donor-a",
+  "resource": "cpu",
+  "amount": "2300m",
+  "unit": "core-hour",
+  "value": 0.0518,
+  "reasonUnmoved": "insufficient_controller_coverage",
+  "remediable": true,
+  "remediationCodes": [
+    "expand_controller_coverage",
+    "enable_guarded_auto_candidates"
+  ],
+  "candidateActionRef": "action-cpu-lease-001",
+  "evidenceRefs": [
+    "shell-container-donor-a"
+  ],
+  "claimBoundary": "eligible idle unmoved; awaiting broader controller coverage"
+}

@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/idle-time-compression-fleet-value-coverage-v1.schema.json",
+  "title": "KARL Hyperdensity Idle Time Compression Fleet Value Coverage v1",
+  "type": "object",
+  "required": ["milestone", "coverageId", "idleCompressionMeasured", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_idle_time_compression_fleet_value_coverage_v1" },
+    "universalGuaranteedSavingsAllowed": { "const": false },
+    "estimatedIdleCountedAsMoved": { "const": false },
+    "syntheticFleetCountedAsProduction": { "const": false },
+    "referenceFleetCountedAsProduction": { "const": false }
+  }
+}

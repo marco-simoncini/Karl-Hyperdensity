@@ -1,0 +1,21 @@
+{
+  "donorRank": 1,
+  "shellId": "shell-container-donor-a",
+  "shellKind": "container",
+  "tenant": "karl",
+  "namespace": "karl-system",
+  "app": "donor-receiver-pair-a",
+  "idleCpuMillisP95": 2800000,
+  "idleMemoryBytesP95": 1073741824,
+  "eligibleIdleValue": 0.056,
+  "blockerCodes": [
+    "insufficient_controller_coverage"
+  ],
+  "candidateActionRefs": [
+    "action-cpu-lease-001"
+  ],
+  "evidenceRefs": [
+    "shell-container-donor-a"
+  ],
+  "claimBoundary": "top idle donor; production evidence from enrolled shell"
+}

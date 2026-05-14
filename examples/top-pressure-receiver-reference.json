@@ -1,0 +1,20 @@
+{
+  "receiverRank": 1,
+  "shellId": "shell-container-replica-b",
+  "shellKind": "container",
+  "tenant": "karl",
+  "namespace": "karl-system",
+  "app": "donor-receiver-pair-a",
+  "pressureClass": "cpu_bound",
+  "requestedCpuMillis": 500000,
+  "requestedMemoryBytes": 0,
+  "potentialValueCapture": 0.0042,
+  "blockerCodes": [],
+  "candidateActionRefs": [
+    "action-cpu-lease-001"
+  ],
+  "evidenceRefs": [
+    "shell-container-replica-b"
+  ],
+  "claimBoundary": "top pressure receiver matched to mov-acct-cpu-001"
+}

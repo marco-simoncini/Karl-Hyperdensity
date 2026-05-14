@@ -1,0 +1,21 @@
+{
+  "evidenceSeparationId": "evidence-separation-sprint11b",
+  "productionShellCount": 4,
+  "productionCanaryShellCount": 2,
+  "sandboxNonProdShellCount": 3,
+  "referenceOnlyShellCount": 1,
+  "syntheticShadowShellCount": 2,
+  "productionMovementCount": 0,
+  "productionCanaryMovementCount": 1,
+  "sandboxNonProdMovementCount": 2,
+  "referenceOnlyMovementCount": 0,
+  "syntheticShadowMovementCount": 0,
+  "referenceCountedAsProduction": false,
+  "syntheticCountedAsProduction": false,
+  "canaryCountedAsGeneralProduction": false,
+  "evidenceDecision": "separated",
+  "evidenceRefs": [
+    "hyperdensity-idle-time-compression-fleet-value-v1"
+  ],
+  "claimBoundary": "production, canary, sandbox, reference and synthetic fleets separated"
+}

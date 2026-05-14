@@ -1860,6 +1860,72 @@ def main() -> int:
         if example_by_name.get(name) is None:
             fail(f"missing Sprint 11A example: {name}")
 
+    # --- Sprint 11B: idle time compression fleet value coverage v1 ---
+    sprint11b_schemas = [
+        "idle-time-compression-fleet-value-coverage-v1.schema.json",
+        "fleet-idle-observation-v1.schema.json",
+        "idle-resource-pool-v1.schema.json",
+        "eligible-idle-resource-v1.schema.json",
+        "moved-idle-resource-v1.schema.json",
+        "unmoved-idle-resource-v1.schema.json",
+        "idle-compression-rate-v1.schema.json",
+        "fleet-value-coverage-v1.schema.json",
+        "guarantee-coverage-v1.schema.json",
+        "resource-liquidity-rate-v1.schema.json",
+        "movement-throughput-v1.schema.json",
+        "top-idle-donor-v1.schema.json",
+        "top-pressure-receiver-v1.schema.json",
+        "idle-blocker-analysis-v1.schema.json",
+        "fleet-coverage-tier-v1.schema.json",
+        "production-evidence-separation-v1.schema.json",
+    ]
+    for name in sprint11b_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 11B schema: {name}")
+
+    idle_surface = example_by_name.get("idle-time-compression-fleet-value-coverage-reference.json")
+    if idle_surface is None:
+        fail("examples/idle-time-compression-fleet-value-coverage-reference.json is missing")
+    if idle_surface.get("milestone") != "hyperdensity_idle_time_compression_fleet_value_coverage_v1":
+        fail("idle time compression fleet value coverage milestone invalid")
+    if idle_surface.get("idleCompressionMeasured") is not True:
+        fail("idleCompressionMeasured must be true in Sprint 11B")
+    if idle_surface.get("fleetValueCoverageMeasured") is not True:
+        fail("fleetValueCoverageMeasured must be true in Sprint 11B")
+    for key in [
+        "universalGuaranteedSavingsAllowed",
+        "universalGuaranteedSavingsClaimed",
+        "estimatedIdleCountedAsMoved",
+        "syntheticFleetCountedAsProduction",
+        "referenceFleetCountedAsProduction",
+        "generalProductionAutoAllowed",
+        "productionAutoWithPolicy",
+    ]:
+        if idle_surface.get(key) is not False:
+            fail(f"idle-time-compression-fleet-value-coverage-reference.json {key} must be false")
+
+    sprint11b_examples = [
+        "idle-time-compression-fleet-value-coverage-reference.json",
+        "fleet-idle-observation-reference.json",
+        "idle-resource-pool-reference.json",
+        "eligible-idle-resource-reference.json",
+        "moved-idle-resource-reference.json",
+        "unmoved-idle-resource-reference.json",
+        "idle-compression-rate-reference.json",
+        "fleet-value-coverage-reference.json",
+        "guarantee-coverage-reference.json",
+        "resource-liquidity-rate-reference.json",
+        "movement-throughput-reference.json",
+        "top-idle-donor-reference.json",
+        "top-pressure-receiver-reference.json",
+        "idle-blocker-analysis-reference.json",
+        "fleet-coverage-tier-reference.json",
+        "production-evidence-separation-reference.json",
+    ]
+    for name in sprint11b_examples:
+        if example_by_name.get(name) is None:
+            fail(f"missing Sprint 11B example: {name}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

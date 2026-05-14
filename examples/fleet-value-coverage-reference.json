@@ -1,0 +1,20 @@
+{
+  "fleetValueCoverageId": "fleet-value-coverage-sprint11b",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "totalIdleValue": 0.125,
+  "eligibleIdleValue": 0.085,
+  "movedIdleValue": 0.0042,
+  "unmovedEligibleIdleValue": 0.0808,
+  "blockedIdleValue": 0.015,
+  "protectedIdleValue": 0.025,
+  "estimatedIdleOpportunity": 0.42,
+  "realizedMovedIdleValue": 0.0042,
+  "coveragePercent": 0.04941176470588235,
+  "productionCoveragePercent": 0.0,
+  "canaryCoveragePercent": 0.0,
+  "sandboxNonProdCoveragePercent": 0.04941176470588235,
+  "evidenceRefs": [
+    "hyperdensity-idle-time-compression-fleet-value-v1"
+  ],
+  "claimBoundary": "fleet value coverage; estimated opportunity excluded from realized"
+}

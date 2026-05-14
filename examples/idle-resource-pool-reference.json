@@ -1,0 +1,22 @@
+{
+  "poolId": "pool-karl-cpu",
+  "tenant": "karl",
+  "namespace": "karl-system",
+  "app": "donor-receiver-pair-a",
+  "resource": "cpu",
+  "totalIdleAmount": "4000m",
+  "eligibleIdleAmount": "2800m",
+  "protectedIdleAmount": "500m",
+  "blockedIdleAmount": "300m",
+  "movedIdleAmount": "500m",
+  "unmovedEligibleIdleAmount": "2300m",
+  "unit": "core-hour",
+  "idleValue": 0.08,
+  "eligibleIdleValue": 0.056,
+  "movedIdleValue": 0.0042,
+  "unmovedEligibleIdleValue": 0.0518,
+  "evidenceRefs": [
+    "shell-container-donor-a"
+  ],
+  "claimBoundary": "CPU idle pool; moved value from verified movements only"
+}

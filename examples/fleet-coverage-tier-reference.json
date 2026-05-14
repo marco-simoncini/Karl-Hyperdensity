@@ -1,0 +1,16 @@
+{
+  "coverageTierId": "tier-production",
+  "tierName": "production",
+  "shellCount": 4,
+  "movementCount": 0,
+  "idleValue": 0.04,
+  "movedIdleValue": 0.0,
+  "guaranteedValue": 0.0,
+  "coveragePercent": 0.0,
+  "evidenceClass": "production",
+  "canClaimProductionProof": true,
+  "evidenceRefs": [
+    "hyperdensity-production-kernel-boundary-v1"
+  ],
+  "claimBoundary": "production enrolled shells"
+}

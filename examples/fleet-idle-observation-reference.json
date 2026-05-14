@@ -1,0 +1,32 @@
+{
+  "observationId": "obs-shell-donor-a",
+  "observedAt": "2026-05-14T16:50:00Z",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "shellId": "shell-container-donor-a",
+  "shellKind": "container",
+  "tenant": "karl",
+  "namespace": "karl-system",
+  "app": "donor-receiver-pair-a",
+  "environmentClass": "sandbox",
+  "productionEvidence": false,
+  "canaryEvidence": false,
+  "sandboxNonProdEvidence": true,
+  "referenceOnly": false,
+  "syntheticShadow": false,
+  "cpuAllocatedMillis": 4000000,
+  "cpuUsedMillisP50": 1200000,
+  "cpuUsedMillisP95": 1500000,
+  "idleCpuMillisP50": 2500000,
+  "idleCpuMillisP95": 2800000,
+  "memoryAllocatedBytes": 2147483648,
+  "memoryUsedBytesP50": 1073741824,
+  "memoryUsedBytesP95": 1288490188,
+  "idleMemoryBytesP50": 939524096,
+  "idleMemoryBytesP95": 1073741824,
+  "idleDurationSeconds": 3600,
+  "idleValue": 0.056,
+  "evidenceRefs": [
+    "shell-container-donor-a"
+  ],
+  "claimBoundary": "sandbox enrolled shell idle observation"
+}

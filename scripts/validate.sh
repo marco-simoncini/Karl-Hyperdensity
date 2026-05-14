@@ -33,6 +33,7 @@ required_files=(
   "docs/contracts/production-canary-auto-apply-v1.md"
   "docs/contracts/dashboard-enterprise-cleanup-ga-release-gate-v1.md"
   "docs/contracts/guaranteed-eligible-savings-activation-v1.md"
+  "docs/contracts/idle-time-compression-fleet-value-coverage-v1.md"
   "docs/contracts/policy-pack-v1.md"
   "docs/contracts/policy-pack-consistency-checker-v1.md"
   "docs/contracts/admission-guard-enforce-simulation-v1.md"

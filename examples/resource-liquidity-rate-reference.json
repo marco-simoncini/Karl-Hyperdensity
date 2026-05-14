@@ -1,0 +1,13 @@
+{
+  "liquidityRateId": "liquidity-rate-sprint11b",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "totalIdleValue": 0.125,
+  "eligibleIdleValue": 0.085,
+  "fleetLiquidityRate": 0.68,
+  "protectedIdleValue": 0.025,
+  "blockedIdleValue": 0.015,
+  "evidenceRefs": [
+    "hyperdensity-idle-time-compression-fleet-value-v1"
+  ],
+  "claimBoundary": "fleet liquidity rate = eligibleIdleValue / totalIdleValue"
+}

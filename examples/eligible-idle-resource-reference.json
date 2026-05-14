@@ -1,0 +1,19 @@
+{
+  "eligibleIdleResourceId": "eligible-idle-donor-a-cpu",
+  "shellId": "shell-container-donor-a",
+  "resource": "cpu",
+  "amount": "2300m",
+  "unit": "core-hour",
+  "value": 0.0518,
+  "eligibilityReason": "donor_eligible_slo_guard_available",
+  "donorEligibility": true,
+  "rollbackReady": true,
+  "sloGuardAvailable": true,
+  "noRegressionAvailable": true,
+  "claimBoundaryPresent": true,
+  "evidenceRefs": [
+    "shell-container-donor-a",
+    "hyperdensity-action-slate-readiness-v1"
+  ],
+  "claimBoundary": "eligible idle CPU on enrolled donor shell"
+}

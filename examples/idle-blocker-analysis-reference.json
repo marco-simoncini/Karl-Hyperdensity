@@ -1,0 +1,17 @@
+{
+  "blockerAnalysisId": "blocker-insufficient-controller",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "blockerCode": "insufficient_controller_coverage",
+  "blockedIdleValue": 0.0518,
+  "affectedShellCount": 1,
+  "affectedResource": "cpu",
+  "remediable": true,
+  "remediationCodes": [
+    "expand_controller_coverage"
+  ],
+  "priority": "high",
+  "evidenceRefs": [
+    "shell-container-donor-a"
+  ],
+  "claimBoundary": "largest unmoved eligible idle blocker"
+}

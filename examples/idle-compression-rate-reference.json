@@ -1,0 +1,14 @@
+{
+  "compressionRateId": "compression-rate-sprint11b",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "eligibleIdleValue": 0.085,
+  "movedIdleValue": 0.0042,
+  "unmovedEligibleIdleValue": 0.0808,
+  "idleCompressionRate": 0.04941176470588235,
+  "targetCompressionRate": 0.25,
+  "compressionStatus": "low",
+  "evidenceRefs": [
+    "hyperdensity-idle-time-compression-fleet-value-v1"
+  ],
+  "claimBoundary": "low compression; high unmoved eligible idle remains"
+}

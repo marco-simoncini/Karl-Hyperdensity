@@ -1,0 +1,12 @@
+{
+  "guaranteeCoverageId": "guarantee-coverage-sprint11b",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "realizedMovedIdleValue": 0.0042,
+  "guaranteedEligibleSavingsTotal": 0.00336,
+  "guaranteeCoveragePercent": 0.8,
+  "universalGuaranteedSavingsAllowed": false,
+  "evidenceRefs": [
+    "hyperdensity-guaranteed-eligible-savings-v1"
+  ],
+  "claimBoundary": "scoped guarantee coverage; universal guarantee disabled"
+}

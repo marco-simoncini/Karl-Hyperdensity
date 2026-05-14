@@ -1,0 +1,29 @@
+{
+  "movedIdleResourceId": "moved-idle-mov-acct-cpu-001",
+  "movementAccountingId": "mov-acct-cpu-001",
+  "movementId": "mutation-cpu-001",
+  "actionId": "action-cpu-lease-001",
+  "shellId": "shell-container-donor-a",
+  "donorShellId": "shell-container-donor-a",
+  "receiverShellId": "shell-container-replica-b",
+  "resource": "cpu",
+  "amount": "500m",
+  "unit": "core-hour",
+  "movedValue": 0.0042,
+  "realizedValue": 0.0042,
+  "guaranteedEligibleValue": 0.00336,
+  "movementSource": "operator_controlled",
+  "environmentClass": "sandbox",
+  "productionEvidence": false,
+  "productionCanaryScope": false,
+  "sandboxNonProdScope": true,
+  "mutationObserved": true,
+  "postVerifyPassed": true,
+  "sloPreserved": true,
+  "rollbackReady": true,
+  "evidenceRefs": [
+    "mov-acct-cpu-001",
+    "mutation-observation-cpu-001"
+  ],
+  "claimBoundary": "operator-controlled CPU movement; Sprint 11A guaranteed eligible"
+}

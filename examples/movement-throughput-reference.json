@@ -1,0 +1,17 @@
+{
+  "movementThroughputId": "movement-throughput-sprint11b",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "successfulMovementCount": 1,
+  "failedMovementCount": 1,
+  "rollbackMovementCount": 1,
+  "productionCanaryMovementCount": 1,
+  "sandboxNonProdMovementCount": 2,
+  "operatorControlledMovementCount": 1,
+  "movementsPerHour": 0.041666666666666664,
+  "movementDensity": 0.08333333333333333,
+  "enrolledShellCount": 12,
+  "evidenceRefs": [
+    "hyperdensity-idle-time-compression-fleet-value-v1"
+  ],
+  "claimBoundary": "movement density = successfulMovementCount / enrolledShellCount"
+}
