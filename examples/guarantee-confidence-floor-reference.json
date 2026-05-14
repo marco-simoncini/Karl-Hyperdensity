@@ -1,0 +1,12 @@
+{
+  "confidenceFloorId": "confidence-floor-karl-scoped-v1",
+  "policyId": "guarantee-policy-karl-scoped-v1",
+  "minimumConfidence": 0.75,
+  "actualConfidence": 0.87,
+  "meetsFloor": true,
+  "method": "movement_accounting_confidence_v1",
+  "evidenceRefs": [
+    "confidence-mov-acct-cpu-001"
+  ],
+  "claimBoundary": "confidence floor enforced for guaranteed records"
+}

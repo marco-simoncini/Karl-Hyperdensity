@@ -1799,6 +1799,67 @@ def main() -> int:
         if example_by_name.get(name) is None:
             fail(f"missing Sprint 10 example: {name}")
 
+    # --- Sprint 11A: guaranteed eligible savings activation v1 ---
+    sprint11a_schemas = [
+        "guaranteed-eligible-savings-activation-v1.schema.json",
+        "guarantee-policy-v1.schema.json",
+        "guarantee-eligibility-check-v1.schema.json",
+        "guaranteed-savings-record-v1.schema.json",
+        "guarantee-exclusion-rule-v1.schema.json",
+        "guarantee-value-calculation-v1.schema.json",
+        "guarantee-value-cap-v1.schema.json",
+        "guarantee-confidence-floor-v1.schema.json",
+        "guarantee-unit-price-authority-v1.schema.json",
+        "guarantee-claim-boundary-v1.schema.json",
+        "guarantee-monthly-rollup-v1.schema.json",
+        "guarantee-release-gate-v1.schema.json",
+        "guarantee-audit-event-v1.schema.json",
+        "guarantee-entitlement-evidence-v1.schema.json",
+    ]
+    for name in sprint11a_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 11A schema: {name}")
+
+    guarantee_surface = example_by_name.get("guaranteed-eligible-savings-activation-reference.json")
+    if guarantee_surface is None:
+        fail("examples/guaranteed-eligible-savings-activation-reference.json is missing")
+    if guarantee_surface.get("milestone") != "hyperdensity_guaranteed_eligible_savings_activation_v1":
+        fail("guaranteed eligible savings activation milestone invalid")
+    if guarantee_surface.get("guaranteedEligibleSavingsAllowed") is not True:
+        fail("guaranteedEligibleSavingsAllowed must be true in Sprint 11A")
+    if guarantee_surface.get("guaranteedSavingsScope") != "scoped_eligible_records":
+        fail("guaranteedSavingsScope must be scoped_eligible_records")
+    for key in [
+        "universalGuaranteedSavingsAllowed",
+        "universalGuaranteedSavingsClaimed",
+        "estimatedValueCountedAsGuaranteed",
+        "syntheticValueCountedAsGuaranteed",
+        "referencePayloadCountedAsGuaranteed",
+        "windowsEvidenceGatedValueGuaranteed",
+    ]:
+        if guarantee_surface.get(key) is not False:
+            fail(f"guaranteed-eligible-savings-activation-reference.json {key} must be false")
+
+    sprint11a_examples = [
+        "guaranteed-eligible-savings-activation-reference.json",
+        "guarantee-policy-reference.json",
+        "guarantee-eligibility-check-reference.json",
+        "guaranteed-savings-record-reference.json",
+        "guarantee-exclusion-rule-reference.json",
+        "guarantee-value-calculation-reference.json",
+        "guarantee-value-cap-reference.json",
+        "guarantee-confidence-floor-reference.json",
+        "guarantee-unit-price-authority-reference.json",
+        "guarantee-claim-boundary-reference.json",
+        "guarantee-monthly-rollup-reference.json",
+        "guarantee-release-gate-reference.json",
+        "guarantee-audit-event-reference.json",
+        "guarantee-entitlement-evidence-reference.json",
+    ]
+    for name in sprint11a_examples:
+        if example_by_name.get(name) is None:
+            fail(f"missing Sprint 11A example: {name}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

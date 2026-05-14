@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/guaranteed-eligible-savings-activation-v1.schema.json",
+  "title": "KARL Hyperdensity Guaranteed Eligible Savings Activation v1",
+  "type": "object",
+  "required": ["milestone", "activationId", "guaranteedEligibleSavingsAllowed", "guaranteedSavingsScope", "universalGuaranteedSavingsAllowed", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_guaranteed_eligible_savings_activation_v1" },
+    "guaranteedSavingsScope": { "const": "scoped_eligible_records" },
+    "universalGuaranteedSavingsAllowed": { "const": false },
+    "universalGuaranteedSavingsClaimed": { "const": false },
+    "estimatedValueCountedAsGuaranteed": { "const": false },
+    "syntheticValueCountedAsGuaranteed": { "const": false },
+    "referencePayloadCountedAsGuaranteed": { "const": false },
+    "windowsEvidenceGatedValueGuaranteed": { "const": false }
+  }
+}

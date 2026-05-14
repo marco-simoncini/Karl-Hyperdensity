@@ -1,0 +1,45 @@
+{
+  "guaranteePolicyId": "guarantee-policy-karl-scoped-v1",
+  "policyVersion": "v1",
+  "policyName": "KARL Scoped Guaranteed Eligible Savings",
+  "tenant": "karl",
+  "namespace": "karl-system",
+  "app": "donor-receiver-pair-a",
+  "serviceTier": "enterprise",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "currency": "USD",
+  "allowedResourceFamilies": [
+    "cpu",
+    "memory_envelope"
+  ],
+  "excludedResourceFamilies": [
+    "windows_evidence_gated"
+  ],
+  "requiredClaimClassification": "eligible_for_future_guarantee",
+  "requireRealizedValue": true,
+  "requirePostVerifyPassed": true,
+  "requireSloPreserved": true,
+  "requireDonorHealthPreserved": true,
+  "requireRollbackReady": true,
+  "requireRollbackNotFailed": true,
+  "requireUnitPriceAuthority": true,
+  "requireDurationMeasured": true,
+  "requireImmutableAudit": true,
+  "requireEntitlementEvidence": true,
+  "requireProductionEvidence": true,
+  "allowEstimatedOpportunity": false,
+  "allowSyntheticShadow": false,
+  "allowReferencePayload": false,
+  "allowWindowsEvidenceGated": false,
+  "allowPlaceholderPrice": false,
+  "minimumConfidence": 0.75,
+  "maxGuaranteePercentOfNetRealized": 0.8,
+  "maxGuaranteedValuePerWindow": 0.01,
+  "universalGuaranteeAllowed": false,
+  "generalProductionAutoAllowed": false,
+  "productionAutoWithPolicy": false,
+  "evidenceRefs": [
+    "hyperdensity-guaranteed-eligible-savings-v1"
+  ],
+  "claimBoundary": "scoped eligible records only; universal guarantee remains disabled"
+}

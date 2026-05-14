@@ -1,0 +1,18 @@
+{
+  "unitPriceAuthorityId": "unit-price-cpu-karl-contract-v1",
+  "resource": "cpu",
+  "unit": "core-hour",
+  "currency": "USD",
+  "unitPrice": 0.12,
+  "priceBasis": "customer_contract_per_core_hour",
+  "source": "Karl-Licenziatore",
+  "sourceType": "customer_contract",
+  "authorityStatus": "active",
+  "validFrom": "2026-01-01T00:00:00Z",
+  "validTo": "2026-12-31T23:59:59Z",
+  "tenant": "karl",
+  "evidenceRefs": [
+    "entitlement-karl-donor-receiver-a"
+  ],
+  "claimBoundary": "customer contract price authority for guarantee"
+}

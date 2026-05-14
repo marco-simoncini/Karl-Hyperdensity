@@ -1,0 +1,33 @@
+{
+  "eligibilityCheckId": "elig-check-mov-acct-cpu-001",
+  "movementAccountingId": "mov-acct-cpu-001",
+  "policyId": "guarantee-policy-karl-scoped-v1",
+  "checkedAt": "2026-05-14T16:40:00Z",
+  "eligible": true,
+  "eligibilityStatus": "eligible",
+  "realizedValuePresent": true,
+  "postVerifyPassed": true,
+  "sloPreserved": true,
+  "donorHealthPreserved": true,
+  "rollbackReady": true,
+  "rollbackFailed": false,
+  "unitPriceKnown": true,
+  "unitPriceAuthorityValid": true,
+  "durationMeasured": true,
+  "confidence": 0.87,
+  "confidenceMeetsFloor": true,
+  "immutableAuditPresent": true,
+  "entitlementEvidencePresent": true,
+  "productionEvidencePresent": true,
+  "estimatedOnly": false,
+  "synthetic": false,
+  "referenceOnly": false,
+  "windowsEvidenceGated": false,
+  "placeholderPrice": false,
+  "exclusionReasons": [],
+  "evidenceRefs": [
+    "mov-acct-cpu-001",
+    "post-verify-cpu-001"
+  ],
+  "claimBoundary": "CPU movement passes all guarantee eligibility gates"
+}

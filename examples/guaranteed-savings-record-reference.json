@@ -1,0 +1,48 @@
+{
+  "guaranteedSavingsRecordId": "gsr-mov-acct-cpu-001",
+  "movementAccountingId": "mov-acct-cpu-001",
+  "movementId": "mutation-cpu-001",
+  "actionId": "action-cpu-lease-001",
+  "leaseCandidateId": "lease-candidate-cpu-001",
+  "applyGateId": "apply-gate-cpu-001",
+  "tenant": "karl",
+  "namespace": "karl-system",
+  "app": "donor-receiver-pair-a",
+  "resource": "cpu",
+  "amount": "500m",
+  "unit": "core-hour",
+  "durationSeconds": 300,
+  "unitPriceAuthorityRef": "unit-price-cpu-karl-contract-v1",
+  "unitPrice": 0.12,
+  "unitPriceCurrency": "USD",
+  "priceBasis": "customer_contract_per_core_hour",
+  "netRealizedValue": 0.0042,
+  "guaranteePercent": 0.8,
+  "guaranteedValue": 0.00336,
+  "guaranteedValueCapRef": "cap-guarantee-window-sprint11a",
+  "confidence": 0.87,
+  "confidenceFloorRef": "confidence-floor-karl-scoped-v1",
+  "sloPreserved": true,
+  "donorHealthPreserved": true,
+  "rollbackReady": true,
+  "rollbackExecuted": false,
+  "rollbackFailed": false,
+  "postVerifyRef": "post-verify-cpu-001",
+  "mutationObservationRef": "mutation-observation-cpu-001",
+  "auditEventRefs": [
+    "audit-guarantee-activated-cpu-001"
+  ],
+  "entitlementEvidenceRef": "entitlement-karl-donor-receiver-a",
+  "eligibilityCheckRef": "elig-check-mov-acct-cpu-001",
+  "claimClassification": "guaranteed_eligible",
+  "guaranteeClaimStatus": "guaranteed_eligible",
+  "productionEvidenceRefs": [
+    "hyperdensity_operator_controlled_apply_gate_v1",
+    "hyperdensity_resource_accounting_evidence_v1"
+  ],
+  "evidenceRefs": [
+    "mov-acct-cpu-001",
+    "post-verify-cpu-001"
+  ],
+  "claimBoundary": "scoped guaranteed eligible CPU movement; not universal guarantee"
+}

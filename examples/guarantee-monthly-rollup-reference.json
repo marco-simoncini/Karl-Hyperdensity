@@ -1,0 +1,35 @@
+{
+  "rollupId": "guarantee-rollup-2026-05",
+  "month": "2026-05",
+  "currency": "USD",
+  "guaranteedRecordCount": 1,
+  "excludedRecordCount": 7,
+  "guaranteedEligibleSavingsTotal": 0.00336,
+  "excludedNonGuaranteedTotal": 0.0,
+  "estimatedOpportunityExcludedTotal": 0.025,
+  "topTenants": [
+    {
+      "tenant": "karl",
+      "guaranteedValue": 0.00336
+    }
+  ],
+  "topApps": [
+    {
+      "app": "donor-receiver-pair-a",
+      "guaranteedValue": 0.00336
+    }
+  ],
+  "exclusionsByReason": {
+    "excluded_estimated_only": 1,
+    "excluded_synthetic": 1,
+    "excluded_windows_evidence_gated": 1,
+    "excluded_placeholder_price": 1,
+    "excluded_post_verify_failed": 1,
+    "excluded_rollback_failed": 1,
+    "excluded_missing_entitlement": 1
+  },
+  "evidenceRefs": [
+    "hyperdensity-guaranteed-eligible-savings-v1"
+  ],
+  "claimBoundary": "monthly scoped guarantee rollup; universal guarantee false"
+}

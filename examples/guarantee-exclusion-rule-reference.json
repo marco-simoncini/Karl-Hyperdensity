@@ -1,0 +1,15 @@
+{
+  "exclusionRuleId": "excl-estimated-only",
+  "exclusionCode": "estimated_only",
+  "reason": "estimated opportunity is not guaranteed",
+  "severity": "critical",
+  "appliesTo": [
+    "est-opp-fleet-preview-001"
+  ],
+  "remediable": false,
+  "remediation": "use realized movement accounting only",
+  "evidenceRefs": [
+    "est-opp-fleet-preview-001"
+  ],
+  "claimBoundary": "estimated value excluded"
+}

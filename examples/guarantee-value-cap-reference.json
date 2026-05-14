@@ -1,0 +1,14 @@
+{
+  "capId": "cap-guarantee-window-sprint11a",
+  "policyId": "guarantee-policy-karl-scoped-v1",
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "currency": "USD",
+  "maxGuaranteedValuePerWindow": 0.01,
+  "usedGuaranteedValue": 0.00336,
+  "remainingGuaranteedValue": 0.00664,
+  "capStatus": "available",
+  "evidenceRefs": [
+    "hyperdensity-guaranteed-eligible-savings-v1"
+  ],
+  "claimBoundary": "scoped cap per accounting window; universal cap not claimed"
+}

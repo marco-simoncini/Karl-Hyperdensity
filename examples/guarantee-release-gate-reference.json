@@ -1,0 +1,44 @@
+{
+  "guaranteeReleaseGateId": "guarantee-release-gate-sprint11a",
+  "evaluatedAt": "2026-05-14T16:40:00Z",
+  "guaranteeReady": true,
+  "guaranteedEligibleSavingsAllowed": true,
+  "universalGuaranteedSavingsAllowed": false,
+  "blockers": [],
+  "warnings": [
+    {
+      "warningCode": "scoped_guarantee_only",
+      "reason": "guarantee activated for scoped eligible records only"
+    }
+  ],
+  "requiredChecks": [
+    {
+      "checkId": "realized-value-present",
+      "status": "passed"
+    },
+    {
+      "checkId": "unit-price-authority",
+      "status": "passed"
+    },
+    {
+      "checkId": "slo-preserved",
+      "status": "passed"
+    },
+    {
+      "checkId": "rollback-ready",
+      "status": "passed"
+    },
+    {
+      "checkId": "entitlement-evidence",
+      "status": "passed"
+    },
+    {
+      "checkId": "universal-guarantee-disabled",
+      "status": "passed"
+    }
+  ],
+  "evidenceRefs": [
+    "hyperdensity-guaranteed-eligible-savings-v1"
+  ],
+  "claimBoundary": "scoped guarantee ready; universal guarantee remains disabled"
+}

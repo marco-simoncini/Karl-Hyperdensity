@@ -1,0 +1,14 @@
+{
+  "auditEventId": "audit-guarantee-activated-cpu-001",
+  "eventType": "guarantee_activated",
+  "movementAccountingId": "mov-acct-cpu-001",
+  "guaranteedSavingsRecordId": "gsr-mov-acct-cpu-001",
+  "occurredAt": "2026-05-14T16:40:00Z",
+  "sourceComponent": "Karl-Hyperdensity",
+  "actorType": "guarantee_policy_engine",
+  "summary": "scoped guaranteed eligible savings activated for mov-acct-cpu-001",
+  "evidenceRefs": [
+    "gsr-mov-acct-cpu-001"
+  ],
+  "claimBoundary": "guarantee activation audit; not universal guarantee"
+}

@@ -1,0 +1,16 @@
+{
+  "entitlementEvidenceId": "entitlement-karl-donor-receiver-a",
+  "tenant": "karl",
+  "namespace": "karl-system",
+  "app": "donor-receiver-pair-a",
+  "contractRef": "contract-karl-enterprise-2026",
+  "entitlementType": "guaranteed_savings_scoped",
+  "entitlementStatus": "active",
+  "validFrom": "2026-01-01T00:00:00Z",
+  "validTo": "2026-12-31T23:59:59Z",
+  "guaranteeEligible": true,
+  "evidenceRefs": [
+    "contract-karl-enterprise-2026"
+  ],
+  "claimBoundary": "active scoped guarantee entitlement"
+}

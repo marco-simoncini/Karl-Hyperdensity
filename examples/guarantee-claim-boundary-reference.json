@@ -1,0 +1,14 @@
+{
+  "claimBoundaryId": "claim-boundary-sprint11a",
+  "allowedClaims": [
+    "KARL Hyperdensity can activate guaranteed eligible savings for verified resource movements that pass accounting, SLO, rollback, unit-price, audit and exclusion gates, while excluding estimated, synthetic, evidence-gated and non-verified value.",
+    "scoped eligible records only; universal guaranteed savings remains disabled",
+    "Dashboard projection only; Karl-Hyperdensity is guarantee decision authority",
+    "FluidVirt provides movement measurement evidence only; not accounting or guarantee authority"
+  ],
+  "forbiddenClaims": [
+    "universal guaranteed savings",
+    "guaranteed savings for all workloads"
+  ],
+  "claimBoundary": "Sprint 11A scoped guarantee claim boundary"
+}

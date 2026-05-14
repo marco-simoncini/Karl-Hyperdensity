@@ -1,0 +1,16 @@
+{
+  "calculationId": "calc-gsr-mov-acct-cpu-001",
+  "guaranteedSavingsRecordId": "gsr-mov-acct-cpu-001",
+  "movementAccountingId": "mov-acct-cpu-001",
+  "formula": "guaranteedValue = min(netRealizedValue * guaranteePercent, guaranteeCapRemaining)",
+  "netRealizedValue": 0.0042,
+  "guaranteePercent": 0.8,
+  "grossGuaranteedValue": 0.00336,
+  "capApplied": false,
+  "guaranteedValue": 0.00336,
+  "currency": "USD",
+  "evidenceRefs": [
+    "gsr-mov-acct-cpu-001"
+  ],
+  "claimBoundary": "guaranteedValue <= netRealizedValue; no rounding up"
+}
