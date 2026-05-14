@@ -1,0 +1,19 @@
+{
+  "classificationId": "class-mov-acct-cpu-001",
+  "movementAccountingId": "mov-acct-cpu-001",
+  "claimClassification": "eligible_for_future_guarantee",
+  "guaranteeEligibleForFuture": true,
+  "excludedFromGuarantee": false,
+  "exclusionReason": "",
+  "requiredEvidencePresent": true,
+  "missingEvidence": [],
+  "estimatedOnly": false,
+  "synthetic": false,
+  "productionScope": false,
+  "sloPreserved": true,
+  "rollbackReady": true,
+  "unitPriceKnown": true,
+  "durationMeasured": true,
+  "postVerifyPassed": true,
+  "claimBoundary": ["eligible for future guarantee classification only; guaranteed savings not active in Sprint 5"]
+}

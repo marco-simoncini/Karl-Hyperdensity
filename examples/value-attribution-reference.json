@@ -1,0 +1,15 @@
+{
+  "attributionId": "attr-mov-acct-cpu-001",
+  "movementAccountingId": "mov-acct-cpu-001",
+  "tenant": "karl",
+  "namespace": "karl",
+  "app": "donor-receiver-pair-a",
+  "businessService": "platform-infra",
+  "costCenter": "cc-karl-platform",
+  "owner": "platform-team",
+  "donorShellId": "shell-container-donor-a",
+  "receiverShellId": "shell-container-replica-b",
+  "attributionConfidence": 0.86,
+  "evidenceRefs": ["hyperdensity_realized_savings_ledger_v1"],
+  "claimBoundary": ["tenant/app attribution for realized value projection only"]
+}

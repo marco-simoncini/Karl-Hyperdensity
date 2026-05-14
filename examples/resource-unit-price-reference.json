@@ -1,0 +1,15 @@
+{
+  "unitPriceId": "unit-price-cpu-karl-internal-v1",
+  "resource": "cpu",
+  "unit": "core-hour",
+  "currency": "USD",
+  "price": 0.12,
+  "priceBasis": "internal_rate_card_per_core_hour",
+  "source": "karl-internal-rate-card-v1",
+  "sourceType": "internal_rate_card",
+  "validFrom": "2026-05-01T00:00:00Z",
+  "tenant": "karl",
+  "confidence": 0.85,
+  "evidenceRefs": ["hyperdensity_realized_savings_ledger_v1"],
+  "claimBoundary": ["internal rate card for technical preview accounting only; not a guarantee price"]
+}

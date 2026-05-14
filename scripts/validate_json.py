@@ -1446,6 +1446,60 @@ def main() -> int:
             if phrase in merged4:
                 fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
 
+    # --- Sprint 5: realized savings ledger v1 ---
+    sprint5_schemas = [
+        "realized-savings-ledger-v1.schema.json",
+        "movement-accounting-record-v1.schema.json",
+        "resource-unit-price-v1.schema.json",
+        "value-attribution-v1.schema.json",
+        "rollback-impact-accounting-v1.schema.json",
+        "monthly-savings-rollup-v1.schema.json",
+        "savings-claim-classification-v1.schema.json",
+        "accounting-confidence-v1.schema.json",
+    ]
+    for name in sprint5_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 5 schema: {name}")
+
+    ledger = example_by_name.get("realized-savings-ledger-reference.json")
+    if ledger is None:
+        fail("examples/realized-savings-ledger-reference.json is missing")
+    if ledger.get("milestone") != "hyperdensity_realized_savings_ledger_v1":
+        fail("realized savings ledger milestone invalid")
+    if ledger.get("guaranteedSavingsAllowed") is not False:
+        fail("guaranteedSavingsAllowed must be false")
+    if ledger.get("guaranteedSavingsClaimed") is not False:
+        fail("guaranteedSavingsClaimed must be false")
+    if ledger.get("estimatedValueCountedAsGuaranteed") is not False:
+        fail("estimatedValueCountedAsGuaranteed must be false")
+
+    rollup = example_by_name.get("monthly-savings-rollup-reference.json")
+    if rollup is None:
+        fail("examples/monthly-savings-rollup-reference.json is missing")
+    if rollup.get("guaranteedSavingsClaimed") is not False:
+        fail("monthly rollup guaranteedSavingsClaimed must be false")
+
+    sprint5_examples = [
+        "realized-savings-ledger-reference.json",
+        "movement-accounting-record-reference.json",
+        "resource-unit-price-reference.json",
+        "value-attribution-reference.json",
+        "rollback-impact-accounting-reference.json",
+        "monthly-savings-rollup-reference.json",
+        "savings-claim-classification-reference.json",
+        "accounting-confidence-reference.json",
+    ]
+    for name in sprint5_examples:
+        ex = example_by_name.get(name)
+        if ex is None:
+            fail(f"missing Sprint 5 example: {name}")
+        positives5: list[str] = []
+        collect_positive_strings(ex, positives5)
+        merged5 = "\n".join(positives5).lower()
+        for phrase in forbidden_positive_claims:
+            if phrase in merged5:
+                fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/value-attribution-v1.schema.json",
+  "title": "KARL Hyperdensity Value Attribution v1",
+  "type": "object",
+  "required": ["attributionId", "movementAccountingId", "tenant", "namespace", "app", "donorShellId", "receiverShellId", "attributionConfidence", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "attributionId": { "type": "string" },
+    "movementAccountingId": { "type": "string" },
+    "tenant": { "type": "string" },
+    "namespace": { "type": "string" },
+    "app": { "type": "string" },
+    "businessService": { "type": "string" },
+    "costCenter": { "type": "string" },
+    "owner": { "type": "string" },
+    "donorShellId": { "type": "string" },
+    "receiverShellId": { "type": "string" },
+    "attributionConfidence": { "type": "number" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

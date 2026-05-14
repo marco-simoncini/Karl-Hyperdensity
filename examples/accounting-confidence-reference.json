@@ -1,0 +1,12 @@
+{
+  "confidenceId": "confidence-mov-acct-cpu-001",
+  "movementAccountingId": "mov-acct-cpu-001",
+  "confidence": 0.87,
+  "method": "conservative_net_realized",
+  "inputs": ["normalizedResourceAmount", "durationHours", "unitPrice", "controlPlaneCost", "rollbackCost", "riskAdjustment"],
+  "lowerBound": 0.0038,
+  "upperBound": 0.0042,
+  "conservativeValue": 0.0042,
+  "evidenceRefs": ["hyperdensity_resource_accounting_evidence_v1"],
+  "claimBoundary": ["conservative value used; no round-up"]
+}

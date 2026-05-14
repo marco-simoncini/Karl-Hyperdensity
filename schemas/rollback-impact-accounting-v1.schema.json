@@ -1,0 +1,20 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/rollback-impact-accounting-v1.schema.json",
+  "title": "KARL Hyperdensity Rollback Impact Accounting v1",
+  "type": "object",
+  "required": ["rollbackImpactId", "movementAccountingId", "rollbackWindowRef", "rollbackExecuted", "rollbackPassed", "rollbackCost", "rollbackDurationSeconds", "rollbackImpactClass", "impactDeductedFromValue", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "rollbackImpactId": { "type": "string" },
+    "movementAccountingId": { "type": "string" },
+    "rollbackWindowRef": { "type": "string" },
+    "rollbackExecuted": { "type": "boolean" },
+    "rollbackPassed": { "type": "boolean" },
+    "rollbackCost": { "type": "number" },
+    "rollbackDurationSeconds": { "type": "integer" },
+    "rollbackImpactClass": { "type": "string" },
+    "impactDeductedFromValue": { "type": "boolean" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

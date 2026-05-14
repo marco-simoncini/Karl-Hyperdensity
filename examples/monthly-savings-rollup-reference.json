@@ -1,0 +1,22 @@
+{
+  "rollupId": "rollup-2026-05",
+  "month": "2026-05",
+  "currency": "USD",
+  "movementRecordCount": 4,
+  "realizedValueTotal": 0.0042,
+  "eligibleForFutureGuaranteeTotal": 0.0042,
+  "excludedNonGuaranteedTotal": 0.0,
+  "estimatedOpportunityTotal": 0.025,
+  "guaranteedSavingsClaimed": false,
+  "topTenants": [{ "tenant": "karl", "realizedValue": 0.0042 }],
+  "topApps": [{ "app": "donor-receiver-pair-a", "realizedValue": 0.0042 }],
+  "exclusionsByReason": {
+    "excluded_post_verify_failed": 1,
+    "excluded_evidence_gated": 1,
+    "excluded_estimated_only": 1,
+    "realized_non_guaranteed": 1
+  },
+  "confidence": 0.84,
+  "evidenceRefs": ["hyperdensity_realized_savings_ledger_v1"],
+  "claimBoundary": ["monthly rollup; guarantee savings not active in Sprint 5; estimated opportunity not counted as guaranteed"]
+}

@@ -1,0 +1,13 @@
+{
+  "rollbackImpactId": "rollback-impact-mem-002",
+  "movementAccountingId": "mov-acct-mem-rollback-002",
+  "rollbackWindowRef": "rollback-window-mem-002",
+  "rollbackExecuted": true,
+  "rollbackPassed": true,
+  "rollbackCost": 0.0035,
+  "rollbackDurationSeconds": 45,
+  "rollbackImpactClass": "memory_envelope_partial_rollback",
+  "impactDeductedFromValue": true,
+  "evidenceRefs": ["hyperdensity_resource_accounting_evidence_v1"],
+  "claimBoundary": ["rollback cost deducted from net realized value; not counted toward future guarantee"]
+}

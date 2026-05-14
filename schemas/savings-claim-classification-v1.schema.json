@@ -1,0 +1,26 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/savings-claim-classification-v1.schema.json",
+  "title": "KARL Hyperdensity Savings Claim Classification v1",
+  "type": "object",
+  "required": ["classificationId", "movementAccountingId", "claimClassification", "guaranteeEligibleForFuture", "excludedFromGuarantee", "requiredEvidencePresent", "missingEvidence", "estimatedOnly", "synthetic", "productionScope", "sloPreserved", "rollbackReady", "unitPriceKnown", "durationMeasured", "postVerifyPassed", "claimBoundary"],
+  "properties": {
+    "classificationId": { "type": "string" },
+    "movementAccountingId": { "type": "string" },
+    "claimClassification": { "type": "string" },
+    "guaranteeEligibleForFuture": { "type": "boolean" },
+    "excludedFromGuarantee": { "type": "boolean" },
+    "exclusionReason": { "type": "string" },
+    "requiredEvidencePresent": { "type": "boolean" },
+    "missingEvidence": { "type": "array", "items": { "type": "string" } },
+    "estimatedOnly": { "type": "boolean" },
+    "synthetic": { "type": "boolean" },
+    "productionScope": { "type": "boolean" },
+    "sloPreserved": { "type": "boolean" },
+    "rollbackReady": { "type": "boolean" },
+    "unitPriceKnown": { "type": "boolean" },
+    "durationMeasured": { "type": "boolean" },
+    "postVerifyPassed": { "type": "boolean" },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

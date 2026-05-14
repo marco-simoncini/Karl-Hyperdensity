@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/monthly-savings-rollup-v1.schema.json",
+  "title": "KARL Hyperdensity Monthly Savings Rollup v1",
+  "type": "object",
+  "required": ["rollupId", "month", "currency", "movementRecordCount", "realizedValueTotal", "eligibleForFutureGuaranteeTotal", "excludedNonGuaranteedTotal", "estimatedOpportunityTotal", "guaranteedSavingsClaimed", "topTenants", "topApps", "exclusionsByReason", "confidence", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "rollupId": { "type": "string" },
+    "month": { "type": "string" },
+    "currency": { "type": "string" },
+    "movementRecordCount": { "type": "integer" },
+    "realizedValueTotal": { "type": "number" },
+    "eligibleForFutureGuaranteeTotal": { "type": "number" },
+    "excludedNonGuaranteedTotal": { "type": "number" },
+    "estimatedOpportunityTotal": { "type": "number" },
+    "guaranteedSavingsClaimed": { "const": false },
+    "topTenants": { "type": "array" },
+    "topApps": { "type": "array" },
+    "exclusionsByReason": { "type": "object" },
+    "confidence": { "type": "number" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

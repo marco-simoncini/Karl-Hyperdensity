@@ -1,0 +1,23 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/resource-unit-price-v1.schema.json",
+  "title": "KARL Hyperdensity Resource Unit Price v1",
+  "type": "object",
+  "required": ["unitPriceId", "resource", "unit", "currency", "price", "priceBasis", "source", "sourceType", "validFrom", "tenant", "confidence", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "unitPriceId": { "type": "string" },
+    "resource": { "type": "string" },
+    "unit": { "type": "string" },
+    "currency": { "type": "string" },
+    "price": { "type": "number" },
+    "priceBasis": { "type": "string" },
+    "source": { "type": "string" },
+    "sourceType": { "type": "string" },
+    "validFrom": { "type": "string" },
+    "validTo": { "type": "string" },
+    "tenant": { "type": "string" },
+    "confidence": { "type": "number" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/accounting-confidence-v1.schema.json",
+  "title": "KARL Hyperdensity Accounting Confidence v1",
+  "type": "object",
+  "required": ["confidenceId", "movementAccountingId", "confidence", "method", "inputs", "lowerBound", "upperBound", "conservativeValue", "evidenceRefs", "claimBoundary"],
+  "properties": {
+    "confidenceId": { "type": "string" },
+    "movementAccountingId": { "type": "string" },
+    "confidence": { "type": "number" },
+    "method": { "type": "string" },
+    "inputs": { "type": "array", "items": { "type": "string" } },
+    "lowerBound": { "type": "number" },
+    "upperBound": { "type": "number" },
+    "conservativeValue": { "type": "number" },
+    "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+    "claimBoundary": { "type": "array", "items": { "type": "string" } }
+  }
+}
