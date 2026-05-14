@@ -1670,6 +1670,66 @@ def main() -> int:
             if phrase in merged8:
                 fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
 
+    # --- Sprint 9: production canary auto apply v1 ---
+    sprint9_schemas = [
+        "production-canary-auto-apply-v1.schema.json",
+        "production-canary-policy-v1.schema.json",
+        "production-canary-allowlist-v1.schema.json",
+        "production-canary-selection-v1.schema.json",
+        "production-canary-preflight-v1.schema.json",
+        "production-canary-safety-reservation-v1.schema.json",
+        "production-canary-apply-request-v1.schema.json",
+        "production-canary-fluidvirt-invocation-v1.schema.json",
+        "production-canary-mutation-observation-v1.schema.json",
+        "production-canary-post-verify-result-v1.schema.json",
+        "production-canary-rollback-decision-v1.schema.json",
+        "production-canary-rollback-execution-v1.schema.json",
+        "production-canary-immutable-audit-trail-v1.schema.json",
+        "production-canary-closeout-v1.schema.json",
+    ]
+    for name in sprint9_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 9 schema: {name}")
+
+    canary_surface = example_by_name.get("production-canary-auto-apply-reference.json")
+    if canary_surface is None:
+        fail("examples/production-canary-auto-apply-reference.json is missing")
+    if canary_surface.get("milestone") != "hyperdensity_production_canary_auto_apply_v1":
+        fail("production canary auto apply milestone invalid")
+    if canary_surface.get("productionCanaryAutoApplyAllowed") is not True:
+        fail("productionCanaryAutoApplyAllowed must be true")
+    if canary_surface.get("generalProductionAutoAllowed") is not False:
+        fail("generalProductionAutoAllowed must be false")
+    if canary_surface.get("productionAutoWithPolicy") is not False:
+        fail("productionAutoWithPolicy must be false")
+
+    sprint9_examples = [
+        "production-canary-auto-apply-reference.json",
+        "production-canary-policy-reference.json",
+        "production-canary-allowlist-reference.json",
+        "production-canary-selection-reference.json",
+        "production-canary-preflight-reference.json",
+        "production-canary-safety-reservation-reference.json",
+        "production-canary-apply-request-reference.json",
+        "production-canary-fluidvirt-invocation-reference.json",
+        "production-canary-mutation-observation-reference.json",
+        "production-canary-post-verify-result-reference.json",
+        "production-canary-rollback-decision-reference.json",
+        "production-canary-rollback-execution-reference.json",
+        "production-canary-immutable-audit-trail-reference.json",
+        "production-canary-closeout-reference.json",
+    ]
+    for name in sprint9_examples:
+        ex = example_by_name.get(name)
+        if ex is None:
+            fail(f"missing Sprint 9 example: {name}")
+        positives9: list[str] = []
+        collect_positive_strings(ex, positives9)
+        merged9 = "\n".join(positives9).lower()
+        for phrase in forbidden_positive_claims:
+            if phrase in merged9:
+                fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

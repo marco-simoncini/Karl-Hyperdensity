@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/production-canary-closeout-v1.schema.json",
+  "title": "KARL Hyperdensity Production Canary Closeout v1",
+  "type": "object",
+  "required": ["closeoutId", "canaryExecutionId", "closeoutStatus", "promotedToGeneralProduction", "nextAllowedState", "claimBoundary"],
+  "properties": {
+    "promotedToGeneralProduction": { "const": false }
+  }
+}

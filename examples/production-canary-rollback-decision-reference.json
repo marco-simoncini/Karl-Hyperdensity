@@ -1,0 +1,11 @@
+{
+  "rollbackDecisionId": "rollback-decision-prod-canary-015",
+  "actionId": "action-prod-canary-regression-015",
+  "candidateId": "candidate-prod-canary-regression-015",
+  "mutationObservationId": "mutation-obs-prod-canary-regression-015",
+  "rollbackRequired": true,
+  "rollbackReason": "slo_regression",
+  "rollbackDecisionAt": "2026-05-14T18:59:35Z",
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["production canary rollback decision"]
+}

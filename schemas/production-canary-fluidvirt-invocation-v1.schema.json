@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/production-canary-fluidvirt-invocation-v1.schema.json",
+  "title": "KARL Hyperdensity Production Canary FluidVirt Invocation v1",
+  "type": "object",
+  "required": ["invocationId", "actuator", "invocationMode", "productionScope", "productionCanaryScope", "generalProductionAutoAllowed", "productionAutoWithPolicy", "rawRuntimeControlsExposed", "claimBoundary"],
+  "properties": {
+    "actuator": { "const": "FluidVirt" },
+    "invocationMode": { "const": "guarded_production_canary" },
+    "productionScope": { "const": true },
+    "productionCanaryScope": { "const": true },
+    "generalProductionAutoAllowed": { "const": false },
+    "productionAutoWithPolicy": { "const": false },
+    "rawRuntimeControlsExposed": { "const": false }
+  }
+}

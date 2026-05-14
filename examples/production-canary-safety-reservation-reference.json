@@ -1,0 +1,17 @@
+{
+  "reservationId": "reservation-prod-canary-cpu-014",
+  "actionId": "action-prod-canary-cpu-014",
+  "candidateId": "candidate-prod-canary-cpu-014",
+  "blastRadiusReservationId": "blast-res-canary-014",
+  "rateLimitReservationId": "rate-res-canary-014",
+  "cooldownReservationId": "cooldown-res-canary-014",
+  "valueAtRiskReservationId": "var-res-canary-014",
+  "reservedAt": "2026-05-14T18:56:00Z",
+  "blastRadiusReserved": true,
+  "rateLimitReserved": true,
+  "cooldownReserved": true,
+  "valueAtRiskReserved": true,
+  "reservationStatus": "reserved",
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["canary safety reservation"]
+}

@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/production-canary-mutation-observation-v1.schema.json",
+  "title": "KARL Hyperdensity Production Canary Mutation Observation v1",
+  "type": "object",
+  "required": ["mutationObservationId", "identityPreserved", "rebootUsed", "recreateUsed", "rolloutUsed", "migrationUsed", "claimBoundary"]
+}

@@ -1,0 +1,17 @@
+{
+  "selectionId": "selection-prod-canary-cpu-014",
+  "actionId": "action-prod-canary-cpu-014",
+  "leaseCandidateId": "lease-candidate-prod-canary-014",
+  "candidateId": "candidate-prod-canary-cpu-014",
+  "policyId": "policy-production-canary-default-v1",
+  "allowlistId": "allowlist-tenant-alpha-canary-v1",
+  "selected": true,
+  "selectionReason": "production_canary_ready_allowlisted",
+  "candidateState": "production_canary_ready",
+  "productionScope": true,
+  "productionCanaryScope": true,
+  "allowlisted": true,
+  "broadProductionScope": false,
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["production canary selected"]
+}

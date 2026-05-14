@@ -30,6 +30,7 @@ required_files=(
   "docs/contracts/universal-slo-guard-certified-uplift-v1.md"
   "docs/contracts/guarded-auto-policy-engine-v1.md"
   "docs/contracts/guarded-auto-apply-sandbox-nonprod-v1.md"
+  "docs/contracts/production-canary-auto-apply-v1.md"
   "docs/contracts/policy-pack-v1.md"
   "docs/contracts/policy-pack-consistency-checker-v1.md"
   "docs/contracts/admission-guard-enforce-simulation-v1.md"

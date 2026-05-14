@@ -1,0 +1,22 @@
+{
+  "invocationId": "invocation-prod-canary-cpu-014",
+  "canaryApplyRequestId": "canary-request-cpu-014",
+  "actuator": "FluidVirt",
+  "invocationMode": "guarded_production_canary",
+  "mutationFamily": "cpu_entitlement",
+  "targetDonor": "shell-container-donor-canary-a",
+  "targetReceiver": "shell-container-replica-canary-014",
+  "resource": "cpu",
+  "amount": "100m",
+  "invokedAt": "2026-05-14T18:57:05Z",
+  "invokedByComponent": "Karl-Hyperdensity",
+  "requestAccepted": true,
+  "mutationExecuted": true,
+  "productionScope": true,
+  "productionCanaryScope": true,
+  "generalProductionAutoAllowed": false,
+  "productionAutoWithPolicy": false,
+  "rawRuntimeControlsExposed": false,
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["production canary FluidVirt invocation"]
+}

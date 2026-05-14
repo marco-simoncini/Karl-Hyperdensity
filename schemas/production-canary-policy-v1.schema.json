@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/production-canary-policy-v1.schema.json",
+  "title": "KARL Hyperdensity Production Canary Policy v1",
+  "type": "object",
+  "required": ["canaryPolicyId", "policyVersion", "requireAllowlist", "requireImmutableAudit", "generalProductionAutoAllowed", "productionAutoWithPolicy", "claimBoundary"],
+  "properties": {
+    "requireAllowlist": { "const": true },
+    "requireImmutableAudit": { "const": true },
+    "generalProductionAutoAllowed": { "const": false },
+    "productionAutoWithPolicy": { "const": false },
+    "allowWindowsEvidenceGatedCanary": { "const": false },
+    "allowSyntheticProductionProof": { "const": false }
+  }
+}

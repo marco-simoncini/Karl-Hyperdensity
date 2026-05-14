@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/production-canary-auto-apply-v1.schema.json",
+  "title": "KARL Hyperdensity Production Canary Auto Apply v1",
+  "type": "object",
+  "required": ["milestone", "surfaceVersion", "canaryExecutionId", "productionCanaryAutoApplyAllowed", "productionCanaryScope", "generalProductionAutoAllowed", "productionAutoWithPolicy", "claimPolicyRef", "sourceOfTruth", "safetyInvariants", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_production_canary_auto_apply_v1" },
+    "productionCanaryAutoApplyAllowed": { "const": true },
+    "productionCanaryScope": { "const": true },
+    "generalProductionAutoAllowed": { "const": false },
+    "productionAutoWithPolicy": { "const": false },
+    "rawRuntimeControlsExposed": { "const": false }
+  }
+}

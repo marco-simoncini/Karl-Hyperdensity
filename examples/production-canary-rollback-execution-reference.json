@@ -1,0 +1,14 @@
+{
+  "rollbackExecutionId": "rollback-exec-prod-canary-015",
+  "rollbackDecisionId": "rollback-decision-prod-canary-015",
+  "actionId": "action-prod-canary-regression-015",
+  "candidateId": "candidate-prod-canary-regression-015",
+  "executed": true,
+  "executedAt": "2026-05-14T18:59:45Z",
+  "actuator": "FluidVirt",
+  "rollbackPassed": true,
+  "healthRestored": true,
+  "runtimeRestored": true,
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["production canary rollback executed"]
+}

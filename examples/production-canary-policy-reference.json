@@ -1,0 +1,12 @@
+{
+  "canaryPolicyId": "policy-production-canary-default-v1",
+  "policyVersion": "v1",
+  "requireAllowlist": true,
+  "requireImmutableAudit": true,
+  "generalProductionAutoAllowed": false,
+  "productionAutoWithPolicy": false,
+  "allowWindowsEvidenceGatedCanary": false,
+  "allowSyntheticProductionProof": false,
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["production canary policy only"]
+}

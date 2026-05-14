@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/production-canary-selection-v1.schema.json",
+  "title": "KARL Hyperdensity Production Canary Selection v1",
+  "type": "object",
+  "required": ["selectionId", "actionId", "selected", "candidateState", "productionScope", "productionCanaryScope", "allowlisted", "claimBoundary"]
+}

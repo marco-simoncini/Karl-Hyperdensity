@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/production-canary-preflight-v1.schema.json",
+  "title": "KARL Hyperdensity Production Canary Preflight v1",
+  "type": "object",
+  "required": ["preflightId", "actionId", "preflightStatus", "claimBoundary"],
+  "properties": {
+    "preflightStatus": { "enum": ["passed", "failed", "blocked", "expired"] }
+  }
+}

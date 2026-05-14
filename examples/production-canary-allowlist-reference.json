@@ -1,0 +1,17 @@
+{
+  "allowlistId": "allowlist-tenant-alpha-canary-v1",
+  "tenant": "tenant-alpha",
+  "namespaces": ["workloads-prod-canary"],
+  "apps": ["api-canary"],
+  "shellIds": ["shell-container-replica-canary-014"],
+  "actionIds": ["action-prod-canary-cpu-014"],
+  "resourceFamilies": ["cpu"],
+  "validFrom": "2026-05-01T00:00:00Z",
+  "validTo": "2026-12-31T23:59:59Z",
+  "approvedBy": "operator-canary-approver",
+  "approvalReason": "explicit canary allowlist",
+  "canaryScope": "production_canary",
+  "immutableAuditRequired": true,
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["explicit allowlist for production canary only"]
+}

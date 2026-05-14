@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/production-canary-apply-request-v1.schema.json",
+  "title": "KARL Hyperdensity Production Canary Apply Request v1",
+  "type": "object",
+  "required": ["canaryApplyRequestId", "actionId", "requestedByComponent", "actuator", "productionScope", "productionCanaryScope", "generalProductionAutoAllowed", "productionAutoWithPolicy", "claimBoundary"],
+  "properties": {
+    "requestedByComponent": { "const": "Karl-Hyperdensity" },
+    "actuator": { "const": "FluidVirt" },
+    "productionScope": { "const": true },
+    "productionCanaryScope": { "const": true },
+    "generalProductionAutoAllowed": { "const": false },
+    "productionAutoWithPolicy": { "const": false }
+  }
+}

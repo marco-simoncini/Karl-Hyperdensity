@@ -1,0 +1,21 @@
+{
+  "immutableAuditTrailId": "immutable-audit-prod-canary-cpu-014",
+  "canaryExecutionId": "production-canary-execution-2026-05-14",
+  "immutableAuditRequired": true,
+  "immutableAuditWritten": true,
+  "retentionDays": 365,
+  "events": [
+    {"eventId": "e1", "eventType": "canary_selection", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:54:00Z", "sourceComponent": "Karl-Hyperdensity", "targetComponent": "Karl-Hyperdensity", "summary": "selected", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]},
+    {"eventId": "e2", "eventType": "production_preflight_recheck", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:55:00Z", "sourceComponent": "Karl-Hyperdensity", "targetComponent": "Karl-Hyperdensity", "summary": "preflight", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]},
+    {"eventId": "e3", "eventType": "canary_safety_reserved", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:56:00Z", "sourceComponent": "Karl-Hyperdensity", "targetComponent": "Karl-Hyperdensity", "summary": "reserved", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]},
+    {"eventId": "e4", "eventType": "production_canary_apply_requested", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:57:00Z", "sourceComponent": "Karl-Hyperdensity", "targetComponent": "FluidVirt", "summary": "requested", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]},
+    {"eventId": "e5", "eventType": "fluidvirt_invoked", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:57:05Z", "sourceComponent": "Karl-Hyperdensity", "targetComponent": "FluidVirt", "summary": "invoked", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]},
+    {"eventId": "e6", "eventType": "mutation_observed", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:57:10Z", "sourceComponent": "FluidVirt", "targetComponent": "Karl-Hyperdensity", "summary": "observed", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]},
+    {"eventId": "e7", "eventType": "post_verify_evaluated", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:57:30Z", "sourceComponent": "Karl-Hyperdensity", "targetComponent": "Karl-Hyperdensity", "summary": "verified", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]},
+    {"eventId": "e8", "eventType": "rollback_decision", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:57:31Z", "sourceComponent": "Karl-Hyperdensity", "targetComponent": "Karl-Hyperdensity", "summary": "no rollback", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]},
+    {"eventId": "e9", "eventType": "rollback_executed", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:57:31Z", "sourceComponent": "Karl-Hyperdensity", "targetComponent": "FluidVirt", "summary": "skipped", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]},
+    {"eventId": "e10", "eventType": "production_canary_closed", "actionId": "action-prod-canary-cpu-014", "candidateId": "candidate-prod-canary-cpu-014", "occurredAt": "2026-05-14T18:57:32Z", "sourceComponent": "Karl-Hyperdensity", "targetComponent": "Karl-Hyperdensity", "summary": "closed", "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"]}
+  ],
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["immutable audit complete"]
+}

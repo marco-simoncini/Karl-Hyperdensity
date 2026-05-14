@@ -1,0 +1,12 @@
+{
+  "preflightId": "preflight-prod-canary-cpu-014",
+  "actionId": "action-prod-canary-cpu-014",
+  "candidateId": "candidate-prod-canary-cpu-014",
+  "checkedAt": "2026-05-14T18:55:00Z",
+  "incidentStateClear": true,
+  "killSwitchStillClear": true,
+  "circuitBreakerStillClosed": true,
+  "preflightStatus": "passed",
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["production canary preflight passed"]
+}

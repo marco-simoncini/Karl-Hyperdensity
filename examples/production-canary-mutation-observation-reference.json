@@ -1,0 +1,20 @@
+{
+  "mutationObservationId": "mutation-obs-prod-canary-cpu-014",
+  "mutationId": "mutation-prod-canary-cpu-014",
+  "canaryApplyRequestId": "canary-request-cpu-014",
+  "invocationId": "invocation-prod-canary-cpu-014",
+  "donorShellId": "shell-container-donor-canary-a",
+  "receiverShellId": "shell-container-replica-canary-014",
+  "resource": "cpu",
+  "requestedAmount": "100m",
+  "appliedAmount": "100m",
+  "identityPreserved": true,
+  "rebootUsed": false,
+  "recreateUsed": false,
+  "rolloutUsed": false,
+  "migrationUsed": false,
+  "mutationMatchesPlan": true,
+  "observedAt": "2026-05-14T18:57:10Z",
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["production canary mutation observed"]
+}

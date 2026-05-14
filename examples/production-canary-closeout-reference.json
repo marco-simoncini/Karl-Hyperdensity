@@ -1,0 +1,17 @@
+{
+  "closeoutId": "closeout-prod-canary-cpu-014",
+  "canaryExecutionId": "production-canary-execution-2026-05-14",
+  "actionId": "action-prod-canary-cpu-014",
+  "candidateId": "candidate-prod-canary-cpu-014",
+  "closeoutStatus": "canary_closed",
+  "mutationKept": true,
+  "rollbackExecuted": false,
+  "sloPreserved": true,
+  "donorHealthPreserved": true,
+  "receiverHealthPreserved": true,
+  "canaryWindowClosed": true,
+  "promotedToGeneralProduction": false,
+  "nextAllowedState": "production_canary_only",
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["canary closeout; not promoted to general production"]
+}

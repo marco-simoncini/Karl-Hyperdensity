@@ -1,0 +1,16 @@
+{
+  "postVerifyId": "post-verify-prod-canary-cpu-014",
+  "mutationObservationId": "mutation-obs-prod-canary-cpu-014",
+  "actionId": "action-prod-canary-cpu-014",
+  "candidateId": "candidate-prod-canary-cpu-014",
+  "verifyStatus": "passed",
+  "runtimeDeltaVerified": true,
+  "sloGuardStatus": "passed",
+  "donorHealthStatus": "preserved",
+  "noRegressionStatus": "certified",
+  "rollbackReady": true,
+  "rollbackRequired": false,
+  "verifiedAt": "2026-05-14T18:57:30Z",
+  "evidenceRefs": ["hyperdensity_production_canary_auto_evidence_v1"],
+  "claimBoundary": ["production canary post-verify passed"]
+}
