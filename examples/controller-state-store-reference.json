@@ -1,0 +1,20 @@
+{
+  "actionTtlEnforced": true,
+  "auditAppendOnly": true,
+  "claimBoundary": "in_memory_reference only; not production persistence",
+  "currentStateRef": "state-v1",
+  "evidenceRefs": [
+    "hyperdensity-live-controller-reconciliation-v1"
+  ],
+  "futureTtlEnforced": true,
+  "idempotencyEnabled": true,
+  "leaseTtlEnforced": true,
+  "loadedAt": "2026-05-14T15:17:37Z",
+  "optimisticLockVersion": 1,
+  "persistenceMode": "ephemeral_reference",
+  "previousStateRef": "state-v0",
+  "savedAt": "2026-05-14T15:17:37Z",
+  "stateStoreId": "state-store-sprint13",
+  "stateVersion": 1,
+  "storeType": "in_memory_reference"
+}

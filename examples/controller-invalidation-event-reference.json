@@ -1,0 +1,12 @@
+{
+  "claimBoundary": "invalidation event",
+  "evidenceRefs": [
+    "ctrl-action-stale-001"
+  ],
+  "invalidatedObjectId": "ctrl-action-stale-001",
+  "invalidatedObjectType": "action",
+  "invalidationEventId": "inv-stale-001",
+  "occurredAt": "2026-05-14T17:30:00Z",
+  "reason": "stale_action_ttl",
+  "sourceSignal": "action_ttl_enforcer"
+}

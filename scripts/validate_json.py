@@ -2006,6 +2006,76 @@ def main() -> int:
         if example_by_name.get(name) is None:
             fail(f"missing Sprint 12 example: {name}")
 
+    # --- Sprint 13: live controller reconciliation execution loop v1 ---
+    sprint13_schemas = [
+        "live-controller-reconciliation-execution-loop-v1.schema.json",
+        "controller-state-store-v1.schema.json",
+        "scheduled-controller-tick-v1.schema.json",
+        "observed-market-state-snapshot-v1.schema.json",
+        "desired-market-state-v1.schema.json",
+        "reconciliation-diff-v1.schema.json",
+        "lease-lifecycle-state-v1.schema.json",
+        "action-lifecycle-state-v1.schema.json",
+        "resource-future-lifecycle-state-v1.schema.json",
+        "controller-invalidation-event-v1.schema.json",
+        "execution-selection-v1.schema.json",
+        "execution-handoff-v1.schema.json",
+        "post-execution-reconciliation-v1.schema.json",
+        "realized-compression-tracker-v1.schema.json",
+        "controller-drift-detection-v1.schema.json",
+        "controller-retry-policy-v1.schema.json",
+        "controller-idempotency-record-v1.schema.json",
+        "live-controller-audit-trail-v1.schema.json",
+    ]
+    for name in sprint13_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 13 schema: {name}")
+
+    live_surface = example_by_name.get("live-controller-reconciliation-execution-loop-reference.json")
+    if live_surface is None:
+        fail("examples/live-controller-reconciliation-execution-loop-reference.json is missing")
+    if live_surface.get("milestone") != "hyperdensity_live_controller_reconciliation_execution_loop_v1":
+        fail("live controller reconciliation milestone invalid")
+    for key in [
+        "liveReconciliationEnabled", "stateStoreEnabled", "scheduledTicksEnabled",
+        "leaseLifecycleEnabled", "actionLifecycleEnabled", "futuresRefreshEnabled",
+        "executionSelectionEnabled", "realizedCompressionTrackingEnabled",
+    ]:
+        if live_surface.get(key) is not True:
+            fail(f"live-controller-reconciliation-execution-loop-reference.json {key} must be true")
+    for key in [
+        "generalProductionAutoAllowed", "productionAutoWithPolicy",
+        "universalGuaranteedSavingsAllowed", "estimatedIdleCountedAsMoved",
+        "projectedCompressionCountedAsRealized", "syntheticFleetCountedAsProduction",
+        "referenceFleetCountedAsProduction", "dashboardExecutor", "fluidvirtPolicyAuthority",
+    ]:
+        if live_surface.get(key) is not False:
+            fail(f"live-controller-reconciliation-execution-loop-reference.json {key} must be false")
+
+    sprint13_examples = [
+        "live-controller-reconciliation-execution-loop-reference.json",
+        "controller-state-store-reference.json",
+        "scheduled-controller-tick-reference.json",
+        "observed-market-state-snapshot-reference.json",
+        "desired-market-state-reference.json",
+        "reconciliation-diff-reference.json",
+        "lease-lifecycle-state-reference.json",
+        "action-lifecycle-state-reference.json",
+        "resource-future-lifecycle-state-reference.json",
+        "controller-invalidation-event-reference.json",
+        "execution-selection-reference.json",
+        "execution-handoff-reference.json",
+        "post-execution-reconciliation-reference.json",
+        "realized-compression-tracker-reference.json",
+        "controller-drift-detection-reference.json",
+        "controller-retry-policy-reference.json",
+        "controller-idempotency-record-reference.json",
+        "live-controller-audit-trail-reference.json",
+    ]
+    for name in sprint13_examples:
+        if example_by_name.get(name) is None:
+            fail(f"missing Sprint 13 example: {name}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

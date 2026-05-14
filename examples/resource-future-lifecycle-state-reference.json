@@ -1,0 +1,24 @@
+{
+  "amount": "500m",
+  "claimBoundary": "future lifecycle; projected not realized",
+  "confidence": 0.75,
+  "createdAt": "2026-05-14T17:30:00Z",
+  "donorShellId": "shell-container-donor-a",
+  "evidenceRefs": [
+    "ctrl-future-001"
+  ],
+  "expired": false,
+  "expiresAt": "2026-05-14T16:17:37Z",
+  "futureId": "ctrl-future-001",
+  "futureLifecycleId": "future-lc-ctrl-future-001",
+  "invalidationReasons": [
+    "shell_identity_changed",
+    "candidate_expired"
+  ],
+  "pressureProbability": 0.7,
+  "receiverShellId": "shell-container-replica-c",
+  "refreshedAt": "2026-05-14T17:30:00Z",
+  "resource": "cpu",
+  "state": "refreshed",
+  "triggerCondition": "pressure_and_idle_threshold_met"
+}

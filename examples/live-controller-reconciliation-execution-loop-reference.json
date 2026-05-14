@@ -1,0 +1,1782 @@
+{
+  "actionLifecycleEnabled": true,
+  "actionLifecycleStates": [
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "actionLifecycleId": "action-lc-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "amount": "500m",
+      "blockers": null,
+      "claimBoundary": "action lifecycle; projected not realized",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+      ],
+      "executionScopeRecommendation": "sandbox_auto_eligible",
+      "expiresAt": "2026-05-15T17:30:00Z",
+      "nextState": "",
+      "previousState": "queued",
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "policy_checked",
+      "updatedAt": "2026-05-14T17:30:00Z"
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "actionLifecycleId": "action-lc-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "amount": "500m",
+      "blockers": null,
+      "claimBoundary": "action lifecycle; projected not realized",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-d-002"
+      ],
+      "executionScopeRecommendation": "production_canary_eligible",
+      "expiresAt": "2026-05-15T17:30:00Z",
+      "nextState": "",
+      "previousState": "queued",
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "policy_checked",
+      "updatedAt": "2026-05-14T17:30:00Z"
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "actionLifecycleId": "action-lc-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "amount": "500m",
+      "blockers": null,
+      "claimBoundary": "action lifecycle; projected not realized",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-b-003"
+      ],
+      "executionScopeRecommendation": "operator_controlled",
+      "expiresAt": "2026-05-15T17:30:00Z",
+      "nextState": "",
+      "previousState": "queued",
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "policy_checked",
+      "updatedAt": "2026-05-14T17:30:00Z"
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "actionLifecycleId": "action-lc-ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "amount": "300m",
+      "blockers": [
+        "cooldown_active"
+      ],
+      "claimBoundary": "action lifecycle; projected not realized",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-c-004"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expiresAt": "2026-05-15T17:30:00Z",
+      "nextState": "",
+      "previousState": "queued",
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "policy_checked",
+      "updatedAt": "2026-05-14T17:30:00Z"
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "actionLifecycleId": "action-lc-ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "amount": "300m",
+      "blockers": [
+        "cooldown_active"
+      ],
+      "claimBoundary": "action lifecycle; projected not realized",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-d-005"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expiresAt": "2026-05-15T17:30:00Z",
+      "nextState": "",
+      "previousState": "queued",
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "policy_checked",
+      "updatedAt": "2026-05-14T17:30:00Z"
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "actionLifecycleId": "action-lc-ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "amount": "300m",
+      "blockers": [
+        "cooldown_active"
+      ],
+      "claimBoundary": "action lifecycle; projected not realized",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-b-006"
+      ],
+      "executionScopeRecommendation": "blocked",
+      "expiresAt": "2026-05-15T17:30:00Z",
+      "nextState": "",
+      "previousState": "queued",
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "policy_checked",
+      "updatedAt": "2026-05-14T17:30:00Z"
+    },
+    {
+      "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-c-007",
+      "actionLifecycleId": "action-lc-ctrl-action-shell-windows-hyper-shell-container-replica-c-007",
+      "amount": "0",
+      "blockers": [
+        "windows_evidence_gated"
+      ],
+      "claimBoundary": "action lifecycle; projected not realized",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-action-shell-windows-hyper-shell-container-replica-c-007"
+      ],
+      "executionScopeRecommendation": "remediation_only",
+      "expiresAt": "2026-05-15T17:30:00Z",
+      "nextState": "",
+      "previousState": "queued",
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "policy_checked",
+      "updatedAt": "2026-05-14T17:30:00Z"
+    },
+    {
+      "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-d-008",
+      "actionLifecycleId": "action-lc-ctrl-action-shell-windows-hyper-shell-container-replica-d-008",
+      "amount": "0",
+      "blockers": [
+        "windows_evidence_gated"
+      ],
+      "claimBoundary": "action lifecycle; projected not realized",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-action-shell-windows-hyper-shell-container-replica-d-008"
+      ],
+      "executionScopeRecommendation": "remediation_only",
+      "expiresAt": "2026-05-15T17:30:00Z",
+      "nextState": "",
+      "previousState": "queued",
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "policy_checked",
+      "updatedAt": "2026-05-14T17:30:00Z"
+    },
+    {
+      "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-b-009",
+      "actionLifecycleId": "action-lc-ctrl-action-shell-windows-hyper-shell-container-replica-b-009",
+      "amount": "0",
+      "blockers": [
+        "windows_evidence_gated"
+      ],
+      "claimBoundary": "action lifecycle; projected not realized",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-action-shell-windows-hyper-shell-container-replica-b-009"
+      ],
+      "executionScopeRecommendation": "remediation_only",
+      "expiresAt": "2026-05-15T17:30:00Z",
+      "nextState": "",
+      "previousState": "queued",
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "policy_checked",
+      "updatedAt": "2026-05-14T17:30:00Z"
+    },
+    {
+      "actionId": "ctrl-action-stale-001",
+      "actionLifecycleId": "action-lc-invalidated-001",
+      "amount": "100m",
+      "claimBoundary": "invalidated action",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-action-stale-001"
+      ],
+      "invalidationReason": "stale_action_ttl",
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "selectedForExecution": false,
+      "state": "invalidated"
+    }
+  ],
+  "activeActionCount": 9,
+  "activeFutureCount": 9,
+  "activeLeaseCount": 9,
+  "auditTrail": {
+    "appendOnly": true,
+    "auditTrailId": "audit-trail-sprint13",
+    "claimBoundary": "immutable append-only audit trail",
+    "events": [
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "state_loaded",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "observed_snapshot_collected",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "observed-sprint13-001",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "desired_state_computed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "desired-sprint13",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "reconciliation_diff_computed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "diff-observed-sprint13-001",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "action_lifecycle_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "lease_created",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "lease-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "action_lifecycle_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "lease_created",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "lease-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "action_lifecycle_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "lease_created",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "lease-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "action_lifecycle_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "lease_created",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "lease-ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "action_lifecycle_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "lease_created",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "lease-ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "action_lifecycle_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "lease_created",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "lease-ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "action_lifecycle_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-action-shell-windows-hyper-shell-container-replica-c-007",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "lease_created",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "lease-ctrl-action-shell-windows-hyper-shell-container-replica-c-007",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "action_lifecycle_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-action-shell-windows-hyper-shell-container-replica-d-008",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "lease_created",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "lease-ctrl-action-shell-windows-hyper-shell-container-replica-d-008",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "action_lifecycle_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-action-shell-windows-hyper-shell-container-replica-b-009",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "lease_created",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "lease-ctrl-action-shell-windows-hyper-shell-container-replica-b-009",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "future_refreshed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-future-001",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "future_refreshed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-future-002",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "future_refreshed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-future-003",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "future_refreshed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-future-004",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "future_refreshed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-future-005",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "future_refreshed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-future-006",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "future_refreshed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-future-007",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "future_refreshed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-future-008",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "future_refreshed",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "ctrl-future-009",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_selected",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "exec-sel-001",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_selected",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "exec-sel-002",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_selected",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "exec-sel-003",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_selected",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "exec-sel-004",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_selected",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "exec-sel-005",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_selected",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "exec-sel-006",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_handed_off",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "handoff-001",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_handed_off",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "handoff-002",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_handed_off",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "handoff-003",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_handed_off",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "handoff-004",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_handed_off",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "handoff-005",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "execution_handed_off",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "handoff-006",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "post_execution_reconciled",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "post-exec-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "post_execution_reconciled",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "post-exec-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "post_execution_reconciled",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "post-exec-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "compression_tracker_updated",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "state_saved",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "invalidation_recorded",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "inv-stale-001",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      },
+      {
+        "claimBoundary": "immutable audit append-only",
+        "eventType": "post_execution_reconciled",
+        "evidenceRefs": [
+          "hyperdensity-live-controller-reconciliation-v1"
+        ],
+        "liveLoopId": "live-loop-sprint13",
+        "objectRef": "post-exec-realized",
+        "occurredAt": "2026-05-14T15:17:37Z"
+      }
+    ],
+    "evidenceRefs": [
+      "hyperdensity-live-controller-reconciliation-v1"
+    ],
+    "immutableAuditRequired": true,
+    "liveLoopId": "live-loop-sprint13",
+    "retentionDays": 90
+  },
+  "blockers": [],
+  "claimBoundaries": [
+    "live reconciliation loop; projected compression separate from realized",
+    "realized compression requires mutation and post-verify evidence",
+    "no general production auto"
+  ],
+  "controllerMode": "production_canary_only",
+  "currentIdleCompressionRate": 0.04941176470588235,
+  "currentUnmovedEligibleIdleValue": 0.0808,
+  "dashboardExecutor": false,
+  "desiredActionCount": 9,
+  "desiredStates": [
+    {
+      "claimBoundary": "desired market state",
+      "desiredActionCount": 9,
+      "desiredFutureCount": 6,
+      "desiredStateId": "desired-sprint13",
+      "evidenceRefs": [
+        "desired-sprint13"
+      ],
+      "forbiddenExecutionScopes": [
+        "general_production_auto",
+        "production_auto_with_policy"
+      ],
+      "generatedAt": "2026-05-14T17:30:00Z",
+      "permittedExecutionScopes": [
+        "operator_controlled",
+        "sandbox_auto",
+        "nonprod_auto",
+        "production_canary_auto"
+      ],
+      "targetControllerCoveragePercent": 0.89,
+      "targetIdleCompressionRate": 0.25,
+      "targetMovementThroughput": 3
+    }
+  ],
+  "driftDetections": [
+    {
+      "checkedAt": "2026-05-14T17:30:00Z",
+      "claimBoundary": "no drift detected",
+      "driftDetected": false,
+      "driftDetectionId": "drift-none",
+      "driftType": "none",
+      "evidenceRefs": [
+        "hyperdensity-live-controller-reconciliation-v1"
+      ],
+      "severity": "none"
+    }
+  ],
+  "estimatedIdleCountedAsMoved": false,
+  "executionHandoffCount": 6,
+  "executionHandoffs": [
+    {
+      "accepted": true,
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "actuator": "FluidVirt",
+      "actuatorRequestFamily": "fluidvirt_resource_mutation",
+      "claimBoundary": "execution handoff to FluidVirt actuator only when accepted",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+      ],
+      "executionHandoffId": "handoff-001",
+      "executionSelectionId": "exec-sel-001",
+      "fluidvirtInvocationRef": "fluidvirt-invoke-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "handoffMode": "guarded_auto_handoff",
+      "handoffTarget": "guarded_auto_sandbox_nonprod",
+      "requestedAt": "2026-05-14T15:17:37Z"
+    },
+    {
+      "accepted": true,
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "actuator": "FluidVirt",
+      "actuatorRequestFamily": "fluidvirt_resource_mutation",
+      "claimBoundary": "execution handoff to FluidVirt actuator only when accepted",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-d-002"
+      ],
+      "executionHandoffId": "handoff-002",
+      "executionSelectionId": "exec-sel-002",
+      "fluidvirtInvocationRef": "fluidvirt-invoke-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "handoffMode": "canary_auto_handoff",
+      "handoffTarget": "production_canary_auto",
+      "requestedAt": "2026-05-14T15:17:37Z"
+    },
+    {
+      "accepted": true,
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "actuator": "FluidVirt",
+      "actuatorRequestFamily": "fluidvirt_resource_mutation",
+      "claimBoundary": "execution handoff to FluidVirt actuator only when accepted",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-b-003"
+      ],
+      "executionHandoffId": "handoff-003",
+      "executionSelectionId": "exec-sel-003",
+      "fluidvirtInvocationRef": "fluidvirt-invoke-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "handoffMode": "operator_handoff",
+      "handoffTarget": "operator_apply_gate",
+      "requestedAt": "2026-05-14T15:17:37Z"
+    },
+    {
+      "accepted": false,
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "actuator": "",
+      "actuatorRequestFamily": "fluidvirt_resource_mutation",
+      "claimBoundary": "execution handoff to FluidVirt actuator only when accepted",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-c-004"
+      ],
+      "executionHandoffId": "handoff-004",
+      "executionSelectionId": "exec-sel-004",
+      "fluidvirtInvocationRef": "fluidvirt-invoke-ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "handoffMode": "blocked",
+      "handoffTarget": "none_blocked",
+      "requestedAt": "2026-05-14T15:17:37Z"
+    },
+    {
+      "accepted": false,
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "actuator": "",
+      "actuatorRequestFamily": "fluidvirt_resource_mutation",
+      "claimBoundary": "execution handoff to FluidVirt actuator only when accepted",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-d-005"
+      ],
+      "executionHandoffId": "handoff-005",
+      "executionSelectionId": "exec-sel-005",
+      "fluidvirtInvocationRef": "fluidvirt-invoke-ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "handoffMode": "blocked",
+      "handoffTarget": "none_blocked",
+      "requestedAt": "2026-05-14T15:17:37Z"
+    },
+    {
+      "accepted": false,
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "actuator": "",
+      "actuatorRequestFamily": "fluidvirt_resource_mutation",
+      "claimBoundary": "execution handoff to FluidVirt actuator only when accepted",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-b-006"
+      ],
+      "executionHandoffId": "handoff-006",
+      "executionSelectionId": "exec-sel-006",
+      "fluidvirtInvocationRef": "fluidvirt-invoke-ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "handoffMode": "blocked",
+      "handoffTarget": "none_blocked",
+      "requestedAt": "2026-05-14T15:17:37Z"
+    }
+  ],
+  "executionSelectionCount": 6,
+  "executionSelectionEnabled": true,
+  "executionSelections": [
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "actionLifecycleRef": "action-lc-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "blockers": null,
+      "circuitBreakerClosed": true,
+      "claimBoundary": "execution selection; permitted scope only",
+      "cooldownExpired": true,
+      "donorHealthPreserved": true,
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+      ],
+      "executionScope": "sandbox_auto",
+      "executionSelectionId": "exec-sel-001",
+      "generalProductionAutoAllowed": false,
+      "killSwitchClear": true,
+      "noRegressionCertified": true,
+      "nonProdScope": false,
+      "permittedScope": true,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "rateLimitAvailable": true,
+      "rollbackReady": true,
+      "sandboxScope": true,
+      "selected": true,
+      "selectionReason": "permitted_scope_eligible",
+      "sloGuardPassed": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "actionLifecycleRef": "action-lc-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "blockers": null,
+      "circuitBreakerClosed": true,
+      "claimBoundary": "execution selection; permitted scope only",
+      "cooldownExpired": true,
+      "donorHealthPreserved": true,
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-d-002"
+      ],
+      "executionScope": "production_canary_auto",
+      "executionSelectionId": "exec-sel-002",
+      "generalProductionAutoAllowed": false,
+      "killSwitchClear": true,
+      "noRegressionCertified": true,
+      "nonProdScope": false,
+      "permittedScope": true,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": true,
+      "productionScope": true,
+      "rateLimitAvailable": true,
+      "rollbackReady": true,
+      "sandboxScope": false,
+      "selected": true,
+      "selectionReason": "permitted_scope_eligible",
+      "sloGuardPassed": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "actionLifecycleRef": "action-lc-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "blockers": null,
+      "circuitBreakerClosed": true,
+      "claimBoundary": "execution selection; permitted scope only",
+      "cooldownExpired": true,
+      "donorHealthPreserved": true,
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-b-003"
+      ],
+      "executionScope": "operator_controlled",
+      "executionSelectionId": "exec-sel-003",
+      "generalProductionAutoAllowed": false,
+      "killSwitchClear": true,
+      "noRegressionCertified": true,
+      "nonProdScope": false,
+      "permittedScope": true,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "rateLimitAvailable": true,
+      "rollbackReady": true,
+      "sandboxScope": false,
+      "selected": true,
+      "selectionReason": "permitted_scope_eligible",
+      "sloGuardPassed": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "actionLifecycleRef": "action-lc-ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "blockers": [
+        "cooldown_active"
+      ],
+      "circuitBreakerClosed": true,
+      "claimBoundary": "execution selection; permitted scope only",
+      "cooldownExpired": false,
+      "donorHealthPreserved": true,
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-c-004"
+      ],
+      "executionScope": "blocked",
+      "executionSelectionId": "exec-sel-004",
+      "generalProductionAutoAllowed": false,
+      "killSwitchClear": true,
+      "noRegressionCertified": true,
+      "nonProdScope": false,
+      "permittedScope": true,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "rateLimitAvailable": true,
+      "rollbackReady": true,
+      "sandboxScope": false,
+      "selected": false,
+      "selectionReason": "scope_not_permitted",
+      "sloGuardPassed": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "actionLifecycleRef": "action-lc-ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "blockers": [
+        "cooldown_active"
+      ],
+      "circuitBreakerClosed": true,
+      "claimBoundary": "execution selection; permitted scope only",
+      "cooldownExpired": false,
+      "donorHealthPreserved": true,
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-d-005"
+      ],
+      "executionScope": "blocked",
+      "executionSelectionId": "exec-sel-005",
+      "generalProductionAutoAllowed": false,
+      "killSwitchClear": true,
+      "noRegressionCertified": true,
+      "nonProdScope": false,
+      "permittedScope": true,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "rateLimitAvailable": true,
+      "rollbackReady": true,
+      "sandboxScope": false,
+      "selected": false,
+      "selectionReason": "scope_not_permitted",
+      "sloGuardPassed": true
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "actionLifecycleRef": "action-lc-ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "blockers": [
+        "cooldown_active"
+      ],
+      "circuitBreakerClosed": true,
+      "claimBoundary": "execution selection; permitted scope only",
+      "cooldownExpired": false,
+      "donorHealthPreserved": true,
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-b-shell-container-replica-b-006"
+      ],
+      "executionScope": "blocked",
+      "executionSelectionId": "exec-sel-006",
+      "generalProductionAutoAllowed": false,
+      "killSwitchClear": true,
+      "noRegressionCertified": true,
+      "nonProdScope": false,
+      "permittedScope": true,
+      "productionAutoWithPolicy": false,
+      "productionCanaryScope": false,
+      "productionScope": false,
+      "rateLimitAvailable": true,
+      "rollbackReady": true,
+      "sandboxScope": false,
+      "selected": false,
+      "selectionReason": "scope_not_permitted",
+      "sloGuardPassed": true
+    }
+  ],
+  "expiredFutureCount": 1,
+  "expiredLeaseCount": 0,
+  "failedTickCount": 0,
+  "fluidvirtPolicyAuthority": false,
+  "futureLifecycleStates": [
+    {
+      "amount": "500m",
+      "claimBoundary": "future lifecycle; projected not realized",
+      "confidence": 0.75,
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-future-001"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T16:17:37Z",
+      "futureId": "ctrl-future-001",
+      "futureLifecycleId": "future-lc-ctrl-future-001",
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-c",
+      "refreshedAt": "2026-05-14T17:30:00Z",
+      "resource": "cpu",
+      "state": "refreshed",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "500m",
+      "claimBoundary": "future lifecycle; projected not realized",
+      "confidence": 0.75,
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-future-002"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T17:17:37Z",
+      "futureId": "ctrl-future-002",
+      "futureLifecycleId": "future-lc-ctrl-future-002",
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-d",
+      "refreshedAt": "2026-05-14T17:30:00Z",
+      "resource": "cpu",
+      "state": "refreshed",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "500m",
+      "claimBoundary": "future lifecycle; projected not realized",
+      "confidence": 0.75,
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "ctrl-future-003"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:17:37Z",
+      "futureId": "ctrl-future-003",
+      "futureLifecycleId": "future-lc-ctrl-future-003",
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-b",
+      "refreshedAt": "2026-05-14T17:30:00Z",
+      "resource": "cpu",
+      "state": "refreshed",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "300m",
+      "claimBoundary": "future lifecycle; projected not realized",
+      "confidence": 0.75,
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-future-004"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T17:17:37Z",
+      "futureId": "ctrl-future-004",
+      "futureLifecycleId": "future-lc-ctrl-future-004",
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-c",
+      "refreshedAt": "2026-05-14T17:30:00Z",
+      "resource": "cpu",
+      "state": "refreshed",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "300m",
+      "claimBoundary": "future lifecycle; projected not realized",
+      "confidence": 0.75,
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-future-005"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:17:37Z",
+      "futureId": "ctrl-future-005",
+      "futureLifecycleId": "future-lc-ctrl-future-005",
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-d",
+      "refreshedAt": "2026-05-14T17:30:00Z",
+      "resource": "cpu",
+      "state": "refreshed",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "300m",
+      "claimBoundary": "future lifecycle; projected not realized",
+      "confidence": 0.75,
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-future-006"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T19:17:37Z",
+      "futureId": "ctrl-future-006",
+      "futureLifecycleId": "future-lc-ctrl-future-006",
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-b",
+      "refreshedAt": "2026-05-14T17:30:00Z",
+      "resource": "cpu",
+      "state": "refreshed",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "0",
+      "claimBoundary": "future lifecycle; projected not realized",
+      "confidence": 0.75,
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-future-007"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:17:37Z",
+      "futureId": "ctrl-future-007",
+      "futureLifecycleId": "future-lc-ctrl-future-007",
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-c",
+      "refreshedAt": "2026-05-14T17:30:00Z",
+      "resource": "cpu",
+      "state": "refreshed",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "0",
+      "claimBoundary": "future lifecycle; projected not realized",
+      "confidence": 0.75,
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-future-008"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T19:17:37Z",
+      "futureId": "ctrl-future-008",
+      "futureLifecycleId": "future-lc-ctrl-future-008",
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-d",
+      "refreshedAt": "2026-05-14T17:30:00Z",
+      "resource": "cpu",
+      "state": "refreshed",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "0",
+      "claimBoundary": "future lifecycle; projected not realized",
+      "confidence": 0.75,
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "ctrl-future-009"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T20:17:37Z",
+      "futureId": "ctrl-future-009",
+      "futureLifecycleId": "future-lc-ctrl-future-009",
+      "invalidationReasons": [
+        "shell_identity_changed",
+        "candidate_expired"
+      ],
+      "pressureProbability": 0.7,
+      "receiverShellId": "shell-container-replica-b",
+      "refreshedAt": "2026-05-14T17:30:00Z",
+      "resource": "cpu",
+      "state": "refreshed",
+      "triggerCondition": "pressure_and_idle_threshold_met"
+    },
+    {
+      "amount": "100m",
+      "claimBoundary": "expired future",
+      "createdAt": "2026-05-12T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "ctrl-future-expired-001"
+      ],
+      "expired": true,
+      "expiresAt": "2026-05-13T17:30:00Z",
+      "futureId": "ctrl-future-expired-001",
+      "futureLifecycleId": "future-lc-expired-001",
+      "invalidationReasons": [
+        "candidate_expired"
+      ],
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "state": "expired"
+    }
+  ],
+  "futuresRefreshEnabled": true,
+  "generalProductionAutoAllowed": false,
+  "generatedAt": "2026-05-14T17:30:00Z",
+  "guaranteedEligibleSavingsTotal": 0.00336,
+  "idempotencyRecords": [
+    {
+      "claimBoundary": "idempotency record",
+      "duplicateSuppressed": true,
+      "evidenceRefs": [
+        "tick-idem-sprint13-001"
+      ],
+      "firstSeenAt": "2026-05-14T17:30:00Z",
+      "idempotencyKey": "tick-idem-sprint13-001",
+      "idempotencyRecordId": "idem-tick-idem-sprint13-001",
+      "lastSeenAt": "2026-05-14T17:31:00Z",
+      "objectId": "tick-1",
+      "objectType": "scheduled_tick",
+      "replayCount": 1
+    },
+    {
+      "claimBoundary": "idempotent replay",
+      "duplicateSuppressed": true,
+      "evidenceRefs": [
+        "tick-idem-sprint13-001"
+      ],
+      "firstSeenAt": "2026-05-14T17:30:00Z",
+      "idempotencyKey": "tick-idem-sprint13-001",
+      "idempotencyRecordId": "idem-replay-001",
+      "lastSeenAt": "2026-05-14T17:31:00Z",
+      "objectId": "tick-2",
+      "objectType": "scheduled_tick",
+      "replayCount": 1
+    }
+  ],
+  "idempotentReplayCount": 1,
+  "invalidatedActionCount": 1,
+  "invalidationEvents": [
+    {
+      "claimBoundary": "invalidation event",
+      "evidenceRefs": [
+        "ctrl-action-stale-001"
+      ],
+      "invalidatedObjectId": "ctrl-action-stale-001",
+      "invalidatedObjectType": "action",
+      "invalidationEventId": "inv-stale-001",
+      "occurredAt": "2026-05-14T17:30:00Z",
+      "reason": "stale_action_ttl",
+      "sourceSignal": "action_ttl_enforcer"
+    }
+  ],
+  "inventoryRuntimeExecutor": false,
+  "leaseLifecycleEnabled": true,
+  "leaseLifecycleStates": [
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "amount": "500m",
+      "claimBoundary": "lease lifecycle; not realized until post-verify",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "lease-ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:30:00Z",
+      "leaseId": "lease-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "leaseLifecycleId": "lease-lc-lease-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "state": "proposed",
+      "ttlSeconds": 3600
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "amount": "500m",
+      "claimBoundary": "lease lifecycle; not realized until post-verify",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "lease-ctrl-action-shell-container-donor-a-shell-container-replica-d-002"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:30:00Z",
+      "leaseId": "lease-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "leaseLifecycleId": "lease-lc-lease-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "state": "proposed",
+      "ttlSeconds": 3600
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "amount": "500m",
+      "claimBoundary": "lease lifecycle; not realized until post-verify",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-a",
+      "evidenceRefs": [
+        "lease-ctrl-action-shell-container-donor-a-shell-container-replica-b-003"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:30:00Z",
+      "leaseId": "lease-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "leaseLifecycleId": "lease-lc-lease-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "state": "proposed",
+      "ttlSeconds": 3600
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "amount": "300m",
+      "claimBoundary": "lease lifecycle; not realized until post-verify",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "lease-ctrl-action-shell-container-donor-b-shell-container-replica-c-004"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:30:00Z",
+      "leaseId": "lease-ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "leaseLifecycleId": "lease-lc-lease-ctrl-action-shell-container-donor-b-shell-container-replica-c-004",
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "state": "proposed",
+      "ttlSeconds": 3600
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "amount": "300m",
+      "claimBoundary": "lease lifecycle; not realized until post-verify",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "lease-ctrl-action-shell-container-donor-b-shell-container-replica-d-005"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:30:00Z",
+      "leaseId": "lease-ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "leaseLifecycleId": "lease-lc-lease-ctrl-action-shell-container-donor-b-shell-container-replica-d-005",
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "state": "proposed",
+      "ttlSeconds": 3600
+    },
+    {
+      "actionId": "ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "amount": "300m",
+      "claimBoundary": "lease lifecycle; not realized until post-verify",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-container-donor-b",
+      "evidenceRefs": [
+        "lease-ctrl-action-shell-container-donor-b-shell-container-replica-b-006"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:30:00Z",
+      "leaseId": "lease-ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "leaseLifecycleId": "lease-lc-lease-ctrl-action-shell-container-donor-b-shell-container-replica-b-006",
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "state": "proposed",
+      "ttlSeconds": 3600
+    },
+    {
+      "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-c-007",
+      "amount": "0",
+      "claimBoundary": "lease lifecycle; not realized until post-verify",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "lease-ctrl-action-shell-windows-hyper-shell-container-replica-c-007"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:30:00Z",
+      "leaseId": "lease-ctrl-action-shell-windows-hyper-shell-container-replica-c-007",
+      "leaseLifecycleId": "lease-lc-lease-ctrl-action-shell-windows-hyper-shell-container-replica-c-007",
+      "receiverShellId": "shell-container-replica-c",
+      "resource": "cpu",
+      "state": "proposed",
+      "ttlSeconds": 3600
+    },
+    {
+      "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-d-008",
+      "amount": "0",
+      "claimBoundary": "lease lifecycle; not realized until post-verify",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "lease-ctrl-action-shell-windows-hyper-shell-container-replica-d-008"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:30:00Z",
+      "leaseId": "lease-ctrl-action-shell-windows-hyper-shell-container-replica-d-008",
+      "leaseLifecycleId": "lease-lc-lease-ctrl-action-shell-windows-hyper-shell-container-replica-d-008",
+      "receiverShellId": "shell-container-replica-d",
+      "resource": "cpu",
+      "state": "proposed",
+      "ttlSeconds": 3600
+    },
+    {
+      "actionId": "ctrl-action-shell-windows-hyper-shell-container-replica-b-009",
+      "amount": "0",
+      "claimBoundary": "lease lifecycle; not realized until post-verify",
+      "createdAt": "2026-05-14T17:30:00Z",
+      "donorShellId": "shell-windows-hyper",
+      "evidenceRefs": [
+        "lease-ctrl-action-shell-windows-hyper-shell-container-replica-b-009"
+      ],
+      "expired": false,
+      "expiresAt": "2026-05-14T18:30:00Z",
+      "leaseId": "lease-ctrl-action-shell-windows-hyper-shell-container-replica-b-009",
+      "leaseLifecycleId": "lease-lc-lease-ctrl-action-shell-windows-hyper-shell-container-replica-b-009",
+      "receiverShellId": "shell-container-replica-b",
+      "resource": "cpu",
+      "state": "proposed",
+      "ttlSeconds": 3600
+    }
+  ],
+  "liveLoopId": "live-loop-sprint13",
+  "liveReconciliationEnabled": true,
+  "milestone": "hyperdensity_live_controller_reconciliation_execution_loop_v1",
+  "observedShellCount": 12,
+  "observedSnapshots": [
+    {
+      "activeActionCount": 0,
+      "activeFutureCount": 0,
+      "activeLeaseCount": 0,
+      "circuitBreakerOpen": false,
+      "claimBoundary": "observed market state snapshot",
+      "collectedAt": "2026-05-14T17:30:00Z",
+      "cooldownBlockedCount": 1,
+      "evidenceRefs": [
+        "observed-sprint13-001"
+      ],
+      "generalProductionAutoAllowed": false,
+      "idleObservationCount": 12,
+      "killSwitchActive": false,
+      "observedSnapshotId": "observed-sprint13-001",
+      "pressureSignalCount": 3,
+      "productionAutoWithPolicy": false,
+      "productionCanaryEnabled": true,
+      "rateLimitRemaining": 5,
+      "shellCount": 12
+    }
+  ],
+  "postExecutionReconciliationCount": 3,
+  "postExecutionReconciliations": [
+    {
+      "accounted": true,
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "claimBoundary": "realized only with mutation and post-verify evidence",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+        "fluidvirt-mutation-evidence"
+      ],
+      "executionHandoffRef": "handoff-001",
+      "guaranteedEligibleValue": 0.004032000000000001,
+      "guaranteedSavingsRef": "hyperdensity-guaranteed-eligible-savings-v1",
+      "mutationObservationRef": "mutation-obs-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "mutationObserved": true,
+      "postExecutionReconciliationId": "post-exec-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "postVerifyPassed": true,
+      "postVerifyRef": "post-verify-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "realizedIdleValue": 0.005600000000000001,
+      "realizedMovementKept": true,
+      "rollbackExecuted": false,
+      "rollbackRequired": false,
+      "rollbackWindowRef": "rollback-window-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+      "savingsLedgerRef": "hyperdensity-realized-savings-ledger-v1"
+    },
+    {
+      "accounted": false,
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "claimBoundary": "realized only with mutation and post-verify evidence",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+        "fluidvirt-mutation-evidence"
+      ],
+      "executionHandoffRef": "handoff-002",
+      "guaranteedEligibleValue": 0,
+      "guaranteedSavingsRef": "hyperdensity-guaranteed-eligible-savings-v1",
+      "mutationObservationRef": "mutation-obs-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "mutationObserved": false,
+      "postExecutionReconciliationId": "post-exec-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "postVerifyPassed": false,
+      "postVerifyRef": "post-verify-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "realizedIdleValue": 0,
+      "realizedMovementKept": false,
+      "rollbackExecuted": false,
+      "rollbackRequired": false,
+      "rollbackWindowRef": "rollback-window-ctrl-action-shell-container-donor-a-shell-container-replica-d-002",
+      "savingsLedgerRef": "hyperdensity-realized-savings-ledger-v1"
+    },
+    {
+      "accounted": false,
+      "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "claimBoundary": "realized only with mutation and post-verify evidence",
+      "evidenceRefs": [
+        "ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+        "fluidvirt-mutation-evidence"
+      ],
+      "executionHandoffRef": "handoff-003",
+      "guaranteedEligibleValue": 0,
+      "guaranteedSavingsRef": "hyperdensity-guaranteed-eligible-savings-v1",
+      "mutationObservationRef": "mutation-obs-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "mutationObserved": false,
+      "postExecutionReconciliationId": "post-exec-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "postVerifyPassed": false,
+      "postVerifyRef": "post-verify-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "realizedIdleValue": 0,
+      "realizedMovementKept": false,
+      "rollbackExecuted": false,
+      "rollbackRequired": false,
+      "rollbackWindowRef": "rollback-window-ctrl-action-shell-container-donor-a-shell-container-replica-b-003",
+      "savingsLedgerRef": "hyperdensity-realized-savings-ledger-v1"
+    }
+  ],
+  "productionAutoWithPolicy": false,
+  "projectedCompressionCountedAsRealized": false,
+  "projectedIdleCompressionRate": 0.22352941176470587,
+  "projectedMovedIdleValue": 0.019,
+  "projectedMovementCount": 9,
+  "realizedCompressionTracker": {
+    "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+    "claimBoundary": "realized compression requires mutation and post-verify evidence",
+    "currentRealizedIdleCompressionRate": 0.06588235294117648,
+    "evidenceRefs": [
+      "hyperdensity-live-controller-reconciliation-v1"
+    ],
+    "previousRealizedIdleCompressionRate": 0.04941176470588235,
+    "projectedCompressionCountedAsRealized": false,
+    "projectedIdleCompressionRate": 0.22352941176470587,
+    "projectedMovedIdleValue": 0.019,
+    "projectedMovementCount": 9,
+    "projectedUnmovedEligibleIdleValue": 0.0702,
+    "realizedCompressionTrackerId": "realized-compression-sprint13",
+    "realizedMovedIdleValue": 0.005600000000000001,
+    "realizedMovementCount": 1,
+    "realizedUnmovedEligibleIdleValue": 0.0794
+  },
+  "realizedCompressionTrackingEnabled": true,
+  "realizedIdleCompressionRate": 0.06588235294117648,
+  "realizedMovedIdleValue": 0.005600000000000001,
+  "realizedMovementCount": 1,
+  "realizedUnmovedEligibleIdleValue": 0.0794,
+  "reconciliationDiffs": [
+    {
+      "actionsCreated": 9,
+      "actionsInvalidated": 0,
+      "actionsUpdated": 0,
+      "claimBoundary": "reconciliation diff",
+      "desiredStateRef": "desired-sprint13",
+      "diffSummary": "refresh 9 actions 9 futures",
+      "evidenceRefs": [
+        "diff-observed-sprint13-001"
+      ],
+      "executionSelectionsCreated": 6,
+      "futuresCreated": 9,
+      "futuresExpired": 0,
+      "futuresUpdated": 0,
+      "leasesCreated": 9,
+      "leasesExpired": 0,
+      "noOpCount": 0,
+      "observedSnapshotRef": "observed-sprint13-001",
+      "previousStateRef": "state-v1",
+      "reconciliationDiffId": "diff-observed-sprint13-001"
+    }
+  ],
+  "referenceFleetCountedAsProduction": false,
+  "retryPolicies": [
+    {
+      "claimBoundary": "retry policy",
+      "evidenceRefs": [
+        "hyperdensity-live-controller-reconciliation-v1"
+      ],
+      "maxRetries": 3,
+      "nonRetryableStates": [
+        "invalidated",
+        "blocked"
+      ],
+      "objectType": "action_lifecycle",
+      "retryBackoffSeconds": 30,
+      "retryPolicyId": "retry-sprint13",
+      "retryableStates": [
+        "execution_handed_off"
+      ]
+    }
+  ],
+  "safetyInvariants": {
+    "dashboardExecutor": false,
+    "fluidvirtPolicyAuthority": false,
+    "generalProductionAutoAllowed": false,
+    "projectedCompressionCountedAsRealized": false
+  },
+  "scheduledTicks": [
+    {
+      "claimBoundary": "scheduled controller tick",
+      "completedAt": "2026-05-14T17:30:00Z",
+      "controllerId": "continuous-resource-market-controller-sprint12",
+      "desiredStateRef": "desired-sprint13",
+      "durationMs": 120,
+      "evidenceRefs": [
+        "hyperdensity-live-controller-reconciliation-v1"
+      ],
+      "generatedActions": 9,
+      "generatedFutures": 9,
+      "idempotencyKey": "tick-idem-sprint13-001",
+      "idempotentReplay": false,
+      "observedSnapshotRef": "observed-sprint13-001",
+      "previousStateRef": "state-v0",
+      "reconciliationDiffRef": "diff-observed-sprint13-001",
+      "scheduledAt": "2026-05-14T17:29:59Z",
+      "scheduledTickId": "sched-tick-1",
+      "startedAt": "2026-05-14T17:30:00Z",
+      "tickSequence": 1,
+      "tickStatus": "completed"
+    },
+    {
+      "claimBoundary": "scheduled controller tick",
+      "completedAt": "2026-05-14T17:31:00Z",
+      "controllerId": "continuous-resource-market-controller-sprint12",
+      "desiredStateRef": "desired-sprint13",
+      "durationMs": 120,
+      "evidenceRefs": [
+        "hyperdensity-live-controller-reconciliation-v1"
+      ],
+      "generatedActions": 0,
+      "generatedFutures": 0,
+      "idempotencyKey": "tick-idem-sprint13-001",
+      "idempotentReplay": true,
+      "observedSnapshotRef": "observed-sprint13-001",
+      "previousStateRef": "state-v0",
+      "reconciliationDiffRef": "diff-observed-sprint13-001",
+      "scheduledAt": "2026-05-14T17:30:59Z",
+      "scheduledTickId": "sched-tick-2",
+      "startedAt": "2026-05-14T17:31:00Z",
+      "tickSequence": 2,
+      "tickStatus": "completed_idempotent_replay"
+    }
+  ],
+  "scheduledTicksEnabled": true,
+  "sourceContinuousControllerRef": "hyperdensity-continuous-resource-market-controller-v1",
+  "sourceGaReleaseGateRef": "hyperdensity-ga-release-gate-v1",
+  "sourceGuaranteedEligibleSavingsRef": "hyperdensity-guaranteed-eligible-savings-v1",
+  "sourceIdleCompressionRef": "hyperdensity-idle-time-compression-fleet-value-v1",
+  "sourceOfTruth": {
+    "identitySignals": "Karl-Inventory",
+    "liveController": "Karl-Hyperdensity",
+    "operatorUI": "Karl-Dashboard (projection only)",
+    "runtimeActuator": "FluidVirt"
+  },
+  "sourceProductionCanaryRef": "hyperdensity-production-canary-auto-apply-v1",
+  "sourceSandboxNonProdAutoRef": "hyperdensity-guarded-auto-policy-engine-v1",
+  "sourceSloPerformanceProofRef": "hyperdensity-slo-performance-proof-v1",
+  "stateStore": {
+    "actionTtlEnforced": true,
+    "auditAppendOnly": true,
+    "claimBoundary": "in_memory_reference only; not production persistence",
+    "currentStateRef": "state-v1",
+    "evidenceRefs": [
+      "hyperdensity-live-controller-reconciliation-v1"
+    ],
+    "futureTtlEnforced": true,
+    "idempotencyEnabled": true,
+    "leaseTtlEnforced": true,
+    "loadedAt": "2026-05-14T15:17:37Z",
+    "optimisticLockVersion": 1,
+    "persistenceMode": "ephemeral_reference",
+    "previousStateRef": "state-v0",
+    "savedAt": "2026-05-14T15:17:37Z",
+    "stateStoreId": "state-store-sprint13",
+    "stateVersion": 1,
+    "storeType": "in_memory_reference"
+  },
+  "stateStoreEnabled": true,
+  "successfulTickCount": 2,
+  "surfaceVersion": "v1",
+  "syntheticFleetCountedAsProduction": false,
+  "tickCount": 2,
+  "universalGuaranteedSavingsAllowed": false,
+  "universalGuaranteedSavingsClaimed": false,
+  "warnings": []
+}

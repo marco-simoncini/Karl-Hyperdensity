@@ -1,0 +1,23 @@
+{
+  "accounted": true,
+  "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "claimBoundary": "realized only with mutation and post-verify evidence",
+  "evidenceRefs": [
+    "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+    "fluidvirt-mutation-evidence"
+  ],
+  "executionHandoffRef": "handoff-001",
+  "guaranteedEligibleValue": 0.004032000000000001,
+  "guaranteedSavingsRef": "hyperdensity-guaranteed-eligible-savings-v1",
+  "mutationObservationRef": "mutation-obs-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "mutationObserved": true,
+  "postExecutionReconciliationId": "post-exec-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "postVerifyPassed": true,
+  "postVerifyRef": "post-verify-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "realizedIdleValue": 0.005600000000000001,
+  "realizedMovementKept": true,
+  "rollbackExecuted": false,
+  "rollbackRequired": false,
+  "rollbackWindowRef": "rollback-window-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "savingsLedgerRef": "hyperdensity-realized-savings-ledger-v1"
+}

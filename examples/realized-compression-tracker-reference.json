@@ -1,0 +1,18 @@
+{
+  "accountingWindow": "2026-05-14T00:00:00Z/2026-05-14T23:59:59Z",
+  "claimBoundary": "realized compression requires mutation and post-verify evidence",
+  "currentRealizedIdleCompressionRate": 0.06588235294117648,
+  "evidenceRefs": [
+    "hyperdensity-live-controller-reconciliation-v1"
+  ],
+  "previousRealizedIdleCompressionRate": 0.04941176470588235,
+  "projectedCompressionCountedAsRealized": false,
+  "projectedIdleCompressionRate": 0.22352941176470587,
+  "projectedMovedIdleValue": 0.019,
+  "projectedMovementCount": 9,
+  "projectedUnmovedEligibleIdleValue": 0.0702,
+  "realizedCompressionTrackerId": "realized-compression-sprint13",
+  "realizedMovedIdleValue": 0.005600000000000001,
+  "realizedMovementCount": 1,
+  "realizedUnmovedEligibleIdleValue": 0.0794
+}

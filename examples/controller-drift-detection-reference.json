@@ -1,0 +1,11 @@
+{
+  "checkedAt": "2026-05-14T17:30:00Z",
+  "claimBoundary": "no drift detected",
+  "driftDetected": false,
+  "driftDetectionId": "drift-none",
+  "driftType": "none",
+  "evidenceRefs": [
+    "hyperdensity-live-controller-reconciliation-v1"
+  ],
+  "severity": "none"
+}

@@ -1,0 +1,28 @@
+{
+  "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "actionLifecycleRef": "action-lc-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "blockers": null,
+  "circuitBreakerClosed": true,
+  "claimBoundary": "execution selection; permitted scope only",
+  "cooldownExpired": true,
+  "donorHealthPreserved": true,
+  "evidenceRefs": [
+    "ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+  ],
+  "executionScope": "sandbox_auto",
+  "executionSelectionId": "exec-sel-001",
+  "generalProductionAutoAllowed": false,
+  "killSwitchClear": true,
+  "noRegressionCertified": true,
+  "nonProdScope": false,
+  "permittedScope": true,
+  "productionAutoWithPolicy": false,
+  "productionCanaryScope": false,
+  "productionScope": false,
+  "rateLimitAvailable": true,
+  "rollbackReady": true,
+  "sandboxScope": true,
+  "selected": true,
+  "selectionReason": "permitted_scope_eligible",
+  "sloGuardPassed": true
+}

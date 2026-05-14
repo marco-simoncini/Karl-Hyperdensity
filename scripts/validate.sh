@@ -35,6 +35,7 @@ required_files=(
   "docs/contracts/guaranteed-eligible-savings-activation-v1.md"
   "docs/contracts/idle-time-compression-fleet-value-coverage-v1.md"
   "docs/contracts/continuous-resource-market-controller-v1.md"
+  "docs/contracts/live-controller-reconciliation-execution-loop-v1.md"
   "docs/contracts/policy-pack-v1.md"
   "docs/contracts/policy-pack-consistency-checker-v1.md"
   "docs/contracts/admission-guard-enforce-simulation-v1.md"

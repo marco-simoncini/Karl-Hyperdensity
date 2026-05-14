@@ -1,0 +1,21 @@
+{
+  "actionsCreated": 9,
+  "actionsInvalidated": 0,
+  "actionsUpdated": 0,
+  "claimBoundary": "reconciliation diff",
+  "desiredStateRef": "desired-sprint13",
+  "diffSummary": "refresh 9 actions 9 futures",
+  "evidenceRefs": [
+    "diff-observed-sprint13-001"
+  ],
+  "executionSelectionsCreated": 6,
+  "futuresCreated": 9,
+  "futuresExpired": 0,
+  "futuresUpdated": 0,
+  "leasesCreated": 9,
+  "leasesExpired": 0,
+  "noOpCount": 0,
+  "observedSnapshotRef": "observed-sprint13-001",
+  "previousStateRef": "state-v1",
+  "reconciliationDiffId": "diff-observed-sprint13-001"
+}

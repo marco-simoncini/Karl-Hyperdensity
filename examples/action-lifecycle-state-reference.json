@@ -1,0 +1,21 @@
+{
+  "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "actionLifecycleId": "action-lc-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "amount": "500m",
+  "blockers": null,
+  "claimBoundary": "action lifecycle; projected not realized",
+  "createdAt": "2026-05-14T17:30:00Z",
+  "donorShellId": "shell-container-donor-a",
+  "evidenceRefs": [
+    "ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+  ],
+  "executionScopeRecommendation": "sandbox_auto_eligible",
+  "expiresAt": "2026-05-15T17:30:00Z",
+  "nextState": "",
+  "previousState": "queued",
+  "receiverShellId": "shell-container-replica-c",
+  "resource": "cpu",
+  "selectedForExecution": false,
+  "state": "policy_checked",
+  "updatedAt": "2026-05-14T17:30:00Z"
+}

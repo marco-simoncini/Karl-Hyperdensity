@@ -44,6 +44,17 @@ func floatOr(v interface{}) float64 {
 	}
 }
 
+func intOr(v interface{}) int {
+	switch t := v.(type) {
+	case int:
+		return t
+	case float64:
+		return int(t)
+	default:
+		return 0
+	}
+}
+
 func requireFalse(doc map[string]interface{}, key string) error {
 	if v, ok := doc[key].(bool); !ok || v {
 		return fmt.Errorf("%s must be false", key)

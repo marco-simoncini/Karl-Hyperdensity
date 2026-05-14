@@ -1,0 +1,22 @@
+{
+  "claimBoundary": "scheduled controller tick",
+  "completedAt": "2026-05-14T17:30:00Z",
+  "controllerId": "continuous-resource-market-controller-sprint12",
+  "desiredStateRef": "desired-sprint13",
+  "durationMs": 120,
+  "evidenceRefs": [
+    "hyperdensity-live-controller-reconciliation-v1"
+  ],
+  "generatedActions": 9,
+  "generatedFutures": 9,
+  "idempotencyKey": "tick-idem-sprint13-001",
+  "idempotentReplay": false,
+  "observedSnapshotRef": "observed-sprint13-001",
+  "previousStateRef": "state-v0",
+  "reconciliationDiffRef": "diff-observed-sprint13-001",
+  "scheduledAt": "2026-05-14T17:29:59Z",
+  "scheduledTickId": "sched-tick-1",
+  "startedAt": "2026-05-14T17:30:00Z",
+  "tickSequence": 1,
+  "tickStatus": "completed"
+}

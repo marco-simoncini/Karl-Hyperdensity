@@ -1,0 +1,17 @@
+{
+  "claimBoundary": "retry policy",
+  "evidenceRefs": [
+    "hyperdensity-live-controller-reconciliation-v1"
+  ],
+  "maxRetries": 3,
+  "nonRetryableStates": [
+    "invalidated",
+    "blocked"
+  ],
+  "objectType": "action_lifecycle",
+  "retryBackoffSeconds": 30,
+  "retryPolicyId": "retry-sprint13",
+  "retryableStates": [
+    "execution_handed_off"
+  ]
+}

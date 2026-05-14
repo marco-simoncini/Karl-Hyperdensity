@@ -1,0 +1,16 @@
+{
+  "accepted": true,
+  "actionId": "ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "actuator": "FluidVirt",
+  "actuatorRequestFamily": "fluidvirt_resource_mutation",
+  "claimBoundary": "execution handoff to FluidVirt actuator only when accepted",
+  "evidenceRefs": [
+    "ctrl-action-shell-container-donor-a-shell-container-replica-c-001"
+  ],
+  "executionHandoffId": "handoff-001",
+  "executionSelectionId": "exec-sel-001",
+  "fluidvirtInvocationRef": "fluidvirt-invoke-ctrl-action-shell-container-donor-a-shell-container-replica-c-001",
+  "handoffMode": "guarded_auto_handoff",
+  "handoffTarget": "guarded_auto_sandbox_nonprod",
+  "requestedAt": "2026-05-14T15:17:37Z"
+}

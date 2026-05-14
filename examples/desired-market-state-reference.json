@@ -1,0 +1,23 @@
+{
+  "claimBoundary": "desired market state",
+  "desiredActionCount": 9,
+  "desiredFutureCount": 6,
+  "desiredStateId": "desired-sprint13",
+  "evidenceRefs": [
+    "desired-sprint13"
+  ],
+  "forbiddenExecutionScopes": [
+    "general_production_auto",
+    "production_auto_with_policy"
+  ],
+  "generatedAt": "2026-05-14T17:30:00Z",
+  "permittedExecutionScopes": [
+    "operator_controlled",
+    "sandbox_auto",
+    "nonprod_auto",
+    "production_canary_auto"
+  ],
+  "targetControllerCoveragePercent": 0.89,
+  "targetIdleCompressionRate": 0.25,
+  "targetMovementThroughput": 3
+}

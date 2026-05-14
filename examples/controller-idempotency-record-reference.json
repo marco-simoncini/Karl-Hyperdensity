@@ -1,0 +1,14 @@
+{
+  "claimBoundary": "idempotency record",
+  "duplicateSuppressed": true,
+  "evidenceRefs": [
+    "tick-idem-sprint13-001"
+  ],
+  "firstSeenAt": "2026-05-14T17:30:00Z",
+  "idempotencyKey": "tick-idem-sprint13-001",
+  "idempotencyRecordId": "idem-tick-idem-sprint13-001",
+  "lastSeenAt": "2026-05-14T17:31:00Z",
+  "objectId": "tick-1",
+  "objectType": "scheduled_tick",
+  "replayCount": 1
+}

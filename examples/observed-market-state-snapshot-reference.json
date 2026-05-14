@@ -1,0 +1,21 @@
+{
+  "activeActionCount": 0,
+  "activeFutureCount": 0,
+  "activeLeaseCount": 0,
+  "circuitBreakerOpen": false,
+  "claimBoundary": "observed market state snapshot",
+  "collectedAt": "2026-05-14T17:30:00Z",
+  "cooldownBlockedCount": 1,
+  "evidenceRefs": [
+    "observed-sprint13-001"
+  ],
+  "generalProductionAutoAllowed": false,
+  "idleObservationCount": 12,
+  "killSwitchActive": false,
+  "observedSnapshotId": "observed-sprint13-001",
+  "pressureSignalCount": 3,
+  "productionAutoWithPolicy": false,
+  "productionCanaryEnabled": true,
+  "rateLimitRemaining": 5,
+  "shellCount": 12
+}
