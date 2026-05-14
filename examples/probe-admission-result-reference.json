@@ -1,0 +1,1 @@
+{"probeAdmissionId":"probe-1","livenessProbePresent":true,"readinessProbePresent":true,"startupProbePresent":true,"healthPortConfigured":true,"probeAdmissionPassed":true,"evidenceRefs":["artifact://probe"],"claimBoundary":"probe admission only"}

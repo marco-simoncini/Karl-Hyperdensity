@@ -1,0 +1,1 @@
+{"manifestAdmissionId":"manifest-1","manifestSetRef":"deploy/kubernetes/controller/install-gate","manifestLintPassed":true,"deploymentSecurityPassed":true,"envFlagsSafe":true,"labelsSafe":true,"referenceOnly":false,"notProductionInstall":false,"manifestAdmissionPassed":true,"evidenceRefs":["artifact://manifest"],"claimBoundary":"manifest admission only"}

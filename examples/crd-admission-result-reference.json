@@ -1,0 +1,1 @@
+{"crdAdmissionId":"crd-1","crdPresent":true,"crdSchemaValid":true,"crdScopeValid":true,"crdStatusSubresourcePresent":true,"crdAdmissionPassed":true,"evidenceRefs":["artifact://crd"],"claimBoundary":"crd admission only"}

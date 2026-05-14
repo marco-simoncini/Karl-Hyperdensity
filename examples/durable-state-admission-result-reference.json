@@ -1,0 +1,1 @@
+{"durableStateAdmissionId":"state-1","stateStoreType":"configmap","configMapStateAllowed":true,"crdStateAllowed":true,"optimisticLockEnabled":true,"backupConfigured":true,"restoreConfigured":true,"durableStateAdmissionPassed":true,"evidenceRefs":["artifact://durable-state"],"claimBoundary":"durable state admission only"}

@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"manifest-admission-result-v1","type":"object","required":["manifestAdmissionId","manifestSetRef","manifestLintPassed","deploymentSecurityPassed","envFlagsSafe","labelsSafe","referenceOnly","notProductionInstall","manifestAdmissionPassed","evidenceRefs","claimBoundary"]}

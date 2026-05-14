@@ -1,0 +1,1 @@
+{"leaderElectionAdmissionId":"leader-1","leaderElectionEnabled":true,"leaseRbacPresent":true,"leaseNamespaceValid":true,"haProductionProven":false,"leaderElectionAdmissionPassed":true,"evidenceRefs":["artifact://leader-election"],"claimBoundary":"leader election admission only"}

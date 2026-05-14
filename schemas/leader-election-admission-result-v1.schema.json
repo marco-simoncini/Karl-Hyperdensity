@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"leader-election-admission-result-v1","type":"object","required":["leaderElectionAdmissionId","leaderElectionEnabled","leaseRbacPresent","leaseNamespaceValid","haProductionProven","leaderElectionAdmissionPassed","evidenceRefs","claimBoundary"]}

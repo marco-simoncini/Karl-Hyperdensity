@@ -1,0 +1,1 @@
+{"rbacAdmissionId":"rbac-1","clusterAdmin":false,"namespaceScoped":true,"podsExecAllowed":false,"nodesWriteAllowed":false,"wildcardResourceAllowed":false,"wildcardVerbAllowed":false,"rawRuntimeControlsAllowed":false,"directLibvirtAllowed":false,"directCgroupAllowed":false,"rbacAdmissionPassed":true,"evidenceRefs":["artifact://rbac"],"claimBoundary":"rbac admission only"}

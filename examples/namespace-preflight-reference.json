@@ -1,0 +1,1 @@
+{"namespacePreflightId":"ns-1","namespace":"karl-system","namespaceExists":true,"namespaceLabelsValid":true,"serviceAccountAllowed":true,"resourceQuotaCompatible":true,"networkPolicyCompatible":true,"preflightStatus":"passed","evidenceRefs":["artifact://namespace-preflight"],"claimBoundary":"namespace preflight only"}

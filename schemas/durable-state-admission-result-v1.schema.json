@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"durable-state-admission-result-v1","type":"object","required":["durableStateAdmissionId","stateStoreType","configMapStateAllowed","crdStateAllowed","optimisticLockEnabled","backupConfigured","restoreConfigured","durableStateAdmissionPassed","evidenceRefs","claimBoundary"]}

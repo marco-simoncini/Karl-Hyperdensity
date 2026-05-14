@@ -1,0 +1,1 @@
+{"eligibilityId":"elig-1","evaluatedAt":"2026-05-14T00:00:00Z","productionInstallEligible":true,"productionInstallApplied":false,"eligibilityDecision":"eligible_after_dryrun","requiredPreflightsPassed":true,"blockers":[],"warnings":[],"nextAllowedState":"production_canary_only","evidenceRefs":["artifact://eligibility"],"claimBoundary":"eligibility decision only"}

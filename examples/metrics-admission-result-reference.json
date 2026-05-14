@@ -1,0 +1,1 @@
+{"metricsAdmissionId":"metrics-1","metricsEndpointPresent":true,"servicePresent":true,"forbiddenAutoGaugesPresent":false,"generalProductionAutoEnabledGauge":0,"productionAutoWithPolicyEnabledGauge":0,"metricsAdmissionPassed":true,"evidenceRefs":["artifact://metrics"],"claimBoundary":"metrics admission only"}

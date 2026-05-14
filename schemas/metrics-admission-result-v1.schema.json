@@ -1,0 +1,1 @@
+{"$schema":"https://json-schema.org/draft/2020-12/schema","title":"metrics-admission-result-v1","type":"object","required":["metricsAdmissionId","metricsEndpointPresent","servicePresent","forbiddenAutoGaugesPresent","generalProductionAutoEnabledGauge","productionAutoWithPolicyEnabledGauge","metricsAdmissionPassed","evidenceRefs","claimBoundary"]}

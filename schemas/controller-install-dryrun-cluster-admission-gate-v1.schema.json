@@ -1,0 +1,57 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ControllerInstallDryRunClusterAdmissionGateV1",
+  "type": "object",
+  "required": [
+    "milestone",
+    "surfaceVersion",
+    "admissionGateId",
+    "productionInstallDryRunEnabled",
+    "clientSideDryRunModeled",
+    "serverSideDryRunModeled",
+    "clusterAdmissionGateEnabled",
+    "productionInstallDryRunPassed",
+    "clusterAdmissionGatePassed",
+    "productionInstallEligible",
+    "productionInstallApplied",
+    "installFailClosed",
+    "namespacePreflightPassed",
+    "rbacPreflightPassed",
+    "manifestAdmissionPassed",
+    "crdPreflightPassed",
+    "durableStatePreflightPassed",
+    "leaderElectionPreflightPassed",
+    "probesPreflightPassed",
+    "metricsPreflightPassed",
+    "rollbackPreflightPassed",
+    "dryRunRequests",
+    "dryRunResults",
+    "clusterAdmissionGate",
+    "rbacAdmissionResult",
+    "manifestAdmissionResult",
+    "crdAdmissionResult",
+    "durableStateAdmissionResult",
+    "leaderElectionAdmissionResult",
+    "probeAdmissionResult",
+    "metricsAdmissionResult",
+    "rollbackAdmissionResult",
+    "productionInstallEligibility",
+    "auditEvents",
+    "admissionBlockers",
+    "sourceOfTruth",
+    "claimBoundaries"
+  ],
+  "properties": {
+    "milestone": {
+      "const": "hyperdensity_controller_install_dryrun_cluster_admission_gate_v1"
+    },
+    "controllerMode": {
+      "enum": [
+        "recommendation_only",
+        "operator_controlled",
+        "sandbox_nonprod_auto",
+        "production_canary_only"
+      ]
+    }
+  }
+}

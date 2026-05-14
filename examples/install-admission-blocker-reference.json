@@ -1,0 +1,1 @@
+{"blockerId":"blk-1","blockerCode":"server_dryrun_failed","severity":"high","reason":"server side dry-run rejected manifests","remediable":true,"remediation":"fix rejected manifests and rerun dry-run/admission","evidenceRefs":["artifact://blocker"],"claimBoundary":"blocker for eligibility only"}

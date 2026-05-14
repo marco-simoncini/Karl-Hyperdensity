@@ -1,0 +1,1 @@
+{"clusterAdmissionGateId":"gate-1","evaluatedAt":"2026-05-14T00:00:00Z","admissionDecision":"admitted_for_install","productionInstallEligible":true,"productionInstallApplied":false,"requiredPreflightCount":9,"passedPreflightCount":9,"failedPreflightCount":0,"blockers":[],"warnings":[],"evidenceRefs":["artifact://gate"],"claimBoundary":"eligibility only"}

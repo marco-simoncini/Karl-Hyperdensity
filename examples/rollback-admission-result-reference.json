@@ -1,0 +1,1 @@
+{"rollbackAdmissionId":"rollback-1","rollbackPlanPresent":true,"previousImageRetained":true,"previousConfigRetained":true,"rollbackDryRunModeled":true,"rollbackAdmissionPassed":true,"evidenceRefs":["artifact://rollback"],"claimBoundary":"rollback admission only"}
