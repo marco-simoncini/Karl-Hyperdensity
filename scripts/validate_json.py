@@ -1558,6 +1558,62 @@ def main() -> int:
             if phrase in merged6:
                 fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
 
+    # --- Sprint 7: guarded auto policy engine v1 ---
+    sprint7_schemas = [
+        "guarded-auto-policy-engine-v1.schema.json",
+        "guarded-auto-policy-v1.schema.json",
+        "guarded-auto-eligibility-decision-v1.schema.json",
+        "guarded-auto-candidate-v1.schema.json",
+        "blast-radius-budget-v1.schema.json",
+        "kill-switch-state-v1.schema.json",
+        "circuit-breaker-state-v1.schema.json",
+        "auto-apply-rate-limit-v1.schema.json",
+        "auto-apply-cooldown-v1.schema.json",
+        "policy-scope-v1.schema.json",
+        "policy-denial-reason-v1.schema.json",
+        "guarded-auto-audit-requirement-v1.schema.json",
+    ]
+    for name in sprint7_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 7 schema: {name}")
+
+    policy_engine = example_by_name.get("guarded-auto-policy-engine-reference.json")
+    if policy_engine is None:
+        fail("examples/guarded-auto-policy-engine-reference.json is missing")
+    if policy_engine.get("milestone") != "hyperdensity_guarded_auto_policy_engine_v1":
+        fail("guarded auto policy engine milestone invalid")
+    if policy_engine.get("autoApplyExecutionEnabled") is not False:
+        fail("autoApplyExecutionEnabled must be false")
+    if policy_engine.get("productionAutonomousApplyAllowed") is not False:
+        fail("productionAutonomousApplyAllowed must be false")
+    if policy_engine.get("productionScope") is not False:
+        fail("productionScope must be false")
+
+    sprint7_examples = [
+        "guarded-auto-policy-engine-reference.json",
+        "guarded-auto-policy-reference.json",
+        "guarded-auto-eligibility-decision-reference.json",
+        "guarded-auto-candidate-reference.json",
+        "blast-radius-budget-reference.json",
+        "kill-switch-state-reference.json",
+        "circuit-breaker-state-reference.json",
+        "auto-apply-rate-limit-reference.json",
+        "auto-apply-cooldown-reference.json",
+        "policy-scope-reference.json",
+        "policy-denial-reason-reference.json",
+        "guarded-auto-audit-requirement-reference.json",
+    ]
+    for name in sprint7_examples:
+        ex = example_by_name.get(name)
+        if ex is None:
+            fail(f"missing Sprint 7 example: {name}")
+        positives7: list[str] = []
+        collect_positive_strings(ex, positives7)
+        merged7 = "\n".join(positives7).lower()
+        for phrase in forbidden_positive_claims:
+            if phrase in merged7:
+                fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
+
     forbidden_approved_phrases = [
         "windows is supported.",
         "production autonomous resource movement is supported",

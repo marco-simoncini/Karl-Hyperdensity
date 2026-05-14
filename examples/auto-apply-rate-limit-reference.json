@@ -1,0 +1,11 @@
+{
+  "rateLimitId": "rate-limit-policy-default",
+  "policyId": "policy-guarded-auto-default-v1",
+  "windowSeconds": 3600,
+  "maxActions": 10,
+  "usedActions": 3,
+  "remainingActions": 7,
+  "status": "available",
+  "evidenceRefs": ["hyperdensity_guarded_auto_policy_evidence_v1"],
+  "claimBoundary": ["rate limit tracking; execution disabled"]
+}

@@ -1,0 +1,15 @@
+{
+  "policyScopeId": "scope-guarded-auto-default",
+  "policyId": "policy-guarded-auto-default-v1",
+  "tenant": "karl-demo",
+  "namespaces": ["workloads"],
+  "apps": ["hyperdensity"],
+  "serviceTiers": ["standard"],
+  "shellKinds": ["container", "linux_vm"],
+  "resourceFamilies": ["cpu", "memory"],
+  "excludedShellKinds": ["protected"],
+  "excludedNamespaces": ["kube-system"],
+  "excludedApps": [],
+  "evidenceRefs": ["hyperdensity_guarded_auto_policy_evidence_v1"],
+  "claimBoundary": ["policy scope definition"]
+}

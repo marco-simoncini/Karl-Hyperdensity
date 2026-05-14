@@ -1,0 +1,13 @@
+{
+  "killSwitchId": "kill-switch-global-v1",
+  "globalKillSwitchActive": true,
+  "tenantKillSwitchActive": false,
+  "appKillSwitchActive": false,
+  "incidentKillSwitchActive": true,
+  "reason": "incident_response_window",
+  "lastChangedAt": "2026-05-14T16:45:00Z",
+  "changedBy": "operator-oncall",
+  "status": "active",
+  "evidenceRefs": ["hyperdensity_guarded_auto_policy_evidence_v1"],
+  "claimBoundary": ["kill switch state; does not execute auto-apply"]
+}

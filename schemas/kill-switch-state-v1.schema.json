@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/kill-switch-state-v1.schema.json",
+  "title": "KARL Hyperdensity Kill Switch State v1",
+  "type": "object",
+  "required": ["killSwitchId", "status", "claimBoundary"],
+  "properties": {
+    "status": { "enum": ["clear", "active", "unknown"] }
+  }
+}

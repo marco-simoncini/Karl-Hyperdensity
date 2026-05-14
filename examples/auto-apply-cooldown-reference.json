@@ -1,0 +1,13 @@
+{
+  "cooldownId": "cooldown-global-v1",
+  "actionId": "action-cpu-lease-001",
+  "donorShellId": "shell-container-donor-a",
+  "receiverShellId": "shell-container-replica-b",
+  "lastActionAt": "2026-05-14T14:00:00Z",
+  "cooldownSeconds": 1800,
+  "expiresAt": "2026-05-14T14:30:00Z",
+  "expired": true,
+  "status": "expired",
+  "evidenceRefs": ["hyperdensity_guarded_auto_policy_evidence_v1"],
+  "claimBoundary": ["cooldown expired"]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/guarded-auto-eligibility-decision-v1.schema.json",
+  "title": "KARL Hyperdensity Guarded Auto Eligibility Decision v1",
+  "type": "object",
+  "required": ["decisionId", "actionId", "policyId", "decision", "autoApplyExecutionEnabled", "productionAutonomousApplyAllowed", "productionScope", "claimBoundary"],
+  "properties": {
+    "autoApplyExecutionEnabled": { "const": false },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "productionScope": { "const": false },
+    "decision": {
+      "enum": ["guarded_auto_candidate", "guarded_auto_sandbox_ready", "guarded_auto_nonprod_ready", "denied_blocked", "denied_protected", "denied_missing_slo", "denied_regression", "denied_rollback_not_ready", "denied_kill_switch_active", "denied_circuit_breaker_open", "denied_rate_limited", "denied_cooldown_active", "denied_blast_radius_exceeded", "denied_windows_evidence_gated", "denied_synthetic_production", "remediation_only", "manual_only"]
+    }
+  }
+}

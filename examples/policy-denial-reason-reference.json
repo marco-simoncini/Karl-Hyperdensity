@@ -1,0 +1,11 @@
+{
+  "denialReasonId": "denial-regression-mem-002",
+  "actionId": "action-mem-lease-002",
+  "policyId": "policy-guarded-auto-default-v1",
+  "reasonCode": "denied_regression",
+  "reason": "SLO regression blocked",
+  "remediable": true,
+  "remediationCodes": ["rollback_required"],
+  "evidenceRefs": ["hyperdensity_universal_slo_guard_certified_uplift_v1"],
+  "claimBoundary": ["regression denial"]
+}

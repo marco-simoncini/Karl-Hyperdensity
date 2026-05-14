@@ -1,0 +1,21 @@
+{
+  "blastRadiusBudgetId": "blast-radius-budget-default",
+  "policyId": "policy-guarded-auto-default-v1",
+  "tenant": "karl-demo",
+  "namespace": "workloads",
+  "app": "hyperdensity",
+  "serviceTier": "standard",
+  "maxConcurrentActions": 3,
+  "maxAffectedShells": 6,
+  "maxCpuMillis": 6000,
+  "maxMemoryBytes": 6442450944,
+  "maxValueAtRisk": 500.0,
+  "currentConcurrentActions": 2,
+  "currentAffectedShells": 4,
+  "currentCpuMillis": 3500,
+  "currentMemoryBytes": 4294967296,
+  "currentValueAtRisk": 280.0,
+  "budgetStatus": "available",
+  "evidenceRefs": ["hyperdensity_guarded_auto_policy_evidence_v1"],
+  "claimBoundary": ["blast radius budget tracking"]
+}

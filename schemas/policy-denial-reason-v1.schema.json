@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/policy-denial-reason-v1.schema.json",
+  "title": "KARL Hyperdensity Policy Denial Reason v1",
+  "type": "object",
+  "required": ["denialReasonId", "actionId", "policyId", "reasonCode", "reason", "claimBoundary"]
+}

@@ -1,0 +1,10 @@
+{
+  "circuitBreakerId": "circuit-breaker-policy-default",
+  "policyId": "policy-guarded-auto-default-v1",
+  "state": "closed",
+  "reason": "recent failures below threshold",
+  "recentFailureCount": 1,
+  "failureThreshold": 5,
+  "evidenceRefs": ["hyperdensity_guarded_auto_policy_evidence_v1"],
+  "claimBoundary": ["circuit breaker closed"]
+}

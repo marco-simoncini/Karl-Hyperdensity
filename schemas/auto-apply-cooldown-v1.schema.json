@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/auto-apply-cooldown-v1.schema.json",
+  "title": "KARL Hyperdensity Auto Apply Cooldown v1",
+  "type": "object",
+  "required": ["cooldownId", "status", "claimBoundary"],
+  "properties": {
+    "status": { "enum": ["expired", "active", "unknown"] }
+  }
+}

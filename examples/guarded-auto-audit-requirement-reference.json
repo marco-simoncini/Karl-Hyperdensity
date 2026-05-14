@@ -1,0 +1,11 @@
+{
+  "auditRequirementId": "audit-guarded-auto-default",
+  "policyId": "policy-guarded-auto-default-v1",
+  "requiredEvents": ["policy_evaluation", "eligibility_decision", "operator_fallback"],
+  "immutableAuditRequired": true,
+  "operatorFallbackRequired": true,
+  "evidenceRefsRequired": true,
+  "retentionDays": 90,
+  "evidenceRefs": ["hyperdensity_guarded_auto_policy_evidence_v1"],
+  "claimBoundary": ["audit required before future execution sprint"]
+}

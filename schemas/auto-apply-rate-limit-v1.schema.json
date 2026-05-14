@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/auto-apply-rate-limit-v1.schema.json",
+  "title": "KARL Hyperdensity Auto Apply Rate Limit v1",
+  "type": "object",
+  "required": ["rateLimitId", "policyId", "status", "claimBoundary"],
+  "properties": {
+    "status": { "enum": ["available", "exhausted", "unknown"] }
+  }
+}

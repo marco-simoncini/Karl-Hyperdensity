@@ -1,0 +1,16 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/guarded-auto-policy-engine-v1.schema.json",
+  "title": "KARL Hyperdensity Guarded Auto Policy Engine v1",
+  "type": "object",
+  "required": ["milestone", "surfaceVersion", "engineId", "generatedAt", "policyMode", "autoApplyExecutionEnabled", "productionAutonomousApplyAllowed", "productionScope", "claimPolicyRef", "sourceOfTruth", "safetyInvariants", "claimBoundaries"],
+  "properties": {
+    "milestone": { "const": "hyperdensity_guarded_auto_policy_engine_v1" },
+    "autoApplyExecutionEnabled": { "const": false },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "productionScope": { "const": false },
+    "policyMode": {
+      "enum": ["recommendation_only", "operator_controlled", "guarded_auto_candidate", "guarded_auto_sandbox_ready", "guarded_auto_nonprod_ready", "production_canary_blocked", "production_auto_blocked"]
+    }
+  }
+}

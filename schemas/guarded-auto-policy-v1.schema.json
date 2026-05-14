@@ -1,0 +1,14 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/guarded-auto-policy-v1.schema.json",
+  "title": "KARL Hyperdensity Guarded Auto Policy v1",
+  "type": "object",
+  "required": ["policyId", "policyVersion", "policyMode", "autoApplyExecutionEnabled", "productionAutonomousApplyAllowed", "productionScope", "allowWindowsEvidenceGatedAuto", "allowSyntheticProductionProof", "claimBoundary"],
+  "properties": {
+    "autoApplyExecutionEnabled": { "const": false },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "productionScope": { "const": false },
+    "allowWindowsEvidenceGatedAuto": { "const": false },
+    "allowSyntheticProductionProof": { "const": false }
+  }
+}

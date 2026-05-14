@@ -1,0 +1,7 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/guarded-auto-audit-requirement-v1.schema.json",
+  "title": "KARL Hyperdensity Guarded Auto Audit Requirement v1",
+  "type": "object",
+  "required": ["auditRequirementId", "policyId", "immutableAuditRequired", "operatorFallbackRequired", "claimBoundary"]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/guarded-auto-candidate-v1.schema.json",
+  "title": "KARL Hyperdensity Guarded Auto Candidate v1",
+  "type": "object",
+  "required": ["candidateId", "actionId", "candidateState", "autoApplyExecutionEnabled", "productionAutonomousApplyAllowed", "productionScope", "claimBoundary"],
+  "properties": {
+    "autoApplyExecutionEnabled": { "const": false },
+    "productionAutonomousApplyAllowed": { "const": false },
+    "productionScope": { "const": false },
+    "candidateState": {
+      "enum": ["candidate_only", "sandbox_ready", "nonprod_ready", "blocked", "remediation_only", "manual_only"]
+    }
+  }
+}

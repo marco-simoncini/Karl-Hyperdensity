@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/blast-radius-budget-v1.schema.json",
+  "title": "KARL Hyperdensity Blast Radius Budget v1",
+  "type": "object",
+  "required": ["blastRadiusBudgetId", "policyId", "budgetStatus", "claimBoundary"],
+  "properties": {
+    "budgetStatus": { "enum": ["available", "exhausted", "exceeded", "unknown"] }
+  }
+}
