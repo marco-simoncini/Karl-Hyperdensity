@@ -23,6 +23,7 @@ required_files=(
   "docs/contracts/auto-rollback-controller-v1.md"
   "docs/contracts/blast-radius-policy-v1.md"
   "docs/contracts/production-kernel-boundary-v1.md"
+  "docs/contracts/shell-passport-factory-v1.md"
   "docs/contracts/policy-pack-v1.md"
   "docs/contracts/policy-pack-consistency-checker-v1.md"
   "docs/contracts/admission-guard-enforce-simulation-v1.md"

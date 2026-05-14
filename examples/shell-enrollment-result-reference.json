@@ -1,0 +1,24 @@
+{
+  "enrollmentId": "enroll-shell-container-donor-a-001",
+  "shellId": "shell-container-donor-a",
+  "targetRef": "karl/Deployment/donor-a",
+  "shellKind": "container_linux",
+  "enrollmentStatus": "enrolled",
+  "identityVerified": true,
+  "capabilityEvidenceLoaded": true,
+  "claimBoundaryAssigned": true,
+  "supportProfileAssigned": true,
+  "eligibleAsDonor": true,
+  "eligibleAsReceiver": false,
+  "protected": false,
+  "blocked": false,
+  "remediable": false,
+  "blockers": [],
+  "remediations": [],
+  "evidenceRefs": [
+    "hyperdensity_shell_capability_surface_v1",
+    "shell-capability-evidence-container-donor-a"
+  ],
+  "productionMutationAllowed": false,
+  "autoApplyAllowed": false
+}

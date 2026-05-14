@@ -1,0 +1,63 @@
+{
+  "factoryId": "hyperdensity_shell_passport_factory_v1",
+  "factoryVersion": "v1",
+  "milestone": "hyperdensity_shell_passport_factory_v1",
+  "canonicalShellKinds": [
+    "container_linux",
+    "container_linux_replica",
+    "vm_linux",
+    "vm_windows",
+    "vm_windows_pool_replica",
+    "daas_pool_replica"
+  ],
+  "excludedShellKinds": [
+    "container_windows",
+    "container_windows_replica",
+    "vm_linux_pool_replica",
+    "pool_master",
+    "pool_template",
+    "pool_controller",
+    "pool_root"
+  ],
+  "enrollmentRules": [
+    "identityStable required before enrolled=true",
+    "claimBoundary and supportProfile required on every shell",
+    "capability evidence must reference FluidVirt shell capability surface",
+    "blocked shells cannot be donor or receiver eligible",
+    "pool master/template/controller/root members are never eligible"
+  ],
+  "requiredEvidence": [
+    "hyperdensity_shell_capability_surface_v1",
+    "hyperdensity_production_kernel_boundary_v1"
+  ],
+  "requiredIdentityFields": [
+    "shellId",
+    "targetRef",
+    "namespace",
+    "tenant",
+    "identityStable"
+  ],
+  "supportProfiles": [
+    "technical_preview_container_linux",
+    "technical_preview_linux_vm",
+    "technical_preview_windows_vm",
+    "technical_preview_windows_pool_replica",
+    "technical_preview_daas_pool_replica"
+  ],
+  "claimPolicyRef": "hyperdensity_claim_policy_v2",
+  "productionMutationAllowed": false,
+  "autoApplyAllowed": false,
+  "sourceOfTruth": {
+    "shellContracts": "Karl-Hyperdensity",
+    "runtimeCapabilityEvidence": "FluidVirt",
+    "registryProjection": "Karl-Dashboard",
+    "identitySignals": "Karl-Inventory"
+  },
+  "safetyInvariants": {
+    "productionMutationAllowed": false,
+    "autoApplyAllowed": false,
+    "dashboardCapabilitySourceOfTruth": false,
+    "inventoryRuntimeApply": false,
+    "blockedShellsCannotBeEligible": true
+  }
+}

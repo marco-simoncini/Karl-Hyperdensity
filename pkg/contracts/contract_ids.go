@@ -17,6 +17,10 @@ const (
 	ProductionKernelBoundaryV1ID       = "hyperdensity_production_kernel_boundary_v1"
 	ClaimPolicyV2ID                    = "hyperdensity_claim_policy_v2"
 	ShellPassportV1ID                  = "hyperdensity_shell_passport_v1"
+	ShellPassportFactoryV1ID           = "hyperdensity_shell_passport_factory_v1"
+	ShellRegistryV1ID                  = "hyperdensity_shell_registry_v1"
+	ShellEnrollmentResultV1ID          = "hyperdensity_shell_enrollment_result_v1"
+	ShellCapabilityEvidenceV1ID        = "hyperdensity_shell_capability_evidence_v1"
 	RuntimeMutationResultV1ID          = "hyperdensity_runtime_mutation_result_v1"
 	ResourceLeaseV1ID                  = "hyperdensity_resource_lease_v1"
 )

@@ -1,0 +1,88 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/shell-registry-v1.schema.json",
+  "title": "KARL Hyperdensity Shell Registry v1",
+  "type": "object",
+  "required": [
+    "registryId",
+    "registryVersion",
+    "observedAt",
+    "shellCount",
+    "eligibleDonorCount",
+    "eligibleReceiverCount",
+    "protectedCount",
+    "blockedCount",
+    "remediableCount",
+    "shells"
+  ],
+  "properties": {
+    "registryId": { "const": "hyperdensity_shell_registry_v1" },
+    "registryVersion": { "const": "v1" },
+    "observedAt": { "type": "string" },
+    "shellCount": { "type": "integer", "minimum": 0 },
+    "eligibleDonorCount": { "type": "integer", "minimum": 0 },
+    "eligibleReceiverCount": { "type": "integer", "minimum": 0 },
+    "protectedCount": { "type": "integer", "minimum": 0 },
+    "blockedCount": { "type": "integer", "minimum": 0 },
+    "remediableCount": { "type": "integer", "minimum": 0 },
+    "shells": {
+      "type": "array",
+      "items": { "$ref": "#/$defs/shellEntry" }
+    }
+  },
+  "$defs": {
+    "shellEntry": {
+      "type": "object",
+      "required": [
+        "shellId",
+        "shellKind",
+        "tenant",
+        "namespace",
+        "targetRef",
+        "runtimeLayer",
+        "identityStable",
+        "supportProfile",
+        "lifecycleState",
+        "enrolled",
+        "donorEligibility",
+        "receiverEligibility",
+        "protected",
+        "blocked",
+        "remediable",
+        "blockerCodes",
+        "remediationCodes",
+        "cpuEntitlement",
+        "memoryEnvelope",
+        "rollbackReadiness",
+        "sloProfile",
+        "evidenceRefs",
+        "claimBoundary"
+      ],
+      "properties": {
+        "shellId": { "type": "string" },
+        "shellKind": { "type": "string" },
+        "tenant": { "type": "string" },
+        "namespace": { "type": "string" },
+        "targetRef": { "type": "string" },
+        "runtimeLayer": { "type": "string" },
+        "identityStable": { "type": "boolean" },
+        "supportProfile": { "type": "string" },
+        "lifecycleState": { "type": "string" },
+        "enrolled": { "type": "boolean" },
+        "donorEligibility": { "type": "string" },
+        "receiverEligibility": { "type": "string" },
+        "protected": { "type": "boolean" },
+        "blocked": { "type": "boolean" },
+        "remediable": { "type": "boolean" },
+        "blockerCodes": { "type": "array", "items": { "type": "string" } },
+        "remediationCodes": { "type": "array", "items": { "type": "string" } },
+        "cpuEntitlement": { "type": "object" },
+        "memoryEnvelope": { "type": "object" },
+        "rollbackReadiness": { "type": "string" },
+        "sloProfile": { "type": "string" },
+        "evidenceRefs": { "type": "array", "items": { "type": "string" } },
+        "claimBoundary": { "type": "array", "items": { "type": "string" } }
+      }
+    }
+  }
+}

@@ -1227,9 +1227,9 @@ def main() -> int:
     def collect_positive_strings(obj, out: list[str]) -> None:
         if isinstance(obj, dict):
             for k, v in obj.items():
-                if k in ("forbiddenPhrases", "forbiddenResponsibilities", "forbiddenActions"):
+                if k in ("forbiddenPhrases", "forbiddenResponsibilities", "forbiddenActions", "blockerCodes", "blockers", "remediationCodes", "remediations", "unsupportedFamilies", "excludedShellKinds"):
                     continue
-                if k in positive_claim_keys or k.endswith("Phrases") and not k.startswith("forbidden"):
+                if k in positive_claim_keys or (k.endswith("Phrases") and not k.startswith("forbidden")):
                     if isinstance(v, str):
                         out.append(v)
                     elif isinstance(v, list):
@@ -1252,6 +1252,62 @@ def main() -> int:
         for phrase in forbidden_positive_claims:
             if phrase in merged:
                 fail(f"{name} contains forbidden positive claim phrase in allowed copy: {phrase}")
+
+    # --- Sprint 2: shell passport factory v1 ---
+    sprint2_schemas = [
+        "shell-passport-factory-v1.schema.json",
+        "shell-registry-v1.schema.json",
+        "shell-enrollment-result-v1.schema.json",
+        "shell-capability-evidence-v1.schema.json",
+    ]
+    for name in sprint2_schemas:
+        if name not in {p.name for p in schema_paths}:
+            fail(f"missing Sprint 2 schema: {name}")
+
+    factory_ref = example_by_name.get("shell-passport-factory-reference.json")
+    if factory_ref is None:
+        fail("examples/shell-passport-factory-reference.json is missing")
+    if factory_ref.get("factoryId") != "hyperdensity_shell_passport_factory_v1":
+        fail("shell passport factory factoryId invalid")
+    if factory_ref.get("productionMutationAllowed") is not False:
+        fail("shell passport factory productionMutationAllowed must be false")
+    if factory_ref.get("autoApplyAllowed") is not False:
+        fail("shell passport factory autoApplyAllowed must be false")
+
+    registry_surface = example_by_name.get("shell-passport-registry-reference.json")
+    if registry_surface is None:
+        fail("examples/shell-passport-registry-reference.json is missing")
+    if registry_surface.get("registryId") != "hyperdensity_shell_registry_v1":
+        fail("shell registry surface registryId invalid")
+
+    enrollment_ref = example_by_name.get("shell-enrollment-result-reference.json")
+    if enrollment_ref is None:
+        fail("examples/shell-enrollment-result-reference.json is missing")
+    if enrollment_ref.get("productionMutationAllowed") is not False:
+        fail("enrollment productionMutationAllowed must be false")
+
+    capability_ref = example_by_name.get("shell-capability-evidence-reference.json")
+    if capability_ref is None:
+        fail("examples/shell-capability-evidence-reference.json is missing")
+    if capability_ref.get("source") != "FluidVirt":
+        fail("capability evidence source must be FluidVirt")
+
+    sprint2_examples = [
+        "shell-passport-factory-reference.json",
+        "shell-passport-registry-reference.json",
+        "shell-enrollment-result-reference.json",
+        "shell-capability-evidence-reference.json",
+    ]
+    for name in sprint2_examples:
+        ex = example_by_name.get(name)
+        if ex is None:
+            fail(f"missing Sprint 2 example: {name}")
+        positives2: list[str] = []
+        collect_positive_strings(ex, positives2)
+        merged2 = "\n".join(positives2).lower()
+        for phrase in forbidden_positive_claims:
+            if phrase in merged2:
+                fail(f"{name} contains forbidden positive claim in allowed copy: {phrase}")
 
     forbidden_approved_phrases = [
         "windows is supported.",

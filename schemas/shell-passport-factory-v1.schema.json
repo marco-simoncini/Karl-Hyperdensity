@@ -1,0 +1,38 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/marco-simoncini/Karl-Hyperdensity/schemas/shell-passport-factory-v1.schema.json",
+  "title": "KARL Hyperdensity Shell Passport Factory v1",
+  "type": "object",
+  "required": [
+    "factoryId",
+    "factoryVersion",
+    "milestone",
+    "canonicalShellKinds",
+    "excludedShellKinds",
+    "enrollmentRules",
+    "requiredEvidence",
+    "requiredIdentityFields",
+    "supportProfiles",
+    "claimPolicyRef",
+    "productionMutationAllowed",
+    "autoApplyAllowed",
+    "sourceOfTruth",
+    "safetyInvariants"
+  ],
+  "properties": {
+    "factoryId": { "const": "hyperdensity_shell_passport_factory_v1" },
+    "factoryVersion": { "const": "v1" },
+    "milestone": { "const": "hyperdensity_shell_passport_factory_v1" },
+    "canonicalShellKinds": { "type": "array", "items": { "type": "string" }, "minItems": 1 },
+    "excludedShellKinds": { "type": "array", "items": { "type": "string" } },
+    "enrollmentRules": { "type": "array", "items": { "type": "string" } },
+    "requiredEvidence": { "type": "array", "items": { "type": "string" } },
+    "requiredIdentityFields": { "type": "array", "items": { "type": "string" } },
+    "supportProfiles": { "type": "array", "items": { "type": "string" } },
+    "claimPolicyRef": { "const": "hyperdensity_claim_policy_v2" },
+    "productionMutationAllowed": { "const": false },
+    "autoApplyAllowed": { "const": false },
+    "sourceOfTruth": { "type": "object" },
+    "safetyInvariants": { "type": "object" }
+  }
+}

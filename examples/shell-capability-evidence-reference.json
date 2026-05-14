@@ -1,0 +1,36 @@
+{
+  "evidenceId": "shell-cap-evidence-windows-hyper-001",
+  "shellId": "shell-windows-hyper",
+  "source": "FluidVirt",
+  "actuator": "FluidVirt",
+  "targetRef": "karl/VirtualMachine/windows-hyper",
+  "runtimeLayer": "kubevirt_fluidvirt",
+  "cpuEntitlementObserved": true,
+  "memoryEnvelopeObserved": true,
+  "guestEvidenceObserved": true,
+  "qgaObserved": true,
+  "cgroupObserved": false,
+  "libvirtObserved": true,
+  "identityPreserved": true,
+  "rebootRequired": false,
+  "recreateRequired": false,
+  "migrationRequired": false,
+  "runtimeMutationSupportedFamilies": [
+    "cpu_entitlement",
+    "memory_envelope",
+    "guest_memory_control"
+  ],
+  "unsupportedFamilies": [
+    "logical_vcpu_hotplug",
+    "windows_total_ram_hotplug"
+  ],
+  "blockers": [
+    "guest_cpu_delta_not_visible_on_live_up",
+    "libvirt_vcpu_unplug_timeout_on_rollback"
+  ],
+  "evidenceRefs": [
+    "hyperdensity_shell_capability_surface_v1",
+    "fluidvirt_live_cpu_control_v1"
+  ],
+  "observedAt": "2026-05-14T12:00:00Z"
+}
