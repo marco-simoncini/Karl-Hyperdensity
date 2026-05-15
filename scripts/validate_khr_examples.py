@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse examples/khr/** and examples/ingest/** for JSON/YAML fixtures (stdlib JSON; PyYAML for yaml)."""
+"""Parse examples/khr/**, examples/ingest/**, and examples/grandepadre/evidence-store/** for JSON/YAML fixtures (stdlib JSON; PyYAML for yaml)."""
 from __future__ import annotations
 
 import json
@@ -37,6 +37,8 @@ def main() -> int:
     if validate_tree(root, Path("examples") / "khr", required=True):
         return 1
     if validate_tree(root, Path("examples") / "ingest", required=True):
+        return 1
+    if validate_tree(root, Path("examples") / "grandepadre" / "evidence-store", required=True):
         return 1
     print("[validate_khr_examples] SUCCESS")
     return 0

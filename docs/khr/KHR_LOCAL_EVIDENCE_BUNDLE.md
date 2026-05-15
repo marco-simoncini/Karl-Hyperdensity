@@ -36,7 +36,7 @@ There are **no writes**: no cgroup mutation, no systemd, no cluster APIs. Top-le
 | Field | Description |
 |-------|-------------|
 | `tool` | `khr-linux-agent` |
-| `version` | Agent build string (e.g. `0.0.1-sprint11`). |
+| `version` | Agent build string (e.g. `0.0.1-sprint12`). |
 | `mode` | `collect-evidence` |
 | `agentId` | From config `spec.agentId`. |
 | `collectedAt` | RFC3339 UTC (`KHR_TEST_COLLECTED_AT` overrides in tests). |

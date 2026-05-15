@@ -1,0 +1,27 @@
+{
+  "indexedCount": 1,
+  "duplicateCount": 0,
+  "ready": [],
+  "blocked": [
+    {
+      "artifactId": "fixture-blocked",
+      "bundleSha256": "046866fa62a9981de6812400238d86e2cd9e7676fdae3244b38ca6221ebd62bf",
+      "cellRef": {
+        "apiVersion": "runtime.karl.io/v1alpha1",
+        "kind": "Cell",
+        "namespace": "karl-sandbox",
+        "name": "demo-cell"
+      },
+      "confidence": "high",
+      "readyForGrandePadre": false,
+      "blockedReasons": [
+        "cgroup path not resolved for telemetry"
+      ],
+      "warnings": [],
+      "trustTier": "IntegrityVerified",
+      "indexedAt": "2026-05-15T14:45:51Z"
+    }
+  ],
+  "queryResult": null,
+  "mutationsForbidden": true
+}

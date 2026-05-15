@@ -8,6 +8,7 @@ import (
 	"os"
 	"strings"
 
+	gpdevidence "github.com/marco-simoncini/Karl-Hyperdensity/pkg/grandepadre/evidence"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/agent"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/evidenceingest"
@@ -15,7 +16,7 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities, discover-cgroups, read-telemetry, collect-evidence, prepare-ingest-request")
+	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities, discover-cgroups, read-telemetry, collect-evidence, prepare-ingest-request, index-evidence-local")
 	configPath := flag.String("config", "", "path to agent YAML/JSON config")
 	cellInputPath := flag.String("cell-input", "", "optional path to Cell JSON (discover-cgroups, read-telemetry); required for collect-evidence")
 	cgroupRoot := flag.String("cgroup-root", "", "optional cgroup scan root (default /sys/fs/cgroup) for discover-cgroups")
@@ -48,6 +49,13 @@ func main() {
 	requireDigestMatch := flag.Bool("require-digest-match", true, "prepare-ingest-request: spec.policy.requireDigestMatch")
 	allowUnsigned := flag.Bool("allow-unsigned", true, "prepare-ingest-request: spec.policy.allowUnsigned")
 	allowLocalDevSignature := flag.Bool("allow-local-dev-signature", false, "prepare-ingest-request: spec.policy.allowLocalDevSignature (auto-enabled when manifest signingMode=local-dev)")
+	ingestRequestInputPath := flag.String("ingest-request-input", "", "index-evidence-local: path to EvidenceIngestRequest YAML/JSON")
+	indexOutputPath := flag.String("index-output", "", "index-evidence-local: optional path to write index report JSON")
+	indexQuery := flag.String("query", "", "index-evidence-local: optional ready|blocked|by-confidence|by-cell")
+	indexCellNamespace := flag.String("cell-namespace", "", "index-evidence-local: cell namespace for -query=by-cell")
+	indexCellName := flag.String("cell-name", "", "index-evidence-local: cell name for -query=by-cell")
+	indexConfidence := flag.String("confidence", "", "index-evidence-local: low|medium|high for -query=by-confidence")
+	unsignedDigestTrust := flag.String("unsigned-digest-trust", "verified", "index-evidence-local: verified|unsigned (IntegrityVerified vs Unsigned for digest-only bundles; see docs)")
 	flag.Parse()
 
 	out := map[string]interface{}{
@@ -349,6 +357,47 @@ func main() {
 		if err := evidenceingest.WriteFile(*ingestRequestOut, b); err != nil {
 			out["error"] = err.Error()
 			emit(out, 2)
+		}
+		os.Exit(0)
+
+	case "index-evidence-local":
+		path := strings.TrimSpace(*ingestRequestInputPath)
+		if path == "" {
+			out["error"] = "index-evidence-local requires -ingest-request-input"
+			emit(out, 2)
+		}
+		raw, err := os.ReadFile(path)
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		unsignedPol := gpdevidence.UnsignedDigestAsIntegrityVerified
+		if strings.EqualFold(strings.TrimSpace(*unsignedDigestTrust), "unsigned") {
+			unsignedPol = gpdevidence.UnsignedDigestAsUnsigned
+		}
+		rep, err := gpdevidence.RunLocalIndex(gpdevidence.NewStore(), raw, gpdevidence.LocalIndexParams{
+			UnsignedLabel: unsignedPol,
+			Query:         gpdevidence.ParseQueryKind(*indexQuery),
+			CellNamespace: *indexCellNamespace,
+			CellName:      *indexCellName,
+			Confidence:    *indexConfidence,
+		})
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		b, err := json.MarshalIndent(rep, "", "  ")
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		b = append(b, '\n')
+		os.Stdout.Write(b)
+		if p := strings.TrimSpace(*indexOutputPath); p != "" {
+			if err := os.WriteFile(p, b, 0o600); err != nil {
+				out["error"] = err.Error()
+				emit(out, 2)
+			}
 		}
 		os.Exit(0)
 

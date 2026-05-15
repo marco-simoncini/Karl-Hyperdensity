@@ -1,4 +1,4 @@
-# KHR Linux Agent — Runbook (Sprint 5–11)
+# KHR Linux Agent — Runbook (Sprint 5–12)
 
 **Audience:** platform engineers evaluating the skeleton locally.
 
@@ -112,6 +112,23 @@ go run ./cmd/khr-linux-agent -mode=prepare-ingest-request \
   -ingest-request-format=yaml \
   -dry-run-only=true
 ```
+
+### `index-evidence-local` (Sprint 12, local store skeleton)
+
+Reads one **EvidenceIngestRequest** YAML/JSON file, indexes it in an **ephemeral in-memory store**, optionally runs a query, and prints a JSON report. **No HTTP server, no kube apply.** Optional `-index-output` writes the same JSON to disk.
+
+```bash
+go run ./cmd/khr-linux-agent -mode=index-evidence-local \
+  -ingest-request-input=examples/grandepadre/evidence-store/ingest-request-ready.yaml
+
+go run ./cmd/khr-linux-agent -mode=index-evidence-local \
+  -ingest-request-input=examples/grandepadre/evidence-store/ingest-request-ready.yaml \
+  -query=by-cell \
+  -cell-namespace=karl-sandbox \
+  -cell-name=demo-cell
+```
+
+`-query` values: `ready`, `blocked`, `by-confidence` (requires `-confidence=low|medium|high`), `by-cell` (requires `-cell-namespace` and `-cell-name`). `-unsigned-digest-trust=verified|unsigned` maps digest-only bundles to `IntegrityVerified` vs `Unsigned` (see `docs/grandepadre/GRANDE_PADRE_EVIDENCE_INDEXES.md`).
 
 ## Non-goals
 

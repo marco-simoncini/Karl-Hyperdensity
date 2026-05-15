@@ -1,0 +1,83 @@
+apiVersion: hyperdensity.karl.io/v1alpha1
+kind: EvidenceIngestRequest
+metadata:
+    name: gp-ready
+    namespace: karl-sandbox
+spec:
+    artifactId: fixture-ready
+    bundle:
+        agentId: khr-agent-fixture
+        cellRef:
+            apiVersion: runtime.karl.io/v1alpha1
+            kind: Cell
+            name: demo-cell
+            namespace: karl-sandbox
+        collectedAt: "2026-05-15T16:00:00Z"
+        discovery:
+            agentId: khr-agent-fixture
+            allowedPathPrefix: ""
+            blockedReasons: []
+            candidatePaths: []
+            cgroupVersion: v2
+            discoveryMode: read-only
+            mutationsForbidden: true
+            scannedRoot: /tmp/khr-evidence-example-root
+            selectedPath: /tmp/khr-evidence-example-root/karl.slice/karl-shell-dev-linux-systemd-001.scope
+            warnings: []
+        dryRun:
+            skipReason: no lease or resource port inputs provided for optional dry-run
+            skipped: true
+        evidenceSummary:
+            blockedReasons: []
+            confidence: high
+            readyForGrandePadre: true
+            recommendedNextAction: Bundle is consistent for downstream Grande Padre ingest; attach cluster admission and blast-radius context before any apply planning.
+            warnings: []
+        mode: collect-evidence
+        mutationsForbidden: true
+        telemetry:
+            allowedPathPrefix: ""
+            cgroupPath: /tmp/khr-evidence-example-root/karl.slice/karl-shell-dev-linux-systemd-001.scope
+            evidence:
+                blockedReasons: []
+                confidence: high
+                observedAt: "2026-05-15T15:00:00Z"
+                source: cgroup-v2
+                warnings: []
+            metrics:
+                cpuStat:
+                    usage_usec: 100
+                memoryCurrent: "8192"
+            mutationsForbidden: true
+            telemetryMode: read-only
+        tool: khr-linux-agent
+        version: 0.0.1-sprint12
+    digest: 86fbb930c9fa715bdcadc9166813075705389e1912fad1eb0d7162cd618de06a
+    dryRunOnly: true
+    manifest:
+        agentId: khr-agent-fixture
+        artifactId: fixture-ready
+        bundleBytes: 1365
+        bundleSha256: 86fbb930c9fa715bdcadc9166813075705389e1912fad1eb0d7162cd618de06a
+        chainOfCustody:
+            executablePath: /tmp/khr-linux-agent.test
+            hostname: test-host.example
+            processId: 4242
+            user: test-user
+            workingDirectory: /tmp
+        generatedAt: "2026-07-01T12:00:00Z"
+        integrityNotes:
+            - Local integrity metadata only; not a production signature or admission decision.
+            - 'No transport, no ingest API, no apply: bundle remains read-only evidence.'
+        mutationsForbidden: true
+        signaturePresent: false
+        signingMode: none
+        sourceMode: collect-evidence
+    policy:
+        allowLocalDevSignature: false
+        allowUnsigned: true
+        maxBundleBytes: 1048576
+        requireDigestMatch: true
+    source:
+        agentId: khr-agent-fixture
+    ttlSeconds: 86400

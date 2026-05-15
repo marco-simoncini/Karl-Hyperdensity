@@ -52,6 +52,9 @@ required_files=(
   "docs/ingest/EVIDENCEINGESTREQUEST_CRD.md"
   "docs/ingest/GRANDE_PADRE_EVIDENCE_INDEXING_MODEL.md"
   "docs/ingest/EVIDENCE_INGEST_SECURITY_BOUNDARIES.md"
+  "docs/grandepadre/GRANDE_PADRE_EVIDENCE_STORE_SKELETON.md"
+  "docs/grandepadre/GRANDE_PADRE_EVIDENCE_INDEXES.md"
+  "docs/grandepadre/GRANDE_PADRE_BLOCKED_REMEDIABLE_INDEX.md"
 )
 
 for required in "${required_files[@]}"; do

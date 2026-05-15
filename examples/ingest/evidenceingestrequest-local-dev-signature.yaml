@@ -9,7 +9,7 @@ spec:
   artifactId: local-dev-demo
   bundle:
     tool: khr-linux-agent
-    version: 0.0.1-sprint11
+    version: 0.0.1-sprint12
     mode: collect-evidence
     agentId: khr-linux-agent-dev-001
     collectedAt: "2026-05-15T16:00:00Z"

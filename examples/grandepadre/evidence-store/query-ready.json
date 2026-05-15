@@ -1,0 +1,42 @@
+{
+  "indexedCount": 1,
+  "duplicateCount": 0,
+  "ready": [
+    {
+      "artifactId": "fixture-ready",
+      "bundleSha256": "86fbb930c9fa715bdcadc9166813075705389e1912fad1eb0d7162cd618de06a",
+      "cellRef": {
+        "apiVersion": "runtime.karl.io/v1alpha1",
+        "kind": "Cell",
+        "namespace": "karl-sandbox",
+        "name": "demo-cell"
+      },
+      "confidence": "high",
+      "readyForGrandePadre": true,
+      "blockedReasons": [],
+      "warnings": [],
+      "trustTier": "IntegrityVerified",
+      "indexedAt": "2026-05-15T14:45:51Z"
+    }
+  ],
+  "blocked": [],
+  "queryResult": [
+    {
+      "artifactId": "fixture-ready",
+      "bundleSha256": "86fbb930c9fa715bdcadc9166813075705389e1912fad1eb0d7162cd618de06a",
+      "cellRef": {
+        "apiVersion": "runtime.karl.io/v1alpha1",
+        "kind": "Cell",
+        "namespace": "karl-sandbox",
+        "name": "demo-cell"
+      },
+      "confidence": "high",
+      "readyForGrandePadre": true,
+      "blockedReasons": [],
+      "warnings": [],
+      "trustTier": "IntegrityVerified",
+      "indexedAt": "2026-05-15T14:45:51Z"
+    }
+  ],
+  "mutationsForbidden": true
+}

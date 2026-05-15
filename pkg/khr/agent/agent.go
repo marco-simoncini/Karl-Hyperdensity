@@ -21,8 +21,8 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/telemetry"
 )
 
-// AgentVersion is embedded in JSON outputs (Sprint 11).
-const AgentVersion = "0.0.1-sprint11"
+// AgentVersion is embedded in JSON outputs (Sprint 12).
+const AgentVersion = "0.0.1-sprint12"
 
 // Config is minimal agent configuration (YAML or JSON).
 type Config struct {
