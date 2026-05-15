@@ -68,6 +68,7 @@ required_files=(
   "docs/extraction/HYPERDENSITY_GOLDEN_ANCHOR_M1.md"
   "docs/extraction/HYPERDENSITY_SUMMARY_FIELD_MAPPING_M2.md"
   "docs/extraction/HYPERDENSITY_SUMMARY_FIELD_MAPPING_M3.md"
+  "docs/extraction/HYPERDENSITY_SUMMARY_FIELD_MAPPING_M4.md"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"
 )
 
