@@ -34,6 +34,10 @@ required_files=(
   "docs/releases/technical-preview-documentation-pack-v1.md"
   "docs/overcommit/resource-equilibrium-and-safe-overcommit.md"
   "docs/migration/dashboard-to-hyperdensity-extraction-plan.md"
+  "docs/khr/KHR_LINUX_MVP_DESIGN.md"
+  "docs/khr/KHR_LINUX_AGENT_RUNBOOK.md"
+  "docs/khr/KHR_LINUX_CGROUP_ENVELOPE_MODEL.md"
+  "docs/khr/KHR_SAFETY_AND_DRY_RUN_MODEL.md"
 )
 
 for required in "${required_files[@]}"; do
@@ -45,6 +49,7 @@ done
 
 go test ./...
 python3 scripts/validate_json.py
+python3 scripts/validate_khr_examples.py
 
 if [[ -x "${ROOT_DIR}/scripts/validate_crds.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_crds.sh"

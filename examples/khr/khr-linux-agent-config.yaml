@@ -1,0 +1,9 @@
+apiVersion: khr.karl.io/v1alpha1
+kind: KHRLinuxAgentConfig
+metadata:
+  name: khr-linux-agent-local
+spec:
+  agentId: khr-linux-agent-dev-001
+  linuxOnly: true
+  logLevel: info
+  cellWatchMode: disabled

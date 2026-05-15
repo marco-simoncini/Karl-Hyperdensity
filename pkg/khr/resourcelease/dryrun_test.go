@@ -1,0 +1,79 @@
+package resourcelease
+
+import (
+	"encoding/json"
+	"testing"
+)
+
+func leaseFixture(mode, resource string) *LeaseInput {
+	l := &LeaseInput{}
+	l.Spec.Mode = mode
+	l.Spec.Resource = resource
+	l.Spec.Donor.Kind = "Cell"
+	l.Spec.Donor.Name = "a"
+	l.Spec.Donor.Namespace = "ns"
+	l.Spec.Receiver.Kind = "Cell"
+	l.Spec.Receiver.Name = "b"
+	l.Spec.Receiver.Namespace = "ns"
+	return l
+}
+
+func portEnvelope() *ResourcePortInput {
+	p := &ResourcePortInput{}
+	p.Spec.Ports.CPU.Modes = []string{"static", "envelope"}
+	p.Spec.Ports.Memory.Modes = []string{"static", "envelope"}
+	return p
+}
+
+func TestDryRunAllowedEnvelopeCPU(t *testing.T) {
+	res := DryRun(leaseFixture("envelope", "cpu"), portEnvelope(), &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
+	if res.Blocked || !res.Allowed {
+		t.Fatalf("expected allowed, got %+v", res)
+	}
+	if res.ResourcePortCheck != "compatible" {
+		t.Fatalf("expected compatible port check")
+	}
+}
+
+func TestDryRunBlockedNonEnvelopeMode(t *testing.T) {
+	res := DryRun(leaseFixture("hotplug", "cpu"), portEnvelope(), &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
+	if !res.Blocked || res.Allowed {
+		t.Fatalf("expected blocked")
+	}
+}
+
+func TestDryRunBlockedResourcePort(t *testing.T) {
+	p := &ResourcePortInput{}
+	p.Spec.Ports.CPU.Modes = []string{"static"}
+	p.Spec.Ports.Memory.Modes = []string{"static"}
+	res := DryRun(leaseFixture("envelope", "cpu"), p, &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
+	if !res.Blocked {
+		t.Fatal("expected blocked for missing envelope mode")
+	}
+}
+
+func TestDryRunBlockedMissingPort(t *testing.T) {
+	res := DryRun(leaseFixture("envelope", "cpu"), nil, &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
+	if !res.Blocked {
+		t.Fatal("expected blocked without port")
+	}
+}
+
+func TestDryRunBlockedNonLinux(t *testing.T) {
+	res := DryRun(leaseFixture("envelope", "cpu"), portEnvelope(), &CellContext{DonorPlatform: "windows", ReceiverPlatform: "linux"})
+	if !res.Blocked {
+		t.Fatal("expected blocked for non-linux")
+	}
+}
+
+func TestLeaseJSONUnmarshal(t *testing.T) {
+	raw := []byte(`{"spec":{"donor":{"kind":"Cell","name":"a","namespace":"ns"},"receiver":{"kind":"Cell","name":"b","namespace":"ns"},"resource":"memory","mode":"envelope"}}`)
+	l := &LeaseInput{}
+	if err := json.Unmarshal(raw, l); err != nil {
+		t.Fatal(err)
+	}
+	res := DryRun(l, portEnvelope(), &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
+	if !res.Allowed {
+		t.Fatalf("expected allowed %+v", res)
+	}
+}

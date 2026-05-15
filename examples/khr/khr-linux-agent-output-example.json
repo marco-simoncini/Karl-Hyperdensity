@@ -1,0 +1,16 @@
+{
+  "tool": "khr-linux-agent",
+  "version": "0.0.1-sprint5",
+  "mode": "dry-run",
+  "resourceLeaseDryRun": {
+    "allowed": true,
+    "blocked": false,
+    "reason": "dry-run only: no cgroup writes performed",
+    "resourcePortCheck": "compatible"
+  },
+  "cgroupEnvelopePlan": {
+    "cgroupVersion": "v2",
+    "wouldWrite": false
+  },
+  "applyLocked": true
+}

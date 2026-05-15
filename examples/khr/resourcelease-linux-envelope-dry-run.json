@@ -1,0 +1,9 @@
+{
+  "spec": {
+    "donor": { "kind": "Cell", "namespace": "karl-sandbox", "name": "kv-lease-donor-demo" },
+    "receiver": { "kind": "Cell", "namespace": "karl-sandbox", "name": "kv-lease-receiver-demo" },
+    "resource": "cpu",
+    "mode": "envelope",
+    "amount": { "milliCpu": 500 }
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "spec": {
+    "ports": {
+      "cpu": { "modes": ["static", "envelope"] },
+      "memory": { "modes": ["static", "envelope", "balloon"] }
+    }
+  }
+}
