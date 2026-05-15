@@ -1,0 +1,34 @@
+# Linux VM workspace on KubeVirt (legacy provider). Requires ShellPool / Host seed from examples/crds if not present.
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ShellClass
+metadata:
+  name: linux-vm-kubevirt-legacy-provider
+spec:
+  id: linux.vm.kubevirt.legacy.v1
+  displayName: Linux VM workspace (KubeVirt legacy)
+  complianceFamily: linux.kubevirt.legacy.vm
+  supportedRuntimeProviders:
+    - kubevirt.legacy.v1
+  defaultResourcePortProfileRef:
+    name: kubevirt-legacy
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Shell
+metadata:
+  name: dev-linux-vm-kv-legacy
+  namespace: karl-sandbox
+spec:
+  shellClassRef:
+    name: linux-vm-kubevirt-legacy-provider
+  shellPoolRef:
+    name: pool-linux-dev-example
+  displayName: Developer Linux VM (KubeVirt legacy)
+  resourceProfile:
+    cpuMillis: 4000
+    memoryMi: 16384
+  runtimePreference:
+    primaryProvider: kubevirt.legacy.v1
+  kubeVirtLegacy:
+    virtualMachineName: dev-ubuntu-kv-01
+    virtualMachineNamespace: karl-sandbox

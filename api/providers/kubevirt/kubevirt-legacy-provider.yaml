@@ -1,0 +1,19 @@
+# Declarative contract (not a Kubernetes CRD). Parsed by scripts/validate_crds.sh
+apiVersion: providers.karl.io/v1alpha1
+kind: KubeVirtLegacyRuntimeProviderContract
+metadata:
+  name: kubevirt-legacy
+  labels:
+    karl.io/contract-track: kubevirt-legacy-sprint3
+spec:
+  providerType: kubevirt-legacy
+  maturity: legacy
+  ownershipMode: hybrid-legacy
+  supportedCellTypes:
+    - kubevirt-legacy
+  evidenceLevel: provider-constrained
+  resourcePortTemplateRef: kubevirt-legacy
+  notes:
+    - KubeVirt remains the VM implementation; KARL Shell/Cell are overlays.
+    - Hotplug and live resource claims are strictly provider-constrained and evidence-gated.
+    - Primary KubeVirt API group for handles is kubevirt.io (see kubevirt-handle-contract.yaml).

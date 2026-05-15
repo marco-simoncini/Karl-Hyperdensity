@@ -1,0 +1,41 @@
+# Cell.status.runtimeHandle contract (not a Kubernetes CRD). Mirrors future Cell status population.
+apiVersion: providers.karl.io/v1alpha1
+kind: KubeVirtRuntimeHandleContract
+metadata:
+  name: kubevirt-legacy-handle
+  labels:
+    karl.io/contract-track: kubevirt-legacy-sprint3
+spec:
+  runtimeHandleSchema:
+    description: >
+      Intended shape under Cell.status.runtimeHandle for kubevirt-legacy.
+      Controllers populate; users treat as read-only.
+    type: object
+    required:
+      - provider
+      - apiGroup
+      - kind
+      - namespace
+      - name
+    properties:
+      provider:
+        const: kubevirt-legacy
+      apiGroup:
+        const: kubevirt.io
+      kind:
+        enum:
+          - VirtualMachine
+          - VirtualMachineInstance
+      namespace:
+        type: string
+      name:
+        type: string
+      uid:
+        type: string
+        description: Kubernetes metadata.uid of primary object (required for audit binding).
+      vmiName:
+        type: string
+        description: VirtualMachineInstance name when distinct from VM workflow naming.
+      launcherPodName:
+        type: string
+        description: Optional launcher pod when observable; evidence-only, not a stable public API of KubeVirt.

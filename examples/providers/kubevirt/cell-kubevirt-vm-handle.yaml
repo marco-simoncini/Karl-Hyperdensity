@@ -1,0 +1,33 @@
+# Cell bound to KubeVirt VM (handle contract illustration). status.runtimeHandle is illustrative pre-controller.
+apiVersion: runtime.karl.io/v1alpha1
+kind: Cell
+metadata:
+  name: fin-win-kv-01-cell
+  namespace: karl-sandbox
+  labels:
+    karl.io/shell-id: finance-desktop-kv-legacy
+    karl.io/cell-id: fin-win-kv-01-cell
+spec:
+  shellRef:
+    name: finance-desktop-kv-legacy
+  hostRef:
+    name: worker-01-example
+  runtimeProviderRef:
+    name: kubevirt-legacy-v1
+  resourcePortProfileRef:
+    name: kubevirt-legacy
+  providerHandle:
+    apiGroup: kubevirt.io
+    kind: VirtualMachine
+    namespace: karl-sandbox
+    name: fin-win-kv-01
+status:
+  runtimeHandle:
+    provider: kubevirt-legacy
+    apiGroup: kubevirt.io
+    kind: VirtualMachine
+    namespace: karl-sandbox
+    name: fin-win-kv-01
+    uid: "00000000-0000-0000-0000-000000000000"
+    vmiName: fin-win-kv-01-running
+    launcherPodName: virt-launcher-fin-win-kv-01-xxxxx

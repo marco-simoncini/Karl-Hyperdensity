@@ -28,9 +28,23 @@ Each file is **contract illustration** only. Controllers shipped in later sprint
 
 Some files contain multiple resources separated by `---` so a reviewer can `kubectl apply -f <file>` after CRDs are installed (still no runtime side-effects from KARL controllers in Sprint 2).
 
+## KubeVirt legacy provider (Sprint 3)
+
+Contracts and provider-scoped examples:
+
+| Path | Content |
+|------|---------|
+| `docs/providers/KUBEVIRT_*.md` | Legacy provider contract, Shell/Cell mapping, labels/handles, migration safety |
+| `api/providers/kubevirt/*.yaml` | Declarative `providers.karl.io/v1alpha1` bundles (**not** `apiextensions.k8s.io` CRDs) |
+| `examples/providers/kubevirt/*.yaml` | `Shell` / `Cell` / `RuntimeProvider` / `ResourcePort` / `ResourceLease` aligned with **kubevirt-legacy** |
+
+**Apply note:** `examples/crds/shell-windows-desktop-kubevirt-legacy.yaml` and `examples/providers/kubevirt/runtimeprovider-kubevirt-legacy.yaml` both define cluster `RuntimeProvider` metadata `name: kubevirt-legacy-v1`. Apply **one** bundle or remove the duplicate document to avoid `AlreadyExists`.
+
+**Prerequisites:** `examples/providers/kubevirt/shell-linux-vm-kubevirt-legacy.yaml` and related Cells reference `ShellPool` `pool-linux-dev-example` and `Host` `worker-01-example` from the `examples/crds/` seed bundles (`shell-linux-cell-systemd.yaml`, `shell-windows-desktop-kubevirt-legacy.yaml`).
+
 ## Legacy KubeVirt mapping
 
-`Shell.spec.kubeVirtLegacy` is an **optional hint surface** for Sprint 3 controllers. It must not be interpreted as changing KubeVirt behavior by itself.
+`Shell.spec.kubeVirtLegacy` is an **optional hint surface** for mappers (Sprint 3+). It does **not** change KubeVirt VM behavior by itself. See `docs/providers/KUBEVIRT_SHELL_CELL_MAPPING.md`.
 
 ## FluidVirt alignment
 

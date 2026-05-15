@@ -1,0 +1,37 @@
+apiVersion: runtime.karl.io/v1alpha1
+kind: ResourcePort
+metadata:
+  name: kubevirt-legacy
+spec:
+  description: >
+    KubeVirt legacy capability matrix: conservative defaults. This is NOT the primary
+    KARL hotplug promise. Any hotAdd/balloon/hotplug mode requires per-VM evidence
+    under Hyperdensity provider-constrained rules.
+  appliesToRuntimeProviderIds:
+    - kubevirt.legacy.v1
+  ports:
+    cpu:
+      modes:
+        - static
+        - envelope
+    memory:
+      modes:
+        - static
+        - envelope
+        - balloon
+    disk:
+      modes:
+        - static
+        - hotplug
+    network:
+      modes:
+        - static
+    gpu:
+      modes:
+        - coldAttach
+        - warmAttach
+  notes: >
+    CPU hotAdd and memory hotAdd are intentionally omitted from default advertisement
+    unless proven for a fleet class. Controllers may narrow modes per VM instance
+    after guest and KubeVirt capability checks. GPU liveIfSupported is not advertised
+    for kubevirt-legacy in this contract bundle.

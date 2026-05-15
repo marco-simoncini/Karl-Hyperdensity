@@ -1,0 +1,66 @@
+# Guarded ResourceLease: dry-run / evidence path only for kubevirt-legacy (no apply in Sprint 3).
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Cell
+metadata:
+  name: kv-lease-donor-demo
+  namespace: karl-sandbox
+spec:
+  shellRef:
+    name: dev-linux-vm-kv-legacy
+  hostRef:
+    name: worker-01-example
+  runtimeProviderRef:
+    name: kubevirt-legacy-v1
+  resourcePortProfileRef:
+    name: kubevirt-legacy
+  providerHandle:
+    apiGroup: kubevirt.io
+    kind: VirtualMachine
+    namespace: karl-sandbox
+    name: dev-ubuntu-kv-01
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Cell
+metadata:
+  name: kv-lease-receiver-demo
+  namespace: karl-sandbox
+spec:
+  shellRef:
+    name: dev-linux-vm-kv-legacy
+  hostRef:
+    name: worker-01-example
+  runtimeProviderRef:
+    name: kubevirt-legacy-v1
+  resourcePortProfileRef:
+    name: kubevirt-legacy
+  providerHandle:
+    apiGroup: kubevirt.io
+    kind: VirtualMachine
+    namespace: karl-sandbox
+    name: dev-ubuntu-kv-02
+---
+apiVersion: hyperdensity.karl.io/v1alpha1
+kind: ResourceLease
+metadata:
+  name: kv-cpu-guarded-demo
+  namespace: karl-sandbox
+spec:
+  donor:
+    kind: Cell
+    namespace: karl-sandbox
+    name: kv-lease-donor-demo
+  receiver:
+    kind: Cell
+    namespace: karl-sandbox
+    name: kv-lease-receiver-demo
+  resource: cpu
+  amount:
+    milliCpu: 1000
+  mode: envelope
+  durationSeconds: 60
+  noRestart: true
+  guestVisible: false
+  telemetryConvergedRequired: true
+  dryRunOnly: true
+  rollbackRequired: true

@@ -1,0 +1,16 @@
+apiVersion: runtime.karl.io/v1alpha1
+kind: RuntimeProvider
+metadata:
+  name: kubevirt-legacy-v1
+spec:
+  id: kubevirt.legacy.v1
+  displayName: KubeVirt legacy VM provider
+  driver: kubevirt-legacy
+  supportedShellClassIds:
+    - windows.desktop.kubevirt.legacy.v1
+    - linux.vm.kubevirt.legacy.v1
+  defaultResourcePortProfileRef:
+    name: kubevirt-legacy
+  execContractVersion: khr-contract-2026.06-sprint3
+  config:
+    providerContractRef: providers.karl.io/KubeVirtLegacyRuntimeProviderContract/kubevirt-legacy

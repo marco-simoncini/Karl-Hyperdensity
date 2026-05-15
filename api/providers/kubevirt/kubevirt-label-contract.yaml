@@ -1,0 +1,40 @@
+# Label and annotation contract (not a Kubernetes CRD).
+apiVersion: providers.karl.io/v1alpha1
+kind: KubeVirtLabelContract
+metadata:
+  name: kubevirt-legacy-labels
+  labels:
+    karl.io/contract-track: kubevirt-legacy-sprint3
+spec:
+  karlLabels:
+    - key: karl.io/shell-id
+      purpose: Bind VirtualMachine/VMI to KARL Shell identity.
+    - key: karl.io/cell-id
+      purpose: Bind VirtualMachine/VMI to KARL Cell identity.
+    - key: karl.io/runtime-provider
+      valueExample: kubevirt-legacy
+      purpose: Discriminator for legacy provider reconciliation.
+    - key: karl.io/provider-handle-kind
+      valueExample: VirtualMachine
+      purpose: Primary provider API kind for the handle contract.
+    - key: karl.io/provider-handle-namespace
+      purpose: Namespace of the primary KubeVirt object.
+    - key: karl.io/provider-handle-name
+      purpose: Name of the primary KubeVirt object.
+    - key: hyperdensity.karl.io/evidence-scope
+      purpose: Partition for Hyperdensity evidence and fleet gates.
+    - key: hyperdensity.karl.io/legacy-provider
+      valueExample: "true"
+      purpose: Marks objects on the legacy provider evidence path.
+  kubeVirtUpstreamLabelsPreserve:
+    - key: vm.kubevirt.io/name
+      source: kubevirt
+      purpose: Existing discovery label; must not be removed by KARL.
+    - key: vmi.kubevirt.io/id
+      source: kubevirt
+      purpose: Existing VMI id label; must not be removed by KARL.
+  applicationPolicy:
+    phase: opt-in-future
+    description: >
+      Sprint 3 does not apply labels. Future controllers must use feature gates
+      and canary pools before writing karl.io/* or hyperdensity.karl.io/* keys.

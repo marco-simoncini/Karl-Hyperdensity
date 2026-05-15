@@ -40,6 +40,8 @@ Cross-cutting KARL platform vision (Shell / Cell / KHR / Hyperdensity market fus
 
 **Sprint 2 (contract-only):** Kubernetes CRDs (`api/crds/**`) for `runtime.karl.io`, `hyperdensity.karl.io`, and `gateway.karl.io` at `v1alpha1`, plus `docs/crd/` contracts and `examples/crds/` sample manifests. No controllers or runtime changes.
 
+**Sprint 3 (KubeVirt legacy provider contract):** `docs/providers/`, `api/providers/kubevirt/`, and `examples/providers/kubevirt/` describe mapping Shell/Cell ↔ KubeVirt, reserved labels, `runtimeHandle`, conservative `ResourcePort`, and Hyperdensity-guarded leases — **no VM mutation, no controller ship**.
+
 ## Live Linux Shell Guarantees
 
 Compliance requires proof of:

@@ -1,0 +1,34 @@
+# KubeVirt legacy Windows desktop Shell (contract example). Namespace: karl-sandbox.
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ShellClass
+metadata:
+  name: windows-desktop-kubevirt-legacy-provider
+spec:
+  id: windows.desktop.kubevirt.legacy.v1
+  displayName: Windows Desktop on KubeVirt (legacy provider)
+  complianceFamily: windows.session
+  supportedRuntimeProviders:
+    - kubevirt.legacy.v1
+  defaultResourcePortProfileRef:
+    name: kubevirt-legacy
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Shell
+metadata:
+  name: finance-desktop-kv-legacy
+  namespace: karl-sandbox
+spec:
+  shellClassRef:
+    name: windows-desktop-kubevirt-legacy-provider
+  shellPoolRef:
+    name: pool-windows-finance-example
+  displayName: Finance Windows desktop (KubeVirt legacy)
+  resourceProfile:
+    cpuMillis: 8000
+    memoryMi: 32768
+  runtimePreference:
+    primaryProvider: kubevirt.legacy.v1
+  kubeVirtLegacy:
+    virtualMachineName: fin-win-kv-01
+    virtualMachineNamespace: karl-sandbox
