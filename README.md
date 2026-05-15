@@ -34,6 +34,10 @@ Current implementation truth (owned by `Karl-Dashboard` runtime):
 5. Controlled execution (`operator_controlled`)
 6. Safe overcommit via equilibrium and bounded risk
 
+### KARL Host Runtime (KHR) — architecture foundation
+
+Cross-cutting KARL platform vision (Shell / Cell / KHR / Hyperdensity market fusion) is documented under `docs/architecture/` and `docs/adr/` starting with Sprint 1 foundation files: `KARL_HOST_RUNTIME_VISION.md`, `KARL_SHELL_CELL_MODEL.md`, `KARL_HYPERDENSITY_KHR_FUSION.md`, and ADR-0001–0003.
+
 ## Live Linux Shell Guarantees
 
 Compliance requires proof of:
