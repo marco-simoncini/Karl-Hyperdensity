@@ -1,6 +1,6 @@
 {
   "tool": "khr-linux-agent",
-  "version": "0.0.1-sprint8",
+  "version": "0.0.1-sprint9",
   "mode": "discover-cgroups",
   "agentId": "khr-linux-agent-dev-001",
   "cgroupVersion": "v2",

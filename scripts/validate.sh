@@ -43,6 +43,8 @@ required_files=(
   "docs/khr/KHR_CGROUP_PATH_POLICY.md"
   "docs/khr/KHR_LINUX_READONLY_TELEMETRY.md"
   "docs/khr/KHR_TELEMETRY_EVIDENCE_MODEL.md"
+  "docs/khr/KHR_LOCAL_EVIDENCE_BUNDLE.md"
+  "docs/khr/KHR_GRANDE_PADRE_EVIDENCE_HANDOFF.md"
 )
 
 for required in "${required_files[@]}"; do

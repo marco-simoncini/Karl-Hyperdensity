@@ -1,4 +1,4 @@
-# KHR Linux Agent — Runbook (Sprint 5–8)
+# KHR Linux Agent — Runbook (Sprint 5–9)
 
 **Audience:** platform engineers evaluating the skeleton locally.
 
@@ -70,6 +70,19 @@ go run ./cmd/khr-linux-agent -mode read-telemetry \
 ```
 
 See `docs/khr/KHR_LINUX_READONLY_TELEMETRY.md` and `examples/khr/telemetry/`.
+
+### `collect-evidence`
+
+Single-shot **local evidence bundle** (validate config → discover → telemetry when a path is selected → optional ResourceLease dry-run). Requires `-config` and `-cell-input`. Optional `-cgroup-root`, `-allow-path-prefix`, `-lease-input`, `-resource-port-input`, `-cell-context`, `-evidence-output` (same lease/port/cell-context semantics as `dry-run` for the optional slice).
+
+```bash
+go run ./cmd/khr-linux-agent -mode collect-evidence \
+  -config examples/khr/khr-linux-agent-config.yaml \
+  -cell-input examples/khr/evidence/collect-evidence-input-cell.json \
+  -cgroup-root /sys/fs/cgroup
+```
+
+See `docs/khr/KHR_LOCAL_EVIDENCE_BUNDLE.md`, `docs/khr/KHR_GRANDE_PADRE_EVIDENCE_HANDOFF.md`, and `examples/khr/evidence/`.
 
 ## Non-goals
 

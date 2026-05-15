@@ -13,13 +13,14 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities, discover-cgroups, read-telemetry")
+	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities, discover-cgroups, read-telemetry, collect-evidence")
 	configPath := flag.String("config", "", "path to agent YAML/JSON config")
-	cellInputPath := flag.String("cell-input", "", "optional path to Cell JSON (discover-cgroups, read-telemetry)")
+	cellInputPath := flag.String("cell-input", "", "optional path to Cell JSON (discover-cgroups, read-telemetry); required for collect-evidence")
 	cgroupRoot := flag.String("cgroup-root", "", "optional cgroup scan root (default /sys/fs/cgroup) for discover-cgroups")
-	allowPathPrefix := flag.String("allow-path-prefix", "", "optional path prefix policy (discover-cgroups, read-telemetry)")
+	allowPathPrefix := flag.String("allow-path-prefix", "", "optional path prefix policy (discover-cgroups, read-telemetry, collect-evidence)")
 	telemetryCgroupPath := flag.String("cgroup-path", "", "resolved cgroup directory to sample (read-telemetry)")
 	telemetryOutputPath := flag.String("telemetry-output", "", "optional path to write the same JSON as stdout (read-telemetry)")
+	evidenceOutputPath := flag.String("evidence-output", "", "optional path to write the same JSON as stdout (collect-evidence)")
 	leasePath := flag.String("lease-input", "", "path to ResourceLease JSON (dry-run)")
 	portPath := flag.String("resource-port-input", "", "path to ResourcePort JSON (dry-run)")
 	cellCtxPath := flag.String("cell-context", "", "optional path to CellContext JSON (dry-run)")
@@ -198,6 +199,73 @@ func main() {
 			}
 		}
 		cliOut, err := agent.RunReadTelemetryCLI(cfg, *telemetryCgroupPath, *allowPathPrefix, cell, *telemetryOutputPath)
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		b, err := json.MarshalIndent(cliOut, "", "  ")
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		os.Stdout.Write(b)
+		os.Stdout.Write([]byte("\n"))
+		os.Exit(0)
+
+	case "collect-evidence":
+		if *configPath == "" || *cellInputPath == "" {
+			out["error"] = "collect-evidence requires -config and -cell-input"
+			emit(out, 2)
+		}
+		cfg, err := agent.LoadConfig(*configPath)
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		if errs := agent.ValidateConfig(cfg); len(errs) > 0 {
+			out["validationErrors"] = errs
+			out["error"] = "invalid config"
+			emit(out, 2)
+		}
+		cellRaw, err := os.ReadFile(*cellInputPath)
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		cell := &crdv1alpha1.Cell{}
+		if err := json.Unmarshal(cellRaw, cell); err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		var leaseRaw, portRaw []byte
+		if *leasePath != "" {
+			leaseRaw, err = os.ReadFile(*leasePath)
+			if err != nil {
+				out["error"] = err.Error()
+				emit(out, 2)
+			}
+		}
+		if *portPath != "" {
+			portRaw, err = os.ReadFile(*portPath)
+			if err != nil {
+				out["error"] = err.Error()
+				emit(out, 2)
+			}
+		}
+		var ctx *resourcelease.CellContext
+		if *cellCtxPath != "" {
+			raw, err := os.ReadFile(*cellCtxPath)
+			if err != nil {
+				out["error"] = err.Error()
+				emit(out, 2)
+			}
+			ctx = &resourcelease.CellContext{}
+			if err := json.Unmarshal(raw, ctx); err != nil {
+				out["error"] = err.Error()
+				emit(out, 2)
+			}
+		}
+		cliOut, err := agent.RunCollectEvidenceCLI(cfg, cell, *cgroupRoot, *allowPathPrefix, leaseRaw, portRaw, ctx, *evidenceOutputPath, *allowUnsafe, *cpuDelta, *memDelta)
 		if err != nil {
 			out["error"] = err.Error()
 			emit(out, 2)

@@ -1,6 +1,7 @@
 package agent
 
 import (
+	"bytes"
 	"encoding/json"
 	"fmt"
 	"os"
@@ -12,14 +13,15 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/cgroup"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/discovery"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/evidence"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcelease"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/runtimeprovider"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/safety"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/telemetry"
 )
 
-// AgentVersion is embedded in JSON outputs (Sprint 8).
-const AgentVersion = "0.0.1-sprint8"
+// AgentVersion is embedded in JSON outputs (Sprint 9).
+const AgentVersion = "0.0.1-sprint9"
 
 // Config is minimal agent configuration (YAML or JSON).
 type Config struct {
@@ -206,4 +208,71 @@ func writeTelemetryOutputOptional(out *telemetry.ReadTelemetryOutput, path strin
 	}
 	b = append(b, '\n')
 	return os.WriteFile(path, b, 0o600)
+}
+
+func writeCollectEvidenceOptional(bundle *evidence.CollectEvidenceBundle, path string) error {
+	if strings.TrimSpace(path) == "" {
+		return nil
+	}
+	b, err := json.MarshalIndent(bundle, "", "  ")
+	if err != nil {
+		return err
+	}
+	b = append(b, '\n')
+	return os.WriteFile(path, b, 0o600)
+}
+
+// RunCollectEvidenceCLI validates config, runs discovery, telemetry (when selectedPath is set),
+// optionally ResourceLease dry-run when both lease and port payloads are provided, and returns
+// a single local evidence bundle JSON shape (read-only; mutationsForbidden always true).
+func RunCollectEvidenceCLI(cfg *Config, cell *crdv1alpha1.Cell, cgroupRoot, allowPrefix string, leaseRaw, portRaw []byte, cellCtx *resourcelease.CellContext, evidenceOutPath string, allowUnsafe bool, cpuDelta, memDelta string) (*evidence.CollectEvidenceBundle, error) {
+	if errs := ValidateConfig(cfg); len(errs) > 0 {
+		return nil, fmt.Errorf("invalid config: %s", strings.Join(errs, "; "))
+	}
+	disc := RunDiscoverCgroupsCLI(cfg, cell, cgroupRoot, allowPrefix)
+
+	var cellRef *telemetry.CellRef
+	if cell != nil {
+		cellRef = &telemetry.CellRef{
+			APIVersion: cell.APIVersion,
+			Kind:       cell.Kind,
+			Namespace:  cell.Metadata.Namespace,
+			Name:       cell.Metadata.Name,
+		}
+	}
+
+	var tSnap evidence.TelemetrySnapshot
+	if strings.TrimSpace(disc.SelectedPath) != "" {
+		tel, err := RunReadTelemetryCLI(cfg, disc.SelectedPath, allowPrefix, cell, "")
+		if err != nil {
+			return nil, err
+		}
+		tSnap = evidence.TelemetrySnapshotFrom(tel)
+	} else {
+		tSnap = evidence.TelemetrySnapshotSkipped(allowPrefix, cellRef, "discovery did not resolve selectedPath; telemetry skipped")
+	}
+
+	var partialWarn string
+	var dry evidence.DryRunPayload
+	leaseHas := len(bytes.TrimSpace(leaseRaw)) > 0
+	portHas := len(bytes.TrimSpace(portRaw)) > 0
+	switch {
+	case leaseHas && portHas:
+		dr, err := RunDryRunCLI(leaseRaw, portRaw, cellCtx, allowUnsafe, cpuDelta, memDelta)
+		if err != nil {
+			return nil, err
+		}
+		dry = evidence.DryRunPayloadFromResult(dr.ResourceLeaseDryRun, dr.CgroupEnvelopePlan, dr.MutationsForbidden, dr.UnsafeApplyFlagPresent, dr.FutureApplyGateRequired, dr.Audit)
+	case leaseHas || portHas:
+		partialWarn = "collect-evidence: dry-run skipped: both -lease-input and -resource-port-input are required when including ResourceLease simulation"
+		dry = evidence.DryRunSkippedPayload(partialWarn)
+	default:
+		dry = evidence.DryRunSkippedPayload("no lease or resource port inputs provided for optional dry-run")
+	}
+
+	bundle := evidence.BuildCollectEvidenceBundle(AgentVersion, cfg.Spec.AgentID, cell, disc, tSnap, dry, partialWarn)
+	if err := writeCollectEvidenceOptional(bundle, evidenceOutPath); err != nil {
+		return nil, err
+	}
+	return bundle, nil
 }

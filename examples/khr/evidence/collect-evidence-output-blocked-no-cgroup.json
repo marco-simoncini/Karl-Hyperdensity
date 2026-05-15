@@ -1,0 +1,80 @@
+{
+  "tool": "khr-linux-agent",
+  "version": "0.0.1-sprint9",
+  "mode": "collect-evidence",
+  "agentId": "khr-linux-agent-dev-001",
+  "collectedAt": "2026-05-15T16:00:00Z",
+  "cellRef": {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "Cell",
+    "namespace": "karl-sandbox",
+    "name": "demo-cell"
+  },
+  "discovery": {
+    "agentId": "khr-linux-agent-dev-001",
+    "cgroupVersion": "v2",
+    "discoveryMode": "read-only",
+    "scannedRoot": "__CGROUP_ROOT__",
+    "allowedPathPrefix": "",
+    "candidatePaths": [
+      "__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001.scope",
+      "__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001",
+      "__CGROUP_ROOT__/karl.slice/demo-cell",
+      "__CGROUP_ROOT__/karl.slice"
+    ],
+    "blockedReasons": [
+      "no discoverable cgroup directory matched heuristics or providerHandle under scannedRoot (read-only discovery only)"
+    ],
+    "warnings": [
+      "cannot resolve symlinks for \"__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001.scope\": lstat __CGROUP_ROOT__/karl.slice: no such file or directory",
+      "cannot resolve symlinks for \"__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001\": lstat __CGROUP_ROOT__/karl.slice: no such file or directory",
+      "cannot resolve symlinks for \"__CGROUP_ROOT__/karl.slice/demo-cell\": lstat __CGROUP_ROOT__/karl.slice: no such file or directory",
+      "cannot resolve symlinks for \"__CGROUP_ROOT__/karl.slice\": lstat __CGROUP_ROOT__/karl.slice: no such file or directory"
+    ],
+    "mutationsForbidden": true
+  },
+  "telemetry": {
+    "skipped": true,
+    "skipReason": "discovery did not resolve selectedPath; telemetry skipped",
+    "telemetryMode": "read-only",
+    "cgroupPath": "",
+    "allowedPathPrefix": "",
+    "cellRef": {
+      "apiVersion": "runtime.karl.io/v1alpha1",
+      "kind": "Cell",
+      "namespace": "karl-sandbox",
+      "name": "demo-cell"
+    },
+    "metrics": {},
+    "evidence": {
+      "observedAt": "2026-05-15T15:00:00Z",
+      "source": "cgroup-v2",
+      "confidence": "low",
+      "warnings": [],
+      "blockedReasons": [
+        "discovery did not resolve selectedPath; telemetry skipped"
+      ]
+    },
+    "mutationsForbidden": true
+  },
+  "dryRun": {
+    "skipped": true,
+    "skipReason": "no lease or resource port inputs provided for optional dry-run"
+  },
+  "evidenceSummary": {
+    "confidence": "low",
+    "readyForGrandePadre": false,
+    "blockedReasons": [
+      "no discoverable cgroup directory matched heuristics or providerHandle under scannedRoot (read-only discovery only)",
+      "discovery did not resolve selectedPath; telemetry skipped"
+    ],
+    "warnings": [
+      "cannot resolve symlinks for \"__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001.scope\": lstat __CGROUP_ROOT__/karl.slice: no such file or directory",
+      "cannot resolve symlinks for \"__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001\": lstat __CGROUP_ROOT__/karl.slice: no such file or directory",
+      "cannot resolve symlinks for \"__CGROUP_ROOT__/karl.slice/demo-cell\": lstat __CGROUP_ROOT__/karl.slice: no such file or directory",
+      "cannot resolve symlinks for \"__CGROUP_ROOT__/karl.slice\": lstat __CGROUP_ROOT__/karl.slice: no such file or directory"
+    ],
+    "recommendedNextAction": "Fix Cell.providerHandle / slice layout or expand discovery scan root; re-run collect-evidence until discovery.selectedPath is non-empty."
+  },
+  "mutationsForbidden": true
+}

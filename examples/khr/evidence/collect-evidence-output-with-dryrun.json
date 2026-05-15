@@ -1,0 +1,102 @@
+{
+  "tool": "khr-linux-agent",
+  "version": "0.0.1-sprint9",
+  "mode": "collect-evidence",
+  "agentId": "khr-linux-agent-dev-001",
+  "collectedAt": "2026-05-15T16:00:00Z",
+  "cellRef": {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "Cell",
+    "namespace": "karl-sandbox",
+    "name": "demo-cell"
+  },
+  "discovery": {
+    "agentId": "khr-linux-agent-dev-001",
+    "cgroupVersion": "v2",
+    "discoveryMode": "read-only",
+    "scannedRoot": "__CGROUP_ROOT__",
+    "allowedPathPrefix": "",
+    "candidatePaths": [
+      "__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001.scope",
+      "__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001",
+      "__CGROUP_ROOT__/karl.slice/demo-cell",
+      "__CGROUP_ROOT__/karl.slice"
+    ],
+    "selectedPath": "__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001.scope",
+    "blockedReasons": [],
+    "warnings": [],
+    "mutationsForbidden": true
+  },
+  "telemetry": {
+    "telemetryMode": "read-only",
+    "cgroupPath": "__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001.scope",
+    "allowedPathPrefix": "",
+    "cellRef": {
+      "apiVersion": "runtime.karl.io/v1alpha1",
+      "kind": "Cell",
+      "namespace": "karl-sandbox",
+      "name": "demo-cell"
+    },
+    "metrics": {
+      "cpuStat": {
+        "nr_periods": 2,
+        "usage_usec": 100
+      },
+      "memoryCurrent": "8192",
+      "memoryMax": "max",
+      "memoryEvents": {
+        "pgfault": 5
+      },
+      "ioStat": [
+        {
+          "259:0": "rbytes=10"
+        },
+        {
+          "259:1": "wbytes=20"
+        }
+      ]
+    },
+    "evidence": {
+      "observedAt": "2026-05-15T15:00:00Z",
+      "source": "cgroup-v2",
+      "confidence": "high",
+      "warnings": [],
+      "blockedReasons": []
+    },
+    "mutationsForbidden": true
+  },
+  "dryRun": {
+    "resourceLeaseDryRun": {
+      "allowed": true,
+      "blocked": false,
+      "reason": "dry-run only: no cgroup writes performed",
+      "expectedWrites": [
+        "(simulated) write cgroup cpu.max delta on donor slice",
+        "(simulated) write cgroup memory.max delta on donor slice",
+        "(simulated) mirror inverse delta on receiver slice"
+      ],
+      "rollbackPlan": [
+        "revert cgroup cpu.max/memory.max to prior values captured pre-apply"
+      ],
+      "verificationPlan": [
+        "read back cgroup limits",
+        "compare cgroup.events pressure",
+        "confirm process RSS/CPU throttle metrics"
+      ],
+      "resourcePortCheck": "compatible"
+    },
+    "cgroupEnvelopePlan": {
+      "cgroupVersion": "v2",
+      "wouldWrite": false
+    },
+    "mutationsForbidden": true
+  },
+  "evidenceSummary": {
+    "confidence": "high",
+    "readyForGrandePadre": true,
+    "blockedReasons": [],
+    "warnings": [],
+    "recommendedNextAction": "Bundle is consistent for downstream Grande Padre ingest; attach cluster admission and blast-radius context before any apply planning."
+  },
+  "mutationsForbidden": true
+}
