@@ -1,0 +1,96 @@
+{
+  "executionResult": {
+    "executorId": "karl-fluid-executor-disabled-v1",
+    "shellRef": "master-win11",
+    "requestedAction": "future-cpu-apply",
+    "executionPhase": "EXECUTION_HARD_DISABLED",
+    "applyAttempted": false,
+    "mutationPerformed": false,
+    "qmpCommandSent": false,
+    "clusterMutationSent": false,
+    "reason": "executor hard-disabled: no runtime mutation",
+    "blockers": [
+      "future_apply_executor_disabled"
+    ],
+    "requiredFutureUnlocks": [
+      "separate_executor_unlock_milestone",
+      "formal_signed_attestation_pipeline",
+      "explicit_runtime_mutation_authorization"
+    ],
+    "attestationRefs": [
+      "att-master-win11"
+    ],
+    "createdAt": "2026-05-07T16:00:00Z"
+  },
+  "preApplyGuard": {
+    "guardId": "windows-fluid-preapply-guard-20260507T160000",
+    "governanceContractRef": "gc-master-win11-prepared",
+    "revalidationRef": "reval-master-win11",
+    "attestationRef": "att-master-win11",
+    "killSwitchReady": true,
+    "executorEnabled": false,
+    "mutationWindowOpen": false,
+    "qmpMutationAllowed": false,
+    "clusterMutationAllowed": false,
+    "requiredFreshEvidencePresent": true,
+    "identityContinuityPassed": true,
+    "rollbackReady": true,
+    "returnToFloorReady": true,
+    "blockers": [],
+    "guardPhase": "GUARD_READY_BUT_EXECUTOR_DISABLED"
+  },
+  "killSwitchSnapshot": {
+    "killSwitchId": "ks-master-win11",
+    "enabled": true,
+    "source": "policy",
+    "mode": "hard-disabled",
+    "reason": "future apply executor disabled by policy",
+    "requiredForApply": true,
+    "observedAt": "2026-05-07T15:00:00Z"
+  },
+  "commandEnvelope": {
+    "envelopeId": "windows-fluid-command-envelope-20260507T160000",
+    "shellRef": "master-win11",
+    "requestedAction": "future-cpu-apply",
+    "commandClass": "cpu-lease",
+    "runtimeMode": "in-place-qmp",
+    "commandPreviewOnly": true,
+    "containsExecutableCommand": false,
+    "qmpCommands": [],
+    "clusterMutations": [],
+    "guestMutations": [],
+    "requiredEvidenceRefs": [
+      "fresh_kubevirt_identity_evidence",
+      "fresh_qmp_evidence",
+      "fresh_guest_evidence"
+    ],
+    "requiredAttestationRefs": [
+      "att-master-win11"
+    ],
+    "deniedReason": "future_apply_executor_disabled",
+    "createdAt": "2026-05-07T16:00:00Z"
+  },
+  "blockers": [
+    "future_apply_executor_disabled"
+  ],
+  "nextSafeStep": "keep-executor-hard-disabled-and-refresh-governance-evidence",
+  "deniedEvidence": {
+    "applyAttempted": false,
+    "blockers": [
+      "future_apply_executor_disabled"
+    ],
+    "clusterMutationSent": false,
+    "commandPreviewOnly": true,
+    "containsExecutableCommand": false,
+    "createdAt": "2026-05-07T16:00:00Z",
+    "evidenceType": "execution_denied",
+    "executionPhase": "EXECUTION_HARD_DISABLED",
+    "executorId": "karl-fluid-executor-disabled-v1",
+    "guardPhase": "GUARD_READY_BUT_EXECUTOR_DISABLED",
+    "killSwitchMode": "hard-disabled",
+    "mutationPerformed": false,
+    "qmpCommandSent": false,
+    "reason": "executor hard-disabled: no runtime mutation",
+    "shellRef": "master-win11"
+  }
+}

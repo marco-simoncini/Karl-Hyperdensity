@@ -1,0 +1,43 @@
+beforeCpu: 2
+afterCpu: 4
+beforeMemory: 8192
+afterMemory: 12288
+runtimeTarget:
+  cpu: 4
+  memory: 12288
+runtimeActual:
+  cpu: 4
+  memory: 12288
+qmpEvidence:
+  capabilitiesRead: true
+  ack: true
+guestEvidence:
+  agentModule: "fluidShell"
+  agentModuleVersion: "v1"
+  guestAck: true
+  pendingReboot: false
+  returnToFloor:
+    ready: true
+qemuPidBefore: "12230"
+qemuPidAfter: "12230"
+virtLauncherPodBefore: "virt-launcher-win11-shell-01"
+virtLauncherPodAfter: "virt-launcher-win11-shell-01"
+nodeBefore: "karl-metal-01"
+nodeAfter: "karl-metal-01"
+lastBootBefore: "2026-05-06T09:00:00Z"
+lastBootAfter: "2026-05-06T09:00:00Z"
+machineGuidBefore: "redacted-sha256:aaaa1111"
+machineGuidAfter: "redacted-sha256:aaaa1111"
+vmiUidBefore: "vmi-uid-1"
+vmiUidAfter: "vmi-uid-1"
+noReboot: true
+noRecreate: true
+noMigration: true
+rollbackResult:
+  ready: true
+returnToFloorResult:
+  ready: true
+blockerList: []
+timestamps:
+  before: "2026-05-07T13:00:00Z"
+  after: "2026-05-07T13:01:00Z"

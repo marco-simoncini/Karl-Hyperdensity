@@ -1,0 +1,81 @@
+{
+  "decision": {
+    "decisionId": "windows-fluid-admission-20260507T144000",
+    "shellRef": "karl/win11-pool-0",
+    "requestedAction": "prepare-cpu-lease",
+    "admissionPhase": "DENIED",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "runtimeMode": "in-place-qmp",
+    "evidenceScore": 100,
+    "evidenceLevel": "dryrun-ready",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "blockers": [
+      "live_migration_required"
+    ],
+    "denialReasons": [
+      "pool_replica_model_denied",
+      "mutation_forbidden_in_current_phase"
+    ],
+    "requiredAdditionalEvidence": [],
+    "blastRadius": {
+      "scope": "single-vm",
+      "maxVms": 1
+    },
+    "rollbackPolicy": {
+      "requireRollbackReady": true
+    },
+    "returnToFloorPolicy": {
+      "requireReturnToFloorReady": true,
+      "requireMemorySafety": true
+    },
+    "ttlPolicy": {
+      "maxLeaseTtlSeconds": 900
+    },
+    "auditRefs": [
+      "evidence/admission/win11-pool-0"
+    ],
+    "createdAt": "2026-05-07T14:40:00Z"
+  },
+  "actionSlate": {
+    "actionId": "windows-fluid-dryrun-20260507T144000",
+    "shellRef": "karl/win11-pool-0",
+    "actionType": "blocked",
+    "dryRunState": "blocked",
+    "runtimeMode": "in-place-qmp",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "rollbackReady": true,
+    "returnToFloorReady": true,
+    "qmpReady": true,
+    "guestAckReady": true,
+    "noRebootProof": true,
+    "sameQemuProof": true,
+    "sameNodeProof": true,
+    "samePodProof": true,
+    "blockers": [
+      "live_migration_required"
+    ],
+    "evidenceRefs": [
+      "evidence/admission/win11-pool-0"
+    ],
+    "validForSeconds": 300,
+    "createdAt": "2026-05-07T14:25:00Z"
+  },
+  "evidenceScore": {
+    "score": 100,
+    "evidenceLevel": "dryrun-ready",
+    "missingEvidence": [],
+    "hardBlockers": [
+      "live_migration_required"
+    ],
+    "softUnknowns": []
+  },
+  "policyViolations": [
+    "shell_not_certified_for_admission"
+  ],
+  "blockers": [
+    "live_migration_required"
+  ],
+  "nextSafeStep": "use-certified-single-vm-candidate-only"
+}

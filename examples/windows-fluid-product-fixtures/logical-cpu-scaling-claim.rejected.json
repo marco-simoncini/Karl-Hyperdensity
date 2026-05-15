@@ -1,0 +1,13 @@
+{
+  "targetId": "target-master-win11-logical-scaling-claim",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "targetKind": "standalone-windows-vm",
+  "runtimeMode": "prearmed-fluid-envelope-v2",
+  "logicalCpuScalingClaimed": true,
+  "hyperdensityReady": false,
+  "compliancePhase": "BLOCKED_WITH_REMEDIATION",
+  "blockers": [
+    "lease_requests_vcpu_hotplug"
+  ]
+}

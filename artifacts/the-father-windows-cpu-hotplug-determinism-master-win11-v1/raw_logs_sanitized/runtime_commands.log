@@ -1,0 +1,11 @@
+# Sanitized runtime command log
+
+kubectl get vm master-win11 -n karl -o yaml
+kubectl get vmi master-win11 -n karl -o yaml
+kubectl get pods -n karl -l vm.kubevirt.io/name=master-win11 -o wide
+kubectl get vmim -n karl
+kubectl exec -n karl virt-launcher-master-win11-w7mxv -c compute -- virsh -c qemu:///session dominfo karl_master-win11
+kubectl exec -n karl virt-launcher-master-win11-w7mxv -c compute -- virsh -c qemu:///session dumpxml karl_master-win11
+kubectl exec -n karl virt-launcher-master-win11-w7mxv -c compute -- virsh -c qemu:///session qemu-monitor-command karl_master-win11 --pretty '{"execute":"query-cpus-fast"}'
+kubectl exec -n karl virt-launcher-master-win11-w7mxv -c compute -- virsh -c qemu:///session qemu-agent-command karl_master-win11 '{"execute":"guest-get-vcpus"}'
+kubectl exec -n karl virt-launcher-master-win11-w7mxv -c compute -- virsh -c qemu:///session setvcpus karl_master-win11 6 --live

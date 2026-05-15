@@ -1,0 +1,24 @@
+{
+  "milestone": "the-father-windows-fluidvirt-executor-hard-disabled-v1",
+  "status": "ready_for_commit",
+  "executorHardDisabled": true,
+  "applyAttempted": false,
+  "mutationPerformed": false,
+  "qmpCommandSent": false,
+  "clusterMutationSent": false,
+  "frontendTouched": false,
+  "dashboardTouched": false,
+  "ports443or8888Touched": false,
+  "deployActionsPerformed": false,
+  "tests": {
+    "go_test_all": "pass",
+    "validate_json": "pass",
+    "git_diff_check": "pass",
+    "executor_cli_replay": "pass"
+  },
+  "commit": {
+    "sha": "",
+    "pushed": false,
+    "remote": "origin/The-Father-Windows"
+  }
+}

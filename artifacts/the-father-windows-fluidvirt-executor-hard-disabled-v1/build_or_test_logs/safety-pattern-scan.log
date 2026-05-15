@@ -1,0 +1,38 @@
+## PATTERN: Bearer
+## PATTERN: kubeconfig
+## PATTERN: client-secret
+## PATTERN: password
+## PATTERN: BEGIN PRIVATE KEY
+## PATTERN: kubectl apply
+## PATTERN: kubectl patch
+## PATTERN: helm upgrade
+## PATTERN: frontend-next
+## PATTERN: React
+## PATTERN: tsx
+## PATTERN: css
+## PATTERN: :443
+## PATTERN: port: 443
+## PATTERN: :8888
+## PATTERN: port: 8888
+## PATTERN: device_add
+docs/contracts/windows-fluid-future-apply-executor-v1.md:57:No `device_add`, `qom-set`, `cpu-add`, `object-add`, `migrate`, or other mutating commands are present or executed.
+## PATTERN: qom-set
+docs/contracts/windows-fluid-future-apply-executor-v1.md:57:No `device_add`, `qom-set`, `cpu-add`, `object-add`, `migrate`, or other mutating commands are present or executed.
+## PATTERN: system_powerdown
+## PATTERN: shutdown
+## PATTERN: reboot
+docs/contracts/windows-fluidvirt.md:9:- No live migration/recreate/reboot flow in this phase.
+docs/contracts/windows-fluidvirt.md:16:  - Enforces `runtimeMode=in-place-qmp`, no reboot/recreate/migration.
+docs/contracts/windows-fluidvirt.md:39:  - no reboot proof
+docs/contracts/windows-fluidvirt.md:47:  - no reboot proof
+pkg/windowsfluidvirt/blockers.go:45:	BlockerPendingRebootDetected              = "pending_reboot_detected"
+pkg/windowsfluidvirt/blockers.go:101:		Message:             "Pending reboot detected in Windows guest.",
+pkg/windowsfluidvirt/blockers.go:104:		EvidenceRequirement: "pending reboot probe evidence",
+pkg/windowsfluidvirt/blockers.go:119:		Message:             "Windows last boot changed; no-reboot proof failed.",
+## PATTERN: cpu-add
+docs/contracts/windows-fluid-future-apply-executor-v1.md:57:No `device_add`, `qom-set`, `cpu-add`, `object-add`, `migrate`, or other mutating commands are present or executed.
+## PATTERN: object-add
+docs/contracts/windows-fluid-future-apply-executor-v1.md:57:No `device_add`, `qom-set`, `cpu-add`, `object-add`, `migrate`, or other mutating commands are present or executed.
+## PATTERN: object-del
+## PATTERN: migrate
+docs/contracts/windows-fluid-future-apply-executor-v1.md:57:No `device_add`, `qom-set`, `cpu-add`, `object-add`, `migrate`, or other mutating commands are present or executed.

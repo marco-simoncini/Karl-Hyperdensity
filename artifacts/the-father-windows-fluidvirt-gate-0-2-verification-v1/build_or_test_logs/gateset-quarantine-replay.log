@@ -1,0 +1,102 @@
+{
+  "verificationSetId": "windows-fluid-unlock-gate-set-20260507T182000",
+  "gates": [
+    {
+      "verificationId": "windows-fluid-unlock-gate-gate_0_executor_hard_disabled-20260507T182000",
+      "gateId": "GATE_0_EXECUTOR_HARD_DISABLED",
+      "gateStatus": "PASSED",
+      "executorMustRemainDisabled": true,
+      "mutationAllowed": false,
+      "applyAllowed": false,
+      "checkedInputs": [
+        "executor_output",
+        "preapply_guard",
+        "command_envelope",
+        "execution_result"
+      ],
+      "requiredInputs": [
+        "executor_output",
+        "disabled_executor_proof",
+        "governance_contract_flags"
+      ],
+      "missingInputs": [],
+      "blockerList": [],
+      "negativeTestRefs": [],
+      "evidenceRefs": [
+        "karl/master-win11"
+      ],
+      "attestationRefs": [
+        "att-master-win11-gates"
+      ],
+      "deterministicHash": "b353c64b4c1300248e79e4e562fec673b64a78e71fd7fb12b34ec7f72e5b370d",
+      "evaluatedAt": "2026-05-07T18:20:00Z"
+    },
+    {
+      "verificationId": "windows-fluid-unlock-gate-gate_1_lab_readonly_evidence_complete-20260507T182000",
+      "gateId": "GATE_1_LAB_READONLY_EVIDENCE_COMPLETE",
+      "gateStatus": "QUARANTINED",
+      "executorMustRemainDisabled": true,
+      "mutationAllowed": false,
+      "applyAllowed": false,
+      "checkedInputs": [
+        "evidence_bundle"
+      ],
+      "requiredInputs": [
+        "evidence_bundle",
+        "master_win11_target",
+        "identity_evidence",
+        "qmp_evidence_readonly",
+        "guest_evidence",
+        "rollback_return_readiness",
+        "fresh_evidence_window"
+      ],
+      "missingInputs": [],
+      "blockerList": [
+        "qemu_pid_changed"
+      ],
+      "negativeTestRefs": [],
+      "evidenceRefs": [
+        "evidence/gates/master-win11",
+        "karl/master-win11"
+      ],
+      "attestationRefs": [],
+      "deterministicHash": "c6461d08d95c963aebc7d2cb880ae78a29ac9a0726c0aa8ed36154a5b169af6d",
+      "evaluatedAt": "2026-05-07T18:20:00Z"
+    },
+    {
+      "verificationId": "windows-fluid-unlock-gate-gate_2_future_signable_attestation_replay-20260507T182000",
+      "gateId": "GATE_2_FUTURE_SIGNABLE_ATTESTATION_REPLAY",
+      "gateStatus": "PASSED",
+      "executorMustRemainDisabled": true,
+      "mutationAllowed": false,
+      "applyAllowed": false,
+      "checkedInputs": [
+        "attestation"
+      ],
+      "requiredInputs": [
+        "attestation",
+        "subject_ref_coherence",
+        "evidence_ref_coherence",
+        "fresh_attestation_window"
+      ],
+      "missingInputs": [],
+      "blockerList": [],
+      "negativeTestRefs": [],
+      "evidenceRefs": [
+        "karl/master-win11"
+      ],
+      "attestationRefs": [
+        "att-master-win11-gates"
+      ],
+      "deterministicHash": "ae1b4a8c63bc47ec8f255f43c16a2039827bb7ab4f59dd7fcff41f8810288ef7",
+      "evaluatedAt": "2026-05-07T18:20:00Z"
+    }
+  ],
+  "aggregateStatus": "GATE_SET_QUARANTINED",
+  "nextSafeStep": "freeze_candidate_and_rebuild_identity_continuity_proofs",
+  "missingEvidence": [],
+  "blockers": [
+    "qemu_pid_changed"
+  ],
+  "evaluatedAt": "2026-05-07T18:20:00Z"
+}

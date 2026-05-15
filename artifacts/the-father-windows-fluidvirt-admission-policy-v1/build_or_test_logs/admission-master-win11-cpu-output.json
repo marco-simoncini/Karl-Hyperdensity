@@ -1,0 +1,70 @@
+{
+  "decision": {
+    "decisionId": "windows-fluid-admission-20260507T144000",
+    "shellRef": "karl/master-win11",
+    "requestedAction": "prepare-cpu-lease",
+    "admissionPhase": "ADMITTED_FOR_FUTURE_APPLY",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "runtimeMode": "in-place-qmp",
+    "evidenceScore": 100,
+    "evidenceLevel": "future-apply-admissible",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "blockers": [],
+    "denialReasons": [
+      "mutation_forbidden_in_current_phase"
+    ],
+    "requiredAdditionalEvidence": [],
+    "blastRadius": {
+      "scope": "single-vm",
+      "maxVms": 1
+    },
+    "rollbackPolicy": {
+      "requireRollbackReady": true
+    },
+    "returnToFloorPolicy": {
+      "requireReturnToFloorReady": true,
+      "requireMemorySafety": true
+    },
+    "ttlPolicy": {
+      "maxLeaseTtlSeconds": 900
+    },
+    "auditRefs": [
+      "evidence/admission/master-win11-cpu"
+    ],
+    "createdAt": "2026-05-07T14:40:00Z"
+  },
+  "actionSlate": {
+    "actionId": "windows-fluid-dryrun-20260507T144000",
+    "shellRef": "karl/master-win11",
+    "actionType": "prepare-cpu-lease",
+    "dryRunState": "ready",
+    "runtimeMode": "in-place-qmp",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "rollbackReady": true,
+    "returnToFloorReady": true,
+    "qmpReady": true,
+    "guestAckReady": true,
+    "noRebootProof": true,
+    "sameQemuProof": true,
+    "sameNodeProof": true,
+    "samePodProof": true,
+    "blockers": [],
+    "evidenceRefs": [
+      "evidence/admission/master-win11-cpu"
+    ],
+    "validForSeconds": 300,
+    "createdAt": "2026-05-07T14:25:00Z"
+  },
+  "evidenceScore": {
+    "score": 100,
+    "evidenceLevel": "future-apply-admissible",
+    "missingEvidence": [],
+    "hardBlockers": [],
+    "softUnknowns": []
+  },
+  "policyViolations": [],
+  "blockers": [],
+  "nextSafeStep": "prepare-separate-future-apply-governance-review"
+}

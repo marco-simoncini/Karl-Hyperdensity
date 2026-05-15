@@ -1,0 +1,15 @@
+{
+  "actuatorId": "karl-node-fluid-actuator-mvp",
+  "actuatorVersion": "v1",
+  "mode": "rollback",
+  "dryRun": false,
+  "requestId": "product-path-master-win11-cpu-floor-20260507t211600z",
+  "allowed": true,
+  "blockers": null,
+  "policyDecision": "applied",
+  "targetFile": "/host-sys-fs-cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b6a904a_1c9a_4a44_9b37_1dc737304773.slice/cri-containerd-6b3736cf90a6e2f41147f27714926ac68e57ff1a2d2b22da2375a4a74fcf0c87.scope/cpu.max",
+  "beforeCpuMax": "300000 100000",
+  "appliedCpuMax": "600000 100000",
+  "afterCpuMax": "600000 100000",
+  "createdAt": "2026-05-07T21:27:00Z"
+}

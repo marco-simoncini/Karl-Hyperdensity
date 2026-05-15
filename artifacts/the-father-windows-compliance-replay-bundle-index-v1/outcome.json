@@ -1,0 +1,26 @@
+{
+  "verdict": "windows_compliance_replay_bundle_index_ready",
+  "scope": "read_only_bundle_index_hash_chain_audit_trail",
+  "constraints": {
+    "runtimeMutationPerformed": false,
+    "cpuApplyPerformed": false,
+    "ramApplyPerformed": false,
+    "actuatorApplyPerformed": false,
+    "clusterCallsPerformed": false,
+    "frontendTouched": false,
+    "dashboardTouched": false,
+    "ports443or8888Touched": false
+  },
+  "security": {
+    "realSignatureImplemented": false,
+    "keyMaterialGenerated": false,
+    "kmsIntegrated": false,
+    "signatureValueNonEmpty": false
+  },
+  "validation": {
+    "goTestAll": "pass",
+    "validateJson": "pass",
+    "gitDiffCheck": "pass",
+    "deterministicReplayComparison": "pass"
+  }
+}

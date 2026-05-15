@@ -1,0 +1,33 @@
+{
+  "name": "cpu lease tries vcpu hotplug",
+  "lease": {
+    "leaseId": "lease-2",
+    "shellRef": "shell-master-win11",
+    "targetVm": "master-win11",
+    "mode": "prearmed-fluid-envelope",
+    "mechanism": "vcpu-hotplug",
+    "floorCpuMax": "300000 100000",
+    "ceilingCpuMax": "600000 100000",
+    "currentCpuMax": "300000 100000",
+    "requestedCpuMax": "600000 100000",
+    "ttlSeconds": 300,
+    "reason": "forbidden mechanism",
+    "risk": "high",
+    "rollbackTarget": "300000 100000",
+    "returnToFloorTarget": "300000 100000",
+    "requireSameQemu": true,
+    "requireSameBoot": true,
+    "requireSamePod": true,
+    "requireSameNode": true,
+    "requireGuestAck": true,
+    "requireActuatorAck": true,
+    "status": "planned",
+    "blockers": [],
+    "evidenceRefs": [],
+    "disallowedActions": ["vcpu-hotplug"]
+  },
+  "expectedStatus": "rejected",
+  "expectedBlockers": [
+    "lease_requests_vcpu_hotplug"
+  ]
+}

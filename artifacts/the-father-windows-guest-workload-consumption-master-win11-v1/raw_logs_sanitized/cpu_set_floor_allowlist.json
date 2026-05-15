@@ -1,0 +1,27 @@
+{
+  "allowlistId": "guest-workload-allowlist-20260508t031758z",
+  "nodeName": "karl-lab-metal-01",
+  "namespace": "karl",
+  "vmName": "master-win11",
+  "vmUid": "c81b95dc-d955-4fb3-a1af-59d979f48bcb",
+  "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+  "qemuPid": "2480927",
+  "qemuStartTime": "Thu May 7 18:58:03 2026",
+  "allowedCgroupPath": "/host-sys-fs-cgroup/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b6a904a_1c9a_4a44_9b37_1dc737304773.slice/cri-containerd-6b3736cf90a6e2f41147f27714926ac68e57ff1a2d2b22da2375a4a74fcf0c87.scope",
+  "allowedControllers": [
+    "cpu.max"
+  ],
+  "minCpuMax": "300000 100000",
+  "maxCpuMax": "600000 100000",
+  "allowParentCgroupWrite": false,
+  "allowArbitraryWrite": false,
+  "allowSymlinkTraversal": false,
+  "allowedActions": [
+    "dry-run",
+    "apply",
+    "rollback",
+    "return-to-floor"
+  ],
+  "expiresAt": "2026-05-08T05:17:58Z",
+  "createdAt": "2026-05-08T03:17:58Z"
+}

@@ -1,0 +1,48 @@
+{
+  "targetId": "target-pool-child-master-win11",
+  "vmRef": "master-win11",
+  "namespace": "karl",
+  "targetKind": "pool-child-windows-vm",
+  "runtimeMode": "prearmed-fluid-envelope-v2",
+  "hyperdensityReady": true,
+  "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+  "nodeName": "karl-lab-metal-01",
+  "virtLauncherPodRef": "virt-launcher-master-win11-kmwgg",
+  "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+  "qemuPid": "96",
+  "qemuStartTime": "Thu May 7 18:58:03 2026",
+  "machineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+  "lastBootTime": "/Date(1778180311500)/",
+  "cpu": {
+    "mechanism": "cgroup-v2-cpu-max",
+    "floorCpuMax": "300000 100000",
+    "ceilingCpuMax": "600000 100000",
+    "currentCpuMax": "600000 100000",
+    "actuatorRequired": true
+  },
+  "memory": {
+    "mechanism": "qmp-balloon",
+    "floorBytes": 12884901888,
+    "ceilingBytes": 13958643712,
+    "currentBytes": 12884901888,
+    "qmpRequired": true
+  },
+  "guest": {
+    "fluidShellRequired": true,
+    "guestAckRequired": true
+  },
+  "guarantees": {
+    "noReboot": true,
+    "noRecreate": true,
+    "noRollout": true,
+    "noLiveMigration": true,
+    "sameQemu": true,
+    "sameBoot": true,
+    "rollbackRequired": true,
+    "returnToFloorRequired": true
+  },
+  "blockers": [],
+  "evidenceRefs": [
+    "fixture://pool-child-ready"
+  ]
+}

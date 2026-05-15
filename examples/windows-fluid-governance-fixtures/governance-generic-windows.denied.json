@@ -1,0 +1,39 @@
+{
+  "name": "governance-generic-windows-denied",
+  "requestedAction": "future-cpu-apply",
+  "expectedGovernancePhase": "CONTRACT_BLOCKED",
+  "expectedBlockers": ["karl_agent_fluid_module_missing"],
+  "admissionDecision": {
+    "decisionId": "windows-fluid-admission-20260507T144000",
+    "shellRef": "karl/generic-win-vm",
+    "requestedAction": "prepare-cpu-lease",
+    "admissionPhase": "DENIED",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "runtimeMode": "in-place-qmp",
+    "evidenceScore": 60,
+    "evidenceLevel": "partial",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "blockers": ["karl_agent_fluid_module_missing", "guest_ack_missing"],
+    "denialReasons": ["generic_windows_vm_denied"],
+    "requiredAdditionalEvidence": ["required_annotations_missing"],
+    "blastRadius": { "scope": "single-vm", "maxVms": 1 },
+    "rollbackPolicy": { "requireRollbackReady": true },
+    "returnToFloorPolicy": { "requireReturnToFloorReady": true, "requireMemorySafety": true },
+    "ttlPolicy": { "maxLeaseTtlSeconds": 900 },
+    "auditRefs": ["evidence/governance/generic-win-vm"],
+    "createdAt": "2026-05-07T14:40:00Z"
+  },
+  "bundle": {
+    "shell": { "spec": { "vmRef": "karl/generic-win-vm", "runtimeMode": "in-place-qmp", "migrationRequired": false, "rebootAllowed": false, "recreateAllowed": false, "floor": { "cpu": 2, "memory": 4096 }, "envelope": { "maxCpu": 8, "maxMemory": 32768 }, "runtimeTarget": { "cpu": 2, "memory": 4096 }, "runtimeActual": { "cpu": 2, "memory": 4096 }, "guest": { "agentModule": "none", "requireAck": false, "requireNoPendingReboot": true } }, "status": { "phase": "READY", "evidenceRef": "evidence/governance/generic-win-vm", "lastTransitionTime": "2026-05-07T14:35:00Z" } },
+    "kubeVirtBefore": { "vmName": "generic-win-vm", "vmNamespace": "karl", "vmiName": "generic-win-vm", "vmiUid": "vmi-generic", "virtLauncherPodUid": "pod-generic", "nodeName": "karl-metal-01", "qemuPid": "8100", "vmimObjectsObserved": [], "liveMigrationObjectsObserved": [] },
+    "kubeVirtAfter": { "vmName": "generic-win-vm", "vmNamespace": "karl", "vmiName": "generic-win-vm", "vmiUid": "vmi-generic", "virtLauncherPodUid": "pod-generic", "nodeName": "karl-metal-01", "qemuPid": "8100", "vmimObjectsObserved": [], "liveMigrationObjectsObserved": [], "migrationRequired": false, "recreateRequired": false, "rolloutObserved": false },
+    "qmp": { "sidecarVersion": "v0-readonly", "qmpConnected": true, "qmpGreetingObserved": true, "qmpCapabilitiesNegotiated": true, "qmpSocketPath": "/var/run/qmp.sock", "qemuPid": "8100", "cpuTopologyObserved": true, "maxCpusObserved": 8, "hotpluggableCpusObserved": true, "memoryDevicesObserved": true, "memoryBackendsObserved": true, "qmpCommandsExecuted": ["qmp_capabilities", "query-status"], "qmpReadOnly": true, "qmpErrors": [] },
+    "guest": { "GuestAck": false, "PendingReboot": false, "LastBootTime": "2026-05-01T11:00:00Z", "MachineGUIDHash": "hash-generic", "MemoryAdapterVerified": true, "ReturnToFloorReady": true, "CriticalEventsDetected": false },
+    "leaseIntent": { "actionType": "prepare-cpu-lease", "shellRef": "karl/generic-win-vm", "grant": { "cpu": 1, "memory": 0 }, "rollbackReady": true, "returnToFloorReady": true },
+    "policyGates": { "annotations": {}, "expectedRuntimeMode": "in-place-qmp", "poolReplicaContextOnly": false },
+    "timestamps": { "collectedAt": "2026-05-07T14:40:00Z" },
+    "sourceMetadata": { "sourceKind": "vm", "sourceName": "generic-win-vm", "sourceNamespace": "karl", "clusterContext": "karl-metal-01@ovh" },
+    "sanitizationStatus": "sanitized"
+  }
+}

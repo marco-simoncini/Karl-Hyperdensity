@@ -1,0 +1,20 @@
+{
+  "leaseId": "lease-master-win11-vcpu-hotplug",
+  "targetRef": "target-master-win11",
+  "leaseKind": "cpu-entitlement",
+  "requested": {
+    "cpuMax": "600000 100000"
+  },
+  "rollbackTarget": {
+    "cpuMax": "300000 100000"
+  },
+  "returnToFloorTarget": {
+    "cpuMax": "300000 100000"
+  },
+  "ttlSeconds": 600,
+  "requestsVcpuHotplug": true,
+  "status": "blocked",
+  "blockers": [
+    "lease_requests_vcpu_hotplug"
+  ]
+}

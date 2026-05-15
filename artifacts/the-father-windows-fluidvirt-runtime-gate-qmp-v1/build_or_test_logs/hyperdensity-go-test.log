@@ -1,0 +1,4 @@
+?   	github.com/marco-simoncini/Karl-Hyperdensity/cmd/karl-fluid-sidecar	[no test files]
+ok  	github.com/marco-simoncini/Karl-Hyperdensity/pkg/contracts	(cached)
+ok  	github.com/marco-simoncini/Karl-Hyperdensity/pkg/windowsfluidvirt	0.003s
+ok  	github.com/marco-simoncini/Karl-Hyperdensity/pkg/windowsfluidvirt/sidecar	(cached)

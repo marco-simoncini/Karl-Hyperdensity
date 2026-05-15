@@ -1,0 +1,49 @@
+{
+  "name": "standalone vm fully ready",
+  "input": {
+    "identity": {
+      "vmRef": "master-win11",
+      "namespace": "karl",
+      "vmUid": "vm-uid-1",
+      "vmiUid": "vmi-uid-1",
+      "virtLauncherPodRef": "virt-launcher-master-win11",
+      "podUid": "pod-uid-1",
+      "nodeName": "karl-lab-metal-01",
+      "qemuPid": "96",
+      "qemuStartTime": "2026-05-07T18:58:03Z"
+    },
+    "qmpAvailable": true,
+    "guestFluidShell": {
+      "available": true,
+      "guestAck": true,
+      "sameBoot": true,
+      "sameMachine": true
+    },
+    "ramBalloon": {
+      "available": true,
+      "balloonDriverReady": true,
+      "canReturnToFloor": true
+    },
+    "cpuActuator": {
+      "available": true,
+      "nodeLocal": true,
+      "allowlisted": true,
+      "supportsCpuMax": true,
+      "cgroupPathMatchesShell": true,
+      "actuatorAck": true,
+      "resolvedCgroupPath": "/kubepods.slice/pod-uid-1"
+    },
+    "policyAnnotations": {
+      "hyperdensity.karl.io/windows-ready": "true"
+    },
+    "poolContext": {
+      "isPoolChild": false,
+      "requestedAsMechanism": false,
+      "treatedAsProvisionOnly": true
+    },
+    "remediationOptions": []
+  },
+  "expectedPhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+  "expectedBlockers": [],
+  "expectedRemediations": []
+}

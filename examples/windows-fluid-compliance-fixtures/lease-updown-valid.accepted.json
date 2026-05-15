@@ -1,0 +1,30 @@
+{
+  "name": "cpu lease up down valid",
+  "lease": {
+    "leaseId": "lease-1",
+    "shellRef": "shell-master-win11",
+    "targetVm": "master-win11",
+    "mode": "prearmed-fluid-envelope",
+    "mechanism": "cgroup-v2-cpu-max",
+    "floorCpuMax": "300000 100000",
+    "ceilingCpuMax": "600000 100000",
+    "currentCpuMax": "300000 100000",
+    "requestedCpuMax": "600000 100000",
+    "ttlSeconds": 300,
+    "reason": "cpu entitlement up",
+    "risk": "medium",
+    "rollbackTarget": "300000 100000",
+    "returnToFloorTarget": "300000 100000",
+    "requireSameQemu": true,
+    "requireSameBoot": true,
+    "requireSamePod": true,
+    "requireSameNode": true,
+    "requireGuestAck": true,
+    "requireActuatorAck": true,
+    "status": "planned",
+    "blockers": [],
+    "evidenceRefs": ["artifact://full-rerun"]
+  },
+  "expectedStatus": "accepted_as_lease_plan",
+  "expectedBlockers": []
+}

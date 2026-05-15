@@ -1,0 +1,3 @@
+go test ./... => PASS
+python3 scripts/validate_json.py => PASS
+git diff --check => PASS

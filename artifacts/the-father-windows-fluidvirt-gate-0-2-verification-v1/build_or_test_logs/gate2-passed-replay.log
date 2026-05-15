@@ -1,0 +1,28 @@
+{
+  "verificationId": "windows-fluid-unlock-gate-gate_2_future_signable_attestation_replay-20260507T182000",
+  "gateId": "GATE_2_FUTURE_SIGNABLE_ATTESTATION_REPLAY",
+  "gateStatus": "PASSED",
+  "executorMustRemainDisabled": true,
+  "mutationAllowed": false,
+  "applyAllowed": false,
+  "checkedInputs": [
+    "attestation"
+  ],
+  "requiredInputs": [
+    "attestation",
+    "subject_ref_coherence",
+    "evidence_ref_coherence",
+    "fresh_attestation_window"
+  ],
+  "missingInputs": [],
+  "blockerList": [],
+  "negativeTestRefs": [],
+  "evidenceRefs": [
+    "karl/master-win11"
+  ],
+  "attestationRefs": [
+    "att-master-win11-gates"
+  ],
+  "deterministicHash": "ae1b4a8c63bc47ec8f255f43c16a2039827bb7ab4f59dd7fcff41f8810288ef7",
+  "evaluatedAt": "2026-05-07T18:20:00Z"
+}

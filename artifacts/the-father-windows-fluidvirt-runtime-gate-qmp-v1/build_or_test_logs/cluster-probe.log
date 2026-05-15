@@ -1,0 +1,130 @@
+karl-metal-01@ovh
+NAMESPACE                    NAME                                                                                 AGE     STATUS     READY
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/linux-vm-memory-hyperdensity-centos-stream-factory-01     6d4h    Stopped    False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/linux-vm-memory-hyperdensity-centos7-factory-01           6d4h    Stopped    False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/linux-vm-memory-hyperdensity-debian-factory-01            6d5h    Stopped    False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/linux-vm-memory-hyperdensity-factory-01                   6d16h   Stopped    False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/linux-vm-memory-hyperdensity-factory-02                   6d7h    Stopped    False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/linux-vm-memory-hyperdensity-optimized-01                 6d17h   Starting   False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01   6d6h    Stopped    False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/linux-vm-memory-hyperdensity-rocky-factory-01             6d6h    Stopped    False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/paolo-studyrhel-10-r19-rhel-memory-materialized           9d      Stopped    False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/paolo-studyrhel-10-r2                                     18d     Stopped    False
+karl-hyperdensity-evidence   virtualmachine.kubevirt.io/paolo-studyrhel-10-r6-memory                              10d     Running    True
+karl                         virtualmachine.kubevirt.io/hyperdensity-wave1-ubuntu-gui-01                          19d     Stopped    False
+karl                         virtualmachine.kubevirt.io/linux-shell-v1-cpu-ram-reference-02                       7d22h   Stopped    False
+karl                         virtualmachine.kubevirt.io/master-win11                                              37d     Stopped    False
+karl                         virtualmachine.kubevirt.io/paolo-studyrhel-10                                        21d     Stopped    False
+karl                         virtualmachine.kubevirt.io/win11-pool-0                                              28h     Stopped    False
+karl                         virtualmachine.kubevirt.io/win11-pool-1                                              9h      Stopped    False
+
+NAMESPACE                    NAME                                                                           AGE   PHASE        IP           NODENAME            READY
+karl-hyperdensity-evidence   virtualmachineinstance.kubevirt.io/linux-vm-memory-hyperdensity-optimized-01   27h   Scheduling                                    False
+karl-hyperdensity-evidence   virtualmachineinstance.kubevirt.io/paolo-studyrhel-10-r6-memory                9d    Running      10.16.1.99   karl-lab-metal-01   True
+
+NAMESPACE                       NAME                                                                  READY   STATUS             RESTARTS          AGE
+cdi                             pod/cdi-apiserver-56f6589fc5-jxpqb                                    1/1     Running            0                 16d
+cdi                             pod/cdi-deployment-7b9c6dd88c-spmcb                                   1/1     Running            0                 16d
+cdi                             pod/cdi-operator-575d6ffd85-pqfvn                                     1/1     Running            0                 16d
+cdi                             pod/cdi-uploadproxy-8c64dc68c-tgcfm                                   1/1     Running            0                 16d
+cert-manager                    pod/cert-manager-cainjector-85c6497c8-l9hpc                           1/1     Running            0                 16d
+cert-manager                    pod/cert-manager-dc95d9f8c-7tfqx                                      1/1     Running            0                 16d
+cert-manager                    pod/cert-manager-webhook-7bc66778cf-kzzl8                             1/1     Running            0                 16d
+default                         pod/deployment-68cf4fbc94-h8x92                                       1/1     Running            0                 16d
+default                         pod/deploymenttest-68cf4fbc94-kh4fq                                   1/1     Running            0                 16d
+default                         pod/helm-controller-56768bfc85-hbtvw                                  1/1     Running            0                 16d
+default                         pod/image-automation-controller-54f7878dcf-knzgr                      1/1     Running            0                 16d
+default                         pod/image-reflector-controller-5cf8bfbf56-9wpsp                       1/1     Running            0                 16d
+default                         pod/kustomize-controller-7c49b77d4f-2h8v2                             1/1     Running            0                 16d
+default                         pod/notification-controller-5c959697c7-ctxzj                          1/1     Running            0                 16d
+default                         pod/source-controller-84c99dfcd7-dvkht                                1/1     Running            0                 16d
+ingress                         pod/ingress-nginx-controller-7c6d74679d-lsrlj                         1/1     Running            0                 16d
+karl-dlp                        pod/karl-dlp-audit-cleanup-29635320-4fkm5                             0/1     Completed          0                 10h
+karl-dlp                        pod/karl-dlp-gateway-86455f9d85-gw7gl                                 1/1     Running            0                 16d
+karl-dlp                        pod/karl-dlp-operator-574d65b5b8-ndd67                                1/1     Running            0                 16d
+karl-hyperdensity-evidence      pod/linux-container-liquidity-donor-v1-reference-01-77897cf5762l8jg   1/1     Running            0                 16h
+karl-hyperdensity-evidence      pod/linux-container-liquidity-receiver-v1-reference-01-75b7887dgfzf   1/1     Running            0                 3d
+karl-hyperdensity-evidence      pod/linux-container-shell-v1-reference-01-7c7999f947-7grvp            1/1     Running            0                 3d1h
+karl-hyperdensity-evidence      pod/parent-fabric-burst-pilot-canary-65f5d6f558-zmppl                 1/1     Running            0                 9d
+karl-hyperdensity-evidence      pod/parent-fabric-memory-pilot-canary-6d64755d9b-ggphx                1/1     Running            0                 9d
+karl-hyperdensity-evidence      pod/parent-fabric-pilot-canary-664cb54f56-rz9ff                       1/1     Running            0                 9d
+karl-hyperdensity-evidence      pod/parent-fabric-statefulset-burst-pilot-canary-0                    1/1     Running            0                 9d
+karl-hyperdensity-evidence      pod/parent-fabric-statefulset-memory-pilot-canary-0                   1/1     Running            0                 9d
+karl-hyperdensity-evidence      pod/parent-fabric-statefulset-pilot-canary-0                          1/1     Running            0                 9d
+karl-hyperdensity-evidence      pod/virt-launcher-linux-vm-memory-hyperdensity-optimized-01-c4pb8     0/2     Init:0/1           0                 27h
+karl-hyperdensity-evidence      pod/virt-launcher-paolo-studyrhel-10-r6-memory-4lwsf                  2/2     Running            0                 9d
+karl-license-system             pod/admission-controller-5668fc4bb9-nh9nh                             1/1     Running            0                 8d
+karl-license-system             pod/admission-controller-5668fc4bb9-qmrpw                             1/1     Running            0                 28h
+karl-license-system             pod/karl-license-controller-594dcb84d5-f5fq2                          1/1     Running            0                 28h
+karl-license-system             pod/karl-license-controller-594dcb84d5-z767v                          1/1     Running            0                 8d
+karl-system                     pod/kaniko-deploy-1778092147                                          0/1     Completed          0                 19h
+karl-system                     pod/karl-console-next-oidc-6d9d476699-rtwz5                           1/1     Running            0                 5m34s
+karl-system                     pod/karl-console-next-ux-6dc7cf96-nh99w                               1/1     Running            0                 28h
+karl-system                     pod/karl-external-identity-bridge-b77cc584d-nhdx8                     1/1     Running            0                 16d
+karl-system                     pod/karl-inventory-7b6b756d48-5wrlh                                   1/1     Running            0                 16d
+karl-system                     pod/karl-inventory-postgresqlha-postgresql-0                          1/1     Running            0                 44h
+karl-system                     pod/keycloak-65c97ddb4f-d95fh                                         1/1     Running            0                 16d
+karl-system                     pod/keycloak-operator-5cdf488cc5-fcczb                                1/1     Running            0                 16d
+karl-system                     pod/keycloak-postgres-0                                               1/1     Running            0                 16d
+karl-system                     pod/pf-live-probe                                                     0/1     Completed          0                 4h44m
+karl-system                     pod/phoenix-controller-66c4cdbc4c-n5dck                               1/1     Running            0                 16d
+karl-system                     pod/warden-policy-compiler-6ff74785dc-hsptf                           1/1     Running            0                 16d
+karl-system                     pod/warden-policy-distributor-588f859898-xjwzm                        1/1     Running            0                 30d
+karl-system                     pod/warden-signal-gateway-58c97fc9c7-qjrcc                            1/1     Running            0                 30d
+karl                            pod/genesi-win11-pool-85fccc6489-x7fpk                                2/2     Running            0                 16d
+karl                            pod/karl-directory-dc-0                                               2/2     Running            0                 16d
+karl                            pod/rdpgw-645d586f66-mq8n4                                            1/1     Running            1 (16d ago)       16d
+kube-system                     pod/coredns-7d764666f9-2bgqc                                          0/1     CrashLoopBackOff   333 (4m50s ago)   28h
+kube-system                     pod/coredns-7d764666f9-c4bjg                                          0/1     CrashLoopBackOff   4696 (3m2s ago)   16d
+kube-system                     pod/coredns-7db459684-nh7l2                                           1/1     Running            0                 16d
+kube-system                     pod/etcd-karl-lab-metal-01                                            1/1     Running            2 (16d ago)       16d
+kube-system                     pod/karl-ovn-migration-lsp-reconciler-949c96bc9-bb96s                 1/1     Running            0                 27h
+kube-system                     pod/kube-apiserver-karl-lab-metal-01                                  1/1     Running            2 (16d ago)       16d
+kube-system                     pod/kube-controller-manager-karl-lab-metal-01                         1/1     Running            2 (16d ago)       16d
+kube-system                     pod/kube-multus-ds-bxbnc                                              1/1     Running            0                 33d
+kube-system                     pod/kube-ovn-cni-nzbkz                                                1/1     Running            0                 33d
+kube-system                     pod/kube-ovn-controller-586c7d76db-78rhw                              1/1     Running            0                 8d
+kube-system                     pod/kube-ovn-monitor-78b87ff879-42sgm                                 1/1     Running            0                 16d
+kube-system                     pod/kube-ovn-pinger-snvpj                                             1/1     Running            0                 33d
+kube-system                     pod/kube-proxy-rnh2q                                                  1/1     Running            0                 16d
+kube-system                     pod/kube-scheduler-karl-lab-metal-01                                  1/1     Running            2 (16d ago)       16d
+kube-system                     pod/metrics-server-7d9dbd5f75-qjgkk                                   1/1     Running            0                 16d
+kube-system                     pod/ovn-central-74b498666b-ptsx2                                      1/1     Running            0                 16d
+kube-system                     pod/ovs-ovn-9wz7m                                                     1/1     Running            0                 12d
+kube-system                     pod/snapshot-controller-c9dbc9f5d-npbgb                               1/1     Running            0                 16d
+kube-system                     pod/vpa-admission-controller-5879bdc979-2c5mv                         1/1     Running            0                 9d
+kube-system                     pod/vpa-recommender-59c7769c67-5mknk                                  1/1     Running            0                 9d
+kube-system                     pod/vpa-updater-64888c8777-pzq9v                                      1/1     Running            0                 9d
+kubevirt-hostpath-provisioner   pod/csi-hostpathplugin-cwwh4                                          5/5     Running            6 (16d ago)       33d
+kubevirt                        pod/virt-api-5f5c45f74d-pbb9q                                         1/1     Running            0                 16d
+kubevirt                        pod/virt-controller-55d6cf759f-rncnf                                  1/1     Running            0                 28h
+kubevirt                        pod/virt-controller-55d6cf759f-wm95m                                  1/1     Running            0                 28h
+kubevirt                        pod/virt-handler-jmkdt                                                1/1     Running            0                 16d
+kubevirt                        pod/virt-operator-5ddf65f856-27hph                                    1/1     Running            0                 16d
+kubevirt                        pod/virt-operator-5ddf65f856-4csxm                                    1/1     Running            0                 16d
+longhorn-system                 pod/csi-attacher-866f6cdf47-779vf                                     1/1     Running            9 (16d ago)       33d
+longhorn-system                 pod/csi-provisioner-5c69b546f8-9qs7s                                  1/1     Running            13 (16d ago)      33d
+longhorn-system                 pod/csi-resizer-6c6c9849f8-skbx5                                      1/1     Running            0                 16d
+longhorn-system                 pod/csi-snapshotter-56dd45cc57-dl4b6                                  1/1     Running            0                 16d
+longhorn-system                 pod/engine-image-ei-ff1cedad-qgn9x                                    1/1     Running            0                 33d
+longhorn-system                 pod/instance-manager-056c4b6accc964257b7e01a412c8ba13                 1/1     Running            0                 33d
+longhorn-system                 pod/instance-manager-d557e647f6357e791071910c09e3e2ff                 1/1     Running            0                 33d
+longhorn-system                 pod/longhorn-csi-plugin-sncrb                                         3/3     Running            0                 33d
+longhorn-system                 pod/longhorn-driver-deployer-6f6b88d9-flnvb                           1/1     Running            0                 16d
+longhorn-system                 pod/longhorn-manager-rjtfr                                            2/2     Running            0                 33d
+longhorn-system                 pod/longhorn-ui-5f8f75b48b-8c6gj                                      1/1     Running            0                 16d
+longhorn-system                 pod/oauth2-proxy-666dcc69fc-4kgwv                                     1/1     Running            1 (16d ago)       16d
+longhorn-system                 pod/share-manager-pvc-0fe64844-b3eb-45b9-8937-c0e314c2e718            1/1     Running            0                 9d
+metallb-system                  pod/metallb-controller-5754956df6-xp7sm                               1/1     Running            0                 16d
+metallb-system                  pod/metallb-speaker-gbcbz                                             4/4     Running            0                 33d
+olm                             pod/catalog-operator-84d8f57b75-zdjcs                                 1/1     Running            0                 16d
+olm                             pod/olm-operator-66664f8555-9tpwh                                     1/1     Running            0                 16d
+olm                             pod/operatorhubio-catalog-2r8s9                                       1/1     Running            0                 18m
+olm                             pod/packageserver-699499954b-8s6qv                                    1/1     Running            0                 16d
+olm                             pod/packageserver-699499954b-zddsf                                    1/1     Running            0                 16d
+prometheus                      pod/alertmanager-prometheus-operator-kube-p-alertmanager-0            2/2     Running            0                 16d
+prometheus                      pod/prometheus-adapter-77ddc76474-h856b                               1/1     Running            0                 16d
+prometheus                      pod/prometheus-operator-kube-p-operator-6c76f7456c-vf9ss              1/1     Running            0                 16d
+prometheus                      pod/prometheus-operator-kube-state-metrics-647846978d-65xm7           1/1     Running            0                 16d
+prometheus                      pod/prometheus-operator-prometheus-node-exporter-8h6mz                1/1     Running            0                 33d
+prometheus                      pod/prometheus-prometheus-operator-kube-p-prometheus-0                2/2     Running            0                 16d

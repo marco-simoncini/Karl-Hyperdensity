@@ -1,0 +1,37 @@
+spec:
+  vmRef: "win11-shell-01"
+  runtimeMode: "in-place-qmp"
+  migrationRequired: false
+  rebootAllowed: false
+  recreateAllowed: false
+  floor:
+    cpu: 2
+    memory: 8192
+  envelope:
+    maxCpu: 8
+    maxMemory: 32768
+  runtimeTarget:
+    cpu: 4
+    memory: 12288
+  runtimeActual:
+    cpu: 4
+    memory: 12288
+  fluidDevices:
+    cpu:
+      mode: "qmp-hotplug"
+      maxCpu: 8
+    memory:
+      mode: "karl-fluid-memory-envelope"
+      blockSize: 512
+  guest:
+    agentModule: "fluidShell"
+    requireAck: true
+    requireNoPendingReboot: true
+status:
+  phase: "READY"
+  conditions:
+    - "evidence.collected"
+    - "continuity.proven"
+  blockers: []
+  evidenceRef: "windows-fluid-evidence/win11-shell-01"
+  lastTransitionTime: "2026-05-07T13:00:00Z"

@@ -1,0 +1,80 @@
+{
+  "name": "generic-windows-denied",
+  "governanceContract": {
+    "contractId": "gc-generic-windows-denied",
+    "shellRef": "generic-win-vm",
+    "sourceAdmissionDecisionId": "admission-generic-windows",
+    "sourceActionSlateId": "action-slate-generic-windows",
+    "requestedAction": "future-cpu-apply",
+    "governancePhase": "CONTRACT_BLOCKED",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "runtimeMode": "in-place-qmp",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "evidenceScoreAtAdmission": 35,
+    "requiredEvidenceAtApplyTime": ["fresh_kubevirt_identity_evidence"],
+    "requiredFreshnessWindowSeconds": 900,
+    "requiredPreApplyRevalidation": true,
+    "requiredPostApplyVerification": ["continuity_post_apply_proof"],
+    "rollbackRequirement": "mandatory",
+    "returnToFloorRequirement": "mandatory",
+    "blastRadiusLimit": "single-vm",
+    "killSwitchRequirement": true,
+    "auditRequirement": "mandatory-audit-trail",
+    "invariantSetRef": "invariant-generic-windows",
+    "transitionProofRef": "proof-generic-windows",
+    "blockers": ["guest_ack_missing"],
+    "denialReasons": ["generic_windows_vm_not_certified"],
+    "createdAt": "2026-05-07T15:00:00Z"
+  },
+  "revalidation": {
+    "revalidationId": "reval-generic-windows-denied",
+    "shellRef": "generic-win-vm",
+    "governanceContractRef": "gc-generic-windows-denied",
+    "maxEvidenceAgeSeconds": 900,
+    "requiredFreshEvidence": {
+      "kubeVirtIdentity": true,
+      "qmpEvidence": true,
+      "guestEvidence": true,
+      "rollbackReadiness": true,
+      "returnToFloorReadiness": true,
+      "killSwitchReadiness": true
+    },
+    "requiredComparisons": {
+      "nodeUnchanged": true,
+      "virtLauncherPodUnchanged": true,
+      "qemuPidUnchanged": true,
+      "lastBootUnchanged": true,
+      "machineIdentityUnchanged": true,
+      "noVmimObserved": true,
+      "noLiveMigrationObserved": true,
+      "noRecreateObserved": true
+    },
+    "staleEvidencePolicy": "NEEDS_REVALIDATION",
+    "outputAllowed": "REVALIDATION_BLOCKED"
+  },
+  "attestation": {
+    "attestationId": "att-generic-windows-denied",
+    "subjectRef": "gc-generic-windows-denied",
+    "subjectType": "governance-contract",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "evidenceRefs": ["generic-win-vm"],
+    "blockerSnapshot": ["guest_ack_missing"],
+    "invariantSnapshot": {"guest_ack_invariant": false},
+    "decisionSnapshot": {"governancePhase": "CONTRACT_BLOCKED"},
+    "createdAt": "2026-05-07T15:00:00Z",
+    "attestor": {"componentName": "karl-fluid-governance-evaluator", "componentVersion": "v1"},
+    "signature": {"mode": "unsigned-dev", "value": ""}
+  },
+  "killSwitch": {
+    "killSwitchId": "ks-generic-windows-denied",
+    "enabled": true,
+    "source": "policy",
+    "mode": "hard-disabled",
+    "reason": "future apply executor disabled by policy",
+    "requiredForApply": true,
+    "observedAt": "2026-05-07T15:00:00Z"
+  },
+  "expectedExecutionPhase": "EXECUTION_DENIED",
+  "expectedBlockers": ["guest_ack_missing", "future_apply_executor_disabled"]
+}

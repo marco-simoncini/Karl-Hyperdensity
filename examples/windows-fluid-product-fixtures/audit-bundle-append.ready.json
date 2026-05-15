@@ -1,0 +1,49 @@
+{
+  "bundleId": "windows-compliance-bundle-example",
+  "bundleVersion": "windows-fluid-compliance-replay-bundle-index-v1",
+  "createdAt": "2026-05-07T22:30:00Z",
+  "subjectRef": "windows-shell/karl/master-win11",
+  "subjectType": "windows-hyperdensity-ready-compliance-replay-bundle",
+  "runCount": 2,
+  "runs": [
+    {
+      "runId": "windows-compliance-run-1",
+      "inputRef": "examples/windows-fluid-compliance-fixtures/master-win11-real-evidence.ready.json",
+      "outputRef": "stdout://replay",
+      "evidenceHash": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "replayHash": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "runHash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "evaluationTime": "2026-05-07T22:20:00Z",
+      "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+      "hyperdensityReady": true,
+      "blockers": [],
+      "remediationActions": []
+    },
+    {
+      "runId": "windows-compliance-run-2",
+      "inputRef": "examples/windows-fluid-compliance-fixtures/master-win11-pool-child-real-evidence.ready.json",
+      "outputRef": "stdout://replay",
+      "previousRunHash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+      "evidenceHash": "dddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddd",
+      "replayHash": "eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee",
+      "runHash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+      "evaluationTime": "2026-05-07T22:25:00Z",
+      "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+      "hyperdensityReady": true,
+      "blockers": [],
+      "remediationActions": []
+    }
+  ],
+  "chain": {
+    "chainMode": "local-deterministic-hash-chain",
+    "firstRunHash": "cccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccccc",
+    "latestRunHash": "ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff",
+    "chainValid": true
+  },
+  "aggregateStatus": "latest-ready",
+  "latestCompliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+  "latestHyperdensityReady": true,
+  "auditRefs": [
+    "subject://windows-shell/karl/master-win11"
+  ]
+}

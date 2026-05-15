@@ -1,0 +1,10 @@
+{
+  "status": "ready_for_commit",
+  "verdict": "fluidvirt_windows_admission_policy_ready_pending_push",
+  "branch": "The-Father-Windows",
+  "notes": [
+    "Admission decision model and conservative policy pack implemented",
+    "Evidence scoring and blocker priority policy implemented",
+    "Admission gate, fixtures, tests, docs, and CLI completed"
+  ]
+}

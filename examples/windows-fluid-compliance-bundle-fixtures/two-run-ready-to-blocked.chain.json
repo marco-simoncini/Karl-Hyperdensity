@@ -1,0 +1,8 @@
+{
+  "name": "two run chain ready to blocked",
+  "bundleVersion": "windows-fluid-compliance-replay-bundle-index-v1",
+  "expectedChainValid": true,
+  "expectedLatestHyperdensityReady": false,
+  "expectedLatestCompliancePhase": "BLOCKED_WITH_REMEDIATION",
+  "expectedRunCount": 2
+}

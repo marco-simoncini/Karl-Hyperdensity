@@ -1,0 +1,7 @@
+context: karl-metal-01@ovh
+command: kubectl get vm,vmi,pods,vmim -A
+target_vm_line: karl/master-win11 Stopped False
+target_vmi_line: not found in namespace karl
+target_virt_launcher_pod_line: no resources found
+vmim_namespace_karl: none
+sanitization: sensitive values removed

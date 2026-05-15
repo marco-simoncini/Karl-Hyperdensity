@@ -1,0 +1,327 @@
+{
+  "governanceContract": {
+    "contractId": "windows-fluid-governance-20260507T144500",
+    "shellRef": "karl/master-win11",
+    "sourceAdmissionDecisionId": "windows-fluid-admission-20260507T144000",
+    "sourceActionSlateId": "windows-fluid-action-slate-reference",
+    "requestedAction": "future-cpu-apply",
+    "governancePhase": "NEEDS_REVALIDATION",
+    "mutationAllowed": false,
+    "applyAllowed": false,
+    "runtimeMode": "in-place-qmp",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "evidenceScoreAtAdmission": 100,
+    "requiredEvidenceAtApplyTime": [
+      "fresh_kubevirt_identity_evidence",
+      "fresh_qmp_evidence",
+      "fresh_guest_evidence",
+      "fresh_rollback_readiness",
+      "fresh_return_to_floor_readiness",
+      "kill_switch_readiness_proof",
+      "revalidation_evidence_refresh"
+    ],
+    "requiredFreshnessWindowSeconds": 900,
+    "requiredPreApplyRevalidation": true,
+    "requiredPostApplyVerification": [
+      "continuity_post_apply_proof",
+      "rollback_readiness_post_apply",
+      "return_to_floor_proof_post_apply",
+      "no_migration_no_recreate_no_reboot_post_apply"
+    ],
+    "rollbackRequirement": "mandatory",
+    "returnToFloorRequirement": "mandatory",
+    "blastRadiusLimit": "single-vm",
+    "killSwitchRequirement": true,
+    "auditRequirement": "mandatory-audit-trail",
+    "invariantSetRef": "windows-fluid-invariant-set-20260507T144500",
+    "transitionProofRef": "windows-fluid-transition-proof-20260507T144500",
+    "blockers": [],
+    "denialReasons": [
+      "stale_evidence_requires_revalidation"
+    ],
+    "createdAt": "2026-05-07T14:45:00Z"
+  },
+  "transitionProof": {
+    "proofId": "windows-fluid-transition-proof-20260507T144500",
+    "fromPhase": "ADMITTED_FOR_FUTURE_APPLY",
+    "toPhase": "NEEDS_REVALIDATION",
+    "allowed": false,
+    "reason": "transition_denied_by_governance_blockers",
+    "requiredInputs": [
+      "admission_decision",
+      "runtime_evidence_bundle",
+      "policy_pack",
+      "invariant_set",
+      "preapply_revalidation"
+    ],
+    "observedInputs": [
+      "admission_decision",
+      "runtime_evidence_bundle",
+      "policy_pack"
+    ],
+    "missingInputs": [
+      "invariant_set",
+      "preapply_revalidation"
+    ],
+    "blockerList": [],
+    "invariantChecks": {
+      "qmp_readonly_until_apply_phase_invariant": true,
+      "same_machine_identity_invariant": true,
+      "same_node_invariant": true,
+      "same_qemu_process_invariant": true,
+      "same_virtlauncher_pod_invariant": true,
+      "same_windows_boot_invariant": true
+    },
+    "timestamp": "2026-05-07T14:45:00Z",
+    "proofHash": "7fdf7e77cb078b18225022881fd7575e8895c824d36b11a5e19dd24b152b2693",
+    "auditRefs": [
+      "evidence/governance/master-win11-stale"
+    ]
+  },
+  "runtimeInvariantSet": {
+    "invariantSetId": "windows-fluid-invariant-set-20260507T144500",
+    "noLiveMigrationInvariant": {
+      "id": "no_live_migration_invariant",
+      "description": "No LiveMigration objects are observed",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "live_migration_required",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "noVMIMInvariant": {
+      "id": "no_vmim_invariant",
+      "description": "No VMIM objects are observed",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "live_migration_required",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "noRecreateInvariant": {
+      "id": "no_recreate_invariant",
+      "description": "VMI recreate is not required",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "vmi_recreate_required",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "noRolloutInvariant": {
+      "id": "no_rollout_invariant",
+      "description": "No rollout is observed",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "vmi_recreate_required",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "noRebootInvariant": {
+      "id": "no_reboot_invariant",
+      "description": "Windows guest has no pending reboot",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "pending_reboot_detected",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "sameNodeInvariant": {
+      "id": "same_node_invariant",
+      "description": "Node continuity is preserved",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "node_changed",
+      "quarantineIfFailed": true,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "sameVirtLauncherPodInvariant": {
+      "id": "same_virtlauncher_pod_invariant",
+      "description": "virt-launcher pod continuity is preserved",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "virt_launcher_pod_changed",
+      "quarantineIfFailed": true,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "sameQemuProcessInvariant": {
+      "id": "same_qemu_process_invariant",
+      "description": "QEMU process continuity is preserved",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "qemu_pid_changed",
+      "quarantineIfFailed": true,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "sameWindowsBootInvariant": {
+      "id": "same_windows_boot_invariant",
+      "description": "Windows last boot continuity is preserved",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "last_boot_changed",
+      "quarantineIfFailed": true,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "sameMachineIdentityInvariant": {
+      "id": "same_machine_identity_invariant",
+      "description": "Machine identity continuity is preserved",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "machine_guid_changed",
+      "quarantineIfFailed": true,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "qmpAckInvariant": {
+      "id": "qmp_ack_invariant",
+      "description": "QMP ACK is available and healthy",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "qmp_ack_missing",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "guestAckInvariant": {
+      "id": "guest_ack_invariant",
+      "description": "Guest ACK is available and healthy",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "guest_ack_missing",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "rollbackReadyInvariant": {
+      "id": "rollback_ready_invariant",
+      "description": "Rollback readiness is proven",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "rollback_not_ready",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "returnToFloorReadyInvariant": {
+      "id": "return_to_floor_ready_invariant",
+      "description": "Return-to-floor readiness is proven",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "return_to_floor_not_ready",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "killSwitchReadyInvariant": {
+      "id": "kill_switch_ready_invariant",
+      "description": "Kill-switch governance is enabled for this phase",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "rollback_not_ready",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "evidenceFreshnessInvariant": {
+      "id": "evidence_freshness_invariant",
+      "description": "Evidence is fresh inside policy window",
+      "required": true,
+      "observed": false,
+      "passed": false,
+      "blockerIfFailed": "",
+      "quarantineIfFailed": false,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    },
+    "qmpReadOnlyUntilApplyPhaseInvariant": {
+      "id": "qmp_readonly_until_apply_phase_invariant",
+      "description": "QMP stays read-only in governance phase",
+      "required": true,
+      "observed": true,
+      "passed": true,
+      "blockerIfFailed": "hotplug_error_detected",
+      "quarantineIfFailed": true,
+      "evidenceRef": "evidence/governance/master-win11-stale"
+    }
+  },
+  "preApplyRevalidation": {
+    "revalidationId": "windows-fluid-revalidation-20260507T144500",
+    "shellRef": "karl/master-win11",
+    "governanceContractRef": "windows-fluid-governance-20260507T144500",
+    "maxEvidenceAgeSeconds": 900,
+    "requiredFreshEvidence": {
+      "kubeVirtIdentity": true,
+      "qmpEvidence": true,
+      "guestEvidence": true,
+      "rollbackReadiness": true,
+      "returnToFloorReadiness": true,
+      "killSwitchReadiness": true
+    },
+    "requiredComparisons": {
+      "nodeUnchanged": true,
+      "virtLauncherPodUnchanged": true,
+      "qemuPidUnchanged": true,
+      "lastBootUnchanged": true,
+      "machineIdentityUnchanged": true,
+      "noVmimObserved": true,
+      "noLiveMigrationObserved": true,
+      "noRecreateObserved": true
+    },
+    "staleEvidencePolicy": "NEEDS_REVALIDATION",
+    "outputAllowed": "REVALIDATION_STALE"
+  },
+  "policyAttestation": {
+    "attestationId": "windows-fluid-attestation-20260507T144500",
+    "subjectRef": "windows-fluid-governance-20260507T144500",
+    "subjectType": "governance-contract",
+    "policyVersion": "windows-fluid-admission-policy-v1",
+    "evidenceRefs": [
+      "karl/master-win11"
+    ],
+    "blockerSnapshot": [],
+    "invariantSnapshot": {
+      "evidence_freshness_invariant": false,
+      "guest_ack_invariant": true,
+      "kill_switch_ready_invariant": true,
+      "no_live_migration_invariant": true,
+      "no_reboot_invariant": true,
+      "no_recreate_invariant": true,
+      "no_rollout_invariant": true,
+      "no_vmim_invariant": true,
+      "qmp_ack_invariant": true,
+      "qmp_readonly_until_apply_phase_invariant": true,
+      "return_to_floor_ready_invariant": true,
+      "rollback_ready_invariant": true,
+      "same_machine_identity_invariant": true,
+      "same_node_invariant": true,
+      "same_qemu_process_invariant": true,
+      "same_virtlauncher_pod_invariant": true,
+      "same_windows_boot_invariant": true
+    },
+    "decisionSnapshot": {
+      "applyAllowed": false,
+      "governancePhase": "NEEDS_REVALIDATION",
+      "mutationAllowed": false,
+      "requestedAction": "future-cpu-apply"
+    },
+    "createdAt": "2026-05-07T14:45:00Z",
+    "attestor": {
+      "componentName": "karl-fluid-governance-evaluator",
+      "componentVersion": "v1"
+    },
+    "signature": {
+      "mode": "unsigned-dev",
+      "value": ""
+    },
+    "auditHash": "7fdf7e77cb078b18225022881fd7575e8895c824d36b11a5e19dd24b152b2693"
+  },
+  "finalGovernancePhase": "NEEDS_REVALIDATION",
+  "nextSafeStep": "refresh_stale_evidence_and_rerun_preapply_revalidation"
+}

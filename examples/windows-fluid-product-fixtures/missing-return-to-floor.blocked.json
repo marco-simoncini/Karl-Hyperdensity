@@ -1,0 +1,19 @@
+{
+  "leaseId": "lease-master-win11-missing-return",
+  "targetRef": "target-master-win11",
+  "leaseKind": "combined-envelope",
+  "requested": {
+    "cpuMax": "600000 100000",
+    "memoryBytes": 13958643712
+  },
+  "rollbackTarget": {
+    "cpuMax": "300000 100000",
+    "memoryBytes": 12884901888
+  },
+  "returnToFloorTarget": {},
+  "ttlSeconds": 600,
+  "status": "blocked",
+  "blockers": [
+    "return_to_floor_not_ready"
+  ]
+}

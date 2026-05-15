@@ -1,0 +1,272 @@
+{
+  "executorVersion": "karl-fluid-windows-executor-v1",
+  "mode": "apply-plan-only",
+  "runtimeMutationExecuted": false,
+  "plan": {
+    "planId": "windows-fluid-controlled-plan-6b9683b535de82e6",
+    "targetRef": "target-master-win11",
+    "leaseRef": "lease-master-win11-combined",
+    "gateSnapshot": {
+      "gateId": "windows-fluid-controlled-apply-gate-v1",
+      "windowsFluidVirtEnabled": true,
+      "dryRunRequired": true,
+      "manualApprovalRequired": true,
+      "autonomousApplyEnabled": false,
+      "cpuApplyEnabled": true,
+      "ramApplyEnabled": true,
+      "nodeActuatorApplyEnabled": true,
+      "qmpBalloonApplyEnabled": true,
+      "guestVerifyRequired": true,
+      "workloadVerifyRequired": true,
+      "rollbackRequired": true,
+      "returnToFloorRequired": true,
+      "auditBundleRequired": true,
+      "killSwitchRequired": true,
+      "maxBlastRadius": 1,
+      "allowedNamespaces": [
+        "karl"
+      ],
+      "allowedTargets": [
+        "master-win11"
+      ],
+      "allowedLeaseKinds": [
+        "cpu-entitlement",
+        "ram-balloon",
+        "combined-envelope"
+      ],
+      "createdAt": "2026-05-08T00:00:00Z"
+    },
+    "complianceSnapshot": {
+      "compliancePhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+      "blockers": [],
+      "remediationActions": null,
+      "automatableActions": null,
+      "manualActions": null,
+      "risk": "low",
+      "evidenceSummary": {
+        "cpuActuatorReady": true,
+        "guestAckRequired": true,
+        "namespace": "karl",
+        "ramBalloonReady": true,
+        "sameBoot": true,
+        "sameQemu": true,
+        "vmRef": "master-win11"
+      }
+    },
+    "actionSlate": {
+      "actionId": "windows-fluid-slate-82e963ba8daa7813",
+      "shellRef": "master-win11",
+      "actionType": "evidence-refresh",
+      "dryRunState": "ready",
+      "runtimeMode": "prearmed-fluid-envelope-v2",
+      "mutationAllowed": false,
+      "applyAllowed": false,
+      "rollbackReady": true,
+      "returnToFloorReady": true,
+      "qmpReady": true,
+      "guestAckReady": true,
+      "noRebootProof": true,
+      "sameQemuProof": true,
+      "sameNodeProof": true,
+      "samePodProof": true,
+      "blockers": [],
+      "evidenceRefs": [
+        "evidence://lease"
+      ],
+      "validForSeconds": 600,
+      "createdAt": "",
+      "targetRef": "target-master-win11",
+      "leaseRef": "lease-master-win11-combined",
+      "actions": [
+        {
+          "actionId": "a1",
+          "actionType": "complianceReplay",
+          "mutationAllowed": false,
+          "preconditions": [
+            "target-observed"
+          ],
+          "requiredEvidence": [
+            "compliance-input"
+          ],
+          "expectedOutput": "compliance-ready"
+        },
+        {
+          "actionId": "a2",
+          "actionType": "buildActuatorRequest",
+          "mutationAllowed": false,
+          "preconditions": [
+            "compliance-ready"
+          ],
+          "requiredEvidence": [
+            "target-identity",
+            "cpu-bounds"
+          ],
+          "expectedOutput": "actuator-request"
+        },
+        {
+          "actionId": "a3",
+          "actionType": "actuatorDryRun",
+          "mutationAllowed": false,
+          "preconditions": [
+            "actuator-request-built"
+          ],
+          "requiredEvidence": [
+            "allowlist",
+            "kill-switch"
+          ],
+          "expectedOutput": "dry-run-accepted"
+        },
+        {
+          "actionId": "a4",
+          "actionType": "cpuEntitlementApply",
+          "mutationAllowed": true,
+          "preconditions": [
+            "dry-run-accepted"
+          ],
+          "requiredEvidence": [
+            "actuator-request"
+          ],
+          "expectedOutput": "cpu-entitlement-applied",
+          "rollbackAction": "a5",
+          "returnToFloorAction": "a5"
+        },
+        {
+          "actionId": "a5",
+          "actionType": "cpuReturnToFloor",
+          "mutationAllowed": true,
+          "preconditions": [
+            "cpu-entitlement-applied"
+          ],
+          "requiredEvidence": [
+            "cpu-before-after"
+          ],
+          "expectedOutput": "cpu-floor-restored"
+        },
+        {
+          "actionId": "a6",
+          "actionType": "qmpBalloonApply",
+          "mutationAllowed": true,
+          "preconditions": [
+            "qmp-available"
+          ],
+          "requiredEvidence": [
+            "qmp-request"
+          ],
+          "expectedOutput": "ram-balloon-applied",
+          "rollbackAction": "a7",
+          "returnToFloorAction": "a7"
+        },
+        {
+          "actionId": "a7",
+          "actionType": "ramReturnToFloor",
+          "mutationAllowed": true,
+          "preconditions": [
+            "ram-balloon-applied"
+          ],
+          "requiredEvidence": [
+            "qmp-balloon-before-after"
+          ],
+          "expectedOutput": "ram-floor-restored"
+        },
+        {
+          "actionId": "a8",
+          "actionType": "guestVerify",
+          "mutationAllowed": false,
+          "preconditions": [
+            "cpu-ram-updated"
+          ],
+          "requiredEvidence": [
+            "guest-ack"
+          ],
+          "expectedOutput": "guest-verified"
+        },
+        {
+          "actionId": "a9",
+          "actionType": "finalRestore",
+          "mutationAllowed": true,
+          "preconditions": [
+            "verification-complete"
+          ],
+          "requiredEvidence": [
+            "restore-targets"
+          ],
+          "expectedOutput": "final-restore-complete"
+        },
+        {
+          "actionId": "a10",
+          "actionType": "auditBundleAppend",
+          "mutationAllowed": false,
+          "preconditions": [
+            "final-restore-complete"
+          ],
+          "requiredEvidence": [
+            "bundle-index",
+            "attestation"
+          ],
+          "expectedOutput": "audit-chain-appended"
+        }
+      ]
+    },
+    "actuatorRequest": {
+      "previous": "300000 100000",
+      "ref": "actuator://master-win11",
+      "requested": "600000 100000",
+      "rollback": "300000 100000"
+    },
+    "qmpBalloonRequest": {
+      "previous": 12884901888,
+      "ref": "qmp://master-win11",
+      "requested": 13958643712,
+      "returnFloor": 12884901888
+    },
+    "guestVerifyPlan": {
+      "evidenceRef": "guest://ack",
+      "ready": true,
+      "required": true
+    },
+    "workloadVerifyPlan": {
+      "guestEvidenceRef": "guest://ack",
+      "guestVerifyReady": true,
+      "guestVerifyRequired": true,
+      "workloadEvidenceRef": "workload://master-win11",
+      "workloadVerifyReady": true,
+      "workloadVerifyRequired": true
+    },
+    "rollbackPlan": {
+      "ready": true,
+      "required": true,
+      "target": {
+        "cpuMax": "300000 100000",
+        "memoryBytes": 12884901888
+      }
+    },
+    "returnToFloorPlan": {
+      "ready": true,
+      "required": true,
+      "target": {
+        "cpuMax": "300000 100000",
+        "memoryBytes": 12884901888
+      }
+    },
+    "auditBundlePlan": {
+      "bundleRef": "bundle://master-win11",
+      "ready": true,
+      "required": true
+    },
+    "approvalState": "approved",
+    "planPhase": "apply_ready",
+    "mutationAllowed": true,
+    "applyAllowed": true,
+    "blockers": [],
+    "evidenceRefs": [
+      "artifact://guest-workload",
+      "evidence://lease"
+    ],
+    "createdAt": "2026-05-08T05:00:00Z"
+  },
+  "evidence": {
+    "autonomousApplyEnabled": false,
+    "planningOnly": true,
+    "runtimeMutationAllowed": false
+  }
+}

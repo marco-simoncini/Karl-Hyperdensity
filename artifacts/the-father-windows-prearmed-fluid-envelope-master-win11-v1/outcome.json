@@ -1,0 +1,57 @@
+{
+  "verdict": "WINDOWS_PREARMED_FLUID_ENVELOPE_BLOCKED_BY_CPU_CONTROL",
+  "cluster": "karl-metal-01@ovh",
+  "namespace": "karl",
+  "vm": "master-win11",
+  "proofPhaseContinuity": {
+    "qemuPidBefore": 96,
+    "qemuPidAfter": 96,
+    "sameQemuProcess": true,
+    "windowsBootBefore": "/Date(1778180311500)/",
+    "windowsBootAfter": "/Date(1778180311500)/",
+    "sameWindowsBoot": true,
+    "samePod": true,
+    "podName": "virt-launcher-master-win11-kmwgg",
+    "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+    "sameNode": true,
+    "node": "karl-lab-metal-01",
+    "noVmim": true,
+    "noMigrationObserved": true,
+    "noRecreateObservedInProof": true
+  },
+  "cpuEntitlement": {
+    "mechanismsEvaluated": [
+      "libvirt_schedinfo_session_mode",
+      "cgroup_cpu_max_write",
+      "taskset_vcpu_thread_affinity"
+    ],
+    "cpuEntitlementUpConfirmed": false,
+    "cpuEntitlementDownConfirmed": false,
+    "blockers": [
+      "schedinfo_not_supported_in_session_mode",
+      "cpu_max_readonly_filesystem",
+      "taskset_operation_not_permitted"
+    ]
+  },
+  "ramEntitlement": {
+    "mechanism": "qmp_balloon_target",
+    "floorBytes": 12884901888,
+    "ceilingBytes": 13958643712,
+    "ramEntitlementUpConfirmed": true,
+    "ramEntitlementDownConfirmed": true,
+    "returnToFloorVerified": true
+  },
+  "guestEvidence": {
+    "guestAck": true,
+    "logicalProcessors": 6,
+    "machineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+    "pendingReboot": false
+  },
+  "constraints": {
+    "usedVcpuHotplugPath": false,
+    "usedLiveMigration": false,
+    "usedVmim": false,
+    "usedPoolOrReplicaScaling": false,
+    "declaredProductionReady": false
+  }
+}

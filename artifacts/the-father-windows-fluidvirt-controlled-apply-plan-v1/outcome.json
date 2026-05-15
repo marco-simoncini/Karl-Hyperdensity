@@ -1,0 +1,27 @@
+{
+  "verdict": "windows_fluidvirt_controlled_apply_plan_ready",
+  "statement": "Controlled apply planning path is ready with manual-approval and feature-gate enforcement while autonomous apply remains disabled.",
+  "checks": {
+    "gateModelAdded": true,
+    "planModelAdded": true,
+    "evaluatorsAdded": true,
+    "planningOnlyCLIAdded": true,
+    "fixturesAdded": true,
+    "testsAdded": true,
+    "docsAdded": true,
+    "validationPassed": true,
+    "runtimeMutationExecuted": false,
+    "autonomousApplyEnabled": false
+  },
+  "evidenceRefs": [
+    "build_or_test_logs/go_test.log",
+    "build_or_test_logs/validate_json.log",
+    "build_or_test_logs/git_diff_check.log",
+    "build_or_test_logs/awaiting.executor.out.json",
+    "build_or_test_logs/apply_ready.executor.out.json",
+    "build_or_test_logs/autonomous_rejected.executor.out.json",
+    "build_or_test_logs/pool_scaling_blocked.executor.out.json",
+    "build_or_test_logs/deterministic_equal.txt"
+  ],
+  "productDecision": "controlled_apply_planning_only_no_autonomous_apply"
+}

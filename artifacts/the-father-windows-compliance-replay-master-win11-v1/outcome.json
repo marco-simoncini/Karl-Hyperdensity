@@ -1,0 +1,22 @@
+{
+  "verdict": "windows_master_win11_compliance_replay_ready",
+  "cluster": "karl-metal-01@ovh",
+  "namespace": "karl",
+  "vm": "master-win11",
+  "replay": {
+    "masterWin11Phase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+    "poolChildPhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+    "poolScalingPhase": "BLOCKED_WITH_REMEDIATION"
+  },
+  "constraints": {
+    "runtimeMutationPerformed": false,
+    "frontendTouched": false,
+    "dashboardTouched": false,
+    "ports443or8888Touched": false
+  },
+  "validation": {
+    "goTestAll": "pass",
+    "validateJson": "pass",
+    "gitDiffCheck": "pass"
+  }
+}

@@ -1,0 +1,20 @@
+{
+  "before": {
+    "qmpBalloon": 12884901888,
+    "guestAck": true,
+    "pendingReboot": false,
+    "criticalEvents1h": 0
+  },
+  "up": {
+    "qmpBalloon": 13958643712,
+    "guestAck": true,
+    "pendingReboot": false,
+    "criticalEvents1h": 0
+  },
+  "down": {
+    "qmpBalloon": 12884901888,
+    "guestAck": true,
+    "pendingReboot": false,
+    "criticalEvents1h": 0
+  }
+}

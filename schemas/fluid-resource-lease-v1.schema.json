@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karl.dev/schemas/fluid-resource-lease-v1.schema.json",
+  "title": "FluidResourceLeaseV1",
+  "type": "object",
+  "required": [
+    "spec",
+    "guarantees",
+    "status"
+  ],
+  "properties": {
+    "spec": {
+      "type": "object",
+      "required": [
+        "shellRef",
+        "mode",
+        "grant",
+        "ttlSeconds",
+        "rollbackTarget"
+      ],
+      "properties": {
+        "shellRef": {
+          "type": "string",
+          "minLength": 1
+        },
+        "mode": {
+          "type": "string",
+          "const": "in-place"
+        },
+        "grant": {
+          "$ref": "#/$defs/resource"
+        },
+        "ttlSeconds": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "rollbackTarget": {
+          "$ref": "#/$defs/resource"
+        }
+      }
+    },
+    "guarantees": {
+      "type": "object",
+      "required": [
+        "noLiveMigration",
+        "noReboot",
+        "noRecreate",
+        "sameNode",
+        "sameVirtLauncherPod",
+        "sameQemuProcess",
+        "sameMachineGuid",
+        "sameLastBoot",
+        "guestAckRequired",
+        "qmpAckRequired"
+      ],
+      "properties": {
+        "noLiveMigration": { "type": "boolean", "const": true },
+        "noReboot": { "type": "boolean", "const": true },
+        "noRecreate": { "type": "boolean", "const": true },
+        "sameNode": { "type": "boolean", "const": true },
+        "sameVirtLauncherPod": { "type": "boolean", "const": true },
+        "sameQemuProcess": { "type": "boolean", "const": true },
+        "sameMachineGuid": { "type": "boolean", "const": true },
+        "sameLastBoot": { "type": "boolean", "const": true },
+        "guestAckRequired": { "type": "boolean", "const": true },
+        "qmpAckRequired": { "type": "boolean", "const": true }
+      }
+    },
+    "status": {
+      "type": "object",
+      "required": [
+        "phase",
+        "qmpAck",
+        "guestAck",
+        "lastBootUnchanged",
+        "qemuPidUnchanged",
+        "rollbackReady",
+        "returnToFloorReady",
+        "blockers",
+        "evidenceRef"
+      ],
+      "properties": {
+        "phase": { "type": "string" },
+        "qmpAck": { "type": "boolean" },
+        "guestAck": { "type": "boolean" },
+        "lastBootUnchanged": { "type": "boolean" },
+        "qemuPidUnchanged": { "type": "boolean" },
+        "rollbackReady": { "type": "boolean" },
+        "returnToFloorReady": { "type": "boolean" },
+        "blockers": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "evidenceRef": { "type": "string" }
+      }
+    }
+  },
+  "$defs": {
+    "resource": {
+      "type": "object",
+      "required": [
+        "cpu",
+        "memory"
+      ],
+      "properties": {
+        "cpu": { "type": "integer", "minimum": 1 },
+        "memory": { "type": "integer", "minimum": 1 }
+      }
+    }
+  }
+}

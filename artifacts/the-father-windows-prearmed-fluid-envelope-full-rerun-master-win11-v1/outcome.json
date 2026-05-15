@@ -1,0 +1,67 @@
+{
+  "verdict": "WINDOWS_PREARMED_FLUID_ENVELOPE_CONFIRMED",
+  "cluster": "karl-metal-01@ovh",
+  "namespace": "karl",
+  "vm": "master-win11",
+  "identity": {
+    "podNameBefore": "virt-launcher-master-win11-kmwgg",
+    "podNameAfter": "virt-launcher-master-win11-kmwgg",
+    "podUidBefore": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+    "podUidAfter": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+    "nodeBefore": "karl-lab-metal-01",
+    "nodeAfter": "karl-lab-metal-01",
+    "qemuPidBefore": 96,
+    "qemuPidAfter": 96,
+    "qemuStartBefore": "Thu May 7 18:58:03 2026",
+    "qemuStartAfter": "Thu May 7 18:58:03 2026",
+    "windowsBootBefore": "/Date(1778180311500)/",
+    "windowsBootAfter": "/Date(1778180311500)/",
+    "machineGuidHashBefore": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+    "machineGuidHashAfter": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e"
+  },
+  "cpu": {
+    "mechanism": "authorized_node_local_actuator_cgroup_cpu_max",
+    "floor": "300000 100000",
+    "ceiling": "600000 100000",
+    "upConfirmed": true,
+    "downConfirmed": true,
+    "restoredBaseline": "600000 100000",
+    "workloadMetricsMs": {
+      "floorRun1": 28604,
+      "ceilingRun": 28618,
+      "floorRun2": 28642
+    },
+    "hostCounters": {
+      "floorRun1UsageDeltaUsec": 80654739,
+      "floorRun1ThrottledDeltaUsec": 46132675,
+      "floorRun1NrThrottledDelta": 215,
+      "ceilingRunUsageDeltaUsec": 124919901,
+      "ceilingRunThrottledDeltaUsec": 136491,
+      "ceilingRunNrThrottledDelta": 85,
+      "floorRun2UsageDeltaUsec": 80229554,
+      "floorRun2ThrottledDeltaUsec": 44803199,
+      "floorRun2NrThrottledDelta": 214
+    }
+  },
+  "ram": {
+    "mechanism": "qmp_balloon_entitlement",
+    "floorBytes": 12884901888,
+    "ceilingBytes": 13958643712,
+    "upConfirmed": true,
+    "downConfirmed": true,
+    "returnedToFloor": true
+  },
+  "continuity": {
+    "sameQemuPid": true,
+    "sameQemuStart": true,
+    "sameWindowsBoot": true,
+    "sameMachineIdentity": true,
+    "samePod": true,
+    "sameNode": true,
+    "noVmim": true,
+    "noLiveMigrationObserved": true,
+    "noRolloutObserved": true,
+    "noRecreateObserved": true,
+    "guestAck": true
+  }
+}

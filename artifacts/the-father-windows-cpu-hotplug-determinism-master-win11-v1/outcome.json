@@ -1,0 +1,43 @@
+{
+  "verdict": "WINDOWS_CPU_RETURN_TO_FLOOR_BLOCKED_UNPLUG_TIMEOUT",
+  "cluster": "karl-metal-01@ovh",
+  "namespace": "karl",
+  "vm": "master-win11",
+  "node": "karl-lab-metal-01",
+  "virtLauncherPod": "virt-launcher-master-win11-w7mxv",
+  "continuity": {
+    "sameQemuPid": true,
+    "qemuPidBefore": 92,
+    "qemuPidAfter": 92,
+    "sameQemuStartTime": true,
+    "samePodUid": true,
+    "sameNode": true,
+    "sameWindowsBoot": true,
+    "sameMachineGuidHash": true,
+    "noVmimObjects": true,
+    "noMigrationObserved": true,
+    "noRecreateObserved": true
+  },
+  "cpuState": {
+    "qmpBeforeRecovery": 7,
+    "guestBeforeRecovery": 6,
+    "recoveryAttemptCommand": "virsh -c qemu:///session setvcpus karl_master-win11 6 --live",
+    "recoveryAttemptResult": "timeout",
+    "qmpAfterRecovery": 7,
+    "guestAfterRecovery": 6,
+    "mismatchAfterRecovery": true
+  },
+  "deterministicRetests": {
+    "cpuPlusOneRetestExecuted": false,
+    "cpuMinusOneRetestExecuted": false
+  },
+  "constraints": {
+    "ramTested": false,
+    "hyperdensityParityDeclared": false
+  },
+  "blockers": [
+    "cpu_unplug_timeout_live_7_to_6",
+    "qmp_guest_cpu_mismatch_persistent",
+    "guest_not_onlining_hotplugged_cpu"
+  ]
+}

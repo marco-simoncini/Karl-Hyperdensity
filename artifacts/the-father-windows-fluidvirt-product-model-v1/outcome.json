@@ -1,0 +1,25 @@
+{
+  "verdict": "windows_fluidvirt_product_model_ready",
+  "scope": "windows-prearmed-fluid-envelope-integration-into-hyperdensity-lease-pipeline",
+  "checks": {
+    "targetModel": true,
+    "leaseModel": true,
+    "actionSlateModel": true,
+    "evaluators": true,
+    "bundleAppendWriteBack": true,
+    "fixtures": true,
+    "tests": true,
+    "docs": true,
+    "patentAddendumDraft": true,
+    "validation": true,
+    "safetyScan": true
+  },
+  "constraints": {
+    "noRuntimeMutation": true,
+    "noClusterMutation": true,
+    "noFrontend": true,
+    "noDashboard": true,
+    "no443": true,
+    "no8888": true
+  }
+}

@@ -1,0 +1,30 @@
+# Sanitized runtime command log
+
+kubectl get vm master-win11 -n karl -o yaml
+kubectl get vmi master-win11 -n karl -o yaml
+kubectl get pod -n karl -l vm.kubevirt.io/name=master-win11 -o wide
+kubectl get vmim -n karl
+virsh qemu-monitor-command query-status/query-balloon/query-memory-size-summary/query-cpus-fast
+virsh domstats --balloon --vcpu
+guest-exec telemetry snapshots (boot/hash/free-memory)
+
+CPU entitlement sequence:
+
+- create temporary privileged actuator pod `karl-cpu-actuator-rerun`
+- set `cpu.max` floor `300000 100000`
+- run 20s guest CPU load probe
+- set `cpu.max` ceiling `600000 100000`
+- run 20s guest CPU load probe
+- set `cpu.max` floor `300000 100000`
+- run 20s guest CPU load probe
+- restore baseline `cpu.max=600000 100000`
+
+RAM entitlement sequence:
+
+- QMP balloon up to `13958643712`
+- QMP balloon down to `12884901888`
+- verify domstats/query-balloon and guest ACK at each step
+
+Cleanup:
+
+- delete temporary actuator pod

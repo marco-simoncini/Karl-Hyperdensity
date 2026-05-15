@@ -1,0 +1,30 @@
+{
+  "verificationId": "windows-fluid-unlock-gate-gate_1_lab_readonly_evidence_complete-20260507T182000",
+  "gateId": "GATE_1_LAB_READONLY_EVIDENCE_COMPLETE",
+  "gateStatus": "PASSED",
+  "executorMustRemainDisabled": true,
+  "mutationAllowed": false,
+  "applyAllowed": false,
+  "checkedInputs": [
+    "evidence_bundle"
+  ],
+  "requiredInputs": [
+    "evidence_bundle",
+    "master_win11_target",
+    "identity_evidence",
+    "qmp_evidence_readonly",
+    "guest_evidence",
+    "rollback_return_readiness",
+    "fresh_evidence_window"
+  ],
+  "missingInputs": [],
+  "blockerList": [],
+  "negativeTestRefs": [],
+  "evidenceRefs": [
+    "evidence/gates/master-win11",
+    "karl/master-win11"
+  ],
+  "attestationRefs": [],
+  "deterministicHash": "6645de2d8329eefa051ec66145bf43088019032e306505206330df9e29fbcad8",
+  "evaluatedAt": "2026-05-07T18:20:00Z"
+}

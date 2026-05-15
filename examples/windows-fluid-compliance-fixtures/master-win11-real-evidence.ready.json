@@ -1,0 +1,53 @@
+{
+  "name": "master win11 real evidence ready",
+  "input": {
+    "identity": {
+      "vmRef": "master-win11",
+      "namespace": "karl",
+      "vmUid": "c81b95dc-d955-4fb3-a1af-59d979f48bcb",
+      "vmiUid": "b31dcab6-5a99-432e-a6fe-21607a9e3403",
+      "virtLauncherPodRef": "virt-launcher-master-win11-kmwgg",
+      "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+      "nodeName": "karl-lab-metal-01",
+      "qemuPid": "96",
+      "qemuStartTime": "Thu May 7 18:58:03 2026"
+    },
+    "qmpAvailable": true,
+    "guestFluidShell": {
+      "available": true,
+      "guestAck": true,
+      "sameBoot": true,
+      "sameMachine": true
+    },
+    "ramBalloon": {
+      "available": true,
+      "balloonDriverReady": true,
+      "canReturnToFloor": true
+    },
+    "cpuActuator": {
+      "available": true,
+      "nodeLocal": true,
+      "allowlisted": true,
+      "supportsCpuMax": true,
+      "cgroupPathMatchesShell": true,
+      "actuatorAck": true,
+      "resolvedCgroupPath": "/"
+    },
+    "policyAnnotations": {
+      "hyperdensity.karl.io/windows-ready": "true"
+    },
+    "poolContext": {
+      "isPoolChild": false,
+      "requestedAsMechanism": false,
+      "treatedAsProvisionOnly": true
+    },
+    "remediationOptions": [
+      "verify_return_to_floor",
+      "verify_rollback",
+      "deploy_node_fluid_actuator"
+    ]
+  },
+  "expectedPhase": "HYPERDENSITY_READY_WINDOWS_SHELL",
+  "expectedBlockers": [],
+  "expectedRemediations": []
+}

@@ -1,0 +1,8 @@
+?   	github.com/marco-simoncini/Karl-Hyperdensity/cmd/karl-fluid-admission	[no test files]
+?   	github.com/marco-simoncini/Karl-Hyperdensity/cmd/karl-fluid-dryrun	[no test files]
+?   	github.com/marco-simoncini/Karl-Hyperdensity/cmd/karl-fluid-executor	[no test files]
+?   	github.com/marco-simoncini/Karl-Hyperdensity/cmd/karl-fluid-governance	[no test files]
+?   	github.com/marco-simoncini/Karl-Hyperdensity/cmd/karl-fluid-sidecar	[no test files]
+ok  	github.com/marco-simoncini/Karl-Hyperdensity/pkg/contracts	0.002s
+ok  	github.com/marco-simoncini/Karl-Hyperdensity/pkg/windowsfluidvirt	1.168s
+ok  	github.com/marco-simoncini/Karl-Hyperdensity/pkg/windowsfluidvirt/sidecar	0.004s

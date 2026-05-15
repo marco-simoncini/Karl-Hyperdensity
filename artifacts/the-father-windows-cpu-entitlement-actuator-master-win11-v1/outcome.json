@@ -1,0 +1,64 @@
+{
+  "verdict": "WINDOWS_CPU_ENTITLEMENT_ACTUATOR_CONFIRMED",
+  "cluster": "karl-metal-01@ovh",
+  "namespace": "karl",
+  "vm": "master-win11",
+  "selectedActuatorPath": "privileged_node_local_cgroup_cpu_max_actuator",
+  "cpuEntitlement": {
+    "initialCpuMax": "600000 100000",
+    "floorCpuMax": "300000 100000",
+    "ceilingCpuMax": "600000 100000",
+    "cpuEntitlementUpConfirmed": true,
+    "cpuEntitlementDownConfirmed": true,
+    "rollbackRestoredInitialCpuMax": true
+  },
+  "metrics": {
+    "workloadMethod": "guest_exec_20s_multi_worker_cpu_load",
+    "floorRun1": {
+      "elapsedMs": 29184,
+      "cpuUsageDeltaUsec": 93179011,
+      "throttledDeltaUsec": 44831274,
+      "nrThrottledDelta": 214
+    },
+    "ceilingRun": {
+      "elapsedMs": 28171,
+      "cpuUsageDeltaUsec": 124659053,
+      "throttledDeltaUsec": 127864,
+      "nrThrottledDelta": 91
+    },
+    "floorRun2": {
+      "elapsedMs": 28200,
+      "cpuUsageDeltaUsec": 79881248,
+      "throttledDeltaUsec": 46503749,
+      "nrThrottledDelta": 214
+    },
+    "coherence": "ceiling run shows materially higher cpu usage gain and much lower throttling than floor runs"
+  },
+  "continuity": {
+    "qemuPidBefore": 96,
+    "qemuPidAfter": 96,
+    "sameQemuPid": true,
+    "qemuStartBefore": "Thu May 7 18:58:03 2026",
+    "qemuStartAfter": "Thu May 7 18:58:03 2026",
+    "sameQemuStart": true,
+    "windowsBootBefore": "/Date(1778180311500)/",
+    "windowsBootAfter": "/Date(1778180311500)/",
+    "sameWindowsBoot": true,
+    "podName": "virt-launcher-master-win11-kmwgg",
+    "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+    "samePod": true,
+    "node": "karl-lab-metal-01",
+    "sameNode": true,
+    "guestAck": true,
+    "noVmim": true,
+    "noMigrationObserved": true,
+    "noRecreateObserved": true
+  },
+  "ramProofReuse": {
+    "sourceArtifact": "artifacts/the-father-windows-prearmed-fluid-envelope-master-win11-v1",
+    "ramEntitlementUpConfirmed": true,
+    "ramEntitlementDownConfirmed": true,
+    "reusedInThisDecision": true,
+    "envelopeClassification": "WINDOWS_PREARMED_FLUID_ENVELOPE_CONFIRMED_PENDING_FULL_RERUN"
+  }
+}

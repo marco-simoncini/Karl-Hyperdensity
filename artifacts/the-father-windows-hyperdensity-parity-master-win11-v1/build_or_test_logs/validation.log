@@ -1,0 +1,4 @@
+go_test_all: pass
+validate_json: pass
+git_diff_check: pass
+note: validation executed for artifact/report changes only; no runtime mutation helper was enabled

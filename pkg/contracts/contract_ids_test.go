@@ -17,6 +17,22 @@ func TestContractIDsAreNotEmpty(t *testing.T) {
 		GuardedAutoSandboxV1ID,
 		AutoRollbackControllerV1ID,
 		BlastRadiusPolicyV1ID,
+		WindowsFluidShellV1ID,
+		FluidResourceLeaseV1ID,
+		WindowsFluidEvidenceV1ID,
+		WindowsFluidBlockerV1ID,
+		WindowsFluidQMPEvidenceV1ID,
+		WindowsFluidRuntimeBundleV1ID,
+		WindowsFluidDryRunEvaluationV1ID,
+		WindowsFluidAdmissionPolicyV1ID,
+		WindowsFluidApplyGovernanceV1ID,
+		WindowsFluidFutureApplyExecutorV1ID,
+		WindowsFluidUnlockGateVerificationV1ID,
+		WindowsFluidNodeActuatorV1ID,
+		WindowsCpuEntitlementLeaseV1ID,
+		WindowsHyperdensityComplianceV1ID,
+		WindowsRemediationTaxonomyV1ID,
+		WindowsActuatorSafetyModelV1ID,
 	}
 	for _, id := range ids {
 		if id == "" {

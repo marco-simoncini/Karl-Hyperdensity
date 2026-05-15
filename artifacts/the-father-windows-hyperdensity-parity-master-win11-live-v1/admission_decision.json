@@ -1,0 +1,45 @@
+{
+  "decisionId": "windows-fluid-admission-20260507T191300",
+  "shellRef": "karl/master-win11",
+  "requestedAction": "prepare-cpu-lease",
+  "admissionPhase": "BLOCKED",
+  "mutationAllowed": false,
+  "applyAllowed": false,
+  "runtimeMode": "in-place-qmp",
+  "evidenceScore": 95,
+  "evidenceLevel": "dryrun-ready",
+  "policyVersion": "windows-fluid-admission-policy-v1",
+  "blockers": [
+    "cpu_topology_not_confirmed",
+    "return_to_floor_not_ready",
+    "rollback_not_ready"
+  ],
+  "denialReasons": [
+    "hard_blocker_present",
+    "policy_violation",
+    "mutation_forbidden_in_current_phase"
+  ],
+  "requiredAdditionalEvidence": [
+    "return_to_floor_ready_missing",
+    "shell_not_certified_for_admission",
+    "return_to_floor_ready_required"
+  ],
+  "blastRadius": {
+    "scope": "single-vm",
+    "maxVms": 1
+  },
+  "rollbackPolicy": {
+    "requireRollbackReady": true
+  },
+  "returnToFloorPolicy": {
+    "requireReturnToFloorReady": true,
+    "requireMemorySafety": true
+  },
+  "ttlPolicy": {
+    "maxLeaseTtlSeconds": 900
+  },
+  "auditRefs": [
+    "evidence/live/master-win11"
+  ],
+  "createdAt": "2026-05-07T19:13:00Z"
+}

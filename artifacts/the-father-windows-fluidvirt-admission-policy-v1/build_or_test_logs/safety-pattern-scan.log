@@ -1,0 +1,51 @@
+docs/runbooks/windows-fluidvirt-admission-replay-v1.md:52:- no migration/recreate/reboot
+pkg/windowsfluidvirt/admission_scoring.go:39:	count(bundle.Guest != nil && !bundle.Guest.PendingReboot, "pending_reboot_detected")
+docs/contracts/windows-fluidvirt.md:9:- No live migration/recreate/reboot flow in this phase.
+docs/contracts/windows-fluidvirt.md:16:  - Enforces `runtimeMode=in-place-qmp`, no reboot/recreate/migration.
+docs/contracts/windows-fluidvirt.md:39:  - no reboot proof
+docs/contracts/windows-fluidvirt.md:47:  - no reboot proof
+examples/windows-fluid-admission-fixtures/admission-generic-windows.denied.json:12:        "rebootAllowed": false,
+examples/windows-fluid-admission-fixtures/admission-generic-windows.denied.json:18:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-admission-fixtures/admission-generic-windows.denied.json:42:      "PendingReboot": false,
+artifacts/the-father-windows-fluidvirt-admission-policy-v1/evidence_scoring.md:13:Signals include annotations, shell validity, identity completeness, QMP readiness/read-only, guest ACK, reboot/identity proofs, continuity proofs, migration/recreate absence, rollback/return readiness, memory driver safety, critical events absence, and evidence freshness.
+examples/windows-fluid-admission-fixtures/admission-master-win11-identity-change.quarantined.json:12:        "rebootAllowed": false,
+examples/windows-fluid-admission-fixtures/admission-master-win11-identity-change.quarantined.json:18:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-admission-fixtures/admission-master-win11-identity-change.quarantined.json:46:      "PendingReboot": false,
+examples/windows-fluid-admission-fixtures/admission-master-win11-identity-change.quarantined.json:64:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-admission-fixtures/admission-master-win11-cpu.future-apply-admissible.json:12:        "rebootAllowed": false,
+examples/windows-fluid-admission-fixtures/admission-master-win11-cpu.future-apply-admissible.json:18:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-admission-fixtures/admission-master-win11-cpu.future-apply-admissible.json:62:      "PendingReboot": false,
+examples/windows-fluid-admission-fixtures/admission-master-win11-cpu.future-apply-admissible.json:80:        "hyperdensity.karl.io/no-reboot": "required",
+artifacts/the-father-windows-fluidvirt-admission-policy-v1/policy_pack.md:9:- require no migration, no reboot, no recreate;
+examples/windows-fluid-admission-fixtures/admission-master-win11-missing-return.blocked.json:12:        "rebootAllowed": false,
+examples/windows-fluid-admission-fixtures/admission-master-win11-missing-return.blocked.json:18:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-admission-fixtures/admission-master-win11-missing-return.blocked.json:46:      "PendingReboot": false,
+examples/windows-fluid-admission-fixtures/admission-master-win11-missing-return.blocked.json:64:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-admission-fixtures/admission-master-win11-ram.memory-driver-blocked.json:12:        "rebootAllowed": false,
+examples/windows-fluid-admission-fixtures/admission-master-win11-ram.memory-driver-blocked.json:18:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-admission-fixtures/admission-master-win11-ram.memory-driver-blocked.json:46:      "PendingReboot": false,
+examples/windows-fluid-admission-fixtures/admission-master-win11-ram.memory-driver-blocked.json:64:        "hyperdensity.karl.io/no-reboot": "required",
+artifacts/the-father-windows-fluidvirt-admission-policy-v1/blocker_priority.md:17:  - `pending_reboot_detected`
+examples/windows-fluid-admission-fixtures/admission-missing-guest.blocked.json:12:        "rebootAllowed": false,
+examples/windows-fluid-admission-fixtures/admission-missing-guest.blocked.json:18:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-admission-fixtures/admission-missing-guest.blocked.json:52:        "hyperdensity.karl.io/no-reboot": "required",
+artifacts/the-father-windows-fluidvirt-admission-policy-v1/build_or_test_logs/admission-master-win11-cpu-output.json:49:    "noRebootProof": true,
+examples/windows-fluid-admission-fixtures/admission-missing-qmp.blocked.json:12:        "rebootAllowed": false,
+examples/windows-fluid-admission-fixtures/admission-missing-qmp.blocked.json:18:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-admission-fixtures/admission-missing-qmp.blocked.json:27:      "PendingReboot": false,
+examples/windows-fluid-admission-fixtures/admission-missing-qmp.blocked.json:45:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-admission-fixtures/admission-win11-pool.denied.json:12:        "rebootAllowed": false,
+examples/windows-fluid-admission-fixtures/admission-win11-pool.denied.json:18:        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+examples/windows-fluid-admission-fixtures/admission-win11-pool.denied.json:46:      "PendingReboot": false,
+examples/windows-fluid-admission-fixtures/admission-win11-pool.denied.json:64:        "hyperdensity.karl.io/no-reboot": "required",
+artifacts/the-father-windows-fluidvirt-admission-policy-v1/build_or_test_logs/admission-win11-pool-output.json:52:    "noRebootProof": true,
+pkg/windowsfluidvirt/admission_gate_test.go:87:func TestPolicyRejectsLiveMigrationRecreateReboot(t *testing.T) {
+pkg/windowsfluidvirt/admission_gate_test.go:101:		GuestAck: true, PendingReboot: true, LastBootTime: "2026-05-01T11:00:00Z", MachineGUIDHash: "hash", MemoryAdapterVerified: true, ReturnToFloorReady: true,
+pkg/windowsfluidvirt/admission_gate_test.go:116:	assertHas(t, result.PolicyViolations, "no_reboot_required")
+pkg/windowsfluidvirt/admission_gate.go:201:	if policy.RequireNoReboot && bundle.Guest != nil && bundle.Guest.PendingReboot {
+pkg/windowsfluidvirt/admission_gate.go:202:		violations = append(violations, "no_reboot_required")
+docs/contracts/windows-fluid-admission-policy-v1.md:22:- no migration/reboot/recreate
+docs/contracts/windows-fluid-admission-policy-v1.md:67:- no migration/recreate/reboot
+pkg/windowsfluidvirt/admission_policy.go:66:	RequireNoReboot                bool                `json:"requireNoReboot"`
+pkg/windowsfluidvirt/admission_policy.go:118:		RequireNoReboot:                true,
+pkg/windowsfluidvirt/admission_policy.go:166:		BlockerPendingRebootDetected:       string(BlockerPriorityP1HardBlock),

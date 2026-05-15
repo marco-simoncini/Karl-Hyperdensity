@@ -1,0 +1,30 @@
+{
+  "floor1": {
+    "elapsedMs": 27533,
+    "usageDeltaUsec": 80225139,
+    "throttledDeltaUsec": 58796712,
+    "nrThrottledDelta": 216
+  },
+  "applyUp": {
+    "allowed": true,
+    "beforeCpuMax": "300000 100000",
+    "afterCpuMax": "600000 100000"
+  },
+  "ceiling": {
+    "elapsedMs": 28501,
+    "usageDeltaUsec": 142286379,
+    "throttledDeltaUsec": 278773,
+    "nrThrottledDelta": 113
+  },
+  "applyDown": {
+    "allowed": true,
+    "beforeCpuMax": "600000 100000",
+    "afterCpuMax": "300000 100000"
+  },
+  "floor2": {
+    "elapsedMs": 28057,
+    "usageDeltaUsec": 81354187,
+    "throttledDeltaUsec": 59507913,
+    "nrThrottledDelta": 215
+  }
+}

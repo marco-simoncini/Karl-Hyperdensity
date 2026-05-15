@@ -1,0 +1,561 @@
+{
+  "meta": {
+    "namespace": "karl",
+    "vm": "master-win11",
+    "node": "karl-lab-metal-01",
+    "pod": "virt-launcher-master-win11-kmwgg",
+    "qemuPid": "2480927",
+    "qemuStart": "Thu May 7 18:58:03 2026",
+    "cgroupPath": "/kubepods.slice/kubepods-burstable.slice/kubepods-burstable-pod7b6a904a_1c9a_4a44_9b37_1dc737304773.slice/cri-containerd-6b3736cf90a6e2f41147f27714926ac68e57ff1a2d2b22da2375a4a74fcf0c87.scope"
+  },
+  "baseline": {
+    "guest": {
+      "GuestAck": true,
+      "WindowsLastBoot": "/Date(1778180311500)/",
+      "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+      "LogicalProcessors": 6,
+      "VisibleMemoryBytes": 13938089984,
+      "AvailableMemoryBytes": 10962042880,
+      "PendingReboot": false,
+      "CriticalEvents1h": 0
+    },
+    "cpuMax": "600000 100000",
+    "cpuStat": {
+      "usage_usec": 2861831008,
+      "user_usec": 2358583911,
+      "system_usec": 503247096,
+      "core_sched.force_idle_usec": 0,
+      "nr_periods": 270150,
+      "nr_throttled": 1772,
+      "throttled_usec": 302012189,
+      "nr_bursts": 0,
+      "burst_usec": 0
+    },
+    "qmpStatus": {
+      "return": {
+        "status": "running",
+        "running": true
+      },
+      "id": "libvirt-47275"
+    },
+    "qmpBalloon": {
+      "return": {
+        "actual": 12884901888
+      },
+      "id": "libvirt-47276"
+    },
+    "qmpMemorySummary": {
+      "return": {
+        "base-memory": 13958643712,
+        "plugged-memory": 0
+      },
+      "id": "libvirt-47277"
+    },
+    "qmpCpusFast": {
+      "return": [
+        {
+          "thread-id": 101,
+          "qom-type": "EPYC-Genoa-x86_64-cpu",
+          "props": {
+            "core-id": 0,
+            "thread-id": 0,
+            "socket-id": 0
+          },
+          "qom-path": "/machine/unattached/device[0]",
+          "cpu-index": 0,
+          "target": "x86_64"
+        },
+        {
+          "thread-id": 102,
+          "qom-type": "EPYC-Genoa-x86_64-cpu",
+          "props": {
+            "core-id": 1,
+            "thread-id": 0,
+            "socket-id": 0
+          },
+          "qom-path": "/machine/unattached/device[2]",
+          "cpu-index": 1,
+          "target": "x86_64"
+        },
+        {
+          "thread-id": 103,
+          "qom-type": "EPYC-Genoa-x86_64-cpu",
+          "props": {
+            "core-id": 2,
+            "thread-id": 0,
+            "socket-id": 0
+          },
+          "qom-path": "/machine/unattached/device[3]",
+          "cpu-index": 2,
+          "target": "x86_64"
+        },
+        {
+          "thread-id": 104,
+          "qom-type": "EPYC-Genoa-x86_64-cpu",
+          "props": {
+            "core-id": 3,
+            "thread-id": 0,
+            "socket-id": 0
+          },
+          "qom-path": "/machine/unattached/device[4]",
+          "cpu-index": 3,
+          "target": "x86_64"
+        },
+        {
+          "thread-id": 105,
+          "qom-type": "EPYC-Genoa-x86_64-cpu",
+          "props": {
+            "core-id": 4,
+            "thread-id": 0,
+            "socket-id": 0
+          },
+          "qom-path": "/machine/unattached/device[5]",
+          "cpu-index": 4,
+          "target": "x86_64"
+        },
+        {
+          "thread-id": 106,
+          "qom-type": "EPYC-Genoa-x86_64-cpu",
+          "props": {
+            "core-id": 5,
+            "thread-id": 0,
+            "socket-id": 0
+          },
+          "qom-path": "/machine/unattached/device[6]",
+          "cpu-index": 5,
+          "target": "x86_64"
+        }
+      ],
+      "id": "libvirt-47278"
+    },
+    "domstats": "Domain: 'karl_master-win11'\n  balloon.current=12582912\n  balloon.maximum=13631488\n  balloon.swap_in=4140856\n  balloon.swap_out=0\n  balloon.major_fault=85235\n  balloon.minor_fault=25420421\n  balloon.unused=10695012\n  balloon.available=13611416\n  balloon.usable=10726792\n  balloon.last-update=1778207296\n  balloon.disk_caches=63560\n  balloon.hugetlb_pgalloc=0\n  balloon.hugetlb_pgfail=0\n  balloon.rss=12634252\n  vcpu.current=6\n  vcpu.maximum=24\n  vcpu.0.state=1\n  vcpu.0.time=425540000000\n  vcpu.0.wait=0\n  vcpu.0.delay=92286974327\n  vcpu.0.halt_exits.sum=14232642\n  vcpu.0.pf_spurious.sum=56\n  vcpu.0.pf_emulate.sum=36165\n  vcpu.0.hypercalls.sum=187488\n  vcpu.0.invlpg.sum=0\n  vcpu.0.directed_yield_successful.sum=0\n  vcpu.0.tlb_flush.sum=679806\n  vcpu.0.halt_wait_ns.sum=26605620447266\n  vcpu.0.halt_poll_invalid.sum=0\n  vcpu.0.irq_window_exits.sum=11559\n  vcpu.0.nmi_window_exits.sum=0\n  vcpu.0.pf_taken.sum=1347878\n  vcpu.0.req_event.sum=28325091\n  vcpu.0.halt_successful_poll.sum=224592\n  vcpu.0.irq_injections.sum=14422042\n  vcpu.0.pf_fast.sum=0\n  vcpu.0.irq_exits.sum=739501\n  vcpu.0.insn_emulation.sum=234434\n  vcpu.0.signal_exits.sum=585\n  vcpu.0.guest_mode.cur=no\n  vcpu.0.insn_emulation_fail.sum=0\n  vcpu.0.halt_poll_success_ns.sum=8173215052\n  vcpu.0.nmi_injections.sum=1\n  vcpu.0.request_irq_exits.sum=0\n  vcpu.0.directed_yield_attempted.sum=0\n  vcpu.0.nested_run.sum=0\n  vcpu.0.pf_guest.sum=0\n  vcpu.0.exits.sum=49265584\n  vcpu.0.halt_wakeup.sum=13998944\n  vcpu.0.io_exits.sum=656077\n  vcpu.0.preemption_reported.sum=30168\n  vcpu.0.l1d_flush.sum=0\n  vcpu.0.halt_attempted_poll.sum=531586\n  vcpu.0.pf_fixed.sum=1067261\n  vcpu.0.notify_window_exits.sum=0\n  vcpu.0.blocking.cur=yes\n  vcpu.0.halt_poll_fail_ns.sum=5860676588\n  vcpu.0.fpu_reload.sum=849766\n  vcpu.0.preemption_other.sum=29066\n  vcpu.0.host_state_reload.sum=14910579\n  vcpu.0.mmio_exits.sum=196291\n  vcpu.0.pf_mmio_spte_created.sum=35860\n  vcpu.1.state=1\n  vcpu.1.time=459110000000\n  vcpu.1.wait=0\n  vcpu.1.delay=96261820629\n  vcpu.1.halt_exits.sum=14375830\n  vcpu.1.pf_spurious.sum=103\n  vcpu.1.pf_emulate.sum=720\n  vcpu.1.hypercalls.sum=96329\n  vcpu.1.invlpg.sum=0\n  vcpu.1.directed_yield_successful.sum=0\n  vcpu.1.tlb_flush.sum=711167\n  vcpu.1.halt_wait_ns.sum=26566596148768\n  vcpu.1.halt_poll_invalid.sum=0\n  vcpu.1.irq_window_exits.sum=14813\n  vcpu.1.nmi_window_exits.sum=0\n  vcpu.1.pf_taken.sum=25596\n  vcpu.1.req_event.sum=28030940\n  vcpu.1.halt_successful_poll.sum=215999\n  vcpu.1.irq_injections.sum=14572841\n  vcpu.1.pf_fast.sum=0\n  vcpu.1.irq_exits.sum=791666\n  vcpu.1.insn_emulation.sum=72616\n  vcpu.1.signal_exits.sum=2760\n  vcpu.1.guest_mode.cur=no\n  vcpu.1.insn_emulation_fail.sum=0\n  vcpu.1.halt_poll_success_ns.sum=5688399983\n  vcpu.1.nmi_injections.sum=1\n  vcpu.1.request_irq_exits.sum=0\n  vcpu.1.directed_yield_attempted.sum=0\n  vcpu.1.nested_run.sum=0\n  vcpu.1.pf_guest.sum=0\n  vcpu.1.exits.sum=45681111\n  vcpu.1.halt_wakeup.sum=14150591\n  vcpu.1.io_exits.sum=12313\n  vcpu.1.preemption_reported.sum=30847\n  vcpu.1.l1d_flush.sum=0\n  vcpu.1.halt_attempted_poll.sum=475057\n  vcpu.1.pf_fixed.sum=24425\n  vcpu.1.notify_window_exits.sum=0\n  vcpu.1.blocking.cur=yes\n  vcpu.1.halt_poll_fail_ns.sum=4883686291\n  vcpu.1.fpu_reload.sum=39828\n  vcpu.1.preemption_other.sum=28117\n  vcpu.1.host_state_reload.sum=14251830\n  vcpu.1.mmio_exits.sum=24776\n  vcpu.1.pf_mmio_spte_created.sum=720\n  vcpu.2.state=1\n  vcpu.2.time=500980000000\n  vcpu.2.wait=0\n  vcpu.2.delay=96803792592\n  vcpu.2.halt_exits.sum=14313240\n  vcpu.2.pf_spurious.sum=132\n  vcpu.2.pf_emulate.sum=688\n  vcpu.2.hypercalls.sum=218169\n  vcpu.2.invlpg.sum=0\n  vcpu.2.directed_yield_successful.sum=0\n  vcpu.2.tlb_flush.sum=800038\n  vcpu.2.halt_wait_ns.sum=26523504800026\n  vcpu.2.halt_poll_invalid.sum=0\n  vcpu.2.irq_window_exits.sum=14611\n  vcpu.2.nmi_window_exits.sum=0\n  vcpu.2.pf_taken.sum=10596\n  vcpu.2.req_event.sum=27996290\n  vcpu.2.halt_successful_poll.sum=194561\n  vcpu.2.irq_injections.sum=14523594\n  vcpu.2.pf_fast.sum=0\n  vcpu.2.irq_exits.sum=817424\n  vcpu.2.insn_emulation.sum=92418\n  vcpu.2.signal_exits.sum=2777\n  vcpu.2.guest_mode.cur=no\n  vcpu.2.insn_emulation_fail.sum=0\n  vcpu.2.halt_poll_success_ns.sum=4991546770\n  vcpu.2.nmi_injections.sum=1\n  vcpu.2.request_irq_exits.sum=0\n  vcpu.2.directed_yield_attempted.sum=0\n  vcpu.2.nested_run.sum=0\n  vcpu.2.pf_guest.sum=0\n  vcpu.2.exits.sum=45767389\n  vcpu.2.halt_wakeup.sum=14110673\n  vcpu.2.io_exits.sum=12714\n  vcpu.2.preemption_reported.sum=36572\n  vcpu.2.l1d_flush.sum=0\n  vcpu.2.halt_attempted_poll.sum=458446\n  vcpu.2.pf_fixed.sum=9461\n  vcpu.2.notify_window_exits.sum=0\n  vcpu.2.blocking.cur=yes\n  vcpu.2.halt_poll_fail_ns.sum=5261721539\n  vcpu.2.fpu_reload.sum=35751\n  vcpu.2.preemption_other.sum=27952\n  vcpu.2.host_state_reload.sum=14213410\n  vcpu.2.mmio_exits.sum=20289\n  vcpu.2.pf_mmio_spte_created.sum=688\n  vcpu.3.state=1\n  vcpu.3.time=453510000000\n  vcpu.3.wait=0\n  vcpu.3.delay=92744057846\n  vcpu.3.halt_exits.sum=14379074\n  vcpu.3.pf_spurious.sum=96\n  vcpu.3.pf_emulate.sum=96\n  vcpu.3.hypercalls.sum=121049\n  vcpu.3.invlpg.sum=0\n  vcpu.3.directed_yield_successful.sum=0\n  vcpu.3.tlb_flush.sum=798628\n  vcpu.3.halt_wait_ns.sum=26577786469711\n  vcpu.3.halt_poll_invalid.sum=0\n  vcpu.3.irq_window_exits.sum=18461\n  vcpu.3.nmi_window_exits.sum=0\n  vcpu.3.pf_taken.sum=14342\n  vcpu.3.req_event.sum=28171755\n  vcpu.3.halt_successful_poll.sum=254510\n  vcpu.3.irq_injections.sum=14714213\n  vcpu.3.pf_fast.sum=0\n  vcpu.3.irq_exits.sum=946962\n  vcpu.3.insn_emulation.sum=55858\n  vcpu.3.signal_exits.sum=2826\n  vcpu.3.guest_mode.cur=no\n  vcpu.3.insn_emulation_fail.sum=0\n  vcpu.3.halt_poll_success_ns.sum=13234650963\n  vcpu.3.nmi_injections.sum=0\n  vcpu.3.request_irq_exits.sum=0\n  vcpu.3.directed_yield_attempted.sum=0\n  vcpu.3.nested_run.sum=0\n  vcpu.3.pf_guest.sum=0\n  vcpu.3.exits.sum=45708244\n  vcpu.3.halt_wakeup.sum=14115412\n  vcpu.3.io_exits.sum=11895\n  vcpu.3.preemption_reported.sum=35054\n  vcpu.3.l1d_flush.sum=0\n  vcpu.3.halt_attempted_poll.sum=523938\n  vcpu.3.pf_fixed.sum=13949\n  vcpu.3.notify_window_exits.sum=0\n  vcpu.3.blocking.cur=yes\n  vcpu.3.halt_poll_fail_ns.sum=6450277244\n  vcpu.3.fpu_reload.sum=34682\n  vcpu.3.preemption_other.sum=28056\n  vcpu.3.host_state_reload.sum=14215663\n  vcpu.3.mmio_exits.sum=19980\n  vcpu.3.pf_mmio_spte_created.sum=96\n  vcpu.4.state=1\n  vcpu.4.time=426620000000\n  vcpu.4.wait=0\n  vcpu.4.delay=94254726238\n  vcpu.4.halt_exits.sum=14377579\n  vcpu.4.pf_spurious.sum=127\n  vcpu.4.pf_emulate.sum=41\n  vcpu.4.hypercalls.sum=149291\n  vcpu.4.invlpg.sum=0\n  vcpu.4.directed_yield_successful.sum=0\n  vcpu.4.tlb_flush.sum=859237\n  vcpu.4.halt_wait_ns.sum=26602267338071\n  vcpu.4.halt_poll_invalid.sum=0\n  vcpu.4.irq_window_exits.sum=13058\n  vcpu.4.nmi_window_exits.sum=0\n  vcpu.4.pf_taken.sum=9469\n  vcpu.4.req_event.sum=28075922\n  vcpu.4.halt_successful_poll.sum=198324\n  vcpu.4.irq_injections.sum=14546896\n  vcpu.4.pf_fast.sum=0\n  vcpu.4.irq_exits.sum=821478\n  vcpu.4.insn_emulation.sum=36299\n  vcpu.4.signal_exits.sum=2885\n  vcpu.4.guest_mode.cur=no\n  vcpu.4.insn_emulation_fail.sum=0\n  vcpu.4.halt_poll_success_ns.sum=8767918369\n  vcpu.4.nmi_injections.sum=1\n  vcpu.4.request_irq_exits.sum=0\n  vcpu.4.directed_yield_attempted.sum=0\n  vcpu.4.nested_run.sum=0\n  vcpu.4.pf_guest.sum=0\n  vcpu.4.exits.sum=45693243\n  vcpu.4.halt_wakeup.sum=14171356\n  vcpu.4.io_exits.sum=12615\n  vcpu.4.preemption_reported.sum=29635\n  vcpu.4.l1d_flush.sum=0\n  vcpu.4.halt_attempted_poll.sum=462303\n  vcpu.4.pf_fixed.sum=8841\n  vcpu.4.notify_window_exits.sum=0\n  vcpu.4.blocking.cur=yes\n  vcpu.4.halt_poll_fail_ns.sum=5101391343\n  vcpu.4.fpu_reload.sum=21204\n  vcpu.4.preemption_other.sum=28382\n  vcpu.4.host_state_reload.sum=14253083\n  vcpu.4.mmio_exits.sum=5705\n  vcpu.4.pf_mmio_spte_created.sum=41\n  vcpu.5.state=1\n  vcpu.5.time=487220000000\n  vcpu.5.wait=0\n  vcpu.5.delay=95906854993\n  vcpu.5.halt_exits.sum=14332963\n  vcpu.5.pf_spurious.sum=135\n  vcpu.5.pf_emulate.sum=11\n  vcpu.5.hypercalls.sum=130617\n  vcpu.5.invlpg.sum=0\n  vcpu.5.directed_yield_successful.sum=0\n  vcpu.5.tlb_flush.sum=791457\n  vcpu.5.halt_wait_ns.sum=26537723878515\n  vcpu.5.halt_poll_invalid.sum=0\n  vcpu.5.irq_window_exits.sum=12450\n  vcpu.5.nmi_window_exits.sum=0\n  vcpu.5.pf_taken.sum=905223\n  vcpu.5.req_event.sum=27972311\n  vcpu.5.halt_successful_poll.sum=231397\n  vcpu.5.irq_injections.sum=14537197\n  vcpu.5.pf_fast.sum=0\n  vcpu.5.irq_exits.sum=802554\n  vcpu.5.insn_emulation.sum=66843\n  vcpu.5.signal_exits.sum=2890\n  vcpu.5.guest_mode.cur=no\n  vcpu.5.insn_emulation_fail.sum=0\n  vcpu.5.halt_poll_success_ns.sum=5729632738\n  vcpu.5.nmi_injections.sum=1\n  vcpu.5.request_irq_exits.sum=0\n  vcpu.5.directed_yield_attempted.sum=0\n  vcpu.5.nested_run.sum=0\n  vcpu.5.pf_guest.sum=0\n  vcpu.5.exits.sum=46422403\n  vcpu.5.halt_wakeup.sum=14094131\n  vcpu.5.io_exits.sum=11886\n  vcpu.5.preemption_reported.sum=30102\n  vcpu.5.l1d_flush.sum=0\n  vcpu.5.halt_attempted_poll.sum=519913\n  vcpu.5.pf_fixed.sum=787535\n  vcpu.5.notify_window_exits.sum=0\n  vcpu.5.blocking.cur=yes\n  vcpu.5.halt_poll_fail_ns.sum=7627675811\n  vcpu.5.fpu_reload.sum=41418\n  vcpu.5.preemption_other.sum=27934\n  vcpu.5.host_state_reload.sum=14195586\n  vcpu.5.mmio_exits.sum=26669\n  vcpu.5.pf_mmio_spte_created.sum=11\n\n"
+  },
+  "cpu": {
+    "setFloor": {
+      "stdout": "{\n  \"resultId\": \"node-fluid-result-f05e7fddf2150ec8\",\n  \"requestId\": \"guest-workload-cpu_set_floor-20260508t031758z\",\n  \"action\": \"apply\",\n  \"decision\": \"applied\",\n  \"dryRun\": false,\n  \"mutationPerformed\": true,\n  \"previousCpuMax\": \"600000 100000\",\n  \"requestedCpuMax\": \"300000 100000\",\n  \"observedBeforeCpuMax\": \"600000 100000\",\n  \"observedAfterCpuMax\": \"300000 100000\",\n  \"rollbackCpuMax\": \"300000 100000\",\n  \"qemuPid\": \"2480927\",\n  \"qemuStartTime\": \"Thu May 7 18:58:03 2026\",\n  \"podUid\": \"7b6a904a-1c9a-4a44-9b37-1dc737304773\",\n  \"nodeName\": \"karl-lab-metal-01\",\n  \"evidenceRefs\": [\n    \"artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json\"\n  ],\n  \"auditHash\": \"2b261b949a739648c31d6bc667817db2bc45d8d33cfde92184b8677af582767b\",\n  \"createdAt\": \"2026-05-08T02:28:20Z\"\n}\n",
+      "evidence": {
+        "resultId": "node-fluid-result-f05e7fddf2150ec8",
+        "requestId": "guest-workload-cpu_set_floor-20260508t031758z",
+        "action": "apply",
+        "decision": "applied",
+        "dryRun": false,
+        "mutationPerformed": true,
+        "previousCpuMax": "600000 100000",
+        "requestedCpuMax": "300000 100000",
+        "observedBeforeCpuMax": "600000 100000",
+        "observedAfterCpuMax": "300000 100000",
+        "rollbackCpuMax": "300000 100000",
+        "qemuPid": "2480927",
+        "qemuStartTime": "Thu May 7 18:58:03 2026",
+        "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+        "nodeName": "karl-lab-metal-01",
+        "evidenceRefs": [
+          "artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json"
+        ],
+        "auditHash": "2b261b949a739648c31d6bc667817db2bc45d8d33cfde92184b8677af582767b",
+        "createdAt": "2026-05-08T02:28:20Z"
+      }
+    },
+    "floor": {
+      "cpuMax": "300000 100000",
+      "runs": [
+        {
+          "runId": "floor-1",
+          "startTime": "2026-05-08T02:28:21.8376601+00:00",
+          "endTime": "2026-05-08T02:28:41.8480733+00:00",
+          "durationMs": 20010,
+          "logicalProcessors": 6,
+          "workerCount": 6,
+          "iterations": 1797521,
+          "iterationsPerSecond": 89831.13,
+          "processCpuTimeMs": null,
+          "errors": []
+        },
+        {
+          "runId": "floor-2",
+          "startTime": "2026-05-08T02:28:43.4471896+00:00",
+          "endTime": "2026-05-08T02:29:03.4559740+00:00",
+          "durationMs": 20009,
+          "logicalProcessors": 6,
+          "workerCount": 6,
+          "iterations": 1849963,
+          "iterationsPerSecond": 92456.54,
+          "processCpuTimeMs": null,
+          "errors": []
+        },
+        {
+          "runId": "floor-3",
+          "startTime": "2026-05-08T02:29:05.0493718+00:00",
+          "endTime": "2026-05-08T02:29:25.0578574+00:00",
+          "durationMs": 20008,
+          "logicalProcessors": 6,
+          "workerCount": 6,
+          "iterations": 1924025,
+          "iterationsPerSecond": 96162.78,
+          "processCpuTimeMs": null,
+          "errors": []
+        }
+      ],
+      "medianIterationsPerSecond": 92456.54,
+      "cpuStatBefore": {
+        "usage_usec": 2862148118,
+        "user_usec": 2358750476,
+        "system_usec": 503397642,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 270185,
+        "nr_throttled": 1772,
+        "throttled_usec": 302012189,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuStatAfter": {
+        "usage_usec": 3040313245,
+        "user_usec": 2516900447,
+        "system_usec": 523412797,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 270836,
+        "nr_throttled": 2277,
+        "throttled_usec": 415000745,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuStatDelta": {
+        "usage_usec": 178165127,
+        "user_usec": 158149971,
+        "system_usec": 20015155,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 651,
+        "nr_throttled": 505,
+        "throttled_usec": 112988556,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "guestAfter": {
+        "GuestAck": true,
+        "WindowsLastBoot": "/Date(1778180311500)/",
+        "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+        "LogicalProcessors": 6,
+        "VisibleMemoryBytes": 13938089984,
+        "AvailableMemoryBytes": 10925596672,
+        "PendingReboot": false,
+        "CriticalEvents1h": 0
+      }
+    },
+    "dryRun": {
+      "stdout": "{\n  \"resultId\": \"node-fluid-result-e70df793c6bfc0d5\",\n  \"requestId\": \"guest-workload-cpu_dry_run_ceiling-20260508t031907z\",\n  \"action\": \"dry-run\",\n  \"decision\": \"accepted\",\n  \"dryRun\": true,\n  \"mutationPerformed\": false,\n  \"previousCpuMax\": \"300000 100000\",\n  \"requestedCpuMax\": \"600000 100000\",\n  \"observedBeforeCpuMax\": \"300000 100000\",\n  \"observedAfterCpuMax\": \"300000 100000\",\n  \"rollbackCpuMax\": \"300000 100000\",\n  \"qemuPid\": \"2480927\",\n  \"qemuStartTime\": \"Thu May 7 18:58:03 2026\",\n  \"podUid\": \"7b6a904a-1c9a-4a44-9b37-1dc737304773\",\n  \"nodeName\": \"karl-lab-metal-01\",\n  \"evidenceRefs\": [\n    \"artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json\"\n  ],\n  \"auditHash\": \"79691a15345b4b79e042922b968b664cd0f7a58b00a0bb2e9e5b04c77744a08d\",\n  \"createdAt\": \"2026-05-08T02:29:29Z\"\n}\n",
+      "evidence": {
+        "resultId": "node-fluid-result-e70df793c6bfc0d5",
+        "requestId": "guest-workload-cpu_dry_run_ceiling-20260508t031907z",
+        "action": "dry-run",
+        "decision": "accepted",
+        "dryRun": true,
+        "mutationPerformed": false,
+        "previousCpuMax": "300000 100000",
+        "requestedCpuMax": "600000 100000",
+        "observedBeforeCpuMax": "300000 100000",
+        "observedAfterCpuMax": "300000 100000",
+        "rollbackCpuMax": "300000 100000",
+        "qemuPid": "2480927",
+        "qemuStartTime": "Thu May 7 18:58:03 2026",
+        "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+        "nodeName": "karl-lab-metal-01",
+        "evidenceRefs": [
+          "artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json"
+        ],
+        "auditHash": "79691a15345b4b79e042922b968b664cd0f7a58b00a0bb2e9e5b04c77744a08d",
+        "createdAt": "2026-05-08T02:29:29Z"
+      }
+    },
+    "applyCeiling": {
+      "stdout": "{\n  \"resultId\": \"node-fluid-result-2f6858215c72cf72\",\n  \"requestId\": \"guest-workload-cpu_apply_ceiling-20260508t031909z\",\n  \"action\": \"apply\",\n  \"decision\": \"applied\",\n  \"dryRun\": false,\n  \"mutationPerformed\": true,\n  \"previousCpuMax\": \"300000 100000\",\n  \"requestedCpuMax\": \"600000 100000\",\n  \"observedBeforeCpuMax\": \"300000 100000\",\n  \"observedAfterCpuMax\": \"600000 100000\",\n  \"rollbackCpuMax\": \"300000 100000\",\n  \"qemuPid\": \"2480927\",\n  \"qemuStartTime\": \"Thu May 7 18:58:03 2026\",\n  \"podUid\": \"7b6a904a-1c9a-4a44-9b37-1dc737304773\",\n  \"nodeName\": \"karl-lab-metal-01\",\n  \"evidenceRefs\": [\n    \"artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json\"\n  ],\n  \"auditHash\": \"b247cdec3e163db44c5d541902fd7cdfae0ef58c57992595b67c9bd2025007ce\",\n  \"createdAt\": \"2026-05-08T02:29:31Z\"\n}\n",
+      "evidence": {
+        "resultId": "node-fluid-result-2f6858215c72cf72",
+        "requestId": "guest-workload-cpu_apply_ceiling-20260508t031909z",
+        "action": "apply",
+        "decision": "applied",
+        "dryRun": false,
+        "mutationPerformed": true,
+        "previousCpuMax": "300000 100000",
+        "requestedCpuMax": "600000 100000",
+        "observedBeforeCpuMax": "300000 100000",
+        "observedAfterCpuMax": "600000 100000",
+        "rollbackCpuMax": "300000 100000",
+        "qemuPid": "2480927",
+        "qemuStartTime": "Thu May 7 18:58:03 2026",
+        "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+        "nodeName": "karl-lab-metal-01",
+        "evidenceRefs": [
+          "artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json"
+        ],
+        "auditHash": "b247cdec3e163db44c5d541902fd7cdfae0ef58c57992595b67c9bd2025007ce",
+        "createdAt": "2026-05-08T02:29:31Z"
+      }
+    },
+    "ceiling": {
+      "cpuMax": "600000 100000",
+      "runs": [
+        {
+          "runId": "ceiling-1",
+          "startTime": "2026-05-08T02:29:32.2021230+00:00",
+          "endTime": "2026-05-08T02:29:52.2091435+00:00",
+          "durationMs": 20007,
+          "logicalProcessors": 6,
+          "workerCount": 6,
+          "iterations": 3486175,
+          "iterationsPerSecond": 174247.76,
+          "processCpuTimeMs": null,
+          "errors": []
+        },
+        {
+          "runId": "ceiling-2",
+          "startTime": "2026-05-08T02:29:53.6392549+00:00",
+          "endTime": "2026-05-08T02:30:13.6494807+00:00",
+          "durationMs": 20010,
+          "logicalProcessors": 6,
+          "workerCount": 6,
+          "iterations": 3266824,
+          "iterationsPerSecond": 163259.57,
+          "processCpuTimeMs": null,
+          "errors": []
+        },
+        {
+          "runId": "ceiling-3",
+          "startTime": "2026-05-08T02:30:15.0811142+00:00",
+          "endTime": "2026-05-08T02:30:35.0894892+00:00",
+          "durationMs": 20008,
+          "logicalProcessors": 6,
+          "workerCount": 6,
+          "iterations": 3171232,
+          "iterationsPerSecond": 158498.2,
+          "processCpuTimeMs": null,
+          "errors": []
+        }
+      ],
+      "medianIterationsPerSecond": 163259.57,
+      "cpuStatBefore": {
+        "usage_usec": 3041381053,
+        "user_usec": 2517968255,
+        "system_usec": 523412797,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 270888,
+        "nr_throttled": 2277,
+        "throttled_usec": 415000745,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuStatAfter": {
+        "usage_usec": 3333149603,
+        "user_usec": 2788165652,
+        "system_usec": 544983951,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 271535,
+        "nr_throttled": 2537,
+        "throttled_usec": 415723329,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuStatDelta": {
+        "usage_usec": 291768550,
+        "user_usec": 270197397,
+        "system_usec": 21571154,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 647,
+        "nr_throttled": 260,
+        "throttled_usec": 722584,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "guestAfter": {
+        "GuestAck": true,
+        "WindowsLastBoot": "/Date(1778180311500)/",
+        "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+        "LogicalProcessors": 6,
+        "VisibleMemoryBytes": 13938089984,
+        "AvailableMemoryBytes": 10919600128,
+        "PendingReboot": false,
+        "CriticalEvents1h": 0
+      }
+    },
+    "improvementPct": 76.58,
+    "returnToFloor": {
+      "stdout": "{\n  \"resultId\": \"node-fluid-result-92ceb7b5c51ced2f\",\n  \"requestId\": \"guest-workload-cpu_return_floor-20260508t032017z\",\n  \"action\": \"return-to-floor\",\n  \"decision\": \"returned_to_floor\",\n  \"dryRun\": false,\n  \"mutationPerformed\": true,\n  \"previousCpuMax\": \"600000 100000\",\n  \"requestedCpuMax\": \"300000 100000\",\n  \"observedBeforeCpuMax\": \"600000 100000\",\n  \"observedAfterCpuMax\": \"600000 100000\",\n  \"rollbackCpuMax\": \"300000 100000\",\n  \"returnToFloorCpuMax\": \"600000 100000\",\n  \"qemuPid\": \"2480927\",\n  \"qemuStartTime\": \"Thu May 7 18:58:03 2026\",\n  \"podUid\": \"7b6a904a-1c9a-4a44-9b37-1dc737304773\",\n  \"nodeName\": \"karl-lab-metal-01\",\n  \"evidenceRefs\": [\n    \"artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json\"\n  ],\n  \"auditHash\": \"ed9fadc4d68c7890f6f871f06136599e30a97b5b884f84561c48ce78d1b382c4\",\n  \"createdAt\": \"2026-05-08T02:30:39Z\"\n}\n",
+      "evidence": {
+        "resultId": "node-fluid-result-92ceb7b5c51ced2f",
+        "requestId": "guest-workload-cpu_return_floor-20260508t032017z",
+        "action": "return-to-floor",
+        "decision": "returned_to_floor",
+        "dryRun": false,
+        "mutationPerformed": true,
+        "previousCpuMax": "600000 100000",
+        "requestedCpuMax": "300000 100000",
+        "observedBeforeCpuMax": "600000 100000",
+        "observedAfterCpuMax": "600000 100000",
+        "rollbackCpuMax": "300000 100000",
+        "returnToFloorCpuMax": "600000 100000",
+        "qemuPid": "2480927",
+        "qemuStartTime": "Thu May 7 18:58:03 2026",
+        "podUid": "7b6a904a-1c9a-4a44-9b37-1dc737304773",
+        "nodeName": "karl-lab-metal-01",
+        "evidenceRefs": [
+          "artifacts/the-father-windows-product-path-definitive-master-win11-v1/outcome.json"
+        ],
+        "auditHash": "ed9fadc4d68c7890f6f871f06136599e30a97b5b884f84561c48ce78d1b382c4",
+        "createdAt": "2026-05-08T02:30:39Z"
+      }
+    },
+    "postReturn": {
+      "cpuMax": "600000 100000",
+      "runs": [
+        {
+          "runId": "return-1",
+          "startTime": "2026-05-08T02:30:40.7479565+00:00",
+          "endTime": "2026-05-08T02:31:00.7595781+00:00",
+          "durationMs": 20012,
+          "logicalProcessors": 6,
+          "workerCount": 6,
+          "iterations": 3249605,
+          "iterationsPerSecond": 162382.82,
+          "processCpuTimeMs": null,
+          "errors": []
+        },
+        {
+          "runId": "return-2",
+          "startTime": "2026-05-08T02:31:02.3878952+00:00",
+          "endTime": "2026-05-08T02:31:22.3961338+00:00",
+          "durationMs": 20008,
+          "logicalProcessors": 6,
+          "workerCount": 6,
+          "iterations": 3525651,
+          "iterationsPerSecond": 176212.07,
+          "processCpuTimeMs": null,
+          "errors": []
+        }
+      ],
+      "medianIterationsPerSecond": 169297.445,
+      "cpuStatBefore": {
+        "usage_usec": 3334034053,
+        "user_usec": 2789050101,
+        "system_usec": 544983951,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 271574,
+        "nr_throttled": 2537,
+        "throttled_usec": 415723329,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuStatAfter": {
+        "usage_usec": 3530533846,
+        "user_usec": 2969787431,
+        "system_usec": 560746414,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 272009,
+        "nr_throttled": 2707,
+        "throttled_usec": 416186184,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "cpuStatDelta": {
+        "usage_usec": 196499793,
+        "user_usec": 180737330,
+        "system_usec": 15762463,
+        "core_sched.force_idle_usec": 0,
+        "nr_periods": 435,
+        "nr_throttled": 170,
+        "throttled_usec": 462855,
+        "nr_bursts": 0,
+        "burst_usec": 0
+      },
+      "guestAfter": {
+        "GuestAck": true,
+        "WindowsLastBoot": "/Date(1778180311500)/",
+        "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+        "LogicalProcessors": 6,
+        "VisibleMemoryBytes": 13938089984,
+        "AvailableMemoryBytes": 10913456128,
+        "PendingReboot": false,
+        "CriticalEvents1h": 0
+      }
+    }
+  },
+  "ram": {
+    "floor": {
+      "qmpBalloonActual": 12884901888,
+      "domstats": "Domain: 'karl_master-win11'\n  balloon.current=12582912\n  balloon.maximum=13631488\n  balloon.swap_in=4150652\n  balloon.swap_out=0\n  balloon.major_fault=85422\n  balloon.minor_fault=35457404\n  balloon.unused=10333732\n  balloon.available=13611416\n  balloon.usable=10366490\n  balloon.last-update=1778207481\n  balloon.disk_caches=65516\n  balloon.hugetlb_pgalloc=0\n  balloon.hugetlb_pgfail=0\n  balloon.rss=12634252\n\n",
+      "guest": {
+        "GuestAck": true,
+        "WindowsLastBoot": "/Date(1778180311500)/",
+        "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+        "LogicalProcessors": 6,
+        "VisibleMemoryBytes": 13938089984,
+        "AvailableMemoryBytes": 10911817728,
+        "PendingReboot": false,
+        "CriticalEvents1h": 0
+      }
+    },
+    "ceiling": {
+      "qmpBalloonActual": 13258194944,
+      "domstats": "Domain: 'karl_master-win11'\n  balloon.current=12914688\n  balloon.maximum=13631488\n  balloon.swap_in=4150656\n  balloon.swap_out=0\n  balloon.major_fault=85423\n  balloon.minor_fault=35640197\n  balloon.unused=10907712\n  balloon.available=13611416\n  balloon.usable=10939844\n  balloon.last-update=1778207491\n  balloon.disk_caches=64264\n  balloon.hugetlb_pgalloc=0\n  balloon.hugetlb_pgfail=0\n  balloon.rss=13030796\n\n",
+      "guestBeforeAlloc": {
+        "GuestAck": true,
+        "WindowsLastBoot": "/Date(1778180311500)/",
+        "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+        "LogicalProcessors": 6,
+        "VisibleMemoryBytes": 13938089984,
+        "AvailableMemoryBytes": 11328286720,
+        "PendingReboot": false,
+        "CriticalEvents1h": 0
+      },
+      "allocWorkload": {
+        "visibleMemoryBefore": 13938089984,
+        "availableMemoryBefore": 11551715328,
+        "allocationBytesRequested": 536870912,
+        "allocationBytesSucceeded": 536870912,
+        "availableMemoryDuring": 11423784960,
+        "availableMemoryAfterRelease": 11902844928,
+        "success": true,
+        "errors": []
+      },
+      "guestAfterAlloc": {
+        "GuestAck": true,
+        "WindowsLastBoot": "/Date(1778180311500)/",
+        "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+        "LogicalProcessors": 6,
+        "VisibleMemoryBytes": 13938089984,
+        "AvailableMemoryBytes": 11986075648,
+        "PendingReboot": false,
+        "CriticalEvents1h": 0
+      }
+    },
+    "returnToFloor": {
+      "qmpBalloonActual": 12884901888,
+      "domstats": "Domain: 'karl_master-win11'\n  balloon.current=12582912\n  balloon.maximum=13631488\n  balloon.swap_in=4151448\n  balloon.swap_out=0\n  balloon.major_fault=85480\n  balloon.minor_fault=35915186\n  balloon.unused=10915792\n  balloon.available=13611416\n  balloon.usable=10948122\n  balloon.last-update=1778207511\n  balloon.disk_caches=64660\n  balloon.hugetlb_pgalloc=0\n  balloon.hugetlb_pgfail=0\n  balloon.rss=12625036\n\n",
+      "guestAfterDown": {
+        "GuestAck": true,
+        "WindowsLastBoot": "/Date(1778180311500)/",
+        "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+        "LogicalProcessors": 6,
+        "VisibleMemoryBytes": 13938089984,
+        "AvailableMemoryBytes": 10918174720,
+        "PendingReboot": false,
+        "CriticalEvents1h": 0
+      }
+    }
+  },
+  "continuity": {
+    "podLine": "virt-launcher-master-win11-kmwgg|7b6a904a-1c9a-4a44-9b37-1dc737304773|karl-lab-metal-01|0",
+    "vmim": "",
+    "events": "LAST SEEN   TYPE     REASON                 OBJECT                                    MESSAGE\n14m         Normal   Provisioning           persistentvolumeclaim/esxi-01-7-0-becor   External provisioner is provisioning volume for claim \"karl/esxi-01-7-0-becor\"\n14m         Normal   Provisioning           persistentvolumeclaim/esxi-01-7-0-becor   Assuming an external populator will provision the volume\n5m30s       Normal   AddedInterface         pod/karl-node-fluid-actuator-mvp          Add eth0 [10.16.3.144/16] from kube-ovn\n5m30s       Normal   Pulled                 pod/karl-node-fluid-actuator-mvp          Container image \"ubuntu:24.04\" already present on machine and can be accessed by the pod\n5m30s       Normal   Created                pod/karl-node-fluid-actuator-mvp          Container created\n5m30s       Normal   Started                pod/karl-node-fluid-actuator-mvp          Container started\n4m49s       Normal   ExternalProvisioning   persistentvolumeclaim/esxi-01-7-0-becor   Waiting for a volume to be created either by the external provisioner 'driver.longhorn.io' or manually by the system administrator. If volume creation is delayed, please verify that the provisioner is running and correctly registered.\n"
+  },
+  "finalCpuMax": "600000 100000",
+  "finalGuest": {
+    "GuestAck": true,
+    "WindowsLastBoot": "/Date(1778180311500)/",
+    "MachineGuidHash": "d1fdf2ce69932d7ac2f9e3497be7f845d4a3ef9140c45bd0d7b0ea47c195508e",
+    "LogicalProcessors": 6,
+    "VisibleMemoryBytes": 13938089984,
+    "AvailableMemoryBytes": 10917781504,
+    "PendingReboot": false,
+    "CriticalEvents1h": 0
+  },
+  "finalQmpBalloon": 12884901888
+}

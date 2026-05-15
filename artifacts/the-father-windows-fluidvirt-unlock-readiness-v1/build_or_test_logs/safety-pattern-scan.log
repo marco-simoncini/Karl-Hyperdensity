@@ -1,0 +1,36 @@
+## PATTERN: Bearer
+## PATTERN: kubeconfig
+## PATTERN: client-secret
+## PATTERN: password
+## PATTERN: BEGIN PRIVATE KEY
+## PATTERN: kubectl apply
+## PATTERN: kubectl patch
+## PATTERN: helm upgrade
+## PATTERN: frontend-next
+## PATTERN: React
+## PATTERN: tsx
+## PATTERN: css
+## PATTERN: :443
+## PATTERN: port: 443
+## PATTERN: :8888
+## PATTERN: port: 8888
+## PATTERN: device_add
+## PATTERN: qom-set
+## PATTERN: system_powerdown
+## PATTERN: shutdown
+## PATTERN: reboot
+artifacts/the-father-windows-fluidvirt-unlock-readiness-v1/negative_test_matrix.md:3:Baseline negative cases include missing/wrong QMP, identity changes, reboot evidence failures, guest ACK missing, rollback/return missing, memory driver unverified, migration races, pool/generic model denial, stale evidence, missing/malformed attestation, and replayed evidence.
+docs/contracts/windows-fluidvirt.md:9:- No live migration/recreate/reboot flow in this phase.
+docs/contracts/windows-fluidvirt.md:16:  - Enforces `runtimeMode=in-place-qmp`, no reboot/recreate/migration.
+docs/contracts/windows-fluidvirt.md:39:  - no reboot proof
+docs/contracts/windows-fluidvirt.md:47:  - no reboot proof
+docs/contracts/windows-fluid-future-apply-unlock-readiness-v1.md:211:- Windows reboot undetected
+docs/contracts/windows-fluid-future-apply-unlock-readiness-v1.md:264:- pending reboot
+## PATTERN: cpu-add
+## PATTERN: object-add
+## PATTERN: object-del
+## PATTERN: migrate
+## PATTERN: executorEnabled: true
+## PATTERN: applyAllowed: true
+## PATTERN: mutationAllowed: true
+## PATTERN: autonomousApply: true

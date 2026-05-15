@@ -1,0 +1,55 @@
+## PATTERN: Bearer
+## PATTERN: kubeconfig
+## PATTERN: client-secret
+## PATTERN: password
+## PATTERN: BEGIN PRIVATE KEY
+## PATTERN: kubectl apply
+## PATTERN: kubectl patch
+## PATTERN: helm upgrade
+## PATTERN: frontend-next
+## PATTERN: React
+## PATTERN: tsx
+## PATTERN: css
+## PATTERN: :443
+## PATTERN: port: 443
+## PATTERN: :8888
+## PATTERN: port: 8888
+## PATTERN: device_add
+## PATTERN: qom-set
+## PATTERN: system_powerdown
+## PATTERN: shutdown
+## PATTERN: reboot
+docs/contracts/windows-fluidvirt.md:9:- No live migration/recreate/reboot flow in this phase.
+docs/contracts/windows-fluidvirt.md:16:  - Enforces `runtimeMode=in-place-qmp`, no reboot/recreate/migration.
+docs/contracts/windows-fluidvirt.md:39:  - no reboot proof
+docs/contracts/windows-fluidvirt.md:47:  - no reboot proof
+docs/contracts/windows-fluid-unlock-gate-verification-v1.md:35:- no pending reboot
+pkg/windowsfluidvirt/unlock_gate_verification_test.go:97:		{"pending reboot", func(in *UnlockGateSetEvaluationInput) { in.EvidenceBundle.Guest.PendingReboot = true }, Gate1LabReadOnlyEvidence, UnlockGateBlocked, BlockerPendingRebootDetected, false},
+examples/windows-fluid-unlock-gate-fixtures/gate1-win11-pool-target.blocked.json:10:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gate1-win11-pool-target.blocked.json:107:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-unlock-gate-fixtures/gate2-attestation-replayed-stale.blocked.json:10:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gate2-attestation-replayed-stale.blocked.json:107:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-unlock-gate-fixtures/gate1-master-win11-identity-drift.quarantined.json:10:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gate1-master-win11-identity-drift.quarantined.json:107:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-unlock-gate-fixtures/gate2-attestation-malformed.blocked.json:10:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gate2-attestation-malformed.blocked.json:107:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-unlock-gate-fixtures/gate1-master-win11-missing-guest.blocked.json:10:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gate1-master-win11-missing-guest.blocked.json:99:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-unlock-gate-fixtures/gate2-attestation-future-signable.passed.json:10:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gate2-attestation-future-signable.passed.json:107:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-unlock-gate-fixtures/gateset-0-1-2.passed.json:9:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gateset-0-1-2.passed.json:106:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-unlock-gate-fixtures/gate1-master-win11-missing-qmp.blocked.json:10:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gate1-master-win11-missing-qmp.blocked.json:89:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-unlock-gate-fixtures/gateset-quarantine.identity-drift.json:9:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gateset-quarantine.identity-drift.json:106:        "hyperdensity.karl.io/no-reboot": "required",
+examples/windows-fluid-unlock-gate-fixtures/gate1-master-win11-readonly-complete.passed.json:10:        "rebootAllowed": false,
+examples/windows-fluid-unlock-gate-fixtures/gate1-master-win11-readonly-complete.passed.json:107:        "hyperdensity.karl.io/no-reboot": "required",
+## PATTERN: cpu-add
+## PATTERN: object-add
+## PATTERN: object-del
+## PATTERN: migrate
+## PATTERN: executorEnabled: true
+## PATTERN: applyAllowed: true
+## PATTERN: mutationAllowed: true
+## PATTERN: autonomousApply: true

@@ -1,0 +1,97 @@
+{
+  "name": "admission-master-win11-cpu",
+  "requestedAction": "prepare-cpu-lease",
+  "expectedAdmissionPhase": "ADMITTED_FOR_FUTURE_APPLY",
+  "expectedDecisionBlockers": [],
+  "bundle": {
+    "shell": {
+      "spec": {
+        "vmRef": "karl/master-win11",
+        "runtimeMode": "in-place-qmp",
+        "migrationRequired": false,
+        "rebootAllowed": false,
+        "recreateAllowed": false,
+        "floor": { "cpu": 4, "memory": 8192 },
+        "envelope": { "maxCpu": 8, "maxMemory": 32768 },
+        "runtimeTarget": { "cpu": 6, "memory": 8192 },
+        "runtimeActual": { "cpu": 4, "memory": 8192 },
+        "guest": { "agentModule": "fluidShell", "requireAck": true, "requireNoPendingReboot": true }
+      },
+      "status": {
+        "phase": "READY",
+        "evidenceRef": "evidence/admission/master-win11-cpu",
+        "lastTransitionTime": "2026-05-07T14:25:00Z"
+      }
+    },
+    "kubeVirtBefore": {
+      "vmName": "master-win11",
+      "vmNamespace": "karl",
+      "vmiName": "master-win11",
+      "vmiUid": "vmi-master",
+      "virtLauncherPodUid": "pod-master",
+      "nodeName": "karl-metal-01",
+      "qemuPid": "5120"
+    },
+    "kubeVirtAfter": {
+      "vmName": "master-win11",
+      "vmNamespace": "karl",
+      "vmiName": "master-win11",
+      "vmiUid": "vmi-master",
+      "virtLauncherPodUid": "pod-master",
+      "nodeName": "karl-metal-01",
+      "qemuPid": "5120"
+    },
+    "qmp": {
+      "sidecarVersion": "v0-readonly",
+      "qmpConnected": true,
+      "qmpGreetingObserved": true,
+      "qmpCapabilitiesNegotiated": true,
+      "qmpSocketPath": "/var/run/qmp.sock",
+      "qemuPid": "5120",
+      "cpuTopologyObserved": true,
+      "maxCpusObserved": 8,
+      "hotpluggableCpusObserved": true,
+      "memoryDevicesObserved": true,
+      "memoryBackendsObserved": true,
+      "qmpCommandsExecuted": ["qmp_capabilities", "query-status", "query-cpus-fast"],
+      "qmpReadOnly": true,
+      "qmpErrors": []
+    },
+    "guest": {
+      "GuestAck": true,
+      "PendingReboot": false,
+      "LastBootTime": "2026-05-01T11:00:00Z",
+      "MachineGUIDHash": "hash-master-win11",
+      "MemoryAdapterVerified": true,
+      "ReturnToFloorReady": true,
+      "CriticalEventsDetected": false
+    },
+    "leaseIntent": {
+      "actionType": "prepare-cpu-lease",
+      "shellRef": "karl/master-win11",
+      "grant": { "cpu": 2, "memory": 0 },
+      "rollbackReady": true,
+      "returnToFloorReady": true
+    },
+    "policyGates": {
+      "annotations": {
+        "hyperdensity.karl.io/fluid-runtime": "true",
+        "hyperdensity.karl.io/no-live-migration": "true",
+        "hyperdensity.karl.io/no-reboot": "required",
+        "hyperdensity.karl.io/no-recreate": "required",
+        "hyperdensity.karl.io/runtime-mode": "in-place-qmp",
+        "hyperdensity.karl.io/single-node-compatible": "true"
+      },
+      "expectedRuntimeMode": "in-place-qmp",
+      "poolReplicaContextOnly": false
+    },
+    "timestamps": { "collectedAt": "2026-05-07T14:30:00Z" },
+    "sourceMetadata": {
+      "sourceKind": "vm",
+      "sourceName": "master-win11",
+      "sourceNamespace": "karl",
+      "clusterContext": "karl-metal-01@ovh"
+    },
+    "sanitizationStatus": "sanitized"
+  }
+}

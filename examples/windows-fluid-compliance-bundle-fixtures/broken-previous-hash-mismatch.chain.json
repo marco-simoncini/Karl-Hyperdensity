@@ -1,0 +1,7 @@
+{
+  "name": "broken chain previous hash mismatch",
+  "bundleVersion": "windows-fluid-compliance-replay-bundle-index-v1",
+  "expectedChainValid": false,
+  "expectedBrokenReason": "previousRunHash mismatch",
+  "expectedRunCount": 2
+}
