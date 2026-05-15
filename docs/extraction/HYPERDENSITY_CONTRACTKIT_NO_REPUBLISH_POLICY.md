@@ -43,8 +43,15 @@ That version string may still resolve to **stale zip content** on the public mod
 4. Update Karl-Dashboard `kubernetes-console/go.mod` and parity docs.  
 5. Extend **`ContractKitSupersededModuleVersions`** only when a published semver must be permanently avoided (rare; prefer never publishing broken tags).
 
+## Consumer CI environment (Sprint 41)
+
+CI and private consumers should set **`GOPRIVATE=github.com/marco-simoncini/*`** and **`GONOSUMDB=github.com/marco-simoncini/*`** so nested `contractkit` tags resolve without spurious sumdb/proxy failures. Optionally **`GONOPROXY=github.com/marco-simoncini/*`** for direct VCS fetch. Prefer scoped **`GONOSUMDB`** over global **`GOSUMDB=off`**. Full checklist: **`HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`**.
+
+**No** runtime or API surface change is implied.
+
 ## Related
 
 - `HYPERDENSITY_CONTRACTKIT_RELEASE_TAGGING.md`
 - `HYPERDENSITY_CONTRACTKIT_VERSION_MODEL.md`
+- `HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`
 - `pkg/hyperdensity/contractkit/contracts/release.go`

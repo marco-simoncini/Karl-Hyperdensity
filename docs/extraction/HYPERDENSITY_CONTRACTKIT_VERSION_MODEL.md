@@ -39,8 +39,19 @@ Go **module version strings** are effectively **immutable** after publication to
 - If a release must be corrected, publish a **strictly newer** semver and update pins.
 - Superseded semvers: **`v0.1.5-khr-m1-m16`** (superseded by `v0.1.6`), **`v0.1.7-khr-m1-m18`** (superseded by `v0.1.8` lineage); see **`HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`** and `contracts.ContractKitSupersededModuleVersions`.
 
+## Consumer CI environment (Sprint 41)
+
+For Karl-Dashboard and other consumers building in CI against **private** or freshly pushed tags:
+
+- **`GOPRIVATE=github.com/marco-simoncini/*`**
+- **`GONOSUMDB=github.com/marco-simoncini/*`**
+- Optional: **`GONOPROXY=github.com/marco-simoncini/*`** for direct git fetch when the module proxy lags.
+
+Use **`GOSUMDB=off`** only if scoped variables are insufficient (disables verification globally for that command). Rationale and ordering: **`HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`**.
+
 ## Related
 
 - `HYPERDENSITY_CONTRACTKIT_RELEASE_TAGGING.md`
 - `HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`
+- `HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`
 - Dashboard `HYPERDENSITY_CONTRACTKIT_VERSION_M12.md`

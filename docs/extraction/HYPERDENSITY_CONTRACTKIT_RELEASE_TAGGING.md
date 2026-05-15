@@ -204,6 +204,17 @@ go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit
 
 Full narrative: **`HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`**.
 
+## Consumer CI environment (Sprint 41)
+
+Downstream **`go test` / `go mod download`** jobs should export:
+
+- **`GOPRIVATE=github.com/marco-simoncini/*`**
+- **`GONOSUMDB=github.com/marco-simoncini/*`**
+
+Optional: **`GONOPROXY=github.com/marco-simoncini/*`** when the module proxy cannot see the repo or is stale.
+
+Avoid **`GOSUMDB=off`** unless necessary; prefer scoped **`GONOSUMDB`** for the `marco-simoncini` prefix. See **`HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`**.
+
 ## Compatibility promise (contractkit)
 
 | Property | Commitment |
@@ -219,5 +230,6 @@ Full narrative: **`HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`**.
 - `HYPERDENSITY_CONTRACTKIT_MODULE.md`
 - `HYPERDENSITY_CONTRACTKIT_FIXTURE_MANIFEST.md`
 - `HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`
+- `HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`
 - `HYPERDENSITY_CONTRACTKIT_VERSION_MODEL.md`
 - Dashboard `HYPERDENSITY_CONTRACTKIT_RELEASE_M11.md`
