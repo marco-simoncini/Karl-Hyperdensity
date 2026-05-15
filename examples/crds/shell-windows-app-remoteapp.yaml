@@ -24,6 +24,20 @@ spec:
         - static
 ---
 apiVersion: runtime.karl.io/v1alpha1
+kind: RuntimeProvider
+metadata:
+  name: windows-host-agent-v1
+spec:
+  id: windows-host-agent.v1
+  displayName: Windows Host Agent (kubelet analog for Windows Shells)
+  driver: windows-host-agent
+  supportedShellClassIds:
+    - windows.app.remoteapp.v1
+  defaultResourcePortProfileRef:
+    name: windows-app-envelope-example
+  execContractVersion: khr-contract-2026.05-sprint2
+---
+apiVersion: runtime.karl.io/v1alpha1
 kind: ShellClass
 metadata:
   name: windows-app-remoteapp
