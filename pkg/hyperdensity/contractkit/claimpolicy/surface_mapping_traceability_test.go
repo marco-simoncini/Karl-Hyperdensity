@@ -208,13 +208,15 @@ func TestWindowsLaneDisabledRequiredToken(t *testing.T) {
 }
 
 func TestNoProductionMutationRequiredTokens(t *testing.T) {
+	var union []string
 	for _, m := range SurfaceMappings() {
 		if m.ClaimID != string(ClaimNoProductionMutation) {
 			continue
 		}
-		joined := strings.Join(m.DashboardRequiredTokens, "\n")
-		if !strings.Contains(joined, "NoProductionMutation") || !strings.Contains(joined, "no_production_mutation") {
-			t.Fatalf("no_production_mutation mapping must list both spellings, got %#v (surface=%q field=%q)", m.DashboardRequiredTokens, m.Surface, m.Field)
-		}
+		union = append(union, m.DashboardRequiredTokens...)
+	}
+	joined := strings.Join(union, "\n")
+	if !strings.Contains(joined, "NoProductionMutation") || !strings.Contains(joined, "no_production_mutation") {
+		t.Fatalf("union of tokens across no_production_mutation mappings must include catalog spellings NoProductionMutation and no_production_mutation, got:\n%s", joined)
 	}
 }

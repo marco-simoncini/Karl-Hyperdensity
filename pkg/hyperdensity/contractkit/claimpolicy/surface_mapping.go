@@ -186,11 +186,11 @@ func init() {
 			Field:                "LimitationID",
 			ExpectedValue:        "no_production_mutation",
 			RuntimeImportAllowed: false,
-			Notes:                "Live resource authority limitation rows reference the same production-mutation gate id.",
+			Notes:                "Live resource authority limitation rows use hpblockers.IDNoProductionMutation; the snake-case id is not spelled as a string literal in this file.",
 			DashboardFiles: normalizeDashboardFiles([]string{
 				"pkg/server/hyperdensity_parent_fabric_live_resource_authority_v1.go",
 			}),
-			DashboardRequiredTokens: normalizeRequiredTokens([]string{"NoProductionMutation", "no_production_mutation"}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"IDNoProductionMutation", "keep_evidence_namespace_scope"}),
 		},
 		{
 			Surface:              string(SurfaceRuntimeImportFreeze),
