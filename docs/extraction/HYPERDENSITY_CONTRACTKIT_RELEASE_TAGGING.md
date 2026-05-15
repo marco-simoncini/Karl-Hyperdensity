@@ -149,24 +149,26 @@ go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit
 
 ## Seventh anchor tag (Sprint 39 — claimpolicy required token guard)
 
-**Go module version:** `v0.1.7-khr-m1-m18`  
+**Go module version:** `v0.1.8-khr-m1-m18`  
 **Git tag:**
 
 ```text
-pkg/hyperdensity/contractkit/v0.1.7-khr-m1-m18
+pkg/hyperdensity/contractkit/v0.1.8-khr-m1-m18
 ```
 
 Adds **`DashboardRequiredTokens`** on `SurfaceClaimMapping` rows plus **`RequiredTokensForClaim`** / **`ValidateDashboardRequiredTokens`**. Hyperdensity still performs **no** Dashboard filesystem reads; Karl-Dashboard tests verify substring parity. **No** `ContractKitVersion` / manifest bump; M17 runtime import freeze unchanged.
 
+**Note:** a short-lived `v0.1.7-khr-m1-m18` tag was superseded because the public Go module proxy treats published versions as immutable; Sprint 39 ships as **`v0.1.8-khr-m1-m18`**.
+
 ```bash
-git tag pkg/hyperdensity/contractkit/v0.1.7-khr-m1-m18 <sprint-39-commit>
-git push origin pkg/hyperdensity/contractkit/v0.1.7-khr-m1-m18
+git tag pkg/hyperdensity/contractkit/v0.1.8-khr-m1-m18 <sprint-39-commit>
+git push origin pkg/hyperdensity/contractkit/v0.1.8-khr-m1-m18
 ```
 
 Dashboard pin:
 
 ```bash
-go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.7-khr-m1-m18
+go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.8-khr-m1-m18
 ```
 
 ## Compatibility promise (contractkit)

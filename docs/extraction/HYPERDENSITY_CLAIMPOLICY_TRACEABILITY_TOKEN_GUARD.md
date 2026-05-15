@@ -22,13 +22,14 @@ Real file content checks run in **Karl-Dashboard** `TestHyperdensityClaimpolicyT
 | No path-like tokens | Tokens must not contain `/`, `\`, or `..` (conservative guard). |
 | Runtime | **`RuntimeImportAllowed`** remains **`false`** for every row. M17 runtime import freeze unchanged. |
 | API / payload | **No** change to HTTP APIs, JSON field ordering, or Parent Fabric runtime behavior. |
-| Schema | **`ContractKitVersion`** (`v0.0.0-sprint26`) and **`FixtureManifestVersion`** unchanged; module semver bumps to **`v0.1.7-khr-m1-m18`**. |
+| Schema | **`ContractKitVersion`** (`v0.0.0-sprint26`) and **`FixtureManifestVersion`** unchanged; module semver bumps to **`v0.1.8-khr-m1-m18`**. |
 
 ## Version note
 
 - **`v0.1.5-khr-m1-m16`**: first Sprint 38 traceability tag (superseded).
 - **`v0.1.6-khr-m1-m17`**: corrected `windows_lane_disabled` file paths for traceability.
-- **`v0.1.7-khr-m1-m18`**: adds **`DashboardRequiredTokens`** + contract-side validation + Dashboard mechanical token parity. **`no_production_mutation`** mappings trace **`hpblockers`** + **`IDNoProductionMutation`** because Parent Fabric rows use **`hpblockers.IDNoProductionMutation`** instead of spelling the snake-case catalog string as a literal in every traced file — see **`Notes`** on those mapping rows in `surface_mapping.go`.
+- **`v0.1.7-khr-m1-m18`**: superseded before wide adoption (Go module proxy immutability for repointed tags); do not pin.
+- **`v0.1.8-khr-m1-m18`**: Sprint 39 — **`DashboardRequiredTokens`** + contract-side validation + Dashboard mechanical token parity. **`no_production_mutation`** mappings trace **`hpblockers`** + **`IDNoProductionMutation`** because Parent Fabric rows use **`hpblockers.IDNoProductionMutation`** instead of spelling the snake-case catalog string as a literal in every traced file — see **`Notes`** on those mapping rows in `surface_mapping.go`.
 
 ## Related
 

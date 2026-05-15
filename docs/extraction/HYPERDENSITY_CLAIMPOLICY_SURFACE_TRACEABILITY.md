@@ -19,7 +19,7 @@ Sprint 38 extends each **`SurfaceClaimMapping`** with **`DashboardFiles`**: rela
 | Empty trace | Forbidden unless **`Notes`** documents **`future-only`** (Sprint 38 ships concrete paths for all current rows). |
 | Required tokens | Sprint 39: every row with **`DashboardFiles`** lists non-empty **`DashboardRequiredTokens`** (sorted, unique, non–path-like). |
 | Enforcement | **None** — contract / test / documentation only; **no** API or Parent Fabric behavior change. |
-| Schema | **`ContractKitVersion`** and manifest envelope **unchanged**; nested module semver bumps to **`v0.1.7-khr-m1-m18`** for Sprint 39. |
+| Schema | **`ContractKitVersion`** and manifest envelope **unchanged**; nested module semver bumps to **`v0.1.8-khr-m1-m18`** for Sprint 39. |
 
 ## Relationship to Sprint 37
 
