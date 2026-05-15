@@ -1,4 +1,4 @@
-# KHR Linux Agent — Runbook (Sprint 5–12)
+# KHR Linux Agent — Runbook (Sprint 5–13)
 
 **Audience:** platform engineers evaluating the skeleton locally.
 
@@ -129,6 +129,24 @@ go run ./cmd/khr-linux-agent -mode=index-evidence-local \
 ```
 
 `-query` values: `ready`, `blocked`, `by-confidence` (requires `-confidence=low|medium|high`), `by-cell` (requires `-cell-namespace` and `-cell-name`). `-unsigned-digest-trust=verified|unsigned` maps digest-only bundles to `IntegrityVerified` vs `Unsigned` (see `docs/grandepadre/GRANDE_PADRE_EVIDENCE_INDEXES.md`).
+
+### `recommend-actions-local` (Sprint 13, dry-run recommendation skeleton)
+
+Builds an **ActionSlate** JSON document from one or more `EvidenceIngestRequest` files and/or all `*.yaml` / `*.yml` under `-ingest-request-dir` (JSON outputs in the same directory are ignored by the directory glob). **No apply, no controller, no HTTP.** Optional `-recommendation-output` writes the same JSON as stdout.
+
+```bash
+go run ./cmd/khr-linux-agent -mode=recommend-actions-local \
+  -ingest-request-input=examples/grandepadre/recommendation/recommendation-input-ready.yaml \
+  -ingest-request-input=examples/grandepadre/recommendation/recommendation-input-blocked.yaml \
+  -recommendation-generated-at=2026-06-01T10:00:00Z
+
+go run ./cmd/khr-linux-agent -mode=recommend-actions-local \
+  -ingest-request-dir=examples/grandepadre/recommendation \
+  -tenant=karl-sandbox \
+  -recommend-dry-run-only=true
+```
+
+Flags: `-tenant` filters by cell namespace; `-recommend-dry-run-only` (default **true**) sets `dryRunOnly` on each recommendation; `-recommendation-generated-at` pins `generatedAt` for deterministic fixtures. See `docs/grandepadre/GRANDE_PADRE_RECOMMENDATION_ENGINE.md`.
 
 ## Non-goals
 

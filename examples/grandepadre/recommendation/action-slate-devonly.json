@@ -1,0 +1,53 @@
+{
+  "generatedAt": "2026-06-01T10:00:00Z",
+  "indexedCount": 1,
+  "recommendationCount": 1,
+  "actionSlate": {
+    "generatedAt": "2026-06-01T10:00:00Z",
+    "source": "local-evidence-store",
+    "recommendations": [
+      {
+        "actionId": "fixture-devonly-devonly-001",
+        "actionType": "observe",
+        "targetCellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "resource": "unknown",
+        "mode": "envelope",
+        "confidence": "high",
+        "risk": "medium",
+        "priority": "medium",
+        "reasons": [
+          "DevOnly trust tier: local-dev integrity only; not production PKI.",
+          "Recommendations are non-production; no apply."
+        ],
+        "prerequisites": [
+          "Do not treat DevOnly-signed bundles as production donors."
+        ],
+        "dryRunOnly": true,
+        "applyAllowed": false
+      }
+    ],
+    "blocked": [],
+    "remediable": [],
+    "donorCandidates": null,
+    "receiverCandidates": null,
+    "summary": {
+      "recommendationCount": 1,
+      "donorCandidates": 0,
+      "receiverCandidates": 0,
+      "byRisk": {
+        "medium": 1
+      },
+      "byActionType": {
+        "observe": 1
+      },
+      "notes": "Local decision skeleton only; no apply. Hyperdensity commercial vision is predictive live resource market — future KHR apply gate required before mutations."
+    }
+  },
+  "mutationsForbidden": true,
+  "applyAllowed": false
+}

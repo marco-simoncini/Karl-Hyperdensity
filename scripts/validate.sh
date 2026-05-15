@@ -55,6 +55,10 @@ required_files=(
   "docs/grandepadre/GRANDE_PADRE_EVIDENCE_STORE_SKELETON.md"
   "docs/grandepadre/GRANDE_PADRE_EVIDENCE_INDEXES.md"
   "docs/grandepadre/GRANDE_PADRE_BLOCKED_REMEDIABLE_INDEX.md"
+  "docs/grandepadre/GRANDE_PADRE_RECOMMENDATION_ENGINE.md"
+  "docs/grandepadre/GRANDE_PADRE_ACTION_SLATE_MODEL.md"
+  "docs/grandepadre/GRANDE_PADRE_DONOR_RECEIVER_INDEX.md"
+  "docs/grandepadre/GRANDE_PADRE_RISK_PRIORITY_MODEL.md"
 )
 
 for required in "${required_files[@]}"; do

@@ -1,6 +1,6 @@
 {
   "tool": "khr-linux-agent",
-  "version": "0.0.1-sprint12",
+  "version": "0.0.1-sprint13",
   "mode": "read-telemetry",
   "agentId": "khr-linux-agent-dev-001",
   "telemetryMode": "read-only",

@@ -106,7 +106,7 @@ func TestLocalDevDevOnly(t *testing.T) {
 		},
 		MutationsForbidden: true,
 	}
-	b := evidence.BuildCollectEvidenceBundle("0.0.1-sprint12", "a", cell, disc, tel, evidence.DryRunSkippedPayload("skip"), "")
+	b := evidence.BuildCollectEvidenceBundle("0.0.1-sprint13", "a", cell, disc, tel, evidence.DryRunSkippedPayload("skip"), "")
 	canonical, err := integrity.CanonicalJSON(b)
 	if err != nil {
 		t.Fatal(err)
@@ -152,7 +152,7 @@ func TestUnsignedDigestPolicyIntegrityVerifiedVsUnsigned(t *testing.T) {
 		},
 		MutationsForbidden: true,
 	}
-	b := evidence.BuildCollectEvidenceBundle("0.0.1-sprint12", "a", cell, disc, tel, evidence.DryRunSkippedPayload("skip"), "")
+	b := evidence.BuildCollectEvidenceBundle("0.0.1-sprint13", "a", cell, disc, tel, evidence.DryRunSkippedPayload("skip"), "")
 	canonical, err := integrity.CanonicalJSON(b)
 	if err != nil {
 		t.Fatal(err)

@@ -67,6 +67,10 @@ for p in sorted((root / "examples/grandepadre/evidence-store").glob("*.yaml")):
     load_file(p)
 for p in sorted((root / "examples/grandepadre/evidence-store").glob("*.json")):
     load_file(p)
+for p in sorted((root / "examples/grandepadre/recommendation").glob("*.yaml")):
+    load_file(p)
+for p in sorted((root / "examples/grandepadre/recommendation").glob("*.json")):
+    load_file(p)
 for p in sorted((root / "examples/providers/kubevirt").glob("*.yaml")):
     load_file(p)
 PY

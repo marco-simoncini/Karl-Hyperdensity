@@ -1,0 +1,92 @@
+{
+  "generatedAt": "2026-06-01T10:00:00Z",
+  "indexedCount": 1,
+  "recommendationCount": 1,
+  "actionSlate": {
+    "generatedAt": "2026-06-01T10:00:00Z",
+    "source": "local-evidence-store",
+    "recommendations": [
+      {
+        "actionId": "fixture-ready-integrity-001",
+        "actionType": "remediate",
+        "targetCellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "resource": "unknown",
+        "mode": "unknown",
+        "confidence": "high",
+        "risk": "blocked",
+        "priority": "high",
+        "reasons": [
+          "Bundle digest or manifest alignment failed (IntegrityFailed).",
+          "Do not use this evidence for production promotion until integrity is restored."
+        ],
+        "prerequisites": [
+          "Regenerate manifest/digest from canonical bundle JSON.",
+          "Future KHR apply gate must reject mutations on failed integrity."
+        ],
+        "dryRunOnly": true,
+        "applyAllowed": false
+      }
+    ],
+    "blocked": [
+      {
+        "artifactId": "fixture-ready",
+        "bundleSha256": "ab4fb9d14b3f7b5d20926ad2f2e9ebbfc04f4b34f525c451645ac154fd5076a1",
+        "cellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "confidence": "high",
+        "readyForGrandePadre": true,
+        "blockedReasons": [],
+        "warnings": [],
+        "trustTier": "IntegrityFailed",
+        "indexedAt": "2026-05-15T14:59:17Z"
+      }
+    ],
+    "remediable": [
+      {
+        "cellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "blockedReasons": null,
+        "remediationHints": null,
+        "lastArtifactId": "fixture-ready",
+        "confidence": "high",
+        "trustTier": "IntegrityFailed"
+      }
+    ],
+    "donorCandidates": null,
+    "receiverCandidates": [
+      {
+        "apiVersion": "runtime.karl.io/v1alpha1",
+        "kind": "Cell",
+        "namespace": "karl-sandbox",
+        "name": "demo-cell"
+      }
+    ],
+    "summary": {
+      "recommendationCount": 1,
+      "donorCandidates": 0,
+      "receiverCandidates": 1,
+      "byRisk": {
+        "blocked": 1
+      },
+      "byActionType": {
+        "remediate": 1
+      },
+      "notes": "Local decision skeleton only; no apply. Hyperdensity commercial vision is predictive live resource market — future KHR apply gate required before mutations."
+    }
+  },
+  "mutationsForbidden": true,
+  "applyAllowed": false
+}

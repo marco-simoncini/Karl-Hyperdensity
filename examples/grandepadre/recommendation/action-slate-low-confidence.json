@@ -1,0 +1,52 @@
+{
+  "generatedAt": "2026-06-01T10:00:00Z",
+  "indexedCount": 1,
+  "recommendationCount": 1,
+  "actionSlate": {
+    "generatedAt": "2026-06-01T10:00:00Z",
+    "source": "local-evidence-store",
+    "recommendations": [
+      {
+        "actionId": "fixture-low-lowconf-001",
+        "actionType": "collect-more-evidence",
+        "targetCellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "resource": "unknown",
+        "mode": "envelope",
+        "confidence": "low",
+        "risk": "medium",
+        "priority": "high",
+        "reasons": [
+          "Confidence is low; collect additional read-only evidence before market-style placement."
+        ],
+        "prerequisites": [
+          "Re-run collect-evidence with stable clocks and complete lease/port inputs if applicable."
+        ],
+        "dryRunOnly": true,
+        "applyAllowed": false
+      }
+    ],
+    "blocked": [],
+    "remediable": [],
+    "donorCandidates": null,
+    "receiverCandidates": null,
+    "summary": {
+      "recommendationCount": 1,
+      "donorCandidates": 0,
+      "receiverCandidates": 0,
+      "byRisk": {
+        "medium": 1
+      },
+      "byActionType": {
+        "collect-more-evidence": 1
+      },
+      "notes": "Local decision skeleton only; no apply. Hyperdensity commercial vision is predictive live resource market — future KHR apply gate required before mutations."
+    }
+  },
+  "mutationsForbidden": true,
+  "applyAllowed": false
+}

@@ -7,8 +7,10 @@ import (
 	"fmt"
 	"os"
 	"strings"
+	"time"
 
 	gpdevidence "github.com/marco-simoncini/Karl-Hyperdensity/pkg/grandepadre/evidence"
+	gprec "github.com/marco-simoncini/Karl-Hyperdensity/pkg/grandepadre/recommendation"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/agent"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/evidenceingest"
@@ -16,7 +18,7 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities, discover-cgroups, read-telemetry, collect-evidence, prepare-ingest-request, index-evidence-local")
+	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities, discover-cgroups, read-telemetry, collect-evidence, prepare-ingest-request, index-evidence-local, recommend-actions-local")
 	configPath := flag.String("config", "", "path to agent YAML/JSON config")
 	cellInputPath := flag.String("cell-input", "", "optional path to Cell JSON (discover-cgroups, read-telemetry); required for collect-evidence")
 	cgroupRoot := flag.String("cgroup-root", "", "optional cgroup scan root (default /sys/fs/cgroup) for discover-cgroups")
@@ -49,13 +51,19 @@ func main() {
 	requireDigestMatch := flag.Bool("require-digest-match", true, "prepare-ingest-request: spec.policy.requireDigestMatch")
 	allowUnsigned := flag.Bool("allow-unsigned", true, "prepare-ingest-request: spec.policy.allowUnsigned")
 	allowLocalDevSignature := flag.Bool("allow-local-dev-signature", false, "prepare-ingest-request: spec.policy.allowLocalDevSignature (auto-enabled when manifest signingMode=local-dev)")
-	ingestRequestInputPath := flag.String("ingest-request-input", "", "index-evidence-local: path to EvidenceIngestRequest YAML/JSON")
 	indexOutputPath := flag.String("index-output", "", "index-evidence-local: optional path to write index report JSON")
 	indexQuery := flag.String("query", "", "index-evidence-local: optional ready|blocked|by-confidence|by-cell")
 	indexCellNamespace := flag.String("cell-namespace", "", "index-evidence-local: cell namespace for -query=by-cell")
 	indexCellName := flag.String("cell-name", "", "index-evidence-local: cell name for -query=by-cell")
 	indexConfidence := flag.String("confidence", "", "index-evidence-local: low|medium|high for -query=by-confidence")
-	unsignedDigestTrust := flag.String("unsigned-digest-trust", "verified", "index-evidence-local: verified|unsigned (IntegrityVerified vs Unsigned for digest-only bundles; see docs)")
+	unsignedDigestTrust := flag.String("unsigned-digest-trust", "verified", "index-evidence-local / recommend-actions-local: verified|unsigned (IntegrityVerified vs Unsigned for digest-only bundles; see docs)")
+	var ingestRequestInputs stringList
+	flag.Var(&ingestRequestInputs, "ingest-request-input", "index-evidence-local: one file. recommend-actions-local: repeat flag for multiple files")
+	ingestRequestDir := flag.String("ingest-request-dir", "", "recommend-actions-local: directory of EvidenceIngestRequest yaml/json (*.yaml, *.yml, *.json)")
+	recommendationOutputPath := flag.String("recommendation-output", "", "recommend-actions-local: optional path to write recommendation JSON")
+	recommendTenant := flag.String("tenant", "", "recommend-actions-local: optional filter on cell namespace")
+	recommendDryRunOnly := flag.Bool("recommend-dry-run-only", true, "recommend-actions-local: dryRunOnly on each recommendation (default true; distinct from prepare -dry-run-only)")
+	recommendationGeneratedAt := flag.String("recommendation-generated-at", "", "recommend-actions-local: optional RFC3339 clock for deterministic JSON (tests)")
 	flag.Parse()
 
 	out := map[string]interface{}{
@@ -361,11 +369,12 @@ func main() {
 		os.Exit(0)
 
 	case "index-evidence-local":
-		path := strings.TrimSpace(*ingestRequestInputPath)
-		if path == "" {
+		paths := []string(ingestRequestInputs)
+		if len(paths) == 0 {
 			out["error"] = "index-evidence-local requires -ingest-request-input"
 			emit(out, 2)
 		}
+		path := strings.TrimSpace(paths[0])
 		raw, err := os.ReadFile(path)
 		if err != nil {
 			out["error"] = err.Error()
@@ -401,6 +410,51 @@ func main() {
 		}
 		os.Exit(0)
 
+	case "recommend-actions-local":
+		paths, err := gprec.CollectIngestPaths([]string(ingestRequestInputs), strings.TrimSpace(*ingestRequestDir))
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		unsignedPol := gpdevidence.UnsignedDigestAsIntegrityVerified
+		if strings.EqualFold(strings.TrimSpace(*unsignedDigestTrust), "unsigned") {
+			unsignedPol = gpdevidence.UnsignedDigestAsUnsigned
+		}
+		s := gpdevidence.NewStore()
+		if err := gprec.IngestAllIntoStore(s, paths, unsignedPol); err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		var genAt time.Time
+		if ts := strings.TrimSpace(*recommendationGeneratedAt); ts != "" {
+			t, err := time.Parse(time.RFC3339, ts)
+			if err != nil {
+				out["error"] = fmt.Sprintf("recommendation-generated-at: %v", err)
+				emit(out, 2)
+			}
+			genAt = t.UTC()
+		}
+		rep := gprec.BuildRecommendationReport(s, gprec.EngineOptions{
+			Tenant:        strings.TrimSpace(*recommendTenant),
+			DryRunOnly:    *recommendDryRunOnly,
+			UnsignedLabel: unsignedPol,
+			GeneratedAt:   genAt,
+		})
+		b, err := json.MarshalIndent(rep, "", "  ")
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		b = append(b, '\n')
+		os.Stdout.Write(b)
+		if p := strings.TrimSpace(*recommendationOutputPath); p != "" {
+			if err := os.WriteFile(p, b, 0o600); err != nil {
+				out["error"] = err.Error()
+				emit(out, 2)
+			}
+		}
+		os.Exit(0)
+
 	default:
 		out["error"] = fmt.Sprintf("unknown mode %q", *mode)
 		emit(out, 2)
@@ -419,4 +473,23 @@ func boolExit(hasErr bool) int {
 		return 2
 	}
 	return 0
+}
+
+// stringList supports repeated -ingest-request-input flags (flag.Value).
+type stringList []string
+
+func (s *stringList) String() string {
+	if s == nil || len(*s) == 0 {
+		return ""
+	}
+	return strings.Join(*s, ",")
+}
+
+func (s *stringList) Set(v string) error {
+	v = strings.TrimSpace(v)
+	if v == "" {
+		return fmt.Errorf("empty -ingest-request-input")
+	}
+	*s = append(*s, v)
+	return nil
 }

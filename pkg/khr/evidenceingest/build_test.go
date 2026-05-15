@@ -59,7 +59,7 @@ func writeAlignedFixture(t *testing.T) string {
 		MutationsForbidden: true,
 	}
 	dry := evidence.DryRunSkippedPayload("skip")
-	bundle := evidence.BuildCollectEvidenceBundle("0.0.1-sprint12", "khr-agent-test", cellDemo(), disc, tel, dry, "")
+	bundle := evidence.BuildCollectEvidenceBundle("0.0.1-sprint13", "khr-agent-test", cellDemo(), disc, tel, dry, "")
 	bj, err := json.MarshalIndent(bundle, "", "  ")
 	if err != nil {
 		t.Fatal(err)

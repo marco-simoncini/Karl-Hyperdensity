@@ -1,10 +1,10 @@
 apiVersion: hyperdensity.karl.io/v1alpha1
 kind: EvidenceIngestRequest
 metadata:
-    name: gp-blocked
+    name: gp-low
     namespace: karl-sandbox
 spec:
-    artifactId: fixture-blocked
+    artifactId: fixture-low
     bundle:
         agentId: khr-agent-fixture
         cellRef:
@@ -28,11 +28,10 @@ spec:
             skipReason: no lease or resource port inputs provided for optional dry-run
             skipped: true
         evidenceSummary:
-            blockedReasons:
-                - cgroup path not resolved for telemetry
-            confidence: high
-            readyForGrandePadre: false
-            recommendedNextAction: Resolve blocking conditions before Grande Padre promotion.
+            blockedReasons: []
+            confidence: low
+            readyForGrandePadre: true
+            recommendedNextAction: Bundle is consistent for downstream Grande Padre ingest; attach cluster admission and blast-radius context before any apply planning.
             warnings: []
         mode: collect-evidence
         mutationsForbidden: true
@@ -53,13 +52,13 @@ spec:
             telemetryMode: read-only
         tool: khr-linux-agent
         version: 0.0.1-sprint13
-    digest: e9d1774948b5d4849695bd6ab1cf85663d17434b724f7202516dc329925e5f16
+    digest: 0e5a1d2cc196c02fc013b8bddb91cd3c27435c6d551514788f58267c7cb08373
     dryRunOnly: true
     manifest:
         agentId: khr-agent-fixture
-        artifactId: fixture-blocked
-        bundleBytes: 1331
-        bundleSha256: e9d1774948b5d4849695bd6ab1cf85663d17434b724f7202516dc329925e5f16
+        artifactId: fixture-low
+        bundleBytes: 1364
+        bundleSha256: 0e5a1d2cc196c02fc013b8bddb91cd3c27435c6d551514788f58267c7cb08373
         chainOfCustody:
             executablePath: /tmp/khr-linux-agent.test
             hostname: test-host.example

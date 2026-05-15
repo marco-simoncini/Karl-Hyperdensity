@@ -1,0 +1,172 @@
+{
+  "generatedAt": "2026-06-01T10:00:00Z",
+  "indexedCount": 2,
+  "recommendationCount": 3,
+  "actionSlate": {
+    "generatedAt": "2026-06-01T10:00:00Z",
+    "source": "local-evidence-store",
+    "recommendations": [
+      {
+        "actionId": "fixture-blocked-remediate-001",
+        "actionType": "remediate",
+        "targetCellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "receiverCellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "resource": "unknown",
+        "mode": "envelope",
+        "confidence": "high",
+        "risk": "high",
+        "priority": "high",
+        "reasons": [
+          "Evidence is blocked or not ready for Grande Padre.",
+          "cgroup path not resolved for telemetry"
+        ],
+        "prerequisites": [
+          "Resolve blockedReasons locally; ingest is not apply."
+        ],
+        "dryRunOnly": true,
+        "applyAllowed": false
+      },
+      {
+        "actionId": "fixture-ready-observe-002",
+        "actionType": "observe",
+        "targetCellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "donorCellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "resource": "unknown",
+        "mode": "envelope",
+        "confidence": "high",
+        "risk": "low",
+        "priority": "medium",
+        "reasons": [
+          "Cell evidence is ready at high confidence; continue read-only observation for predictive market signals."
+        ],
+        "prerequisites": [
+          "No apply: await future KHR apply gate and Hyperdensity controller decisions."
+        ],
+        "dryRunOnly": true,
+        "applyAllowed": false
+      },
+      {
+        "actionId": "fixture-ready-prep-lease-003",
+        "actionType": "prepare-resourcelease",
+        "targetCellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "donorCellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "resource": "cpu",
+        "mode": "envelope",
+        "confidence": "high",
+        "risk": "low",
+        "priority": "low",
+        "reasons": [
+          "Dry-run skeleton: prepare ResourceLease drafts offline before any future apply window."
+        ],
+        "prerequisites": [
+          "Use existing khr-linux-agent dry-run mode with lease/port fixtures.",
+          "applyAllowed remains false in Sprint 13."
+        ],
+        "dryRunOnly": true,
+        "applyAllowed": false
+      }
+    ],
+    "blocked": [
+      {
+        "artifactId": "fixture-blocked",
+        "bundleSha256": "e9d1774948b5d4849695bd6ab1cf85663d17434b724f7202516dc329925e5f16",
+        "cellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "confidence": "high",
+        "readyForGrandePadre": false,
+        "blockedReasons": [
+          "cgroup path not resolved for telemetry"
+        ],
+        "warnings": [],
+        "trustTier": "IntegrityVerified",
+        "indexedAt": "2026-05-15T14:59:16Z"
+      }
+    ],
+    "remediable": [
+      {
+        "cellRef": {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "Cell",
+          "namespace": "karl-sandbox",
+          "name": "demo-cell"
+        },
+        "blockedReasons": [
+          "cgroup path not resolved for telemetry"
+        ],
+        "remediationHints": [
+          "Re-run discovery with a valid cgroup root and path policy, then collect evidence again."
+        ],
+        "lastArtifactId": "fixture-blocked",
+        "confidence": "high",
+        "trustTier": "IntegrityVerified"
+      }
+    ],
+    "donorCandidates": [
+      {
+        "apiVersion": "runtime.karl.io/v1alpha1",
+        "kind": "Cell",
+        "namespace": "karl-sandbox",
+        "name": "demo-cell"
+      }
+    ],
+    "receiverCandidates": [
+      {
+        "apiVersion": "runtime.karl.io/v1alpha1",
+        "kind": "Cell",
+        "namespace": "karl-sandbox",
+        "name": "demo-cell"
+      }
+    ],
+    "summary": {
+      "recommendationCount": 3,
+      "donorCandidates": 1,
+      "receiverCandidates": 1,
+      "byRisk": {
+        "high": 1,
+        "low": 2
+      },
+      "byActionType": {
+        "observe": 1,
+        "prepare-resourcelease": 1,
+        "remediate": 1
+      },
+      "notes": "Local decision skeleton only; no apply. Hyperdensity commercial vision is predictive live resource market — future KHR apply gate required before mutations."
+    }
+  },
+  "mutationsForbidden": true,
+  "applyAllowed": false
+}

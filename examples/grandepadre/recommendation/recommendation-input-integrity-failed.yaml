@@ -1,10 +1,10 @@
 apiVersion: hyperdensity.karl.io/v1alpha1
 kind: EvidenceIngestRequest
 metadata:
-    name: gp-blocked
+    name: gp-ready
     namespace: karl-sandbox
 spec:
-    artifactId: fixture-blocked
+    artifactId: fixture-ready
     bundle:
         agentId: khr-agent-fixture
         cellRef:
@@ -28,11 +28,10 @@ spec:
             skipReason: no lease or resource port inputs provided for optional dry-run
             skipped: true
         evidenceSummary:
-            blockedReasons:
-                - cgroup path not resolved for telemetry
+            blockedReasons: []
             confidence: high
-            readyForGrandePadre: false
-            recommendedNextAction: Resolve blocking conditions before Grande Padre promotion.
+            readyForGrandePadre: true
+            recommendedNextAction: Bundle is consistent for downstream Grande Padre ingest; attach cluster admission and blast-radius context before any apply planning.
             warnings: []
         mode: collect-evidence
         mutationsForbidden: true
@@ -53,13 +52,13 @@ spec:
             telemetryMode: read-only
         tool: khr-linux-agent
         version: 0.0.1-sprint13
-    digest: e9d1774948b5d4849695bd6ab1cf85663d17434b724f7202516dc329925e5f16
+    digest: "0000000000000000000000000000000000000000000000000000000000000000"
     dryRunOnly: true
     manifest:
         agentId: khr-agent-fixture
-        artifactId: fixture-blocked
-        bundleBytes: 1331
-        bundleSha256: e9d1774948b5d4849695bd6ab1cf85663d17434b724f7202516dc329925e5f16
+        artifactId: fixture-ready
+        bundleBytes: 1365
+        bundleSha256: ab4fb9d14b3f7b5d20926ad2f2e9ebbfc04f4b34f525c451645ac154fd5076a1
         chainOfCustody:
             executablePath: /tmp/khr-linux-agent.test
             hostname: test-host.example
@@ -77,7 +76,7 @@ spec:
     policy:
         allowLocalDevSignature: false
         allowUnsigned: true
-        maxBundleBytes: 1048576
+        maxBundleBytes: 1.048576e+06
         requireDigestMatch: true
     source:
         agentId: khr-agent-fixture
