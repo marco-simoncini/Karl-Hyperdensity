@@ -1,0 +1,53 @@
+{
+  "blockedCandidateCount": 2,
+  "candidateCount": 3,
+  "candidateSelectionId": "sel-1",
+  "candidates": [
+    {
+      "allowlisted": true,
+      "amount": "250m",
+      "blocked": false,
+      "blockerCodes": [],
+      "candidateId": "cand-1",
+      "claimBoundary": "candidate only",
+      "donorShellId": "d3",
+      "evidenceRefs": [
+        "artifact://cand-1"
+      ],
+      "generalProductionScope": false,
+      "productionCanaryScope": true,
+      "receiverShellId": "r3",
+      "resource": "cpu",
+      "selected": true,
+      "sourceActionId": "act-3"
+    },
+    {
+      "allowlisted": true,
+      "amount": "500m",
+      "blocked": true,
+      "blockerCodes": [
+        "operator_controlled_scope"
+      ],
+      "candidateId": "cand-2",
+      "claimBoundary": "candidate only",
+      "donorShellId": "d1",
+      "evidenceRefs": [
+        "artifact://cand-2"
+      ],
+      "generalProductionScope": false,
+      "productionCanaryScope": false,
+      "receiverShellId": "r1",
+      "resource": "cpu",
+      "selected": false,
+      "sourceActionId": "act-1"
+    }
+  ],
+  "claimBoundary": "candidate selection only",
+  "evidenceRefs": [
+    "artifact://selection"
+  ],
+  "selectedCanaryCandidateCount": 1,
+  "selectionPassed": true,
+  "selectionReason": "stable_observation_window_top_canary_candidate",
+  "sourceObservationWindowRef": "configmap://karl-system/hyperdensity-production-observation-window-v1"
+}

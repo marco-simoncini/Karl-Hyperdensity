@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "canary-closeout-v1",
+  "type": "object",
+  "required": [
+    "closeoutId",
+    "promotedToGeneralProduction",
+    "nextAllowedState",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

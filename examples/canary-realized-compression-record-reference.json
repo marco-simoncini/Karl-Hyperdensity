@@ -1,0 +1,15 @@
+{
+  "claimBoundary": "realized compression only",
+  "compressionRecordId": "rcr-1",
+  "estimatedValueExcluded": true,
+  "evidenceRefs": [
+    "artifact://compression-record"
+  ],
+  "movementEvidencePresent": true,
+  "mutationObservationId": "mut-1",
+  "projectedCompressionExcluded": true,
+  "realizedCompressionDelta": 0.01,
+  "realizedMovedIdleValue": 200,
+  "realizedMovementCount": 1,
+  "sourceObservationWindowRef": "configmap://karl-system/hyperdensity-production-observation-window-v1"
+}

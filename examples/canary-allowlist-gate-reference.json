@@ -1,0 +1,17 @@
+{
+  "allowlistGateId": "al-1",
+  "allowlistGatePassed": true,
+  "allowlistSource": "configmap://karl-system/canary-allowlist-v1",
+  "allowlistedNamespaces": [
+    "prod-canary"
+  ],
+  "allowlistedShells": [
+    "d3",
+    "r3"
+  ],
+  "claimBoundary": "allowlist gate only",
+  "evidenceRefs": [
+    "artifact://allowlist"
+  ],
+  "selectedCandidatesAllowlisted": true
+}

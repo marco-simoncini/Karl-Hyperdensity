@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "canary-projected-realized-separation-v1",
+  "type": "object",
+  "required": [
+    "separationId",
+    "separationPassed",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

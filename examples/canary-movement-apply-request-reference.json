@@ -1,0 +1,20 @@
+{
+  "actuator": "FluidVirt",
+  "amount": "250m",
+  "applyRequestId": "req-1",
+  "candidateId": "cand-1",
+  "claimBoundary": "apply request only",
+  "donorShellId": "d3",
+  "evidenceRefs": [
+    "artifact://apply-req"
+  ],
+  "generalProductionAutoAllowed": false,
+  "generalProductionScope": false,
+  "leaseId": "lease-1",
+  "productionAutoWithPolicy": false,
+  "productionCanaryScope": true,
+  "receiverShellId": "r3",
+  "requestedAt": "2026-05-14T18:58:30Z",
+  "requestedBy": "Karl-Hyperdensity",
+  "resource": "cpu"
+}

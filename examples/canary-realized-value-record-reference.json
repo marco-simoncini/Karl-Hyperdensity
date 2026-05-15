@@ -1,0 +1,18 @@
+{
+  "amount": "250m",
+  "claimBoundary": "realized value only",
+  "controlCost": 2,
+  "durationSeconds": 3600,
+  "evidenceRefs": [
+    "artifact://value-record"
+  ],
+  "grossValue": 48,
+  "guaranteeScope": "scoped_eligible_canary_only",
+  "guaranteedEligible": true,
+  "mutationObservationId": "mut-1",
+  "netRealizedValue": 45,
+  "resource": "cpu",
+  "riskCost": 1,
+  "unitPrice": 0.048,
+  "valueRecordId": "rvr-1"
+}

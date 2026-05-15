@@ -1,0 +1,13 @@
+{
+  "auditComplete": true,
+  "canaryExpansionId": "canary-exp-s21-v1",
+  "claimBoundary": "canary closeout only",
+  "closeoutId": "close-1",
+  "closeoutStatus": "passed",
+  "evidenceRefs": [
+    "artifact://closeout"
+  ],
+  "nextAllowedState": "production_canary_only",
+  "promotedToGeneralProduction": false,
+  "rollbackWindowClosed": false
+}

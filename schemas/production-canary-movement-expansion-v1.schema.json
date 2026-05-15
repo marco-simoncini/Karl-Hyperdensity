@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "production-canary-movement-expansion-v1",
+  "type": "object",
+  "required": [
+    "milestone",
+    "surfaceVersion",
+    "canaryExpansionId",
+    "productionCanaryMovementExpansionEnabled",
+    "claimBoundaries"
+  ],
+  "properties": {
+    "milestone": {
+      "const": "hyperdensity_production_canary_movement_expansion_from_observation_window_v1"
+    }
+  }
+}
