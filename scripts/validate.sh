@@ -76,6 +76,7 @@ required_files=(
   "docs/extraction/HYPERDENSITY_M1_M7_EXTRACTION_READINESS.md"
   "docs/extraction/HYPERDENSITY_CONTRACTKIT_MODULE.md"
   "docs/extraction/HYPERDENSITY_CONTRACTKIT_FIXTURE_MANIFEST.md"
+  "docs/extraction/HYPERDENSITY_CONTRACTKIT_RELEASE_TAGGING.md"
   "pkg/hyperdensity/contractkit/go.mod"
   "pkg/hyperdensity/contractkit/testdata/dashboard/hyperdensity_parity_manifest_m1_m7.json"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"

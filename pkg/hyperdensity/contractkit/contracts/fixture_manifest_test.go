@@ -23,8 +23,15 @@ func TestParseAndValidateFixtureManifest_contractkitExample(t *testing.T) {
 	if m.ContractKitVersion != ContractKitVersion {
 		t.Fatalf("version mismatch: %q", m.ContractKitVersion)
 	}
-	if len(m.Cases) < 8 {
-		t.Fatalf("expected at least 8 cases, got %d", len(m.Cases))
+	set := ManifestCaseIDSet(m)
+	expected := ExpectedM1M8CaseIDs()
+	if len(set) != len(expected) {
+		t.Fatalf("example manifest case count: got %d want %d", len(set), len(expected))
+	}
+	for _, id := range expected {
+		if _, ok := set[id]; !ok {
+			t.Fatalf("example manifest missing id %q", id)
+		}
 	}
 }
 

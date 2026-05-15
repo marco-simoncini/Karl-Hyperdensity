@@ -23,12 +23,20 @@ Case **IDs** and **metadata** align; **file paths** differ per repo layout.
 - `ParseFixtureManifest([]byte)`
 - `ValidateFixtureManifest(FixtureManifest)`
 - `Version()` / `ContractKitVersion`
+- `ExpectedM1M8CaseIDs()` — canonical M1–M8 case ID list (Sprint 27)
+- `CaseIDs(m)` / `ManifestCaseIDSet(m)` — drift guards
 
 Validation rules: unique case IDs; non-empty paths; `claimSafe: true`; `windowsEnabled: false`; `kubeVirtLegacyRequired: true`; version match.
 
+Contractkit tests assert the **example manifest** contains **exactly** the `ExpectedM1M8CaseIDs()` set.
+
 ## Dashboard usage
 
-`TestHyperdensityParityManifest` reads the consumer manifest, validates via contractkit, checks all referenced files exist under `pkg/server/testdata/`, and asserts expected case IDs.
+`TestHyperdensityParityManifest` reads the consumer manifest, validates via contractkit, checks all referenced files exist under `pkg/server/testdata/`, and asserts the case ID set **matches exactly** `ExpectedM1M8CaseIDs()` (no silent drift).
+
+## Release tagging
+
+Optional git tag on parent repo: `contractkit/v0.1.0-khr-m1-m9` — see `HYPERDENSITY_CONTRACTKIT_RELEASE_TAGGING.md`. Pseudo-versions remain valid until tags are applied.
 
 ## Boundaries
 

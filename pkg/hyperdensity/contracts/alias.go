@@ -25,6 +25,9 @@ type (
 
 var (
 	Version                            = ck.Version
+	ExpectedM1M8CaseIDs                = ck.ExpectedM1M8CaseIDs
+	CaseIDs                            = ck.CaseIDs
+	ManifestCaseIDSet                  = ck.ManifestCaseIDSet
 	ParseFixtureManifest               = ck.ParseFixtureManifest
 	ValidateFixtureManifest            = ck.ValidateFixtureManifest
 	ParseParentFabricSummary           = ck.ParseParentFabricSummary
