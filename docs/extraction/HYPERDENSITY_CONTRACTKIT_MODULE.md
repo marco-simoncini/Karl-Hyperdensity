@@ -18,7 +18,7 @@ Root: `pkg/hyperdensity/contractkit/go.mod`
 |---------|------|
 | `contractkit/blockers` | Gate/blocker ID catalog (`Known`, `Severity`, `Catalog`) |
 | `contractkit/contracts` | `ParentFabricSummary` DTO, mapping, golden JSON, fixture policy validators |
-| `contractkit/claimpolicy` | Claim / policy posture vocabulary for future parity (`PostureKind`, `KnownPosture`) — **Sprint 35**; Dashboard runtime must not import yet |
+| `contractkit/claimpolicy` | Posture vocabulary (**Sprint 35**) + minimal claim-policy catalog (**Sprint 36**: `ClaimPolicyID`, `Catalog`, `ForbiddenProductionClaimIDs`, …); Dashboard **runtime** must not import |
 
 Implementation lives here; `pkg/hyperdensity/blockers` and `pkg/hyperdensity/contracts` at repo root are **thin re-export aliases** for in-repo compatibility.
 

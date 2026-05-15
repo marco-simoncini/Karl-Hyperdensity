@@ -79,6 +79,28 @@ Dashboard pin:
 go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.2-khr-m1-m13
 ```
 
+## Fourth anchor tag (Sprint 36 — claimpolicy catalog)
+
+**Go module version:** `v0.1.3-khr-m1-m14`  
+**Git tag:**
+
+```text
+pkg/hyperdensity/contractkit/v0.1.3-khr-m1-m14
+```
+
+Completes `claimpolicy` as a **minimal claim-policy catalog** (Sprint 36): `Catalog`, `Known`, `ForbiddenProductionClaimIDs`, etc. **No** `ContractKitVersion` / manifest bump; Dashboard **test-only** parity expands; runtime import freeze unchanged (M17).
+
+```bash
+git tag pkg/hyperdensity/contractkit/v0.1.3-khr-m1-m14 <sprint-36-commit>
+git push origin pkg/hyperdensity/contractkit/v0.1.3-khr-m1-m14
+```
+
+Dashboard pin:
+
+```bash
+go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.3-khr-m1-m14
+```
+
 ## Compatibility promise (contractkit)
 
 | Property | Commitment |
