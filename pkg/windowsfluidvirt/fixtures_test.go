@@ -1,0 +1,36 @@
+package windowsfluidvirt
+
+import (
+	"encoding/json"
+	"os"
+	"path/filepath"
+	"testing"
+)
+
+func TestMinimalFixturesAreValidJSONObjects(t *testing.T) {
+	root := filepath.Join("..", "..", "examples", "windows-fluid-product-fixtures")
+	fixtures := []string{
+		"product_model_minimal.json",
+		"action_slate_minimal.json",
+		"blockers_minimal.json",
+		"node_actuator_contract_minimal.json",
+		"node_actuator_readonly_replay_minimal.json",
+		"compliance_replay_minimal.json",
+		"controlled_apply_plan_boundary_minimal.json",
+		"guarded_executor_boundary_minimal.json",
+		"guarded_executor_fake_runtime_replay_minimal.json",
+	}
+	for _, fixture := range fixtures {
+		data, err := os.ReadFile(filepath.Join(root, fixture))
+		if err != nil {
+			t.Fatalf("read %s: %v", fixture, err)
+		}
+		var payload map[string]any
+		if err := json.Unmarshal(data, &payload); err != nil {
+			t.Fatalf("decode %s: %v", fixture, err)
+		}
+		if len(payload) == 0 {
+			t.Fatalf("fixture %s must not be empty", fixture)
+		}
+	}
+}

@@ -1,0 +1,72 @@
+{
+  "productId": "windows-fluidvirt-product-model-v1",
+  "productVersion": "v1",
+  "releaseTrack": "technical_preview",
+  "laneStatus": "technical_preview_candidate",
+  "readinessState": "planning_only",
+  "supportBoundary": {
+    "productionMutationAllowed": false,
+    "autonomousApplyAllowed": false,
+    "enforcementMode": "disabled",
+    "windowsGaClaimAllowed": false,
+    "windowsProductionReadyClaimAllowed": false,
+    "windowsExecutionReadyByDefault": false,
+    "vcpuHotplugClaimAllowed": false,
+    "logicalCpuScalingClaimAllowed": false,
+    "poolScalingClaimAllowed": false,
+    "liveMigrationClaimAllowed": false,
+    "rebootRecreateRolloutMechanismAllowed": false,
+    "rawRuntimeControlsExposed": false
+  },
+  "claimBoundary": {
+    "technicalPreviewCandidate": true,
+    "gatedPreview": true,
+    "noGa": true,
+    "noProductionReady": true,
+    "noAutonomousApply": true,
+    "noRawControls": true,
+    "noVcpuHotplug": true,
+    "noLogicalCpuScaling": true,
+    "noPoolScaling": true,
+    "noLiveMigrationVmim": true,
+    "noRebootRecreateRollout": true
+  },
+  "cpuLiquidityModel": {
+    "mechanism": "entitlement_liquidity_cgroup_v2_cpu_max",
+    "nodeActuatorNeeded": true,
+    "applyEnabled": false
+  },
+  "ramLiquidityModel": {
+    "mechanism": "balloon_liquidity_qmp_model",
+    "qmpModelOnly": true,
+    "applyEnabled": false
+  },
+  "guestWitnessDependency": {
+    "karlAgentFluidShellRequired": true,
+    "qgaRequired": true,
+    "guestAckRequired": true
+  },
+  "leaseModel": {
+    "planningOnly": true,
+    "rollbackPlanRequired": true,
+    "returnToFloorRequired": true,
+    "auditChainRequired": true,
+    "applyEnabled": false
+  },
+  "actionSlate": {
+    "slateId": "windows-fluidvirt-action-slate-core-v1",
+    "slateVersion": "v1",
+    "planningOnly": true,
+    "applyEnabled": false,
+    "runtimeMutationEnabled": false,
+    "autonomousApplyEnabled": false,
+    "rawRuntimeControlsExposed": false,
+    "actions": []
+  },
+  "evidenceRefs": [
+    "proof://same-qemu",
+    "proof://same-boot",
+    "proof://guest-ack"
+  ],
+  "blockers": []
+}

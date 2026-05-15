@@ -1,0 +1,31 @@
+{
+  "verdict": "hyperdensity_windows_fluidvirt_guarded_executor_boundary_v1_operational",
+  "milestone": "hyperdensity_windows_fluidvirt_guarded_executor_boundary_v1",
+  "repo": "marco-simoncini/Karl-Hyperdensity",
+  "branch": "The-Father-FluidVirt-Windows-Integration",
+  "sourceBranch": "The-Father-Windows",
+  "sourceHead": "970ae03",
+  "executorBoundaryOnly": true,
+  "executorBoundaryDefined": true,
+  "executorEnabled": false,
+  "executorRuntimeAvailable": false,
+  "executorExecuted": false,
+  "controlledApplyEnabled": false,
+  "controlledApplyReady": false,
+  "runtimeMutationEnabled": false,
+  "actuatorRuntimeEnabled": false,
+  "cgroupWriteEnabled": false,
+  "qmpCommandExecutionAllowed": false,
+  "qgaCommandExecutionAllowed": false,
+  "autonomousApplyAllowed": false,
+  "productionMutationAllowed": false,
+  "dashboardTouched": false,
+  "inventoryTouched": false,
+  "osIsoTouched": false,
+  "testsRun": [
+    "go test ./...",
+    "git diff --check",
+    "python3 json fixture validation"
+  ],
+  "safetyPreserved": true
+}

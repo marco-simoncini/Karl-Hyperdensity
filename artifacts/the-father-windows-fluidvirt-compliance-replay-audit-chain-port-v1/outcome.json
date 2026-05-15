@@ -1,0 +1,30 @@
+{
+  "verdict": "hyperdensity_windows_fluidvirt_compliance_replay_audit_chain_port_v1_operational",
+  "milestone": "hyperdensity_windows_fluidvirt_compliance_replay_audit_chain_port_v1",
+  "repo": "marco-simoncini/Karl-Hyperdensity",
+  "branch": "The-Father-FluidVirt-Windows-Integration",
+  "sourceBranch": "The-Father-Windows",
+  "sourceHead": "970ae03",
+  "complianceReplayOnly": true,
+  "deterministicReplay": true,
+  "auditHashChainAvailable": true,
+  "auditHashChainVerified": true,
+  "operationalCliPorted": false,
+  "runtimeMutationEnabled": false,
+  "actuatorRuntimeEnabled": false,
+  "cgroupWriteEnabled": false,
+  "realCgroupTouched": false,
+  "qmpCommandExecutionAllowed": false,
+  "qgaCommandExecutionAllowed": false,
+  "controlledApplyReady": false,
+  "runtimeMvpReady": false,
+  "dashboardTouched": false,
+  "inventoryTouched": false,
+  "osIsoTouched": false,
+  "testsRun": [
+    "go test ./...",
+    "git diff --check",
+    "python3 json fixture validation"
+  ],
+  "safetyPreserved": true
+}

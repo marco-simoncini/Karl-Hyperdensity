@@ -1,0 +1,28 @@
+{
+  "verdict": "hyperdensity_windows_fluidvirt_node_actuator_mvp_readonly_replay_v1_operational",
+  "milestone": "hyperdensity_windows_fluidvirt_node_actuator_mvp_readonly_replay_v1",
+  "repo": "marco-simoncini/Karl-Hyperdensity",
+  "branch": "The-Father-FluidVirt-Windows-Integration",
+  "sourceBranch": "The-Father-Windows",
+  "sourceHead": "970ae03",
+  "replayOnly": true,
+  "fakeRuntimeOnly": true,
+  "nodeActuatorMvpReplayAvailable": true,
+  "nodeActuatorMvpPortedAsRuntime": false,
+  "actuatorRuntimeEnabled": false,
+  "runtimeMutationEnabled": false,
+  "cgroupWriteEnabled": false,
+  "cpuMaxMutationEnabled": false,
+  "realCgroupTouched": false,
+  "qmpCommandExecutionAllowed": false,
+  "qgaCommandExecutionAllowed": false,
+  "dashboardTouched": false,
+  "inventoryTouched": false,
+  "osIsoTouched": false,
+  "testsRun": [
+    "go test ./...",
+    "git diff --check",
+    "python3 json fixture validation"
+  ],
+  "safetyPreserved": true
+}
