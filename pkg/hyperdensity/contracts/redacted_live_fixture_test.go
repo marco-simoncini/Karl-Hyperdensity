@@ -21,7 +21,7 @@ func TestValidateRedactedLiveSummaryFixture_ok(t *testing.T) {
 			OperatorControlled: true,
 		},
 	}
-	meta := RedactedLiveSummaryMetadata{DashboardSupportsApply: true}
+	meta := RedactedLiveSummaryMetadata{DashboardSupportsApply: true, ExecutionSummaryCategory: "dry_run_only"}
 	if err := ValidateRedactedLiveSummaryFixture(s, meta); err != nil {
 		t.Fatal(err)
 	}

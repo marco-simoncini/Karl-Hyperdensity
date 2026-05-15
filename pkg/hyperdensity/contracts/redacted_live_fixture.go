@@ -10,6 +10,8 @@ import (
 type RedactedLiveSummaryMetadata struct {
 	// DashboardSupportsApply is executionEngine.supportsApply from the redacted Dashboard JSON before mapping.
 	DashboardSupportsApply bool
+	// ExecutionSummaryCategory is executionEngine.summary.category from the Dashboard JSON before mapping.
+	ExecutionSummaryCategory string
 }
 
 // ValidateRedactedLiveSummaryFixture checks that a mapped ParentFabricSummary is consistent
