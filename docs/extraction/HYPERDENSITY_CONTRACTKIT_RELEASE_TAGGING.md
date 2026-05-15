@@ -33,7 +33,29 @@ go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit
 
 ### Note on tag prefix
 
-Go requires the git tag name to include the **subdirectory path** to the module root (`pkg/hyperdensity/contractkit/...`). A short alias tag `contractkit/v0.1.0-khr-m1-m9` alone is **not** resolved by `go get`.
+Go requires the git tag name to include the **subdirectory path** to the module root (`pkg/hyperdensity/contractkit/...`). A short alias tag alone is **not** resolved by `go get`.
+
+## Second anchor tag (Sprint 30 — version model + clean semver)
+
+**Go module version:** `v0.1.1-khr-m1-m12`  
+**Git tag:**
+
+```text
+pkg/hyperdensity/contractkit/v0.1.1-khr-m1-m12
+```
+
+**Base:** Sprint 29 release version model (`aaeafba`) + `ContractKitModuleVersion` alignment commit.
+
+```bash
+git tag pkg/hyperdensity/contractkit/v0.1.1-khr-m1-m12 <sprint-30-commit>
+git push origin pkg/hyperdensity/contractkit/v0.1.1-khr-m1-m12
+```
+
+Dashboard pin (replaces pseudo-version `v0.1.0-khr-m1-m9.0.20260515175117-aaeafba...`):
+
+```bash
+go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.1-khr-m1-m12
+```
 
 ## Compatibility promise (contractkit)
 
