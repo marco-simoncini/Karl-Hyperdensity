@@ -54,4 +54,7 @@ CI and private consumers should set **`GOPRIVATE=github.com/marco-simoncini/*`**
 - `HYPERDENSITY_CONTRACTKIT_RELEASE_TAGGING.md`
 - `HYPERDENSITY_CONTRACTKIT_VERSION_MODEL.md`
 - `HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`
+- `HYPERDENSITY_CONTRACTKIT_CONSUMER_AUDIT.md`
+- `HYPERDENSITY_CONTRACTKIT_CONSUMER_POLICY.md`
+- `templates/audit_contractkit_module_pin.sh`
 - `pkg/hyperdensity/contractkit/contracts/release.go`

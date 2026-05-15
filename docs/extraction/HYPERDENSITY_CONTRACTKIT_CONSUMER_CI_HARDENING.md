@@ -74,4 +74,7 @@ If a release is wrong, publish a **strictly newer** module semver, push a **new*
 - `HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`
 - `HYPERDENSITY_CONTRACTKIT_RELEASE_TAGGING.md`
 - `HYPERDENSITY_CONTRACTKIT_VERSION_MODEL.md`
+- `HYPERDENSITY_CONTRACTKIT_CONSUMER_AUDIT.md`
+- `HYPERDENSITY_CONTRACTKIT_CONSUMER_POLICY.md`
+- `templates/audit_contractkit_module_pin.sh`
 - Dashboard `docs/hyperdensity/HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_M24.md`
