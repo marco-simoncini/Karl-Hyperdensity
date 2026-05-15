@@ -1,0 +1,35 @@
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ResourcePort
+metadata:
+  name: vmlike-hotplug-prewired-example
+spec:
+  description: >
+    VM-like capability matrix when guest drivers and device models are prewired.
+    This is capability truth for market prevalidation — not a promise that every VM can hotplug.
+  appliesToRuntimeProviderIds:
+    - kubevirt.legacy.v1
+    - vm.native.fluidvirt.candidate.v1
+  ports:
+    cpu:
+      modes:
+        - hotAdd
+        - static
+    memory:
+      modes:
+        - balloon
+        - hotAdd
+        - static
+    disk:
+      modes:
+        - hotplug
+        - static
+    network:
+      modes:
+        - hotplug
+        - static
+    gpu:
+      modes:
+        - coldAttach
+        - warmAttach
+  notes: "GPU live modes remain experimental; cloud adaptive providers typically narrow this matrix."

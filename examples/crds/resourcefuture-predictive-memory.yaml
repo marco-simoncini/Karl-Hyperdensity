@@ -1,0 +1,34 @@
+apiVersion: hyperdensity.karl.io/v1alpha1
+kind: ResourceFuture
+metadata:
+  name: memory-cushion-demo-001
+  namespace: karl-sandbox
+spec:
+  leaseTemplate:
+    donor:
+      kind: Cell
+      namespace: karl-sandbox
+      name: lease-demo-donor-cell
+    receiver:
+      kind: Cell
+      namespace: karl-sandbox
+      name: lease-demo-receiver-cell
+    resource: memory
+    amount:
+      memoryMi: 2048
+    mode: envelope
+    durationSeconds: 300
+    noRestart: true
+    guestVisible: false
+    telemetryConvergedRequired: true
+    dryRunOnly: true
+  activation:
+    predicates:
+      - type: resourcePressure
+        params:
+          signal: memory.working-set-ratio
+          threshold: "0.82"
+    schedule:
+      notBefore: "2026-06-01T00:00:00Z"
+  priority: 10
+  prevalidationRequired: true

@@ -1,0 +1,17 @@
+apiVersion: gateway.karl.io/v1alpha1
+kind: GatewayRoute
+metadata:
+  name: finance-desktop-rdp-route
+  namespace: karl-sandbox
+spec:
+  shellRef:
+    name: finance-desktop-legacy-01
+  gatewayClass: karl.rdpgw.v1
+  displayName: Full desktop RDP (finance)
+  rdp:
+    screenMode: 2
+    useMultimon: false
+    alternateShell: ""
+    remoteApplicationMode: false
+  tokenPolicy:
+    ttlSeconds: 900

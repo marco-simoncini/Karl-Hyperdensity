@@ -38,6 +38,8 @@ Current implementation truth (owned by `Karl-Dashboard` runtime):
 
 Cross-cutting KARL platform vision (Shell / Cell / KHR / Hyperdensity market fusion) is documented under `docs/architecture/` and `docs/adr/` starting with Sprint 1 foundation files: `KARL_HOST_RUNTIME_VISION.md`, `KARL_SHELL_CELL_MODEL.md`, `KARL_HYPERDENSITY_KHR_FUSION.md`, and ADR-0001–0003.
 
+**Sprint 2 (contract-only):** Kubernetes CRDs (`api/crds/**`) for `runtime.karl.io`, `hyperdensity.karl.io`, and `gateway.karl.io` at `v1alpha1`, plus `docs/crd/` contracts and `examples/crds/` sample manifests. No controllers or runtime changes.
+
 ## Live Linux Shell Guarantees
 
 Compliance requires proof of:

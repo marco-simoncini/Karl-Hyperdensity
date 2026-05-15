@@ -46,6 +46,10 @@ done
 go test ./...
 python3 scripts/validate_json.py
 
+if [[ -x "${ROOT_DIR}/scripts/validate_crds.sh" ]]; then
+  "${ROOT_DIR}/scripts/validate_crds.sh"
+fi
+
 schema_count="$(ls -1 schemas/*.json | wc -l | tr -d ' ')"
 example_count="$(ls -1 examples/*.json | wc -l | tr -d ' ')"
 doc_count="${#required_files[@]}"

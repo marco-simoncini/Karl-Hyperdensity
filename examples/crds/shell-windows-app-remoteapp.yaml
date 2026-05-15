@@ -1,0 +1,34 @@
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ShellClass
+metadata:
+  name: windows-app-remoteapp
+spec:
+  id: windows.app.remoteapp.v1
+  displayName: Windows published application (RemoteApp-style)
+  complianceFamily: windows.app
+  supportedRuntimeProviders:
+    - windows-host-agent.v1
+  defaultResourcePortProfileRef:
+    name: linux-envelope-example
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Shell
+metadata:
+  name: claims-calc-remoteapp
+  namespace: karl-sandbox
+spec:
+  shellClassRef:
+    name: windows-app-remoteapp
+  shellPoolRef:
+    name: pool-windows-finance-example
+  displayName: Claims calculator (RemoteApp)
+  resourceProfile:
+    cpuMillis: 2000
+    memoryMi: 8192
+  runtimePreference:
+    primaryProvider: windows-host-agent.v1
+  windowsAppRef:
+    name: claims-calc-demo
+  gatewayRouteRefs:
+    - name: claims-calc-remoteapp-route

@@ -1,0 +1,60 @@
+# Candidate VM-like Cell for FluidVirt-aligned provider (research / non-GA).
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ShellClass
+metadata:
+  name: vm-native-candidate
+spec:
+  id: vm.native.candidate.v1
+  displayName: VM-like native candidate
+  complianceFamily: vm.native.candidate
+  supportedRuntimeProviders:
+    - vm.native.fluidvirt.candidate.v1
+  defaultResourcePortProfileRef:
+    name: vmlike-hotplug-prewired-example
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Shell
+metadata:
+  name: research-vmlike-shell-placeholder
+  namespace: karl-sandbox
+spec:
+  shellClassRef:
+    name: vm-native-candidate
+  shellPoolRef:
+    name: pool-linux-dev-example
+  displayName: Research VM-like shell (placeholder)
+  resourceProfile:
+    cpuMillis: 8000
+    memoryMi: 16384
+  runtimePreference:
+    primaryProvider: vm.native.fluidvirt.candidate.v1
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: RuntimeProvider
+metadata:
+  name: vm-native-fluidvirt-candidate
+spec:
+  id: vm.native.fluidvirt.candidate.v1
+  displayName: Native VM-like (FluidVirt candidate)
+  driver: vm-native-candidate
+  supportedShellClassIds:
+    - vm.native.candidate.v1
+  execContractVersion: khr-contract-2026.05-sprint2
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Cell
+metadata:
+  name: research-vmlike-001
+  namespace: karl-sandbox
+spec:
+  shellRef:
+    name: research-vmlike-shell-placeholder
+  hostRef:
+    name: worker-01-example
+  runtimeProviderRef:
+    name: vm-native-fluidvirt-candidate
+  resourcePortProfileRef:
+    name: vmlike-hotplug-prewired-example
+  providerHandle:
+    note: "Opaque FluidVirt / libvirt handle to be defined by provider implementation."

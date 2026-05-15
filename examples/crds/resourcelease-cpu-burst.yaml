@@ -1,0 +1,60 @@
+# Donor/receiver Cells must exist in the same namespace (Sprint 3+ controllers will enforce gates).
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Cell
+metadata:
+  name: lease-demo-donor-cell
+  namespace: karl-sandbox
+spec:
+  shellRef:
+    name: dev-linux-systemd-001
+  hostRef:
+    name: worker-01-example
+  runtimeProviderRef:
+    name: linux-systemd-v1
+  resourcePortProfileRef:
+    name: linux-envelope-example
+  providerHandle:
+    role: donor-demo
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Cell
+metadata:
+  name: lease-demo-receiver-cell
+  namespace: karl-sandbox
+spec:
+  shellRef:
+    name: dev-linux-systemd-001
+  hostRef:
+    name: worker-01-example
+  runtimeProviderRef:
+    name: linux-systemd-v1
+  resourcePortProfileRef:
+    name: linux-envelope-example
+  providerHandle:
+    role: receiver-demo
+---
+apiVersion: hyperdensity.karl.io/v1alpha1
+kind: ResourceLease
+metadata:
+  name: cpu-burst-demo-001
+  namespace: karl-sandbox
+spec:
+  donor:
+    kind: Cell
+    namespace: karl-sandbox
+    name: lease-demo-donor-cell
+  receiver:
+    kind: Cell
+    namespace: karl-sandbox
+    name: lease-demo-receiver-cell
+  resource: cpu
+  amount:
+    milliCpu: 2000
+  mode: envelope
+  durationSeconds: 120
+  noRestart: true
+  guestVisible: false
+  telemetryConvergedRequired: true
+  dryRunOnly: true
+  rollbackRequired: true

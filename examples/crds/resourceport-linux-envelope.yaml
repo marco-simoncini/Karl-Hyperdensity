@@ -1,0 +1,54 @@
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ResourcePort
+metadata:
+  name: linux-envelope-example
+spec:
+  description: Linux cgroup CPU/RAM envelope (no universal hotplug claim).
+  appliesToRuntimeProviderIds:
+    - linux.pod.v1
+    - linux.systemd.v1
+  ports:
+    cpu:
+      modes:
+        - envelope
+        - static
+    memory:
+      modes:
+        - envelope
+        - static
+    disk:
+      modes:
+        - static
+    network:
+      modes:
+        - static
+  notes: "Envelope semantics follow Karl-Hyperdensity Linux shell compliance contracts; host and cgroup version may narrow actual modes."
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: RuntimeProvider
+metadata:
+  name: linux-pod-v1
+spec:
+  id: linux.pod.v1
+  displayName: Linux Pod provider
+  driver: kubernetes-pod
+  supportedShellClassIds:
+    - linux.workspace.systemd.v1
+  defaultResourcePortProfileRef:
+    name: linux-envelope-example
+  execContractVersion: khr-contract-2026.05-sprint2
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: RuntimeProvider
+metadata:
+  name: linux-systemd-v1
+spec:
+  id: linux.systemd.v1
+  displayName: Linux systemd slice provider
+  driver: linux-systemd
+  supportedShellClassIds:
+    - linux.workspace.systemd.v1
+  defaultResourcePortProfileRef:
+    name: linux-envelope-example
+  execContractVersion: khr-contract-2026.05-sprint2

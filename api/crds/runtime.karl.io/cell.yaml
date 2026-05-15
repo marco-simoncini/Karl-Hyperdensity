@@ -1,0 +1,84 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: cells.runtime.karl.io
+  labels:
+    karl.io/contract-track: khr-v1alpha1
+spec:
+  group: runtime.karl.io
+  scope: Namespaced
+  names:
+    plural: cells
+    singular: cell
+    kind: Cell
+    shortNames:
+      - kcell
+    categories:
+      - all
+      - karl
+      - karl-runtime
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - name: Shell
+          type: string
+          jsonPath: .spec.shellRef.name
+        - name: Provider
+          type: string
+          jsonPath: .spec.runtimeProviderRef.name
+      schema:
+        openAPIV3Schema:
+          type: object
+          required:
+            - spec
+          properties:
+            spec:
+              type: object
+              required:
+                - shellRef
+                - runtimeProviderRef
+              properties:
+                shellRef:
+                  type: object
+                  required:
+                    - name
+                  properties:
+                    name:
+                      type: string
+                hostRef:
+                  description: Cluster-scoped Host name materializing this Cell.
+                  type: object
+                  required:
+                    - name
+                  properties:
+                    name:
+                      type: string
+                runtimeProviderRef:
+                  type: object
+                  required:
+                    - name
+                  properties:
+                    name:
+                      type: string
+                resourcePortProfileRef:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                resourcePorts:
+                  description: Inline capability snapshot (optional; may duplicate ResourcePort profile).
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                providerHandle:
+                  description: Opaque backend binding (Pod name, VMI id, cloud instance id, etc.).
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                priorityClass:
+                  type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true

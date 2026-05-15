@@ -1,0 +1,25 @@
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Cell
+metadata:
+  name: dev-linux-systemd-001-cell-a7f3
+  namespace: karl-sandbox
+  labels:
+    karl.io/shell: dev-linux-systemd-001
+spec:
+  shellRef:
+    name: dev-linux-systemd-001
+  hostRef:
+    name: worker-01-example
+  runtimeProviderRef:
+    name: linux-systemd-v1
+  resourcePorts:
+    cpu:
+      modes:
+        - envelope
+    memory:
+      modes:
+        - envelope
+  providerHandle:
+    systemdUnit: karl-shell-dev-linux-systemd-001.scope
+    cgroupPath: /sys/fs/cgroup/karl.slice/karl-shell-dev-linux-systemd-001.scope

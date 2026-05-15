@@ -1,0 +1,75 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: hosts.runtime.karl.io
+  labels:
+    karl.io/contract-track: khr-v1alpha1
+spec:
+  group: runtime.karl.io
+  scope: Cluster
+  names:
+    plural: hosts
+    singular: host
+    kind: Host
+    shortNames:
+      - khost
+    categories:
+      - all
+      - karl
+      - karl-runtime
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - name: Node
+          type: string
+          jsonPath: .spec.kubernetesNodeName
+      schema:
+        openAPIV3Schema:
+          type: object
+          required:
+            - spec
+          properties:
+            spec:
+              type: object
+              required:
+                - kubernetesNodeName
+              properties:
+                kubernetesNodeName:
+                  description: Associated Kubernetes Node name (control-plane view).
+                  type: string
+                hostPoolRefs:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                    properties:
+                      name:
+                        type: string
+                khr:
+                  description: KHR agent identity and version (future agent populates status).
+                  type: object
+                  properties:
+                    expectedVersion:
+                      type: string
+                hardwareProfile:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                taints:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      key:
+                        type: string
+                      value:
+                        type: string
+                      effect:
+                        type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true

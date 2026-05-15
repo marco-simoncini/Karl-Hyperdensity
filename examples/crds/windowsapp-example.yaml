@@ -1,0 +1,22 @@
+apiVersion: gateway.karl.io/v1alpha1
+kind: WindowsApp
+metadata:
+  name: claims-calc-demo
+  namespace: karl-sandbox
+spec:
+  displayName: Claims Calculator
+  description: Example Windows published application for RemoteApp-style Shells.
+  identifiers:
+    productCode: "{CLAIMS-CALC-DEMO}"
+    publisher: KARL Contract Examples
+    version: 0.0.1
+  remoteApp:
+    remoteApplicationProgram: "||CLAIMS_CALC"
+    remoteApplicationName: "Claims Calculator"
+    remoteApplicationCmdLine: ""
+    remoteApplicationIcon: "%SystemRoot%\\System32\\shell32.dll,21"
+  installEvidence:
+    attestationRef: inventory://example/windowsapp/claims-calc-demo
+  constraints:
+    allowedShellClasses:
+      - windows.app.remoteapp.v1

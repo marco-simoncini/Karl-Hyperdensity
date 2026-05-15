@@ -1,0 +1,125 @@
+# Contract-only CRD (Sprint 2). No controller ships with this definition.
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: shells.runtime.karl.io
+  labels:
+    karl.io/contract-track: khr-v1alpha1
+spec:
+  group: runtime.karl.io
+  scope: Namespaced
+  names:
+    plural: shells
+    singular: shell
+    kind: Shell
+    shortNames:
+      - ksh
+    categories:
+      - all
+      - karl
+      - karl-runtime
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      additionalPrinterColumns:
+        - name: Class
+          type: string
+          jsonPath: .spec.shellClassRef.name
+        - name: Phase
+          type: string
+          jsonPath: .status.phase
+      schema:
+        openAPIV3Schema:
+          type: object
+          required:
+            - spec
+          properties:
+            spec:
+              type: object
+              required:
+                - shellClassRef
+              properties:
+                shellClassRef:
+                  description: Reference to a cluster-scoped ShellClass by name.
+                  type: object
+                  required:
+                    - name
+                  properties:
+                    name:
+                      type: string
+                      minLength: 1
+                shellPoolRef:
+                  description: Optional ShellPool (cluster-scoped) placement domain.
+                  type: object
+                  required:
+                    - name
+                  properties:
+                    name:
+                      type: string
+                      minLength: 1
+                displayName:
+                  type: string
+                labels:
+                  type: object
+                  additionalProperties:
+                    type: string
+                resourceProfile:
+                  description: Declared resource envelope / baseline (product semantics).
+                  type: object
+                  properties:
+                    cpuMillis:
+                      type: integer
+                      format: int64
+                      minimum: 0
+                    memoryMi:
+                      type: integer
+                      format: int64
+                      minimum: 0
+                runtimePreference:
+                  type: object
+                  properties:
+                    primaryProvider:
+                      type: string
+                    fallbackProviders:
+                      type: array
+                      items:
+                        type: string
+                resourcePortProfileRef:
+                  description: Optional cluster ResourcePort profile override.
+                  type: object
+                  required:
+                    - name
+                  properties:
+                    name:
+                      type: string
+                gatewayRouteRefs:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                    properties:
+                      name:
+                        type: string
+                windowsAppRef:
+                  description: Optional WindowsApp for windows.app ShellClasses.
+                  type: object
+                  required:
+                    - name
+                  properties:
+                    name:
+                      type: string
+                kubeVirtLegacy:
+                  description: Optional legacy mapping hints (no runtime apply in Sprint 2).
+                  type: object
+                  properties:
+                    virtualMachineName:
+                      type: string
+                    virtualMachineNamespace:
+                      type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true

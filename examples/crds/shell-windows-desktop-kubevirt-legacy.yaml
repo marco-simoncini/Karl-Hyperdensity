@@ -1,0 +1,76 @@
+# Self-contained bundle: ShellClass + RuntimeProvider + Shell (namespace karl-sandbox).
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ShellClass
+metadata:
+  name: windows-desktop-kubevirt-legacy
+spec:
+  id: windows.desktop.kubevirt.legacy.v1
+  displayName: Windows Desktop (KubeVirt legacy)
+  complianceFamily: windows.session
+  supportedRuntimeProviders:
+    - kubevirt.legacy.v1
+  defaultResourcePortProfileRef:
+    name: vmlike-hotplug-prewired-example
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: RuntimeProvider
+metadata:
+  name: kubevirt-legacy-v1
+spec:
+  id: kubevirt.legacy.v1
+  displayName: KubeVirt legacy VM provider
+  driver: kubevirt-legacy
+  supportedShellClassIds:
+    - windows.desktop.kubevirt.legacy.v1
+  execContractVersion: khr-contract-2026.05-sprint2
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Shell
+metadata:
+  name: finance-desktop-legacy-01
+  namespace: karl-sandbox
+spec:
+  shellClassRef:
+    name: windows-desktop-kubevirt-legacy
+  shellPoolRef:
+    name: pool-windows-finance-example
+  displayName: Finance pooled desktop (legacy VM)
+  resourceProfile:
+    cpuMillis: 8000
+    memoryMi: 32768
+  runtimePreference:
+    primaryProvider: kubevirt.legacy.v1
+  kubeVirtLegacy:
+    virtualMachineName: fin-vm-legacy-01
+    virtualMachineNamespace: karl-sandbox
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: HostPool
+metadata:
+  name: default-host-pool-example
+spec:
+  hostSelector:
+    matchLabels:
+      node-role.kubernetes.io/worker: ""
+  failureDomain: example-rack
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Host
+metadata:
+  name: worker-01-example
+spec:
+  kubernetesNodeName: worker-01
+  hostPoolRefs:
+    - name: default-host-pool-example
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ShellPool
+metadata:
+  name: pool-windows-finance-example
+spec:
+  selector:
+    matchLabels:
+      karl.io/pool: windows-finance
+  allowedShellClassNames:
+    - windows.desktop.kubevirt.legacy.v1

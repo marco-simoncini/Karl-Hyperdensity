@@ -1,0 +1,51 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: hostpools.runtime.karl.io
+  labels:
+    karl.io/contract-track: khr-v1alpha1
+spec:
+  group: runtime.karl.io
+  scope: Cluster
+  names:
+    plural: hostpools
+    singular: hostpool
+    kind: HostPool
+    shortNames:
+      - khostpool
+    categories:
+      - all
+      - karl
+      - karl-runtime
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      schema:
+        openAPIV3Schema:
+          type: object
+          required:
+            - spec
+          properties:
+            spec:
+              type: object
+              required:
+                - hostSelector
+              properties:
+                description:
+                  type: string
+                hostSelector:
+                  description: Label selector over Host objects.
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                staticHostNames:
+                  type: array
+                  items:
+                    type: string
+                failureDomain:
+                  type: string
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true

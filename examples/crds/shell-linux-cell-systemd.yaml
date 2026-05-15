@@ -1,0 +1,44 @@
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ShellClass
+metadata:
+  name: linux-workspace-systemd
+spec:
+  id: linux.workspace.systemd.v1
+  displayName: Linux workspace (systemd slice)
+  complianceFamily: linux.cgroup.envelope
+  supportedRuntimeProviders:
+    - linux.systemd.v1
+    - linux.pod.v1
+  defaultResourcePortProfileRef:
+    name: linux-envelope-example
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: Shell
+metadata:
+  name: dev-linux-systemd-001
+  namespace: karl-sandbox
+spec:
+  shellClassRef:
+    name: linux-workspace-systemd
+  shellPoolRef:
+    name: pool-linux-dev-example
+  displayName: Developer Linux workspace
+  resourceProfile:
+    cpuMillis: 4000
+    memoryMi: 16384
+  runtimePreference:
+    primaryProvider: linux.systemd.v1
+    fallbackProviders:
+      - linux.pod.v1
+---
+apiVersion: runtime.karl.io/v1alpha1
+kind: ShellPool
+metadata:
+  name: pool-linux-dev-example
+spec:
+  selector:
+    matchLabels:
+      karl.io/pool: linux-dev
+  allowedShellClassNames:
+    - linux.workspace.systemd.v1
