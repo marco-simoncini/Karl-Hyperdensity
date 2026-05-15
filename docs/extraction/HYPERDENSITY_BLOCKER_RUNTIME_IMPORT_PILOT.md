@@ -1,8 +1,8 @@
-# contractkit/blockers — Dashboard runtime import pilot (Sprint 31 / M14)
+# contractkit/blockers — Dashboard runtime import (Sprint 31–32 / M14)
 
 ## Boundary
 
-`pkg/hyperdensity/contractkit/blockers` exposes **stable string constants** for gate/blocker IDs. Sprint 31 is the first Dashboard **production** import of this package.
+`pkg/hyperdensity/contractkit/blockers` exposes **stable string constants** for gate/blocker IDs. Sprint 31 introduced the first Dashboard **production** import; Sprint 32 extends it to VM readonly observation surfaces.
 
 | Allowed in runtime | Still test-only |
 |--------------------|-----------------|
@@ -10,15 +10,21 @@
 
 Constants are byte-identical to prior string literals — **no JSON or API change**.
 
-## Pilot surfaces (Dashboard)
+## Surfaces (Dashboard)
 
-VM lane readiness / evidence refresh / runtime evidence collector, plus guarded auto-execution ledger safety gate `no_production_mutation`.
+- **Sprint 31:** VM lane readiness / evidence refresh / runtime evidence collector; guarded auto-execution ledger `no_production_mutation`.
+- **Sprint 32:** VM readonly observation (intake, package, dry-run pass, submission gate, real submission policy remediation, runtime live probe remediation, operator submission / grant / approval preflights); acknowledgement and checklist strings that match catalog `no_windows_lane`.
 
 Import alias used in Dashboard:
 
 ```go
 hpblockers "github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit/blockers"
 ```
+
+## Guards (Dashboard tests)
+
+- No `contractkit/contracts` in production `.go`.
+- `TestHyperdensityRuntimeContractkitImportWhitelist`: only exact import path `.../pkg/hyperdensity/contractkit/blockers` is permitted under `contractkit/`.
 
 ## Not in scope
 
@@ -31,8 +37,7 @@ hpblockers "github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contra
 
 Consumers stay on tagged module `v0.1.1-khr-m1-m12` unless a future sprint bumps contractkit for catalog changes.
 
-## Next slices (documented, not implemented)
+## Next slices
 
-- Readonly observation VM surfaces (`no_windows_lane`, `keep_windows_lane_disabled`).
 - Policy/release matrix `LimitationID` / `RuleID` rows for `no_production_mutation`.
-- Optional: runtime grep/CI guard listing allowed production import paths.
+- Optional: broaden whitelist to document other allowed third-party imports (currently only enforces Hyperdensity `contractkit/*` subtree).
