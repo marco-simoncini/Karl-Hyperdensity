@@ -101,6 +101,28 @@ Dashboard pin:
 go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.3-khr-m1-m14
 ```
 
+## Fifth anchor tag (Sprint 37 — claimpolicy surface mapping)
+
+**Go module version:** `v0.1.4-khr-m1-m15`  
+**Git tag:**
+
+```text
+pkg/hyperdensity/contractkit/v0.1.4-khr-m1-m15
+```
+
+Adds **Parent Fabric surface mapping** for `claimpolicy` (`SurfaceMappings`, `ValidateSurfaceMappings`). **No** `ContractKitVersion` / manifest bump; Dashboard **test-only** parity; M17 runtime import freeze unchanged.
+
+```bash
+git tag pkg/hyperdensity/contractkit/v0.1.4-khr-m1-m15 <sprint-37-commit>
+git push origin pkg/hyperdensity/contractkit/v0.1.4-khr-m1-m15
+```
+
+Dashboard pin:
+
+```bash
+go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.4-khr-m1-m15
+```
+
 ## Compatibility promise (contractkit)
 
 | Property | Commitment |

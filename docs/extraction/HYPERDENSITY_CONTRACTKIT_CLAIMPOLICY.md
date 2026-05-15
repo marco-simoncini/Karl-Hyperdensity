@@ -1,4 +1,4 @@
-# contractkit / claimpolicy — boundary + catalog (Sprint 35–36)
+# contractkit / claimpolicy — boundary + catalog + surface mapping (Sprint 35–37)
 
 ## Purpose
 
@@ -6,6 +6,7 @@
 
 - **Sprint 35:** stable **posture** vocabulary (`PostureKind`, `KnownPosture`, `Postures`).
 - **Sprint 36:** a minimal **claim-policy catalog** (`ClaimPolicyID`, `ClaimPolicyRule`, `Catalog`, `Known`, `Severity`, `RuntimeAllowed`, `MustKeepRuntimeDisabled`, `ForbiddenProductionClaimIDs`).
+- **Sprint 37:** **surface mapping** (`ParentFabricSurface`, `SurfaceClaimMapping`, `SurfaceMappings`, `MappingsForClaim`, `ValidateSurfaceMappings`) — controlled Parent Fabric / Dashboard surface documentation; **no** runtime wiring.
 
 It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **without** changing API payloads, JSON ordering, or Parent Fabric runtime behavior. **There is no runtime enforcement in this package** — documentation and test parity only.
 
@@ -16,12 +17,13 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 - **No** execution/apply path changes, Windows enablement, KubeVirt removal, or new Parent Fabric collectors.
 - **No** change to `ContractKitVersion` (`v0.0.0-sprint26`) or manifest envelope (`hyperdensity.parity.manifest/v1`) for this slice — module semver tag bumps only.
 
-## Sprint 35 vs Sprint 36
+## Sprint 35 vs Sprint 36 vs Sprint 37
 
 | Sprint | Delivered |
 |--------|-----------|
 | **35** | Boundary: `PackageVersion`, posture tokens, stable `Postures()` order. |
 | **36** | Catalog: typed `ClaimPolicyID` constants, `ClaimPolicyRule` rows, lookup helpers, `ForbiddenProductionClaimIDs` (sorted), critical `MustKeepRuntimeDisabled` anchors. |
+| **37** | Surface mapping: claim IDs ↔ Parent Fabric surface tokens; every mapping has `RuntimeImportAllowed=false`. |
 
 ## Catalog semantics (high level)
 
@@ -36,9 +38,10 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 
 | Area | Symbols |
 |------|---------|
-| Epoch | `PackageVersion` (`v0.0.0-sprint36`) |
+| Epoch | `PackageVersion` (`v0.0.0-sprint37`) |
 | Posture (Sprint 35) | `PostureKind`, constants, `KnownPosture`, `Postures` |
 | Catalog (Sprint 36) | `ClaimPolicyID`, `ClaimPolicyRule`, `Catalog`, `Known`, `Severity`, `RuntimeAllowed`, `MustKeepRuntimeDisabled`, `ForbiddenProductionClaimIDs` |
+| Surface mapping (Sprint 37) | `ParentFabricSurface`, `SurfaceClaimMapping`, `SurfaceMappings`, `MappingsForClaim`, `ValidateSurfaceMappings` |
 
 ## Relationship to other contractkit packages
 
@@ -46,7 +49,7 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 |---------|------|
 | `blockers` | M1 gate / blocker ID catalog. |
 | `contracts` | Summary DTO, manifest, golden helpers. |
-| `claimpolicy` | Claim-policy + posture vocabulary for parity and **future** KHR apply / planning gates (no runtime wiring in Sprint 36). |
+| `claimpolicy` | Claim-policy + posture + surface mapping for parity and **future** KHR apply / planning gates (no Dashboard runtime import through Sprint 37). |
 
 ## Validation
 
@@ -57,7 +60,7 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 
 ## Consumer pin
 
-Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0.1.3-khr-m1-m14` (or newer) is published; **test-only** imports of `claimpolicy` remain in `*_test.go` only.
+Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0.1.4-khr-m1-m15` (or newer) is published; **test-only** imports of `claimpolicy` remain in `*_test.go` only.
 
 ## Related
 
@@ -66,3 +69,5 @@ Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0
 - `HYPERDENSITY_CONTRACTKIT_RELEASE_TAGGING.md`
 - `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CONTRACTKIT_CLAIMPOLICY_M18.md`
 - `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_CATALOG_M19.md`
+- `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_SURFACE_MAPPING_M20.md`
+- `HYPERDENSITY_CLAIMPOLICY_SURFACE_MAPPING.md`

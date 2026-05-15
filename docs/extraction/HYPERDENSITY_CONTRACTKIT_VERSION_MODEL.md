@@ -4,7 +4,7 @@ Three **independent** version layers; do not conflate them in manifests, tags, o
 
 | Layer | Constant / field | Current value | Purpose |
 |-------|------------------|---------------|---------|
-| **Module semver** | `ContractKitModuleVersion` / `go.mod` | `v0.1.3-khr-m1-m14` | Go module release; git tag `pkg/hyperdensity/contractkit/v0.1.3-khr-m1-m14` |
+| **Module semver** | `ContractKitModuleVersion` / `go.mod` | `v0.1.4-khr-m1-m15` | Go module release; git tag `pkg/hyperdensity/contractkit/v0.1.4-khr-m1-m15` |
 | **Contract schema** | `ContractKitVersion` / manifest `contractKitVersion` | `v0.0.0-sprint26` | Logical DTO/validator epoch; bump when mapping rules or contract shape changes |
 | **Manifest envelope** | `FixtureManifestVersion` / manifest `manifestVersion` | `hyperdensity.parity.manifest/v1` | JSON manifest file format |
 

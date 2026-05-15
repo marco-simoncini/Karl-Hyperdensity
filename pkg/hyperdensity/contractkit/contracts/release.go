@@ -1,10 +1,10 @@
 package contracts
 
 // Module semver (go.mod / git tag) — distinct from logical contract schema version.
-const ContractKitModuleVersion = "v0.1.3-khr-m1-m14"
+const ContractKitModuleVersion = "v0.1.4-khr-m1-m15"
 
 // Git tag on Karl-Hyperdensity parent repo (nested module prefix required for go get).
-const ContractKitGitTag = "pkg/hyperdensity/contractkit/v0.1.3-khr-m1-m14"
+const ContractKitGitTag = "pkg/hyperdensity/contractkit/v0.1.4-khr-m1-m15"
 
 // ContractKitSchemaVersion is the logical contract/manifest schema epoch (ContractKitVersion).
 const ContractKitSchemaVersion = ContractKitVersion

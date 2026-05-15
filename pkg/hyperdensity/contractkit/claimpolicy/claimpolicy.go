@@ -1,5 +1,5 @@
-// Package claimpolicy defines stable claim / policy posture vocabulary and a minimal
-// claim-policy catalog for Parent Fabric parity (Sprint 35 boundary, Sprint 36 catalog).
+// Package claimpolicy defines stable claim / policy posture vocabulary, a minimal
+// claim-policy catalog (Sprint 35–36), and Parent Fabric surface mapping (Sprint 37).
 //
 // Stdlib-only; no cluster or HTTP I/O. Karl-Dashboard production code must not import
 // this package — see docs/extraction/HYPERDENSITY_CONTRACTKIT_CLAIMPOLICY.md.
@@ -8,7 +8,7 @@ package claimpolicy
 import "sort"
 
 // PackageVersion is the claimpolicy design epoch (not ContractKitSchemaVersion / manifest epoch).
-const PackageVersion = "v0.0.0-sprint36"
+const PackageVersion = "v0.0.0-sprint37"
 
 // PostureKind describes how narrowly a governance surface may assert readiness or mutation posture.
 // Tokens align with existing parent-fabric vocabulary without binding JSON field names here.

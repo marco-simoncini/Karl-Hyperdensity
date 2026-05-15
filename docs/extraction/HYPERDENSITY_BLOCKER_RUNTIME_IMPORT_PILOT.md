@@ -37,7 +37,7 @@ hpblockers "github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contra
 
 ## Version
 
-Consumers pin tagged module `v0.1.3-khr-m1-m14` (Sprint 36 completes `claimpolicy` catalog; runtime remains `blockers` only per M17).
+Consumers pin tagged module `v0.1.4-khr-m1-m15` (Sprint 37 adds claimpolicy ↔ Parent Fabric **surface mapping** in contract/tests/docs only; runtime remains `blockers` only per M17).
 
 ## Sprint 34 — freeze (Dashboard M17)
 
