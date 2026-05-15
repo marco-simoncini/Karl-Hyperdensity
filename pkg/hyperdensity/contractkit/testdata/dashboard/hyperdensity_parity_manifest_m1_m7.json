@@ -1,0 +1,92 @@
+{
+  "manifestVersion": "hyperdensity.parity.manifest/v1",
+  "contractKitVersion": "v0.0.0-sprint26",
+  "cases": [
+    {
+      "id": "m1-blocker-catalog",
+      "milestone": "M1",
+      "dashboardFixture": "blocker-catalog/compile-only",
+      "contractGolden": "parent_fabric_summary_redacted.golden.json",
+      "edge": "blocker-catalog-parity",
+      "windowsEnabled": false,
+      "kubeVirtLegacyRequired": true,
+      "claimSafe": true
+    },
+    {
+      "id": "m2-apply-semantics",
+      "milestone": "M2",
+      "dashboardFixture": "synthetic/dashboard_redacted.json",
+      "contractGolden": "synthetic/contract_expected.golden.json",
+      "edge": "apply-semantics",
+      "supportsApply": true,
+      "windowsEnabled": false,
+      "kubeVirtLegacyRequired": true,
+      "claimSafe": true
+    },
+    {
+      "id": "m3-mapper",
+      "milestone": "M3",
+      "dashboardFixture": "synthetic/dashboard_redacted.json",
+      "contractGolden": "synthetic/contract_expected.golden.json",
+      "edge": "mapper",
+      "supportsApply": true,
+      "windowsEnabled": false,
+      "kubeVirtLegacyRequired": true,
+      "claimSafe": true
+    },
+    {
+      "id": "m4-golden-generator",
+      "milestone": "M4",
+      "dashboardFixture": "synthetic/dashboard_redacted.json",
+      "contractGolden": "synthetic/contract_expected.golden.json",
+      "edge": "canonical-golden",
+      "supportsApply": true,
+      "windowsEnabled": false,
+      "kubeVirtLegacyRequired": true,
+      "claimSafe": true
+    },
+    {
+      "id": "m5-live-redacted-supports-apply-true",
+      "milestone": "M5",
+      "dashboardFixture": "live/live_redacted.json",
+      "contractGolden": "live/live_redacted_contract.golden.json",
+      "edge": "live-redacted",
+      "supportsApply": true,
+      "windowsEnabled": false,
+      "kubeVirtLegacyRequired": true,
+      "claimSafe": true
+    },
+    {
+      "id": "m6-live-redacted-supports-apply-false",
+      "milestone": "M6",
+      "dashboardFixture": "live/live_redacted_supports_apply_false.json",
+      "contractGolden": "live/live_redacted_supports_apply_false_contract.golden.json",
+      "edge": "supports-apply-false",
+      "supportsApply": false,
+      "windowsEnabled": false,
+      "kubeVirtLegacyRequired": true,
+      "claimSafe": true
+    },
+    {
+      "id": "m7-missing-optional",
+      "milestone": "M7",
+      "dashboardFixture": "live/live_redacted_missing_optional.json",
+      "contractGolden": "live/live_redacted_missing_optional_contract.golden.json",
+      "edge": "missing-optional",
+      "supportsApply": false,
+      "windowsEnabled": false,
+      "kubeVirtLegacyRequired": true,
+      "claimSafe": true
+    },
+    {
+      "id": "m8-contractkit-import",
+      "milestone": "M8",
+      "dashboardFixture": "hyperdensity_parity_manifest_m1_m7.json",
+      "contractGolden": "hyperdensity_parity_manifest_m1_m7.json",
+      "edge": "contractkit-import",
+      "windowsEnabled": false,
+      "kubeVirtLegacyRequired": true,
+      "claimSafe": true
+    }
+  ]
+}

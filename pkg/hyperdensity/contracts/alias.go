@@ -5,11 +5,15 @@ package contracts
 import ck "github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit/contracts"
 
 const (
-	SummaryAPIVersion                  = ck.SummaryAPIVersion
-	MissingOptionalGeneratedAtDefault  = ck.MissingOptionalGeneratedAtDefault
+	SummaryAPIVersion                 = ck.SummaryAPIVersion
+	MissingOptionalGeneratedAtDefault = ck.MissingOptionalGeneratedAtDefault
+	ContractKitVersion              = ck.ContractKitVersion
+	ContractKitCommitHint           = ck.ContractKitCommitHint
 )
 
 type (
+	FixtureManifest          = ck.FixtureManifest
+	FixtureCase              = ck.FixtureCase
 	ParentFabricSummary      = ck.ParentFabricSummary
 	ParentPoolSummary        = ck.ParentPoolSummary
 	ExecutionEngineSummary   = ck.ExecutionEngineSummary
@@ -20,6 +24,9 @@ type (
 )
 
 var (
+	Version                            = ck.Version
+	ParseFixtureManifest               = ck.ParseFixtureManifest
+	ValidateFixtureManifest            = ck.ValidateFixtureManifest
 	ParseParentFabricSummary           = ck.ParseParentFabricSummary
 	ValidateSummary                    = ck.ValidateSummary
 	ValidateNoForbiddenClaims          = ck.ValidateNoForbiddenClaims
