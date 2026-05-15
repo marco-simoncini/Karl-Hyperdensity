@@ -1,8 +1,8 @@
-# contractkit/blockers — Dashboard runtime import (Sprint 31–33 / M14)
+# contractkit/blockers — Dashboard runtime import (Sprint 31–34 / M14)
 
 ## Boundary
 
-`pkg/hyperdensity/contractkit/blockers` exposes **stable string constants** for gate/blocker IDs. Sprint 31 introduced the first Dashboard **production** import; Sprint 32 extends it to VM readonly observation; Sprint 33 completes catalog `no_production_mutation` on policy pack, consistency checker, release matrix, and live resource authority limitation surfaces.
+`pkg/hyperdensity/contractkit/blockers` exposes **stable string constants** for gate/blocker IDs. Sprint 31 introduced the first Dashboard **production** import; Sprint 32 extends it to VM readonly observation; Sprint 33 completes catalog `no_production_mutation` on policy pack, consistency checker, release matrix, and live resource authority limitation surfaces; **Sprint 34** adds bash audits + **M17** runtime import freeze.
 
 | Allowed in runtime | Still test-only |
 |--------------------|-----------------|
@@ -22,10 +22,11 @@ Import alias used in Dashboard:
 hpblockers "github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit/blockers"
 ```
 
-## Guards (Dashboard tests)
+## Guards (Dashboard tests + scripts)
 
 - No `contractkit/contracts` in production `.go`.
-- `TestHyperdensityRuntimeContractkitImportWhitelist`: only exact import path `.../pkg/hyperdensity/contractkit/blockers` is permitted under `contractkit/`.
+- `TestHyperdensityRuntimeContractkitImportWhitelist` + `contractkit_runtime_import_allowlist.txt`: only listed production files may import `blockers`; only exact import path `.../pkg/hyperdensity/contractkit/blockers` is permitted under `contractkit/`.
+- Parity runner: `audit_contractkit_runtime_imports.sh`, `audit_hyperdensity_blocker_literals.sh` (see M17).
 
 ## Not in scope
 
@@ -37,6 +38,10 @@ hpblockers "github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contra
 ## Version
 
 Consumers stay on tagged module `v0.1.1-khr-m1-m12` unless a future sprint bumps contractkit for catalog changes.
+
+## Sprint 34 — freeze (Dashboard M17)
+
+Runtime production import from `contractkit` is **closed** at `contractkit/blockers` only. Automated audits and an explicit importer allowlist live under `Karl-Dashboard/kubernetes-console/scripts/hyperdensity/`. See **`Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CONTRACTKIT_RUNTIME_IMPORT_FREEZE_M17.md`**.
 
 ## Next slices
 
