@@ -1,0 +1,13 @@
+{
+  "aggregateRealizedCompressionDelta": 0.02,
+  "aggregateRealizedMovedIdleValue": 450,
+  "aggregationId": "rca-1",
+  "claimBoundary": "realized compression aggregation only",
+  "estimatedValueExcluded": true,
+  "evidenceRefs": [
+    "artifact://compression-agg"
+  ],
+  "movementEvidencePresent": true,
+  "projectedCompressionExcluded": true,
+  "realizedMovementCount": 2
+}

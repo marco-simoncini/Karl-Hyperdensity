@@ -1,0 +1,594 @@
+{
+  "aggregateRealizedCompressionDelta": 0.02,
+  "aggregateRealizedMovedIdleValue": 450,
+  "aggregateRealizedValue": 96,
+  "allowlistGate": {
+    "allowlistGateId": "al-1",
+    "allowlistGatePassed": true,
+    "allowlistSource": "configmap://karl-system/canary-allowlist-v1",
+    "allowlistedNamespaces": [
+      "prod-canary"
+    ],
+    "allowlistedShells": [
+      "d3",
+      "d4",
+      "r3",
+      "r4"
+    ],
+    "claimBoundary": "allowlist gate only",
+    "evidenceRefs": [
+      "artifact://allowlist"
+    ],
+    "selectedCandidatesAllowlisted": true
+  },
+  "allowlistGatePassed": true,
+  "auditEvents": [
+    {
+      "actorType": "controller",
+      "auditEventId": "aud-1",
+      "claimBoundary": "audit only",
+      "eventType": "candidate_selected",
+      "evidenceRefs": [
+        "artifact://aud-1"
+      ],
+      "occurredAt": "2026-05-14T19:29:00Z",
+      "sourceComponent": "Karl-Hyperdensity",
+      "summary": "canary cohort candidates selected from stable observation window"
+    },
+    {
+      "actorType": "controller",
+      "auditEventId": "aud-2",
+      "claimBoundary": "audit only",
+      "eventType": "canary_closed",
+      "evidenceRefs": [
+        "artifact://aud-2"
+      ],
+      "occurredAt": "2026-05-14T19:40:00Z",
+      "sourceComponent": "Karl-Hyperdensity",
+      "summary": "canary cohort completed, graduation evidence produced, production_auto_with_policy remains disabled"
+    }
+  ],
+  "blastRadiusGate": {
+    "blastRadiusExceeded": false,
+    "blastRadiusGateId": "br-1",
+    "blastRadiusGatePassed": true,
+    "claimBoundary": "blast radius gate only",
+    "evidenceRefs": [
+      "artifact://blast-radius"
+    ],
+    "maxCpuMillicores": 500,
+    "maxMemoryMiB": 512,
+    "maxMovementCount": 2,
+    "maxTenantCount": 1,
+    "requestedCpuMillicores": 250,
+    "requestedMemoryMiB": 256,
+    "requestedMovementCount": 2,
+    "requestedTenantCount": 1
+  },
+  "blastRadiusGatePassed": true,
+  "blockedCandidateCount": 1,
+  "blockers": [],
+  "broadProductionMutationExecuted": false,
+  "canaryCohortCloseout": {
+    "auditComplete": true,
+    "canaryCohortExpansionId": "cohort-exp-s22-v1",
+    "claimBoundary": "canary cohort closeout only",
+    "closeoutId": "close-1",
+    "closeoutStatus": "passed",
+    "evidenceRefs": [
+      "artifact://closeout"
+    ],
+    "nextAllowedState": "guarded_policy_review",
+    "productionAutoWithPolicyEnabled": false,
+    "promotedToGeneralProduction": false,
+    "rollbackWindowsClosedOrOpenWithPolicy": true
+  },
+  "canaryCohortCloseoutRecorded": true,
+  "canaryCohortExpansionId": "cohort-exp-s22-v1",
+  "candidateCount": 3,
+  "candidateSelection": {
+    "blockedCandidateCount": 1,
+    "candidateCount": 3,
+    "candidateSelectionId": "sel-1",
+    "candidates": [
+      {
+        "allowlisted": true,
+        "amount": "250m",
+        "blocked": false,
+        "blockerCodes": [],
+        "candidateId": "cand-1",
+        "claimBoundary": "candidate only",
+        "donorShellId": "d3",
+        "evidenceRefs": [
+          "artifact://cand-1"
+        ],
+        "generalProductionScope": false,
+        "productionCanaryScope": true,
+        "receiverShellId": "r3",
+        "resource": "cpu",
+        "selected": true,
+        "sourceActionId": "act-3"
+      },
+      {
+        "allowlisted": true,
+        "amount": "256Mi",
+        "blocked": false,
+        "blockerCodes": [],
+        "candidateId": "cand-2",
+        "claimBoundary": "candidate only",
+        "donorShellId": "d4",
+        "evidenceRefs": [
+          "artifact://cand-2"
+        ],
+        "generalProductionScope": false,
+        "productionCanaryScope": true,
+        "receiverShellId": "r4",
+        "resource": "memory",
+        "selected": true,
+        "sourceActionId": "act-4"
+      },
+      {
+        "allowlisted": true,
+        "amount": "500m",
+        "blocked": true,
+        "blockerCodes": [
+          "operator_controlled_scope"
+        ],
+        "candidateId": "cand-3",
+        "claimBoundary": "candidate only",
+        "donorShellId": "d1",
+        "evidenceRefs": [
+          "artifact://cand-3"
+        ],
+        "generalProductionScope": false,
+        "productionCanaryScope": false,
+        "receiverShellId": "r1",
+        "resource": "cpu",
+        "selected": false,
+        "sourceActionId": "act-1"
+      }
+    ],
+    "claimBoundary": "candidate selection only",
+    "evidenceRefs": [
+      "artifact://selection"
+    ],
+    "selectedCanaryCandidateCount": 2,
+    "selectionPassed": true,
+    "selectionReason": "stable_window_canary_cohort_top_candidates",
+    "sourceObservationWindowRef": "configmap://karl-system/hyperdensity-production-observation-window-v1"
+  },
+  "candidateSelectionPassed": true,
+  "circuitBreakerGatePassed": true,
+  "claimBoundaries": [
+    "canary cohort evidence from mutation and post-verify only",
+    "graduation evidence is review-only, not activation",
+    "no broad production mutation claim"
+  ],
+  "cohortMovementCount": 2,
+  "controllerMode": "production_canary_only",
+  "dashboardExecutor": false,
+  "estimatedIdleCountedAsMoved": false,
+  "executionLeases": [
+    {
+      "amount": "250m",
+      "candidateId": "cand-1",
+      "claimBoundary": "execution lease only",
+      "createdAt": "2026-05-14T19:30:00Z",
+      "donorShellId": "d3",
+      "evidenceRefs": [
+        "artifact://lease-1"
+      ],
+      "expiresAt": "2026-05-14T19:35:00Z",
+      "generalProductionScope": false,
+      "leaseId": "lease-1",
+      "productionCanaryScope": true,
+      "receiverShellId": "r3",
+      "resource": "cpu",
+      "state": "active",
+      "ttlSeconds": 300
+    },
+    {
+      "amount": "256Mi",
+      "candidateId": "cand-2",
+      "claimBoundary": "execution lease only",
+      "createdAt": "2026-05-14T19:36:00Z",
+      "donorShellId": "d4",
+      "evidenceRefs": [
+        "artifact://lease-2"
+      ],
+      "expiresAt": "2026-05-14T19:41:00Z",
+      "generalProductionScope": false,
+      "leaseId": "lease-2",
+      "productionCanaryScope": true,
+      "receiverShellId": "r4",
+      "resource": "memory",
+      "state": "active",
+      "ttlSeconds": 300
+    }
+  ],
+  "executionLeasesCreated": true,
+  "failedCanaryMovementCount": 0,
+  "failureBudget": {
+    "claimBoundary": "failure budget only",
+    "evidenceRefs": [
+      "artifact://failure-budget"
+    ],
+    "failureBudgetExceeded": false,
+    "failureBudgetId": "fb-1",
+    "failureBudgetPassed": true,
+    "maxFailureCount": 1,
+    "maxFailureRate": 0.5,
+    "mutationFailureCount": 0,
+    "observedFailureCount": 0,
+    "observedFailureRate": 0,
+    "rollbackExecutedCount": 0,
+    "rollbackRequiredCount": 0,
+    "sloFailureCount": 0
+  },
+  "failureBudgetPassed": true,
+  "failureBudgetRemaining": 1,
+  "failureBudgetUsed": 0,
+  "fluidvirtControllerAuthority": false,
+  "fluidvirtInvocations": [
+    {
+      "actuator": "FluidVirt",
+      "applyRequestId": "req-1",
+      "claimBoundary": "FluidVirt invocation only",
+      "evidenceRefs": [
+        "artifact://inv-1"
+      ],
+      "generalProductionScope": false,
+      "invocationId": "inv-1",
+      "invokedAt": "2026-05-14T19:30:30Z",
+      "mutationExecuted": true,
+      "mutationFamily": "cpu_entitlement",
+      "productionCanaryScope": true,
+      "requestAccepted": true
+    },
+    {
+      "actuator": "FluidVirt",
+      "applyRequestId": "req-2",
+      "claimBoundary": "FluidVirt invocation only",
+      "evidenceRefs": [
+        "artifact://inv-2"
+      ],
+      "generalProductionScope": false,
+      "invocationId": "inv-2",
+      "invokedAt": "2026-05-14T19:36:30Z",
+      "mutationExecuted": true,
+      "mutationFamily": "memory_envelope",
+      "productionCanaryScope": true,
+      "requestAccepted": true
+    }
+  ],
+  "fluidvirtInvocationsRecorded": true,
+  "fluidvirtPolicyAuthority": false,
+  "generalProductionAutoAllowed": false,
+  "generatedAt": "2026-05-14T19:40:00Z",
+  "graduationDecision": "candidate_ready_for_review",
+  "guardedPolicyGraduationEvidence": {
+    "accountingEvidenceComplete": true,
+    "claimBoundary": "guarded policy graduation only",
+    "dashboardExecutorAbsent": true,
+    "evidenceRefs": [
+      "artifact://graduation"
+    ],
+    "failureBudgetWithinLimit": true,
+    "fluidvirtAuthorityAbsent": true,
+    "graduationDecision": "candidate_ready_for_review",
+    "graduationEvidenceComplete": true,
+    "graduationEvidenceId": "grad-1",
+    "observedCanaryMovementCount": 2,
+    "observedObservationWindowCount": 1,
+    "observedSuccessfulMovementCount": 2,
+    "productionAutoWithPolicyEnabled": false,
+    "productionAutoWithPolicyReadinessCandidate": true,
+    "projectedRealizedSeparationComplete": true,
+    "requiredCanaryMovementCount": 2,
+    "requiredObservationWindowCount": 1,
+    "requiredSuccessfulMovementCount": 1,
+    "rollbackEvidenceComplete": true,
+    "sloEvidenceComplete": true,
+    "sourceCanaryCohortRef": "configmap://karl-system/hyperdensity-production-canary-cohort-expansion-v1",
+    "syntheticReferenceSeparationComplete": true
+  },
+  "inventoryRuntimeExecutor": false,
+  "killSwitchGatePassed": true,
+  "milestone": "hyperdensity_production_canary_cohort_expansion_guarded_policy_graduation_evidence_v1",
+  "mutationObservations": [
+    {
+      "appliedAmount": "250m",
+      "cgroupObserved": true,
+      "claimBoundary": "mutation observation only",
+      "donorShellId": "d3",
+      "evidenceRefs": [
+        "artifact://mut-1"
+      ],
+      "identityPreserved": true,
+      "invocationId": "inv-1",
+      "libvirtObserved": true,
+      "migrationUsed": false,
+      "mutationMatchesPlan": true,
+      "mutationObservationId": "mut-1",
+      "mutationObserved": true,
+      "observedAt": "2026-05-14T19:30:50Z",
+      "qgaObserved": false,
+      "rebootUsed": false,
+      "receiverShellId": "r3",
+      "recreateUsed": false,
+      "requestedAmount": "250m",
+      "resource": "cpu",
+      "rolloutUsed": false
+    },
+    {
+      "appliedAmount": "256Mi",
+      "cgroupObserved": true,
+      "claimBoundary": "mutation observation only",
+      "donorShellId": "d4",
+      "evidenceRefs": [
+        "artifact://mut-2"
+      ],
+      "identityPreserved": true,
+      "invocationId": "inv-2",
+      "libvirtObserved": true,
+      "migrationUsed": false,
+      "mutationMatchesPlan": true,
+      "mutationObservationId": "mut-2",
+      "mutationObserved": true,
+      "observedAt": "2026-05-14T19:36:50Z",
+      "qgaObserved": false,
+      "rebootUsed": false,
+      "receiverShellId": "r4",
+      "recreateUsed": false,
+      "requestedAmount": "256Mi",
+      "resource": "memory",
+      "rolloutUsed": false
+    }
+  ],
+  "mutationsObserved": true,
+  "policyGraduationEvidenceProduced": true,
+  "postVerifiesPassed": true,
+  "postVerifyResults": [
+    {
+      "claimBoundary": "post verify only",
+      "donorHealthStatus": "preserved",
+      "evidenceRefs": [
+        "artifact://pv-1"
+      ],
+      "guestDeltaVerified": true,
+      "mutationKept": true,
+      "mutationObservationId": "mut-1",
+      "mutationRolledBack": false,
+      "postVerifyId": "pv-1",
+      "receiverHealthStatus": "preserved",
+      "rollbackReady": true,
+      "rollbackRequired": false,
+      "runtimeDeltaVerified": true,
+      "sloGuardStatus": "passed",
+      "verifiedAt": "2026-05-14T19:31:15Z",
+      "verifyStatus": "passed"
+    },
+    {
+      "claimBoundary": "post verify only",
+      "donorHealthStatus": "preserved",
+      "evidenceRefs": [
+        "artifact://pv-2"
+      ],
+      "guestDeltaVerified": true,
+      "mutationKept": true,
+      "mutationObservationId": "mut-2",
+      "mutationRolledBack": false,
+      "postVerifyId": "pv-2",
+      "receiverHealthStatus": "preserved",
+      "rollbackReady": true,
+      "rollbackRequired": false,
+      "runtimeDeltaVerified": true,
+      "sloGuardStatus": "passed",
+      "verifiedAt": "2026-05-14T19:37:15Z",
+      "verifyStatus": "passed"
+    }
+  ],
+  "priorCanaryMovementEvidenceObserved": true,
+  "productionAutoWithPolicy": false,
+  "productionAutoWithPolicyActivated": false,
+  "productionAutoWithPolicyEnabled": false,
+  "productionAutoWithPolicyReadinessCandidate": true,
+  "productionCanaryCohortAllowed": true,
+  "productionCanaryCohortExecuted": true,
+  "productionCanaryCohortExpansionEnabled": true,
+  "productionCanaryScope": true,
+  "projectedCompressionCountedAsRealized": false,
+  "projectedCompressionDelta": 0.03,
+  "projectedMovedIdleValue": 1250,
+  "projectedRealizedSeparated": true,
+  "projectedRealizedSeparation": {
+    "aggregateRealizedCompressionDelta": 0.02,
+    "aggregateRealizedMovedIdleValue": 450,
+    "aggregateRealizedValue": 96,
+    "claimBoundary": "projected/realized separation only",
+    "estimatedIdleCountedAsMoved": false,
+    "evidenceRefs": [
+      "artifact://separation"
+    ],
+    "projectedCompressionCountedAsRealized": false,
+    "projectedCompressionDelta": 0.03,
+    "projectedMovedIdleValue": 1250,
+    "projectedValueCountedAsRealized": false,
+    "projectedValueOpportunity": 4800,
+    "referenceValueExcluded": true,
+    "separationId": "sep-1",
+    "separationPassed": true,
+    "syntheticValueExcluded": true
+  },
+  "projectedValueCountedAsRealized": false,
+  "projectedValueOpportunity": 4800,
+  "rateLimitGatePassed": true,
+  "realizedCompressionAggregated": true,
+  "realizedCompressionAggregation": {
+    "aggregateRealizedCompressionDelta": 0.02,
+    "aggregateRealizedMovedIdleValue": 450,
+    "aggregationId": "rca-1",
+    "claimBoundary": "realized compression aggregation only",
+    "estimatedValueExcluded": true,
+    "evidenceRefs": [
+      "artifact://compression-agg"
+    ],
+    "movementEvidencePresent": true,
+    "projectedCompressionExcluded": true,
+    "realizedMovementCount": 2
+  },
+  "realizedMovementCount": 2,
+  "realizedValueAggregated": true,
+  "realizedValueAggregation": {
+    "aggregateNetRealizedValue": 90,
+    "aggregateRealizedValue": 96,
+    "aggregationId": "rva-1",
+    "claimBoundary": "realized value aggregation only",
+    "evidenceRefs": [
+      "artifact://value-agg"
+    ],
+    "guaranteeScope": "scoped_eligible_canary_cohort_only",
+    "guaranteedEligible": true,
+    "movementEvidencePresent": true
+  },
+  "referenceFleetCountedAsProduction": false,
+  "referenceScenarios": [
+    {
+      "productionAutoWithPolicyEnabled": false,
+      "productionCanaryCohortExecuted": true,
+      "scenarioId": "success"
+    },
+    {
+      "productionCanaryCohortExecuted": false,
+      "scenarioId": "no_stable_window",
+      "stableObservationWindowObserved": false
+    },
+    {
+      "priorCanaryMovementEvidenceObserved": false,
+      "productionCanaryCohortExecuted": false,
+      "scenarioId": "no_prior_canary"
+    },
+    {
+      "allowlistGatePassed": false,
+      "productionCanaryCohortExecuted": false,
+      "scenarioId": "not_allowlisted"
+    },
+    {
+      "blastRadiusGatePassed": false,
+      "productionCanaryCohortExecuted": false,
+      "scenarioId": "blast_radius_exceeded"
+    },
+    {
+      "productionCanaryCohortExecuted": false,
+      "scenarioId": "slo_failed",
+      "sloGatePassed": false
+    },
+    {
+      "productionCanaryCohortExecuted": false,
+      "rollbackGatePassed": false,
+      "scenarioId": "rollback_not_ready"
+    },
+    {
+      "failureBudgetPassed": false,
+      "productionCanaryCohortExecuted": false,
+      "scenarioId": "failure_budget_exceeded"
+    },
+    {
+      "productionCanaryCohortExecuted": false,
+      "productionCanaryScope": false,
+      "scenarioId": "non_canary_movement"
+    },
+    {
+      "productionAutoWithPolicyEnabled": true,
+      "productionCanaryCohortExecuted": false,
+      "scenarioId": "prod_auto_policy_enabled"
+    },
+    {
+      "productionCanaryCohortExecuted": false,
+      "projectedCompressionCountedAsRealized": true,
+      "scenarioId": "projected_realized"
+    },
+    {
+      "dashboardExecutor": true,
+      "productionCanaryCohortExecuted": false,
+      "scenarioId": "dashboard_executor"
+    }
+  ],
+  "rollbackExecutedCount": 0,
+  "rollbackGate": {
+    "claimBoundary": "rollback gate only",
+    "evidenceRefs": [
+      "artifact://rollback-gate"
+    ],
+    "rollbackGateId": "rb-gate-1",
+    "rollbackGatePassed": true,
+    "rollbackReady": true
+  },
+  "rollbackGatePassed": true,
+  "rollbackRequiredCount": 0,
+  "rollbackWindows": [
+    {
+      "claimBoundary": "rollback window only",
+      "evidenceRefs": [
+        "artifact://rb-1"
+      ],
+      "expiresAt": "2026-05-14T20:01:15Z",
+      "mutationObservationId": "mut-1",
+      "openedAt": "2026-05-14T19:31:15Z",
+      "rollbackAvailable": true,
+      "rollbackExecuted": false,
+      "rollbackPassed": false,
+      "rollbackTested": true,
+      "rollbackWindowId": "rb-1",
+      "state": "open"
+    },
+    {
+      "claimBoundary": "rollback window only",
+      "evidenceRefs": [
+        "artifact://rb-2"
+      ],
+      "expiresAt": "2026-05-14T20:07:15Z",
+      "mutationObservationId": "mut-2",
+      "openedAt": "2026-05-14T19:37:15Z",
+      "rollbackAvailable": true,
+      "rollbackExecuted": false,
+      "rollbackPassed": false,
+      "rollbackTested": true,
+      "rollbackWindowId": "rb-2",
+      "state": "open"
+    }
+  ],
+  "rollbackWindowsOpen": true,
+  "safetyInvariants": [
+    "bounded canary cohort only",
+    "production_auto_with_policy disabled",
+    "projected value never counted as realized"
+  ],
+  "selectedCanaryCandidateCount": 2,
+  "sloGate": {
+    "claimBoundary": "slo gate only",
+    "evidenceRefs": [
+      "artifact://slo"
+    ],
+    "sloGateId": "slo-1",
+    "sloGatePassed": true,
+    "sloGuardStatus": "passed"
+  },
+  "sloGatePassed": true,
+  "sourceObservationWindowRef": "configmap://karl-system/hyperdensity-production-observation-window-v1",
+  "sourceOfTruth": {
+    "identitySignals": "Karl-Inventory",
+    "marketDecision": "Karl-Hyperdensity",
+    "operatorUI": "Karl-Dashboard (projection only)",
+    "runtimeMutation": "FluidVirt"
+  },
+  "sourcePriorCanaryMovementRef": "configmap://karl-system/hyperdensity-production-canary-movement-expansion-v1",
+  "sourceProductionCanaryPolicyRef": "configmap://karl-system/hyperdensity-production-canary-policy-v1",
+  "stableObservationWindowObserved": true,
+  "successfulCanaryMovementCount": 2,
+  "surfaceVersion": "v1",
+  "syntheticFleetCountedAsProduction": false,
+  "universalGuaranteedSavingsAllowed": false,
+  "universalGuaranteedSavingsClaimed": false,
+  "warnings": []
+}

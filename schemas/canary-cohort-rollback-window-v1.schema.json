@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "canary-cohort-rollback-window-v1",
+  "type": "object",
+  "required": [
+    "rollbackWindowId",
+    "state",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "blockerId": "blk-1",
+  "blockerCode": "failure_budget_exceeded",
+  "evidenceRefs": [
+    "artifact://blk"
+  ],
+  "claimBoundary": "blocker only"
+}

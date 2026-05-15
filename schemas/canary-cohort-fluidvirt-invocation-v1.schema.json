@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "canary-cohort-fluidvirt-invocation-v1",
+  "type": "object",
+  "required": [
+    "invocationId",
+    "actuator",
+    "mutationExecuted",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

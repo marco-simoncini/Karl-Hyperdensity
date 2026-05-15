@@ -1,0 +1,14 @@
+{
+  "auditComplete": true,
+  "canaryCohortExpansionId": "cohort-exp-s22-v1",
+  "claimBoundary": "canary cohort closeout only",
+  "closeoutId": "close-1",
+  "closeoutStatus": "passed",
+  "evidenceRefs": [
+    "artifact://closeout"
+  ],
+  "nextAllowedState": "guarded_policy_review",
+  "productionAutoWithPolicyEnabled": false,
+  "promotedToGeneralProduction": false,
+  "rollbackWindowsClosedOrOpenWithPolicy": true
+}

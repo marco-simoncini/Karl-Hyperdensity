@@ -1,0 +1,9 @@
+{
+  "claimBoundary": "slo gate only",
+  "evidenceRefs": [
+    "artifact://slo"
+  ],
+  "sloGateId": "slo-1",
+  "sloGatePassed": true,
+  "sloGuardStatus": "passed"
+}

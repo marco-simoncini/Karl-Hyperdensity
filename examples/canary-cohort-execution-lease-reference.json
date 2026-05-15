@@ -1,0 +1,18 @@
+{
+  "amount": "250m",
+  "candidateId": "cand-1",
+  "claimBoundary": "execution lease only",
+  "createdAt": "2026-05-14T19:30:00Z",
+  "donorShellId": "d3",
+  "evidenceRefs": [
+    "artifact://lease-1"
+  ],
+  "expiresAt": "2026-05-14T19:35:00Z",
+  "generalProductionScope": false,
+  "leaseId": "lease-1",
+  "productionCanaryScope": true,
+  "receiverShellId": "r3",
+  "resource": "cpu",
+  "state": "active",
+  "ttlSeconds": 300
+}

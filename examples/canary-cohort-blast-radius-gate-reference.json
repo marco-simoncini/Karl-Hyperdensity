@@ -1,0 +1,17 @@
+{
+  "blastRadiusExceeded": false,
+  "blastRadiusGateId": "br-1",
+  "blastRadiusGatePassed": true,
+  "claimBoundary": "blast radius gate only",
+  "evidenceRefs": [
+    "artifact://blast-radius"
+  ],
+  "maxCpuMillicores": 500,
+  "maxMemoryMiB": 512,
+  "maxMovementCount": 2,
+  "maxTenantCount": 1,
+  "requestedCpuMillicores": 250,
+  "requestedMemoryMiB": 256,
+  "requestedMovementCount": 2,
+  "requestedTenantCount": 1
+}

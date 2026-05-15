@@ -1,0 +1,17 @@
+{
+  "claimBoundary": "failure budget only",
+  "evidenceRefs": [
+    "artifact://failure-budget"
+  ],
+  "failureBudgetExceeded": false,
+  "failureBudgetId": "fb-1",
+  "failureBudgetPassed": true,
+  "maxFailureCount": 1,
+  "maxFailureRate": 0.5,
+  "mutationFailureCount": 0,
+  "observedFailureCount": 0,
+  "observedFailureRate": 0,
+  "rollbackExecutedCount": 0,
+  "rollbackRequiredCount": 0,
+  "sloFailureCount": 0
+}

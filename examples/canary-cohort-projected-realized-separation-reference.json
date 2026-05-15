@@ -1,0 +1,19 @@
+{
+  "aggregateRealizedCompressionDelta": 0.02,
+  "aggregateRealizedMovedIdleValue": 450,
+  "aggregateRealizedValue": 96,
+  "claimBoundary": "projected/realized separation only",
+  "estimatedIdleCountedAsMoved": false,
+  "evidenceRefs": [
+    "artifact://separation"
+  ],
+  "projectedCompressionCountedAsRealized": false,
+  "projectedCompressionDelta": 0.03,
+  "projectedMovedIdleValue": 1250,
+  "projectedValueCountedAsRealized": false,
+  "projectedValueOpportunity": 4800,
+  "referenceValueExcluded": true,
+  "separationId": "sep-1",
+  "separationPassed": true,
+  "syntheticValueExcluded": true
+}

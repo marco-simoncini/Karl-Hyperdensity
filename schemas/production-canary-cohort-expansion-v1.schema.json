@@ -1,0 +1,17 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "production-canary-cohort-expansion-v1",
+  "type": "object",
+  "required": [
+    "milestone",
+    "surfaceVersion",
+    "canaryCohortExpansionId",
+    "productionCanaryCohortExpansionEnabled",
+    "claimBoundaries"
+  ],
+  "properties": {
+    "milestone": {
+      "const": "hyperdensity_production_canary_cohort_expansion_guarded_policy_graduation_evidence_v1"
+    }
+  }
+}

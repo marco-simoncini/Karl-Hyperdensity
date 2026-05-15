@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "canary-cohort-realized-compression-aggregation-v1",
+  "type": "object",
+  "required": [
+    "aggregationId",
+    "movementEvidencePresent",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

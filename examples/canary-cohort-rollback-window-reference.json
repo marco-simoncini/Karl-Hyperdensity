@@ -1,0 +1,15 @@
+{
+  "claimBoundary": "rollback window only",
+  "evidenceRefs": [
+    "artifact://rb-1"
+  ],
+  "expiresAt": "2026-05-14T20:01:15Z",
+  "mutationObservationId": "mut-1",
+  "openedAt": "2026-05-14T19:31:15Z",
+  "rollbackAvailable": true,
+  "rollbackExecuted": false,
+  "rollbackPassed": false,
+  "rollbackTested": true,
+  "rollbackWindowId": "rb-1",
+  "state": "open"
+}

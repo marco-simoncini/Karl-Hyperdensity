@@ -1,0 +1,9 @@
+{
+  "claimBoundary": "rollback gate only",
+  "evidenceRefs": [
+    "artifact://rollback-gate"
+  ],
+  "rollbackGateId": "rb-gate-1",
+  "rollbackGatePassed": true,
+  "rollbackReady": true
+}

@@ -1,0 +1,24 @@
+{
+  "appliedAmount": "250m",
+  "cgroupObserved": true,
+  "claimBoundary": "mutation observation only",
+  "donorShellId": "d3",
+  "evidenceRefs": [
+    "artifact://mut-1"
+  ],
+  "identityPreserved": true,
+  "invocationId": "inv-1",
+  "libvirtObserved": true,
+  "migrationUsed": false,
+  "mutationMatchesPlan": true,
+  "mutationObservationId": "mut-1",
+  "mutationObserved": true,
+  "observedAt": "2026-05-14T19:30:50Z",
+  "qgaObserved": false,
+  "rebootUsed": false,
+  "receiverShellId": "r3",
+  "recreateUsed": false,
+  "requestedAmount": "250m",
+  "resource": "cpu",
+  "rolloutUsed": false
+}

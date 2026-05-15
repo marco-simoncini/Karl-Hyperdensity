@@ -1,0 +1,12 @@
+{
+  "aggregateNetRealizedValue": 90,
+  "aggregateRealizedValue": 96,
+  "aggregationId": "rva-1",
+  "claimBoundary": "realized value aggregation only",
+  "evidenceRefs": [
+    "artifact://value-agg"
+  ],
+  "guaranteeScope": "scoped_eligible_canary_cohort_only",
+  "guaranteedEligible": true,
+  "movementEvidencePresent": true
+}

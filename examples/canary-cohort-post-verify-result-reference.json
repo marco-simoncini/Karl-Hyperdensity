@@ -1,0 +1,19 @@
+{
+  "claimBoundary": "post verify only",
+  "donorHealthStatus": "preserved",
+  "evidenceRefs": [
+    "artifact://pv-1"
+  ],
+  "guestDeltaVerified": true,
+  "mutationKept": true,
+  "mutationObservationId": "mut-1",
+  "mutationRolledBack": false,
+  "postVerifyId": "pv-1",
+  "receiverHealthStatus": "preserved",
+  "rollbackReady": true,
+  "rollbackRequired": false,
+  "runtimeDeltaVerified": true,
+  "sloGuardStatus": "passed",
+  "verifiedAt": "2026-05-14T19:31:15Z",
+  "verifyStatus": "passed"
+}

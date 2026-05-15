@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "canary-cohort-realized-value-aggregation-v1",
+  "type": "object",
+  "required": [
+    "aggregationId",
+    "aggregateRealizedValue",
+    "evidenceRefs",
+    "claimBoundary"
+  ]
+}

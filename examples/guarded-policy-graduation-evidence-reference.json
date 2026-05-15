@@ -1,0 +1,26 @@
+{
+  "accountingEvidenceComplete": true,
+  "claimBoundary": "guarded policy graduation only",
+  "dashboardExecutorAbsent": true,
+  "evidenceRefs": [
+    "artifact://graduation"
+  ],
+  "failureBudgetWithinLimit": true,
+  "fluidvirtAuthorityAbsent": true,
+  "graduationDecision": "candidate_ready_for_review",
+  "graduationEvidenceComplete": true,
+  "graduationEvidenceId": "grad-1",
+  "observedCanaryMovementCount": 2,
+  "observedObservationWindowCount": 1,
+  "observedSuccessfulMovementCount": 2,
+  "productionAutoWithPolicyEnabled": false,
+  "productionAutoWithPolicyReadinessCandidate": true,
+  "projectedRealizedSeparationComplete": true,
+  "requiredCanaryMovementCount": 2,
+  "requiredObservationWindowCount": 1,
+  "requiredSuccessfulMovementCount": 1,
+  "rollbackEvidenceComplete": true,
+  "sloEvidenceComplete": true,
+  "sourceCanaryCohortRef": "configmap://karl-system/hyperdensity-production-canary-cohort-expansion-v1",
+  "syntheticReferenceSeparationComplete": true
+}

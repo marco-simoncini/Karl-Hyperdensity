@@ -1,0 +1,15 @@
+{
+  "actuator": "FluidVirt",
+  "applyRequestId": "req-1",
+  "claimBoundary": "FluidVirt invocation only",
+  "evidenceRefs": [
+    "artifact://inv-1"
+  ],
+  "generalProductionScope": false,
+  "invocationId": "inv-1",
+  "invokedAt": "2026-05-14T19:30:30Z",
+  "mutationExecuted": true,
+  "mutationFamily": "cpu_entitlement",
+  "productionCanaryScope": true,
+  "requestAccepted": true
+}

@@ -1,0 +1,12 @@
+{
+  "actorType": "controller",
+  "auditEventId": "aud-1",
+  "claimBoundary": "audit only",
+  "eventType": "candidate_selected",
+  "evidenceRefs": [
+    "artifact://aud-1"
+  ],
+  "occurredAt": "2026-05-14T19:29:00Z",
+  "sourceComponent": "Karl-Hyperdensity",
+  "summary": "canary cohort candidates selected from stable observation window"
+}
