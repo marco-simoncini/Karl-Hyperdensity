@@ -1,0 +1,19 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "Cell",
+  "metadata": {
+    "name": "demo-cell",
+    "namespace": "karl-sandbox"
+  },
+  "spec": {
+    "shellRef": {
+      "name": "dev-linux-systemd-001"
+    },
+    "runtimeProviderRef": {
+      "name": "linux-systemd-v1"
+    },
+    "providerHandle": {
+      "cgroupPath": "__CGROUP_ROOT__/outside/bad"
+    }
+  }
+}

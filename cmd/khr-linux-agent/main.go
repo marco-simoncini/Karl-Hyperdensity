@@ -1,4 +1,4 @@
-// Command khr-linux-agent is a dry-run-first Linux MVP skeleton (Sprint 5+).
+// Command khr-linux-agent is a dry-run-first Linux MVP skeleton (Sprint 5+; discovery Sprint 7).
 package main
 
 import (
@@ -8,12 +8,16 @@ import (
 	"os"
 
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/agent"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcelease"
 )
 
 func main() {
-	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities")
+	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities, discover-cgroups")
 	configPath := flag.String("config", "", "path to agent YAML/JSON config")
+	cellInputPath := flag.String("cell-input", "", "optional path to Cell JSON (discover-cgroups)")
+	cgroupRoot := flag.String("cgroup-root", "", "optional cgroup scan root (default /sys/fs/cgroup) for discover-cgroups")
+	allowPathPrefix := flag.String("allow-path-prefix", "", "optional path prefix policy for discover-cgroups (e.g. /sys/fs/cgroup/karl.slice)")
 	leasePath := flag.String("lease-input", "", "path to ResourceLease JSON (dry-run)")
 	portPath := flag.String("resource-port-input", "", "path to ResourcePort JSON (dry-run)")
 	cellCtxPath := flag.String("cell-context", "", "optional path to CellContext JSON (dry-run)")
@@ -116,6 +120,44 @@ func main() {
 			out["error"] = err.Error()
 			emit(out, 2)
 		}
+		b, err := json.MarshalIndent(cliOut, "", "  ")
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		os.Stdout.Write(b)
+		os.Stdout.Write([]byte("\n"))
+		os.Exit(0)
+
+	case "discover-cgroups":
+		if *configPath == "" {
+			out["error"] = "discover-cgroups requires -config"
+			emit(out, 2)
+		}
+		cfg, err := agent.LoadConfig(*configPath)
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		if errs := agent.ValidateConfig(cfg); len(errs) > 0 {
+			out["validationErrors"] = errs
+			out["error"] = "invalid config"
+			emit(out, 2)
+		}
+		var cell *crdv1alpha1.Cell
+		if *cellInputPath != "" {
+			raw, err := os.ReadFile(*cellInputPath)
+			if err != nil {
+				out["error"] = err.Error()
+				emit(out, 2)
+			}
+			cell = &crdv1alpha1.Cell{}
+			if err := json.Unmarshal(raw, cell); err != nil {
+				out["error"] = err.Error()
+				emit(out, 2)
+			}
+		}
+		cliOut := agent.RunDiscoverCgroupsCLI(cfg, cell, *cgroupRoot, *allowPathPrefix)
 		b, err := json.MarshalIndent(cliOut, "", "  ")
 		if err != nil {
 			out["error"] = err.Error()

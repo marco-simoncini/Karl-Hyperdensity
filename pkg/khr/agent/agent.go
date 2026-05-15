@@ -11,13 +11,14 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/audit"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/cgroup"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/discovery"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcelease"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/runtimeprovider"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/safety"
 )
 
 // AgentVersion is embedded in JSON outputs (Sprint 6).
-const AgentVersion = "0.0.1-sprint6"
+const AgentVersion = "0.0.1-sprint7"
 
 // Config is minimal agent configuration (YAML or JSON).
 type Config struct {
@@ -141,4 +142,13 @@ func RunDryRunCLI(leaseRaw, portRaw []byte, ctx *resourcelease.CellContext, allo
 		UnsafeApplyFlagPresent:  safety.UnsafeApplyRequested(allowUnsafeApply),
 		FutureApplyGateRequired: safety.UnsafeApplyRequested(allowUnsafeApply),
 	}, nil
+}
+
+// RunDiscoverCgroupsCLI performs read-only cgroup discovery (no mutations).
+func RunDiscoverCgroupsCLI(cfg *Config, cell *crdv1alpha1.Cell, scannedRoot, allowPathPrefix string) *discovery.CgroupDiscoveryOutput {
+	out := discovery.Run(cfg.Spec.AgentID, scannedRoot, allowPathPrefix, cell)
+	out.Tool = "khr-linux-agent"
+	out.Version = AgentVersion
+	out.Mode = "discover-cgroups"
+	return out
 }

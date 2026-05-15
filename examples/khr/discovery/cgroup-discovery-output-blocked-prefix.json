@@ -1,0 +1,23 @@
+{
+  "tool": "khr-linux-agent",
+  "version": "0.0.1-sprint7",
+  "mode": "discover-cgroups",
+  "agentId": "khr-linux-agent-dev-001",
+  "cgroupVersion": "v2",
+  "discoveryMode": "read-only",
+  "scannedRoot": "__CGROUP_ROOT__",
+  "allowedPathPrefix": "__CGROUP_ROOT__/karl.slice",
+  "candidatePaths": [
+    "__CGROUP_ROOT__/outside/bad",
+    "__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001.scope",
+    "__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001",
+    "__CGROUP_ROOT__/karl.slice/demo-cell",
+    "__CGROUP_ROOT__/karl.slice"
+  ],
+  "selectedPath": "__CGROUP_ROOT__/karl.slice/karl-shell-dev-linux-systemd-001.scope",
+  "blockedReasons": [
+    "candidate \"__CGROUP_ROOT__/outside/bad\": resolved path \"__CGROUP_ROOT__/outside/bad\" is outside allowPathPrefix \"__CGROUP_ROOT__/karl.slice\""
+  ],
+  "warnings": [],
+  "mutationsForbidden": true
+}

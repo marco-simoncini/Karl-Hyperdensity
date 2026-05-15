@@ -7,8 +7,6 @@ import (
 	"strings"
 )
 
-const unifiedMount = "/sys/fs/cgroup"
-
 // envTestCgroupVersion forces DetectVersion for golden tests (non-production).
 const envTestCgroupVersion = "KHR_TEST_CGROUP_VERSION"
 
@@ -32,11 +30,11 @@ func DetectVersion() Version {
 			return Unknown
 		}
 	}
-	st, err := os.Stat(filepath.Join(unifiedMount, "cgroup.controllers"))
+	st, err := os.Stat(filepath.Join(UnifiedCgroupMount, "cgroup.controllers"))
 	if err == nil && !st.IsDir() {
 		return V2
 	}
-	if st, err := os.Stat(unifiedMount); err == nil && st.IsDir() {
+	if st, err := os.Stat(UnifiedCgroupMount); err == nil && st.IsDir() {
 		return V1
 	}
 	return Unknown

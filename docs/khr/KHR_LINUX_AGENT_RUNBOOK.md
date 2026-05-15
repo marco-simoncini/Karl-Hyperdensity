@@ -1,4 +1,4 @@
-# KHR Linux Agent — Runbook (Sprint 5–6)
+# KHR Linux Agent — Runbook (Sprint 5–7)
 
 **Audience:** platform engineers evaluating the skeleton locally.
 
@@ -43,6 +43,20 @@ go run ./cmd/khr-linux-agent -mode=dry-run \
 ```
 
 `--allow-unsafe-apply` is **non-operational** in Sprint 6: it never enables cgroup writes but emits an audit warning and sets `futureApplyGateRequired` in JSON. Do not treat the flag as a safety bypass; see `docs/khr/KHR_AUDIT_AND_APPLY_GATES.md`.
+
+### `discover-cgroups`
+
+Read-only cgroup discovery for mapping a `Cell` (optional) to candidate cgroup paths. Never writes.
+
+```bash
+go run ./cmd/khr-linux-agent -mode discover-cgroups \
+  -config examples/khr/khr-linux-agent-config.yaml \
+  -cgroup-root /sys/fs/cgroup \
+  -cell-input examples/khr/cell-linux-envelope-full.json \
+  -allow-path-prefix /sys/fs/cgroup/karl.slice
+```
+
+See `docs/khr/KHR_LINUX_READONLY_DISCOVERY.md` and `examples/khr/discovery/` for fixtures.
 
 ## Non-goals
 

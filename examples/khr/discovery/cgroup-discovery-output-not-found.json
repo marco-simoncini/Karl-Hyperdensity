@@ -1,0 +1,20 @@
+{
+  "tool": "khr-linux-agent",
+  "version": "0.0.1-sprint7",
+  "mode": "discover-cgroups",
+  "agentId": "khr-linux-agent-dev-001",
+  "cgroupVersion": "v2",
+  "discoveryMode": "read-only",
+  "scannedRoot": "__CGROUP_ROOT__",
+  "allowedPathPrefix": "",
+  "candidatePaths": [
+    "__CGROUP_ROOT__/karl.slice"
+  ],
+  "blockedReasons": [
+    "no discoverable cgroup directory matched heuristics or providerHandle under scannedRoot (read-only discovery only)"
+  ],
+  "warnings": [
+    "cannot resolve symlinks for \"__CGROUP_ROOT__/karl.slice\": lstat __CGROUP_ROOT__/karl.slice: no such file or directory"
+  ],
+  "mutationsForbidden": true
+}
