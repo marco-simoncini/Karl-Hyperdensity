@@ -37,7 +37,7 @@ hpblockers "github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contra
 
 ## Version
 
-Consumers stay on tagged module `v0.1.1-khr-m1-m12` unless a future sprint bumps contractkit for catalog changes.
+Consumers pin tagged module `v0.1.2-khr-m1-m13` (Sprint 35 adds `claimpolicy` test boundary only; runtime remains `blockers` only per M17).
 
 ## Sprint 34 — freeze (Dashboard M17)
 
