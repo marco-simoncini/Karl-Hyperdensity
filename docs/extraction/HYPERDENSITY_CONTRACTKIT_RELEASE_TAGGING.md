@@ -125,24 +125,26 @@ go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit
 
 ## Sixth anchor tag (Sprint 38 — claimpolicy Dashboard file traceability)
 
-**Go module version:** `v0.1.5-khr-m1-m16`  
+**Go module version:** `v0.1.6-khr-m1-m17`  
 **Git tag:**
 
 ```text
-pkg/hyperdensity/contractkit/v0.1.5-khr-m1-m16
+pkg/hyperdensity/contractkit/v0.1.6-khr-m1-m17
 ```
 
-Adds **`DashboardFiles`** traceability on `SurfaceClaimMapping` rows (`ValidateDashboardFileTraceability`). **No** `ContractKitVersion` / manifest bump; Dashboard **test-only** parity; M17 runtime import freeze unchanged.
+Adds **`DashboardFiles`** traceability on `SurfaceClaimMapping` rows (`ValidateDashboardFileTraceability`), including **corrected** `windows_lane_disabled` file anchors. **No** `ContractKitVersion` / manifest bump; Dashboard **test-only** parity; M17 runtime import freeze unchanged.
+
+**Note:** `v0.1.5-khr-m1-m16` tagged the first traceability slice but listed one path without the `windows_lane_disabled` token; consumers should pin **`v0.1.6-khr-m1-m17`** or newer.
 
 ```bash
-git tag pkg/hyperdensity/contractkit/v0.1.5-khr-m1-m16 <sprint-38-commit>
-git push origin pkg/hyperdensity/contractkit/v0.1.5-khr-m1-m16
+git tag pkg/hyperdensity/contractkit/v0.1.6-khr-m1-m17 <sprint-38-commit>
+git push origin pkg/hyperdensity/contractkit/v0.1.6-khr-m1-m17
 ```
 
 Dashboard pin:
 
 ```bash
-go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.5-khr-m1-m16
+go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.6-khr-m1-m17
 ```
 
 ## Compatibility promise (contractkit)

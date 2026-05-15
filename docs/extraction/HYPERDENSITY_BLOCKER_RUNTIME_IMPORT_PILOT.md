@@ -37,7 +37,7 @@ hpblockers "github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contra
 
 ## Version
 
-Consumers pin tagged module `v0.1.5-khr-m1-m16` (Sprint 38 adds `DashboardFiles` traceability on claimpolicy surface mappings; runtime remains `blockers` only per M17).
+Consumers pin tagged module `v0.1.6-khr-m1-m17` (Sprint 38 adds `DashboardFiles` traceability on claimpolicy surface mappings; runtime remains `blockers` only per M17).
 
 ## Sprint 34 — freeze (Dashboard M17)
 

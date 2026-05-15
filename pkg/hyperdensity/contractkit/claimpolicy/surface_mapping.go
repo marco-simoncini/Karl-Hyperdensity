@@ -197,7 +197,8 @@ func init() {
 			Notes:                "VM readonly observation preflights use this check name; distinct from catalog windows_disabled.",
 			DashboardFiles: normalizeDashboardFiles([]string{
 				"pkg/server/hyperdensity_parent_fabric_vm_readonly_observation_real_submission_policy_v1.go",
-				"pkg/server/hyperdensity_parent_fabric_vm_readonly_observation_request_intake_dryrun_v1.go",
+				"pkg/server/hyperdensity_parent_fabric_vm_readonly_observation_operator_submission_v1.go",
+				"pkg/server/hyperdensity_parent_fabric_vm_readonly_observation_operator_grant_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_vm_runtime_evidence_collector_v1.go",
 			}),
 		},

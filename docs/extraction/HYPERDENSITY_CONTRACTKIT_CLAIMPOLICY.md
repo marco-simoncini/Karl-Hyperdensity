@@ -63,7 +63,7 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 
 ## Consumer pin
 
-Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0.1.5-khr-m1-m16` (or newer) is published; **test-only** imports of `claimpolicy` remain in `*_test.go` only.
+Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0.1.6-khr-m1-m17` (or newer) is published; **test-only** imports of `claimpolicy` remain in `*_test.go` only.
 
 ## Related
 
