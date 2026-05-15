@@ -69,8 +69,12 @@ If a release is wrong, publish a **strictly newer** module semver, push a **new*
 - Parity workflow sets **`GOPRIVATE`** / **`GONOSUMDB`** (and **`GONOPROXY`** where useful) on the Go step.  
 - `scripts/hyperdensity/audit_contractkit_module_pin.sh` enforces the **exact** `go.mod` pin and rejects superseded pins and **pseudo-versions** for this module.
 
+For a **second consumer**, use **`HYPERDENSITY_CONTRACTKIT_SECOND_CONSUMER_PLAYBOOK.md`** and the decision-record template **`templates/CONTRACTKIT_CONSUMER_DECISION_RECORD.md`** (copy into the consumer repo).
+
 ## Related
 
+- `HYPERDENSITY_CONTRACTKIT_SECOND_CONSUMER_PLAYBOOK.md`
+- `templates/CONTRACTKIT_CONSUMER_DECISION_RECORD.md`
 - `HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`
 - `HYPERDENSITY_CONTRACTKIT_RELEASE_TAGGING.md`
 - `HYPERDENSITY_CONTRACTKIT_VERSION_MODEL.md`

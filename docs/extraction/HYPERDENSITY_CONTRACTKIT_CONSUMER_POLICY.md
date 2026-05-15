@@ -60,8 +60,14 @@ Generic bash template (not wired into other repos by default):
 
 Update **`EXPECTED_CONTRACTKIT_VERSION`** only in a **named sprint** when Hyperdensity bumps `ContractKitModuleVersion` and publishes a new tag.
 
+## Second consumer adoption (Sprint 43)
+
+Before adding a new downstream `go.mod` consumer, follow **`HYPERDENSITY_CONTRACTKIT_SECOND_CONSUMER_PLAYBOOK.md`** and file a completed **`templates/CONTRACTKIT_CONSUMER_DECISION_RECORD.md`** in the consumer repo.
+
 ## Related
 
+- `HYPERDENSITY_CONTRACTKIT_SECOND_CONSUMER_PLAYBOOK.md`
+- `templates/CONTRACTKIT_CONSUMER_DECISION_RECORD.md`
 - `HYPERDENSITY_CONTRACTKIT_CONSUMER_AUDIT.md`
 - `HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`
 - `HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`
@@ -69,3 +75,4 @@ Update **`EXPECTED_CONTRACTKIT_VERSION`** only in a **named sprint** when Hyperd
 - `HYPERDENSITY_CONTRACTKIT_VERSION_MODEL.md`
 - `templates/audit_contractkit_module_pin.sh`
 - Dashboard `docs/hyperdensity/HYPERDENSITY_CONTRACTKIT_REFERENCE_CONSUMER_M25.md`
+- Dashboard `docs/hyperdensity/HYPERDENSITY_CONTRACTKIT_REFERENCE_CONSUMER_CHECKLIST_M26.md`

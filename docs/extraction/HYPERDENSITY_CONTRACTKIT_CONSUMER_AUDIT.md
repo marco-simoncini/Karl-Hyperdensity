@@ -34,10 +34,14 @@ Ripgrep across `~/GitHub/**/go.mod` for `hyperdensity/contractkit` on 2026-05-15
 1. **Karl-Dashboard** is the only inspected **downstream semver consumer** of the published nested module; treat it as the **reference consumer** for pins, CI env, and audit scripts (`HYPERDENSITY_CONTRACTKIT_REFERENCE_CONSUMER_M25.md` on Dashboard).
 2. **Karl-Hyperdensity** **hosts** the module; consumers must follow **`HYPERDENSITY_CONTRACTKIT_CONSUMER_POLICY.md`** and **`HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`**.
 3. Repositories without a local clone, or on machines not listed above, should be recorded as **non ispezionabile / non presente localmente** in future audit revisions.
+4. When a **new consumer** is added, update this audit **and** follow **`HYPERDENSITY_CONTRACTKIT_SECOND_CONSUMER_PLAYBOOK.md`**; record the decision with **`templates/CONTRACTKIT_CONSUMER_DECISION_RECORD.md`** in the consumer repository.
 
 ## Related
 
+- `HYPERDENSITY_CONTRACTKIT_SECOND_CONSUMER_PLAYBOOK.md`
+- `templates/CONTRACTKIT_CONSUMER_DECISION_RECORD.md`
 - `HYPERDENSITY_CONTRACTKIT_CONSUMER_POLICY.md`
 - `HYPERDENSITY_CONTRACTKIT_CONSUMER_CI_HARDENING.md`
 - `HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`
 - Dashboard `docs/hyperdensity/HYPERDENSITY_CONTRACTKIT_REFERENCE_CONSUMER_M25.md`
+- Dashboard `docs/hyperdensity/HYPERDENSITY_CONTRACTKIT_REFERENCE_CONSUMER_CHECKLIST_M26.md`
