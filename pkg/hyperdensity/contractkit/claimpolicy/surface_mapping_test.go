@@ -17,7 +17,7 @@ func TestSurfaceMappingsEveryClaimKnown(t *testing.T) {
 			t.Fatalf("mapping claim id %q must be Known", m.ClaimID)
 		}
 		if m.RuntimeImportAllowed {
-			t.Fatalf("mapping %q/%q must not allow runtime import in Sprint 37–38", m.ClaimID, m.Surface)
+			t.Fatalf("mapping %q/%q must not allow runtime import in Sprint 37–39", m.ClaimID, m.Surface)
 		}
 	}
 }

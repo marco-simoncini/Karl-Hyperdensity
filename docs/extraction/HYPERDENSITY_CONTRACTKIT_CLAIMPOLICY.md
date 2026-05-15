@@ -1,4 +1,4 @@
-# contractkit / claimpolicy — boundary + catalog + surface mapping + traceability (Sprint 35–38)
+# contractkit / claimpolicy — boundary + catalog + surface mapping + traceability + token guard (Sprint 35–39)
 
 ## Purpose
 
@@ -8,6 +8,7 @@
 - **Sprint 36:** a minimal **claim-policy catalog** (`ClaimPolicyID`, `ClaimPolicyRule`, `Catalog`, `Known`, `Severity`, `RuntimeAllowed`, `MustKeepRuntimeDisabled`, `ForbiddenProductionClaimIDs`).
 - **Sprint 37:** **surface mapping** (`ParentFabricSurface`, `SurfaceClaimMapping`, `SurfaceMappings`, `MappingsForClaim`, `ValidateSurfaceMappings`) — controlled Parent Fabric / Dashboard surface documentation; **no** runtime wiring.
 - **Sprint 38:** **Dashboard file traceability** on each `SurfaceClaimMapping` (`DashboardFiles`, `DashboardFilesForClaim`, `ValidateDashboardFileTraceability`) — relative paths to real `hyperdensity_parent_fabric_*` / audit scripts; **no** runtime wiring.
+- **Sprint 39:** **`DashboardRequiredTokens`** per mapping row plus `RequiredTokensForClaim` / `ValidateDashboardRequiredTokens` — stable substring expectations; Hyperdensity does **not** read Dashboard files; Dashboard tests verify file contents mechanically.
 
 It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **without** changing API payloads, JSON ordering, or Parent Fabric runtime behavior. **There is no runtime enforcement in this package** — documentation and test parity only.
 
@@ -18,7 +19,7 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 - **No** execution/apply path changes, Windows enablement, KubeVirt removal, or new Parent Fabric collectors.
 - **No** change to `ContractKitVersion` (`v0.0.0-sprint26`) or manifest envelope (`hyperdensity.parity.manifest/v1`) for this slice — module semver tag bumps only.
 
-## Sprint 35 vs Sprint 36 vs Sprint 37 vs Sprint 38
+## Sprint 35 vs Sprint 36 vs Sprint 37 vs Sprint 38 vs Sprint 39
 
 | Sprint | Delivered |
 |--------|-----------|
@@ -26,6 +27,7 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 | **36** | Catalog: typed `ClaimPolicyID` constants, `ClaimPolicyRule` rows, lookup helpers, `ForbiddenProductionClaimIDs` (sorted), critical `MustKeepRuntimeDisabled` anchors. |
 | **37** | Surface mapping: claim IDs ↔ Parent Fabric surface tokens; every mapping has `RuntimeImportAllowed=false`. |
 | **38** | Traceability: each mapping row lists `DashboardFiles` (relative paths) for reviewer anchoring to on-disk Dashboard sources. |
+| **39** | Token guard: each row with files lists `DashboardRequiredTokens`; contract validation + Dashboard mechanical substring parity (test-only). |
 
 ## Catalog semantics (high level)
 
@@ -40,11 +42,12 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 
 | Area | Symbols |
 |------|---------|
-| Epoch | `PackageVersion` (`v0.0.0-sprint38`) |
+| Epoch | `PackageVersion` (`v0.0.0-sprint39`) |
 | Posture (Sprint 35) | `PostureKind`, constants, `KnownPosture`, `Postures` |
 | Catalog (Sprint 36) | `ClaimPolicyID`, `ClaimPolicyRule`, `Catalog`, `Known`, `Severity`, `RuntimeAllowed`, `MustKeepRuntimeDisabled`, `ForbiddenProductionClaimIDs` |
 | Surface mapping (Sprint 37) | `ParentFabricSurface`, `SurfaceClaimMapping`, `SurfaceMappings`, `MappingsForClaim`, `ValidateSurfaceMappings` |
 | Traceability (Sprint 38) | `DashboardFiles` on mappings, `DashboardFilesForClaim`, `ValidateDashboardFileTraceability` |
+| Token guard (Sprint 39) | `DashboardRequiredTokens` on mappings, `RequiredTokensForClaim`, `ValidateDashboardRequiredTokens` |
 
 ## Relationship to other contractkit packages
 
@@ -52,7 +55,7 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 |---------|------|
 | `blockers` | M1 gate / blocker ID catalog. |
 | `contracts` | Summary DTO, manifest, golden helpers. |
-| `claimpolicy` | Claim-policy + posture + surface mapping + Dashboard file traceability for parity (no Dashboard runtime import through Sprint 38). |
+| `claimpolicy` | Claim-policy + posture + surface mapping + Dashboard file traceability + required tokens for parity (no Dashboard runtime import through Sprint 39). |
 
 ## Validation
 
@@ -63,7 +66,7 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 
 ## Consumer pin
 
-Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0.1.6-khr-m1-m17` (or newer) is published; **test-only** imports of `claimpolicy` remain in `*_test.go` only.
+Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0.1.7-khr-m1-m18` (or newer) is published; **test-only** imports of `claimpolicy` remain in `*_test.go` only.
 
 ## Related
 
@@ -74,5 +77,7 @@ Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0
 - `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_CATALOG_M19.md`
 - `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_SURFACE_MAPPING_M20.md`
 - `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_TRACEABILITY_M21.md`
-- `HYPERDENSITY_CLAIMPOLICY_SURFACE_TRACEABILITY.md`
 - `HYPERDENSITY_CLAIMPOLICY_SURFACE_MAPPING.md`
+- `HYPERDENSITY_CLAIMPOLICY_SURFACE_TRACEABILITY.md`
+- `HYPERDENSITY_CLAIMPOLICY_TRACEABILITY_TOKEN_GUARD.md`
+- `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_TRACEABILITY_TOKEN_GUARD_M22.md`

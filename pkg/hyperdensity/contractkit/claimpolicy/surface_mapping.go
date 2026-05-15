@@ -1,6 +1,6 @@
-// Surface mapping (Sprint 37–38): controlled documentation of how claim-policy catalog IDs
-// relate to Karl-Dashboard Parent Fabric conceptual surfaces and traced Dashboard files.
-// Test and doc contract only; no runtime wiring and no Dashboard imports from this package.
+// Surface mapping (Sprint 37–39): controlled documentation of how claim-policy catalog IDs
+// relate to Karl-Dashboard Parent Fabric surfaces, traced files, and required content tokens.
+// Test and doc contract only; no runtime wiring, no Dashboard filesystem reads in Hyperdensity.
 package claimpolicy
 
 import (
@@ -23,16 +23,17 @@ const (
 	SurfaceHyperdensityRecommendation ParentFabricSurface = "hyperdensity_recommendation"
 )
 
-// SurfaceClaimMapping ties a catalog ClaimID to a conceptual Parent Fabric field/value and
-// Karl-Dashboard file paths (relative to kubernetes-console/). Sprint 37–38: RuntimeImportAllowed is always false.
+// SurfaceClaimMapping ties a catalog ClaimID to a conceptual Parent Fabric field/value,
+// traced Dashboard files, and required substring tokens (Sprint 39). RuntimeImportAllowed is always false.
 type SurfaceClaimMapping struct {
-	Surface              string
-	ClaimID              string
-	Field                string
-	ExpectedValue        string
-	RuntimeImportAllowed bool
-	Notes                string
-	DashboardFiles       []string
+	Surface                   string
+	ClaimID                   string
+	Field                     string
+	ExpectedValue             string
+	RuntimeImportAllowed      bool
+	Notes                     string
+	DashboardFiles            []string
+	DashboardRequiredTokens   []string
 }
 
 var surfaceMappingRows []SurfaceClaimMapping
@@ -55,6 +56,24 @@ func normalizeDashboardFiles(files []string) []string {
 	return out
 }
 
+func normalizeRequiredTokens(tokens []string) []string {
+	seen := make(map[string]struct{}, len(tokens))
+	var out []string
+	for _, t := range tokens {
+		t = strings.TrimSpace(t)
+		if t == "" {
+			continue
+		}
+		if _, dup := seen[t]; dup {
+			continue
+		}
+		seen[t] = struct{}{}
+		out = append(out, t)
+	}
+	sort.Strings(out)
+	return out
+}
+
 func init() {
 	rows := []SurfaceClaimMapping{
 		{
@@ -68,6 +87,7 @@ func init() {
 				"pkg/server/hyperdensity_parent_fabric_release_support_matrix_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_resource_exchange_stage_apply.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"dry_run", "dry_run_only"}),
 		},
 		{
 			Surface:              string(SurfaceExecutionEngine),
@@ -81,6 +101,7 @@ func init() {
 				"pkg/server/hyperdensity_parent_fabric_release_support_matrix_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_live_resource_authority_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"autonomous", "no_autonomous_apply"}),
 		},
 		{
 			Surface:              string(SurfaceExecutionEngine),
@@ -93,6 +114,7 @@ func init() {
 				"pkg/server/hyperdensity_parent_fabric_vm_readonly_observation_operator_submission_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_vm_readonly_observation_operator_grant_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"operator", "Operator"}),
 		},
 		{
 			Surface:              string(SurfaceHyperdensityRecommendation),
@@ -105,6 +127,7 @@ func init() {
 				"pkg/server/hyperdensity_parent_fabric_policy_pack_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_release_support_matrix_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"recommendation", "recommendation_only"}),
 		},
 		{
 			Surface:              string(SurfaceKubeVirtLegacyProvider),
@@ -112,11 +135,12 @@ func init() {
 			Field:                "provider_marker",
 			ExpectedValue:        "kubevirt_legacy_provider",
 			RuntimeImportAllowed: false,
-			Notes:                "Legacy KubeVirt / VM compatibility markers in live inventory and matrix surfaces.",
+			Notes:                "Legacy KubeVirt / VM compatibility markers in live inventory and matrix surfaces; live.go uses kubevirt API paths and centos-legacy probe metadata.",
 			DashboardFiles: normalizeDashboardFiles([]string{
 				"pkg/server/hyperdensity_parent_fabric_live.go",
 				"pkg/server/hyperdensity_parent_fabric_release_support_matrix_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"kubevirt", "legacy"}),
 		},
 		{
 			Surface:              string(SurfaceKubeVirtLegacyProvider),
@@ -129,6 +153,7 @@ func init() {
 				"pkg/server/hyperdensity_parent_fabric_live_resource_authority_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_vm_readonly_observation_operator_submission_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"kubevirt", "generic"}),
 		},
 		{
 			Surface:              string(SurfacePolicyPack),
@@ -141,6 +166,7 @@ func init() {
 				"pkg/server/hyperdensity_parent_fabric_policy_pack_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_policy_pack_consistency_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"NoProductionMutation", "no_production_mutation"}),
 		},
 		{
 			Surface:              string(SurfaceReleaseSupportMatrix),
@@ -152,6 +178,7 @@ func init() {
 			DashboardFiles: normalizeDashboardFiles([]string{
 				"pkg/server/hyperdensity_parent_fabric_release_support_matrix_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"NoProductionMutation", "no_production_mutation"}),
 		},
 		{
 			Surface:              string(SurfaceLiveResourceAuthority),
@@ -163,6 +190,7 @@ func init() {
 			DashboardFiles: normalizeDashboardFiles([]string{
 				"pkg/server/hyperdensity_parent_fabric_live_resource_authority_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"NoProductionMutation", "no_production_mutation"}),
 		},
 		{
 			Surface:              string(SurfaceRuntimeImportFreeze),
@@ -175,6 +203,7 @@ func init() {
 				"scripts/hyperdensity/audit_contractkit_runtime_imports.sh",
 				"scripts/hyperdensity/contractkit_runtime_import_allowlist.txt",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"contractkit", "blockers"}),
 		},
 		{
 			Surface:              string(SurfaceWindowsLane),
@@ -187,6 +216,7 @@ func init() {
 				"pkg/server/hyperdensity_parent_fabric_vm_lane_readiness_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_vm_runtime_evidence_collector_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"windows", "disabled"}),
 		},
 		{
 			Surface:              string(SurfaceWindowsLane),
@@ -201,11 +231,15 @@ func init() {
 				"pkg/server/hyperdensity_parent_fabric_vm_readonly_observation_operator_grant_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_vm_runtime_evidence_collector_v1.go",
 			}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"windows_lane_disabled"}),
 		},
 	}
 	for i := range rows {
 		if len(rows[i].DashboardFiles) == 0 {
 			panic("claimpolicy: mapping must include DashboardFiles or document future-only in Notes (Sprint 38)")
+		}
+		if len(rows[i].DashboardRequiredTokens) == 0 {
+			panic("claimpolicy: mapping with DashboardFiles must include DashboardRequiredTokens (Sprint 39)")
 		}
 	}
 	sort.Slice(rows, func(i, j int) bool {
@@ -224,13 +258,17 @@ func init() {
 	surfaceMappingRows = rows
 }
 
+func cloneMapping(m SurfaceClaimMapping) SurfaceClaimMapping {
+	m.DashboardFiles = append([]string(nil), m.DashboardFiles...)
+	m.DashboardRequiredTokens = append([]string(nil), m.DashboardRequiredTokens...)
+	return m
+}
+
 // SurfaceMappings returns all claim ↔ surface rows in stable order.
 func SurfaceMappings() []SurfaceClaimMapping {
 	out := make([]SurfaceClaimMapping, len(surfaceMappingRows))
 	for i := range surfaceMappingRows {
-		m := surfaceMappingRows[i]
-		m.DashboardFiles = append([]string(nil), m.DashboardFiles...)
-		out[i] = m
+		out[i] = cloneMapping(surfaceMappingRows[i])
 	}
 	return out
 }
@@ -240,9 +278,7 @@ func MappingsForClaim(id string) []SurfaceClaimMapping {
 	var out []SurfaceClaimMapping
 	for _, m := range surfaceMappingRows {
 		if m.ClaimID == id {
-			mc := m
-			mc.DashboardFiles = append([]string(nil), m.DashboardFiles...)
-			out = append(out, mc)
+			out = append(out, cloneMapping(m))
 		}
 	}
 	return out
@@ -268,6 +304,26 @@ func DashboardFilesForClaim(id string) []string {
 	return out
 }
 
+// RequiredTokensForClaim returns the sorted, de-duplicated union of DashboardRequiredTokens for a claim id.
+func RequiredTokensForClaim(id string) []string {
+	seen := make(map[string]struct{})
+	var out []string
+	for _, m := range surfaceMappingRows {
+		if m.ClaimID != id {
+			continue
+		}
+		for _, tok := range m.DashboardRequiredTokens {
+			if _, ok := seen[tok]; ok {
+				continue
+			}
+			seen[tok] = struct{}{}
+			out = append(out, tok)
+		}
+	}
+	sort.Strings(out)
+	return out
+}
+
 func validateDashboardPath(p string) error {
 	if strings.TrimSpace(p) == "" {
 		return fmt.Errorf("dashboard path must be non-empty")
@@ -284,15 +340,25 @@ func validateDashboardPath(p string) error {
 	return nil
 }
 
-// ValidateSurfaceMappings checks invariants for Sprint 37 mapping tables.
-func ValidateSurfaceMappings() error {
+func validateTokenShape(tok string) error {
+	if strings.TrimSpace(tok) == "" {
+		return fmt.Errorf("required token must be non-empty")
+	}
+	if strings.ContainsAny(tok, `/\`) || strings.Contains(tok, "..") {
+		return fmt.Errorf("required token %q must not look like a path fragment", tok)
+	}
+	return nil
+}
+
+// validateSurfaceMappingCore checks claim IDs, duplicate mapping keys, and catalog coverage.
+func validateSurfaceMappingCore() error {
 	seen := make(map[string]struct{}, len(surfaceMappingRows))
 	for _, m := range surfaceMappingRows {
 		if !Known(m.ClaimID) {
 			return fmt.Errorf("surface mapping references unknown claim id %q", m.ClaimID)
 		}
 		if m.RuntimeImportAllowed {
-			return fmt.Errorf("surface mapping for claim %q must have RuntimeImportAllowed=false in Sprint 37", m.ClaimID)
+			return fmt.Errorf("surface mapping for claim %q must have RuntimeImportAllowed=false", m.ClaimID)
 		}
 		key := m.ClaimID + "\x00" + m.Surface + "\x00" + m.Field + "\x00" + m.ExpectedValue
 		if _, dup := seen[key]; dup {
@@ -308,11 +374,7 @@ func ValidateSurfaceMappings() error {
 	return nil
 }
 
-// ValidateDashboardFileTraceability checks Sprint 38 file path invariants for all mappings.
-func ValidateDashboardFileTraceability() error {
-	if err := ValidateSurfaceMappings(); err != nil {
-		return err
-	}
+func validateDashboardFilePaths() error {
 	for _, m := range surfaceMappingRows {
 		if len(m.DashboardFiles) == 0 {
 			if strings.Contains(strings.ToLower(m.Notes), "future-only") {
@@ -337,4 +399,56 @@ func ValidateDashboardFileTraceability() error {
 		}
 	}
 	return nil
+}
+
+// validateDashboardRequiredTokensBody validates token rows (caller supplies core + path checks as needed).
+func validateDashboardRequiredTokensBody() error {
+	for _, m := range surfaceMappingRows {
+		if len(m.DashboardFiles) == 0 {
+			continue
+		}
+		if len(m.DashboardRequiredTokens) == 0 {
+			return fmt.Errorf("mapping claim=%q surface=%q field=%q has DashboardFiles but empty DashboardRequiredTokens", m.ClaimID, m.Surface, m.Field)
+		}
+		rowTok := make(map[string]struct{}, len(m.DashboardRequiredTokens))
+		for _, tok := range m.DashboardRequiredTokens {
+			if err := validateTokenShape(tok); err != nil {
+				return fmt.Errorf("claim %q surface %q: %w", m.ClaimID, m.Surface, err)
+			}
+			if _, dup := rowTok[tok]; dup {
+				return fmt.Errorf("duplicate required token %q within mapping claim=%q surface=%q field=%q", tok, m.ClaimID, m.Surface, m.Field)
+			}
+			rowTok[tok] = struct{}{}
+		}
+	}
+	for _, rule := range Catalog() {
+		if len(RequiredTokensForClaim(rule.ID)) == 0 {
+			return fmt.Errorf("catalog claim %q has no required dashboard tokens", rule.ID)
+		}
+	}
+	return nil
+}
+
+// ValidateDashboardRequiredTokens checks Sprint 39 token invariants (no filesystem I/O).
+func ValidateDashboardRequiredTokens() error {
+	if err := validateSurfaceMappingCore(); err != nil {
+		return err
+	}
+	return validateDashboardRequiredTokensBody()
+}
+
+// ValidateSurfaceMappings checks full mapping contract (Sprint 39: file paths + required tokens).
+func ValidateSurfaceMappings() error {
+	if err := validateSurfaceMappingCore(); err != nil {
+		return err
+	}
+	if err := validateDashboardFilePaths(); err != nil {
+		return err
+	}
+	return validateDashboardRequiredTokensBody()
+}
+
+// ValidateDashboardFileTraceability checks Sprint 38–39 path + token contract (no filesystem reads here).
+func ValidateDashboardFileTraceability() error {
+	return ValidateSurfaceMappings()
 }
