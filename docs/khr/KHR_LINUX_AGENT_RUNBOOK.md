@@ -1,4 +1,4 @@
-# KHR Linux Agent — Runbook (Sprint 5–7)
+# KHR Linux Agent — Runbook (Sprint 5–8)
 
 **Audience:** platform engineers evaluating the skeleton locally.
 
@@ -57,6 +57,19 @@ go run ./cmd/khr-linux-agent -mode discover-cgroups \
 ```
 
 See `docs/khr/KHR_LINUX_READONLY_DISCOVERY.md` and `examples/khr/discovery/` for fixtures.
+
+### `read-telemetry`
+
+Read-only cgroup v2 metrics under `-cgroup-path` (typically from `discover-cgroups`). Optional `-allow-path-prefix`, `-cell-input`, `-telemetry-output`.
+
+```bash
+go run ./cmd/khr-linux-agent -mode read-telemetry \
+  -config examples/khr/khr-linux-agent-config.yaml \
+  -cgroup-path /sys/fs/cgroup/karl.slice/karl-shell-example.scope \
+  -allow-path-prefix /sys/fs/cgroup/karl.slice
+```
+
+See `docs/khr/KHR_LINUX_READONLY_TELEMETRY.md` and `examples/khr/telemetry/`.
 
 ## Non-goals
 

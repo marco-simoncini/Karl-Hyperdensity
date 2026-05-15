@@ -1,0 +1,27 @@
+{
+  "tool": "khr-linux-agent",
+  "version": "0.0.1-sprint8",
+  "mode": "read-telemetry",
+  "agentId": "khr-linux-agent-dev-001",
+  "telemetryMode": "read-only",
+  "cgroupPath": "__ROOT__",
+  "allowedPathPrefix": "",
+  "metrics": {
+    "memoryMax": "max"
+  },
+  "evidence": {
+    "observedAt": "2026-05-15T15:00:00Z",
+    "source": "cgroup-v2",
+    "confidence": "low",
+    "warnings": [
+      "cannot resolve \"cpu.stat\": lstat __ROOT__/cpu.stat: no such file or directory",
+      "cannot resolve \"memory.current\": lstat __ROOT__/memory.current: no such file or directory",
+      "cannot resolve \"memory.events\": lstat __ROOT__/memory.events: no such file or directory",
+      "cannot resolve \"io.stat\": lstat __ROOT__/io.stat: no such file or directory"
+    ],
+    "blockedReasons": [
+      "telemetry unusable: both cpu.stat and memory.current are missing or unreadable under cgroup path"
+    ]
+  },
+  "mutationsForbidden": true
+}

@@ -1,0 +1,42 @@
+{
+  "tool": "khr-linux-agent",
+  "version": "0.0.1-sprint8",
+  "mode": "read-telemetry",
+  "agentId": "khr-linux-agent-dev-001",
+  "telemetryMode": "read-only",
+  "cgroupPath": "__ROOT__",
+  "allowedPathPrefix": "",
+  "cellRef": {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "Cell",
+    "namespace": "karl-sandbox",
+    "name": "telemetry-demo-cell"
+  },
+  "metrics": {
+    "cpuStat": {
+      "nr_periods": 2,
+      "usage_usec": 100
+    },
+    "memoryCurrent": "8192",
+    "memoryMax": "max",
+    "memoryEvents": {
+      "pgfault": 5
+    },
+    "ioStat": [
+      {
+        "259:0": "rbytes=10"
+      },
+      {
+        "259:1": "wbytes=20"
+      }
+    ]
+  },
+  "evidence": {
+    "observedAt": "2026-05-15T15:00:00Z",
+    "source": "cgroup-v2",
+    "confidence": "high",
+    "warnings": [],
+    "blockedReasons": []
+  },
+  "mutationsForbidden": true
+}

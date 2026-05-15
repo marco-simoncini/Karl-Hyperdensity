@@ -41,6 +41,8 @@ required_files=(
   "docs/khr/KHR_AUDIT_AND_APPLY_GATES.md"
   "docs/khr/KHR_LINUX_READONLY_DISCOVERY.md"
   "docs/khr/KHR_CGROUP_PATH_POLICY.md"
+  "docs/khr/KHR_LINUX_READONLY_TELEMETRY.md"
+  "docs/khr/KHR_TELEMETRY_EVIDENCE_MODEL.md"
 )
 
 for required in "${required_files[@]}"; do

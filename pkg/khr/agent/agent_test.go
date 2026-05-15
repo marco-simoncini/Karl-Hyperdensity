@@ -61,3 +61,26 @@ func TestRunDryRunCLIJSONStableShape(t *testing.T) {
 		t.Fatal("did not expect audit when unsafe flag absent")
 	}
 }
+
+func TestRunReadTelemetryCLIWritesOutputFile(t *testing.T) {
+	t.Setenv("KHR_TEST_TELEMETRY_NOW", "2026-05-15T15:00:00Z")
+	cfg := &Config{}
+	cfg.Spec.AgentID = "test-agent"
+	cfg.Spec.LinuxOnly = true
+	root := t.TempDir()
+	if err := os.WriteFile(filepath.Join(root, "cpu.stat"), []byte("usage_usec 1\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	if err := os.WriteFile(filepath.Join(root, "memory.current"), []byte("2\n"), 0o644); err != nil {
+		t.Fatal(err)
+	}
+	outPath := filepath.Join(t.TempDir(), "telemetry-out.json")
+	_, err := RunReadTelemetryCLI(cfg, root, "", nil, outPath)
+	if err != nil {
+		t.Fatal(err)
+	}
+	b, err := os.ReadFile(outPath)
+	if err != nil || len(b) < 20 {
+		t.Fatalf("output file: %v len=%d", err, len(b))
+	}
+}

@@ -15,10 +15,11 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcelease"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/runtimeprovider"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/safety"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/telemetry"
 )
 
-// AgentVersion is embedded in JSON outputs (Sprint 6).
-const AgentVersion = "0.0.1-sprint7"
+// AgentVersion is embedded in JSON outputs (Sprint 8).
+const AgentVersion = "0.0.1-sprint8"
 
 // Config is minimal agent configuration (YAML or JSON).
 type Config struct {
@@ -151,4 +152,58 @@ func RunDiscoverCgroupsCLI(cfg *Config, cell *crdv1alpha1.Cell, scannedRoot, all
 	out.Version = AgentVersion
 	out.Mode = "discover-cgroups"
 	return out
+}
+
+// RunReadTelemetryCLI collects read-only cgroup v2 metrics under a resolved path.
+func RunReadTelemetryCLI(cfg *Config, cgroupPath, allowPathPrefix string, cell *crdv1alpha1.Cell, telemetryOutPath string) (*telemetry.ReadTelemetryOutput, error) {
+	out := &telemetry.ReadTelemetryOutput{
+		Tool:               "khr-linux-agent",
+		Version:            AgentVersion,
+		Mode:               "read-telemetry",
+		AgentID:            cfg.Spec.AgentID,
+		TelemetryMode:      "read-only",
+		CgroupPath:         cgroupPath,
+		AllowedPathPrefix:  strings.TrimSpace(allowPathPrefix),
+		MutationsForbidden: true,
+	}
+	if cell != nil {
+		out.CellRef = &telemetry.CellRef{
+			APIVersion: cell.APIVersion,
+			Kind:       cell.Kind,
+			Namespace:  cell.Metadata.Namespace,
+			Name:       cell.Metadata.Name,
+		}
+	}
+	resolved, w, b := cgroup.ValidateCgroupPathForTelemetry(cgroupPath, allowPathPrefix)
+	if len(b) > 0 {
+		out.Metrics = telemetry.MetricsBundle{}
+		out.Evidence = telemetry.BuildEvidence(w, b, out.Metrics)
+		if err := writeTelemetryOutputOptional(out, telemetryOutPath); err != nil {
+			return nil, err
+		}
+		return out, nil
+	}
+	out.CgroupPath = resolved
+	m, w2, b2 := telemetry.ReadCgroupV2Metrics(resolved)
+	allW := append(append([]string{}, w...), w2...)
+	allB := append(append([]string{}, b...), b2...)
+	telemetry.NormalizeMetricsEmpty(&m)
+	out.Metrics = m
+	out.Evidence = telemetry.BuildEvidence(allW, allB, m)
+	if err := writeTelemetryOutputOptional(out, telemetryOutPath); err != nil {
+		return nil, err
+	}
+	return out, nil
+}
+
+func writeTelemetryOutputOptional(out *telemetry.ReadTelemetryOutput, path string) error {
+	if strings.TrimSpace(path) == "" {
+		return nil
+	}
+	b, err := json.MarshalIndent(out, "", "  ")
+	if err != nil {
+		return err
+	}
+	b = append(b, '\n')
+	return os.WriteFile(path, b, 0o600)
 }
