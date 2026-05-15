@@ -1,8 +1,8 @@
-# contractkit/blockers — Dashboard runtime import (Sprint 31–32 / M14)
+# contractkit/blockers — Dashboard runtime import (Sprint 31–33 / M14)
 
 ## Boundary
 
-`pkg/hyperdensity/contractkit/blockers` exposes **stable string constants** for gate/blocker IDs. Sprint 31 introduced the first Dashboard **production** import; Sprint 32 extends it to VM readonly observation surfaces.
+`pkg/hyperdensity/contractkit/blockers` exposes **stable string constants** for gate/blocker IDs. Sprint 31 introduced the first Dashboard **production** import; Sprint 32 extends it to VM readonly observation; Sprint 33 completes catalog `no_production_mutation` on policy pack, consistency checker, release matrix, and live resource authority limitation surfaces.
 
 | Allowed in runtime | Still test-only |
 |--------------------|-----------------|
@@ -14,6 +14,7 @@ Constants are byte-identical to prior string literals — **no JSON or API chang
 
 - **Sprint 31:** VM lane readiness / evidence refresh / runtime evidence collector; guarded auto-execution ledger `no_production_mutation`.
 - **Sprint 32:** VM readonly observation (intake, package, dry-run pass, submission gate, real submission policy remediation, runtime live probe remediation, operator submission / grant / approval preflights); acknowledgement and checklist strings that match catalog `no_windows_lane`.
+- **Sprint 33:** Policy pack `RuleID`, policy-pack consistency `requiredSafetyGates`, release support matrix `LimitationID`, live resource authority `LimitationID` for catalog `no_production_mutation`.
 
 Import alias used in Dashboard:
 
@@ -39,5 +40,4 @@ Consumers stay on tagged module `v0.1.1-khr-m1-m12` unless a future sprint bumps
 
 ## Next slices
 
-- Policy/release matrix `LimitationID` / `RuleID` rows for `no_production_mutation`.
-- Optional: broaden whitelist to document other allowed third-party imports (currently only enforces Hyperdensity `contractkit/*` subtree).
+- Optional: other catalog-aligned IDs in policy matrix rows where strings duplicate catalog verbatim (beyond `no_production_mutation`).
