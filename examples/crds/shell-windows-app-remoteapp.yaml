@@ -1,5 +1,29 @@
 ---
 apiVersion: runtime.karl.io/v1alpha1
+kind: ResourcePort
+metadata:
+  name: windows-app-envelope-example
+spec:
+  description: Windows session/app CPU and RAM envelope (no per-session vCPU hotplug claim).
+  appliesToRuntimeProviderIds:
+    - windows-host-agent.v1
+  ports:
+    cpu:
+      modes:
+        - envelope
+        - static
+    memory:
+      modes:
+        - envelope
+        - static
+    disk:
+      modes:
+        - static
+    network:
+      modes:
+        - static
+---
+apiVersion: runtime.karl.io/v1alpha1
 kind: ShellClass
 metadata:
   name: windows-app-remoteapp
@@ -10,7 +34,7 @@ spec:
   supportedRuntimeProviders:
     - windows-host-agent.v1
   defaultResourcePortProfileRef:
-    name: linux-envelope-example
+    name: windows-app-envelope-example
 ---
 apiVersion: runtime.karl.io/v1alpha1
 kind: Shell
