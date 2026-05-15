@@ -40,6 +40,10 @@ func ValidateFixtureManifest(m FixtureManifest) error {
 	if strings.TrimSpace(m.ManifestVersion) == "" {
 		return fmt.Errorf("manifestVersion is required")
 	}
+	if m.ManifestVersion != FixtureManifestVersion {
+		return fmt.Errorf("manifestVersion %q incompatible with FixtureManifestVersion %q",
+			m.ManifestVersion, FixtureManifestVersion)
+	}
 	if strings.TrimSpace(m.ContractKitVersion) == "" {
 		return fmt.Errorf("contractKitVersion is required")
 	}

@@ -13,10 +13,13 @@ Shared **JSON manifest** listing M1–M8 Hyperdensity parity cases: milestone, D
 
 Case **IDs** and **metadata** align; **file paths** differ per repo layout.
 
-## Versioning
+## Versioning (three layers — see `HYPERDENSITY_CONTRACTKIT_VERSION_MODEL.md`)
 
-- Manifest field `contractKitVersion` must match `contracts.ContractKitVersion` (e.g. `v0.0.0-sprint26`).
-- `contracts.ContractKitCommitHint` is `"consumer-pinned"` — authoritative revision is the **go.mod pseudo-version** on Karl-Dashboard, not an embedded commit SHA.
+| Field | Matches |
+|-------|---------|
+| `manifestVersion` | `FixtureManifestVersion` (`hyperdensity.parity.manifest/v1`) |
+| `contractKitVersion` | `ContractKitVersion` / schema (`v0.0.0-sprint26`) |
+| `go.mod` module pin | `ContractKitModuleVersion` (`v0.1.0-khr-m1-m9`) — **not** in JSON manifest |
 
 ## API (contractkit/contracts)
 

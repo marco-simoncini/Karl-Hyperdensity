@@ -9,9 +9,14 @@ const (
 	MissingOptionalGeneratedAtDefault = ck.MissingOptionalGeneratedAtDefault
 	ContractKitVersion              = ck.ContractKitVersion
 	ContractKitCommitHint           = ck.ContractKitCommitHint
+	ContractKitModuleVersion        = ck.ContractKitModuleVersion
+	ContractKitGitTag               = ck.ContractKitGitTag
+	ContractKitSchemaVersion        = ck.ContractKitSchemaVersion
+	FixtureManifestVersion          = ck.FixtureManifestVersion
 )
 
 type (
+	ReleaseMetadata          = ck.ReleaseMetadata
 	FixtureManifest          = ck.FixtureManifest
 	FixtureCase              = ck.FixtureCase
 	ParentFabricSummary      = ck.ParentFabricSummary
@@ -24,6 +29,7 @@ type (
 )
 
 var (
+	ReleaseInfo                        = ck.ReleaseInfo
 	Version                            = ck.Version
 	ExpectedM1M8CaseIDs                = ck.ExpectedM1M8CaseIDs
 	CaseIDs                            = ck.CaseIDs
