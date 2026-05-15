@@ -74,6 +74,8 @@ required_files=(
   "docs/extraction/HYPERDENSITY_SUMMARY_FIELD_MAPPING_M7.md"
   "docs/extraction/HYPERDENSITY_PARITY_MATRIX_M1_M7.md"
   "docs/extraction/HYPERDENSITY_M1_M7_EXTRACTION_READINESS.md"
+  "docs/extraction/HYPERDENSITY_CONTRACTKIT_MODULE.md"
+  "pkg/hyperdensity/contractkit/go.mod"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"
 )
 
@@ -85,6 +87,10 @@ for required in "${required_files[@]}"; do
 done
 
 go test ./...
+(
+  cd pkg/hyperdensity/contractkit
+  go test ./...
+)
 python3 scripts/validate_json.py
 python3 scripts/validate_khr_examples.py
 

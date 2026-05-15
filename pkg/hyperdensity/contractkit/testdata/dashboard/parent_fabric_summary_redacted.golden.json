@@ -1,0 +1,33 @@
+{
+  "apiVersion": "hyperdensity.karl.io/parent-fabric-summary/v1",
+  "generatedAt": "2026-05-15T12:00:00Z",
+  "source": "karl-dashboard-parent-fabric-redacted-m1",
+  "parentPool": {
+    "usageSummary": "observational-only; donor/receiver counts from decision engine summary projection",
+    "donorCount": 3,
+    "receiverCount": 2
+  },
+  "executionEngine": {
+    "mode": "operator_controlled",
+    "autonomousMode": false,
+    "applyAllowed": false,
+    "dryRunSupported": true
+  },
+  "windowsLane": {
+    "enabled": false,
+    "reason": "keep_windows_lane_disabled",
+    "blockers": [
+      "no_windows_lane",
+      "windows_disabled",
+      "keep_windows_lane_disabled"
+    ]
+  },
+  "kubeVirtLegacy": {
+    "present": true,
+    "providerMode": "kubevirt.legacy.v1"
+  },
+  "hyperdensity": {
+    "recommendationOnly": true,
+    "operatorControlled": true
+  }
+}
