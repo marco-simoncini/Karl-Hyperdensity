@@ -207,16 +207,14 @@ func TestWindowsLaneDisabledRequiredToken(t *testing.T) {
 	}
 }
 
-func TestNoProductionMutationRequiredTokens(t *testing.T) {
-	var union []string
+func TestNoProductionMutationMappingsUseBlockerIDToken(t *testing.T) {
 	for _, m := range SurfaceMappings() {
 		if m.ClaimID != string(ClaimNoProductionMutation) {
 			continue
 		}
-		union = append(union, m.DashboardRequiredTokens...)
-	}
-	joined := strings.Join(union, "\n")
-	if !strings.Contains(joined, "NoProductionMutation") || !strings.Contains(joined, "no_production_mutation") {
-		t.Fatalf("union of tokens across no_production_mutation mappings must include catalog spellings NoProductionMutation and no_production_mutation, got:\n%s", joined)
+		joined := strings.Join(m.DashboardRequiredTokens, " ")
+		if !strings.Contains(joined, "IDNoProductionMutation") || !strings.Contains(joined, "hpblockers") {
+			t.Fatalf("no_production_mutation mapping must trace hpblockers + IDNoProductionMutation, got %#v (surface=%q field=%q)", m.DashboardRequiredTokens, m.Surface, m.Field)
+		}
 	}
 }

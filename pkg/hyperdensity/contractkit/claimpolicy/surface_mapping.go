@@ -161,12 +161,12 @@ func init() {
 			Field:                "RuleID",
 			ExpectedValue:        "no_production_mutation",
 			RuntimeImportAllowed: false,
-			Notes:                "Policy pack rules that carry the M1-aligned blocker id as RuleID.",
+			Notes:                "Policy pack rules wire RuleID via hpblockers.IDNoProductionMutation for the catalog id.",
 			DashboardFiles: normalizeDashboardFiles([]string{
 				"pkg/server/hyperdensity_parent_fabric_policy_pack_v1.go",
 				"pkg/server/hyperdensity_parent_fabric_policy_pack_consistency_v1.go",
 			}),
-			DashboardRequiredTokens: normalizeRequiredTokens([]string{"NoProductionMutation", "no_production_mutation"}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"hpblockers", "IDNoProductionMutation"}),
 		},
 		{
 			Surface:              string(SurfaceReleaseSupportMatrix),
@@ -174,11 +174,11 @@ func init() {
 			Field:                "LimitationID",
 			ExpectedValue:        "no_production_mutation",
 			RuntimeImportAllowed: false,
-			Notes:                "Release support matrix limitation rows using the same catalog token.",
+			Notes:                "Release support matrix limitation rows use hpblockers.IDNoProductionMutation for the catalog id.",
 			DashboardFiles: normalizeDashboardFiles([]string{
 				"pkg/server/hyperdensity_parent_fabric_release_support_matrix_v1.go",
 			}),
-			DashboardRequiredTokens: normalizeRequiredTokens([]string{"NoProductionMutation", "no_production_mutation"}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"hpblockers", "IDNoProductionMutation"}),
 		},
 		{
 			Surface:              string(SurfaceLiveResourceAuthority),
@@ -186,11 +186,11 @@ func init() {
 			Field:                "LimitationID",
 			ExpectedValue:        "no_production_mutation",
 			RuntimeImportAllowed: false,
-			Notes:                "Live resource authority limitation rows use hpblockers.IDNoProductionMutation; the snake-case id is not spelled as a string literal in this file.",
+			Notes:                "Live resource authority limitation rows use hpblockers.IDNoProductionMutation; snake-case id is carried by the blocker constant, not a string literal here.",
 			DashboardFiles: normalizeDashboardFiles([]string{
 				"pkg/server/hyperdensity_parent_fabric_live_resource_authority_v1.go",
 			}),
-			DashboardRequiredTokens: normalizeRequiredTokens([]string{"IDNoProductionMutation", "keep_evidence_namespace_scope"}),
+			DashboardRequiredTokens: normalizeRequiredTokens([]string{"hpblockers", "IDNoProductionMutation"}),
 		},
 		{
 			Surface:              string(SurfaceRuntimeImportFreeze),

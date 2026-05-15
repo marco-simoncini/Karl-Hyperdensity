@@ -28,7 +28,7 @@ Real file content checks run in **Karl-Dashboard** `TestHyperdensityClaimpolicyT
 
 - **`v0.1.5-khr-m1-m16`**: first Sprint 38 traceability tag (superseded).
 - **`v0.1.6-khr-m1-m17`**: corrected `windows_lane_disabled` file paths for traceability.
-- **`v0.1.7-khr-m1-m18`**: adds **`DashboardRequiredTokens`** + contract-side validation + Dashboard mechanical token parity. The live-resource-authority limitation row traces **`hpblockers.IDNoProductionMutation`** (substring **`IDNoProductionMutation`**) rather than spelling **`no_production_mutation`** as a string literal in that file — see **`Notes`** on that mapping row in `surface_mapping.go`.
+- **`v0.1.7-khr-m1-m18`**: adds **`DashboardRequiredTokens`** + contract-side validation + Dashboard mechanical token parity. **`no_production_mutation`** mappings trace **`hpblockers`** + **`IDNoProductionMutation`** because Parent Fabric rows use **`hpblockers.IDNoProductionMutation`** instead of spelling the snake-case catalog string as a literal in every traced file — see **`Notes`** on those mapping rows in `surface_mapping.go`.
 
 ## Related
 
