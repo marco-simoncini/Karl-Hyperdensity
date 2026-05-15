@@ -171,6 +171,39 @@ Dashboard pin:
 go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.8-khr-m1-m18
 ```
 
+## Eighth anchor tag (Sprint 40 — no republish / release hygiene metadata)
+
+**Go module version:** `v0.1.9-khr-m1-m19`  
+**Git tag:**
+
+```text
+pkg/hyperdensity/contractkit/v0.1.9-khr-m1-m19
+```
+
+Adds **`ContractKitCurrentStableModuleVersion`**, **`ContractKitSupersededModuleVersions`**, **`IsSupersededModuleVersion`**, and **`CurrentStableReleaseInfo()`** (stdlib-only, Go 1.18). Documents **no republish / no repoint** policy for nested module tags. **No** `ContractKitVersion` / manifest envelope bump.
+
+```bash
+git tag pkg/hyperdensity/contractkit/v0.1.9-khr-m1-m19 <sprint-40-commit>
+git push origin pkg/hyperdensity/contractkit/v0.1.9-khr-m1-m19
+```
+
+Dashboard pin:
+
+```bash
+go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.9-khr-m1-m19
+```
+
+## No republish / no repoint (policy)
+
+| Rule | Detail |
+|------|--------|
+| Immutability | After a semver is published/consumed via the **public Go module proxy** or recorded in **`go.sum`**, treat the **module@version** payload as **immutable**. |
+| Tags | **Never** repoint a published **`pkg/hyperdensity/contractkit/v…`** tag to a different commit. **Never** delete and recreate a tag for a version that may already have been ingested. |
+| Wrong release | Publish a **strictly newer** module version (`ContractKitModuleVersion` + new git tag); update Dashboard `go.mod`. |
+| Superseded | **`v0.1.5-khr-m1-m16`** → superseded by **`v0.1.6`**; **`v0.1.7-khr-m1-m18`** → superseded by **`v0.1.8`** (see Sprint 39 note). **Current allowed pin:** **`v0.1.9-khr-m1-m19`**. |
+
+Full narrative: **`HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`**.
+
 ## Compatibility promise (contractkit)
 
 | Property | Commitment |
@@ -185,4 +218,6 @@ go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit
 
 - `HYPERDENSITY_CONTRACTKIT_MODULE.md`
 - `HYPERDENSITY_CONTRACTKIT_FIXTURE_MANIFEST.md`
+- `HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`
+- `HYPERDENSITY_CONTRACTKIT_VERSION_MODEL.md`
 - Dashboard `HYPERDENSITY_CONTRACTKIT_RELEASE_M11.md`

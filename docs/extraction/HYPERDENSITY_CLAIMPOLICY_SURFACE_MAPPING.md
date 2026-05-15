@@ -35,7 +35,7 @@ This is a **contract / test / documentation** artifact only:
 - **`DashboardRequiredTokens`:** non-empty whenever **`DashboardFiles`** is non-empty; sorted, unique per row; no path-like tokens; validated by `ValidateDashboardRequiredTokens` (included from `ValidateSurfaceMappings` / `ValidateDashboardFileTraceability`).
 - **KubeVirt:** `kubevirt_legacy_provider` (compatibility marker) and `no_generic_kubevirt_replacement` (forbidden narrative) use **distinct** `Field` / semantics.
 - **Windows:** `no_windows_hyperdensity_apply` maps to **Windows lane** with apply **disabled**; `windows_lane_disabled` maps to preflight check name vocabulary.
-- **Schema / manifest:** `ContractKitVersion` and `FixtureManifestVersion` stay on Sprint 26 / M9 anchors — module semver only bumps (Sprint 39 → **`v0.1.8-khr-m1-m18`**).
+- **Schema / manifest:** `ContractKitVersion` and `FixtureManifestVersion` stay on Sprint 26 / M9 anchors — module semver only bumps (Sprint 39 **`v0.1.8-khr-m1-m18`**, Sprint 40 **`v0.1.9-khr-m1-m19`**).
 
 ## API
 

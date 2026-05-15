@@ -37,7 +37,7 @@ hpblockers "github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contra
 
 ## Version
 
-Consumers pin tagged module `v0.1.8-khr-m1-m18` (Sprint 39 adds `DashboardRequiredTokens` on claimpolicy surface mappings for mechanical Dashboard substring parity; runtime remains `blockers` only per M17).
+Consumers pin tagged module **`v0.1.9-khr-m1-m19`** (Sprint 39 `DashboardRequiredTokens` + Sprint 40 no-republish / superseded-version hygiene; runtime remains `blockers` only per M17).
 
 ## Sprint 34 — freeze (Dashboard M17)
 

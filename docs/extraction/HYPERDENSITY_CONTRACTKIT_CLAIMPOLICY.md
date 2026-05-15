@@ -66,7 +66,7 @@ It complements `blockers` (M1 gate IDs) and `contracts` (DTOs / manifest) **with
 
 ## Consumer pin
 
-Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0.1.8-khr-m1-m18` (or newer) is published; **test-only** imports of `claimpolicy` remain in `*_test.go` only.
+Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0.1.9-khr-m1-m19` (or newer) is published; **test-only** imports of `claimpolicy` remain in `*_test.go` only.
 
 ## Related
 
@@ -77,7 +77,9 @@ Dashboard bumps nested module `go.mod` when tag `pkg/hyperdensity/contractkit/v0
 - `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_CATALOG_M19.md`
 - `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_SURFACE_MAPPING_M20.md`
 - `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_TRACEABILITY_M21.md`
+- `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_TRACEABILITY_TOKEN_GUARD_M22.md`
 - `HYPERDENSITY_CLAIMPOLICY_SURFACE_MAPPING.md`
 - `HYPERDENSITY_CLAIMPOLICY_SURFACE_TRACEABILITY.md`
 - `HYPERDENSITY_CLAIMPOLICY_TRACEABILITY_TOKEN_GUARD.md`
-- `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_TRACEABILITY_TOKEN_GUARD_M22.md`
+- `HYPERDENSITY_CONTRACTKIT_NO_REPUBLISH_POLICY.md`
+- `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CONTRACTKIT_RELEASE_HYGIENE_M23.md`
