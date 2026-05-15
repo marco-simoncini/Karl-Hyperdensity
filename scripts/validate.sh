@@ -61,6 +61,10 @@ required_files=(
   "docs/grandepadre/GRANDE_PADRE_RISK_PRIORITY_MODEL.md"
   "docs/windowsfluidvirt/WINDOWS_FLUIDVIRT_LANE_RECONCILIATION.md"
   "docs/windowsfluidvirt/WINDOWS_FLUIDVIRT_PLANNING_ONLY_SAFETY.md"
+  "docs/extraction/HYPERDENSITY_REAL_EXTRACTION_AUDIT.md"
+  "docs/extraction/HYPERDENSITY_PACKAGE_TARGET_PLAN.md"
+  "docs/extraction/HYPERDENSITY_KHR_DUPLICATION_REPORT.md"
+  "docs/roadmap/KHR_HYPERDENSITY_CORRECTED_ROADMAP.md"
 )
 
 for required in "${required_files[@]}"; do
