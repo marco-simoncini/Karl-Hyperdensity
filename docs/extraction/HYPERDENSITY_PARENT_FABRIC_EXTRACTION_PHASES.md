@@ -1,0 +1,83 @@
+# Hyperdensity Parent Fabric — extraction phase matrix (Sprint 44)
+
+Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces from **Karl-Dashboard** → **Karl-Hyperdensity**. **Sprint 44** documents only; **no** runtime move.
+
+---
+
+## Phase 1 — Audit real Dashboard files
+
+| | |
+|--|--|
+| **Repos** | Karl-Dashboard (inventory), Karl-Hyperdensity (boundary docs) |
+| **Risk** | Low — read-only |
+| **PASS** | Complete categorized inventory (see **`HYPERDENSITY_PARENT_FABRIC_RUNTIME_FILE_INVENTORY_M27.md`**) + script listing (`list_parent_fabric_runtime_files.sh` optional) |
+| **Rollback** | N/A (docs only) |
+| **Forbidden** | Deleting or renaming production `.go`; changing handlers |
+
+---
+
+## Phase 2 — Identify pure helpers
+
+| | |
+|--|--|
+| **Repos** | Karl-Dashboard (annotate), Karl-Hyperdensity (target package mapping) |
+| **Risk** | Medium — misclassification could move the wrong code later |
+| **PASS** | Each candidate tagged: **pure candidate** vs **adapter needed** vs **runtime-bound** (see M27 columns) |
+| **Rollback** | Revert doc annotations |
+| **Forbidden** | Moving code; adding Hyperdensity imports to Dashboard runtime without allowlist sprint |
+
+---
+
+## Phase 3 — Move **only** pure helpers
+
+| | |
+|--|--|
+| **Repos** | Karl-Hyperdensity (new `pkg/hyperdensity/parentfabric/...`), Karl-Dashboard (thin wrappers) |
+| **Risk** | Medium — API drift if public types change |
+| **PASS** | `go test` green in both repos; **no** handler signature change; JSON ordering unchanged for stable fixtures |
+| **Rollback** | Revert commits; restore Dashboard-local copies |
+| **Forbidden** | Moving HTTP handlers, `client-go` calls, or apply paths in this phase |
+
+---
+
+## Phase 4 — Test adapter in Dashboard
+
+| | |
+|--|--|
+| **Repos** | Karl-Dashboard |
+| **Risk** | Low–medium — import cycle risk if boundaries wrong |
+| **PASS** | Dashboard tests call Hyperdensity pure packages; parity scripts green |
+| **Rollback** | `replace` or version pin rollback in `go.mod` |
+| **Forbidden** | Behavior change in production responses |
+
+---
+
+## Phase 5 — Evaluate **runtime** import (later)
+
+| | |
+|--|--|
+| **Repos** | Karl-Dashboard, Karl-Hyperdensity |
+| **Risk** | **High** — operational coupling |
+| **PASS** | Dedicated ADR + security review + canary plan |
+| **Rollback** | Feature flag / revert to Dashboard-local runtime |
+| **Forbidden** | Doing this before Phases 1–4 are stable |
+
+---
+
+## Phase 6 — Runtime ownership move (much later)
+
+| | |
+|--|--|
+| **Repos** | Karl-Dashboard, Karl-Hyperdensity, possibly operators/agents |
+| **Risk** | **Very high** — production blast radius |
+| **PASS** | Explicit multi-sprint program; KHR / ResourceLease alignment **after** Parent Fabric pure extraction stabilizes (per product roadmap) |
+| **Rollback** | Blue/green deploy; pin to previous module version |
+| **Forbidden** | Big-bang cutover without adapter phase |
+
+---
+
+## Related
+
+- `HYPERDENSITY_PARENT_FABRIC_EXTRACTION_BOUNDARY.md`
+- `HYPERDENSITY_PARENT_FABRIC_DEPENDENCY_GUARDS.md`
+- Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_EXTRACTION_BOUNDARY_M28.md`
