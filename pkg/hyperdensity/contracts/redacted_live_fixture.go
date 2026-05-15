@@ -12,6 +12,10 @@ type RedactedLiveSummaryMetadata struct {
 	DashboardSupportsApply bool
 	// ExecutionSummaryCategory is executionEngine.summary.category from the Dashboard JSON before mapping.
 	ExecutionSummaryCategory string
+	// DashboardGeneratedAtUnavailable is true when generatedAt was JSON null, absent, or empty before mapping.
+	DashboardGeneratedAtUnavailable bool
+	// DashboardCountsAbsent is true when decisionEngine was absent or eligible counts were not present (maps to 0).
+	DashboardCountsAbsent bool
 }
 
 // ValidateRedactedLiveSummaryFixture checks that a mapped ParentFabricSummary is consistent

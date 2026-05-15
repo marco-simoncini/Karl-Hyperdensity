@@ -117,6 +117,79 @@ func TestValidateSupportsApplyFalseEdge_wrongCategoryWhenDryRunSupported(t *test
 	}
 }
 
+func TestValidateMissingOptionalFieldsEdge_ok(t *testing.T) {
+	s := ParentFabricSummary{
+		APIVersion:  SummaryAPIVersion,
+		GeneratedAt: MissingOptionalGeneratedAtDefault,
+		Source:      "live-capture-redacted-missing-optional",
+		ParentPool:  ParentPoolSummary{UsageSummary: "mapped from decisionEngine eligible yielder/receiver counts"},
+		ExecutionEngine: BuildClaimSafeExecutionEngine(false, "dry_run_only", false),
+		WindowsLane: WindowsLaneSummary{
+			Enabled:  false,
+			Reason:   "keep_windows_lane_disabled",
+			Blockers: []string{"dry_run_only"},
+		},
+		KubeVirtLegacy: KubeVirtLegacySummary{Present: true},
+		Hyperdensity: HyperdensityPosture{
+			RecommendationOnly: true,
+			OperatorControlled: true,
+		},
+	}
+	meta := RedactedLiveSummaryMetadata{
+		DashboardSupportsApply:          false,
+		ExecutionSummaryCategory:        "dry_run_only",
+		DashboardGeneratedAtUnavailable: true,
+		DashboardCountsAbsent:           true,
+	}
+	if err := ValidateMissingOptionalFieldsEdge(s, meta); err != nil {
+		t.Fatal(err)
+	}
+}
+
+func TestValidateMissingOptionalFieldsEdge_rejectsKubeVirtAbsent(t *testing.T) {
+	s := ParentFabricSummary{
+		APIVersion:  SummaryAPIVersion,
+		GeneratedAt: MissingOptionalGeneratedAtDefault,
+		Source:      "live-capture-redacted-x",
+		ExecutionEngine: ExecutionEngineSummary{
+			Mode:            "operator_controlled",
+			DryRunSupported: true,
+		},
+		WindowsLane:    WindowsLaneSummary{Enabled: false},
+		KubeVirtLegacy: KubeVirtLegacySummary{Present: false},
+		Hyperdensity: HyperdensityPosture{
+			RecommendationOnly: true,
+			OperatorControlled: true,
+		},
+	}
+	meta := RedactedLiveSummaryMetadata{DashboardGeneratedAtUnavailable: true}
+	if err := ValidateMissingOptionalFieldsEdge(s, meta); err == nil {
+		t.Fatal("expected error when kubeVirtLegacy.present false")
+	}
+}
+
+func TestValidateMissingOptionalFieldsEdge_rejectsWrongGeneratedAtDefault(t *testing.T) {
+	s := ParentFabricSummary{
+		APIVersion:  SummaryAPIVersion,
+		GeneratedAt: "1970-01-01T00:00:00Z",
+		Source:      "live-capture-redacted-x",
+		ExecutionEngine: ExecutionEngineSummary{
+			Mode:            "operator_controlled",
+			DryRunSupported: true,
+		},
+		WindowsLane:    WindowsLaneSummary{Enabled: false},
+		KubeVirtLegacy: KubeVirtLegacySummary{Present: true},
+		Hyperdensity: HyperdensityPosture{
+			RecommendationOnly: true,
+			OperatorControlled: true,
+		},
+	}
+	meta := RedactedLiveSummaryMetadata{DashboardGeneratedAtUnavailable: true, DashboardCountsAbsent: true}
+	if err := ValidateMissingOptionalFieldsEdge(s, meta); err == nil {
+		t.Fatal("expected error for wrong generatedAt default")
+	}
+}
+
 func TestValidateSupportsApplyFalseEdge_rejectsSupportsApplyTrueMeta(t *testing.T) {
 	s := ParentFabricSummary{
 		APIVersion:  SummaryAPIVersion,
