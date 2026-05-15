@@ -16,5 +16,8 @@ jobs:
         with:
           go-version-file: go.mod
 
+      - name: Install PyYAML (example CRD YAML syntax parse)
+        run: python3 -m pip install --user pyyaml
+
       - name: Run validation
         run: ./scripts/validate.sh

@@ -18,7 +18,12 @@ done
 if [[ -d "${ROOT_DIR}/examples/crds" ]]; then
   echo "[validate_crds] Parsing example YAML (syntax only; CRDs need not be installed)..."
   python3 - <<'PY'
-import pathlib, yaml
+import pathlib
+try:
+    import yaml
+except ImportError:
+    print("  SKIP: PyYAML not installed (pip install pyyaml)")
+    raise SystemExit(0)
 root = pathlib.Path("examples/crds")
 for p in sorted(root.glob("*.yaml")):
     with p.open() as f:
