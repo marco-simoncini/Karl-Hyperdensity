@@ -65,6 +65,8 @@ required_files=(
   "docs/extraction/HYPERDENSITY_PACKAGE_TARGET_PLAN.md"
   "docs/extraction/HYPERDENSITY_KHR_DUPLICATION_REPORT.md"
   "docs/roadmap/KHR_HYPERDENSITY_CORRECTED_ROADMAP.md"
+  "docs/extraction/HYPERDENSITY_GOLDEN_ANCHOR_M1.md"
+  "testdata/dashboard/parent_fabric_summary_redacted.golden.json"
 )
 
 for required in "${required_files[@]}"; do
