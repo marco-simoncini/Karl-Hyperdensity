@@ -1,48 +1,20 @@
 package resourcelease
 
 import (
-	"encoding/json"
 	"fmt"
 	"strings"
+
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 )
 
-// LeaseInput is a minimal ResourceLease-shaped document for dry-run (Sprint 5).
-type LeaseInput struct {
-	Spec struct {
-		Donor struct {
-			Kind      string `json:"kind"`
-			Namespace string `json:"namespace"`
-			Name      string `json:"name"`
-		} `json:"donor"`
-		Receiver struct {
-			Kind      string `json:"kind"`
-			Namespace string `json:"namespace"`
-			Name      string `json:"name"`
-		} `json:"receiver"`
-		Resource string          `json:"resource"`
-		Mode     string          `json:"mode"`
-		Amount   json.RawMessage `json:"amount,omitempty"`
-	} `json:"spec"`
-}
-
-// ResourcePortInput describes allowed modes for cpu/memory (subset of CRD contract).
-type ResourcePortInput struct {
-	Spec struct {
-		Ports struct {
-			CPU struct {
-				Modes []string `json:"modes"`
-			} `json:"cpu"`
-			Memory struct {
-				Modes []string `json:"memory"`
-			} `json:"memory"`
-		} `json:"ports"`
-	} `json:"spec"`
-}
-
-// CellContext carries donor/receiver runtime hints for Linux-only enforcement.
+// CellContext carries donor/receiver hints for Linux-only enforcement and optional CRD snapshots.
 type CellContext struct {
-	DonorPlatform    string `json:"donorPlatform"`
-	ReceiverPlatform string `json:"receiverPlatform"`
+	DonorPlatform           string                       `json:"donorPlatform"`
+	ReceiverPlatform        string                       `json:"receiverPlatform"`
+	DonorCell               *crdv1alpha1.Cell            `json:"donorCell,omitempty"`
+	ReceiverCell            *crdv1alpha1.Cell            `json:"receiverCell,omitempty"`
+	DonorRuntimeProvider    *crdv1alpha1.RuntimeProvider `json:"donorRuntimeProvider,omitempty"`
+	ReceiverRuntimeProvider *crdv1alpha1.RuntimeProvider `json:"receiverRuntimeProvider,omitempty"`
 }
 
 // DryRunResult is structured JSON output for CLI and tests.
@@ -50,7 +22,7 @@ type DryRunResult struct {
 	Allowed           bool     `json:"allowed"`
 	Blocked           bool     `json:"blocked"`
 	Reason            string   `json:"reason,omitempty"`
-	ExpectedWrites    []string `json:"expectedWrites"`
+	ExpectedWrites    []string `json:"expectedWrites,omitempty"`
 	RollbackPlan      []string `json:"rollbackPlan"`
 	VerificationPlan  []string `json:"verificationPlan"`
 	ResourcePortCheck string   `json:"resourcePortCheck,omitempty"`
@@ -66,13 +38,12 @@ func modeSliceContains(modes []string, want string) bool {
 	return false
 }
 
-// DryRun evaluates a ResourceLease-shaped input with safety rules (no writes).
-func DryRun(lease *LeaseInput, port *ResourcePortInput, ctx *CellContext) DryRunResult {
+// DryRun evaluates a v1alpha1 ResourceLease with safety rules (no writes).
+func DryRun(lease *crdv1alpha1.ResourceLease, port *crdv1alpha1.ResourcePort, ctx *CellContext) DryRunResult {
 	res := DryRunResult{
-		ExpectedWrites:   []string{},
+		ExpectedWrites:   nil,
 		RollbackPlan:     []string{"revert cgroup cpu.max/memory.max to prior values captured pre-apply"},
 		VerificationPlan: []string{"read back cgroup limits", "compare cgroup.events pressure", "confirm process RSS/CPU throttle metrics"},
-		Notes:            []string{},
 	}
 	if lease == nil {
 		res.Blocked = true
@@ -87,42 +58,41 @@ func DryRun(lease *LeaseInput, port *ResourcePortInput, ctx *CellContext) DryRun
 		res.Reason = "non-linux donor/receiver blocked in KHR Linux MVP"
 		return res
 	}
-	if lease.Spec.Resource != "cpu" && lease.Spec.Resource != "memory" {
+	ls := lease.Spec
+	if ls.Resource != "cpu" && ls.Resource != "memory" {
 		res.Blocked = true
-		res.Reason = fmt.Sprintf("resource %q not supported in linux envelope MVP", lease.Spec.Resource)
+		res.Reason = fmt.Sprintf("resource %q not supported in linux envelope MVP", ls.Resource)
 		return res
 	}
-	if strings.ToLower(lease.Spec.Mode) != "envelope" {
+	if strings.ToLower(ls.Mode) != "envelope" {
 		res.Blocked = true
-		res.Reason = fmt.Sprintf("mode %q blocked: only envelope mode allowed in Sprint 5", lease.Spec.Mode)
+		res.Reason = fmt.Sprintf("mode %q blocked: only envelope mode allowed in KHR Linux MVP", ls.Mode)
 		return res
 	}
-	if lease.Spec.Donor.Kind == "" || lease.Spec.Donor.Name == "" || lease.Spec.Receiver.Kind == "" || lease.Spec.Receiver.Name == "" {
+	if ls.Donor.Kind == "" || ls.Donor.Name == "" || ls.Receiver.Kind == "" || ls.Receiver.Name == "" {
 		res.Blocked = true
 		res.Reason = "donor/receiver kind and name are required"
 		return res
 	}
 	if port == nil {
 		res.Blocked = true
-		res.Reason = "ResourcePort input required for Sprint 5 dry-run verification"
+		res.Reason = "ResourcePort input required for dry-run verification"
 		return res
 	}
-	{
-		isCPU := lease.Spec.Resource == "cpu"
-		var ok bool
-		if isCPU {
-			ok = modeSliceContains(port.Spec.Ports.CPU.Modes, "envelope")
-		} else {
-			ok = modeSliceContains(port.Spec.Ports.Memory.Modes, "envelope")
-		}
-		if !ok {
-			res.Blocked = true
-			res.Reason = "ResourcePort does not allow envelope for requested resource"
-			res.ResourcePortCheck = "incompatible"
-			return res
-		}
-		res.ResourcePortCheck = "compatible"
+	isCPU := ls.Resource == "cpu"
+	var ok bool
+	if isCPU {
+		ok = modeSliceContains(port.Spec.Ports.CPU.Modes, "envelope")
+	} else {
+		ok = modeSliceContains(port.Spec.Ports.Memory.Modes, "envelope")
 	}
+	if !ok {
+		res.Blocked = true
+		res.Reason = "ResourcePort does not allow envelope for requested resource"
+		res.ResourcePortCheck = "incompatible"
+		return res
+	}
+	res.ResourcePortCheck = "compatible"
 
 	res.Allowed = true
 	res.Blocked = false

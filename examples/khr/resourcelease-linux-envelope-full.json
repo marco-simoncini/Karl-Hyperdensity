@@ -1,0 +1,44 @@
+{
+  "apiVersion": "hyperdensity.karl.io/v1alpha1",
+  "kind": "ResourceLease",
+  "metadata": {
+    "name": "linux-envelope-full-demo",
+    "namespace": "karl-sandbox",
+    "labels": {
+      "karl.io/demo": "khr-linux-envelope-full"
+    }
+  },
+  "spec": {
+    "donor": {
+      "apiGroup": "runtime.karl.io",
+      "kind": "Cell",
+      "namespace": "karl-sandbox",
+      "name": "lease-demo-donor-cell"
+    },
+    "receiver": {
+      "apiGroup": "runtime.karl.io",
+      "kind": "Cell",
+      "namespace": "karl-sandbox",
+      "name": "lease-demo-receiver-cell"
+    },
+    "resource": "cpu",
+    "amount": {
+      "milliCpu": 2000
+    },
+    "mode": "envelope",
+    "durationSeconds": 120,
+    "ttlSeconds": 0,
+    "rollbackPlanRef": {
+      "name": "demo-rollback-plan",
+      "namespace": "karl-sandbox"
+    },
+    "rollbackRequired": true,
+    "verificationHooks": {
+      "preApply": ["cgroup-readiness-check"]
+    },
+    "noRestart": true,
+    "guestVisible": false,
+    "telemetryConvergedRequired": true,
+    "dryRunOnly": true
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "ResourcePort",
+  "metadata": {
+    "name": "linux-static-cpu-only"
+  },
+  "spec": {
+    "ports": {
+      "cpu": {
+        "modes": [
+          "static"
+        ]
+      },
+      "memory": {
+        "modes": [
+          "envelope",
+          "static"
+        ]
+      }
+    }
+  }
+}

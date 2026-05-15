@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse examples/khr/*.{json,yaml} for Sprint 5 contract fixtures (stdlib only)."""
+"""Parse examples/khr/**/*.json|yaml recursively for KHR contract fixtures (stdlib JSON; PyYAML for yaml)."""
 from __future__ import annotations
 
 import json
@@ -13,7 +13,9 @@ def main() -> int:
     if not khr.is_dir():
         print("[validate_khr_examples] ERROR: examples/khr missing", file=sys.stderr)
         return 1
-    for path in sorted(khr.iterdir()):
+    for path in sorted(khr.rglob("*")):
+        if not path.is_file():
+            continue
         if path.suffix.lower() not in (".json", ".yaml", ".yml"):
             continue
         if path.suffix.lower() == ".json":

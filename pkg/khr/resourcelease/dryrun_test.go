@@ -3,10 +3,16 @@ package resourcelease
 import (
 	"encoding/json"
 	"testing"
+
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 )
 
-func leaseFixture(mode, resource string) *LeaseInput {
-	l := &LeaseInput{}
+func leaseFixture(mode, resource string) *crdv1alpha1.ResourceLease {
+	l := &crdv1alpha1.ResourceLease{}
+	l.APIVersion = "hyperdensity.karl.io/v1alpha1"
+	l.Kind = "ResourceLease"
+	l.Metadata.Name = "fixture"
+	l.Metadata.Namespace = "karl-sandbox"
 	l.Spec.Mode = mode
 	l.Spec.Resource = resource
 	l.Spec.Donor.Kind = "Cell"
@@ -18,8 +24,10 @@ func leaseFixture(mode, resource string) *LeaseInput {
 	return l
 }
 
-func portEnvelope() *ResourcePortInput {
-	p := &ResourcePortInput{}
+func portEnvelope() *crdv1alpha1.ResourcePort {
+	p := &crdv1alpha1.ResourcePort{}
+	p.APIVersion = "runtime.karl.io/v1alpha1"
+	p.Kind = "ResourcePort"
 	p.Spec.Ports.CPU.Modes = []string{"static", "envelope"}
 	p.Spec.Ports.Memory.Modes = []string{"static", "envelope"}
 	return p
@@ -36,14 +44,14 @@ func TestDryRunAllowedEnvelopeCPU(t *testing.T) {
 }
 
 func TestDryRunBlockedNonEnvelopeMode(t *testing.T) {
-	res := DryRun(leaseFixture("hotplug", "cpu"), portEnvelope(), &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
+	res := DryRun(leaseFixture("hotAdd", "cpu"), portEnvelope(), &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
 	if !res.Blocked || res.Allowed {
 		t.Fatalf("expected blocked")
 	}
 }
 
 func TestDryRunBlockedResourcePort(t *testing.T) {
-	p := &ResourcePortInput{}
+	p := &crdv1alpha1.ResourcePort{}
 	p.Spec.Ports.CPU.Modes = []string{"static"}
 	p.Spec.Ports.Memory.Modes = []string{"static"}
 	res := DryRun(leaseFixture("envelope", "cpu"), p, &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
@@ -67,8 +75,8 @@ func TestDryRunBlockedNonLinux(t *testing.T) {
 }
 
 func TestLeaseJSONUnmarshal(t *testing.T) {
-	raw := []byte(`{"spec":{"donor":{"kind":"Cell","name":"a","namespace":"ns"},"receiver":{"kind":"Cell","name":"b","namespace":"ns"},"resource":"memory","mode":"envelope"}}`)
-	l := &LeaseInput{}
+	raw := []byte(`{"apiVersion":"hyperdensity.karl.io/v1alpha1","kind":"ResourceLease","metadata":{"name":"x"},"spec":{"donor":{"kind":"Cell","name":"a","namespace":"ns"},"receiver":{"kind":"Cell","name":"b","namespace":"ns"},"resource":"memory","mode":"envelope"}}`)
+	l := &crdv1alpha1.ResourceLease{}
 	if err := json.Unmarshal(raw, l); err != nil {
 		t.Fatal(err)
 	}

@@ -1,0 +1,60 @@
+{
+  "donorPlatform": "linux",
+  "receiverPlatform": "linux",
+  "donorCell": {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "Cell",
+    "metadata": {
+      "name": "lease-demo-donor-cell",
+      "namespace": "karl-sandbox"
+    },
+    "spec": {
+      "shellRef": {
+        "name": "dev-linux-systemd-001"
+      },
+      "runtimeProviderRef": {
+        "name": "linux-systemd-v1"
+      }
+    }
+  },
+  "receiverCell": {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "Cell",
+    "metadata": {
+      "name": "lease-demo-receiver-cell",
+      "namespace": "karl-sandbox"
+    },
+    "spec": {
+      "shellRef": {
+        "name": "dev-linux-systemd-001"
+      },
+      "runtimeProviderRef": {
+        "name": "linux-systemd-v1"
+      }
+    }
+  },
+  "donorRuntimeProvider": {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "RuntimeProvider",
+    "metadata": {
+      "name": "linux-systemd-v1"
+    },
+    "spec": {
+      "id": "linux.systemd.v1",
+      "driver": "linux-systemd",
+      "execContractVersion": "khr-contract-2026.05-sprint2"
+    }
+  },
+  "receiverRuntimeProvider": {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "RuntimeProvider",
+    "metadata": {
+      "name": "linux-systemd-v1"
+    },
+    "spec": {
+      "id": "linux.systemd.v1",
+      "driver": "linux-systemd",
+      "execContractVersion": "khr-contract-2026.05-sprint2"
+    }
+  }
+}

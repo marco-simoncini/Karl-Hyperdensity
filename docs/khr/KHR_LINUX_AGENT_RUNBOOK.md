@@ -1,4 +1,4 @@
-# KHR Linux Agent — Runbook (Sprint 5)
+# KHR Linux Agent — Runbook (Sprint 5–6)
 
 **Audience:** platform engineers evaluating the skeleton locally.
 
@@ -22,7 +22,7 @@ Exit `0` when valid, non-zero when validation errors are present.
 
 ### `print-capabilities`
 
-Emits JSON describing cgroup version, stub runtime providers, and whether mutations are locked.
+Emits JSON describing cgroup version, stub runtime providers, `mutationsForbidden` (always true in Sprint 6), optional `audit` when `--allow-unsafe-apply` is passed, and `futureApplyGateRequired` when that flag is present.
 
 ```bash
 go run ./cmd/khr-linux-agent -mode=print-capabilities -config=examples/khr/khr-linux-agent-config.yaml
@@ -30,7 +30,7 @@ go run ./cmd/khr-linux-agent -mode=print-capabilities -config=examples/khr/khr-l
 
 ### `dry-run`
 
-Requires `-lease-input` and `-resource-port-input` (Sprint 5 policy). Optional `-cell-context` (defaults to Linux/Linux when omitted inside evaluator). Optional `-cpu-delta` / `-memory-delta` for envelope plan text.
+Requires `-lease-input` and `-resource-port-input`. Optional `-cell-context` (defaults to Linux/Linux when omitted inside the evaluator). Optional `-cpu-delta` / `-memory-delta` annotate the cgroup envelope plan text only (still no writes). Golden stdout fixtures live under `examples/khr/golden/` (tests set `KHR_TEST_CGROUP_VERSION` for deterministic cgroup version in JSON).
 
 ```bash
 go run ./cmd/khr-linux-agent -mode=dry-run \
@@ -42,7 +42,7 @@ go run ./cmd/khr-linux-agent -mode=dry-run \
   -memory-delta="-256Mi"
 ```
 
-**Never** pass `--allow-unsafe-apply` outside an isolated lab; Sprint 5 tests do not enable it.
+`--allow-unsafe-apply` is **non-operational** in Sprint 6: it never enables cgroup writes but emits an audit warning and sets `futureApplyGateRequired` in JSON. Do not treat the flag as a safety bypass; see `docs/khr/KHR_AUDIT_AND_APPLY_GATES.md`.
 
 ## Non-goals
 

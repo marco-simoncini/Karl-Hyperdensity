@@ -38,6 +38,7 @@ required_files=(
   "docs/khr/KHR_LINUX_AGENT_RUNBOOK.md"
   "docs/khr/KHR_LINUX_CGROUP_ENVELOPE_MODEL.md"
   "docs/khr/KHR_SAFETY_AND_DRY_RUN_MODEL.md"
+  "docs/khr/KHR_AUDIT_AND_APPLY_GATES.md"
 )
 
 for required in "${required_files[@]}"; do

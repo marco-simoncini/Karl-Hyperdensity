@@ -1,0 +1,44 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "ResourcePort",
+  "metadata": {
+    "name": "linux-envelope-full",
+    "labels": {
+      "karl.io/contract-track": "khr-v1alpha1"
+    }
+  },
+  "spec": {
+    "description": "Linux cgroup CPU/RAM envelope (full Sprint 6 fixture).",
+    "appliesToRuntimeProviderIds": [
+      "linux.pod.v1",
+      "linux.systemd.v1"
+    ],
+    "ports": {
+      "cpu": {
+        "modes": [
+          "envelope",
+          "static",
+          "hotAdd"
+        ]
+      },
+      "memory": {
+        "modes": [
+          "envelope",
+          "static",
+          "balloon"
+        ]
+      },
+      "disk": {
+        "modes": [
+          "static"
+        ]
+      },
+      "network": {
+        "modes": [
+          "static"
+        ]
+      }
+    },
+    "notes": "Envelope semantics follow Karl-Hyperdensity Linux shell compliance contracts."
+  }
+}

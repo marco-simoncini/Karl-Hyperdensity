@@ -1,0 +1,23 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "RuntimeProvider",
+  "metadata": {
+    "name": "linux-systemd-v1"
+  },
+  "spec": {
+    "id": "linux.systemd.v1",
+    "displayName": "Linux systemd slice provider",
+    "driver": "linux-systemd",
+    "supportedShellClassIds": [
+      "linux.workspace.systemd.v1"
+    ],
+    "defaultResourcePortProfileRef": {
+      "name": "linux-envelope-example"
+    },
+    "execContractVersion": "khr-contract-2026.05-sprint2",
+    "config": {
+      "cgroupRootHint": "/sys/fs/cgroup",
+      "slicePrefix": "karl.slice"
+    }
+  }
+}

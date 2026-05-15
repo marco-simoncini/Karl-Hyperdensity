@@ -1,4 +1,4 @@
-// Command khr-linux-agent is a dry-run-first Linux MVP skeleton (Sprint 5).
+// Command khr-linux-agent is a dry-run-first Linux MVP skeleton (Sprint 5+).
 package main
 
 import (
@@ -17,14 +17,14 @@ func main() {
 	leasePath := flag.String("lease-input", "", "path to ResourceLease JSON (dry-run)")
 	portPath := flag.String("resource-port-input", "", "path to ResourcePort JSON (dry-run)")
 	cellCtxPath := flag.String("cell-context", "", "optional path to CellContext JSON (dry-run)")
-	allowUnsafe := flag.Bool("allow-unsafe-apply", false, "DANGEROUS: required for any future real cgroup writes (disabled in Sprint 5)")
-	cpuDelta := flag.String("cpu-delta", "", "optional cpu.max delta string for envelope dry-run plan")
-	memDelta := flag.String("memory-delta", "", "optional memory.max delta string for envelope dry-run plan")
+	allowUnsafe := flag.Bool("allow-unsafe-apply", false, "non-operational in Sprint 6: emits audit only; never enables writes")
+	cpuDelta := flag.String("cpu-delta", "", "optional cpu.max delta string for envelope dry-run plan (simulation only)")
+	memDelta := flag.String("memory-delta", "", "optional memory.max delta string for envelope dry-run plan (simulation only)")
 	flag.Parse()
 
 	out := map[string]interface{}{
 		"tool":    "khr-linux-agent",
-		"version": "0.0.1-sprint5",
+		"version": agent.AgentVersion,
 		"mode":    *mode,
 	}
 
@@ -93,13 +93,10 @@ func main() {
 			out["error"] = err.Error()
 			emit(out, 2)
 		}
-		var portRaw []byte
-		if *portPath != "" {
-			portRaw, err = os.ReadFile(*portPath)
-			if err != nil {
-				out["error"] = err.Error()
-				emit(out, 2)
-			}
+		portRaw, err := os.ReadFile(*portPath)
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
 		}
 		var ctx *resourcelease.CellContext
 		if *cellCtxPath != "" {
@@ -114,24 +111,19 @@ func main() {
 				emit(out, 2)
 			}
 		}
-		leaseOut, err := agent.DryRunLease(leaseRaw, portRaw, ctx)
+		cliOut, err := agent.RunDryRunCLI(leaseRaw, portRaw, ctx, *allowUnsafe, *cpuDelta, *memDelta)
 		if err != nil {
 			out["error"] = err.Error()
 			emit(out, 2)
 		}
-		planOut, err := agent.DryRunEnvelopePlan(*allowUnsafe, *cpuDelta, *memDelta)
+		b, err := json.MarshalIndent(cliOut, "", "  ")
 		if err != nil {
 			out["error"] = err.Error()
 			emit(out, 2)
 		}
-		var leaseObj interface{}
-		var planObj interface{}
-		_ = json.Unmarshal(leaseOut, &leaseObj)
-		_ = json.Unmarshal(planOut, &planObj)
-		out["resourceLeaseDryRun"] = leaseObj
-		out["cgroupEnvelopePlan"] = planObj
-		out["applyLocked"] = !*allowUnsafe
-		emit(out, 0)
+		os.Stdout.Write(b)
+		os.Stdout.Write([]byte("\n"))
+		os.Exit(0)
 
 	default:
 		out["error"] = fmt.Sprintf("unknown mode %q", *mode)

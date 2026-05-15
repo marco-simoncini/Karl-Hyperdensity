@@ -3,14 +3,9 @@
   "version": "0.0.1-sprint6",
   "mode": "dry-run",
   "resourceLeaseDryRun": {
-    "allowed": true,
-    "blocked": false,
-    "reason": "dry-run only: no cgroup writes performed",
-    "expectedWrites": [
-      "(simulated) write cgroup cpu.max delta on donor slice",
-      "(simulated) write cgroup memory.max delta on donor slice",
-      "(simulated) mirror inverse delta on receiver slice"
-    ],
+    "allowed": false,
+    "blocked": true,
+    "reason": "mode \"hotAdd\" blocked: only envelope mode allowed in KHR Linux MVP",
     "rollbackPlan": [
       "revert cgroup cpu.max/memory.max to prior values captured pre-apply"
     ],
@@ -18,8 +13,7 @@
       "read back cgroup limits",
       "compare cgroup.events pressure",
       "confirm process RSS/CPU throttle metrics"
-    ],
-    "resourcePortCheck": "compatible"
+    ]
   },
   "cgroupEnvelopePlan": {
     "cgroupVersion": "v2",

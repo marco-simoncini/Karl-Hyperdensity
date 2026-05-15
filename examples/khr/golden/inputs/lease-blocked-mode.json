@@ -1,0 +1,25 @@
+{
+  "apiVersion": "hyperdensity.karl.io/v1alpha1",
+  "kind": "ResourceLease",
+  "metadata": {
+    "name": "blocked-mode-demo",
+    "namespace": "karl-sandbox"
+  },
+  "spec": {
+    "donor": {
+      "kind": "Cell",
+      "namespace": "karl-sandbox",
+      "name": "lease-demo-donor-cell"
+    },
+    "receiver": {
+      "kind": "Cell",
+      "namespace": "karl-sandbox",
+      "name": "lease-demo-receiver-cell"
+    },
+    "resource": "cpu",
+    "mode": "hotAdd",
+    "amount": {
+      "milliCpu": 500
+    }
+  }
+}

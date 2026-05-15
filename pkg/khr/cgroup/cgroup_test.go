@@ -2,7 +2,7 @@ package cgroup
 
 import "testing"
 
-func TestPlanEnvelopeNoWriteByDefault(t *testing.T) {
+func TestPlanEnvelopeNeverWrites(t *testing.T) {
 	p := PlanEnvelope(false, "-10us", "-64Mi")
 	if p.WouldWrite {
 		t.Fatal("expected no write")
@@ -12,9 +12,9 @@ func TestPlanEnvelopeNoWriteByDefault(t *testing.T) {
 	}
 }
 
-func TestPlanEnvelopeWouldWriteOnlyWithUnsafe(t *testing.T) {
-	p := PlanEnvelope(true, "-10us", "")
-	if !p.WouldWrite {
-		t.Fatal("expected wouldWrite when unsafe enabled with delta")
+func TestPlanEnvelopeUnsafeFlagStillNoWrite(t *testing.T) {
+	p := PlanEnvelope(true, "-10us", "-64Mi")
+	if p.WouldWrite {
+		t.Fatal("Sprint 6: unsafe flag must not enable write hints")
 	}
 }
