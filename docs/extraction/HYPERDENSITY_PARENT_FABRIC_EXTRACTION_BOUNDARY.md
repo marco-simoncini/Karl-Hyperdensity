@@ -6,6 +6,8 @@ Define **where** real Hyperdensity / Parent Fabric logic may eventually live in 
 
 **Karl-Dashboard** remains the **runtime owner** until an explicit sprint authorizes a move.
 
+**Sprint 45 update:** a **stdlib-only skeleton** now exists under `pkg/hyperdensity/parentfabric/...` (no logic moved). Static **`validate_parentfabric_pure_deps.sh`** is enforced from `scripts/validate.sh`. **Phase 3** (move pure helpers) has **not** started.
+
 ---
 
 ## Design rule: pure-core first
@@ -47,7 +49,7 @@ Detailed guard text: **`HYPERDENSITY_PARENT_FABRIC_DEPENDENCY_GUARDS.md`**.
 
 | Phase | Runtime owner | Pure-core owner |
 |-------|---------------|-----------------|
-| **Now – pre-extraction** | **Karl-Dashboard** (`pkg/server/hyperdensity_parent_fabric_*`) | **Karl-Hyperdensity** (contractkit, schemas, docs only) |
+| **Now – pre-extraction** | **Karl-Dashboard** (`pkg/server/hyperdensity_parent_fabric_*`) | **Karl-Hyperdensity** (contractkit, schemas, docs, **`parentfabric` skeleton** — no runtime wiring) |
 | **After pure helper extraction** | **Still Dashboard** (handlers, wiring, I/O) | **Hyperdensity** (moved pure packages + tests) |
 | **After dedicated runtime sprint** | TBD per ADR | TBD |
 
@@ -60,3 +62,7 @@ Detailed guard text: **`HYPERDENSITY_PARENT_FABRIC_DEPENDENCY_GUARDS.md`**.
 - `HYPERDENSITY_CONTRACTKIT_RUNTIME_IMPORT_FREEZE` narrative on Dashboard (`HYPERDENSITY_CONTRACTKIT_RUNTIME_IMPORT_FREEZE_M17.md`) — **contractkit** governance stays **separate** from Parent Fabric extraction.
 - Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_RUNTIME_FILE_INVENTORY_M27.md`
 - Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_EXTRACTION_BOUNDARY_M28.md`
+- `HYPERDENSITY_PARENT_FABRIC_PURE_PACKAGE_SKELETON.md` (Sprint 45)
+- `HYPERDENSITY_PARENT_FABRIC_PURE_CANDIDATE_AUDIT.md` (Sprint 45)
+- Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_PURE_CANDIDATE_AUDIT_M29.md`
+- Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_EXTRACTION_STATUS_M30.md`

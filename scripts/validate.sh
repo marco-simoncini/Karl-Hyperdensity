@@ -92,6 +92,8 @@ required_files=(
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_EXTRACTION_BOUNDARY.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_EXTRACTION_PHASES.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_DEPENDENCY_GUARDS.md"
+  "docs/extraction/HYPERDENSITY_PARENT_FABRIC_PURE_PACKAGE_SKELETON.md"
+  "docs/extraction/HYPERDENSITY_PARENT_FABRIC_PURE_CANDIDATE_AUDIT.md"
   "pkg/hyperdensity/contractkit/go.mod"
   "pkg/hyperdensity/contractkit/testdata/dashboard/hyperdensity_parity_manifest_m1_m7.json"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"
@@ -103,6 +105,10 @@ for required in "${required_files[@]}"; do
     exit 1
   fi
 done
+
+if [[ -x "${ROOT_DIR}/scripts/validate_parentfabric_pure_deps.sh" ]]; then
+  "${ROOT_DIR}/scripts/validate_parentfabric_pure_deps.sh"
+fi
 
 go test ./...
 (

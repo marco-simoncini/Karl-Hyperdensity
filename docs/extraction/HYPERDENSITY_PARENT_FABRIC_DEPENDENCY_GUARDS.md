@@ -1,8 +1,8 @@
 # Hyperdensity Parent Fabric — dependency guard requirements (Sprint 44)
 
-Future **`pkg/hyperdensity/parentfabric/**`** pure packages must remain **extractable** and **testable** without the OpenShift console runtime. This document lists **intended** static guard rules (to be enforced in a later sprint via `go vet` build tags, `grep` CI, or `go list -deps` audits).
+Future **`pkg/hyperdensity/parentfabric/**`** pure packages must remain **extractable** and **testable** without the OpenShift console runtime. This document lists **intended** static guard rules.
 
-**Sprint 44** does **not** add CI enforcement here — requirements only.
+**Sprint 45:** **`scripts/validate_parentfabric_pure_deps.sh`** runs from **`scripts/validate.sh`** and **fails** on forbidden import strings under `pkg/hyperdensity/parentfabric` (grep-based; extend with `go list -deps` in a later sprint).
 
 ---
 
@@ -17,6 +17,7 @@ Pure trees (`parentfabric`, `summary`, `governance`, `evidence`, `recommendation
 | **`github.com/gorilla/*`** | HTTP / websocket stack tied to console server. |
 | **`net/http`** | Unless isolated in a clearly named **`adapter/http`** package behind an interface (explicit sprint). |
 | **Dashboard repo paths** | e.g. `github.com/openshift/console/pkg/server` — pure packages must not call back into the console. |
+| **`Karl-Dashboard` string** | Sprint 45 guard rejects this literal in `parentfabric` sources to avoid accidental cross-repo path pastes. |
 
 ---
 
@@ -27,13 +28,12 @@ Pure trees (`parentfabric`, `summary`, `governance`, `evidence`, `recommendation
 
 ---
 
-## Optional enforcement (future sprint)
+## Enforcement status
 
-| Guard | Mechanism sketch |
-|-------|------------------|
-| **Import deny** | `go list -deps` / custom script in Hyperdensity CI on `pkg/hyperdensity/parentfabric/...` |
-| **HTTP leak** | `grep -R "net/http" pkg/hyperdensity/parentfabric` fail in CI |
-| **K8s leak** | `grep -R "k8s.io/" pkg/hyperdensity/parentfabric` fail in CI |
+| Guard | Mechanism (Sprint 45) |
+|-------|---------------------|
+| **Import deny (static)** | `scripts/validate_parentfabric_pure_deps.sh` — `k8s.io/`, `kubevirt.io/`, `github.com/gorilla/`, `"net/http"`, `github.com/openshift/console`, `Karl-Dashboard` |
+| **Import deny (deps)** | Future: `go list -deps` on `pkg/hyperdensity/parentfabric/...` |
 
 ---
 
@@ -41,4 +41,6 @@ Pure trees (`parentfabric`, `summary`, `governance`, `evidence`, `recommendation
 
 - `HYPERDENSITY_PARENT_FABRIC_EXTRACTION_BOUNDARY.md`
 - `HYPERDENSITY_PARENT_FABRIC_EXTRACTION_PHASES.md`
+- `HYPERDENSITY_PARENT_FABRIC_PURE_PACKAGE_SKELETON.md`
+- `scripts/validate_parentfabric_pure_deps.sh`
 - Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_EXTRACTION_BOUNDARY_M28.md`

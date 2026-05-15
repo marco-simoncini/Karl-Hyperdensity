@@ -2,6 +2,8 @@
 
 Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces from **Karl-Dashboard** → **Karl-Hyperdensity**. **Sprint 44** documents only; **no** runtime move.
 
+**Sprint 45 (Phase 1–2 in progress):** mechanical CSV inventory + heuristic `category_guess` / `readiness_guess` on Dashboard; Hyperdensity **`parentfabric` stdlib skeleton** + **`validate_parentfabric_pure_deps.sh`** in CI via `validate.sh`. **Phase 3 has not started** — no pure helper copied from Dashboard yet.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
@@ -10,7 +12,7 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 |--|--|
 | **Repos** | Karl-Dashboard (inventory), Karl-Hyperdensity (boundary docs) |
 | **Risk** | Low — read-only |
-| **PASS** | Complete categorized inventory (see **`HYPERDENSITY_PARENT_FABRIC_RUNTIME_FILE_INVENTORY_M27.md`**) + script listing (`list_parent_fabric_runtime_files.sh` optional) |
+| **PASS** | Complete categorized inventory (see **`HYPERDENSITY_PARENT_FABRIC_RUNTIME_FILE_INVENTORY_M27.md`**) + script listing (`list_parent_fabric_runtime_files.sh` optional) + **CSV** `parent_fabric_runtime_inventory_m29.csv` (full file list) |
 | **Rollback** | N/A (docs only) |
 | **Forbidden** | Deleting or renaming production `.go`; changing handlers |
 
@@ -22,7 +24,7 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 |--|--|
 | **Repos** | Karl-Dashboard (annotate), Karl-Hyperdensity (target package mapping) |
 | **Risk** | Medium — misclassification could move the wrong code later |
-| **PASS** | Each candidate tagged: **pure candidate** vs **adapter needed** vs **runtime-bound** (see M27 columns) |
+| **PASS** | Each candidate tagged: **pure candidate** vs **adapter needed** vs **runtime-bound** (see M27 columns); Sprint 45 adds **M29** audit doc + CSV heuristics |
 | **Rollback** | Revert doc annotations |
 | **Forbidden** | Moving code; adding Hyperdensity imports to Dashboard runtime without allowlist sprint |
 
@@ -37,6 +39,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 | **PASS** | `go test` green in both repos; **no** handler signature change; JSON ordering unchanged for stable fixtures |
 | **Rollback** | Revert commits; restore Dashboard-local copies |
 | **Forbidden** | Moving HTTP handlers, `client-go` calls, or apply paths in this phase |
+
+**Status:** Phase 3 is **not** open until a sprint explicitly copies a verified pure helper (with golden tests) — see **`HYPERDENSITY_PARENT_FABRIC_EXTRACTION_STATUS_M30.md`** on Dashboard.
 
 ---
 
@@ -80,4 +84,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 - `HYPERDENSITY_PARENT_FABRIC_EXTRACTION_BOUNDARY.md`
 - `HYPERDENSITY_PARENT_FABRIC_DEPENDENCY_GUARDS.md`
+- `HYPERDENSITY_PARENT_FABRIC_PURE_PACKAGE_SKELETON.md`
+- `HYPERDENSITY_PARENT_FABRIC_PURE_CANDIDATE_AUDIT.md`
 - Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_EXTRACTION_BOUNDARY_M28.md`
+- Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_PURE_CANDIDATE_AUDIT_M29.md`
+- Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_EXTRACTION_STATUS_M30.md`
