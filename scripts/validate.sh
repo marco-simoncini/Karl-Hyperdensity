@@ -72,6 +72,8 @@ required_files=(
   "docs/extraction/HYPERDENSITY_SUMMARY_FIELD_MAPPING_M5.md"
   "docs/extraction/HYPERDENSITY_SUMMARY_FIELD_MAPPING_M6.md"
   "docs/extraction/HYPERDENSITY_SUMMARY_FIELD_MAPPING_M7.md"
+  "docs/extraction/HYPERDENSITY_PARITY_MATRIX_M1_M7.md"
+  "docs/extraction/HYPERDENSITY_M1_M7_EXTRACTION_READINESS.md"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"
 )
 
