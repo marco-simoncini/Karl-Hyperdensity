@@ -1,35 +1,39 @@
-# Hyperdensity contractkit — release tagging (Sprint 27)
+# Hyperdensity contractkit — release tagging (Sprint 27–28)
 
 ## Submodule model
 
-`github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit` is a **nested Go module** inside Karl-Hyperdensity. Consumers (Karl-Dashboard parity tests) pin it via `go.mod` pseudo-version or an optional **git tag** on the parent repo.
+`github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit` is a **nested Go module** inside Karl-Hyperdensity. Consumers pin via **semver git tag** (preferred after Sprint 28) or pseudo-version.
 
-## Recommended first anchor tag
+## First anchor tag (applied Sprint 28)
+
+**Go module version:** `v0.1.0-khr-m1-m9`  
+**Git tag on parent repo (required prefix for nested modules):**
 
 ```text
-contractkit/v0.1.0-khr-m1-m9
+pkg/hyperdensity/contractkit/v0.1.0-khr-m1-m9
 ```
 
-Naming: `<subdir-module>/v<semver>-khr-<milestone-range>` — compatible with Go module tags for subdirectories in a monorepo.
+**Commit:** `c03ef68c939a42349688a28600e4a4531413f44b` (Sprint 27 case-ID helpers + manifest)
 
-## Proposed commands (manual — not run automatically in sprint)
-
-Replace `<commit>` with the contractkit-ready commit (e.g. Sprint 26 manifest + Sprint 27 case-ID helpers):
+### Commands used
 
 ```bash
-git tag contractkit/v0.1.0-khr-m1-m9 <commit>
-git push origin contractkit/v0.1.0-khr-m1-m9
+git fetch --all --prune
+git checkout KHR
+git pull --ff-only
+git tag pkg/hyperdensity/contractkit/v0.1.0-khr-m1-m9 c03ef68c939a42349688a28600e4a4531413f44b
+git push origin pkg/hyperdensity/contractkit/v0.1.0-khr-m1-m9
 ```
 
-Dashboard may then pin:
+Dashboard pin:
 
 ```bash
 go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.0-khr-m1-m9
 ```
 
-## Policy note
+### Note on tag prefix
 
-**Do not tag automatically** in CI or sprint commits unless repo release policy explicitly allows it. **Pseudo-versions remain acceptable** until semver tags are approved (current KHR workflow).
+Go requires the git tag name to include the **subdirectory path** to the module root (`pkg/hyperdensity/contractkit/...`). A short alias tag `contractkit/v0.1.0-khr-m1-m9` alone is **not** resolved by `go get`.
 
 ## Compatibility promise (contractkit)
 
@@ -41,13 +45,8 @@ go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit
 | Breaking changes | Only with a **new tag** / bumped `ContractKitVersion` + manifest sync |
 | Windows / apply | Anchors remain disabled / claim-safe (M1–M8) |
 
-## When to tag
-
-- After M1–M9 parity matrix, manifest, and Dashboard consumer checks are green on `KHR`.
-- Before promoting contractkit beyond test-only imports (still not recommended for handlers without a dedicated sprint).
-
 ## Related
 
 - `HYPERDENSITY_CONTRACTKIT_MODULE.md`
 - `HYPERDENSITY_CONTRACTKIT_FIXTURE_MANIFEST.md`
-- Dashboard `HYPERDENSITY_CONTRACTKIT_RELEASE_M10.md`
+- Dashboard `HYPERDENSITY_CONTRACTKIT_RELEASE_M11.md`
