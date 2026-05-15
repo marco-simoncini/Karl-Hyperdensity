@@ -266,16 +266,18 @@ type WindowsFluidAction struct {
 
 func BuildWindowsFluidActionSlate(target WindowsHyperdensityTarget, lease WindowsFluidResourceLease) WindowsFluidActionSlate {
 	blockers := EvaluateWindowsFluidLeasePreconditions(target, lease)
+	// ActionType still names future gated phases; MutationAllowed stays false on every
+	// step so the default slate is planning/readiness only (no execution claims).
 	actions := []WindowsFluidAction{
 		{ActionID: "a1", ActionType: ActionComplianceReplay, MutationAllowed: false, Preconditions: []string{"target-observed"}, RequiredEvidence: []string{"compliance-input"}, ExpectedOutput: "compliance-ready"},
 		{ActionID: "a2", ActionType: ActionBuildActuatorReq, MutationAllowed: false, Preconditions: []string{"compliance-ready"}, RequiredEvidence: []string{"target-identity", "cpu-bounds"}, ExpectedOutput: "actuator-request"},
 		{ActionID: "a3", ActionType: ActionActuatorDryRun, MutationAllowed: false, Preconditions: []string{"actuator-request-built"}, RequiredEvidence: []string{"allowlist", "kill-switch"}, ExpectedOutput: "dry-run-accepted"},
-		{ActionID: "a4", ActionType: ActionCPUEntitlementApply, MutationAllowed: true, Preconditions: []string{"dry-run-accepted"}, RequiredEvidence: []string{"actuator-request"}, ExpectedOutput: "cpu-entitlement-applied", RollbackAction: "a5", ReturnToFloorAction: "a5"},
-		{ActionID: "a5", ActionType: ActionCPUReturnToFloor, MutationAllowed: true, Preconditions: []string{"cpu-entitlement-applied"}, RequiredEvidence: []string{"cpu-before-after"}, ExpectedOutput: "cpu-floor-restored"},
-		{ActionID: "a6", ActionType: ActionQMPBalloonApply, MutationAllowed: true, Preconditions: []string{"qmp-available"}, RequiredEvidence: []string{"qmp-request"}, ExpectedOutput: "ram-balloon-applied", RollbackAction: "a7", ReturnToFloorAction: "a7"},
-		{ActionID: "a7", ActionType: ActionRAMReturnToFloor, MutationAllowed: true, Preconditions: []string{"ram-balloon-applied"}, RequiredEvidence: []string{"qmp-balloon-before-after"}, ExpectedOutput: "ram-floor-restored"},
+		{ActionID: "a4", ActionType: ActionCPUEntitlementApply, MutationAllowed: false, Preconditions: []string{"dry-run-accepted"}, RequiredEvidence: []string{"actuator-request"}, ExpectedOutput: "cpu-entitlement-applied", RollbackAction: "a5", ReturnToFloorAction: "a5"},
+		{ActionID: "a5", ActionType: ActionCPUReturnToFloor, MutationAllowed: false, Preconditions: []string{"cpu-entitlement-applied"}, RequiredEvidence: []string{"cpu-before-after"}, ExpectedOutput: "cpu-floor-restored"},
+		{ActionID: "a6", ActionType: ActionQMPBalloonApply, MutationAllowed: false, Preconditions: []string{"qmp-available"}, RequiredEvidence: []string{"qmp-request"}, ExpectedOutput: "ram-balloon-applied", RollbackAction: "a7", ReturnToFloorAction: "a7"},
+		{ActionID: "a7", ActionType: ActionRAMReturnToFloor, MutationAllowed: false, Preconditions: []string{"ram-balloon-applied"}, RequiredEvidence: []string{"qmp-balloon-before-after"}, ExpectedOutput: "ram-floor-restored"},
 		{ActionID: "a8", ActionType: ActionGuestVerify, MutationAllowed: false, Preconditions: []string{"cpu-ram-updated"}, RequiredEvidence: []string{"guest-ack"}, ExpectedOutput: "guest-verified"},
-		{ActionID: "a9", ActionType: ActionFinalRestore, MutationAllowed: true, Preconditions: []string{"verification-complete"}, RequiredEvidence: []string{"restore-targets"}, ExpectedOutput: "final-restore-complete"},
+		{ActionID: "a9", ActionType: ActionFinalRestore, MutationAllowed: false, Preconditions: []string{"verification-complete"}, RequiredEvidence: []string{"restore-targets"}, ExpectedOutput: "final-restore-complete"},
 		{ActionID: "a10", ActionType: ActionAuditBundleAppend, MutationAllowed: false, Preconditions: []string{"final-restore-complete"}, RequiredEvidence: []string{"bundle-index", "attestation"}, ExpectedOutput: "audit-chain-appended"},
 	}
 	return WindowsFluidActionSlate{

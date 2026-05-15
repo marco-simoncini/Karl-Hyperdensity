@@ -59,6 +59,8 @@ required_files=(
   "docs/grandepadre/GRANDE_PADRE_ACTION_SLATE_MODEL.md"
   "docs/grandepadre/GRANDE_PADRE_DONOR_RECEIVER_INDEX.md"
   "docs/grandepadre/GRANDE_PADRE_RISK_PRIORITY_MODEL.md"
+  "docs/windowsfluidvirt/WINDOWS_FLUIDVIRT_LANE_RECONCILIATION.md"
+  "docs/windowsfluidvirt/WINDOWS_FLUIDVIRT_PLANNING_ONLY_SAFETY.md"
 )
 
 for required in "${required_files[@]}"; do
