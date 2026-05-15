@@ -1,0 +1,72 @@
+apiVersion: hyperdensity.karl.io/v1alpha1
+kind: EvidenceIngestRequest
+metadata:
+  name: demo-ingest-digest-dryrun
+  namespace: karl-sandbox
+spec:
+  artifactId: dryrun-only
+  bundle:
+    tool: khr-linux-agent
+    version: 0.0.1-sprint11
+    mode: collect-evidence
+    agentId: khr-linux-agent-dev-001
+    collectedAt: "2026-05-15T16:00:00Z"
+    discovery:
+      agentId: khr-linux-agent-dev-001
+      cgroupVersion: v2
+      discoveryMode: read-only
+      scannedRoot: /tmp/khr-evidence-example-root
+      allowedPathPrefix: ""
+      candidatePaths: []
+      selectedPath: /tmp/khr-evidence-example-root/karl.slice/karl-shell-dev-linux-systemd-001.scope
+      blockedReasons: []
+      warnings: []
+      mutationsForbidden: true
+    telemetry:
+      telemetryMode: read-only
+      cgroupPath: /tmp/khr-evidence-example-root/karl.slice/karl-shell-dev-linux-systemd-001.scope
+      allowedPathPrefix: ""
+      metrics: {}
+      evidence:
+        observedAt: "2026-05-15T15:00:00Z"
+        source: cgroup-v2
+        confidence: medium
+        warnings: []
+        blockedReasons: []
+      mutationsForbidden: true
+    dryRun:
+      skipped: true
+    evidenceSummary:
+      confidence: medium
+      readyForGrandePadre: true
+      blockedReasons: []
+      warnings: []
+      recommendedNextAction: Simulation only.
+    mutationsForbidden: true
+  manifest:
+    artifactId: dryrun-only
+    agentId: khr-linux-agent-dev-001
+    generatedAt: "2026-07-01T12:00:00Z"
+    bundleSha256: "3c6cbf09172e128eaddfccfcdb0c7153099418f41260c0ef416945c75b7478c2"
+    bundleBytes: 1863
+    signingMode: none
+    signaturePresent: false
+    sourceMode: collect-evidence
+    mutationsForbidden: true
+    chainOfCustody: {}
+  digest: "3c6cbf09172e128eaddfccfcdb0c7153099418f41260c0ef416945c75b7478c2"
+  source:
+    agentId: khr-linux-agent-dev-001
+  policy:
+    requireDigestMatch: true
+    allowUnsigned: true
+    allowLocalDevSignature: false
+    maxBundleBytes: 1048576
+  dryRunOnly: true
+  ttlSeconds: 3600
+status:
+  phase: Pending
+  digestMatch: true
+  signatureStatus: None
+  rejectionReasons: []
+  evidenceBundleRef: null

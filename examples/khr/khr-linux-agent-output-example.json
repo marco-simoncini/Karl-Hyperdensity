@@ -1,6 +1,6 @@
 {
   "tool": "khr-linux-agent",
-  "version": "0.0.1-sprint10",
+  "version": "0.0.1-sprint11",
   "mode": "dry-run",
   "resourceLeaseDryRun": {
     "allowed": true,

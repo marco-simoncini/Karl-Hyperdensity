@@ -10,20 +10,21 @@ import (
 
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/agent"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/evidenceingest"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcelease"
 )
 
 func main() {
-	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities, discover-cgroups, read-telemetry, collect-evidence")
+	mode := flag.String("mode", "", "one of: validate-config, dry-run, print-capabilities, discover-cgroups, read-telemetry, collect-evidence, prepare-ingest-request")
 	configPath := flag.String("config", "", "path to agent YAML/JSON config")
 	cellInputPath := flag.String("cell-input", "", "optional path to Cell JSON (discover-cgroups, read-telemetry); required for collect-evidence")
 	cgroupRoot := flag.String("cgroup-root", "", "optional cgroup scan root (default /sys/fs/cgroup) for discover-cgroups")
 	allowPathPrefix := flag.String("allow-path-prefix", "", "optional path prefix policy (discover-cgroups, read-telemetry, collect-evidence)")
 	telemetryCgroupPath := flag.String("cgroup-path", "", "resolved cgroup directory to sample (read-telemetry)")
 	telemetryOutputPath := flag.String("telemetry-output", "", "optional path to write the same JSON as stdout (read-telemetry)")
-	evidenceOutputPath := flag.String("evidence-output", "", "optional path to write the same JSON as stdout (collect-evidence)")
-	evidenceManifestOut := flag.String("evidence-manifest-output", "", "optional path to write artifact manifest JSON (collect-evidence)")
-	evidenceDigestOut := flag.String("evidence-digest-output", "", "optional path to write bundle SHA256 hex line (collect-evidence)")
+	evidenceOutputPath := flag.String("evidence-output", "", "collect-evidence: optional write path for bundle JSON; prepare-ingest-request: read path when -bundle-input is omitted")
+	evidenceManifestOut := flag.String("evidence-manifest-output", "", "collect-evidence: write manifest JSON; prepare-ingest-request: read path when -manifest-input is omitted")
+	evidenceDigestOut := flag.String("evidence-digest-output", "", "collect-evidence: write digest line; prepare-ingest-request: read path when -digest-input is omitted")
 	signingMode := flag.String("signing-mode", "none", "none|local-dev: local integrity signing for collect-evidence (local-dev is not production security)")
 	signingKeyFile := flag.String("signing-key-file", "", "Ed25519 private key PEM when -signing-mode=local-dev (collect-evidence)")
 	artifactID := flag.String("artifact-id", "", "optional artifact id recorded in evidence manifest (collect-evidence)")
@@ -33,6 +34,20 @@ func main() {
 	allowUnsafe := flag.Bool("allow-unsafe-apply", false, "non-operational in Sprint 6: emits audit only; never enables writes")
 	cpuDelta := flag.String("cpu-delta", "", "optional cpu.max delta string for envelope dry-run plan (simulation only)")
 	memDelta := flag.String("memory-delta", "", "optional memory.max delta string for envelope dry-run plan (simulation only)")
+	bundleInputPath := flag.String("bundle-input", "", "prepare-ingest-request: path to collect-evidence bundle JSON")
+	manifestInputPath := flag.String("manifest-input", "", "prepare-ingest-request: path to artifact manifest JSON")
+	digestInputPath := flag.String("digest-input", "", "prepare-ingest-request: path to digest text file")
+	ingestRequestOut := flag.String("ingest-request-output", "", "prepare-ingest-request: path to write EvidenceIngestRequest YAML/JSON")
+	ingestRequestFmt := flag.String("ingest-request-format", "yaml", "prepare-ingest-request: yaml or json")
+	ingestDryRunOnly := flag.Bool("dry-run-only", false, "prepare-ingest-request: set spec.dryRunOnly (simulation-only ingest)")
+	ingestReqNamespace := flag.String("ingest-request-namespace", "", "prepare-ingest-request: metadata.namespace (default from bundle cellRef or karl-sandbox)")
+	ingestReqName := flag.String("ingest-request-name", "", "prepare-ingest-request: metadata.name (default derived)")
+	sourceNodeName := flag.String("source-node-name", "", "prepare-ingest-request: spec.source.nodeName")
+	sourceHostID := flag.String("source-host-id", "", "prepare-ingest-request: spec.source.hostId")
+	sourceTenant := flag.String("source-tenant", "", "prepare-ingest-request: spec.source.tenant")
+	requireDigestMatch := flag.Bool("require-digest-match", true, "prepare-ingest-request: spec.policy.requireDigestMatch")
+	allowUnsigned := flag.Bool("allow-unsigned", true, "prepare-ingest-request: spec.policy.allowUnsigned")
+	allowLocalDevSignature := flag.Bool("allow-local-dev-signature", false, "prepare-ingest-request: spec.policy.allowLocalDevSignature (auto-enabled when manifest signingMode=local-dev)")
 	flag.Parse()
 
 	out := map[string]interface{}{
@@ -296,6 +311,45 @@ func main() {
 		}
 		os.Stdout.Write(b)
 		os.Stdout.Write([]byte("\n"))
+		os.Exit(0)
+
+	case "prepare-ingest-request":
+		if strings.TrimSpace(*ingestRequestOut) == "" {
+			out["error"] = "prepare-ingest-request requires -ingest-request-output"
+			emit(out, 2)
+		}
+		bundlePath := strings.TrimSpace(*bundleInputPath)
+		if bundlePath == "" {
+			bundlePath = strings.TrimSpace(*evidenceOutputPath)
+		}
+		manifestPath := strings.TrimSpace(*manifestInputPath)
+		if manifestPath == "" {
+			manifestPath = strings.TrimSpace(*evidenceManifestOut)
+		}
+		digestPath := strings.TrimSpace(*digestInputPath)
+		if digestPath == "" {
+			digestPath = strings.TrimSpace(*evidenceDigestOut)
+		}
+		opts := evidenceingest.DefaultPrepareOptions()
+		opts.Format = *ingestRequestFmt
+		opts.DryRunOnly = *ingestDryRunOnly
+		opts.Namespace = *ingestReqNamespace
+		opts.Name = *ingestReqName
+		opts.NodeName = *sourceNodeName
+		opts.HostID = *sourceHostID
+		opts.Tenant = *sourceTenant
+		opts.RequireDigestMatch = *requireDigestMatch
+		opts.AllowUnsigned = *allowUnsigned
+		opts.AllowLocalDevSignature = *allowLocalDevSignature
+		b, err := evidenceingest.PrepareIngestRequest(bundlePath, manifestPath, digestPath, opts)
+		if err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
+		if err := evidenceingest.WriteFile(*ingestRequestOut, b); err != nil {
+			out["error"] = err.Error()
+			emit(out, 2)
+		}
 		os.Exit(0)
 
 	default:

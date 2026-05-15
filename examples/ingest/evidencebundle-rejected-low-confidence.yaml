@@ -1,0 +1,27 @@
+apiVersion: hyperdensity.karl.io/v1alpha1
+kind: EvidenceBundle
+metadata:
+  name: demo-evidence-rejected-low-confidence
+  namespace: karl-sandbox
+spec:
+  artifactId: ""
+  agentId: khr-linux-agent-dev-001
+  sourceMode: collect-evidence
+  bundleSha256: "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"
+  bundleBytes: 1200
+  signingMode: none
+  signaturePresent: false
+  collectedAt: "2026-05-15T16:00:00Z"
+  cellRef:
+    kind: Cell
+    namespace: karl-sandbox
+    name: demo-cell
+  confidence: low
+  readyForGrandePadre: false
+  blockedReasons:
+    - discovery did not resolve selectedPath; telemetry skipped
+  warnings:
+    - cgroup metric files partially missing
+status:
+  integrityStatus: Unsigned
+  phase: Rejected

@@ -39,7 +39,7 @@ func TestSummarizeReadyNoDryRun(t *testing.T) {
 		},
 	}
 	dry := DryRunSkippedPayload("no lease or resource port inputs provided for optional dry-run")
-	b := BuildCollectEvidenceBundle("0.0.1-sprint10", "a1", cellDemo(), disc, tel, dry, "")
+	b := BuildCollectEvidenceBundle("0.0.1-sprint11", "a1", cellDemo(), disc, tel, dry, "")
 	if !b.EvidenceSummary.ReadyForGrandePadre {
 		t.Fatalf("expected ready")
 	}
@@ -61,7 +61,7 @@ func TestSummarizeBlockedNoSelectedPath(t *testing.T) {
 	cellRef := &telemetry.CellRef{Kind: "Cell", Name: "demo-cell", Namespace: "karl-sandbox"}
 	tel := TelemetrySnapshotSkipped("", cellRef, "discovery did not resolve selectedPath; telemetry skipped")
 	dry := DryRunSkippedPayload("no lease or resource port inputs provided for optional dry-run")
-	b := BuildCollectEvidenceBundle("0.0.1-sprint10", "a1", cellDemo(), disc, tel, dry, "")
+	b := BuildCollectEvidenceBundle("0.0.1-sprint11", "a1", cellDemo(), disc, tel, dry, "")
 	if b.EvidenceSummary.ReadyForGrandePadre {
 		t.Fatalf("expected not ready")
 	}
@@ -92,7 +92,7 @@ func TestWarningsAggregationLeasePortPartial(t *testing.T) {
 	}
 	partial := "collect-evidence: dry-run skipped: both -lease-input and -resource-port-input are required when including ResourceLease simulation"
 	dry := DryRunSkippedPayload(partial)
-	b := BuildCollectEvidenceBundle("0.0.1-sprint10", "a1", cellDemo(), disc, tel, dry, partial)
+	b := BuildCollectEvidenceBundle("0.0.1-sprint11", "a1", cellDemo(), disc, tel, dry, partial)
 	w := b.EvidenceSummary.Warnings
 	if len(w) < 3 {
 		t.Fatalf("warnings: %v", w)
@@ -116,7 +116,7 @@ func TestSummarizeDryRunBlockedAggregates(t *testing.T) {
 	}
 	lease := resourcelease.DryRunResult{Allowed: false, Blocked: true, Reason: "contract conflict (test)"}
 	dry := DryRunPayloadFromResult(lease, cgroupPlanStub(), true, false, false, nil)
-	b := BuildCollectEvidenceBundle("0.0.1-sprint10", "a1", cellDemo(), disc, tel, dry, "")
+	b := BuildCollectEvidenceBundle("0.0.1-sprint11", "a1", cellDemo(), disc, tel, dry, "")
 	if b.EvidenceSummary.ReadyForGrandePadre {
 		t.Fatalf("expected not ready when dry-run blocked")
 	}

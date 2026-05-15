@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Parse examples/khr/**/*.json|yaml recursively for KHR contract fixtures (stdlib JSON; PyYAML for yaml)."""
+"""Parse examples/khr/** and examples/ingest/** for JSON/YAML fixtures (stdlib JSON; PyYAML for yaml)."""
 from __future__ import annotations
 
 import json
@@ -7,13 +7,14 @@ import sys
 from pathlib import Path
 
 
-def main() -> int:
-    root = Path(__file__).resolve().parents[1]
-    khr = root / "examples" / "khr"
-    if not khr.is_dir():
-        print("[validate_khr_examples] ERROR: examples/khr missing", file=sys.stderr)
-        return 1
-    for path in sorted(khr.rglob("*")):
+def validate_tree(root: Path, rel: Path, required: bool) -> int:
+    base = root / rel
+    if not base.is_dir():
+        if required:
+            print(f"[validate_khr_examples] ERROR: {rel} missing", file=sys.stderr)
+            return 1
+        return 0
+    for path in sorted(base.rglob("*")):
         if not path.is_file():
             continue
         if path.suffix.lower() not in (".json", ".yaml", ".yml"):
@@ -28,6 +29,15 @@ def main() -> int:
                 return 1
             list(yaml.safe_load_all(path.read_text(encoding="utf-8")))
         print(f"[validate_khr_examples] OK {path.relative_to(root)}")
+    return 0
+
+
+def main() -> int:
+    root = Path(__file__).resolve().parents[1]
+    if validate_tree(root, Path("examples") / "khr", required=True):
+        return 1
+    if validate_tree(root, Path("examples") / "ingest", required=True):
+        return 1
     print("[validate_khr_examples] SUCCESS")
     return 0
 

@@ -1,0 +1,97 @@
+apiVersion: apiextensions.k8s.io/v1
+kind: CustomResourceDefinition
+metadata:
+  name: evidenceingestrequests.hyperdensity.karl.io
+  labels:
+    karl.io/contract-track: khr-v1alpha1
+spec:
+  group: hyperdensity.karl.io
+  scope: Namespaced
+  names:
+    plural: evidenceingestrequests
+    singular: evidenceingestrequest
+    kind: EvidenceIngestRequest
+    shortNames:
+      - kringest
+    categories:
+      - all
+      - karl
+      - karl-hyperdensity
+  versions:
+    - name: v1alpha1
+      served: true
+      storage: true
+      subresources:
+        status: {}
+      schema:
+        openAPIV3Schema:
+          type: object
+          required:
+            - spec
+          properties:
+            spec:
+              type: object
+              required:
+                - bundle
+                - manifest
+                - digest
+                - source
+                - policy
+                - dryRunOnly
+                - ttlSeconds
+              properties:
+                artifactId:
+                  type: string
+                bundle:
+                  description: Evidence bundle document (collect-evidence JSON shape).
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                manifest:
+                  description: Artifact manifest JSON sidecar from khr-linux-agent integrity (Sprint 10).
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                digest:
+                  description: Single-line lowercase hex SHA-256 of canonical bundle bytes (may include trailing newline in files; spec value should be trimmed).
+                  type: string
+                source:
+                  type: object
+                  required:
+                    - agentId
+                  properties:
+                    agentId:
+                      type: string
+                    nodeName:
+                      type: string
+                    hostId:
+                      type: string
+                    tenant:
+                      type: string
+                policy:
+                  type: object
+                  required:
+                    - requireDigestMatch
+                    - allowUnsigned
+                    - allowLocalDevSignature
+                    - maxBundleBytes
+                  properties:
+                    requireDigestMatch:
+                      type: boolean
+                    allowUnsigned:
+                      type: boolean
+                    allowLocalDevSignature:
+                      description: When true, controllers may accept signingMode=local-dev with DevOnly trust tier (never production PKI).
+                      type: boolean
+                    maxBundleBytes:
+                      type: integer
+                      format: int64
+                      minimum: 0
+                dryRunOnly:
+                  description: When true, Grande Padre must treat this ingest as simulation / indexing only (no execution promotion).
+                  type: boolean
+                ttlSeconds:
+                  type: integer
+                  format: int64
+                  minimum: 0
+            status:
+              type: object
+              x-kubernetes-preserve-unknown-fields: true

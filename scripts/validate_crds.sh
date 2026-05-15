@@ -61,6 +61,8 @@ for p in sorted((root / "api/providers/kubevirt").glob("*.yaml")):
     load_file(p)
 for p in sorted((root / "examples/crds").glob("*.yaml")):
     load_file(p)
+for p in sorted((root / "examples/ingest").glob("*.yaml")):
+    load_file(p)
 for p in sorted((root / "examples/providers/kubevirt").glob("*.yaml")):
     load_file(p)
 PY

@@ -47,6 +47,11 @@ required_files=(
   "docs/khr/KHR_GRANDE_PADRE_EVIDENCE_HANDOFF.md"
   "docs/khr/KHR_EVIDENCE_INTEGRITY_MODEL.md"
   "docs/khr/KHR_EVIDENCE_ARTIFACT_MANIFEST.md"
+  "docs/ingest/KHR_EVIDENCE_INGEST_CONTRACT.md"
+  "docs/ingest/EVIDENCEBUNDLE_CRD.md"
+  "docs/ingest/EVIDENCEINGESTREQUEST_CRD.md"
+  "docs/ingest/GRANDE_PADRE_EVIDENCE_INDEXING_MODEL.md"
+  "docs/ingest/EVIDENCE_INGEST_SECURITY_BOUNDARIES.md"
 )
 
 for required in "${required_files[@]}"; do

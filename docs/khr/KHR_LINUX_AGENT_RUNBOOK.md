@@ -1,4 +1,4 @@
-# KHR Linux Agent — Runbook (Sprint 5–9)
+# KHR Linux Agent — Runbook (Sprint 5–11)
 
 **Audience:** platform engineers evaluating the skeleton locally.
 
@@ -98,6 +98,20 @@ go run ./cmd/khr-linux-agent -mode collect-evidence \
 ```
 
 Reproducing `examples/khr/evidence-integrity/*` fixtures uses fixed test clocks (`KHR_TEST_COLLECTED_AT`, `KHR_TEST_TELEMETRY_NOW`, `KHR_TEST_INTEGRITY_NOW`) and `KHR_TEST_INTEGRITY_CHAIN_STUB=1`; the sample tree under `/tmp/khr-evidence-example-root` must exist with the same cgroup metric files as in the Sprint 9 telemetry goldens.
+
+### `prepare-ingest-request` (Sprint 11, contract-only)
+
+Builds a local **EvidenceIngestRequest** document (YAML or JSON) from a `collect-evidence` bundle plus optional manifest and digest files. **No HTTP, no kube apply** — file generation only. Use the same paths you produced with `collect-evidence` (`-bundle-input` or, equivalently, `-evidence-output` as the bundle path when `-bundle-input` is omitted; `-manifest-input` or `-evidence-manifest-output`; `-digest-input` or `-evidence-digest-output`). Contract and security semantics: `docs/ingest/KHR_EVIDENCE_INGEST_CONTRACT.md`, `docs/ingest/EVIDENCE_INGEST_SECURITY_BOUNDARIES.md`.
+
+```bash
+go run ./cmd/khr-linux-agent -mode=prepare-ingest-request \
+  -bundle-input=examples/khr/evidence/collect-evidence-output-ready.json \
+  -manifest-input=examples/khr/evidence-integrity/manifest-none.json \
+  -digest-input=examples/khr/evidence-integrity/digest.txt \
+  -ingest-request-output=/tmp/evidence-ingest-request.yaml \
+  -ingest-request-format=yaml \
+  -dry-run-only=true
+```
 
 ## Non-goals
 
