@@ -1,8 +1,10 @@
-# claimpolicy — surface mapping (Sprint 37)
+# claimpolicy — surface mapping (Sprint 37–38)
 
 ## Purpose
 
 Sprint 37 adds **`SurfaceClaimMapping`** rows (see `pkg/hyperdensity/contractkit/claimpolicy/surface_mapping.go`) that document how each **claim-policy catalog ID** aligns with **conceptual Parent Fabric / Karl-Dashboard builder surfaces** (`ParentFabricSurface`).
+
+**Sprint 38** adds **`DashboardFiles`** on each row: relative paths under `kubernetes-console/` to real `hyperdensity_parent_fabric_*` sources or `scripts/hyperdensity/` audit scripts — see **`HYPERDENSITY_CLAIMPOLICY_SURFACE_TRACEABILITY.md`**.
 
 This is a **contract / test / documentation** artifact only:
 
@@ -19,13 +21,15 @@ This is a **contract / test / documentation** artifact only:
 | `SurfaceKubeVirtLegacyProvider` | `kubevirt_legacy_provider` | Legacy KubeVirt provider markers vs replacement narrative. |
 | `SurfacePolicyPack` | `policy_pack` | `RuleID` rows aligned with catalog tokens. |
 | `SurfaceReleaseSupportMatrix` | `release_support_matrix` | `LimitationID` rows. |
+| `SurfaceLiveResourceAuthority` | `live_resource_authority` | Live authority limitation rows (e.g. `no_production_mutation`). |
 | `SurfaceRuntimeImportFreeze` | `runtime_import_freeze` | M17: `contractkit/blockers` only in runtime `pkg/server`. |
 | `SurfaceHyperdensityRecommendation` | `hyperdensity_recommendation` | Recommendation-only surfaces without apply authority. |
 
-## Sprint 37 rules
+## Sprint 37–38 rules
 
 - **`RuntimeImportAllowed`:** always **`false`** for every mapping row (claimpolicy remains test-only on Dashboard).
 - **Every catalog `ClaimID`:** must appear in at least one mapping (`ValidateSurfaceMappings`).
+- **`DashboardFiles`:** non-empty unless **`Notes`** documents **`future-only`**; paths are **relative** (`pkg/server/...` or `scripts/hyperdensity/...`); validated by `ValidateDashboardFileTraceability`.
 - **KubeVirt:** `kubevirt_legacy_provider` (compatibility marker) and `no_generic_kubevirt_replacement` (forbidden narrative) use **distinct** `Field` / semantics.
 - **Windows:** `no_windows_hyperdensity_apply` maps to **Windows lane** with apply **disabled**; `windows_lane_disabled` maps to preflight check name vocabulary.
 - **Schema / manifest:** `ContractKitVersion` and `FixtureManifestVersion` stay on Sprint 26 / M9 anchors — module semver only bumps.
@@ -37,6 +41,8 @@ This is a **contract / test / documentation** artifact only:
 | `SurfaceMappings()` | All rows, stable sort order. |
 | `MappingsForClaim(id)` | Filter by `ClaimID`. |
 | `ValidateSurfaceMappings()` | Invariants for tests and Dashboard parity. |
+| `DashboardFilesForClaim(id)` | Sprint 38: sorted unique traced paths for a claim. |
+| `ValidateDashboardFileTraceability()` | Sprint 38: path + trace invariants. |
 
 ## Validation
 
@@ -47,5 +53,7 @@ This is a **contract / test / documentation** artifact only:
 
 ## Related
 
+- `HYPERDENSITY_CLAIMPOLICY_SURFACE_TRACEABILITY.md`
 - `HYPERDENSITY_CONTRACTKIT_CLAIMPOLICY.md`
 - `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_SURFACE_MAPPING_M20.md`
+- `Karl-Dashboard/docs/hyperdensity/HYPERDENSITY_CLAIMPOLICY_TRACEABILITY_M21.md`

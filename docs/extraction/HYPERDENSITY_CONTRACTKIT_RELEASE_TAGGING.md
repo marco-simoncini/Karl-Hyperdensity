@@ -123,6 +123,28 @@ Dashboard pin:
 go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.4-khr-m1-m15
 ```
 
+## Sixth anchor tag (Sprint 38 — claimpolicy Dashboard file traceability)
+
+**Go module version:** `v0.1.5-khr-m1-m16`  
+**Git tag:**
+
+```text
+pkg/hyperdensity/contractkit/v0.1.5-khr-m1-m16
+```
+
+Adds **`DashboardFiles`** traceability on `SurfaceClaimMapping` rows (`ValidateDashboardFileTraceability`). **No** `ContractKitVersion` / manifest bump; Dashboard **test-only** parity; M17 runtime import freeze unchanged.
+
+```bash
+git tag pkg/hyperdensity/contractkit/v0.1.5-khr-m1-m16 <sprint-38-commit>
+git push origin pkg/hyperdensity/contractkit/v0.1.5-khr-m1-m16
+```
+
+Dashboard pin:
+
+```bash
+go get github.com/marco-simoncini/Karl-Hyperdensity/pkg/hyperdensity/contractkit@v0.1.5-khr-m1-m16
+```
+
 ## Compatibility promise (contractkit)
 
 | Property | Commitment |

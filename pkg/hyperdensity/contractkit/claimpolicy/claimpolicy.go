@@ -1,5 +1,6 @@
 // Package claimpolicy defines stable claim / policy posture vocabulary, a minimal
-// claim-policy catalog (Sprint 35–36), and Parent Fabric surface mapping (Sprint 37).
+// claim-policy catalog (Sprint 35–36), Parent Fabric surface mapping (Sprint 37), and
+// Dashboard file traceability metadata (Sprint 38).
 //
 // Stdlib-only; no cluster or HTTP I/O. Karl-Dashboard production code must not import
 // this package — see docs/extraction/HYPERDENSITY_CONTRACTKIT_CLAIMPOLICY.md.
@@ -8,7 +9,7 @@ package claimpolicy
 import "sort"
 
 // PackageVersion is the claimpolicy design epoch (not ContractKitSchemaVersion / manifest epoch).
-const PackageVersion = "v0.0.0-sprint37"
+const PackageVersion = "v0.0.0-sprint38"
 
 // PostureKind describes how narrowly a governance surface may assert readiness or mutation posture.
 // Tokens align with existing parent-fabric vocabulary without binding JSON field names here.
@@ -46,16 +47,16 @@ type ClaimPolicyID string
 
 // Canonical claim-policy IDs (minimal catalog; Sprint 36). Values are stable wire/doc tokens.
 const (
-	ClaimDryRunOnly                   ClaimPolicyID = "dry_run_only"
-	ClaimKubeVirtLegacyProvider       ClaimPolicyID = "kubevirt_legacy_provider"
-	ClaimNoAutonomousApply            ClaimPolicyID = "no_autonomous_apply"
+	ClaimDryRunOnly                  ClaimPolicyID = "dry_run_only"
+	ClaimKubeVirtLegacyProvider      ClaimPolicyID = "kubevirt_legacy_provider"
+	ClaimNoAutonomousApply           ClaimPolicyID = "no_autonomous_apply"
 	ClaimNoGenericKubeVirtReplacement ClaimPolicyID = "no_generic_kubevirt_replacement"
-	ClaimNoProductionMutation         ClaimPolicyID = "no_production_mutation"
-	ClaimNoRuntimeContractsImport     ClaimPolicyID = "no_runtime_contracts_import"
-	ClaimNoWindowsHyperdensityApply   ClaimPolicyID = "no_windows_hyperdensity_apply"
-	ClaimOperatorControlled           ClaimPolicyID = "operator_controlled"
-	ClaimRecommendationOnly           ClaimPolicyID = "recommendation_only"
-	ClaimWindowsLaneDisabled          ClaimPolicyID = "windows_lane_disabled"
+	ClaimNoProductionMutation        ClaimPolicyID = "no_production_mutation"
+	ClaimNoRuntimeContractsImport    ClaimPolicyID = "no_runtime_contracts_import"
+	ClaimNoWindowsHyperdensityApply  ClaimPolicyID = "no_windows_hyperdensity_apply"
+	ClaimOperatorControlled          ClaimPolicyID = "operator_controlled"
+	ClaimRecommendationOnly          ClaimPolicyID = "recommendation_only"
+	ClaimWindowsLaneDisabled         ClaimPolicyID = "windows_lane_disabled"
 )
 
 // ClaimPolicyRule is one row of the claim-policy catalog (documentation / parity; no runtime enforcement).
