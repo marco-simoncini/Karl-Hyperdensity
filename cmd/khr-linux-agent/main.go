@@ -6,6 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"strings"
 
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/agent"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
@@ -21,6 +22,11 @@ func main() {
 	telemetryCgroupPath := flag.String("cgroup-path", "", "resolved cgroup directory to sample (read-telemetry)")
 	telemetryOutputPath := flag.String("telemetry-output", "", "optional path to write the same JSON as stdout (read-telemetry)")
 	evidenceOutputPath := flag.String("evidence-output", "", "optional path to write the same JSON as stdout (collect-evidence)")
+	evidenceManifestOut := flag.String("evidence-manifest-output", "", "optional path to write artifact manifest JSON (collect-evidence)")
+	evidenceDigestOut := flag.String("evidence-digest-output", "", "optional path to write bundle SHA256 hex line (collect-evidence)")
+	signingMode := flag.String("signing-mode", "none", "none|local-dev: local integrity signing for collect-evidence (local-dev is not production security)")
+	signingKeyFile := flag.String("signing-key-file", "", "Ed25519 private key PEM when -signing-mode=local-dev (collect-evidence)")
+	artifactID := flag.String("artifact-id", "", "optional artifact id recorded in evidence manifest (collect-evidence)")
 	leasePath := flag.String("lease-input", "", "path to ResourceLease JSON (dry-run)")
 	portPath := flag.String("resource-port-input", "", "path to ResourcePort JSON (dry-run)")
 	cellCtxPath := flag.String("cell-context", "", "optional path to CellContext JSON (dry-run)")
@@ -265,7 +271,20 @@ func main() {
 				emit(out, 2)
 			}
 		}
-		cliOut, err := agent.RunCollectEvidenceCLI(cfg, cell, *cgroupRoot, *allowPathPrefix, leaseRaw, portRaw, ctx, *evidenceOutputPath, *allowUnsafe, *cpuDelta, *memDelta)
+		var integ *agent.CollectEvidenceIntegrityOpts
+		man := strings.TrimSpace(*evidenceManifestOut)
+		dig := strings.TrimSpace(*evidenceDigestOut)
+		sign := strings.TrimSpace(*signingMode)
+		if man != "" || dig != "" || (sign != "" && sign != "none") {
+			integ = &agent.CollectEvidenceIntegrityOpts{
+				ManifestOutputPath: *evidenceManifestOut,
+				DigestOutputPath:   *evidenceDigestOut,
+				SigningMode:        *signingMode,
+				SigningKeyFile:     *signingKeyFile,
+				ArtifactID:         *artifactID,
+			}
+		}
+		cliOut, err := agent.RunCollectEvidenceCLI(cfg, cell, *cgroupRoot, *allowPathPrefix, leaseRaw, portRaw, ctx, *evidenceOutputPath, *allowUnsafe, *cpuDelta, *memDelta, integ)
 		if err != nil {
 			out["error"] = err.Error()
 			emit(out, 2)

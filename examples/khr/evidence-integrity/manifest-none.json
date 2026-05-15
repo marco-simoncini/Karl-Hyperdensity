@@ -1,0 +1,22 @@
+{
+  "artifactId": "",
+  "agentId": "khr-linux-agent-dev-001",
+  "generatedAt": "2026-07-01T12:00:00Z",
+  "bundleSha256": "3c6cbf09172e128eaddfccfcdb0c7153099418f41260c0ef416945c75b7478c2",
+  "bundleBytes": 1863,
+  "signingMode": "none",
+  "signaturePresent": false,
+  "sourceMode": "collect-evidence",
+  "mutationsForbidden": true,
+  "chainOfCustody": {
+    "hostname": "test-host.example",
+    "user": "test-user",
+    "processId": 4242,
+    "executablePath": "/tmp/khr-linux-agent.test",
+    "workingDirectory": "/tmp"
+  },
+  "integrityNotes": [
+    "Local integrity metadata only; not a production signature or admission decision.",
+    "No transport, no ingest API, no apply: bundle remains read-only evidence."
+  ]
+}

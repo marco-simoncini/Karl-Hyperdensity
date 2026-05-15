@@ -25,13 +25,18 @@ There are **no writes**: no cgroup mutation, no systemd, no cluster APIs. Top-le
 | `-cpu-delta` / `-memory-delta` | no | Passed through to envelope plan text (simulation only). |
 | `-allow-unsafe-apply` | no | Non-operational: audit only, same as other modes. |
 | `-evidence-output` | no | If set, writes the same JSON as stdout to a file (mode `0o600`). |
+| `-evidence-manifest-output` | no | Artifact manifest JSON (Sprint 10); see `docs/khr/KHR_EVIDENCE_INTEGRITY_MODEL.md`. |
+| `-evidence-digest-output` | no | Single-line SHA-256 hex of **canonical** bundle JSON. |
+| `-signing-mode` | no | `none` (default) or `local-dev` (requires manifest + key file). |
+| `-signing-key-file` | no | Ed25519 PEM for `local-dev` only. |
+| `-artifact-id` | no | Optional `artifactId` in manifest. |
 
 ## Top-level JSON fields
 
 | Field | Description |
 |-------|-------------|
 | `tool` | `khr-linux-agent` |
-| `version` | Agent build string (e.g. `0.0.1-sprint9`). |
+| `version` | Agent build string (e.g. `0.0.1-sprint10`). |
 | `mode` | `collect-evidence` |
 | `agentId` | From config `spec.agentId`. |
 | `collectedAt` | RFC3339 UTC (`KHR_TEST_COLLECTED_AT` overrides in tests). |
@@ -42,7 +47,7 @@ There are **no writes**: no cgroup mutation, no systemd, no cluster APIs. Top-le
 | `evidenceSummary` | Aggregated `confidence`, `readyForGrandePadre`, `blockedReasons`, `warnings`, `recommendedNextAction`. |
 | `mutationsForbidden` | Always `true`. |
 
-Implementation lives in `pkg/khr/evidence/` (`CollectEvidenceBundle` and summarizer). Examples: `examples/khr/evidence/`.
+Implementation lives in `pkg/khr/evidence/` (`CollectEvidenceBundle` and summarizer). Examples: `examples/khr/evidence/`. Integrity sidecars: `pkg/khr/evidence/integrity/`, `examples/khr/evidence-integrity/`.
 
 ## Deterministic tests
 

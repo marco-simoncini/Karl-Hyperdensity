@@ -45,6 +45,8 @@ required_files=(
   "docs/khr/KHR_TELEMETRY_EVIDENCE_MODEL.md"
   "docs/khr/KHR_LOCAL_EVIDENCE_BUNDLE.md"
   "docs/khr/KHR_GRANDE_PADRE_EVIDENCE_HANDOFF.md"
+  "docs/khr/KHR_EVIDENCE_INTEGRITY_MODEL.md"
+  "docs/khr/KHR_EVIDENCE_ARTIFACT_MANIFEST.md"
 )
 
 for required in "${required_files[@]}"; do

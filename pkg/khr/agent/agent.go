@@ -14,14 +14,15 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/discovery"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/evidence"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/evidence/integrity"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcelease"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/runtimeprovider"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/safety"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/telemetry"
 )
 
-// AgentVersion is embedded in JSON outputs (Sprint 9).
-const AgentVersion = "0.0.1-sprint9"
+// AgentVersion is embedded in JSON outputs (Sprint 10).
+const AgentVersion = "0.0.1-sprint10"
 
 // Config is minimal agent configuration (YAML or JSON).
 type Config struct {
@@ -222,10 +223,29 @@ func writeCollectEvidenceOptional(bundle *evidence.CollectEvidenceBundle, path s
 	return os.WriteFile(path, b, 0o600)
 }
 
+// CollectEvidenceIntegrityOpts configures optional local manifest/digest sidecars (Sprint 10).
+type CollectEvidenceIntegrityOpts struct {
+	ManifestOutputPath string
+	DigestOutputPath   string
+	SigningMode        string
+	SigningKeyFile     string
+	ArtifactID         string
+}
+
+func shouldEmitEvidenceSidecars(o *CollectEvidenceIntegrityOpts) bool {
+	if o == nil {
+		return false
+	}
+	if strings.TrimSpace(o.ManifestOutputPath) != "" || strings.TrimSpace(o.DigestOutputPath) != "" {
+		return true
+	}
+	return false
+}
+
 // RunCollectEvidenceCLI validates config, runs discovery, telemetry (when selectedPath is set),
 // optionally ResourceLease dry-run when both lease and port payloads are provided, and returns
 // a single local evidence bundle JSON shape (read-only; mutationsForbidden always true).
-func RunCollectEvidenceCLI(cfg *Config, cell *crdv1alpha1.Cell, cgroupRoot, allowPrefix string, leaseRaw, portRaw []byte, cellCtx *resourcelease.CellContext, evidenceOutPath string, allowUnsafe bool, cpuDelta, memDelta string) (*evidence.CollectEvidenceBundle, error) {
+func RunCollectEvidenceCLI(cfg *Config, cell *crdv1alpha1.Cell, cgroupRoot, allowPrefix string, leaseRaw, portRaw []byte, cellCtx *resourcelease.CellContext, evidenceOutPath string, allowUnsafe bool, cpuDelta, memDelta string, integ *CollectEvidenceIntegrityOpts) (*evidence.CollectEvidenceBundle, error) {
 	if errs := ValidateConfig(cfg); len(errs) > 0 {
 		return nil, fmt.Errorf("invalid config: %s", strings.Join(errs, "; "))
 	}
@@ -273,6 +293,30 @@ func RunCollectEvidenceCLI(cfg *Config, cell *crdv1alpha1.Cell, cgroupRoot, allo
 	bundle := evidence.BuildCollectEvidenceBundle(AgentVersion, cfg.Spec.AgentID, cell, disc, tSnap, dry, partialWarn)
 	if err := writeCollectEvidenceOptional(bundle, evidenceOutPath); err != nil {
 		return nil, err
+	}
+	if integ != nil {
+		if err := integrity.ValidateSigningMode(integ.SigningMode); err != nil {
+			return nil, err
+		}
+		if err := integrity.RequireLocalDevKey(integ.SigningMode, integ.SigningKeyFile); err != nil {
+			return nil, err
+		}
+		if integrity.NormalizeSigningMode(integ.SigningMode) == "local-dev" && strings.TrimSpace(integ.ManifestOutputPath) == "" {
+			return nil, fmt.Errorf("collect-evidence: signing-mode=local-dev requires -evidence-manifest-output")
+		}
+		if shouldEmitEvidenceSidecars(integ) {
+			if err := integrity.EmitEvidenceSidecars(
+				bundle,
+				bundle.AgentID,
+				strings.TrimSpace(integ.ArtifactID),
+				integ.ManifestOutputPath,
+				integ.DigestOutputPath,
+				integ.SigningMode,
+				integ.SigningKeyFile,
+			); err != nil {
+				return nil, err
+			}
+		}
 	}
 	return bundle, nil
 }

@@ -82,7 +82,22 @@ go run ./cmd/khr-linux-agent -mode collect-evidence \
   -cgroup-root /sys/fs/cgroup
 ```
 
-See `docs/khr/KHR_LOCAL_EVIDENCE_BUNDLE.md`, `docs/khr/KHR_GRANDE_PADRE_EVIDENCE_HANDOFF.md`, and `examples/khr/evidence/`.
+See `docs/khr/KHR_LOCAL_EVIDENCE_BUNDLE.md`, `docs/khr/KHR_GRANDE_PADRE_EVIDENCE_HANDOFF.md`, `docs/khr/KHR_EVIDENCE_INTEGRITY_MODEL.md`, and `examples/khr/evidence/`.
+
+#### Integrity sidecars (Sprint 10)
+
+Optional `-evidence-manifest-output` and `-evidence-digest-output` write a **manifest** and **SHA-256** line computed from **canonical** bundle JSON (not necessarily identical to pretty-printed stdout). `-signing-mode` defaults to `none`; `local-dev` uses `-signing-key-file` (Ed25519 PKCS#8 PEM) and **requires** `-evidence-manifest-output`. This is developer workflow only, not production PKI.
+
+```bash
+go run ./cmd/khr-linux-agent -mode collect-evidence \
+  -config examples/khr/khr-linux-agent-config.yaml \
+  -cell-input examples/khr/evidence/collect-evidence-input-cell.json \
+  -cgroup-root /tmp/khr-evidence-example-root \
+  -evidence-manifest-output /tmp/evidence-manifest.json \
+  -evidence-digest-output /tmp/evidence-bundle.sha256
+```
+
+Reproducing `examples/khr/evidence-integrity/*` fixtures uses fixed test clocks (`KHR_TEST_COLLECTED_AT`, `KHR_TEST_TELEMETRY_NOW`, `KHR_TEST_INTEGRITY_NOW`) and `KHR_TEST_INTEGRITY_CHAIN_STUB=1`; the sample tree under `/tmp/khr-evidence-example-root` must exist with the same cgroup metric files as in the Sprint 9 telemetry goldens.
 
 ## Non-goals
 
