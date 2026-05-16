@@ -28,6 +28,11 @@ rg_excludes=(
   --glob "!**/TECHNICAL_PREVIEW_ISO_GUIDE.md"
   --glob "!**/TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md"
   --glob "!**/TECHNICAL_PREVIEW_OBSERVATION_EXPORT.md"
+  --glob "!**/BETA_READINESS_GAP_ANALYSIS.md"
+  --glob "!**/KHR_CONTRACT_FREEZE_PLAN.md"
+  --glob "!**/DASHBOARD_BETA_READINESS_GAP_ANALYSIS.md"
+  --glob "!**/INVENTORY_BETA_READINESS_GAP_ANALYSIS.md"
+  --glob "!**/ISO_BETA_READINESS_GAP_ANALYSIS.md"
 )
 
 line_allowed() {

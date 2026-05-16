@@ -165,10 +165,11 @@ KHR_RUNTIME_SANDBOX_LIVE=1 ./scripts/khr_runtime_sandbox_execute.sh
 
 | Step | Description |
 |------|-------------|
-| **Beta-1** | Wire read-only `tpReadinessSummary` in Dashboard API (contract bump) |
-| **Beta-2** | Optional Inventory posture export job (non-enforcing) |
-| **Beta-3** | ISO TP profile install script (still **disabled** systemd) |
-| **Beta-4** | Operator runbook PDF/index bundling all four guides |
+| **Beta-1** | Contract freeze sign-off (`KHR_CONTRACT_FREEZE_PLAN.md`) |
+| **Beta-2** | TP readiness enabled in reference deployments (flag) |
+| **Beta-3** | Optional Inventory posture export job (non-enforcing) |
+| **Beta-4** | ISO TP profile verify script (still **disabled** systemd) |
+| **Beta-5** | Operator runbook index across four repos |
 
 ---
 
