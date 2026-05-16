@@ -26,6 +26,8 @@ rg_excludes=(
   --glob "!**/TECHNICAL_PREVIEW_DASHBOARD_GUIDE.md"
   --glob "!**/TECHNICAL_PREVIEW_INVENTORY_GUIDE.md"
   --glob "!**/TECHNICAL_PREVIEW_ISO_GUIDE.md"
+  --glob "!**/TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md"
+  --glob "!**/TECHNICAL_PREVIEW_OBSERVATION_EXPORT.md"
 )
 
 line_allowed() {

@@ -23,6 +23,7 @@ echo "[khr_tp_package_check] Checking TP package anchors..."
 
 require_file "docs/khr/TECHNICAL_PREVIEW_READINESS.md" "TP readiness doc"
 require_file "docs/khr/TECHNICAL_PREVIEW_PACKAGE.md" "TP package doc"
+require_file "docs/khr/TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md" "TP operator runbook"
 require_file "docs/evidence/khr-native-live-lane/certification-summary.json" "native-live certification summary"
 require_file "docs/evidence/khr-certification-registry/summary.json" "certification registry summary"
 require_file "docs/evidence/khr-provenance/summary.json" "provenance evidence summary"
