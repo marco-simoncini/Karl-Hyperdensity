@@ -1,0 +1,11 @@
+{
+  "id": "khr-m-20260516T134008Z",
+  "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134008Z/sandbox",
+  "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134008Z/sandbox/apply-marker.txt",
+  "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134008Z/sandbox/cgroup/khr-runtime-sandbox-lease-allowed",
+  "cpuMaxBefore": "max",
+  "cpuMaxApplied": "25000 100000",
+  "extra": {
+    "source": "karl-host-runtime"
+  }
+}

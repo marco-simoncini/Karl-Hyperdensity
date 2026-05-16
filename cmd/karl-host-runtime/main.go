@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"path/filepath"
 	"time"
 
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
@@ -15,12 +16,13 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "register-host", "register-host|host-status|resourceport-loop|resourceport-cleanup|resourcelease-dryrun|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
+	mode := flag.String("mode", "register-host", "register-host|host-status|resourceport-loop|resourceport-cleanup|resourcelease-dryrun|resourcelease-guarded-apply|resourcelease-rollback|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
 	nodeName := flag.String("node-name", "", "Kubernetes node name for host-status (default: hostname)")
 	clusterContext := flag.String("cluster-context", "", "required cluster context for resourceport-loop discovery")
 	emitCR := flag.Bool("emit-cr", false, "write local ResourcePort CR preview files (never kubectl apply by default)")
 	applyCR := flag.Bool("apply-cr", false, "kubectl apply ResourcePort CRs (opt-in; requires --emit-cr and sandbox confirmation)")
-	sandboxConfirm := flag.Bool("i-understand-this-is-sandbox", false, "explicit confirmation for sandbox CR apply")
+	sandboxConfirm := flag.Bool("i-understand-this-is-sandbox", false, "explicit confirmation for sandbox CR apply / ResourceLease apply")
+	applyResourceLease := flag.Bool("apply-resourcelease", false, "opt-in ResourceLease guarded apply (requires resourcelease-guarded-apply mode)")
 	cleanupCR := flag.Bool("cleanup-cr", false, "delete sandbox ResourcePorts managed by karl-host-runtime")
 	loopIterations := flag.Int("loop-iterations", 1, "resourceport-loop iteration count")
 	loopIntervalMs := flag.Int("loop-interval-ms", 0, "delay between loop iterations")
@@ -131,6 +133,67 @@ func main() {
 			fatal(err)
 		}
 		flightrecorder.Record("resourcelease-dryrun", res.DryRunDecision, res.Reason)
+		emit(res)
+	case "resourcelease-guarded-apply":
+		if *leasePath == "" {
+			fatal(fmt.Errorf("-lease-input is required for resourcelease-guarded-apply"))
+		}
+		leaseRaw, err := os.ReadFile(*leasePath)
+		if err != nil {
+			fatal(err)
+		}
+		var lease crdv1alpha1.ResourceLease
+		if err := json.Unmarshal(leaseRaw, &lease); err != nil {
+			fatal(err)
+		}
+		ctx := *clusterContext
+		if ctx == "" {
+			ctx = resourceport.CurrentKubeContext()
+		}
+		if *sandboxDir == "" {
+			*sandboxDir = filepath.Join(os.TempDir(), "khr-resourcelease-guarded-apply")
+		}
+		res, err := resourcelease.GuardedApplyAgainstResourcePorts(resourcelease.GuardedApplySandboxOptions{
+			DryRunAgainstPortOptions: resourcelease.DryRunAgainstPortOptions{
+				Config:          cfg,
+				Lease:           &lease,
+				Namespace:       *namespace,
+				Labels:          copyLabels(cfg.Spec.AllowedLabels),
+				ClusterContext:  ctx,
+				RequiredContext: "karl-metal-01@ovh",
+				ResourcePortRef: *resourcePortRef,
+				SandboxDir:      *sandboxDir,
+				BaselineID:      *baselineID,
+			},
+			ApplyResourceLease: *applyResourceLease,
+			SandboxConfirm:     *sandboxConfirm,
+		})
+		if err != nil {
+			fatal(err)
+		}
+		flightrecorder.Record("resourcelease-guarded-apply", res.ApplyState, res.Reason)
+		emit(struct {
+			resourcelease.GuardedApplySandboxResult
+			FlightRecorder []flightrecorder.Event `json:"flightRecorder"`
+		}{res, flightrecorder.Snapshot()})
+	case "resourcelease-rollback":
+		if *sandboxDir == "" {
+			*sandboxDir = filepath.Join(os.TempDir(), "khr-resourcelease-guarded-apply")
+		}
+		prefix := ""
+		if len(cfg.Spec.AllowPathPrefixes) > 0 {
+			prefix = cfg.Spec.AllowPathPrefixes[0]
+		}
+		res, err := resourcelease.RollbackSandbox(resourcelease.RollbackSandboxOptions{
+			Config:          cfg,
+			BaselineID:      *baselineID,
+			SandboxDir:      *sandboxDir,
+			AllowPathPrefix: prefix,
+		})
+		if err != nil {
+			fatal(err)
+		}
+		flightrecorder.Record("resourcelease-rollback", res.RollbackState, res.Reason)
 		emit(res)
 	case "resourceport-cleanup":
 		ctx := *clusterContext

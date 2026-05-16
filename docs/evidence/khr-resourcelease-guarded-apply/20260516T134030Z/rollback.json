@@ -1,0 +1,29 @@
+{
+  "mode": "resourcelease-rollback",
+  "rolledBack": false,
+  "blocked": true,
+  "reason": "cgroup path \"/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134030Z/sandbox/cgroup/khr-runtime-sandbox-lease-allowed\" outside allowPathPrefix \"/sys/fs/cgroup/karl.slice\"",
+  "baseline": {
+    "id": "khr-m-20260516T134030Z",
+    "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134030Z/sandbox",
+    "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134030Z/sandbox/apply-marker.txt",
+    "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134030Z/sandbox/cgroup/khr-runtime-sandbox-lease-allowed",
+    "cpuMaxBefore": "max",
+    "cpuMaxApplied": "25000 100000",
+    "extra": {
+      "allowPathPrefix": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134030Z/sandbox",
+      "source": "karl-host-runtime"
+    }
+  },
+  "rollback": {
+    "rolledBack": false,
+    "blocked": false
+  },
+  "verification": {
+    "state": "",
+    "noRestart": true,
+    "noProductionMutation": true
+  },
+  "rollbackState": "idle",
+  "noProductionMutation": true
+}

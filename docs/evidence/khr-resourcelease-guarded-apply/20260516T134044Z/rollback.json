@@ -1,0 +1,33 @@
+{
+  "mode": "resourcelease-rollback",
+  "rolledBack": true,
+  "blocked": false,
+  "baseline": {
+    "id": "khr-m-20260516T134044Z",
+    "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134044Z/sandbox",
+    "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134044Z/sandbox/apply-marker.txt",
+    "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134044Z/sandbox/cgroup/khr-runtime-sandbox-lease-allowed",
+    "cpuMaxBefore": "max",
+    "cpuMaxApplied": "25000 100000",
+    "extra": {
+      "allowPathPrefix": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-resourcelease-guarded-apply/20260516T134044Z/sandbox",
+      "source": "karl-host-runtime"
+    }
+  },
+  "rollback": {
+    "rolledBack": true,
+    "blocked": false,
+    "actions": [
+      "restored cpu.max from baseline"
+    ]
+  },
+  "verification": {
+    "state": "pass",
+    "observedCpuMax": "max",
+    "expectedCpuMax": "max",
+    "noRestart": true,
+    "noProductionMutation": true
+  },
+  "rollbackState": "restored",
+  "noProductionMutation": true
+}

@@ -1,0 +1,13 @@
+{
+  "clusterContext": "karl-metal-01@ovh",
+  "checkedAt": "2026-05-16T13:40:47Z",
+  "productionNamespaces": [
+    {"namespace": "karl-system", "deployGenerations": {"fluidvirt-witness-ingest": 7, "karl-console-next-oidc": 652, "karl-console-next-ux": 6, "karl-external-identity-bridge": 11, "karl-inventory": 1, "karl-inventory-postgresqlha-pgpool": 1, "keycloak": 48, "keycloak-operator": 1, "phoenix-controller": 2, "warden-policy-compiler": 5, "warden-policy-distributor": 5, "warden-signal-gateway": 11}}
+,
+    {"namespace": "kube-system", "deployGenerations": {"coredns": 5, "karl-ovn-migration-lsp-reconciler": 4, "kube-ovn-controller": 6, "kube-ovn-monitor": 1, "metrics-server": 1, "ovn-central": 2, "snapshot-controller": 1, "vpa-admission-controller": 1, "vpa-recommender": 1, "vpa-updater": 1}}
+,
+    {"namespace": "default", "deployGenerations": {"deployment": 1, "deploymenttest": 1, "helm-controller": 21, "image-automation-controller": 21, "image-reflector-controller": 21, "kustomize-controller": 21, "notification-controller": 21, "source-controller": 20}}
+  ],
+  "sandboxOnly": true,
+  "note": "generations captured before/after; unchanged generations imply no production deploy mutation"
+}

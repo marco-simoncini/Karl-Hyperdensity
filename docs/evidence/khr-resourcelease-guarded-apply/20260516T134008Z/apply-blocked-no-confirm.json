@@ -1,0 +1,55 @@
+{
+  "mode": "resourcelease-guarded-apply",
+  "applied": false,
+  "blocked": true,
+  "applyState": "blocked",
+  "reason": "missing --i-understand-this-is-sandbox confirmation",
+  "blockedReason": "missing --i-understand-this-is-sandbox confirmation",
+  "dryRun": {
+    "mode": "",
+    "allowed": false,
+    "blocked": false,
+    "dryRunDecision": "",
+    "baseline": {
+      "id": "",
+      "sandboxDir": "",
+      "markerPath": ""
+    },
+    "rollbackPlan": null,
+    "verificationPlan": null,
+    "noMutation": false,
+    "noApply": false
+  },
+  "baseline": {
+    "id": "",
+    "sandboxDir": "",
+    "markerPath": ""
+  },
+  "verification": {
+    "state": "",
+    "noRestart": true,
+    "noProductionMutation": true
+  },
+  "rollbackState": "idle",
+  "safetyGates": [
+    "linux-only",
+    "sandbox-namespace-allowlist",
+    "label-allowlist",
+    "cluster-context-guard",
+    "dry-run-required",
+    "cpu-only",
+    "sandbox-cpu-cap-500m",
+    "no-production-mutation"
+  ],
+  "noProductionMutation": true,
+  "namespace": "khr-runtime-sandbox",
+  "clusterContext": "karl-metal-01@ovh",
+  "flightRecorder": [
+    {
+      "at": "2026-05-16T13:40:11.656526333Z",
+      "phase": "resourcelease-guarded-apply",
+      "message": "blocked",
+      "data": "missing --i-understand-this-is-sandbox confirmation"
+    }
+  ]
+}

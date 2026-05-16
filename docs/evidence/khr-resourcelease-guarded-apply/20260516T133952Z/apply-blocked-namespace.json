@@ -1,0 +1,55 @@
+{
+  "mode": "resourcelease-guarded-apply",
+  "applied": false,
+  "blocked": true,
+  "applyState": "blocked",
+  "reason": "production namespace blocked: karl-system",
+  "blockedReason": "production namespace blocked: karl-system",
+  "dryRun": {
+    "mode": "",
+    "allowed": false,
+    "blocked": false,
+    "dryRunDecision": "",
+    "baseline": {
+      "id": "",
+      "sandboxDir": "",
+      "markerPath": ""
+    },
+    "rollbackPlan": null,
+    "verificationPlan": null,
+    "noMutation": false,
+    "noApply": false
+  },
+  "baseline": {
+    "id": "",
+    "sandboxDir": "",
+    "markerPath": ""
+  },
+  "verification": {
+    "state": "",
+    "noRestart": true,
+    "noProductionMutation": true
+  },
+  "rollbackState": "idle",
+  "safetyGates": [
+    "linux-only",
+    "sandbox-namespace-allowlist",
+    "label-allowlist",
+    "cluster-context-guard",
+    "dry-run-required",
+    "cpu-only",
+    "sandbox-cpu-cap-500m",
+    "no-production-mutation"
+  ],
+  "noProductionMutation": true,
+  "namespace": "karl-system",
+  "clusterContext": "karl-metal-01@ovh",
+  "flightRecorder": [
+    {
+      "at": "2026-05-16T13:39:54.776056321Z",
+      "phase": "resourcelease-guarded-apply",
+      "message": "blocked",
+      "data": "production namespace blocked: karl-system"
+    }
+  ]
+}
