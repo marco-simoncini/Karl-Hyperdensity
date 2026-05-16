@@ -42,6 +42,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 64:** **Observation re-audit** + broad policy — `ObservationWiredV1` remains **false**; apply/resource-exchange/rollback/VM remain legacy.
 
+**Sprint 65:** **Apply-observation proposal** — criteria + audit; `apply.go` **not** wired; `ApplyObservationWiredV1` placeholder **false**.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

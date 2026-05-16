@@ -28,13 +28,15 @@ This is **deliberate policy**, not incomplete work by mistake.
 
 ---
 
-## Sprint 64 status
+## Sprint 64–65 status
 
 | Item | Value |
 |------|-------|
 | `broadObservationRecommended` | **`false`** |
 | `ObservationWiredV1` | **`false`** |
 | `ProductionWiredV1` | **`false`** |
+| `ApplyObservationWiredV1` | **`false`** (Sprint 65 placeholder) |
+| `apply.go` wiring | **None** (Sprint 65 proposal only) |
 
 ## Related
 

@@ -23,6 +23,7 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 4. **Sprint 52:** **three pure-candidates** copied to `parentfabric/workload` with golden + manifest — **full file still `copy-deferred`**.
 5. Re-audit for remaining 43 functions only after production adapter sprint.
 6. **Sprint 64:** observation surface re-audit — broad `ObservationWiredV1` stays **false**; granular subflags only.
+7. **Sprint 65:** apply-observation proposal only — `apply.go` legacy; `ApplyObservationWiredV1` placeholder **false**.
 
 ## Placeholder
 
