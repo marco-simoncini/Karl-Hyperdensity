@@ -1,0 +1,135 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karl.local/schemas/khr/resourceport.schema.json",
+  "title": "KHR ResourcePort observation",
+  "description": "ResourcePort observation contract (KHR-C). Aligns with runtime.karl.io/v1alpha1 CRD extensions.",
+  "type": "object",
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "additionalProperties": false,
+  "properties": {
+    "apiVersion": {
+      "type": "string",
+      "const": "runtime.karl.io/v1alpha1"
+    },
+    "kind": {
+      "type": "string",
+      "const": "ResourcePort"
+    },
+    "metadata": { "$ref": "#/$defs/metadata" },
+    "spec": { "$ref": "#/$defs/spec" },
+    "status": { "$ref": "#/$defs/status" }
+  },
+  "$defs": {
+    "metadata": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string", "minLength": 1 },
+        "namespace": { "type": "string" },
+        "labels": {
+          "type": "object",
+          "additionalProperties": { "type": "string" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "spec": {
+      "type": "object",
+      "required": ["provider", "shellRef", "cellRef", "capabilities", "hotplug"],
+      "properties": {
+        "provider": { "$ref": "#/$defs/provider" },
+        "shellRef": { "type": "string", "minLength": 1 },
+        "cellRef": { "type": "string", "minLength": 1 },
+        "capabilities": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        },
+        "hotplug": { "$ref": "#/$defs/hotplug" },
+        "constraints": { "type": "object" },
+        "description": { "type": "string" },
+        "appliesToRuntimeProviderIds": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "ports": { "$ref": "#/$defs/portsMatrix" },
+        "notes": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "provider": {
+      "type": "string",
+      "enum": [
+        "khr.native",
+        "kubevirt.compatibility",
+        "kubevirt.public-cloud-fallback",
+        "khr.native.ovn",
+        "kubevirt.legacy.ovn",
+        "kubernetes.cni",
+        "parent-fabric.observed",
+        "cloud.vpc.aws",
+        "cloud.vnet.azure",
+        "cloud.vpc.gcp",
+        "baremetal.bridge",
+        "baremetal.vlan"
+      ]
+    },
+    "hotplug": {
+      "type": "object",
+      "required": ["cpu", "memory", "disk", "network"],
+      "properties": {
+        "cpu": { "type": "boolean" },
+        "memory": { "type": "boolean" },
+        "disk": { "type": "boolean" },
+        "network": { "type": "boolean" }
+      },
+      "additionalProperties": false
+    },
+    "portsMatrix": {
+      "type": "object",
+      "required": ["cpu", "memory"],
+      "properties": {
+        "cpu": { "$ref": "#/$defs/resourceModes" },
+        "memory": { "$ref": "#/$defs/resourceModes" },
+        "disk": { "$ref": "#/$defs/resourceModes" },
+        "network": { "$ref": "#/$defs/resourceModes" },
+        "gpu": { "$ref": "#/$defs/resourceModes" }
+      },
+      "additionalProperties": false
+    },
+    "resourceModes": {
+      "type": "object",
+      "required": ["modes"],
+      "properties": {
+        "modes": {
+          "type": "array",
+          "items": { "type": "string" },
+          "minItems": 1
+        }
+      },
+      "additionalProperties": false
+    },
+    "status": {
+      "type": "object",
+      "properties": {
+        "observedAt": { "type": "string" },
+        "conditions": {
+          "type": "array",
+          "items": { "$ref": "#/$defs/condition" }
+        }
+      },
+      "additionalProperties": true
+    },
+    "condition": {
+      "type": "object",
+      "required": ["type", "status"],
+      "properties": {
+        "type": { "type": "string" },
+        "status": { "type": "string", "enum": ["True", "False", "Unknown"] },
+        "reason": { "type": "string" },
+        "message": { "type": "string" }
+      },
+      "additionalProperties": true
+    }
+  }
+}

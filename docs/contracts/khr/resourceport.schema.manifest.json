@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "v0.1.0-khr-c-observation",
+  "schemaPath": "docs/contracts/khr/resourceport.schema.json",
+  "observationContract": true,
+  "controllerImplemented": false,
+  "inventoryCandidateSource": "Karl-Inventory",
+  "examples": [
+    "docs/contracts/khr/examples/resourceport-linux-container.json"
+  ]
+}

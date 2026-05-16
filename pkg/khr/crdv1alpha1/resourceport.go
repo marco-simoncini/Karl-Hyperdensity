@@ -1,15 +1,32 @@
 package crdv1alpha1
 
+import "encoding/json"
+
 // ResourcePort is runtime.karl.io/v1alpha1 ResourcePort.
 type ResourcePort struct {
 	APIVersion string           `json:"apiVersion"`
 	Kind       string           `json:"kind"`
 	Metadata   ObjectMeta       `json:"metadata"`
 	Spec       ResourcePortSpec `json:"spec"`
+	Status     json.RawMessage  `json:"status,omitempty"`
 }
 
-// ResourcePortSpec carries capability truth matrix for cpu/memory and optional resources.
+// ResourcePortHotplug declares hotplug posture per resource class (KHR-C observation).
+type ResourcePortHotplug struct {
+	CPU     bool `json:"cpu"`
+	Memory  bool `json:"memory"`
+	Disk    bool `json:"disk"`
+	Network bool `json:"network"`
+}
+
+// ResourcePortSpec carries capability truth matrix and optional observation binding.
 type ResourcePortSpec struct {
+	Provider                    string              `json:"provider,omitempty"`
+	ShellRef                    string              `json:"shellRef,omitempty"`
+	CellRef                     string              `json:"cellRef,omitempty"`
+	Capabilities                []string            `json:"capabilities,omitempty"`
+	Hotplug                     *ResourcePortHotplug `json:"hotplug,omitempty"`
+	Constraints                 json.RawMessage     `json:"constraints,omitempty"`
 	Description                 string              `json:"description,omitempty"`
 	AppliesToRuntimeProviderIDs []string            `json:"appliesToRuntimeProviderIds,omitempty"`
 	Ports                       ResourcePortsMatrix `json:"ports"`

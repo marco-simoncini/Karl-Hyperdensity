@@ -1,0 +1,52 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "ResourcePort",
+  "metadata": {
+    "name": "linux-container-api-port",
+    "labels": {
+      "karl.io/schema-only": "true",
+      "karl.io/sprint": "khr-c"
+    }
+  },
+  "spec": {
+    "provider": "kubernetes.cni",
+    "shellRef": "karl/Shell/api",
+    "cellRef": "karl/Cell/api",
+    "capabilities": [
+      "cpu.static",
+      "memory.static",
+      "network.static"
+    ],
+    "hotplug": {
+      "cpu": false,
+      "memory": false,
+      "disk": false,
+      "network": false
+    },
+    "constraints": {
+      "linuxOnly": true,
+      "mutationForbidden": true
+    },
+    "description": "Linux Deployment observation port (read-only contract sketch).",
+    "appliesToRuntimeProviderIds": [
+      "linux.pod.v1"
+    ],
+    "ports": {
+      "cpu": { "modes": ["static"] },
+      "memory": { "modes": ["static"] },
+      "disk": { "modes": ["static"] },
+      "network": { "modes": ["static"] }
+    }
+  },
+  "status": {
+    "observedAt": "2026-05-16T12:00:00Z",
+    "conditions": [
+      {
+        "type": "Observed",
+        "status": "True",
+        "reason": "InventoryCandidate",
+        "message": "Karl-Inventory may supply ResourcePort facts; no agent mutation in KHR-C"
+      }
+    ]
+  }
+}

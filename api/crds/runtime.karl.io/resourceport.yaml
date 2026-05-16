@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   name: resourceports.runtime.karl.io
   labels:
-    karl.io/contract-track: khr-v1alpha1
+    karl.io/contract-track: khr-v1alpha1-observation
 spec:
   group: runtime.karl.io
   scope: Cluster
@@ -34,6 +34,31 @@ spec:
               required:
                 - ports
               properties:
+                provider:
+                  description: Runtime provider binding for observation (KHR-C).
+                  type: string
+                shellRef:
+                  type: string
+                cellRef:
+                  type: string
+                capabilities:
+                  type: array
+                  items:
+                    type: string
+                hotplug:
+                  type: object
+                  properties:
+                    cpu:
+                      type: boolean
+                    memory:
+                      type: boolean
+                    disk:
+                      type: boolean
+                    network:
+                      type: boolean
+                constraints:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
                 description:
                   type: string
                 appliesToRuntimeProviderIds:
@@ -111,4 +136,26 @@ spec:
                   type: string
             status:
               type: object
+              properties:
+                observedAt:
+                  type: string
+                  format: date-time
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                        enum:
+                          - "True"
+                          - "False"
+                          - "Unknown"
+                      reason:
+                        type: string
+                      message:
+                        type: string
+                    x-kubernetes-preserve-unknown-fields: true
               x-kubernetes-preserve-unknown-fields: true
