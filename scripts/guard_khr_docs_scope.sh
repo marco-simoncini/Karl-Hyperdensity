@@ -42,6 +42,8 @@ rg_excludes=(
   --glob "!**/NATIVE_LIVE_PROJECTION_FREEZE_CANDIDATE.md"
   --glob "!**/NATIVE_LIVE_OBSERVATION_FREEZE_CANDIDATE.md"
   --glob "!**/NATIVE_LIVE_ISO_FREEZE_CANDIDATE.md"
+  --glob "!**/KHR_TECHNICAL_PREVIEW_POST_INSTALL_VERIFICATION.md"
+  --glob "!**/KHR_POST_INSTALL_VERIFY.md"
 )
 
 line_allowed() {

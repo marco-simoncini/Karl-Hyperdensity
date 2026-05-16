@@ -33,6 +33,9 @@ This document defines the **Technical Preview (TP) package** consumable without 
 | Installer karl2 CRD evidence (optional) | `khr_crd_foundation_evidence.sh` → `contractSetId` + `crdDiffEmpty` |
 | Canonical contract manifest | `docs/contracts/khr/khr-contract-manifest.yaml` (`khr-tp-contract-v1`) |
 | Contract manifest check | `./scripts/khr_contract_manifest_check.sh` |
+| TP post-install bundle | `./scripts/khr_tp_post_install_bundle_check.sh` |
+| ISO post-install verify | `Karl-OS-ISO/scripts/khr_post_install_verify.sh` |
+| Hybrid transition evidence | `Karl-Installer/scripts/khr_hybrid_transition_evidence.sh` |
 | Bootstrap consumer contract (this repo) | `docs/khr/KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md` |
 
 ---

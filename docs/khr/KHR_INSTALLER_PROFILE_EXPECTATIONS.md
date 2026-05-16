@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-AH / KHR-AI / KHR-AJ / **KHR-AK** |
+| **Sprint** | KHR-AH / KHR-AI / KHR-AJ / KHR-AK / **KHR-AL** |
 | **Contract set** | `khr-tp-contract-v1` — `docs/contracts/khr/khr-contract-manifest.yaml` |
 | **Installer selector** | `KARL_INSTALLER_PROFILE` or `-profile` (Karl-Installer) |
 | **ISO manifest** | `profile-manifest.yaml` — `crdAssetPath`, `expectedCrds` |
@@ -37,7 +37,7 @@ What Karl-Hyperdensity expects when operators select an installer profile after 
 
 ---
 
-## `hybrid-transition` (KHR-AI)
+## `hybrid-transition` (KHR-AI / KHR-AL)
 
 | Topic | Expectation |
 |-------|-------------|
@@ -46,6 +46,7 @@ What Karl-Hyperdensity expects when operators select an installer profile after 
 | KHR CRDs | Installer applies same foundation as karl2 before compatibility path |
 | Host runtime | **Disabled** |
 | Use case | VM workloads + KHR TP CRD foundation in parallel |
+| Evidence | `khr_hybrid_transition_evidence.sh` — `kubevirtCompatibility: true`, `kubevirtAsKhrCore: false` |
 
 ---
 

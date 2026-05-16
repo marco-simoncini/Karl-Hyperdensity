@@ -55,6 +55,7 @@ required_files=(
   "docs/khr/KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md"
   "docs/khr/KHR_INSTALLER_PROFILE_EXPECTATIONS.md"
   "docs/contracts/khr/khr-contract-manifest.yaml"
+  "docs/khr/KHR_TECHNICAL_PREVIEW_POST_INSTALL_VERIFICATION.md"
   "docs/khr/BETA_READINESS_GAP_ANALYSIS.md"
   "docs/khr/KHR_CONTRACT_FREEZE_PLAN.md"
   "docs/khr/RESOURCELEASE_TP_FREEZE_CANDIDATE.md"
@@ -282,6 +283,10 @@ fi
 
 if [[ -x "${ROOT_DIR}/scripts/khr_contract_manifest_check.sh" ]]; then
   "${ROOT_DIR}/scripts/khr_contract_manifest_check.sh"
+fi
+
+if [[ -x "${ROOT_DIR}/scripts/khr_tp_post_install_bundle_check.sh" ]]; then
+  "${ROOT_DIR}/scripts/khr_tp_post_install_bundle_check.sh"
 fi
 
 if [[ -x "${ROOT_DIR}/scripts/khr_resourcelease_freeze_check.sh" ]]; then

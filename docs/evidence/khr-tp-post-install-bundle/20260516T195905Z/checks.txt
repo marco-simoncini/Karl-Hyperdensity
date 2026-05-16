@@ -1,0 +1,7 @@
+khr_contract_manifest_check:PASS
+khr_tp_operator_bundle:FAIL
+khr_post_install_verify:FAIL
+installer_karl2_evidence:PASS
+installer_hybrid_evidence:PASS
+hybrid_host_runtime_disabled:PASS
+iso_post_install_summary:PASS

@@ -1,0 +1,10 @@
+{
+  "phase": "khr-tp-post-install-bundle",
+  "sprint": "KHR-AL",
+  "runId": "20260516T195940Z",
+  "contractSetId": "khr-tp-contract-v1",
+  "status": "PASS",
+  "noAutonomousOrchestration": true,
+  "productionReady": false,
+  "at": "2026-05-16T19:59:43Z"
+}
