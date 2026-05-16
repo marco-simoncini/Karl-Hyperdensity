@@ -22,6 +22,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 54:** Dashboard **shadow tests** (legacy vs adapter v1 on path + observed-state); **still not wired**; Hyperdensity shadow-test doc only.
 
+**Sprint 55:** Wiring **proposal** + call-site inventory audit (51 production sites); **no** call-site replacement; Hyperdensity wiring-proposal doc only.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

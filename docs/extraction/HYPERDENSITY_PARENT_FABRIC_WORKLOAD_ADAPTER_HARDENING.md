@@ -33,7 +33,8 @@
 | **52** | Three pure-candidates in Hyperdensity `parentfabric/workload` |
 | **53** | Dashboard production-internal adapter — **not wired** |
 | **54** | Dashboard shadow tests (legacy vs adapter v1) — **still not wired** |
-| **Future** | Explicit wiring sprint only |
+| **55** | Wiring proposal + call-site inventory (Dashboard) — **not wired** |
+| **Future** | Explicit path-only wiring sprint |
 
 ## Related
 

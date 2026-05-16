@@ -108,6 +108,7 @@ required_files=(
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_PURE_CANDIDATES_CONTRACT.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_HARDENING.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_SHADOW_TESTS.md"
+  "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_WIRING_PROPOSAL.md"
   "pkg/hyperdensity/contractkit/go.mod"
   "pkg/hyperdensity/contractkit/testdata/dashboard/hyperdensity_parity_manifest_m1_m7.json"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"
