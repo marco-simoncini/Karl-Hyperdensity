@@ -1,0 +1,186 @@
+[
+  {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "ResourcePort",
+    "metadata": {
+      "name": "khr-native-live-target-5df65659bd-2xjxg-port",
+      "namespace": "khr-runtime-sandbox",
+      "labels": {
+        "karl.io/host-id": "karl-host-runtime-karl-metal-01",
+        "khr.karl.io/loop-source": "host-runtime-loop",
+        "khr.karl.io/sandbox": "true"
+      }
+    },
+    "spec": {
+      "provider": "khr.native",
+      "shellRef": "khr-runtime-sandbox/Shell/khr-native-live-target-5df65659bd-2xjxg",
+      "cellRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "capabilities": [
+        "cpu.envelope",
+        "memory.envelope"
+      ],
+      "hotplug": {
+        "cpu": false,
+        "memory": false,
+        "disk": false,
+        "network": false
+      },
+      "ports": {
+        "cpu": {
+          "modes": [
+            "envelope",
+            "static"
+          ]
+        },
+        "memory": {
+          "modes": [
+            "envelope",
+            "static"
+          ]
+        }
+      }
+    },
+    "status": {
+      "observedAt": "2026-05-16T21:44:25Z",
+      "phase": "Observed"
+    }
+  },
+  {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "ResourcePort",
+    "metadata": {
+      "name": "khr-runtime-linux-target-86795b9868-q45wk-port",
+      "namespace": "khr-runtime-sandbox",
+      "labels": {
+        "karl.io/host-id": "karl-host-runtime-karl-metal-01",
+        "khr.karl.io/loop-source": "host-runtime-loop",
+        "khr.karl.io/sandbox": "true"
+      }
+    },
+    "spec": {
+      "provider": "khr.native",
+      "shellRef": "khr-runtime-sandbox/Shell/khr-runtime-linux-target-86795b9868-q45wk",
+      "cellRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "capabilities": [
+        "cpu.envelope",
+        "memory.envelope"
+      ],
+      "hotplug": {
+        "cpu": false,
+        "memory": false,
+        "disk": false,
+        "network": false
+      },
+      "ports": {
+        "cpu": {
+          "modes": [
+            "envelope",
+            "static"
+          ]
+        },
+        "memory": {
+          "modes": [
+            "envelope",
+            "static"
+          ]
+        }
+      }
+    },
+    "status": {
+      "observedAt": "2026-05-16T21:44:25Z",
+      "phase": "Observed"
+    }
+  },
+  {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "ResourcePort",
+    "metadata": {
+      "name": "khr-native-live-target-5df65659bd-2xjxg-port",
+      "namespace": "khr-runtime-sandbox",
+      "labels": {
+        "karl.io/host-id": "karl-host-runtime-karl-metal-01",
+        "khr.karl.io/loop-source": "host-runtime-loop",
+        "khr.karl.io/sandbox": "true"
+      }
+    },
+    "spec": {
+      "provider": "khr.native",
+      "shellRef": "khr-runtime-sandbox/Shell/khr-native-live-target-5df65659bd-2xjxg",
+      "cellRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "capabilities": [
+        "cpu.envelope",
+        "memory.envelope"
+      ],
+      "hotplug": {
+        "cpu": false,
+        "memory": false,
+        "disk": false,
+        "network": false
+      },
+      "ports": {
+        "cpu": {
+          "modes": [
+            "envelope",
+            "static"
+          ]
+        },
+        "memory": {
+          "modes": [
+            "envelope",
+            "static"
+          ]
+        }
+      }
+    },
+    "status": {
+      "observedAt": "2026-05-16T21:44:26Z",
+      "phase": "Observed"
+    }
+  },
+  {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "ResourcePort",
+    "metadata": {
+      "name": "khr-runtime-linux-target-86795b9868-q45wk-port",
+      "namespace": "khr-runtime-sandbox",
+      "labels": {
+        "karl.io/host-id": "karl-host-runtime-karl-metal-01",
+        "khr.karl.io/loop-source": "host-runtime-loop",
+        "khr.karl.io/sandbox": "true"
+      }
+    },
+    "spec": {
+      "provider": "khr.native",
+      "shellRef": "khr-runtime-sandbox/Shell/khr-runtime-linux-target-86795b9868-q45wk",
+      "cellRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "capabilities": [
+        "cpu.envelope",
+        "memory.envelope"
+      ],
+      "hotplug": {
+        "cpu": false,
+        "memory": false,
+        "disk": false,
+        "network": false
+      },
+      "ports": {
+        "cpu": {
+          "modes": [
+            "envelope",
+            "static"
+          ]
+        },
+        "memory": {
+          "modes": [
+            "envelope",
+            "static"
+          ]
+        }
+      }
+    },
+    "status": {
+      "observedAt": "2026-05-16T21:44:26Z",
+      "phase": "Observed"
+    }
+  }
+]

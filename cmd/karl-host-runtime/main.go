@@ -45,6 +45,7 @@ func main() {
 	cellRef := flag.String("cell-ref", "khr-runtime-sandbox/Cell/demo", "Cell ref for ResourcePort candidate")
 	portName := flag.String("port-name", "demo-port", "ResourcePort candidate name")
 	resourcePortRef := flag.String("resource-port-ref", "", "cluster ResourcePort ref for resourcelease-dryrun (optional)")
+	observedPortsPath := flag.String("observed-resourceports-json", "", "ResourcePort list from scope-2 observed-json loop evidence (no cluster CR apply)")
 	certRegistryPath := flag.String("cert-registry", "", "KHR-V: certification registry JSON for gated resourcefuture-simulate")
 	flag.Parse()
 
@@ -202,6 +203,13 @@ func main() {
 		if ctx == "" {
 			ctx = resourceport.CurrentKubeContext()
 		}
+		var observedPorts []crdv1alpha1.ResourcePort
+		if *observedPortsPath != "" {
+			observedPorts, err = resourcelease.LoadObservedResourcePortsFromFile(*observedPortsPath)
+			if err != nil {
+				fatal(err)
+			}
+		}
 		res, err := resourcelease.DryRunAgainstResourcePorts(resourcelease.DryRunAgainstPortOptions{
 			Config:          cfg,
 			Lease:           &lease,
@@ -212,6 +220,7 @@ func main() {
 			ResourcePortRef: *resourcePortRef,
 			SandboxDir:      *sandboxDir,
 			BaselineID:      *baselineID,
+			Ports:           observedPorts,
 		})
 		if err != nil {
 			fatal(err)

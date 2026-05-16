@@ -1,0 +1,10 @@
+{
+  "phase": "khr-tp-live-scope3-dryrun-cleanup",
+  "sprint": "KHR-BC",
+  "runId": "committed-scope3-dryrun-khr-bc",
+  "status": "PASS",
+  "crdCleanupPerformed": false,
+  "temporaryArtifactsRemoved": true,
+  "resourceLeaseApplyEnabled": false,
+  "at": "2026-05-16T21:52:40Z"
+}

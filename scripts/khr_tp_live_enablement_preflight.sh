@@ -338,11 +338,26 @@ def latest_scope3_preflight() -> dict[str, Any] | None:
     return None
 
 
+def latest_scope3_dryrun_verify() -> dict[str, Any] | None:
+    base = ROOT / "docs/evidence/khr-tp-live-scope3-dryrun"
+    committed = base / "committed-scope3-dryrun-khr-bc" / "verify-summary.json"
+    if committed.is_file():
+        return load_json(committed)
+    if not base.is_dir():
+        return None
+    for name in sorted(base.iterdir(), reverse=True):
+        v = name / "verify-summary.json"
+        if v.is_file():
+            doc = load_json(v)
+            if doc and doc.get("status") == "PASS":
+                return doc
+    return None
+
+
 scope3_preflight = latest_scope3_preflight()
 scope3_pf_ok = bool(
     scope3_preflight
     and scope3_preflight.get("status") == "PASS"
-    and scope3_preflight.get("resourceLeaseDryRunExecuted") is False
     and scope3_preflight.get("resourceLeaseApplyEnabled") is False
     and scope3_preflight.get("readyForScope3Active") is False
 )
@@ -350,6 +365,26 @@ gate(
     "scope3PreflightEvidence",
     scope3_pf_ok,
     f"runId={scope3_preflight.get('runId') if scope3_preflight else 'none'}",
+)
+
+scope3_dryrun = latest_scope3_dryrun_verify()
+scope3_dryrun_ok = bool(
+    scope3_dryrun
+    and scope3_dryrun.get("status") == "PASS"
+    and scope3_dryrun.get("readyForScope3") == "manual-dryrun-pass"
+    and scope3_dryrun.get("readyForScope3Active") is False
+    and scope3_dryrun.get("readyForScope4") is False
+    and scope3_dryrun.get("dryRunObserved") is True
+    and scope3_dryrun.get("applyObserved") is False
+    and scope3_dryrun.get("noMutation") is True
+    and scope3_dryrun.get("noApply") is True
+    and scope3_dryrun.get("resourceLeaseApplyEnabled") is False
+    and scope3_dryrun.get("cgroupMutationObserved") is False
+)
+gate(
+    "scope3ManualDryRunEvidence",
+    scope3_dryrun_ok,
+    f"runId={scope3_dryrun.get('runId') if scope3_dryrun else 'none'}",
 )
 
 
@@ -396,8 +431,11 @@ else:
     ready2 = False
     ready2_note = "scope-1 evidence required before scope-2 preflight"
 
-if scope3_pf_ok and scope2_loop_ok and scope1_ok:
-    ready3: bool | str = "conditional/manual-preflight-pass"
+if scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
+    ready3: bool | str = "manual-dryrun-pass"
+    ready3_note = "KHR-BC scope-3 manual dry-run evidence PASS; not active; scope-4 blocked"
+elif scope3_pf_ok and scope2_loop_ok and scope1_ok:
+    ready3 = "conditional/manual-preflight-pass"
     ready3_note = "KHR-BB scope-3 preflight PASS; dry-run execution deferred; scope-4 blocked"
 elif scope2_loop_ok and scope1_ok:
     ready3 = False
@@ -406,9 +444,11 @@ else:
     ready3 = False
     ready3_note = "scope-2 manual-loop-pass required before scope-3 preflight"
 
+dry_run_executed = bool(scope3_dryrun_ok)
+
 summary: dict[str, Any] = {
     "phase": "khr-tp-live-enablement-preflight",
-    "sprint": "KHR-BB",
+    "sprint": "KHR-BC",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": CONTRACT,
@@ -433,9 +473,14 @@ summary: dict[str, Any] = {
     "scope2PreflightRunId": scope2_preflight.get("runId") if scope2_preflight else None,
     "scope2LoopRunId": scope2_loop.get("runId") if scope2_loop else None,
     "scope3PreflightRunId": scope3_preflight.get("runId") if scope3_preflight else None,
+    "scope3DryRunRunId": scope3_dryrun.get("runId") if scope3_dryrun else None,
     "readyForScope3Note": ready3_note,
-    "resourceLeaseDryRunExecuted": scope3_preflight.get("resourceLeaseDryRunExecuted", False) if scope3_preflight else False,
-    "resourceLeaseApplyEnabled": scope3_preflight.get("resourceLeaseApplyEnabled", False) if scope3_preflight else False,
+    "resourceLeaseDryRunExecuted": dry_run_executed,
+    "dryRunObserved": dry_run_executed,
+    "applyObserved": False,
+    "noMutation": scope3_dryrun.get("noMutation", True) if scope3_dryrun_ok else True,
+    "resourceLeaseApplyEnabled": False,
+    "cgroupMutationObserved": False,
     "resourcePortLoopEnabled": scope2_preflight.get("resourcePortLoopEnabled", False) if scope2_preflight else False,
     "sandboxApplyEnabled": scope2_preflight.get("sandboxApplyEnabled", False) if scope2_preflight else False,
     "gates": gates,
@@ -449,7 +494,7 @@ summary: dict[str, Any] = {
         "scope0": "read-only federation",
         "scope1": "runtime sandbox deploy (manual)",
         "scope2": "ResourcePort manual loop (manual-loop-pass when evidenced; not active)",
-        "scope3": "ResourceLease dry-run preflight (conditional/manual; not executed)",
+        "scope3": "ResourceLease manual dry-run (manual-dryrun-pass when evidenced; not active)",
         "scope4": "guarded apply sandbox (blocked)",
     },
     "rdpgwEvidenceTrust": rdpgw_trust,

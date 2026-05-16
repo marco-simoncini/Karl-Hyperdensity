@@ -1,0 +1,39 @@
+{
+  "mode": "resourcelease-dryrun",
+  "allowed": true,
+  "blocked": false,
+  "dryRunDecision": "allowed",
+  "reason": "dry-run only: no cgroup writes performed",
+  "baseline": {
+    "id": "sandbox-default",
+    "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/sandbox-work",
+    "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/sandbox-work/apply-marker.txt",
+    "extra": {
+      "source": "karl-host-runtime"
+    }
+  },
+  "rollbackPlan": [
+    "revert cgroup cpu.max/memory.max to prior values captured pre-apply"
+  ],
+  "verificationPlan": [
+    "read back cgroup limits",
+    "compare cgroup.events pressure",
+    "confirm process RSS/CPU throttle metrics"
+  ],
+  "rollbackPlanRef": "khr-runtime-sandbox/RollbackPlan/khr-sandbox-rollback",
+  "rollbackPlanStatus": "planned",
+  "verificationPlanRef": "sandbox/VerificationPlan/resourcelease-dryrun",
+  "verificationPlanStatus": "planned",
+  "sourceResourcePortRef": "cluster/ResourcePort/khr-native-live-target-5df65659bd-2xjxg-port",
+  "leaseKind": "transfer",
+  "resource": "cpu",
+  "requestedAmount": {
+    "milliCpu": 250
+  },
+  "clusterContext": "karl-metal-01@ovh",
+  "namespace": "khr-runtime-sandbox",
+  "noMutation": true,
+  "noApply": true,
+  "matchedResourcePort": "khr-native-live-target-5df65659bd-2xjxg-port",
+  "resourcePortCheck": "compatible"
+}

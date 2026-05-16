@@ -1,0 +1,2 @@
+[khr_tp_live_scope3] runId=committed-scope3-dryrun-khr-bc mode=resourcelease-dryrun port=khr-native-live-target-5df65659bd-2xjxg-port timeoutSec=90
+[khr_tp_live_scope3] PASS dryrun-summary=/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/dryrun-summary.json decision=allowed

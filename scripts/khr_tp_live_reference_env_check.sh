@@ -289,7 +289,7 @@ elif scope3_base.is_dir():
 scope3_pf_ok = bool(
     scope3_pf
     and scope3_pf.get("status") == "PASS"
-    and scope3_pf.get("resourceLeaseDryRunExecuted") is False
+    and scope3_pf.get("resourceLeaseApplyEnabled") is False
     and scope3_pf.get("readyForScope3Active") is False
 )
 record(
@@ -298,8 +298,38 @@ record(
     f"runId={scope3_pf.get('runId') if scope3_pf else 'none'}",
 )
 
+scope3_dryrun = None
+scope3_dryrun_base = ROOT / "docs/evidence/khr-tp-live-scope3-dryrun"
+committed_scope3_dry = scope3_dryrun_base / "committed-scope3-dryrun-khr-bc" / "verify-summary.json"
+if committed_scope3_dry.is_file():
+    scope3_dryrun = load(committed_scope3_dry)
+elif scope3_dryrun_base.is_dir():
+    for child in sorted(scope3_dryrun_base.iterdir(), reverse=True):
+        v = child / "verify-summary.json"
+        if v.is_file():
+            scope3_dryrun = load(v)
+            if scope3_dryrun:
+                break
+scope3_dryrun_ok = bool(
+    scope3_dryrun
+    and scope3_dryrun.get("status") == "PASS"
+    and scope3_dryrun.get("readyForScope3") == "manual-dryrun-pass"
+    and scope3_dryrun.get("readyForScope3Active") is False
+    and scope3_dryrun.get("dryRunObserved") is True
+    and scope3_dryrun.get("applyObserved") is False
+    and scope3_dryrun.get("noMutation") is True
+    and scope3_dryrun.get("noApply") is True
+)
+record(
+    "scope3ManualDryRunEvidence",
+    scope3_dryrun_ok,
+    f"runId={scope3_dryrun.get('runId') if scope3_dryrun else 'none'}",
+)
+
 ready_for_scope3: bool | str = False
-if scope3_pf_ok:
+if scope3_dryrun_ok:
+    ready_for_scope3 = "manual-dryrun-pass"
+elif scope3_pf_ok:
     ready_for_scope3 = "conditional/manual-preflight-pass"
 
 dash_summary = (dash or {}).get("tpReadinessSummary", {})
@@ -310,10 +340,14 @@ record(
         and dash_summary.get("readyForScope1") is True
         and dash_summary.get("readyForScope2State") == "manual-loop-pass"
         and dash_summary.get("readyForScope3") is False
-        and dash_summary.get("readyForScope3State") == "conditional/manual-preflight-pass"
+        and dash_summary.get("readyForScope3State") == "manual-dryrun-pass"
         and dash_summary.get("readyForScope3Active") is False
         and dash_summary.get("readyForScope4") is False
-        and dash_summary.get("resourceLeaseDryRunExecuted") is False
+        and dash_summary.get("dryRunObserved") is True
+        and dash_summary.get("applyObserved") is False
+        and dash_summary.get("noMutation") is True
+        and dash_summary.get("resourceLeaseDryRunExecuted") is True
+        and dash_summary.get("resourceLeaseApplyEnabled") is False
     ),
     str(dash_fixture),
 )
@@ -321,7 +355,7 @@ record(
 status = "PASS" if not errors else "FAIL"
 summary = {
     "phase": "khr-tp-live-reference-env",
-    "sprint": "KHR-BB",
+    "sprint": "KHR-BC",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": "khr-tp-contract-v1",
@@ -338,8 +372,12 @@ summary = {
     "readyForScope3": ready_for_scope3,
     "readyForScope3Active": False,
     "readyForScope4": False,
-    "resourceLeaseDryRunExecuted": scope3_pf.get("resourceLeaseDryRunExecuted", False) if scope3_pf else False,
-    "resourceLeaseApplyEnabled": scope3_pf.get("resourceLeaseApplyEnabled", False) if scope3_pf else False,
+    "resourceLeaseDryRunExecuted": scope3_dryrun_ok,
+    "dryRunObserved": scope3_dryrun_ok,
+    "applyObserved": False,
+    "noMutation": scope3_dryrun.get("noMutation", True) if scope3_dryrun_ok else True,
+    "resourceLeaseApplyEnabled": False,
+    "cgroupMutationObserved": False,
     "resourcePortObservationAvailable": scope2_loop_ok,
     "resourcePortLoopEnabled": scope2_loop.get("resourcePortLoopEnabled", False) if scope2_loop else (
         scope2_pf.get("resourcePortLoopEnabled", False) if scope2_pf else False
