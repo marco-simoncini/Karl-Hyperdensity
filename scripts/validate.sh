@@ -301,6 +301,10 @@ if [[ -x "${ROOT_DIR}/scripts/khr_runtime_observation_federation_check.sh" ]]; t
   "${ROOT_DIR}/scripts/khr_runtime_observation_federation_check.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh" ]]; then
+  "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh"
+fi
+
 schema_count="$(ls -1 schemas/*.json | wc -l | tr -d ' ')"
 example_count="$(ls -1 examples/*.json | wc -l | tr -d ' ')"
 doc_count="${#required_files[@]}"
