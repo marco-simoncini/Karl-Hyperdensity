@@ -50,6 +50,7 @@ required_files=(
   "docs/khr/KARL_INFRASTRUCTURE_SCOPE.md"
   "docs/khr/KHR_RELEASE_READINESS_MAP.md"
   "docs/khr/TECHNICAL_PREVIEW_READINESS.md"
+  "docs/khr/TECHNICAL_PREVIEW_PACKAGE.md"
   "docs/ingest/KHR_EVIDENCE_INGEST_CONTRACT.md"
   "docs/ingest/EVIDENCEBUNDLE_CRD.md"
   "docs/ingest/EVIDENCEINGESTREQUEST_CRD.md"
@@ -256,6 +257,10 @@ fi
 
 if [[ -x "${ROOT_DIR}/scripts/guard_khr_docs_scope.sh" ]]; then
   "${ROOT_DIR}/scripts/guard_khr_docs_scope.sh"
+fi
+
+if [[ -x "${ROOT_DIR}/scripts/khr_tp_package_check.sh" ]]; then
+  "${ROOT_DIR}/scripts/khr_tp_package_check.sh"
 fi
 
 schema_count="$(ls -1 schemas/*.json | wc -l | tr -d ' ')"

@@ -22,6 +22,10 @@ rg_excludes=(
   --glob "!**/TECHNICAL_PREVIEW_READINESS_SUMMARY.md"
   --glob "!**/TECHNICAL_PREVIEW_READINESS_OBSERVATION.md"
   --glob "!**/KHR_TECHNICAL_PREVIEW_PROFILE.md"
+  --glob "!**/TECHNICAL_PREVIEW_PACKAGE.md"
+  --glob "!**/TECHNICAL_PREVIEW_DASHBOARD_GUIDE.md"
+  --glob "!**/TECHNICAL_PREVIEW_INVENTORY_GUIDE.md"
+  --glob "!**/TECHNICAL_PREVIEW_ISO_GUIDE.md"
 )
 
 line_allowed() {

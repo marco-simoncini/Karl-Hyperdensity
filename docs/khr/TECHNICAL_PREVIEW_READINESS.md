@@ -188,7 +188,7 @@ KHR_RUNTIME_SANDBOX_LIVE=1 ./scripts/khr_runtime_sandbox_execute.sh
 
 | Repo | Document |
 |------|----------|
-| Karl-Hyperdensity | This file (canonical scorecard) |
+| Karl-Hyperdensity | This file (canonical scorecard); package: `TECHNICAL_PREVIEW_PACKAGE.md` |
 | Karl-Dashboard | `docs/khr/TECHNICAL_PREVIEW_READINESS_SUMMARY.md` |
 | Karl-Inventory | `docs/khr/TECHNICAL_PREVIEW_READINESS_OBSERVATION.md` |
 | Karl-OS-ISO | `docs/khr/KHR_TECHNICAL_PREVIEW_PROFILE.md` |
