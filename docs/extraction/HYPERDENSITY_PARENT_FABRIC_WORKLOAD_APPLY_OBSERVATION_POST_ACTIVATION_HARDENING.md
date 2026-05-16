@@ -120,7 +120,7 @@ The **next boundary is not** automatic broad `ObservationWiredV1`. Acceptable fu
 - Explicit broad-observation policy sprint (separate criteria).
 - Hyperdensity `workload_helpers` copy boundary review (still **`copy-deferred`**).
 
-Do **not** treat apply activation as permission to wire resource_exchange, rollback, or VM observation via apply flags.
+**Sprint 77** closes migration boundary — see `MIGRATION_BOUNDARY.md`. Do **not** treat apply activation as permission to wire resource_exchange, rollback, or VM observation via apply flags.
 
 ---
 

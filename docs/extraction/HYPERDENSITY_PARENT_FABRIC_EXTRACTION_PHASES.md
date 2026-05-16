@@ -66,6 +66,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 76:** **Apply post-activation hardening** — 8×4 under activation; flags unchanged; broad observation **false**.
 
+**Sprint 77:** **Apply observation migration boundary** — track Sprint 65–76 complete; broad observation **false**; next surfaces separate.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

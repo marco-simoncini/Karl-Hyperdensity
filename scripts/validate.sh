@@ -137,6 +137,8 @@ required_files=(
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_CANDIDATE_RUNTIME_FLIP.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_ACTIVATION.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_POST_ACTIVATION_HARDENING.md"
+  "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_MIGRATION_BOUNDARY.md"
+  "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_OBSERVATION_NEXT_SURFACE_DECISION.md"
   "pkg/hyperdensity/contractkit/go.mod"
   "pkg/hyperdensity/contractkit/testdata/dashboard/hyperdensity_parity_manifest_m1_m7.json"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"

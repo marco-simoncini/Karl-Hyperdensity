@@ -111,7 +111,7 @@ Both flags **true** → **candidate** path active in all four apply observation 
 
 ## 10. Next hardening step
 
-**Sprint 76** post-activation hardening (8×4 under activation state). Next boundary is **not** automatic broad observation — see `POST_ACTIVATION_HARDENING.md`.
+**Sprint 76** post-activation hardening. **Sprint 77** migration boundary closed — see `MIGRATION_BOUNDARY.md`.
 
 ---
 

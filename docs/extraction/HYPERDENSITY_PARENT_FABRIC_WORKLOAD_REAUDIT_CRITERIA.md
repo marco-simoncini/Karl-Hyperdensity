@@ -53,8 +53,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **74** | Candidate-runtime staging flip (`CandidateUsed=true`, Wired false) | `copy-deferred` (full file) |
 | **75** | Apply observation activation (`Wired=true`, candidate branch active) | `copy-deferred` (full file) |
 | **76** | Post-activation hardening 8×4 | `copy-deferred` (full file) |
+| **77** | Migration boundary; apply track complete | `copy-deferred` (full file) |
 
-Re-audit for remaining functions unchanged. Sprint 57–76 do **not** complete general observation wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–76).
+Re-audit for remaining functions unchanged. Sprint 57–77: apply track complete; **general** observation wiring incomplete. **`ObservationWiredV1=false` is deliberate** (Sprint 64–77).
 
 ## Related
 
