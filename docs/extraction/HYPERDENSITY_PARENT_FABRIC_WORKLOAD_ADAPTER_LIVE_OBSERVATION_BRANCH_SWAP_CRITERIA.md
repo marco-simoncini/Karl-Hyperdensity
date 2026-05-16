@@ -2,7 +2,7 @@
 
 ## Summary
 
-Criteria before changing runtime wrapper **true branch** from legacy delegate to **semantic candidate** helpers. **`branchSwapAllowed`** remains **`false`** until a **dedicated branch-swap sprint** (proposed Sprint 63).
+**Sprint 63** executed the dedicated branch swap. Criteria below were satisfied in Sprint 62; swap applied in Sprint 63.
 
 ---
 
@@ -23,14 +23,14 @@ Criteria before changing runtime wrapper **true branch** from legacy delegate to
 
 ---
 
-## Sprint 62 status
+## Sprint 62–63 status
 
-| Item | Status |
-|------|--------|
-| Candidate present | **Yes** |
-| Candidate runtime used | **No** |
-| Branch swap allowed | **No** |
-| Runtime true branch | **Legacy-equivalent** |
+| Item | Sprint 62 | Sprint 63 |
+|------|-----------|-----------|
+| Candidate present | **Yes** | **Yes** |
+| Candidate runtime used | **No** | **Yes** |
+| Branch swap allowed | **No** | **Yes** |
+| Runtime true branch | Legacy delegate | **Candidate** (≡ legacy) |
 
 ---
 

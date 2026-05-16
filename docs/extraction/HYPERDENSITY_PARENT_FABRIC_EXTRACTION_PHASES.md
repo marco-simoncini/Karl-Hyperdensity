@@ -38,6 +38,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 62:** **Semantic candidate** shadow (10 cases); runtime wrappers unchanged; branch swap **not** allowed.
 
+**Sprint 63:** **Branch swap** — wrapper true branch uses candidate; `live.go` scope only; broad observation **false**.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

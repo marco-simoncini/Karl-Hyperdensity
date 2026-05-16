@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 62** introduces a **semantic candidate** for live pod observation in Karl-Dashboard — **shadow/test only**. **`LiveObservationWiredV1 = true`** remains; **runtime wrappers** still delegate to **legacy helpers** in the true branch. The candidate is **not** connected to production wrapper paths.
+**Sprint 62** introduces a **semantic candidate** for live pod observation. **Sprint 63** connects the candidate to wrapper **true branch** in `observation_wiring_v1.go`. **`live.go`** still calls wrappers only. Broad observation remains **false**.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 61** sets **`hyperdensityWorkloadAdapterLiveObservationWiredV1 = true`** for staged wrappers in **`hyperdensity_parent_fabric_live.go`**. The **true branch remains legacy-equivalent** (same delegate helpers). **Sprint 62** adds semantic candidate shadow only — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_SEMANTIC_PROTOTYPE.md`**. **`ObservationWiredV1`** and **`ProductionWiredV1`** stay **`false`**.
+**Sprint 61** sets **`hyperdensityWorkloadAdapterLiveObservationWiredV1 = true`** for staged wrappers in **`hyperdensity_parent_fabric_live.go`**. The **true branch remains legacy-equivalent** (same delegate helpers). **Sprint 62** semantic candidate shadow. **Sprint 63** branch swap to candidate — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_BRANCH_SWAP.md`**. **`ObservationWiredV1`** and **`ProductionWiredV1`** stay **`false`**.
 
 ---
 
