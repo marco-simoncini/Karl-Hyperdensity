@@ -30,6 +30,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 58:** **Pilot observation hardening** (end-to-end tests + live inventory proposal); **no new wiring**.
 
+**Sprint 59:** **Live observation staged** in `live.go` via wrappers; **`LiveObservationWiredV1=false`** (legacy fallback).
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

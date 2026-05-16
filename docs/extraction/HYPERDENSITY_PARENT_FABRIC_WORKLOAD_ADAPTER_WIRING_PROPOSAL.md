@@ -2,7 +2,7 @@
 
 ## Status
 
-**Sprint 55 was proposal-only.** **Sprint 56** executes **path-only** wiring. **Sprint 57** executes **pilot-only** observed-state wiring. **Sprint 58** hardens pilot observation + live proposal only (no new wiring). General `ProductionWiredV1` remains **false**. — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_PATH_WIRING.md`**. **`hyperdensityWorkloadAdapterProductionWiredV1`** remains **`false`** (sub-flag `PathWiredV1` only). **`hyperdensityWorkloadAdapterProductionWiredV1`** remains **`false`**. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
+**Sprint 55 was proposal-only.** **Sprint 56** executes **path-only** wiring. **Sprint 57** executes **pilot-only** observed-state wiring. **Sprint 58** hardens pilot observation + live proposal only. **Sprint 59** stages live observation wrappers (flag false). General `ProductionWiredV1` remains **false**. — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_PATH_WIRING.md`**. **`hyperdensityWorkloadAdapterProductionWiredV1`** remains **`false`** (sub-flag `PathWiredV1` only). **`hyperdensityWorkloadAdapterProductionWiredV1`** remains **`false`**. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
 
 **Sprint 54 shadow PASS does not authorize automatic wiring.** A dedicated **wiring sprint** with explicit approval is required.
 

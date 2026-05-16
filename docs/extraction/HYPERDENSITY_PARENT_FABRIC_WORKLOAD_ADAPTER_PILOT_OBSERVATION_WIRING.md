@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 57** enables **pilot-only** observed-state wiring: `hyperdensity_parent_fabric_pilot.go` calls **`hyperdensityWorkloadPilotObservedStateV1`** when **`hyperdensityWorkloadAdapterPilotObservationWiredV1 = true`**. **Sprint 58** hardens this wiring (tests + docs) with **no new production wiring** — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_PILOT_OBSERVATION_HARDENING.md`**. **General** observation wiring remains **`false`**. **Sprint 56** path wiring unchanged. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
+**Sprint 57** enables **pilot-only** observed-state wiring: `hyperdensity_parent_fabric_pilot.go` calls **`hyperdensityWorkloadPilotObservedStateV1`** when **`hyperdensityWorkloadAdapterPilotObservationWiredV1 = true`**. **Sprint 58** hardens this wiring (tests + docs) — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_PILOT_OBSERVATION_HARDENING.md`**. **Sprint 59** does not change pilot wiring. **General** observation wiring remains **`false`**. **Sprint 56** path wiring unchanged. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
 
 ---
 

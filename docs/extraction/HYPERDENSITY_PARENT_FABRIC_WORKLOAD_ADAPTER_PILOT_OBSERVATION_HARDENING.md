@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 58** hardens **Sprint 57** pilot-only observation wiring with stronger end-to-end tests and documentation. **No new production wiring.** Live observation remains **legacy** in `hyperdensity_parent_fabric_live.go`. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
+**Sprint 58** hardens **Sprint 57** pilot-only observation wiring with stronger end-to-end tests and documentation. **Sprint 59** stages live observation wrappers (flag false). Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
 
 ---
 
