@@ -18,6 +18,10 @@ rg_excludes=(
   --glob "!${SELF}"
   --glob "!scripts/guard_khr_iso_boundaries.sh"
   --glob "!**/KHR_RELEASE_READINESS_MAP.md"
+  --glob "!**/TECHNICAL_PREVIEW_READINESS.md"
+  --glob "!**/TECHNICAL_PREVIEW_READINESS_SUMMARY.md"
+  --glob "!**/TECHNICAL_PREVIEW_READINESS_OBSERVATION.md"
+  --glob "!**/KHR_TECHNICAL_PREVIEW_PROFILE.md"
 )
 
 line_allowed() {
@@ -40,6 +44,11 @@ line_allowed() {
   [[ "${line}" == *"Sole datacenter"* ]] && return 0
   [[ "${line}" == *"datacenter / bare metal"* ]] && return 0
   [[ "${line}" == *"on-prem"* ]] && return 0
+  [[ "${line}" == *"NOT production ready"* ]] && return 0
+  [[ "${line}" == *"not production ready"* ]] && return 0
+  [[ "${line}" == *"productionReady"* && "${line}" == *"false"* ]] && return 0
+  [[ "${line}" == *"Hidden production enable"* ]] && return 0
+  [[ "${line}" == *"No hidden production"* ]] && return 0
   shopt -u nocasematch
   return 1
 }

@@ -49,6 +49,7 @@ required_files=(
   "docs/khr/KHR_EVIDENCE_ARTIFACT_MANIFEST.md"
   "docs/khr/KARL_INFRASTRUCTURE_SCOPE.md"
   "docs/khr/KHR_RELEASE_READINESS_MAP.md"
+  "docs/khr/TECHNICAL_PREVIEW_READINESS.md"
   "docs/ingest/KHR_EVIDENCE_INGEST_CONTRACT.md"
   "docs/ingest/EVIDENCEBUNDLE_CRD.md"
   "docs/ingest/EVIDENCEINGESTREQUEST_CRD.md"

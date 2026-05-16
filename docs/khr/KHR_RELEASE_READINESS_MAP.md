@@ -66,7 +66,7 @@ Readiness labels: **Done (sandbox)** | **Preview** | **Gap** | **Blocked**
 | Policy gates + approval workflow (evidence) | **Done** |
 | Operator-facing readiness map | **This doc** |
 | Limited apply in named sandbox only | **Done** |
-| Published technical preview boundary doc per repo | **Gap** (partial) |
+| Published technical preview boundary doc per repo | **KHR-AA** (`TECHNICAL_PREVIEW_READINESS.md` + per-repo TP docs) |
 
 ### Beta (future)
 

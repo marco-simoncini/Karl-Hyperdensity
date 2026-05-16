@@ -44,7 +44,7 @@
 
 ## KHR program components (reference)
 
-See `KHR_RELEASE_READINESS_MAP.md` for readiness by area: API foundation, native-live lane, certification, policy gates, operator approval, control graph, provenance, and cross-repo status (Dashboard, Inventory, ISO).
+See `TECHNICAL_PREVIEW_READINESS.md` (TP scorecard) and `KHR_RELEASE_READINESS_MAP.md` for readiness by area: API foundation, native-live lane, certification, policy gates, operator approval, control graph, provenance, and cross-repo status (Dashboard, Inventory, ISO).
 
 ---
 
