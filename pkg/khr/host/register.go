@@ -7,7 +7,7 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/cgroup"
 )
 
-const RuntimeVersion = "0.0.1-khr-f"
+const RuntimeVersion = "0.0.2-khr-i"
 
 // Registration is the host identity reported to control plane (mock/local only).
 type Registration struct {

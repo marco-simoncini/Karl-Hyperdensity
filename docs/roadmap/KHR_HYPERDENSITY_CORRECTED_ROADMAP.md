@@ -18,12 +18,13 @@ This roadmap **supersedes sequencing intent** in `docs/roadmap/KHR_HYPERDENSITY_
 
 ---
 
-## Host runtime milestone (KHR-F / G) — complete
+## Host runtime milestone (KHR-F / G / I)
 
 | Item | State |
 |------|-------|
 | `karl-host-runtime` Linux MVP skeleton | Shipped (KHR-F) |
-| Sandbox execution on `karl-metal-01@ovh` | **PASS** — evidence [`docs/evidence/khr-runtime-sandbox/summary.json`](../evidence/khr-runtime-sandbox/summary.json) |
+| Sandbox execution on `karl-metal-01@ovh` | **PASS** — [`docs/evidence/khr-runtime-sandbox/summary.json`](../evidence/khr-runtime-sandbox/summary.json) |
+| Host CR + status JSON (`runtime.karl.io/Host`) | Shipped (KHR-I) — evidence [`docs/evidence/khr-host-registration/summary.json`](../evidence/khr-host-registration/summary.json) |
 | Production host mutation | **Unsupported** |
 | ISO `karl-host-runtime` | Preview / **disabled** by default |
 
@@ -33,8 +34,8 @@ This roadmap **supersedes sequencing intent** in `docs/roadmap/KHR_HYPERDENSITY_
 
 | Step | Outcome |
 |------|---------|
-| **H+1** | Host registration **CR + status** (cluster contract; sandbox namespace first) |
-| **H+2** | **ResourcePort controller loop** (observe/report candidates; no production apply) |
+| **H+2** | **ResourcePort controller loop** (observe/report candidates; sandbox namespace only; no production apply) |
+| **H+3** | Host status **cluster apply** + heartbeat (sandbox only; behind explicit gate) |
 | M1 | Golden JSON: Dashboard parent-fabric summary → Hyperdensity `contracts` testdata |
 | M2 | `pkg/hyperdensity/blockers` exported IDs == Dashboard gate strings |
 | M3 | First pure merge function ported with `_test.go` from Dashboard |

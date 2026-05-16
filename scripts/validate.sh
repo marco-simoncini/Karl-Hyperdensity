@@ -227,6 +227,10 @@ if [[ -x "${ROOT_DIR}/scripts/validate_khr_runtime_sandbox.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_khr_runtime_sandbox.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/validate_host_schema.sh" ]]; then
+  "${ROOT_DIR}/scripts/validate_host_schema.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/validate_crds.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_crds.sh"
 fi

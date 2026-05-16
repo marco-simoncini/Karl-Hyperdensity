@@ -14,7 +14,8 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "register-host", "register-host|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
+	mode := flag.String("mode", "register-host", "register-host|host-status|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
+	nodeName := flag.String("node-name", "", "Kubernetes node name for host-status (default: hostname)")
 	configPath := flag.String("config", "", "path to KarlHostRuntimeConfig YAML/JSON")
 	leasePath := flag.String("lease-input", "", "ResourceLease JSON for dry-run/apply")
 	portPath := flag.String("resource-port-input", "", "ResourcePort JSON for dry-run/apply")
@@ -53,6 +54,13 @@ func main() {
 	switch *mode {
 	case "register-host":
 		emit(host.RegisterHost(cfg))
+	case "host-status":
+		ports := []crdv1alpha1.ObjectRef{{
+			Name:      *portName,
+			Namespace: *namespace,
+		}}
+		flightrecorder.Record("host-status", "host registration status", "")
+		emit(host.BuildHostStatus(cfg, *nodeName, ports))
 	case "report-capabilities":
 		emit(host.ReportCapabilities(cfg))
 	case "emit-resourceport":

@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   name: hosts.runtime.karl.io
   labels:
-    karl.io/contract-track: khr-v1alpha1
+    karl.io/contract-track: khr-v1alpha1-host-registration
 spec:
   group: runtime.karl.io
   scope: Cluster
@@ -26,7 +26,16 @@ spec:
       additionalPrinterColumns:
         - name: Node
           type: string
-          jsonPath: .spec.kubernetesNodeName
+          jsonPath: .spec.nodeName
+        - name: Mode
+          type: string
+          jsonPath: .spec.runtimeMode
+        - name: Phase
+          type: string
+          jsonPath: .status.phase
+        - name: Safety
+          type: string
+          jsonPath: .status.safetyMode
       schema:
         openAPIV3Schema:
           type: object
@@ -36,29 +45,31 @@ spec:
             spec:
               type: object
               required:
-                - kubernetesNodeName
+                - hostId
+                - nodeName
+                - provider
+                - runtimeMode
               properties:
-                kubernetesNodeName:
-                  description: Associated Kubernetes Node name (control-plane view).
+                hostId:
+                  description: Stable host identity (KHR agent / registration).
                   type: string
-                hostPoolRefs:
-                  type: array
-                  items:
-                    type: object
-                    required:
-                      - name
-                    properties:
-                      name:
-                        type: string
-                khr:
-                  description: KHR agent identity and version (future agent populates status).
+                nodeName:
+                  description: Kubernetes node name this host maps to.
+                  type: string
+                provider:
+                  description: Runtime provider binding (e.g. khr.native).
+                  type: string
+                runtimeMode:
+                  description: Host runtime posture on the cluster.
+                  type: string
+                  enum:
+                    - sandbox
+                    - preview
+                    - disabled
+                labels:
                   type: object
-                  properties:
-                    expectedVersion:
-                      type: string
-                hardwareProfile:
-                  type: object
-                  x-kubernetes-preserve-unknown-fields: true
+                  additionalProperties:
+                    type: string
                 taints:
                   type: array
                   items:
@@ -70,6 +81,49 @@ spec:
                         type: string
                       effect:
                         type: string
+                kubernetesNodeName:
+                  description: Deprecated alias for nodeName (compatibility).
+                  type: string
             status:
               type: object
-              x-kubernetes-preserve-unknown-fields: true
+              properties:
+                phase:
+                  type: string
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                      reason:
+                        type: string
+                      message:
+                        type: string
+                      lastTransitionTime:
+                        type: string
+                capabilities:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                observedResourcePorts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      namespace:
+                        type: string
+                lastHeartbeatTime:
+                  type: string
+                  format: date-time
+                runtimeVersion:
+                  type: string
+                safetyMode:
+                  type: string
+                  enum:
+                    - sandbox
+                    - preview
+                    - production-blocked

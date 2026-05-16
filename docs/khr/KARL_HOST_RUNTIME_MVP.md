@@ -5,7 +5,24 @@
 | **Binary** | `karl-host-runtime` |
 | **Status** | Preview / sandbox only — **production unsupported** |
 | **ISO** | Packaged disabled — see Karl-OS-ISO `KHR_HOST_RUNTIME_PREVIEW.md` |
-| **Cluster proof** | **PASS** on `karl-metal-01@ovh` (KHR-G sandbox) |
+| **Cluster proof** | **PASS** on `karl-metal-01@ovh` (KHR-G sandbox, KHR-I host status) |
+| **Host contract** | `docs/khr/HOST_CONTRACT.md` |
+
+---
+
+## Host registration status (KHR-I)
+
+```bash
+go run ./cmd/karl-host-runtime -mode=host-status \
+  -config=examples/khr/runtime-sandbox/karl-host-runtime-config-default.yaml \
+  -node-name=karl-metal-01
+```
+
+| Item | Value |
+|------|-------|
+| CRD | `runtime.karl.io/Host` (cluster) |
+| Evidence | [`docs/evidence/khr-host-registration/summary.json`](../evidence/khr-host-registration/summary.json) |
+| Apply to cluster | **No** — JSON generation only; no controller |
 
 ---
 
@@ -31,12 +48,13 @@ Real cluster execution (not ISO provision):
 Host-side daemon skeleton for KHR Linux MVP:
 
 1. Register host identity (local JSON, no kube apply)
-2. Report capabilities (cgroup v2, runtime providers)
-3. Emit **ResourcePort** candidate documents
-4. **Dry-run** ResourceLease (reuses `pkg/khr/resourcelease`)
-5. **Guarded apply** — sandbox marker file only when `sandboxApplyEnabled: true`
-6. **Rollback baseline** for sandbox marker restore
-7. **Flight recorder** — in-memory event trace
+2. Emit **Host** status JSON (`-mode=host-status`) — sandbox/read-only
+3. Report capabilities (cgroup v2, runtime providers)
+4. Emit **ResourcePort** candidate documents
+5. **Dry-run** ResourceLease (reuses `pkg/khr/resourcelease`)
+6. **Guarded apply** — sandbox marker file only when `sandboxApplyEnabled: true`
+7. **Rollback baseline** for sandbox marker restore
+8. **Flight recorder** — in-memory event trace
 
 ---
 
@@ -81,11 +99,11 @@ go run ./cmd/karl-host-runtime -mode=dry-run-lease -config=... \
 
 ---
 
-## Roadmap — next engineering steps (post KHR-G)
+## Roadmap — next engineering steps (post KHR-I)
 
 | Step | Outcome |
 |------|---------|
-| **H+1** | Host registration **CR + status** (cluster-visible, read-only contract first) |
+| **H+1** | Host CR + local status generation (**done** KHR-I); optional cluster apply behind flag |
 | **H+2** | **ResourcePort controller loop** (observe → reconcile candidates; sandbox namespace only) |
 | **H+3** | ResourceLease apply gate integration with controller (still no production mutation) |
 
