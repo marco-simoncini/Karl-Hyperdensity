@@ -31,8 +31,9 @@ hyperdensityWorkloadAdapterApplyObservationWiredV1 = true
 
 ## Pre-flip checklist
 
-- [ ] Sprint 65 proposal + criteria merged (this document).
-- [ ] Shadow matrix implemented and green.
+- [x] Sprint 65 proposal + criteria merged (this document).
+- [x] Sprint 66 shadow matrix implemented and green (candidate runtime **not** used).
+- [ ] Dedicated wiring sprint before `ApplyObservationWiredV1 = true`.
 - [ ] `audit_workload_apply_observation.sh` reports zero forbidden patterns.
 - [ ] Golden `applyObservationWired: false` updated only when flip sprint approved.
 - [ ] Hyperdensity docs updated; no Dashboard `parentfabric` import.

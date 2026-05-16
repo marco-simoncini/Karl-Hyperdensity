@@ -42,8 +42,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **63** | Branch swap: wrapper true branch → candidate; scoped to live | `copy-deferred` (full file) |
 | **64** | Observation re-audit; `ObservationWiredV1=false` policy | `copy-deferred` (full file) |
 | **65** | Apply-observation proposal + criteria; no `apply.go` wiring | `copy-deferred` (full file) |
+| **66** | Apply-observation shadow matrix; candidate not runtime-used | `copy-deferred` (full file) |
 
-Re-audit for remaining functions unchanged. Sprint 57–65 do **not** complete general observation wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–65).
+Re-audit for remaining functions unchanged. Sprint 57–66 do **not** complete general observation wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–66).
 
 ## Related
 

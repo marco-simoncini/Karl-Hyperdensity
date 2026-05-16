@@ -36,7 +36,8 @@ This is **deliberate policy**, not incomplete work by mistake.
 | `ObservationWiredV1` | **`false`** |
 | `ProductionWiredV1` | **`false`** |
 | `ApplyObservationWiredV1` | **`false`** (Sprint 65 placeholder) |
-| `apply.go` wiring | **None** (Sprint 65 proposal only) |
+| `apply.go` wiring | **None** (Sprint 65–66 proposal + shadow only) |
+| Apply shadow ready | **Yes** (Sprint 66; runtime used **false**) |
 
 ## Related
 
