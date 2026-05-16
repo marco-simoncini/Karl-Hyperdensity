@@ -66,3 +66,10 @@ Classifies observation surfaces **after** apply track completion (Sprint 77) and
 - `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_BROAD_OBSERVATION_DECISION.md`
 - `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_RESOURCE_EXCHANGE_MIGRATION_BOUNDARY.md`
 - `HYPERDENSITY_KHR_ROADMAP_TRANSITION_NOTE.md`
+
+
+---
+
+## Sprint 88 (KHR architecture memory)
+
+Sprint 88 canonizes KHR/KARL architecture memory, storage semantics, and network/OVN semantics. No runtime/adapter changes. KubeVirt remains compatibility provider and public-cloud fallback. See HYPERDENSITY_KHR_ARCHITECTURE_MEMORY.md and related Sprint 88 docs.
