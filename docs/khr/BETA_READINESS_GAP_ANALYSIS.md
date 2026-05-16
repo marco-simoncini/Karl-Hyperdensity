@@ -33,7 +33,8 @@ Full machine-readable inventory: `./scripts/khr_contract_inventory.sh` → `docs
 | Host | `runtime.karl.io/v1alpha1` | Freeze TP | `pkg/khr/host/*` | heartbeat/registration |
 | Shell / Cell | `runtime.karl.io/v1alpha1` | Freeze TP | crdv1alpha1, projection | runtime-sandbox |
 | ResourcePort | `runtime.karl.io/v1alpha1` | Freeze TP | resourceport/* | loop, cr-preview |
-| ResourceLease | `hyperdensity.karl.io/v1alpha1` | **Experimental** | resourcelease/* | dryrun, guarded-apply |
+| ResourceLease | `hyperdensity.karl.io/v1alpha1` | **TP freeze candidate (KHR-AE)** | resourcelease/* | dryrun, guarded-apply, rollback |
+| ResourceLease sandbox apply | evidence scripts | **Experimental** | guarded_apply_sandbox | cgroup apply only |
 | ResourceFuture | `hyperdensity.karl.io/v1alpha1` | Freeze TP | resourcefuture/* | resourcefuture |
 | ShellLease / GatewayRoute | v1alpha1 | Freeze TP | projection | partial |
 | Certification registry | `khr-cert-registry-v1` | **Experimental** | certregistry/* | summary.json |
@@ -49,7 +50,8 @@ Full machine-readable inventory: `./scripts/khr_contract_inventory.sh` → `docs
 | Level | Meaning | Examples |
 |-------|---------|----------|
 | **Frozen (TP)** | Additive JSON only; no field removals | Projection readonly-y, CRD v1alpha1 core types |
-| **Experimental** | May change with evidence revision | Guarded apply, cert registry enforcement semantics |
+| **TP freeze candidate** | Contract/schema/projection frozen; apply execution sandbox-only | ResourceLease (KHR-AE) |
+| **Experimental** | May change with evidence revision | Lease cgroup apply execution, cert registry enforcement semantics |
 | **Beta candidate** | Freeze after beta-1 sign-off | TP observation export (Inventory), tp-readiness API defaults |
 | **Deprecated** | Compatibility only | KubeVirt path, Multus/NAD |
 

@@ -54,6 +54,7 @@ required_files=(
   "docs/khr/TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md"
   "docs/khr/BETA_READINESS_GAP_ANALYSIS.md"
   "docs/khr/KHR_CONTRACT_FREEZE_PLAN.md"
+  "docs/khr/RESOURCELEASE_TP_FREEZE_CANDIDATE.md"
   "docs/ingest/KHR_EVIDENCE_INGEST_CONTRACT.md"
   "docs/ingest/EVIDENCEBUNDLE_CRD.md"
   "docs/ingest/EVIDENCEINGESTREQUEST_CRD.md"
@@ -272,6 +273,10 @@ fi
 
 if [[ -x "${ROOT_DIR}/scripts/khr_contract_inventory.sh" ]]; then
   "${ROOT_DIR}/scripts/khr_contract_inventory.sh"
+fi
+
+if [[ -x "${ROOT_DIR}/scripts/khr_resourcelease_freeze_check.sh" ]]; then
+  "${ROOT_DIR}/scripts/khr_resourcelease_freeze_check.sh"
 fi
 
 schema_count="$(ls -1 schemas/*.json | wc -l | tr -d ' ')"
