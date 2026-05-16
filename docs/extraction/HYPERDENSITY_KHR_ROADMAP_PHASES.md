@@ -92,3 +92,10 @@ Updated phase model after resource_exchange boundary closure (Sprint 87) and arc
 ## Sprint 89 (ResourceLease minimal contract)
 
 Sprint 89 adds ResourceLease minimal contract sketch (storage/network/provider/examples). No CRD, no controller, no runtime. See HYPERDENSITY_KHR_RESOURCELEASE_MINIMAL_CONTRACT.md and related Sprint 89 docs.
+
+
+---
+
+## Sprint 90 (inventory facts)
+
+Sprint 90 adds read-only KubeVirt and OVN/SDN capability inventory mapped to ResourceLease contract. No CRD, no controller, no runtime. See HYPERDENSITY_KHR_KUBEVIRT_CAPABILITY_INVENTORY.md and related Sprint 90 docs.

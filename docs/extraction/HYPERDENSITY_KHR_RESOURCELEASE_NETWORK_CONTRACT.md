@@ -68,3 +68,10 @@ KARLNetwork, ShellNetwork, CellNetwork, NetworkAttachment, NetworkLease, Network
 
 - `HYPERDENSITY_KHR_RESOURCELEASE_MINIMAL_CONTRACT.md`
 - `HYPERDENSITY_KHR_NETWORK_SDN_SEMANTICS.md`
+
+
+---
+
+## Sprint 90 (inventory facts)
+
+Sprint 90 adds read-only KubeVirt and OVN/SDN capability inventory mapped to ResourceLease contract. No CRD, no controller, no runtime. See HYPERDENSITY_KHR_KUBEVIRT_CAPABILITY_INVENTORY.md and related Sprint 90 docs.

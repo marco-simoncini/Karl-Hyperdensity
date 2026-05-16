@@ -43,3 +43,10 @@ Defines allowed `spec.provider` values and selection rules for ResourceLease.
 
 - `HYPERDENSITY_KHR_RESOURCELEASE_MINIMAL_CONTRACT.md`
 - `HYPERDENSITY_KHR_ARCHITECTURE_MEMORY.md`
+
+
+---
+
+## Sprint 90 (inventory facts)
+
+Sprint 90 adds read-only KubeVirt and OVN/SDN capability inventory mapped to ResourceLease contract. No CRD, no controller, no runtime. See HYPERDENSITY_KHR_KUBEVIRT_CAPABILITY_INVENTORY.md and related Sprint 90 docs.
