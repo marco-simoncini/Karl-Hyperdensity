@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 67** adds **staged wrappers** for apply observation in Dashboard (`apply_observation_wiring_v1.go`). **Sprint 68** hardens wrappers (8×4 matrix). **Sprint 69** wiring readiness. **Sprint 70** wired four `apply.go` call sites. **Sprint 71** post-wiring hardening. All runtime flags remain **false**; wrappers delegate legacy-equivalent.
+**Sprint 67** adds **staged wrappers** for apply observation in Dashboard (`apply_observation_wiring_v1.go`). **Sprint 68** hardens wrappers (8×4 matrix). **Sprint 69** wiring readiness. **Sprint 70** wired four `apply.go` call sites. **Sprint 71** post-wiring hardening. **Sprint 72** flip criteria (docs-only). All runtime flags remain **false**; wrappers delegate legacy-equivalent.
 
 ---
 

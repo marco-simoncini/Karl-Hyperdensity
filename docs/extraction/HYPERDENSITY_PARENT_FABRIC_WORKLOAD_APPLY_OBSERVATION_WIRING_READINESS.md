@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 69** formalizes **readiness** for future `apply.go` call-site wiring. **Sprint 70** executed call-site wiring (see `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_CALLSITE_WIRING.md`). **Sprint 71** post-wiring hardening (see `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_POST_WIRING_HARDENING.md`). This document records Sprint 69 readiness snapshot.
+**Sprint 69** formalizes **readiness** for future `apply.go` call-site wiring. **Sprint 70** executed call-site wiring (see `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_CALLSITE_WIRING.md`). **Sprint 71** post-wiring hardening. **Sprint 72** flip criteria (docs-only). This document records Sprint 69 readiness snapshot.
 
 ---
 

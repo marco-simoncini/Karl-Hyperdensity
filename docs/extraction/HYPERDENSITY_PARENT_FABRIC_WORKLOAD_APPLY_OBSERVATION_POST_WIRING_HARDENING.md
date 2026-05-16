@@ -70,8 +70,10 @@ Regression if flags flipped without re-hardening. Confusion that wired call site
 
 ## 9. Future branch-swap path
 
-Separate sprint(s): `ApplyObservationWiredV1=true`, then `ApplyObservationCandidateRuntimeUsedV1=true` with shadow matrix re-run.
+Separate sprint(s): see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_FLIP_CRITERIA.md`** (Sprint 72). Recommended: candidate runtime flip first, then `ApplyObservationWiredV1=true`.
 
 ## Related
 
+- `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_FLIP_CRITERIA.md`
+- `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_FLIP_RISKS.md`
 - `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_CALLSITE_WIRING.md`

@@ -48,8 +48,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **69** | Apply wiring readiness | `copy-deferred` (full file) |
 | **70** | Apply call-site wiring; flags false (legacy path) | `copy-deferred` (full file) |
 | **71** | Apply post-wiring hardening 8×4 | `copy-deferred` (full file) |
+| **72** | Apply flip criteria + risks (docs-only; no flip) | `copy-deferred` (full file) |
 
-Re-audit for remaining functions unchanged. Sprint 57–71 do **not** complete general observation wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–71).
+Re-audit for remaining functions unchanged. Sprint 57–72 do **not** complete general observation wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–72).
 
 ## Related
 

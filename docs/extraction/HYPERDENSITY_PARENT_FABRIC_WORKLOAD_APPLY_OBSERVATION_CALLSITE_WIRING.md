@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 70** is the **first real wiring** on `apply.go`: four legacy observation call sites repointed to **staged wrappers**. **Sprint 71** post-wiring hardening. Flags remain **false** — wrappers delegate to legacy helpers (legacy-equivalent behavior).
+**Sprint 70** is the **first real wiring** on `apply.go`: four legacy observation call sites repointed to **staged wrappers**. **Sprint 71** post-wiring hardening. **Sprint 72** flip criteria (docs-only). Flags remain **false** — wrappers delegate to legacy helpers (legacy-equivalent behavior).
 
 ---
 

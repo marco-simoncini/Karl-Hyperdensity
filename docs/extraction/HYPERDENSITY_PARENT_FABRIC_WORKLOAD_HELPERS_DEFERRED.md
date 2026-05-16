@@ -30,6 +30,7 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 11. **Sprint 69:** apply wiring readiness — `readyForApplyGoCallSiteWiring`.
 12. **Sprint 70:** apply call-site wiring — 4 wrappers in `apply.go`; flags **false**.
 13. **Sprint 71:** apply post-wiring hardening — 8×4; flags **false**.
+14. **Sprint 72:** apply flip criteria — docs-only; flags **false**; no runtime changes.
 
 ## Placeholder
 

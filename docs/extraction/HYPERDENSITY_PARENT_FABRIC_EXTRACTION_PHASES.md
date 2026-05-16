@@ -56,6 +56,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 71:** **Apply post-wiring hardening** — 8×4 matrix; flags **false**; no wiring/flag changes.
 
+**Sprint 72:** **Apply flip criteria** — docs-only; flip criteria + risks; flags **false**; no runtime changes.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
