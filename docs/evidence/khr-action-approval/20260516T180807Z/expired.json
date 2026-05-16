@@ -1,0 +1,21 @@
+{
+  "actionId": "khr-approval-0e107c2892d72b25-expire",
+  "resourceFutureRef": "simulation/ResourceFuture/khr-runtime-sandbox-Cell-khr-native-live-target-5df65659bd-2xjxg",
+  "resourceLeaseRef": "khr-runtime-sandbox/ResourceLease/khr-native-live-target-5df65659bd-2xjxg-scale-approval",
+  "laneId": "native-live",
+  "certificationRef": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification-summary.json",
+  "policyGateResult": {
+    "eligibilityState": "eligible",
+    "eligible": true,
+    "blocked": false,
+    "staleEvidence": false,
+    "uncertifiedLane": false
+  },
+  "approvalState": "expired",
+  "expiresAt": "2026-05-16T17:08:10Z",
+  "reason": "approval TTL expired (simulated)",
+  "readOnly": true,
+  "noApply": true,
+  "noMutation": true,
+  "noAutonomousOrchestration": true
+}

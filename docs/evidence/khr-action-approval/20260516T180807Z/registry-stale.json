@@ -1,0 +1,28 @@
+{
+  "registryId": "khr-certification-registry-v1",
+  "sprint": "KHR-V",
+  "generatedAt": "2026-05-16T18:02:13Z",
+  "readOnly": true,
+  "noAutonomousOrchestration": true,
+  "entries": [
+    {
+      "laneId": "native-live",
+      "laneType": "native-live",
+      "providerBinding": "khr.native",
+      "certificationState": "certified-preview",
+      "continuityScore": 1,
+      "liveScaleConfidence": "high",
+      "lastCertifiedAt": "2019-01-01T00:00:00Z",
+      "evidenceRef": "docs/evidence/khr-native-live-lane/certification-summary.json",
+      "validForSeconds": 86400,
+      "attestation": {
+        "noRestart": true,
+        "noRollout": true,
+        "noRecreate": true,
+        "noInterruption": true,
+        "shellContinuityPreserved": true,
+        "rollbackObserved": true
+      }
+    }
+  ]
+}

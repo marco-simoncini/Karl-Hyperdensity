@@ -1,0 +1,2 @@
+no-apply: action approval evidence only
+no-kubectl-apply: no cluster mutation

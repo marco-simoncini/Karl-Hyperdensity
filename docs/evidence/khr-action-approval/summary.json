@@ -1,0 +1,13 @@
+{
+  "sprint": "KHR-W",
+  "runId": "20260516T180807Z",
+  "cluster": "karl-metal-01@ovh",
+  "pending": true,
+  "approved": true,
+  "rejected": true,
+  "expired": true,
+  "staleBlocked": true,
+  "readOnly": true,
+  "noApply": true,
+  "noAutonomousOrchestration": true
+}
