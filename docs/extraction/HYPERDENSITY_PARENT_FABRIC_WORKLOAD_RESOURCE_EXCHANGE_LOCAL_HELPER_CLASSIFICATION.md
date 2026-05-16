@@ -36,11 +36,12 @@ Sprint 78 listed-helper inventory covered **`hyperdensityObservedPodCPURequest`*
 
 ---
 
-## Decision (Sprint 79)
+## Decision (Sprint 79–80)
 
 | Decision | Value |
 |----------|-------|
 | Include in Sprint 79 shadow matrix | **No** |
+| Include in Sprint 80 staged wrappers | **No** |
 | Classify as local-observation-like | **Yes** |
 | Copy to Hyperdensity | **No** |
 | Use for broad observation | **No** |

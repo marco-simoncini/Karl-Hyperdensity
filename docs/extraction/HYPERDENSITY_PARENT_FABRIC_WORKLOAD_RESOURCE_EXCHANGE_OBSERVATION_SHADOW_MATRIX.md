@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 79** is **shadow-matrix / test-only**. Dashboard introduces a **candidate** helper equivalent to `hyperdensityObservedPodCPURequest` with an **8-case** parity matrix. **No** production wiring in `resource_exchange_*`. **`ResourceExchangeObservationWiredV1` remains false or absent.**
+**Sprint 79** is **shadow-matrix / test-only**. **Sprint 80** adds staged wrappers; shadow matrix remains historical baseline. Dashboard introduces a **candidate** helper equivalent to `hyperdensityObservedPodCPURequest` with an **8-case** parity matrix. **No** production wiring in `resource_exchange_*`. **`ResourceExchangeObservationWiredV1` remains false or absent.**
 
 ---
 
@@ -126,7 +126,7 @@ Before `ResourceExchangeObservationWiredV1=true`:
 
 ## 11. Recommended next sprint
 
-**Sprint 80:** `resource_exchange_observation_staged_wrappers` — proposal/tests only; **no** `ResourceExchangeObservationWiredV1=true`.
+**Sprint 80:** staged wrappers — **complete** (see `STAGED_WRAPPERS.md`).
 
 ---
 

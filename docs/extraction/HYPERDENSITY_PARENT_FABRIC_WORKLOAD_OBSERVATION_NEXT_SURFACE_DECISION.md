@@ -4,7 +4,7 @@
 
 **Sprint 77** classifies **remaining** legacy observation surfaces after apply-observation track completion. **`ObservationWiredV1` remains `false`.** Next sprint must **not** be broad observation.
 
-**Sprint 78** completed **resource_exchange observation audit**. **Sprint 79** completed **shadow matrix** (candidate not wired). See `RESOURCE_EXCHANGE_OBSERVATION_SHADOW_MATRIX.md`.
+**Sprint 78–80:** audit, shadow matrix, staged wrappers complete. Production resource_exchange not wired. See `RESOURCE_EXCHANGE_OBSERVATION_STAGED_WRAPPERS.md`.
 
 ---
 
@@ -67,7 +67,7 @@ Adapter files may appear in remaining-audit counts due to **delegation** to lega
 |----------|--------|
 | Is apply-observation complete? | **Yes** (Sprint 65–76) |
 | Is next sprint broad observation? | **No** |
-| Preferred next track | **resource_exchange_observation_staged_wrappers** (Sprint 79 shadow complete) or **usage.go classification** |
+| Preferred next track | **resource_exchange local helper shadow matrix** or **call-site wiring readiness** (Sprint 80 wrappers complete) |
 | `ObservationWiredV1` | **`false`** (deliberate) |
 | `ProductionWiredV1` | **`false`** |
 

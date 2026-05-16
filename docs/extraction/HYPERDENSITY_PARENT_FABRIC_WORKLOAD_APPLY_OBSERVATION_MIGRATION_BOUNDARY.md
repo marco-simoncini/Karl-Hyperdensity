@@ -100,7 +100,7 @@ See **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_OBSERVATION_NEXT_SURFACE_DECISION.md`
 
 **Recommended next track:** `resource_exchange_observation_audit` (proposal/audit only) or `usage.go` classification — not broad observation.
 
-**Sprint 78 update:** `resource_exchange_observation_audit` **complete**. **Sprint 79 update:** shadow matrix **complete**; production resource_exchange still legacy. Recommended next: `resource_exchange_observation_staged_wrappers` (proposal only).
+**Sprint 78–80:** audit, shadow matrix, staged wrappers **complete**; production resource_exchange still legacy. Recommended next: local helper shadow matrix or call-site wiring readiness.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 78** is **audit/proposal-only** for `resource_exchange_*` observation call sites. **Sprint 79** adds shadow matrix (candidate parity); still **no** production wiring. **No** wrappers, candidates, flags, or runtime changes. Apply-observation track (Sprint 65–77) is **complete and separate**. Broad observation remains **disabled**.
+**Sprint 78** audit. **Sprint 79** shadow matrix. **Sprint 80** staged wrappers. Production `resource_exchange_*` still uses legacy CPU helper only. **No** wrappers, candidates, flags, or runtime changes. Apply-observation track (Sprint 65–77) is **complete and separate**. Broad observation remains **disabled**.
 
 ---
 
