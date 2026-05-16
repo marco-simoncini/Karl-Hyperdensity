@@ -28,6 +28,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 57:** **Pilot-only** observed-state via `hyperdensityWorkloadPilotObservedStateV1`; apply/live/VM/rollback observation excluded.
 
+**Sprint 58:** **Pilot observation hardening** (end-to-end tests + live inventory proposal); **no new wiring**.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

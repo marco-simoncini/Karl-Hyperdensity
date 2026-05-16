@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 54** adds **Dashboard-only shadow tests** that compare **legacy helper output** vs **adapter v1** on representative path and observed-state samples. **Karl-Hyperdensity** receives **no** Go adapter code. Adapter v1 remains **not wired** (`hyperdensityWorkloadAdapterProductionWiredV1 = false`). Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
+**Sprint 54** adds **Dashboard-only shadow tests** that compare **legacy helper output** vs **adapter v1** on representative path and observed-state samples. **Sprint 58** adds end-to-end pilot observation hardening tests (`hyperdensityPilotObservedStateForPlan`) — no new wiring beyond Sprint 57. **Karl-Hyperdensity** receives **no** Go adapter code. Adapter v1 remains **not wired** (`hyperdensityWorkloadAdapterProductionWiredV1 = false`). Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
 
 ## What Sprint 54 delivers
 

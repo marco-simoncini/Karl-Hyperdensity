@@ -34,8 +34,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **55** | Wiring proposal + call-site inventory (51 sites) | `copy-deferred` (full file) |
 | **56** | Path-only wiring (6 non-apply files) — `PathWiredV1=true` | `copy-deferred` (full file) |
 | **57** | Pilot-only observation — `PilotObservationWiredV1=true`, `ObservationWiredV1=false` | `copy-deferred` (full file) |
+| **58** | Pilot observation hardening + live proposal (no new wiring) | `copy-deferred` (full file) |
 
-Re-audit for remaining functions unchanged. Sprint 57 does **not** complete general observation wiring.
+Re-audit for remaining functions unchanged. Sprint 57–58 do **not** complete general observation wiring.
 
 ## Related
 

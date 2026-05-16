@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 56** was the **first minimal runtime wiring** (path-only). **Sprint 57** adds pilot-only observed-state — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_PILOT_OBSERVATION_WIRING.md`**.: Dashboard routes **approved non-apply** path helper call sites through **`hyperdensityWorkloadPath*V1`** wrappers when **`hyperdensityWorkloadAdapterPathWiredV1 = true`**. **Observed-state** remains legacy. **Karl-Hyperdensity** receives **no** Go adapter code. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
+**Sprint 56** was the **first minimal runtime wiring** (path-only). **Sprint 57** adds pilot-only observed-state — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_PILOT_OBSERVATION_WIRING.md`**. **Sprint 58** hardens pilot observation only (no new path or live wiring). Dashboard routes **approved non-apply** path helper call sites through **`hyperdensityWorkloadPath*V1`** wrappers when **`hyperdensityWorkloadAdapterPathWiredV1 = true`**. **Observed-state** remains legacy. **Karl-Hyperdensity** receives **no** Go adapter code. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
 
 **Sprint 54 shadow PASS does not imply full production wiring.** `hyperdensityWorkloadAdapterProductionWiredV1` stays **`false`** until all approved phases complete.
 
