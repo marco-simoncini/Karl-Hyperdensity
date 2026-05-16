@@ -146,6 +146,12 @@ No auth enforcement; OIDC flows unchanged.
 
 ---
 
+## Continuity lineage (KHR-AR)
+
+Access graph exports include `continuityLineageId`, `sessionCorrelationId`, `continuityState`, `continuityObserved`, and continuity edges (`correlates`, `continues`). See **`CONTINUITY_LINEAGE_CONTRACT.md`**.
+
+---
+
 ## Identity / Access Lease (KHR-AQ)
 
 Access graph exports may include `accessLeaseRef`, `identityBindingRef`, `policyBindingRefs`, and `privilegeLeaseRefs` (read-only). See **`IDENTITY_ACCESS_LEASE_CONTRACT.md`**.
