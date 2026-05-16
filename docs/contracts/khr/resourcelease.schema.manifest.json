@@ -1,22 +1,23 @@
 {
-  "schemaVersion": "v0.0.0-sprint91",
+  "schemaVersion": "v0.1.0-khr-b-unified",
   "schemaPath": "docs/contracts/khr/resourcelease.schema.json",
+  "unifiedContract": true,
+  "adr": "ADR-0005-resourcelease-unification",
   "schemaOnly": true,
-  "crdApplied": false,
+  "crdAligned": true,
   "controllerImplemented": false,
   "runtimeChanged": false,
   "apiPayloadChanged": false,
   "anchors": [
     "HYPERDENSITY_KHR_RESOURCELEASE_MINIMAL_CONTRACT.md",
-    "HYPERDENSITY_KHR_RESOURCELEASE_STORAGE_CONTRACT.md",
-    "HYPERDENSITY_KHR_RESOURCELEASE_NETWORK_CONTRACT.md",
-    "HYPERDENSITY_KHR_RESOURCELEASE_PROVIDER_CONTRACT.md",
-    "HYPERDENSITY_KHR_RESOURCELEASE_INVENTORY_MAPPING.md"
+    "RESOURCELEASE_SCHEMA_DELTA.md",
+    "docs/khr/RESOURCELEASE_LIFECYCLE.md"
   ],
   "preservedRequirements": [
     "KubeVirt ephemeral PVC compatibility",
     "public-cloud fallback to KubeVirt",
     "OVN/SDN compatibility mapping",
-    "Shell/Cell product model"
+    "Shell/Cell product model",
+    "transfer donor/receiver envelope semantics"
   ]
 }

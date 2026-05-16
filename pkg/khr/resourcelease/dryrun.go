@@ -59,17 +59,23 @@ func DryRun(lease *crdv1alpha1.ResourceLease, port *crdv1alpha1.ResourcePort, ct
 		return res
 	}
 	ls := lease.Spec
-	if ls.Resource != "cpu" && ls.Resource != "memory" {
+	donor, receiver, resource, mode, ok := ls.EffectiveTransfer()
+	if !ok {
 		res.Blocked = true
-		res.Reason = fmt.Sprintf("resource %q not supported in linux envelope MVP", ls.Resource)
+		res.Reason = "donor/receiver kind and name are required (spec.transfer or legacy inline fields)"
 		return res
 	}
-	if strings.ToLower(ls.Mode) != "envelope" {
+	if resource != "cpu" && resource != "memory" {
 		res.Blocked = true
-		res.Reason = fmt.Sprintf("mode %q blocked: only envelope mode allowed in KHR Linux MVP", ls.Mode)
+		res.Reason = fmt.Sprintf("resource %q not supported in linux envelope MVP", resource)
 		return res
 	}
-	if ls.Donor.Kind == "" || ls.Donor.Name == "" || ls.Receiver.Kind == "" || ls.Receiver.Name == "" {
+	if strings.ToLower(mode) != "envelope" {
+		res.Blocked = true
+		res.Reason = fmt.Sprintf("mode %q blocked: only envelope mode allowed in KHR Linux MVP", mode)
+		return res
+	}
+	if donor.Kind == "" || donor.Name == "" || receiver.Kind == "" || receiver.Name == "" {
 		res.Blocked = true
 		res.Reason = "donor/receiver kind and name are required"
 		return res
@@ -79,14 +85,14 @@ func DryRun(lease *crdv1alpha1.ResourceLease, port *crdv1alpha1.ResourcePort, ct
 		res.Reason = "ResourcePort input required for dry-run verification"
 		return res
 	}
-	isCPU := ls.Resource == "cpu"
-	var ok bool
+	isCPU := resource == "cpu"
+	var portOK bool
 	if isCPU {
-		ok = modeSliceContains(port.Spec.Ports.CPU.Modes, "envelope")
+		portOK = modeSliceContains(port.Spec.Ports.CPU.Modes, "envelope")
 	} else {
-		ok = modeSliceContains(port.Spec.Ports.Memory.Modes, "envelope")
+		portOK = modeSliceContains(port.Spec.Ports.Memory.Modes, "envelope")
 	}
-	if !ok {
+	if !portOK {
 		res.Blocked = true
 		res.Reason = "ResourcePort does not allow envelope for requested resource"
 		res.ResourcePortCheck = "incompatible"

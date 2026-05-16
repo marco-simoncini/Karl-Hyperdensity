@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   name: resourceleases.hyperdensity.karl.io
   labels:
-    karl.io/contract-track: khr-v1alpha1
+    karl.io/contract-track: khr-v1alpha1-unified
 spec:
   group: hyperdensity.karl.io
   scope: Namespaced
@@ -23,6 +23,16 @@ spec:
       storage: true
       subresources:
         status: {}
+      additionalPrinterColumns:
+        - name: Kind
+          type: string
+          jsonPath: .spec.leaseKind
+        - name: Provider
+          type: string
+          jsonPath: .spec.provider
+        - name: Phase
+          type: string
+          jsonPath: .status.phase
       schema:
         openAPIV3Schema:
           type: object
@@ -32,16 +42,164 @@ spec:
             spec:
               type: object
               required:
-                - donor
-                - receiver
-                - resource
-                - mode
+                - leaseKind
+                - shell
+                - cell
+                - provider
               properties:
-                donor:
+                leaseKind:
+                  type: string
+                  enum:
+                    - runtime
+                    - transfer
+                shell:
+                  type: object
+                  properties:
+                    kind:
+                      type: string
+                    ref:
+                      type: string
+                    experience:
+                      type: string
+                  x-kubernetes-preserve-unknown-fields: true
+                cell:
+                  type: object
+                  properties:
+                    ref:
+                      type: string
+                    hostSelector:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
+                    runtimeClass:
+                      type: string
+                  x-kubernetes-preserve-unknown-fields: true
+                provider:
+                  type: string
+                  enum:
+                    - khr.native
+                    - kubevirt.compatibility
+                    - kubevirt.public-cloud-fallback
+                    - khr.native.ovn
+                    - kubevirt.legacy.ovn
+                    - kubernetes.cni
+                    - cloud.vpc.aws
+                    - cloud.vnet.azure
+                    - cloud.vpc.gcp
+                    - baremetal.bridge
+                    - baremetal.vlan
+                resources:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                storage:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                network:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                policy:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                evidence:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                rollback:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                expiration:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                promotion:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                transfer:
                   type: object
                   required:
-                    - kind
-                    - name
+                    - donor
+                    - receiver
+                    - resource
+                    - mode
+                  properties:
+                    donor:
+                      type: object
+                      required:
+                        - kind
+                        - name
+                      properties:
+                        apiGroup:
+                          type: string
+                        kind:
+                          type: string
+                          enum:
+                            - Shell
+                            - Cell
+                        namespace:
+                          type: string
+                        name:
+                          type: string
+                    receiver:
+                      type: object
+                      required:
+                        - kind
+                        - name
+                      properties:
+                        apiGroup:
+                          type: string
+                        kind:
+                          type: string
+                          enum:
+                            - Shell
+                            - Cell
+                        namespace:
+                          type: string
+                        name:
+                          type: string
+                    resource:
+                      type: string
+                      enum:
+                        - cpu
+                        - memory
+                        - disk
+                        - network
+                        - gpu
+                    amount:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
+                    mode:
+                      type: string
+                governance:
+                  type: object
+                  properties:
+                    dryRunOnly:
+                      type: boolean
+                    rollbackPlanRef:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        namespace:
+                          type: string
+                    rollbackRequired:
+                      type: boolean
+                    verificationHooks:
+                      type: object
+                      x-kubernetes-preserve-unknown-fields: true
+                    noRestart:
+                      type: boolean
+                    guestVisible:
+                      type: boolean
+                    telemetryConvergedRequired:
+                      type: boolean
+                    durationSeconds:
+                      type: integer
+                      format: int64
+                      minimum: 0
+                    ttlSeconds:
+                      type: integer
+                      format: int64
+                      minimum: 0
+                donor:
+                  description: Deprecated; use spec.transfer.donor (KHR-B unified contract).
+                  type: object
                   properties:
                     apiGroup:
                       type: string
@@ -55,10 +213,8 @@ spec:
                     name:
                       type: string
                 receiver:
+                  description: Deprecated; use spec.transfer.receiver.
                   type: object
-                  required:
-                    - kind
-                    - name
                   properties:
                     apiGroup:
                       type: string
@@ -72,18 +228,13 @@ spec:
                     name:
                       type: string
                 resource:
+                  description: Deprecated; use spec.transfer.resource.
                   type: string
-                  enum:
-                    - cpu
-                    - memory
-                    - disk
-                    - network
-                    - gpu
                 amount:
-                  description: Scalar or structured amount (refined in later contract revisions).
                   type: object
                   x-kubernetes-preserve-unknown-fields: true
                 mode:
+                  description: Deprecated; use spec.transfer.mode.
                   type: string
                 durationSeconds:
                   type: integer
@@ -106,16 +257,39 @@ spec:
                   type: object
                   x-kubernetes-preserve-unknown-fields: true
                 noRestart:
-                  description: Intent only; KHR must reconcile against ResourcePort truth.
                   type: boolean
                 guestVisible:
                   type: boolean
                 telemetryConvergedRequired:
-                  description: When true, lease cannot complete until telemetry gates pass.
                   type: boolean
                 dryRunOnly:
-                  description: If true, Grande Padre must never promote to execution (simulation / evidence only).
                   type: boolean
             status:
               type: object
+              properties:
+                phase:
+                  type: string
+                  enum:
+                    - Pending
+                    - DryRunValidated
+                    - Bound
+                    - Active
+                    - Completing
+                    - Completed
+                    - Failed
+                    - RolledBack
+                providerBinding:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                effectiveResources:
+                  type: object
+                  x-kubernetes-preserve-unknown-fields: true
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    x-kubernetes-preserve-unknown-fields: true
+                observedAt:
+                  type: string
+                  format: date-time
               x-kubernetes-preserve-unknown-fields: true

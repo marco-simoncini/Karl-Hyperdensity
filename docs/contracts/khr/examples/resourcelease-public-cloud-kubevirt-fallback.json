@@ -11,6 +11,7 @@
     }
   },
   "spec": {
+    "leaseKind": "runtime",
     "shell": {
       "kind": "vmLike",
       "ref": "shell/vm-aws-001"

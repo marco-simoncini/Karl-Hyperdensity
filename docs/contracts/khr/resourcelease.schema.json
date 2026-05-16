@@ -2,7 +2,7 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "$id": "https://karl.local/schemas/khr/resourcelease.schema.json",
   "title": "KHR ResourceLease",
-  "description": "Non-applied contract sketch for KHR ResourceLease (Sprint 91). Not a deployable CRD.",
+  "description": "Unified ResourceLease contract (ADR-0005, Sprint KHR-B). CRD-aligned; controllers not active.",
   "type": "object",
   "required": ["apiVersion", "kind", "metadata", "spec"],
   "additionalProperties": false,
@@ -39,8 +39,9 @@
     },
     "spec": {
       "type": "object",
-      "required": ["shell", "cell", "provider", "resources", "storage", "network", "policy"],
+      "required": ["leaseKind", "shell", "cell", "provider"],
       "properties": {
+        "leaseKind": { "$ref": "#/$defs/leaseKind" },
         "shell": { "$ref": "#/$defs/shell" },
         "cell": { "$ref": "#/$defs/cell" },
         "provider": { "$ref": "#/$defs/provider" },
@@ -48,12 +49,30 @@
         "storage": { "$ref": "#/$defs/storage" },
         "network": { "$ref": "#/$defs/network" },
         "policy": { "type": "object" },
+        "transfer": { "$ref": "#/$defs/transfer" },
+        "governance": { "$ref": "#/$defs/governance" },
         "evidence": { "type": "object" },
         "rollback": { "type": "object" },
         "expiration": { "type": "object" },
         "promotion": { "type": "object" }
       },
-      "additionalProperties": false
+      "additionalProperties": false,
+      "allOf": [
+        {
+          "if": { "properties": { "leaseKind": { "const": "runtime" } } },
+          "then": {
+            "required": ["resources", "storage", "network", "policy"]
+          }
+        },
+        {
+          "if": { "properties": { "leaseKind": { "const": "transfer" } } },
+          "then": { "required": ["transfer"] }
+        }
+      ]
+    },
+    "leaseKind": {
+      "type": "string",
+      "enum": ["runtime", "transfer"]
     },
     "shell": {
       "type": "object",
@@ -88,6 +107,54 @@
         "baremetal.bridge",
         "baremetal.vlan"
       ]
+    },
+    "transfer": {
+      "type": "object",
+      "required": ["donor", "receiver", "resource", "mode"],
+      "properties": {
+        "donor": { "$ref": "#/$defs/leasePartyRef" },
+        "receiver": { "$ref": "#/$defs/leasePartyRef" },
+        "resource": {
+          "type": "string",
+          "enum": ["cpu", "memory", "disk", "network", "gpu"]
+        },
+        "amount": { "type": "object" },
+        "mode": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "leasePartyRef": {
+      "type": "object",
+      "required": ["kind", "name"],
+      "properties": {
+        "apiGroup": { "type": "string" },
+        "kind": { "type": "string", "enum": ["Shell", "Cell"] },
+        "namespace": { "type": "string" },
+        "name": { "type": "string" }
+      },
+      "additionalProperties": false
+    },
+    "governance": {
+      "type": "object",
+      "properties": {
+        "dryRunOnly": { "type": "boolean" },
+        "rollbackPlanRef": {
+          "type": "object",
+          "properties": {
+            "name": { "type": "string" },
+            "namespace": { "type": "string" }
+          },
+          "additionalProperties": true
+        },
+        "rollbackRequired": { "type": "boolean" },
+        "verificationHooks": { "type": "object" },
+        "noRestart": { "type": "boolean" },
+        "guestVisible": { "type": "boolean" },
+        "telemetryConvergedRequired": { "type": "boolean" },
+        "durationSeconds": { "type": "integer", "minimum": 0 },
+        "ttlSeconds": { "type": "integer", "minimum": 0 }
+      },
+      "additionalProperties": true
     },
     "resources": {
       "type": "object",
@@ -212,13 +279,26 @@
     "status": {
       "type": "object",
       "properties": {
-        "phase": { "type": "string" },
+        "phase": { "$ref": "#/$defs/phase" },
         "providerBinding": { "type": "object" },
         "effectiveResources": { "type": "object" },
         "conditions": { "type": "array" },
         "observedAt": { "type": "string" }
       },
       "additionalProperties": true
+    },
+    "phase": {
+      "type": "string",
+      "enum": [
+        "Pending",
+        "DryRunValidated",
+        "Bound",
+        "Active",
+        "Completing",
+        "Completed",
+        "Failed",
+        "RolledBack"
+      ]
     }
   }
 }

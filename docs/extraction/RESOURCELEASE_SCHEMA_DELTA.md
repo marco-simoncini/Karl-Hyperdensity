@@ -21,7 +21,7 @@ The two artifacts describe **different contract generations**:
 | **Status** | Structured (`phase`, `providerBinding`, …) | Opaque (`preserve-unknown-fields`) |
 | **Applied to cluster** | **No** (explicit in schema description) | **Yes** (CRD manifest) |
 
-**P0:** Pick a **single canonical spec** before controllers or Dashboard mutation paths. Until then, treat JSON Schema as **target sketch** and CRD as **minimal transfer CRD** for Hyperdensity governance.
+**Resolved (KHR-B):** **Unified ResourceLease** per `docs/adr/ADR-0005-resourcelease-unification.md`. Schema and CRD aligned; `spec.leaseKind` = `runtime` | `transfer`.
 
 ---
 

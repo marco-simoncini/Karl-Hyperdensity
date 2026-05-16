@@ -13,6 +13,7 @@
     }
   },
   "spec": {
+    "leaseKind": "runtime",
     "shell": {
       "kind": "windowsDesktop",
       "ref": "shell/winsrv-daas-001"

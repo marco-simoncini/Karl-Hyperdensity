@@ -2,10 +2,11 @@
   "apiVersion": "hyperdensity.karl.io/v1alpha1",
   "kind": "ResourceLease",
   "metadata": {
-    "name": "linux-envelope-full-demo",
+    "name": "linux-cpu-envelope-transfer",
     "namespace": "karl-sandbox",
-    "labels": {
-      "karl.io/demo": "khr-linux-envelope-full"
+    "annotations": {
+      "karl.io/schema-only": "true",
+      "karl.io/sprint": "khr-b"
     }
   },
   "spec": {
@@ -42,19 +43,16 @@
     },
     "governance": {
       "durationSeconds": 120,
-      "ttlSeconds": 0,
       "rollbackPlanRef": {
         "name": "demo-rollback-plan",
         "namespace": "karl-sandbox"
       },
       "rollbackRequired": true,
-      "verificationHooks": {
-        "preApply": ["cgroup-readiness-check"]
-      },
-      "noRestart": true,
-      "guestVisible": false,
-      "telemetryConvergedRequired": true,
-      "dryRunOnly": true
+      "dryRunOnly": true,
+      "telemetryConvergedRequired": true
     }
+  },
+  "status": {
+    "phase": "DryRunValidated"
   }
 }

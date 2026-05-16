@@ -28,16 +28,21 @@ func TestParseResourceLeaseFullFixture(t *testing.T) {
 	if rl.Metadata.Name != "linux-envelope-full-demo" {
 		t.Fatalf("metadata: %q", rl.Metadata.Name)
 	}
-	if rl.Spec.Resource != "cpu" || rl.Spec.Mode != "envelope" {
-		t.Fatalf("spec: %+v", rl.Spec)
+	if rl.Spec.LeaseKind != "transfer" {
+		t.Fatalf("leaseKind: %q", rl.Spec.LeaseKind)
 	}
-	if rl.Spec.Donor.Name != "lease-demo-donor-cell" || rl.Spec.Receiver.Name != "lease-demo-receiver-cell" {
-		t.Fatalf("refs: %+v %+v", rl.Spec.Donor, rl.Spec.Receiver)
+	_, _, resource, mode, ok := rl.Spec.EffectiveTransfer()
+	if !ok || resource != "cpu" || mode != "envelope" {
+		t.Fatalf("transfer: ok=%v resource=%q mode=%q", ok, resource, mode)
 	}
-	if rl.Spec.DurationSeconds == nil || *rl.Spec.DurationSeconds != 120 {
-		t.Fatal("expected durationSeconds 120")
+	donor, receiver, _, _, _ := rl.Spec.EffectiveTransfer()
+	if donor.Name != "lease-demo-donor-cell" || receiver.Name != "lease-demo-receiver-cell" {
+		t.Fatalf("refs: %+v %+v", donor, receiver)
 	}
-	if rl.Spec.DryRunOnly == nil || !*rl.Spec.DryRunOnly {
+	if rl.Spec.Governance == nil || rl.Spec.Governance.DurationSeconds == nil || *rl.Spec.Governance.DurationSeconds != 120 {
+		t.Fatal("expected governance.durationSeconds 120")
+	}
+	if !rl.Spec.EffectiveDryRunOnly() {
 		t.Fatal("expected dryRunOnly true")
 	}
 }
