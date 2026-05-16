@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 67** adds **staged wrappers** for apply observation in Dashboard (`apply_observation_wiring_v1.go`). **Sprint 68** hardens wrappers (8×4 matrix). **`apply.go` does not call wrappers yet.** All runtime flags remain **false**.
+**Sprint 67** adds **staged wrappers** for apply observation in Dashboard (`apply_observation_wiring_v1.go`). **Sprint 68** hardens wrappers (8×4 matrix). **Sprint 69** wiring readiness. **`apply.go` does not call wrappers yet.** All runtime flags remain **false**.
 
 ---
 

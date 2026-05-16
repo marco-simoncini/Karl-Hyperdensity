@@ -40,6 +40,7 @@ This is **deliberate policy**, not incomplete work by mistake.
 | Apply shadow ready | **Yes** (Sprint 66) |
 | Apply staged wrappers | **Yes** (Sprint 67; not used by `apply.go`) |
 | Apply wrapper hardening | **Yes** (Sprint 68; 8×4 matrix) |
+| Apply wiring readiness | **Yes** (Sprint 69; Sprint 70 = first call-site wiring) |
 
 ## Related
 

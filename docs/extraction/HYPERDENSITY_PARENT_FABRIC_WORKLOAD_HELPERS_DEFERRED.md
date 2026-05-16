@@ -27,6 +27,7 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 8. **Sprint 66:** apply-observation shadow matrix — candidate helpers test-only; `ApplyObservationCandidateRuntimeUsedV1` **false**.
 9. **Sprint 67:** apply-observation staged wrappers — `apply_observation_wiring_v1.go`; `apply.go` does not call wrappers yet.
 10. **Sprint 68:** apply wrapper hardening — 8×4 shadow matrix; still no `apply.go` wiring.
+11. **Sprint 69:** apply wiring readiness — `readyForApplyGoCallSiteWiring`; Sprint 70 may repoint `apply.go`.
 
 ## Placeholder
 

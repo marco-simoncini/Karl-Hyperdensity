@@ -35,7 +35,9 @@ hyperdensityWorkloadAdapterApplyObservationWiredV1 = true
 - [x] Sprint 66 shadow matrix implemented and green (candidate runtime **not** used).
 - [x] Sprint 67 staged wrappers present (`apply.go` still legacy).
 - [x] Sprint 68 wrapper hardening (8×4) green.
-- [ ] Dedicated `apply.go` call-site wiring sprint before `ApplyObservationWiredV1 = true`.
+- [x] Sprint 69 wiring readiness certified (`readyForApplyGoCallSiteWiring`).
+- [ ] Sprint 70 `apply.go` call-site wiring (first allowed).
+- [ ] `ApplyObservationWiredV1 = true` (separate flip sprint, after wiring stable).
 - [ ] `audit_workload_apply_observation.sh` reports zero forbidden patterns.
 - [ ] Golden `applyObservationWired: false` updated only when flip sprint approved.
 - [ ] Hyperdensity docs updated; no Dashboard `parentfabric` import.

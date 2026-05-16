@@ -50,6 +50,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 68:** **Apply wrapper hardening** — 8×4 matrix; `apply.go` still legacy; flags **false**.
 
+**Sprint 69:** **Apply wiring readiness** — certified for Sprint 70 call-site wiring; flags **false**.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
