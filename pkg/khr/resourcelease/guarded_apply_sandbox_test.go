@@ -114,6 +114,93 @@ func TestGuardedApplySavesBaselineAndAppliesCPU(t *testing.T) {
 	}
 }
 
+func memoryApplyOpts(lease *crdv1alpha1.ResourceLease, dir, baselineID string) GuardedApplySandboxOptions {
+	opts := guardedApplyOpts(lease, dir, true, true)
+	opts.BaselineID = baselineID
+	return opts
+}
+
+func TestGuardedApplyMemoryScaleUpAndRollback(t *testing.T) {
+	lease := loadSandboxLease(t, "resourcelease-memory-scale-up.json")
+	dir := t.TempDir()
+	prefix := filepath.Join(dir, "karl.slice")
+	slice := filepath.Join(prefix, "resourcelease", "khr-runtime-sandbox-lease-memory-up")
+	if err := os.MkdirAll(slice, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	_ = cgroup.WriteMemoryMax(slice, prefix, cgroup.FormatMemoryValue(128*1024*1024))
+	_ = cgroup.WriteMemoryHigh(slice, prefix, cgroup.FormatMemoryValue(128*1024*1024))
+
+	res, err := GuardedApplyAgainstResourcePorts(memoryApplyOpts(lease, dir, "ram-up"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !res.Applied || res.Verification.State != VerificationStatePass {
+		t.Fatalf("res=%+v", res)
+	}
+	if !res.Verification.NoRestart || !res.Verification.NoRollout {
+		t.Fatalf("policy=%+v", res.Verification)
+	}
+
+	rb, err := RollbackSandbox(RollbackSandboxOptions{
+		Config:          sandboxDryRunCfg(),
+		BaselineID:      "ram-up",
+		SandboxDir:      dir,
+		AllowPathPrefix: prefix,
+	})
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !rb.RolledBack || rb.Verification.State != VerificationStatePass {
+		t.Fatalf("rb=%+v", rb)
+	}
+}
+
+func TestGuardedApplyMemoryBlockedOverLimit(t *testing.T) {
+	lease := loadSandboxLease(t, "resourcelease-memory-blocked-over-limit.json")
+	dir := t.TempDir()
+	res, err := GuardedApplyAgainstResourcePorts(memoryApplyOpts(lease, dir, "ram-over"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !res.Blocked {
+		t.Fatalf("res=%+v", res)
+	}
+}
+
+func TestGuardedApplyMemoryBlockedRestartAnnotation(t *testing.T) {
+	lease := loadSandboxLease(t, "resourcelease-memory-blocked-restart.json")
+	dir := t.TempDir()
+	res, err := GuardedApplyAgainstResourcePorts(memoryApplyOpts(lease, dir, "ram-restart"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !res.Blocked {
+		t.Fatalf("res=%+v", res)
+	}
+}
+
+func TestGuardedApplyMemoryScaleDown(t *testing.T) {
+	lease := loadSandboxLease(t, "resourcelease-memory-scale-down.json")
+	dir := t.TempDir()
+	prefix := filepath.Join(dir, "karl.slice")
+	slice := filepath.Join(prefix, "resourcelease", "khr-runtime-sandbox-lease-memory-down")
+	if err := os.MkdirAll(slice, 0o755); err != nil {
+		t.Fatal(err)
+	}
+	start := cgroup.FormatMemoryValue(256 * 1024 * 1024)
+	_ = cgroup.WriteMemoryMax(slice, prefix, start)
+	_ = cgroup.WriteMemoryHigh(slice, prefix, start)
+
+	res, err := GuardedApplyAgainstResourcePorts(memoryApplyOpts(lease, dir, "ram-down"))
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !res.Applied {
+		t.Fatalf("res=%+v", res)
+	}
+}
+
 func TestRollbackSandboxRestoresBaseline(t *testing.T) {
 	lease := loadSandboxLease(t, "resourcelease-dryrun-allowed.json")
 	dir := t.TempDir()

@@ -29,7 +29,7 @@ func portEnvelope() *crdv1alpha1.ResourcePort {
 	p.APIVersion = "runtime.karl.io/v1alpha1"
 	p.Kind = "ResourcePort"
 	p.Spec.Ports.CPU.Modes = []string{"static", "envelope"}
-	p.Spec.Ports.Memory.Modes = []string{"static", "envelope"}
+	p.Spec.Ports.Memory.Modes = []string{"static", "envelope", "scaleUp", "scaleDown"}
 	return p
 }
 
@@ -71,6 +71,23 @@ func TestDryRunBlockedNonLinux(t *testing.T) {
 	res := DryRun(leaseFixture("envelope", "cpu"), portEnvelope(), &CellContext{DonorPlatform: "windows", ReceiverPlatform: "linux"})
 	if !res.Blocked {
 		t.Fatal("expected blocked for non-linux")
+	}
+}
+
+func TestDryRunAllowedMemoryScaleUp(t *testing.T) {
+	p := portEnvelope()
+	res := DryRun(leaseFixture("scaleUp", "memory"), p, &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
+	if res.Blocked || !res.Allowed {
+		t.Fatalf("expected allowed, got %+v", res)
+	}
+}
+
+func TestDryRunBlockedMemoryRestartAnnotation(t *testing.T) {
+	l := leaseFixture("scaleUp", "memory")
+	l.Metadata.Annotations = map[string]string{AnnotationRestartRequired: "true"}
+	res := DryRun(l, portEnvelope(), &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"})
+	if !res.Blocked {
+		t.Fatal("expected blocked for restart-required annotation")
 	}
 }
 

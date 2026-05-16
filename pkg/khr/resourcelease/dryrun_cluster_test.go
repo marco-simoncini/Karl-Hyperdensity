@@ -29,7 +29,7 @@ func sandboxPort() crdv1alpha1.ResourcePort {
 			CellRef:  "khr-runtime-sandbox/Cell/demo",
 			Ports: crdv1alpha1.ResourcePortsMatrix{
 				CPU:    crdv1alpha1.ResourceModes{Modes: []string{"envelope", "static"}},
-				Memory: crdv1alpha1.ResourceModes{Modes: []string{"envelope", "static"}},
+				Memory: crdv1alpha1.ResourceModes{Modes: []string{"envelope", "scaleUp", "scaleDown", "static"}},
 			},
 		},
 	}
@@ -108,6 +108,42 @@ func TestDryRunAgainstResourcePortsBlockedOverLimit(t *testing.T) {
 		t.Fatal(err)
 	}
 	if !res.Blocked || res.DryRunDecision != DryRunDecisionBlocked {
+		t.Fatalf("res=%+v", res)
+	}
+}
+
+func TestDryRunAgainstResourcePortsMemoryScaleUp(t *testing.T) {
+	lease := loadSandboxLease(t, "resourcelease-memory-scale-up.json")
+	opts := baseDryRunOpts(lease, t.TempDir())
+	res, err := DryRunAgainstResourcePorts(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !res.Allowed || res.Resource != "memory" {
+		t.Fatalf("res=%+v", res)
+	}
+}
+
+func TestDryRunAgainstResourcePortsMemoryBlockedOverLimit(t *testing.T) {
+	lease := loadSandboxLease(t, "resourcelease-memory-blocked-over-limit.json")
+	opts := baseDryRunOpts(lease, t.TempDir())
+	res, err := DryRunAgainstResourcePorts(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !res.Blocked {
+		t.Fatalf("res=%+v", res)
+	}
+}
+
+func TestDryRunAgainstResourcePortsBlockedRestartAnnotation(t *testing.T) {
+	lease := loadSandboxLease(t, "resourcelease-memory-blocked-restart.json")
+	opts := baseDryRunOpts(lease, t.TempDir())
+	res, err := DryRunAgainstResourcePorts(opts)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if !res.Blocked {
 		t.Fatalf("res=%+v", res)
 	}
 }

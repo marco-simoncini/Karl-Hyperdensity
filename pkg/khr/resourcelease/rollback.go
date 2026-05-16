@@ -10,14 +10,20 @@ import (
 
 // Baseline captures pre-apply sandbox state for rollback.
 type Baseline struct {
-	ID            string            `json:"id"`
-	SandboxDir    string            `json:"sandboxDir"`
-	MarkerPath    string            `json:"markerPath"`
-	MarkerBytes   []byte            `json:"-"`
-	CgroupCPUPath string            `json:"cgroupCpuPath,omitempty"`
-	CPUMaxBefore  string            `json:"cpuMaxBefore,omitempty"`
-	CPUMaxApplied string            `json:"cpuMaxApplied,omitempty"`
-	Extra         map[string]string `json:"extra,omitempty"`
+	ID                string            `json:"id"`
+	SandboxDir        string            `json:"sandboxDir"`
+	MarkerPath        string            `json:"markerPath"`
+	MarkerBytes       []byte            `json:"-"`
+	CgroupCPUPath     string            `json:"cgroupCpuPath,omitempty"`
+	CPUMaxBefore      string            `json:"cpuMaxBefore,omitempty"`
+	CPUMaxApplied     string            `json:"cpuMaxApplied,omitempty"`
+	MemoryMaxBefore   string            `json:"memoryMaxBefore,omitempty"`
+	MemoryHighBefore  string            `json:"memoryHighBefore,omitempty"`
+	MemoryMaxApplied  string            `json:"memoryMaxApplied,omitempty"`
+	MemoryHighApplied string            `json:"memoryHighApplied,omitempty"`
+	Resource          string            `json:"resource,omitempty"`
+	TransferMode      string            `json:"transferMode,omitempty"`
+	Extra             map[string]string `json:"extra,omitempty"`
 }
 
 // CaptureBaseline records sandbox marker bytes before apply (or after for tests).
@@ -32,6 +38,36 @@ func CaptureBaseline(id, sandboxDir string) (Baseline, error) {
 		b.MarkerBytes = append([]byte(nil), raw...)
 	}
 	return b, nil
+}
+
+// CaptureMemoryCgroupBaseline records memory.max/high before sandbox RAM apply.
+func CaptureMemoryCgroupBaseline(id, sandboxDir, cgroupPath, allowPrefix, resource, mode string) (Baseline, error) {
+	b := Baseline{
+		ID:            id,
+		SandboxDir:    sandboxDir,
+		MarkerPath:    filepath.Join(sandboxDir, "apply-marker.txt"),
+		CgroupCPUPath: cgroupPath,
+		Resource:      resource,
+		TransferMode:  mode,
+		Extra: map[string]string{
+			"source":          "karl-host-runtime",
+			"allowPathPrefix": allowPrefix,
+		},
+	}
+	if err := os.MkdirAll(sandboxDir, 0o755); err != nil {
+		return b, err
+	}
+	maxBefore, err := readMemoryOrMax(cgroupPath, allowPrefix, cgroup.ReadMemoryMax)
+	if err != nil {
+		return b, err
+	}
+	highBefore, err := readMemoryOrMax(cgroupPath, allowPrefix, cgroup.ReadMemoryHigh)
+	if err != nil {
+		return b, err
+	}
+	b.MemoryMaxBefore = maxBefore
+	b.MemoryHighBefore = highBefore
+	return b, SaveBaseline(b)
 }
 
 // CaptureCgroupBaseline records cpu.max before sandbox apply.
@@ -54,7 +90,23 @@ func CaptureCgroupBaseline(id, sandboxDir, cgroupPath, allowPrefix string, milli
 		return b, err
 	}
 	b.CPUMaxBefore = before
+	b.Resource = "cpu"
+	b.TransferMode = ModeEnvelope
 	return b, SaveBaseline(b)
+}
+
+func readMemoryOrMax(cgroupPath, allowPrefix string, readFn func(string, string) (string, error)) (string, error) {
+	val, err := readFn(cgroupPath, allowPrefix)
+	if err != nil {
+		if os.IsNotExist(err) {
+			return "max", nil
+		}
+		return "", err
+	}
+	if val == "" {
+		return "max", nil
+	}
+	return val, nil
 }
 
 func readCPUMaxOrMax(cgroupPath, allowPrefix string) (string, error) {

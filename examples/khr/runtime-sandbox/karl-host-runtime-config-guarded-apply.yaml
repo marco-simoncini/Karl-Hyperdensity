@@ -15,3 +15,4 @@ spec:
   cgroupRoot: /sys/fs/cgroup
   allowPathPrefixes:
     - /sys/fs/cgroup/karl.slice
+  sandboxMaxMemoryDeltaBytes: 536870912

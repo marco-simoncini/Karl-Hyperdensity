@@ -21,8 +21,9 @@ const (
 
 // TransferAmount is the requested transfer quantity on a lease.
 type TransferAmount struct {
-	MilliCPU int64 `json:"milliCpu,omitempty"`
-	Bytes    int64 `json:"bytes,omitempty"`
+	MilliCPU  int64  `json:"milliCpu,omitempty"`
+	Bytes     int64  `json:"bytes,omitempty"`
+	Direction string `json:"direction,omitempty"` // scaleUp | scaleDown (memory)
 }
 
 // DryRunAgainstPortOptions configures sandbox ResourceLease dry-run against cluster ResourcePorts.
@@ -162,7 +163,7 @@ func DryRunAgainstResourcePorts(opts DryRunAgainstPortOptions) (DryRunAgainstPor
 		return finishBlocked(res, err.Error()), nil
 	}
 	res.RequestedAmount = amount
-	if over, reason := amountOverSandboxLimit(resource, amount); over {
+	if over, reason := amountOverSandboxLimitWithConfig(opts.Config, resource, amount); over {
 		return finishBlocked(res, reason), nil
 	}
 	_ = amountRaw
@@ -309,6 +310,10 @@ func effectiveTransferAmount(lease *crdv1alpha1.ResourceLease) (*TransferAmount,
 }
 
 func amountOverSandboxLimit(resource string, amt *TransferAmount) (bool, string) {
+	return amountOverSandboxLimitWithConfig(nil, resource, amt)
+}
+
+func amountOverSandboxLimitWithConfig(cfg *host.Config, resource string, amt *TransferAmount) (bool, string) {
 	if amt == nil {
 		return false, ""
 	}
@@ -318,8 +323,12 @@ func amountOverSandboxLimit(resource string, amt *TransferAmount) (bool, string)
 			return true, fmt.Sprintf("requested milliCpu %d exceeds sandbox limit %d", amt.MilliCPU, SandboxMaxMilliCPU)
 		}
 	case "memory":
-		if amt.Bytes > SandboxMaxMemoryBytes {
-			return true, fmt.Sprintf("requested memory bytes %d exceed sandbox limit %d", amt.Bytes, SandboxMaxMemoryBytes)
+		limit := SandboxMaxMemoryDelta(cfg)
+		if amt.Bytes > limit {
+			return true, fmt.Sprintf("requested memory delta %d exceeds sandbox limit %d", amt.Bytes, limit)
+		}
+		if amt.Bytes <= 0 {
+			return true, "memory scale requires positive bytes delta"
 		}
 	}
 	return false, ""

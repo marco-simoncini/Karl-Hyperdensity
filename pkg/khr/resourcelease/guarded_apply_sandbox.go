@@ -32,11 +32,18 @@ type GuardedApplySandboxOptions struct {
 
 // VerificationOutcome is post-apply cgroup observation.
 type VerificationOutcome struct {
-	State            string `json:"state"`
-	ObservedCPUMax   string `json:"observedCpuMax,omitempty"`
-	ExpectedCPUMax   string `json:"expectedCpuMax,omitempty"`
-	NoRestart        bool   `json:"noRestart"`
-	NoProductionMutation bool `json:"noProductionMutation"`
+	State                  string          `json:"state"`
+	ObservedCPUMax         string          `json:"observedCpuMax,omitempty"`
+	ExpectedCPUMax         string          `json:"expectedCpuMax,omitempty"`
+	ObservedMemoryMax      string          `json:"observedMemoryMax,omitempty"`
+	ExpectedMemoryMax      string          `json:"expectedMemoryMax,omitempty"`
+	ObservedMemoryHigh     string          `json:"observedMemoryHigh,omitempty"`
+	ExpectedMemoryHigh     string          `json:"expectedMemoryHigh,omitempty"`
+	NoRestart              bool            `json:"noRestart"`
+	NoRollout              bool            `json:"noRollout"`
+	NoRecreate             bool            `json:"noRecreate"`
+	NoProductionMutation   bool            `json:"noProductionMutation"`
+	LiveScalePolicy        LiveScalePolicy `json:"liveScalePolicy,omitempty"`
 }
 
 // GuardedApplySandboxResult is CLI output for resourcelease-guarded-apply.
@@ -95,19 +102,32 @@ func GuardedApplyAgainstResourcePorts(opts GuardedApplySandboxOptions) (GuardedA
 			NoProductionMutation: true,
 		},
 	}
+	policy := DefaultLiveScalePolicy()
+	res.Verification.LiveScalePolicy = policy
+	res.Verification.NoRollout = policy.NoRollout
+	res.Verification.NoRecreate = policy.NoRecreate
 	res.SafetyGates = []string{
 		"linux-only",
 		"sandbox-namespace-allowlist",
 		"label-allowlist",
 		"cluster-context-guard",
 		"dry-run-required",
-		"cpu-only",
+		"cpu-and-ram-live-scale",
 		"sandbox-cpu-cap-500m",
+		"sandbox-memory-delta-cap",
+		"no-restart",
+		"no-rollout",
+		"no-recreate",
 		"no-production-mutation",
 	}
 
 	if gate := validateGuardedApplyGate(opts); !gate.Allowed {
 		return finishGuardedBlocked(res, gate.Reason), nil
+	}
+	if opts.Lease != nil {
+		if err := ValidateLiveScaleLease(opts.Lease); err != nil {
+			return finishGuardedBlocked(res, err.Error()), nil
+		}
 	}
 
 	dr, err := DryRunAgainstResourcePorts(opts.DryRunAgainstPortOptions)
@@ -118,9 +138,6 @@ func GuardedApplyAgainstResourcePorts(opts GuardedApplySandboxOptions) (GuardedA
 	if dr.Blocked || !dr.Allowed || dr.DryRunDecision != DryRunDecisionAllowed {
 		return finishGuardedBlocked(res, "dry-run not allowed: "+dr.Reason), nil
 	}
-	if dr.Resource != "cpu" {
-		return finishGuardedBlocked(res, "KHR-M sandbox apply supports cpu resource only"), nil
-	}
 	if dr.RollbackPlanRef == "" {
 		return finishGuardedBlocked(res, "rollbackPlanRef required for guarded apply"), nil
 	}
@@ -130,12 +147,6 @@ func GuardedApplyAgainstResourcePorts(opts GuardedApplySandboxOptions) (GuardedA
 	if len(dr.RollbackPlan) == 0 || len(dr.VerificationPlan) == 0 {
 		return finishGuardedBlocked(res, "rollbackPlan and verificationPlan must be present"), nil
 	}
-	if dr.RequestedAmount == nil || dr.RequestedAmount.MilliCPU <= 0 {
-		return finishGuardedBlocked(res, "requested cpu amount required"), nil
-	}
-	if over, reason := amountOverSandboxLimit("cpu", dr.RequestedAmount); over {
-		return finishGuardedBlocked(res, reason), nil
-	}
 
 	cgPath, prefix, err := sandboxCgroupPathAndPrefix(opts.Config, opts.Lease, opts.SandboxDir)
 	if err != nil {
@@ -143,6 +154,23 @@ func GuardedApplyAgainstResourcePorts(opts GuardedApplySandboxOptions) (GuardedA
 	}
 	res.CgroupPath = cgPath
 
+	switch dr.Resource {
+	case "cpu":
+		return applySandboxCPU(opts, res, dr, cgPath, prefix)
+	case "memory":
+		return applySandboxMemory(opts, res, dr, cgPath, prefix)
+	default:
+		return finishGuardedBlocked(res, fmt.Sprintf("unsupported resource %q for guarded apply", dr.Resource)), nil
+	}
+}
+
+func applySandboxCPU(opts GuardedApplySandboxOptions, res GuardedApplySandboxResult, dr DryRunAgainstPortResult, cgPath, prefix string) (GuardedApplySandboxResult, error) {
+	if dr.RequestedAmount == nil || dr.RequestedAmount.MilliCPU <= 0 {
+		return finishGuardedBlocked(res, "requested cpu amount required"), nil
+	}
+	if over, reason := amountOverSandboxLimitWithConfig(opts.Config, "cpu", dr.RequestedAmount); over {
+		return finishGuardedBlocked(res, reason), nil
+	}
 	bl, err := CaptureCgroupBaseline(opts.BaselineID, opts.SandboxDir, cgPath, prefix, dr.RequestedAmount.MilliCPU)
 	if err != nil {
 		return res, err
@@ -157,8 +185,7 @@ func GuardedApplyAgainstResourcePorts(opts GuardedApplySandboxOptions) (GuardedA
 	bl.CPUMaxApplied = expected
 	_ = SaveBaseline(bl)
 
-	evidencePath := filepath.Join(opts.SandboxDir, "apply-evidence-"+opts.BaselineID+".json")
-	_ = writeApplyEvidence(evidencePath, bl, expected)
+	_ = writeApplyEvidence(filepath.Join(opts.SandboxDir, "apply-evidence-"+opts.BaselineID+".json"), bl, expected)
 	res.ApplyEvidenceRef = applyEvidenceRef(opts.Namespace, opts.BaselineID)
 
 	observed, err := cgroup.ReadCPUMax(cgPath, prefix)
@@ -173,12 +200,81 @@ func GuardedApplyAgainstResourcePorts(opts GuardedApplySandboxOptions) (GuardedA
 		return finishGuardedBlocked(res, fmt.Sprintf("cpu.max mismatch: got %q want %q", observed, expected)), nil
 	}
 	res.Verification.State = VerificationStatePass
-
 	res.Applied = true
 	res.Blocked = false
 	res.ApplyState = ApplyStateApplied
 	res.Reason = "sandbox cpu.max applied under " + cgPath
 	return res, nil
+}
+
+func applySandboxMemory(opts GuardedApplySandboxOptions, res GuardedApplySandboxResult, dr DryRunAgainstPortResult, cgPath, prefix string) (GuardedApplySandboxResult, error) {
+	if dr.RequestedAmount == nil || dr.RequestedAmount.Bytes <= 0 {
+		return finishGuardedBlocked(res, "requested memory bytes delta required"), nil
+	}
+	if over, reason := amountOverSandboxLimitWithConfig(opts.Config, "memory", dr.RequestedAmount); over {
+		return finishGuardedBlocked(res, reason), nil
+	}
+	_, _, _, mode, ok := opts.Lease.Spec.EffectiveTransfer()
+	if !ok {
+		return finishGuardedBlocked(res, "lease transfer required"), nil
+	}
+	bl, err := CaptureMemoryCgroupBaseline(opts.BaselineID, opts.SandboxDir, cgPath, prefix, "memory", mode)
+	if err != nil {
+		return res, err
+	}
+	res.Baseline = bl
+	res.BaselineRef = baselineRef(opts.Namespace, opts.BaselineID)
+
+	currentBytes, currentUnlimited, err := parseMemoryBaseline(bl.MemoryMaxBefore)
+	if err != nil {
+		return finishGuardedBlocked(res, err.Error()), nil
+	}
+	target, err := cgroup.ComputeMemoryTarget(currentBytes, currentUnlimited, dr.RequestedAmount.Bytes, mode)
+	if err != nil {
+		return finishGuardedBlocked(res, err.Error()), nil
+	}
+	expected := cgroup.FormatMemoryValue(target)
+	if err := cgroup.WriteMemoryHigh(cgPath, prefix, expected); err != nil {
+		return res, err
+	}
+	if err := cgroup.WriteMemoryMax(cgPath, prefix, expected); err != nil {
+		return res, err
+	}
+	bl.MemoryMaxApplied = expected
+	bl.MemoryHighApplied = expected
+	_ = SaveBaseline(bl)
+
+	_ = writeApplyEvidence(filepath.Join(opts.SandboxDir, "apply-evidence-"+opts.BaselineID+".json"), bl, expected)
+	res.ApplyEvidenceRef = applyEvidenceRef(opts.Namespace, opts.BaselineID)
+
+	obsMax, err := cgroup.ReadMemoryMax(cgPath, prefix)
+	if err != nil {
+		res.Verification.State = VerificationStateFail
+		return finishGuardedBlocked(res, "memory.max read failed: "+err.Error()), nil
+	}
+	obsHigh, err := cgroup.ReadMemoryHigh(cgPath, prefix)
+	if err != nil {
+		res.Verification.State = VerificationStateFail
+		return finishGuardedBlocked(res, "memory.high read failed: "+err.Error()), nil
+	}
+	res.Verification.ObservedMemoryMax = obsMax
+	res.Verification.ObservedMemoryHigh = obsHigh
+	res.Verification.ExpectedMemoryMax = expected
+	res.Verification.ExpectedMemoryHigh = expected
+	if strings.TrimSpace(obsMax) != strings.TrimSpace(expected) || strings.TrimSpace(obsHigh) != strings.TrimSpace(expected) {
+		res.Verification.State = VerificationStateFail
+		return finishGuardedBlocked(res, fmt.Sprintf("memory mismatch: max=%q high=%q want %q", obsMax, obsHigh, expected)), nil
+	}
+	res.Verification.State = VerificationStatePass
+	res.Applied = true
+	res.Blocked = false
+	res.ApplyState = ApplyStateApplied
+	res.Reason = fmt.Sprintf("sandbox memory.high/memory.max applied (%s) under %s", mode, cgPath)
+	return res, nil
+}
+
+func parseMemoryBaseline(val string) (bytes int64, unlimited bool, err error) {
+	return cgroup.ParseMemoryValue(val)
 }
 
 // RollbackSandbox restores cgroup baseline captured before guarded apply.
@@ -218,6 +314,20 @@ func RollbackSandbox(opts RollbackSandboxOptions) (RollbackSandboxResult, error)
 		out.RollbackState = RollbackStateDone
 		return out, nil
 	}
+	policy := DefaultLiveScalePolicy()
+	out.Verification.LiveScalePolicy = policy
+	out.Verification.NoRollout = policy.NoRollout
+	out.Verification.NoRecreate = policy.NoRecreate
+
+	switch bl.Resource {
+	case "memory":
+		return rollbackMemoryCgroup(out, bl, prefix)
+	default:
+		return rollbackCPUCgroup(out, bl, prefix)
+	}
+}
+
+func rollbackCPUCgroup(out RollbackSandboxResult, bl Baseline, prefix string) (RollbackSandboxResult, error) {
 	restore := bl.CPUMaxBefore
 	if restore == "" {
 		restore = "max"
@@ -240,6 +350,46 @@ func RollbackSandbox(opts RollbackSandboxOptions) (RollbackSandboxResult, error)
 	out.RolledBack = true
 	out.RollbackState = RollbackStateDone
 	out.Rollback = RollbackResult{RolledBack: true, Actions: []string{"restored cpu.max from baseline"}}
+	return out, nil
+}
+
+func rollbackMemoryCgroup(out RollbackSandboxResult, bl Baseline, prefix string) (RollbackSandboxResult, error) {
+	restoreMax := bl.MemoryMaxBefore
+	if restoreMax == "" {
+		restoreMax = "max"
+	}
+	restoreHigh := bl.MemoryHighBefore
+	if restoreHigh == "" {
+		restoreHigh = restoreMax
+	}
+	if err := cgroup.WriteMemoryHigh(bl.CgroupCPUPath, prefix, restoreHigh); err != nil {
+		return finishRollbackBlocked(out, err.Error()), nil
+	}
+	if err := cgroup.WriteMemoryMax(bl.CgroupCPUPath, prefix, restoreMax); err != nil {
+		return finishRollbackBlocked(out, err.Error()), nil
+	}
+	obsMax, err := cgroup.ReadMemoryMax(bl.CgroupCPUPath, prefix)
+	if err != nil {
+		out.Verification.State = VerificationStateFail
+		return finishRollbackBlocked(out, err.Error()), nil
+	}
+	obsHigh, err := cgroup.ReadMemoryHigh(bl.CgroupCPUPath, prefix)
+	if err != nil {
+		out.Verification.State = VerificationStateFail
+		return finishRollbackBlocked(out, err.Error()), nil
+	}
+	out.Verification.ObservedMemoryMax = obsMax
+	out.Verification.ExpectedMemoryMax = restoreMax
+	out.Verification.ObservedMemoryHigh = obsHigh
+	out.Verification.ExpectedMemoryHigh = restoreHigh
+	if strings.TrimSpace(obsMax) != strings.TrimSpace(restoreMax) {
+		out.Verification.State = VerificationStateFail
+		return finishRollbackBlocked(out, fmt.Sprintf("rollback memory.max mismatch: %q vs %q", obsMax, restoreMax)), nil
+	}
+	out.Verification.State = VerificationStatePass
+	out.RolledBack = true
+	out.RollbackState = RollbackStateDone
+	out.Rollback = RollbackResult{RolledBack: true, Actions: []string{"restored memory.high/memory.max from baseline"}}
 	return out, nil
 }
 

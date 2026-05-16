@@ -70,9 +70,14 @@ func DryRun(lease *crdv1alpha1.ResourceLease, port *crdv1alpha1.ResourcePort, ct
 		res.Reason = fmt.Sprintf("resource %q not supported in linux envelope MVP", resource)
 		return res
 	}
-	if strings.ToLower(mode) != "envelope" {
+	if err := ValidateTransferMode(resource, mode); err != nil {
 		res.Blocked = true
-		res.Reason = fmt.Sprintf("mode %q blocked: only envelope mode allowed in KHR Linux MVP", mode)
+		res.Reason = err.Error()
+		return res
+	}
+	if err := ValidateLiveScaleLease(lease); err != nil {
+		res.Blocked = true
+		res.Reason = err.Error()
 		return res
 	}
 	if donor.Kind == "" || donor.Name == "" || receiver.Kind == "" || receiver.Name == "" {
@@ -85,16 +90,17 @@ func DryRun(lease *crdv1alpha1.ResourceLease, port *crdv1alpha1.ResourcePort, ct
 		res.Reason = "ResourcePort input required for dry-run verification"
 		return res
 	}
-	isCPU := resource == "cpu"
 	var portOK bool
-	if isCPU {
-		portOK = modeSliceContains(port.Spec.Ports.CPU.Modes, "envelope")
-	} else {
-		portOK = modeSliceContains(port.Spec.Ports.Memory.Modes, "envelope")
+	switch resource {
+	case "cpu":
+		portOK = modeSliceContains(port.Spec.Ports.CPU.Modes, ModeEnvelope)
+	case "memory":
+		portOK = modeSliceContains(port.Spec.Ports.Memory.Modes, mode) ||
+			modeSliceContains(port.Spec.Ports.Memory.Modes, ModeEnvelope)
 	}
 	if !portOK {
 		res.Blocked = true
-		res.Reason = "ResourcePort does not allow envelope for requested resource"
+		res.Reason = fmt.Sprintf("ResourcePort does not allow mode %q for resource %s", mode, resource)
 		res.ResourcePortCheck = "incompatible"
 		return res
 	}
@@ -103,10 +109,15 @@ func DryRun(lease *crdv1alpha1.ResourceLease, port *crdv1alpha1.ResourcePort, ct
 	res.Allowed = true
 	res.Blocked = false
 	res.Reason = "dry-run only: no cgroup writes performed"
-	res.ExpectedWrites = []string{
-		"(simulated) write cgroup cpu.max delta on donor slice",
-		"(simulated) write cgroup memory.max delta on donor slice",
-		"(simulated) mirror inverse delta on receiver slice",
+	switch resource {
+	case "cpu":
+		res.ExpectedWrites = []string{
+			"(simulated) write cgroup cpu.max on donor slice",
+		}
+	case "memory":
+		res.ExpectedWrites = []string{
+			"(simulated) write cgroup memory.high and memory.max on donor slice",
+		}
 	}
 	return res
 }
