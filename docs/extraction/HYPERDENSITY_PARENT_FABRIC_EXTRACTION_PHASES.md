@@ -24,7 +24,9 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 55:** Wiring **proposal** + call-site inventory audit (51 production sites).
 
-**Sprint 56:** **Path-only** wiring on 6 approved non-apply files via `hyperdensityWorkloadPath*V1` wrappers; observation/apply excluded; Hyperdensity path-wiring doc.
+**Sprint 56:** **Path-only** wiring on 6 approved non-apply files via `hyperdensityWorkloadPath*V1` wrappers.
+
+**Sprint 57:** **Pilot-only** observed-state via `hyperdensityWorkloadPilotObservedStateV1`; apply/live/VM/rollback observation excluded.
 
 ---
 

@@ -38,8 +38,9 @@ Fixed time for observed-state: `2026-05-16T12:00:00Z`.
 | **53** | Production-internal adapter v1 — not wired |
 | **54** | Shadow tests (legacy vs adapter) — still not wired |
 | **55** | Wiring **proposal** + call-site inventory |
-| **56** | **Path-only** wiring (approved non-apply files) — observation **not** wired |
-| **Future** | Observation wiring sprint |
+| **56** | **Path-only** wiring (approved non-apply files) |
+| **57** | **Pilot-only** observed-state wiring — general observation **not** wired |
+| **Future** | Broader observation wiring (non-pilot files) |
 
 ## Related
 

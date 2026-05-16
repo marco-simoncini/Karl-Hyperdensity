@@ -35,7 +35,8 @@
 | **54** | Dashboard shadow tests (legacy vs adapter v1) — **still not wired** |
 | **55** | Wiring proposal + call-site inventory |
 | **56** | Path-only wiring via wrappers (Dashboard) |
-| **Future** | Observation wiring sprint |
+| **57** | Pilot-only observation wiring (Dashboard) |
+| **Future** | Broader observation wiring |
 
 ## Related
 
