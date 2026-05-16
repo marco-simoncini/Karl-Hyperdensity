@@ -1,0 +1,30 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karl.local/schemas/khr/windows-live-scale-blocked-state.schema.json",
+  "title": "KHR Windows live scale blocked state",
+  "description": "KHR-P dry-run / observation blocked reasons for Windows lane.",
+  "type": "object",
+  "required": ["blocked", "blockedState", "reason"],
+  "properties": {
+    "allowed": { "type": "boolean" },
+    "blocked": { "type": "boolean", "const": true },
+    "blockedState": {
+      "type": "string",
+      "enum": [
+        "requiresRestart",
+        "requiresReboot",
+        "requiresSessionDrain",
+        "providerUnsupported"
+      ]
+    },
+    "blockedReason": { "type": "string" },
+    "reason": { "type": "string" },
+    "noMutation": { "type": "boolean", "const": true },
+    "noApply": { "type": "boolean", "const": true },
+    "liveScaleTarget": {
+      "type": "string",
+      "enum": ["live-in-place", "compatibility-fallback"]
+    }
+  },
+  "additionalProperties": true
+}

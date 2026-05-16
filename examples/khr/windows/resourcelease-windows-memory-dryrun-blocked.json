@@ -1,0 +1,52 @@
+{
+  "apiVersion": "hyperdensity.karl.io/v1alpha1",
+  "kind": "ResourceLease",
+  "metadata": {
+    "name": "windows-memory-dryrun-blocked",
+    "namespace": "khr-windows-observation",
+    "labels": {
+      "khr.karl.io/lane": "windows",
+      "khr.karl.io/observation-only": "true"
+    },
+    "annotations": {
+      "khr.karl.io/resource-port-ref": "cluster/ResourcePort/windows-kubevirt-compat-port",
+      "khr.karl.io/provider-binding": "kubevirt.compatibility"
+    }
+  },
+  "spec": {
+    "leaseKind": "transfer",
+    "transfer": {
+      "donor": {
+        "apiGroup": "runtime.karl.io",
+        "kind": "Cell",
+        "namespace": "khr-windows-observation",
+        "name": "win-daas-01"
+      },
+      "receiver": {
+        "apiGroup": "runtime.karl.io",
+        "kind": "Cell",
+        "namespace": "khr-windows-observation",
+        "name": "win-daas-01-pool"
+      },
+      "resource": "memory",
+      "mode": "scaleUp",
+      "amount": { "bytes": 134217728 }
+    },
+    "governance": {
+      "dryRunOnly": true
+    }
+  },
+  "status": {
+    "dryRunObservation": {
+      "allowed": false,
+      "blocked": true,
+      "blockedState": "requiresRestart",
+      "blockedReason": "kubevirt.compatibility: memory scaleUp requires VM restart; not live-in-place",
+      "reason": "kubevirt.compatibility: memory scaleUp requires VM restart; not live-in-place",
+      "dryRunDecision": "blocked",
+      "noMutation": true,
+      "noApply": true,
+      "liveScaleTarget": "compatibility-fallback"
+    }
+  }
+}

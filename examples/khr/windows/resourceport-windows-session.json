@@ -1,0 +1,31 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "ResourcePort",
+  "metadata": {
+    "name": "windows-session-live-scale-port",
+    "namespace": "khr-windows-observation",
+    "labels": {
+      "khr.karl.io/lane": "windows",
+      "khr.karl.io/observation-only": "true"
+    }
+  },
+  "spec": {
+    "provider": "windows.host-runtime",
+    "providerBinding": "windows.host-runtime",
+    "shellRef": "khr-windows-observation/Shell/win-session-01",
+    "cellRef": "khr-windows-observation/Cell/win-session-01",
+    "ports": {
+      "cpu": { "modes": ["envelope", "scaleUp", "scaleDown"] },
+      "memory": { "modes": ["envelope", "scaleUp", "scaleDown"] }
+    },
+    "windowsLiveScale": {
+      "cpuLiveScaleSupported": true,
+      "ramLiveScaleSupported": true,
+      "scaleUpSupported": true,
+      "scaleDownSupported": true,
+      "requiresRestart": false,
+      "liveScaleTarget": "live-in-place",
+      "observationOnly": true
+    }
+  }
+}

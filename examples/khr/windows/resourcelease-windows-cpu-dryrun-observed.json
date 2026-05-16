@@ -1,0 +1,56 @@
+{
+  "apiVersion": "hyperdensity.karl.io/v1alpha1",
+  "kind": "ResourceLease",
+  "metadata": {
+    "name": "windows-cpu-dryrun-observed",
+    "namespace": "khr-windows-observation",
+    "labels": {
+      "khr.karl.io/lane": "windows",
+      "khr.karl.io/observation-only": "true"
+    },
+    "annotations": {
+      "khr.karl.io/resource-port-ref": "cluster/ResourcePort/windows-session-live-scale-port"
+    }
+  },
+  "spec": {
+    "leaseKind": "transfer",
+    "transfer": {
+      "donor": {
+        "apiGroup": "runtime.karl.io",
+        "kind": "Cell",
+        "namespace": "khr-windows-observation",
+        "name": "win-session-01"
+      },
+      "receiver": {
+        "apiGroup": "runtime.karl.io",
+        "kind": "Cell",
+        "namespace": "khr-windows-observation",
+        "name": "win-session-01-pool"
+      },
+      "resource": "cpu",
+      "mode": "envelope",
+      "amount": { "milliCpu": 500 }
+    },
+    "governance": {
+      "dryRunOnly": true,
+      "rollbackPlanRef": {
+        "name": "windows-observation-rollback",
+        "namespace": "khr-windows-observation"
+      }
+    }
+  },
+  "status": {
+    "dryRunObservation": {
+      "allowed": true,
+      "blocked": false,
+      "dryRunDecision": "allowed",
+      "reason": "KHR-P observation only: Windows CPU envelope dry-run; no host-runtime apply",
+      "noMutation": true,
+      "noApply": true,
+      "liveScaleTarget": "live-in-place",
+      "expectedWrites": [
+        "(observed) windows.host-runtime CPU envelope adjust without guest restart"
+      ]
+    }
+  }
+}

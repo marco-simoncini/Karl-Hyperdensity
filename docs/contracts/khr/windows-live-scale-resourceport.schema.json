@@ -1,0 +1,85 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karl.local/schemas/khr/windows-live-scale-resourceport.schema.json",
+  "title": "KHR Windows ResourcePort live scale capabilities",
+  "description": "KHR-P observation contract for Windows CPU/RAM live scale (no apply).",
+  "type": "object",
+  "required": ["apiVersion", "kind", "metadata", "spec"],
+  "properties": {
+    "apiVersion": { "type": "string", "const": "runtime.karl.io/v1alpha1" },
+    "kind": { "type": "string", "const": "ResourcePort" },
+    "metadata": { "$ref": "#/$defs/metadata" },
+    "spec": { "$ref": "#/$defs/spec" }
+  },
+  "$defs": {
+    "metadata": {
+      "type": "object",
+      "required": ["name"],
+      "properties": {
+        "name": { "type": "string" },
+        "namespace": { "type": "string" },
+        "labels": { "type": "object", "additionalProperties": { "type": "string" } }
+      },
+      "additionalProperties": true
+    },
+    "spec": {
+      "type": "object",
+      "required": ["providerBinding", "shellRef", "cellRef", "windowsLiveScale"],
+      "properties": {
+        "provider": { "$ref": "#/$defs/providerBinding" },
+        "providerBinding": { "$ref": "#/$defs/providerBinding" },
+        "shellRef": { "type": "string" },
+        "cellRef": { "type": "string" },
+        "ports": { "$ref": "#/$defs/portsMatrix" },
+        "windowsLiveScale": { "$ref": "#/$defs/windowsLiveScaleCapabilities" }
+      },
+      "additionalProperties": true
+    },
+    "providerBinding": {
+      "type": "string",
+      "enum": ["windows.host-runtime", "kubevirt.compatibility"]
+    },
+    "windowsLiveScaleCapabilities": {
+      "type": "object",
+      "required": [
+        "cpuLiveScaleSupported",
+        "ramLiveScaleSupported",
+        "scaleUpSupported",
+        "scaleDownSupported",
+        "requiresRestart"
+      ],
+      "properties": {
+        "cpuLiveScaleSupported": { "type": "boolean" },
+        "ramLiveScaleSupported": { "type": "boolean" },
+        "scaleUpSupported": { "type": "boolean" },
+        "scaleDownSupported": { "type": "boolean" },
+        "requiresRestart": {
+          "type": "boolean",
+          "description": "Target false for windows.host-runtime live-in-place lane"
+        },
+        "liveScaleTarget": {
+          "type": "string",
+          "enum": ["live-in-place", "compatibility-fallback"]
+        },
+        "observationOnly": { "type": "boolean", "const": true }
+      },
+      "additionalProperties": false
+    },
+    "portsMatrix": {
+      "type": "object",
+      "properties": {
+        "cpu": { "$ref": "#/$defs/resourceModes" },
+        "memory": { "$ref": "#/$defs/resourceModes" }
+      }
+    },
+    "resourceModes": {
+      "type": "object",
+      "properties": {
+        "modes": {
+          "type": "array",
+          "items": { "type": "string" }
+        }
+      }
+    }
+  }
+}
