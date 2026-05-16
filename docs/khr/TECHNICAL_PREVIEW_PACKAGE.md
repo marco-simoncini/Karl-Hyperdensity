@@ -18,7 +18,9 @@ This document defines the **Technical Preview (TP) package** consumable without 
 | **Karl-Hyperdensity** | Source of truth: CLIs, CRDs, evidence, sandbox scripts | `TECHNICAL_PREVIEW_READINESS.md`, `TECHNICAL_PREVIEW_PACKAGE.md`, `TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md`, `docs/evidence/khr-*`, `scripts/khr_*` |
 | **Karl-Dashboard** | Read-only KHR projection documentation | `docs/khr/TECHNICAL_PREVIEW_DASHBOARD_GUIDE.md`, `docs/hyperdensity/KHR_PROJECTION_V1.md` |
 | **Karl-Inventory** | Posture/observation schema + guides | `docs/khr/TECHNICAL_PREVIEW_INVENTORY_GUIDE.md`, `docs/contracts/khr/runtime-posture.schema.json` |
-| **Karl-OS-ISO** | CRD foundation + host-runtime preview (disabled) | `docs/khr/KHR_TECHNICAL_PREVIEW_ISO_GUIDE.md`, `docs/khr/KHR_TECHNICAL_PREVIEW_PROFILE.md` |
+| **Karl-OS-ISO** | CRD foundation + host-runtime preview (disabled) | `docs/khr/KHR_TECHNICAL_PREVIEW_ISO_GUIDE.md`, `docs/khr/KHR_TECHNICAL_PREVIEW_PROFILE.md`, `docs/khr/KHR_BOOTSTRAP_FLOW.md` |
+| **Karl-OS-ISO_subiquity** | Host install UI — TP wording alignment only | `docs/khr/KHR_SUBIQUITY_ALIGNMENT.md` |
+| **Karl-Installer** | Post-cluster profiles (spec; AG = docs) | `docs/khr/KHR_INSTALLER_ALIGNMENT_PLAN.md`, `docs/khr/KHR_INSTALLER_PROFILE_MATRIX.md` |
 
 | Validation (Hyperdensity) | Command |
 |---------------------------|---------|
@@ -27,6 +29,8 @@ This document defines the **Technical Preview (TP) package** consumable without 
 | TP operator bundle | `./scripts/khr_tp_operator_bundle.sh` |
 | Full validate hook | `./scripts/validate.sh` |
 | ISO boundaries (ISO repo) | `./scripts/guard_khr_iso_boundaries.sh` |
+| ISO TP bootstrap verify (ISO repo, read-only) | `./scripts/khr_iso_tp_verify.sh` |
+| Bootstrap consumer contract (this repo) | `docs/khr/KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md` |
 
 ---
 

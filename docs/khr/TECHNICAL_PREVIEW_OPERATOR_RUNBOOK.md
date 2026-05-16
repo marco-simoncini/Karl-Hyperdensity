@@ -21,6 +21,21 @@ Single operator runbook for consuming the KHR Technical Preview package. All mut
 | Hyperdensity | KHR branch built; scripts executable |
 | Dashboard (optional) | `HYPERDENSITY_KHR_TP_READINESS_ENABLED=true` for `GET /api/hyperdensity/tp-readiness` |
 | ISO | CRDs installed; host-runtime **disabled** |
+| Bootstrap contract | `KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md` (KHR-AG) |
+
+---
+
+## 1b. Bootstrap verify (read-only, KHR-AG)
+
+After ISO provision, run **from Karl-OS-ISO** (filesystem checks only — no apply, no enable):
+
+```bash
+cd Karl-OS-ISO
+./scripts/khr_iso_tp_verify.sh
+./scripts/guard_khr_iso_boundaries.sh
+```
+
+Wave-1 convergence map: ISO CRD foundation → optional Installer profile (`karl2-khr-technical-preview` / `hybrid-transition`) → Hyperdensity sandbox evidence. See `KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md`, `Karl-OS-ISO/docs/khr/KHR_BOOTSTRAP_FLOW.md`, `Karl-Installer/docs/khr/KHR_INSTALLER_PROFILE_MATRIX.md`.
 
 ---
 
