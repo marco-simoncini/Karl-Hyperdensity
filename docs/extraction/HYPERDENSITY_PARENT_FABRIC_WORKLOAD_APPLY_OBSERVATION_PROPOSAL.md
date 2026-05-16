@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 65** is **proposal-only**: inventory and criteria for a future **`ApplyObservationWiredV1`** phase. **Sprint 66** adds **shadow matrix** design (see `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_SHADOW_MATRIX.md`). **`apply.go` remains legacy.** No runtime wiring. Hyperdensity receives **no** new Go adapter code.
+**Sprint 65** is **proposal-only**: inventory and criteria for a future **`ApplyObservationWiredV1`** phase. **Sprint 66** shadow matrix. **Sprint 67** staged wrappers (`apply_observation_wiring_v1.go`). **`apply.go` remains legacy.** No runtime wiring. Hyperdensity receives **no** new Go adapter code.
 
 ---
 

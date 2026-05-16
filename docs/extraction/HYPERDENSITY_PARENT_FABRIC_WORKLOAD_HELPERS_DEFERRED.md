@@ -25,6 +25,7 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 6. **Sprint 64:** observation surface re-audit — broad `ObservationWiredV1` stays **false**; granular subflags only.
 7. **Sprint 65:** apply-observation proposal only — `apply.go` legacy; `ApplyObservationWiredV1` placeholder **false**.
 8. **Sprint 66:** apply-observation shadow matrix — candidate helpers test-only; `ApplyObservationCandidateRuntimeUsedV1` **false**.
+9. **Sprint 67:** apply-observation staged wrappers — `apply_observation_wiring_v1.go`; `apply.go` does not call wrappers yet.
 
 ## Placeholder
 

@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 64** re-audits remaining legacy observation surfaces after Sprint 63 live branch swap. **Sprint 65** adds apply-observation **proposal-only**. **Sprint 66** shadow matrix for apply (4 helpers). **No new wiring.** **`hyperdensityWorkloadAdapterObservationWiredV1`** remains **`false`** by deliberate policy.
+**Sprint 64** re-audits remaining legacy observation surfaces after Sprint 63 live branch swap. **Sprint 65** adds apply-observation **proposal-only**. **Sprint 66** shadow matrix. **Sprint 67** apply staged wrappers. **No new wiring in `apply.go`.** **`hyperdensityWorkloadAdapterObservationWiredV1`** remains **`false`** by deliberate policy.
 
 ---
 

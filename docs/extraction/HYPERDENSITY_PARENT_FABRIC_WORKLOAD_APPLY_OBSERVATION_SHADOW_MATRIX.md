@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 66** designs and validates the **shadow matrix** for the four `apply.go` legacy observation call sites. **No runtime wiring.** **`apply.go` remains legacy.** Candidate helpers exist for test/shadow only.
+**Sprint 66** designs and validates the **shadow matrix** for the four `apply.go` legacy observation call sites. **Sprint 67** adds **staged wrappers** (see `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_STAGED_WRAPPERS.md`). **No runtime wiring.** **`apply.go` remains legacy.**
 
 ---
 

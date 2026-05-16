@@ -46,6 +46,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 66:** **Apply-observation shadow matrix** — candidate helpers + shadow tests; `apply.go` call sites **legacy**; candidate runtime **not** used.
 
+**Sprint 67:** **Apply-observation staged wrappers** — `apply_observation_wiring_v1.go`; wrappers not used by `apply.go`; flags **false**.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
