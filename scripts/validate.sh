@@ -215,6 +215,10 @@ if [[ -x "${ROOT_DIR}/scripts/validate_windows_live_scale_contract.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_windows_live_scale_contract.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/validate_lane_discovery.sh" ]]; then
+  "${ROOT_DIR}/scripts/validate_lane_discovery.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/validate_shell_cell_schema.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_shell_cell_schema.sh"
 fi
