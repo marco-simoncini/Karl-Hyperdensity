@@ -32,7 +32,8 @@ The **reference environment** is the stabilized Technical Preview live posture o
 | Scope-1 verify | `docs/evidence/khr-tp-live-scope1/committed-scope1-khr-aw/verify-summary.json` (or latest PASS) | `accessGraphLiveReadonly=true`, `readyForScope2=false` |
 | Federation | `docs/evidence/khr-runtime-observation-federation/*/federation-summary.json` | `status=PASS` |
 | rdp-GW continuity | `docs/evidence/khr-accessgraph-continuity/*/summary.json` | `source=live-readonly` preferred |
-| rdp-GW deploy mode | `docs/evidence/khr-rdpgw-scope1/*/deploy-summary.json` | `deployMode=local-gateway` or `cluster-sandbox` |
+| rdp-GW cluster-sandbox | `docs/evidence/khr-rdpgw-cluster-sandbox/committed-cluster-sandbox-khr-ay/verify-summary.json` | **Preferred:** `deployMode=cluster-sandbox`, `accessGraphLiveReadonly=true` |
+| rdp-GW deploy mode (fallback) | `docs/evidence/khr-rdpgw-scope1/*/deploy-summary.json` | `deployMode=local-gateway` with warning if cluster-sandbox unavailable |
 
 ---
 

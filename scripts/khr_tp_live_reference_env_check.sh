@@ -116,6 +116,31 @@ if ag_dir.is_dir():
                 trust = "live-readonly"
             break
 
+def normalize_deploy_mode(mode: str | None) -> str:
+    if not mode:
+        return "missing"
+    if mode == "local":
+        return "local-gateway"
+    if mode == "cluster":
+        return "cluster-sandbox"
+    return mode
+
+
+rdpgw_cluster = None
+rdpgw_cluster_base = RDP_GW / "docs/evidence/khr-rdpgw-cluster-sandbox"
+committed_cluster = rdpgw_cluster_base / "committed-cluster-sandbox-khr-ay"
+cluster_verify = committed_cluster / "verify-summary.json"
+if cluster_verify.is_file():
+    rdpgw_cluster = load(cluster_verify)
+if rdpgw_cluster is None and rdpgw_cluster_base.is_dir():
+    for child in sorted(rdpgw_cluster_base.iterdir(), reverse=True):
+        verify = child / "verify-summary.json"
+        if verify.is_file():
+            doc = load(verify)
+            if doc and doc.get("status") == "PASS" and doc.get("deployMode") == "cluster-sandbox":
+                rdpgw_cluster = doc
+                break
+
 rdpgw_dep = None
 rdpgw_scope1 = RDP_GW / "docs/evidence/khr-rdpgw-scope1"
 if rdpgw_scope1.is_dir():
@@ -124,25 +149,29 @@ if rdpgw_scope1.is_dir():
         if dep.is_file():
             rdpgw_dep = load(dep)
             break
-        # legacy: infer from deploy log marker file
         mode_file = child / "deploy-mode.json"
         if mode_file.is_file():
             rdpgw_dep = load(mode_file)
             break
 
-if scope1_verify:
-    deploy_mode = scope1_verify.get("rdpgwDeployMode", "missing")
-    if deploy_mode == "local":
-        deploy_mode = "local-gateway"
-    if deploy_mode == "cluster":
-        deploy_mode = "cluster-sandbox"
+deploy_mode = "missing"
+deploy_warnings: list[str] = []
+if rdpgw_cluster and rdpgw_cluster.get("deployMode") == "cluster-sandbox":
+    deploy_mode = "cluster-sandbox"
+    if rdpgw_cluster.get("accessGraphLiveReadonly"):
+        ag_ok = True
+        trust = "live-readonly"
+elif scope1_verify:
+    deploy_mode = normalize_deploy_mode(scope1_verify.get("rdpgwDeployMode"))
+elif rdpgw_dep:
+    deploy_mode = normalize_deploy_mode(rdpgw_dep.get("deployMode"))
 
-if rdpgw_dep:
-    deploy_mode = rdpgw_dep.get("deployMode", deploy_mode)
-    if deploy_mode == "local":
-        deploy_mode = "local-gateway"
-    if deploy_mode == "cluster":
-        deploy_mode = "cluster-sandbox"
+if deploy_mode == "local-gateway":
+    deploy_warnings.append("rdpgwDeployMode=local-gateway is fallback only; prefer cluster-sandbox evidence")
+elif deploy_mode == "missing" and rdpgw_dep:
+    deploy_mode = normalize_deploy_mode(rdpgw_dep.get("deployMode"))
+    if deploy_mode == "local-gateway":
+        deploy_warnings.append("rdpgwDeployMode=local-gateway is fallback only; prefer cluster-sandbox evidence")
 
 record("rdpgwLiveReadonlyEvidence", ag_ok, f"trust={trust}")
 record(
@@ -150,6 +179,8 @@ record(
     deploy_mode in ("local-gateway", "cluster-sandbox"),
     f"deployMode={deploy_mode}",
     deployMode=deploy_mode,
+    preferredMode="cluster-sandbox",
+    fallbackWarning=deploy_warnings[0] if deploy_warnings else "",
 )
 
 # Production namespace mutation proof (read-only kubectl generations)
