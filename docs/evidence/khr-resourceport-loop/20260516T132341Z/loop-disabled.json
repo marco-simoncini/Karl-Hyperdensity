@@ -1,0 +1,21 @@
+{
+  "mode": "resourceport-loop",
+  "blocked": true,
+  "reason": "resourcePortLoopEnabled is false (default)",
+  "emissionMode": "json-only",
+  "emitCR": false,
+  "emitCRApplied": false,
+  "clusterContext": "karl-metal-01@ovh",
+  "namespace": "khr-runtime-sandbox",
+  "safetyMode": "sandbox",
+  "source": "host-runtime-loop",
+  "noProductionMutation": true,
+  "flightRecorder": [
+    {
+      "at": "2026-05-16T13:23:43.155167334Z",
+      "phase": "loop-blocked",
+      "message": "resourcePortLoopEnabled is false (default)",
+      "data": "khr-runtime-sandbox"
+    }
+  ]
+}

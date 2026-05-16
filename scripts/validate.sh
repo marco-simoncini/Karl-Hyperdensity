@@ -231,6 +231,10 @@ if [[ -x "${ROOT_DIR}/scripts/validate_host_schema.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_host_schema.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/validate_resourceport_loop.sh" ]]; then
+  "${ROOT_DIR}/scripts/validate_resourceport_loop.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/validate_crds.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_crds.sh"
 fi

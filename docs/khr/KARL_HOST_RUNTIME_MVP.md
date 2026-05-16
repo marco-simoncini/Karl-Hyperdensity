@@ -99,6 +99,19 @@ go run ./cmd/karl-host-runtime -mode=dry-run-lease -config=... \
 
 ---
 
+## ResourcePort reporting loop (KHR-J)
+
+| Item | Value |
+|------|-------|
+| Mode | `-mode=resourceport-loop` |
+| Default | JSON only; `resourcePortLoopEnabled: false` |
+| Docs | `docs/khr/RESOURCEPORT_REPORTING_LOOP.md` |
+| Evidence | `docs/evidence/khr-resourceport-loop/summary.json` |
+
+No automatic ResourceLease apply.
+
+---
+
 ## Roadmap — next engineering steps (post KHR-I)
 
 | Step | Outcome |

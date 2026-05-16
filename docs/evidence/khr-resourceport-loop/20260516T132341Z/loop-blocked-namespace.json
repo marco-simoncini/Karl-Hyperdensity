@@ -1,0 +1,21 @@
+{
+  "mode": "resourceport-loop",
+  "blocked": true,
+  "reason": "production namespace blocked: karl-system",
+  "emissionMode": "json-only",
+  "emitCR": false,
+  "emitCRApplied": false,
+  "clusterContext": "karl-metal-01@ovh",
+  "namespace": "karl-system",
+  "safetyMode": "sandbox",
+  "source": "host-runtime-loop",
+  "noProductionMutation": true,
+  "flightRecorder": [
+    {
+      "at": "2026-05-16T13:23:43.14806732Z",
+      "phase": "loop-blocked",
+      "message": "production namespace blocked: karl-system",
+      "data": "karl-system"
+    }
+  ]
+}

@@ -27,7 +27,8 @@ type HostSpec struct {
 	AllowedNamespaces   []string          `json:"allowedNamespaces" yaml:"allowedNamespaces"`
 	AllowedLabels       map[string]string `json:"allowedLabels" yaml:"allowedLabels"`
 	CgroupRoot          string            `json:"cgroupRoot" yaml:"cgroupRoot"`
-	AllowPathPrefixes   []string          `json:"allowPathPrefixes" yaml:"allowPathPrefixes"`
+	AllowPathPrefixes        []string          `json:"allowPathPrefixes" yaml:"allowPathPrefixes"`
+	ResourcePortLoopEnabled  bool              `json:"resourcePortLoopEnabled" yaml:"resourcePortLoopEnabled"`
 }
 
 // LoadConfig reads YAML or JSON from path.

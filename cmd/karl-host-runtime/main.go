@@ -5,6 +5,7 @@ import (
 	"flag"
 	"fmt"
 	"os"
+	"time"
 
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/flightrecorder"
@@ -14,8 +15,13 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "register-host", "register-host|host-status|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
+	mode := flag.String("mode", "register-host", "register-host|host-status|resourceport-loop|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
 	nodeName := flag.String("node-name", "", "Kubernetes node name for host-status (default: hostname)")
+	clusterContext := flag.String("cluster-context", "", "required cluster context for resourceport-loop discovery")
+	emitCR := flag.Bool("emit-cr", false, "write local ResourcePort CR preview files (never kubectl apply by default)")
+	loopIterations := flag.Int("loop-iterations", 1, "resourceport-loop iteration count")
+	loopIntervalMs := flag.Int("loop-interval-ms", 0, "delay between loop iterations")
+	loopOutputDir := flag.String("loop-output-dir", "", "directory for CR preview files when --emit-cr=true")
 	configPath := flag.String("config", "", "path to KarlHostRuntimeConfig YAML/JSON")
 	leasePath := flag.String("lease-input", "", "ResourceLease JSON for dry-run/apply")
 	portPath := flag.String("resource-port-input", "", "ResourcePort JSON for dry-run/apply")
@@ -65,6 +71,27 @@ func main() {
 		emit(host.ReportCapabilities(cfg))
 	case "emit-resourceport":
 		emit(resourceport.ReportCandidate(cfg, *shellRef, *cellRef, *namespace, *portName))
+	case "resourceport-loop":
+		ctx := *clusterContext
+		if ctx == "" {
+			ctx = resourceport.CurrentKubeContext()
+		}
+		res, err := resourceport.RunLoop(resourceport.LoopOptions{
+			Config:          cfg,
+			Namespace:       *namespace,
+			Labels:          copyLabels(cfg.Spec.AllowedLabels),
+			ClusterContext:  ctx,
+			RequiredContext: "karl-metal-01@ovh",
+			NodeName:        *nodeName,
+			Iterations:      *loopIterations,
+			Interval:        time.Duration(*loopIntervalMs) * time.Millisecond,
+			EmitCR:          *emitCR,
+			OutputDir:       *loopOutputDir,
+		})
+		if err != nil {
+			fatal(err)
+		}
+		emit(res)
 	case "dry-run-lease":
 		lease, port, err := loadLeasePort(*leasePath, *portPath)
 		if err != nil {

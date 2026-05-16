@@ -68,3 +68,33 @@ func LabelKeyAllowed(cfg *Config, key string) bool {
 func NormalizeNamespace(ns string) string {
 	return strings.TrimSpace(ns)
 }
+
+// ProductionNamespaces must never be used by sandbox loops.
+var ProductionNamespaces = []string{
+	"karl-system", "kube-system", "kube-public", "kube-node-lease",
+	"default", "ingress", "longhorn-system", "kubevirt", "cdi",
+}
+
+// ProductionNamespaceBlocked returns true for production namespaces.
+func ProductionNamespaceBlocked(namespace string) bool {
+	ns := NormalizeNamespace(namespace)
+	for _, blocked := range ProductionNamespaces {
+		if ns == blocked {
+			return true
+		}
+	}
+	return false
+}
+
+// LabelsAllowlistMatch requires every allowlist key to match labels.
+func LabelsAllowlistMatch(cfg *Config, labels map[string]string) bool {
+	if cfg == nil || len(cfg.Spec.AllowedLabels) == 0 {
+		return true
+	}
+	for k, want := range cfg.Spec.AllowedLabels {
+		if labels[k] != want {
+			return false
+		}
+	}
+	return true
+}

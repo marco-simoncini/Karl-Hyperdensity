@@ -7,5 +7,6 @@ cd "${ROOT}"
 
 go build -o /tmp/karl-host-runtime ./cmd/karl-host-runtime
 go test ./pkg/khr/host/... ./pkg/khr/resourceport/... ./pkg/khr/resourcelease/... ./pkg/khr/flightrecorder/... -count=1
+go test ./pkg/khr/resourceport/... -run 'Loop' -count=1
 
 echo "[validate_karl_host_runtime] PASS"
