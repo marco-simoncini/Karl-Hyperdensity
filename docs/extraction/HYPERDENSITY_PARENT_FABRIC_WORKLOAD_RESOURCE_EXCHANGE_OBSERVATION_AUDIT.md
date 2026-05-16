@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 78** is **audit/proposal-only** for `resource_exchange_*` observation call sites. **No** wrappers, candidates, flags, or runtime changes. Apply-observation track (Sprint 65–77) is **complete and separate**. Broad observation remains **disabled**.
+**Sprint 78** is **audit/proposal-only** for `resource_exchange_*` observation call sites. **Sprint 79** adds shadow matrix (candidate parity); still **no** production wiring. **No** wrappers, candidates, flags, or runtime changes. Apply-observation track (Sprint 65–77) is **complete and separate**. Broad observation remains **disabled**.
 
 ---
 
@@ -141,7 +141,7 @@ Rollback of apply track is documented in Sprint 77 boundary; Sprint 78 does not 
 
 ## 11. Recommended next sprint
 
-**Sprint 79:** `resource_exchange_observation_shadow_matrix` — proposal and tests only; **no** `ResourceExchangeObservationWiredV1=true`, **no** runtime behavior change.
+**Sprint 79:** `resource_exchange_observation_shadow_matrix` — **complete** (see `SHADOW_MATRIX.md`). **Sprint 80:** `resource_exchange_observation_staged_wrappers` — proposal only; **no** wired flip.
 
 ---
 

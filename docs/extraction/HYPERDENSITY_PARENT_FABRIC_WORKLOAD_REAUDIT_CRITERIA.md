@@ -55,8 +55,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **76** | Post-activation hardening 8×4 | `copy-deferred` (full file) |
 | **77** | Migration boundary; apply track complete | `copy-deferred` (full file) |
 | **78** | Resource exchange observation audit (8 listed call sites; no wiring) | `copy-deferred` (full file) |
+| **79** | Resource exchange shadow matrix (candidate parity; no wiring) | `copy-deferred` (full file) |
 
-Re-audit for remaining functions unchanged. Sprint 57–78: apply track complete; resource_exchange audit complete; **no** resource_exchange wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–78).
+Re-audit for remaining functions unchanged. Sprint 57–79: apply track complete; resource_exchange shadow complete; **no** resource_exchange production wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–78).
 
 ## Related
 

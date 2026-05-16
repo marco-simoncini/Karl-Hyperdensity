@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 64** re-audits remaining legacy observation surfaces after Sprint 63 live branch swap. **Sprint 65** adds apply-observation **proposal-only**. **Sprint 66** shadow matrix. **Sprint 67** apply staged wrappers. **Sprint 68** wrapper hardening. **Sprint 69** wiring readiness. **Sprint 70** wired `apply.go` call sites to wrappers. **Sprint 71** post-wiring hardening. **Sprint 72** flip criteria. **Sprint 73–74** candidate readiness/flip. **Sprint 75** activation. **Sprint 76** post-activation hardening. **Sprint 77** migration boundary — apply track complete. **Sprint 78** resource_exchange observation audit — **8** listed-helper call sites; **no** wiring. **`hyperdensityWorkloadAdapterObservationWiredV1`** remains **`false`** by deliberate policy.
+**Sprint 64** re-audits remaining legacy observation surfaces after Sprint 63 live branch swap. **Sprint 65** adds apply-observation **proposal-only**. **Sprint 66** shadow matrix. **Sprint 67** apply staged wrappers. **Sprint 68** wrapper hardening. **Sprint 69** wiring readiness. **Sprint 70** wired `apply.go` call sites to wrappers. **Sprint 71** post-wiring hardening. **Sprint 72** flip criteria. **Sprint 73–74** candidate readiness/flip. **Sprint 75** activation. **Sprint 76** post-activation hardening. **Sprint 77** migration boundary — apply track complete. **Sprint 78** resource_exchange observation audit — **8** listed-helper call sites. **Sprint 79** shadow matrix — candidate parity; **no** production wiring. **`hyperdensityWorkloadAdapterObservationWiredV1`** remains **`false`** by deliberate policy.
 
 ---
 

@@ -49,6 +49,7 @@ This is **deliberate policy**, not incomplete work by mistake.
 | Apply migration boundary complete | **Yes** (Sprint 77) |
 | Resource exchange audit complete | **Yes** (Sprint 78, audit-only) |
 | Resource exchange wired | **No** |
+| Resource exchange shadow matrix (Sprint 79) | **Yes** (candidate only) |
 
 ## Related
 
