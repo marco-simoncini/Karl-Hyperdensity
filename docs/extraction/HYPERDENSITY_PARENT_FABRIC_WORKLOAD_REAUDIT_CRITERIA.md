@@ -28,8 +28,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 |--------|-----------|---------|
 | **50** | Criteria documented + classification fixture/test | `copy-deferred` |
 | **51** | Dashboard test-only adapter stubs + golden manifest | `copy-deferred` |
+| **52** | Three pure-candidates in `parentfabric/workload` + golden + Dashboard parity | `copy-deferred` (full file) |
 
-Re-audit may proceed only after criteria 1–9 satisfied; Sprint 51 satisfies **#8** (stub test), not full adapter production implementation.
+Re-audit may proceed only after criteria 1–9 satisfied for **remaining** functions; Sprint 52 satisfies **pure allowlist copy** only (3/46).
 
 ## Related
 

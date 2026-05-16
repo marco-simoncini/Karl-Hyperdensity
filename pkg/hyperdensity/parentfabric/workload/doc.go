@@ -1,10 +1,9 @@
-// Package workload is reserved for pure Parent Fabric workload/object-identity helpers.
+// Package workload holds pure Parent Fabric workload kind helpers copied from
+// Dashboard hyperdensity_parent_fabric_workload_helpers.go (Sprint 52).
 //
-// Sprint 48 (audit-first): Dashboard hyperdensity_parent_fabric_workload_helpers.go was
-// evaluated and classified copy-deferred — see docs/extraction/
-// HYPERDENSITY_PARENT_FABRIC_WORKLOAD_HELPERS_AUDIT.md and
-// HYPERDENSITY_PARENT_FABRIC_WORKLOAD_HELPERS_DEFERRED.md.
+// Sprint 52 copy-contract: exactly three stdlib-only functions —
+// AppsWorkloadResource, PilotWorkloadTerm, ExecutionSupportsLiveApplyKind.
 //
-// No implementation in this package until a future sprint extracts a stdlib-only slice
-// with explicit adapter boundaries. Dashboard remains runtime owner.
+// The full workload_helpers.go file remains copy-deferred. API path builders,
+// observed-state builders, and execution/apply helpers stay in the console Dashboard runtime.
 package workload

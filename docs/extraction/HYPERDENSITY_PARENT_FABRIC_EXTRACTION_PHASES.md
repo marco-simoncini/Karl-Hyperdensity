@@ -16,6 +16,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 51:** Dashboard **test-only adapter stubs** + golden manifest; Hyperdensity **stub readiness** doc; **no** production wiring; **copy-deferred** unchanged.
 
+**Sprint 52:** **three pure-candidates** copy-contract in `parentfabric/workload` + golden + Dashboard parity test; **full workload_helpers still `copy-deferred`**; **no** production Dashboard import.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

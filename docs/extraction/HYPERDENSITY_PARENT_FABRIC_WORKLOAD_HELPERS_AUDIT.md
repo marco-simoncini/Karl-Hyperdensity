@@ -74,9 +74,13 @@ Remove `workload/doc.go` and audit/deferred docs; no Dashboard source changes re
 
 Stdlib **`parentfabric/primitives`** added as prerequisite — does **not** change **`copy-deferred`** verdict.
 
-## Sprint 50 follow-up
+## Sprint 50–51 follow-up
 
-Adapter boundary + classification fixture (Dashboard) — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_BOUNDARY.md`**, **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_REAUDIT_CRITERIA.md`**. Verdict remains **`copy-deferred`**.
+Adapter boundary + classification fixture + test-only stubs — verdict remains **`copy-deferred`**.
+
+## Sprint 52 follow-up
+
+**Three** pure-candidates copied to `parentfabric/workload` — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_PURE_CANDIDATES_CONTRACT.md`**. Full file verdict remains **`copy-deferred`** (43 functions + path/observed/apply helpers deferred).
 
 ## Related
 

@@ -19,12 +19,13 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 
 1. ~~Extract stdlib-only nested-map + quantity primitives~~ — **Sprint 49 done** (`parentfabric/primitives`); not wired to Dashboard yet.
 2. **Sprint 50:** adapter **boundary** + interface **proposal** + re-audit **criteria** documented; Dashboard classification fixture (46 functions).
-3. **Sprint 51:** Dashboard **test-only** adapter stubs (`*_test.go`) — **no production wiring**; Hyperdensity receives stub readiness doc only.
-4. Re-audit with `go list -deps` on narrowed **pure allowlist** (3 functions) only after production adapter or explicit pure-copy sprint.
+3. **Sprint 51:** Dashboard **test-only** adapter stubs (`*_test.go`) — **no production wiring**.
+4. **Sprint 52:** **three pure-candidates** copied to `parentfabric/workload` with golden + manifest — **full file still `copy-deferred`**.
+5. Re-audit for remaining 43 functions only after production adapter sprint.
 
 ## Placeholder
 
-`pkg/hyperdensity/parentfabric/workload/doc.go` — package reserved; **no** implementation.
+`pkg/hyperdensity/parentfabric/workload/` — **three-function** pure-core copy-contract (Sprint 52); remaining helpers deferred.
 
 ## Related
 
