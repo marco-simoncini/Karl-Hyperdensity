@@ -74,6 +74,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 80:** **Resource exchange observation staged wrappers** — wrapper file + 8-case triple parity; **no** production call-site changes; flags **false**; recommended next: local helper matrix or wiring readiness.
 
+**Sprint 81:** **Resource exchange local helper shadow matrix** — ready/restart candidates + 8+8 parity; **no** wrappers; production legacy unchanged.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 79** is **shadow-matrix / test-only**. **Sprint 80** adds staged wrappers; shadow matrix remains historical baseline. Dashboard introduces a **candidate** helper equivalent to `hyperdensityObservedPodCPURequest` with an **8-case** parity matrix. **No** production wiring in `resource_exchange_*`. **`ResourceExchangeObservationWiredV1` remains false or absent.**
+**Sprint 79** is **CPU shadow-matrix / test-only**. **Sprint 80** CPU staged wrappers. **Sprint 81** local ready/restart shadow — see `LOCAL_HELPER_SHADOW_MATRIX.md`. Dashboard introduces a **candidate** helper equivalent to `hyperdensityObservedPodCPURequest` with an **8-case** parity matrix. **No** production wiring in `resource_exchange_*`. **`ResourceExchangeObservationWiredV1` remains false or absent.**
 
 ---
 

@@ -1,6 +1,6 @@
 # Hyperdensity Parent Fabric — resource exchange observation criteria (Sprint 78+)
 
-Criteria for **future** sprints wiring resource_exchange observation. Sprint 78 = audit. Sprint 79 = shadow matrix. Sprint 80 = staged wrappers (not wired to production).
+Criteria for **future** sprints wiring resource_exchange observation. Sprint 78–80 = CPU path. Sprint 81 = local helper shadow (not wired).
 
 ---
 

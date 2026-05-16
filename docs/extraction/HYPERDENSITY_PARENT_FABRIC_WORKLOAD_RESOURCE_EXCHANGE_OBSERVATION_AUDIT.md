@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 78** audit. **Sprint 79** shadow matrix. **Sprint 80** staged wrappers. Production `resource_exchange_*` still uses legacy CPU helper only. **No** wrappers, candidates, flags, or runtime changes. Apply-observation track (Sprint 65–77) is **complete and separate**. Broad observation remains **disabled**.
+**Sprint 78** audit. **Sprint 79–80** CPU shadow/wrappers. **Sprint 81** ready/restart shadow. Production uses legacy only (**8** CPU, **12** ready, **12** restart). **No** wrappers, candidates, flags, or runtime changes. Apply-observation track (Sprint 65–77) is **complete and separate**. Broad observation remains **disabled**.
 
 ---
 

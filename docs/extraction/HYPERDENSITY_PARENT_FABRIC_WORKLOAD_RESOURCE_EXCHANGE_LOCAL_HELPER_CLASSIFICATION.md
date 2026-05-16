@@ -42,6 +42,8 @@ Sprint 78 listed-helper inventory covered **`hyperdensityObservedPodCPURequest`*
 |----------|-------|
 | Include in Sprint 79 shadow matrix | **No** |
 | Include in Sprint 80 staged wrappers | **No** |
+| Include in Sprint 81 shadow matrix | **Yes** (candidates only) |
+| Include in Sprint 81 staged wrappers | **No** |
 | Classify as local-observation-like | **Yes** |
 | Copy to Hyperdensity | **No** |
 | Use for broad observation | **No** |

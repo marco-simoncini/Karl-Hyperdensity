@@ -39,6 +39,7 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 20. **Sprint 78:** resource_exchange observation audit — **full file verdict unchanged: `copy-deferred`**; no helpers copy.
 21. **Sprint 79:** resource_exchange shadow matrix — candidate in test file only; **full file verdict unchanged: `copy-deferred`**.
 22. **Sprint 80:** resource_exchange staged wrappers — wiring file test-only; **full file verdict unchanged: `copy-deferred`**.
+23. **Sprint 81:** local helper shadow matrix — ready/restart candidates test-only; **full file verdict unchanged: `copy-deferred`**.
 
 ## Placeholder
 
