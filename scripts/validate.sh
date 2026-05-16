@@ -47,6 +47,8 @@ required_files=(
   "docs/khr/KHR_GRANDE_PADRE_EVIDENCE_HANDOFF.md"
   "docs/khr/KHR_EVIDENCE_INTEGRITY_MODEL.md"
   "docs/khr/KHR_EVIDENCE_ARTIFACT_MANIFEST.md"
+  "docs/khr/KARL_INFRASTRUCTURE_SCOPE.md"
+  "docs/khr/KHR_RELEASE_READINESS_MAP.md"
   "docs/ingest/KHR_EVIDENCE_INGEST_CONTRACT.md"
   "docs/ingest/EVIDENCEBUNDLE_CRD.md"
   "docs/ingest/EVIDENCEINGESTREQUEST_CRD.md"
@@ -249,6 +251,10 @@ fi
 
 if [[ -x "${ROOT_DIR}/scripts/validate_crds.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_crds.sh"
+fi
+
+if [[ -x "${ROOT_DIR}/scripts/guard_khr_docs_scope.sh" ]]; then
+  "${ROOT_DIR}/scripts/guard_khr_docs_scope.sh"
 fi
 
 schema_count="$(ls -1 schemas/*.json | wc -l | tr -d ' ')"

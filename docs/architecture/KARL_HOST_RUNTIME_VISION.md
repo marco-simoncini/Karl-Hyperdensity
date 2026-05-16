@@ -8,7 +8,7 @@
 
 ## Executive thesis
 
-KARL is not “Kubernetes with VMs.” KARL is a **datacenter operating layer**: a coherent runtime, scheduling, lifecycle, storage, network, telemetry, policy, access, and governance surface that happens to use Kubernetes as a **declarative control plane and reconciliation substrate**, not as the product identity.
+KARL is not “Kubernetes with VMs.” KARL is an **infrastructure operating layer** (infrastructure OS / infrastructure control plane): a coherent runtime, scheduling, lifecycle, storage, network, telemetry, policy, access, and governance surface that happens to use Kubernetes as a **declarative control plane and reconciliation substrate**, not as the product identity. Datacenter deployments are a major target environment, not the sole product definition.
 
 **KHR (KARL Host Runtime)** is the **host-native daemon/runtime** on every KARL node—analogous to the kubelet for Kubernetes, or to libvirt’s operational role for traditional Linux virtualization—but scoped to **KARL’s execution semantics**, not to re-implementing KVM in kernel space.
 
@@ -105,8 +105,8 @@ Providers differ by **host ownership** (bare metal KARL vs guest on public cloud
 
 ## Bare metal vs public cloud vs hybrid
 
-1. **KARL OS — Datacenter / bare metal mode**  
-   Full KHR authority where KARL owns the host stack. Hyperdensity can pursue aggressive live movement subject to **ResourcePort** truth and guest cooperation.
+1. **KARL OS — Bare metal / on-prem datacenter mode**  
+   Full KHR authority where KARL owns the host stack (including datacenter metal). Hyperdensity can pursue aggressive live movement subject to **ResourcePort** truth and guest cooperation.
 
 2. **KARL — Public cloud mode**  
    KHR operates in **adaptive** posture: Shell API stays uniform; enforcement defers to cloud APIs and provider limits; Hyperdensity becomes **constraint-aware market making**, not a promise of hypervisor-grade hotplug.

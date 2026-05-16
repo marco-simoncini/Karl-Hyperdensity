@@ -11,7 +11,7 @@
 
 ## Context
 
-KARL ships as a datacenter operating layer and cloud-adaptive platform. Today, customer and internal mental models often collapse to **“Kubernetes + KubeVirt + Dashboard”**, which under-describes KARL’s differentiation and over-couples the product to a specific virtualization implementation.
+KARL ships as an **infrastructure operating layer** (infrastructure OS / infrastructure control plane) and cloud-adaptive platform — not only a datacenter product. On-prem datacenter metal is one deployment environment among others (cloud, hybrid, edge). Today, customer and internal mental models often collapse to **“Kubernetes + KubeVirt + Dashboard”**, which under-describes KARL’s differentiation and over-couples the product to a specific virtualization implementation.
 
 Kubernetes remains valuable as a **declarative API and reconciliation ecosystem**, but it must not define KARL’s identity.
 
