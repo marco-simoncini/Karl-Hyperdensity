@@ -32,7 +32,7 @@ Pure trees (`parentfabric`, `summary`, `governance`, `evidence`, `recommendation
 
 | Guard | Mechanism (Sprint 45) |
 |-------|---------------------|
-| **Import deny (static)** | `scripts/validate_parentfabric_pure_deps.sh` — `k8s.io/`, `kubevirt.io/`, `github.com/gorilla/`, `"net/http"`, `github.com/openshift/console`, `Karl-Dashboard` |
+| **Import deny (static)** | `scripts/validate_parentfabric_pure_deps.sh` — `k8s.io/`, `kubevirt.io/`, `github.com/gorilla/`, `"net/http"`, `github.com/openshift/console`, `Karl-Dashboard`, `client-go`; requires `executiontypes/` subpackage |
 | **Import deny (deps)** | Future: `go list -deps` on `pkg/hyperdensity/parentfabric/...` |
 
 ---

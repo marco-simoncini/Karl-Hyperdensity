@@ -2,7 +2,9 @@
 
 Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces from **Karl-Dashboard** → **Karl-Hyperdensity**. **Sprint 44** documents only; **no** runtime move.
 
-**Sprint 45 (Phase 1–2 in progress):** mechanical CSV inventory + heuristic `category_guess` / `readiness_guess` on Dashboard; Hyperdensity **`parentfabric` stdlib skeleton** + **`validate_parentfabric_pure_deps.sh`** in CI via `validate.sh`. **Phase 3 has not started** — no pure helper copied from Dashboard yet.
+**Sprint 45 (Phase 1–2):** mechanical CSV inventory + heuristic guesses; Hyperdensity **`parentfabric` stdlib skeleton** + dependency guard.
+
+**Sprint 46 (Phase 3 minimal):** first candidate `hyperdensity_parent_fabric_execution_types.go` → **`parentfabric/executiontypes`** copy-contract + golden; Dashboard source **unchanged**; **no** production import wiring.
 
 ---
 
@@ -40,7 +42,7 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 | **Rollback** | Revert commits; restore Dashboard-local copies |
 | **Forbidden** | Moving HTTP handlers, `client-go` calls, or apply paths in this phase |
 
-**Status:** Phase 3 is **not** open until a sprint explicitly copies a verified pure helper (with golden tests) — see **`HYPERDENSITY_PARENT_FABRIC_EXTRACTION_STATUS_M30.md`** on Dashboard.
+**Status (Sprint 46):** **partial** — `executiontypes` copy-contract only (summary + engine spine). Full engine + nested surfaces remain in Dashboard. Production import wiring still **forbidden**.
 
 ---
 

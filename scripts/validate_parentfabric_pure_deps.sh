@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
-# Static dependency guard for pkg/hyperdensity/parentfabric (Sprint 45).
+# Static dependency guard for pkg/hyperdensity/parentfabric (Sprint 45–46).
+# Recursively checks all subpackages (e.g. executiontypes/).
 set -euo pipefail
 
 ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -35,10 +36,16 @@ check_pattern 'github.com/gorilla/' 'gorilla import'
 check_pattern '"net/http"' 'net/http import'
 check_pattern 'github.com/openshift/console' 'openshift console import'
 check_pattern 'Karl-Dashboard' 'Karl-Dashboard string/import'
+check_pattern 'client-go' 'client-go string/import'
+
+if [[ ! -d "${PF_DIR}/executiontypes" ]]; then
+  echo "[validate_parentfabric_pure_deps] ERROR: missing ${PF_DIR}/executiontypes (Sprint 46)" >&2
+  exit 1
+fi
 
 if [[ "${failures}" -ne 0 ]]; then
   echo "[validate_parentfabric_pure_deps] FAIL: ${failures} forbidden pattern group(s)" >&2
   exit 1
 fi
 
-echo "[validate_parentfabric_pure_deps] PASS: no forbidden imports in ${#gofiles[@]} file(s)"
+echo "[validate_parentfabric_pure_deps] PASS: checked ${#gofiles[@]} file(s) under pkg/hyperdensity/parentfabric (includes executiontypes)"
