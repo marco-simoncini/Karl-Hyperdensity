@@ -85,3 +85,10 @@ Updated phase model after resource_exchange boundary closure (Sprint 87) and arc
 - `HYPERDENSITY_KHR_ROADMAP_TRANSITION_NOTE.md`
 - `HYPERDENSITY_PARENT_FABRIC_EXTRACTION_PHASES.md`
 - `docs/roadmap/KHR_HYPERDENSITY_CORRECTED_ROADMAP.md`
+
+
+---
+
+## Sprint 89 (ResourceLease minimal contract)
+
+Sprint 89 adds ResourceLease minimal contract sketch (storage/network/provider/examples). No CRD, no controller, no runtime. See HYPERDENSITY_KHR_RESOURCELEASE_MINIMAL_CONTRACT.md and related Sprint 89 docs.

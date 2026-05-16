@@ -64,3 +64,10 @@ Cloud (`aws`, `azure`, `gcp`) and baremetal providers are **future** explicit en
 - `HYPERDENSITY_KHR_STORAGE_SEMANTICS.md`
 - `HYPERDENSITY_KHR_NETWORK_SDN_SEMANTICS.md`
 - `docs/contracts/resource-equilibrium-v1.md` (existing equilibrium concepts)
+
+
+---
+
+## Sprint 89 (ResourceLease minimal contract)
+
+Sprint 89 adds ResourceLease minimal contract sketch (storage/network/provider/examples). No CRD, no controller, no runtime. See HYPERDENSITY_KHR_RESOURCELEASE_MINIMAL_CONTRACT.md and related Sprint 89 docs.

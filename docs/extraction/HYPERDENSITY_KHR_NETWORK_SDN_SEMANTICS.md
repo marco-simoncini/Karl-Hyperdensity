@@ -78,3 +78,10 @@ If repository search does not locate OVN controller/config files in the current 
 
 - `HYPERDENSITY_KHR_ARCHITECTURE_MEMORY.md`
 - `HYPERDENSITY_KHR_RESOURCELEASE_DIRECTION.md`
+
+
+---
+
+## Sprint 89 (ResourceLease minimal contract)
+
+Sprint 89 adds ResourceLease minimal contract sketch (storage/network/provider/examples). No CRD, no controller, no runtime. See HYPERDENSITY_KHR_RESOURCELEASE_MINIMAL_CONTRACT.md and related Sprint 89 docs.

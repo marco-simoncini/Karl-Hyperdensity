@@ -121,3 +121,10 @@ After resource_exchange closure, KHR must shift from indefinite micro-sprint ada
 ## Sprint 88 (KHR architecture memory)
 
 Sprint 88 canonizes KHR/KARL architecture memory, storage semantics, and network/OVN semantics. No runtime/adapter changes. KubeVirt remains compatibility provider and public-cloud fallback. See HYPERDENSITY_KHR_ARCHITECTURE_MEMORY.md and related Sprint 88 docs.
+
+
+---
+
+## Sprint 89 (ResourceLease minimal contract)
+
+Sprint 89 adds ResourceLease minimal contract sketch (storage/network/provider/examples). No CRD, no controller, no runtime. See HYPERDENSITY_KHR_RESOURCELEASE_MINIMAL_CONTRACT.md and related Sprint 89 docs.
