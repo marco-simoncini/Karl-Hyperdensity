@@ -14,6 +14,7 @@ Record the **`pkg/hyperdensity/parentfabric/...`** **stdlib-only skeleton** adde
 | `pkg/hyperdensity/parentfabric/{summary,governance,evidence,recommendation}/doc.go` | Reserved subtrees (comments only) |
 | `pkg/hyperdensity/parentfabric/executiontypes/` | **Sprint 46–47** — partial copy-contract + drift manifest |
 | `pkg/hyperdensity/parentfabric/workload/` | **Sprint 48** — placeholder only (`copy-deferred` audit for workload helpers) |
+| `pkg/hyperdensity/parentfabric/primitives/` | **Sprint 49** — stdlib nested-map + quantity contract (prerequisite, not workload copy) |
 
 ## Rules (unchanged from Sprint 44)
 

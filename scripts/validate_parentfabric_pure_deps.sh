@@ -53,9 +53,14 @@ if [[ ! -d "${PF_DIR}/workload" ]]; then
   exit 1
 fi
 
+if [[ ! -d "${PF_DIR}/primitives" ]]; then
+  echo "[validate_parentfabric_pure_deps] ERROR: missing ${PF_DIR}/primitives (Sprint 49)" >&2
+  exit 1
+fi
+
 if [[ "${failures}" -ne 0 ]]; then
   echo "[validate_parentfabric_pure_deps] FAIL: ${failures} forbidden pattern group(s)" >&2
   exit 1
 fi
 
-echo "[validate_parentfabric_pure_deps] PASS: checked ${#gofiles[@]} file(s) under pkg/hyperdensity/parentfabric (includes executiontypes, workload)"
+echo "[validate_parentfabric_pure_deps] PASS: checked ${#gofiles[@]} file(s) under pkg/hyperdensity/parentfabric (includes executiontypes, workload, primitives)"

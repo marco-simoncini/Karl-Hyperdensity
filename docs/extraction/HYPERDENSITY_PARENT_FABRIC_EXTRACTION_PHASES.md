@@ -10,6 +10,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 48:** **`workload_helpers.go`** audit-first → **`copy-deferred`**; `parentfabric/workload` placeholder only. Phase 3 must **not** become bulk copy.
 
+**Sprint 49:** **`parentfabric/primitives`** stdlib contract (nested map + quantity); Dashboard primitive loci audit; **workload_helpers still deferred**.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

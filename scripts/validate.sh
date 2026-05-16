@@ -99,6 +99,8 @@ required_files=(
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_DRIFT_GUARD.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_HELPERS_AUDIT.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_HELPERS_DEFERRED.md"
+  "docs/extraction/HYPERDENSITY_PARENT_FABRIC_PRIMITIVES_CONTRACT.md"
+  "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_PREREQUISITES.md"
   "pkg/hyperdensity/contractkit/go.mod"
   "pkg/hyperdensity/contractkit/testdata/dashboard/hyperdensity_parity_manifest_m1_m7.json"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"

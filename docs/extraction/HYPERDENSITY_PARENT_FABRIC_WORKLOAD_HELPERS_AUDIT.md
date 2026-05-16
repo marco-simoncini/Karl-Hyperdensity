@@ -70,8 +70,14 @@ Sprint 48 delivers **audit + placeholder only** (`pkg/hyperdensity/parentfabric/
 
 Remove `workload/doc.go` and audit/deferred docs; no Dashboard source changes required.
 
+## Sprint 49 follow-up
+
+Stdlib **`parentfabric/primitives`** added as prerequisite — does **not** change this file's **`copy-deferred`** verdict. See **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_PREREQUISITES.md`**.
+
 ## Related
 
+- `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_PREREQUISITES.md`
+- `HYPERDENSITY_PARENT_FABRIC_PRIMITIVES_CONTRACT.md`
 - `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_HELPERS_DEFERRED.md`
 - `HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_DRIFT_GUARD.md`
 - Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_HELPERS_AUDIT_M33.md`

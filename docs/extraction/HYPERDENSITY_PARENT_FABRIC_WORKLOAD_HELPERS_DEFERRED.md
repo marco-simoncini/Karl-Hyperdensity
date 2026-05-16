@@ -17,7 +17,7 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 
 ## What would be required before copy
 
-1. Extract or duplicate **stdlib-only** nested-map + quantity primitives into Hyperdensity (separate sprint).
+1. ~~Extract stdlib-only nested-map + quantity primitives~~ — **Sprint 49 done** (`parentfabric/primitives`); not wired to Dashboard yet.
 2. Define **adapter** package in Dashboard for API paths and live observation (explicit sprint).
 3. Re-audit with `go list -deps` on a narrowed function allowlist.
 
