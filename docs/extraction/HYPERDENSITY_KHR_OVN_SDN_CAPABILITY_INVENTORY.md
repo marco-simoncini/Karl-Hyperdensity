@@ -130,3 +130,10 @@ Dedicated **OVN inventory** in SDN-owning repo when available; add non-applied `
 
 - `HYPERDENSITY_KHR_RESOURCELEASE_INVENTORY_MAPPING.md`
 - `HYPERDENSITY_KHR_NETWORK_SDN_SEMANTICS.md`
+
+
+---
+
+## Sprint 91 (ResourceLease JSON Schema)
+
+Sprint 91 adds non-applied JSON Schema and example fixtures under docs/contracts/khr/. No CRD, no controller, no runtime. See HYPERDENSITY_KHR_RESOURCELEASE_JSON_SCHEMA.md.

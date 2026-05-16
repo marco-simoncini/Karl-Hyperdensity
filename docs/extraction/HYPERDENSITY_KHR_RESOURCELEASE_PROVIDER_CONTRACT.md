@@ -50,3 +50,10 @@ Defines allowed `spec.provider` values and selection rules for ResourceLease.
 ## Sprint 90 (inventory facts)
 
 Sprint 90 adds read-only KubeVirt and OVN/SDN capability inventory mapped to ResourceLease contract. No CRD, no controller, no runtime. See HYPERDENSITY_KHR_KUBEVIRT_CAPABILITY_INVENTORY.md and related Sprint 90 docs.
+
+
+---
+
+## Sprint 91 (ResourceLease JSON Schema)
+
+Sprint 91 adds non-applied JSON Schema and example fixtures under docs/contracts/khr/. No CRD, no controller, no runtime. See HYPERDENSITY_KHR_RESOURCELEASE_JSON_SCHEMA.md.

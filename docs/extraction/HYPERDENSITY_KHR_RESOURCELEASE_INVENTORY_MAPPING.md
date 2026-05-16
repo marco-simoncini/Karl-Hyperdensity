@@ -66,3 +66,10 @@ Maps Sprint 90 inventory findings to Sprint 89 ResourceLease contract sections.
 - `HYPERDENSITY_KHR_KUBEVIRT_CAPABILITY_INVENTORY.md`
 - `HYPERDENSITY_KHR_OVN_SDN_CAPABILITY_INVENTORY.md`
 - `HYPERDENSITY_KHR_RESOURCELEASE_MINIMAL_CONTRACT.md`
+
+
+---
+
+## Sprint 91 (ResourceLease JSON Schema)
+
+Sprint 91 adds non-applied JSON Schema and example fixtures under docs/contracts/khr/. No CRD, no controller, no runtime. See HYPERDENSITY_KHR_RESOURCELEASE_JSON_SCHEMA.md.

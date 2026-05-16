@@ -154,3 +154,10 @@ Hyperdensity **examples** do not embed raw KubeVirt ephemeral PVC YAML; mapping 
 
 - `HYPERDENSITY_KHR_RESOURCELEASE_INVENTORY_MAPPING.md`
 - `HYPERDENSITY_KHR_RESOURCELEASE_STORAGE_CONTRACT.md`
+
+
+---
+
+## Sprint 91 (ResourceLease JSON Schema)
+
+Sprint 91 adds non-applied JSON Schema and example fixtures under docs/contracts/khr/. No CRD, no controller, no runtime. See HYPERDENSITY_KHR_RESOURCELEASE_JSON_SCHEMA.md.

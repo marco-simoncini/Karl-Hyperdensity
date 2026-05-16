@@ -1,0 +1,57 @@
+{
+  "apiVersion": "hyperdensity.karl.io/v1alpha1",
+  "kind": "ResourceLease",
+  "metadata": {
+    "name": "vmlike-aws-fallback-001",
+    "namespace": "karl-sandbox",
+    "annotations": {
+      "karl.io/schema-only": "true",
+      "karl.io/sprint": "91",
+      "karl.io/compatibility": "VM/VMPool via KubeVirt when KHR cannot run on public cloud"
+    }
+  },
+  "spec": {
+    "shell": {
+      "kind": "vmLike",
+      "ref": "shell/vm-aws-001"
+    },
+    "cell": {
+      "ref": "cell/vm-aws-001"
+    },
+    "provider": "kubevirt.public-cloud-fallback",
+    "resources": {
+      "cpu": { "request": "2", "limit": "4" },
+      "memory": { "request": "4Gi", "limit": "8Gi" }
+    },
+    "storage": {
+      "disks": [
+        {
+          "name": "root",
+          "role": "os",
+          "mode": "ephemeralOverlay",
+          "source": { "type": "pvc", "ref": "karl-os-nfs" }
+        },
+        {
+          "name": "data",
+          "role": "data",
+          "mode": "persistent",
+          "source": { "type": "image", "ref": "ubuntu-22.04" }
+        }
+      ]
+    },
+    "network": {
+      "providerNetwork": {
+        "provider": "kubevirt.legacy.ovn"
+      },
+      "attachments": [
+        {
+          "name": "primary",
+          "networkRef": "networksegment/tenant-aws",
+          "role": "primary",
+          "providerBinding": "ovn.logicalPort"
+        }
+      ]
+    },
+    "policy": {}
+  }
+}

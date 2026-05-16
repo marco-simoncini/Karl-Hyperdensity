@@ -1,0 +1,83 @@
+{
+  "apiVersion": "hyperdensity.karl.io/v1alpha1",
+  "kind": "ResourceLease",
+  "metadata": {
+    "name": "winsrv-daas-001",
+    "namespace": "karl-sandbox",
+    "labels": {
+      "karl.io/workload": "windows-daas"
+    },
+    "annotations": {
+      "karl.io/schema-only": "true",
+      "karl.io/sprint": "91"
+    }
+  },
+  "spec": {
+    "shell": {
+      "kind": "windowsDesktop",
+      "ref": "shell/winsrv-daas-001"
+    },
+    "cell": {
+      "ref": "cell/winsrv-daas-001"
+    },
+    "provider": "khr.native",
+    "resources": {
+      "cpu": { "request": "4", "limit": "8" },
+      "memory": { "request": "8Gi", "limit": "16Gi" }
+    },
+    "storage": {
+      "defaultDiscardPolicy": "deleteOnStop",
+      "promoteToImage": {
+        "enabled": true,
+        "goldenRef": "golden/winsrv-2026-q1"
+      },
+      "disks": [
+        {
+          "name": "os",
+          "role": "os",
+          "mode": "ephemeralOverlay",
+          "source": { "type": "goldenImage", "ref": "golden/winsrv-2026-q1" },
+          "discardPolicy": "deleteOnStop"
+        },
+        {
+          "name": "profile",
+          "role": "profile",
+          "mode": "persistent",
+          "source": { "type": "pvc", "ref": "profile-pvc-user-001" },
+          "scope": "user"
+        },
+        {
+          "name": "scratch",
+          "role": "scratch",
+          "mode": "scratch",
+          "source": { "type": "volume", "ref": "scratch-temp" },
+          "discardPolicy": "deleteOnStop"
+        }
+      ]
+    },
+    "network": {
+      "attachments": [
+        {
+          "name": "tenant",
+          "networkRef": "karlnetwork/tenant-acme",
+          "role": "primary",
+          "isolation": "strict"
+        }
+      ],
+      "exposure": {
+        "ingress": "rdp-GW/session-gateway",
+        "egress": "controlled",
+        "directPublic": false
+      }
+    },
+    "policy": {
+      "tenantIsolation": "strict"
+    },
+    "expiration": {
+      "ttl": "8h"
+    }
+  },
+  "status": {
+    "phase": "Pending"
+  }
+}

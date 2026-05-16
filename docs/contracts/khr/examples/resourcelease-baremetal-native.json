@@ -1,0 +1,50 @@
+{
+  "apiVersion": "hyperdensity.karl.io/v1alpha1",
+  "kind": "ResourceLease",
+  "metadata": {
+    "name": "baremetal-shell-001",
+    "namespace": "karl-sandbox",
+    "annotations": {
+      "karl.io/schema-only": "true",
+      "karl.io/sprint": "91"
+    }
+  },
+  "spec": {
+    "shell": {
+      "kind": "linuxShell",
+      "ref": "shell/bm-001"
+    },
+    "cell": {
+      "ref": "cell/bm-001"
+    },
+    "provider": "khr.native",
+    "resources": {
+      "cpu": { "request": "1", "limit": "2" },
+      "memory": { "request": "2Gi", "limit": "4Gi" }
+    },
+    "storage": {
+      "disks": [
+        {
+          "name": "root",
+          "role": "os",
+          "mode": "ephemeralClone",
+          "source": { "type": "snapshot", "ref": "snap/golden-linux-v1" }
+        }
+      ]
+    },
+    "network": {
+      "providerNetwork": {
+        "provider": "baremetal.vlan"
+      },
+      "attachments": [
+        {
+          "name": "lan",
+          "networkRef": "karlnetwork/bm-vlan-100",
+          "role": "primary",
+          "providerBinding": "baremetal.vlan"
+        }
+      ]
+    },
+    "policy": {}
+  }
+}

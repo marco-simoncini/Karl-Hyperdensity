@@ -172,6 +172,12 @@ required_files=(
   "docs/extraction/HYPERDENSITY_KHR_KUBEVIRT_CAPABILITY_INVENTORY.md"
   "docs/extraction/HYPERDENSITY_KHR_OVN_SDN_CAPABILITY_INVENTORY.md"
   "docs/extraction/HYPERDENSITY_KHR_RESOURCELEASE_INVENTORY_MAPPING.md"
+  "docs/extraction/HYPERDENSITY_KHR_RESOURCELEASE_JSON_SCHEMA.md"
+  "docs/contracts/khr/resourcelease.schema.json"
+  "docs/contracts/khr/resourcelease.schema.manifest.json"
+  "docs/contracts/khr/examples/resourcelease-windows-daas-khr-native.json"
+  "docs/contracts/khr/examples/resourcelease-public-cloud-kubevirt-fallback.json"
+  "docs/contracts/khr/examples/resourcelease-baremetal-native.json"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_OBSERVATION_NEXT_SURFACE_DECISION.md"
   "pkg/hyperdensity/contractkit/go.mod"
   "pkg/hyperdensity/contractkit/testdata/dashboard/hyperdensity_parity_manifest_m1_m7.json"
@@ -196,6 +202,10 @@ go test ./...
 )
 python3 scripts/validate_json.py
 python3 scripts/validate_khr_examples.py
+
+if [[ -x "${ROOT_DIR}/scripts/validate_resourcelease_schema.sh" ]]; then
+  "${ROOT_DIR}/scripts/validate_resourcelease_schema.sh"
+fi
 
 if [[ -x "${ROOT_DIR}/scripts/validate_crds.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_crds.sh"
