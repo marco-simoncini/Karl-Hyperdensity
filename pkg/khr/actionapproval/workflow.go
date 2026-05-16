@@ -6,6 +6,7 @@ import (
 
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/certregistry"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/policygates"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/provenance"
 )
 
 // CanApprove validates gates before operator approval (no apply).
@@ -32,6 +33,17 @@ func CanApprove(a ActionApproval, reg *certregistry.Registry, gates policygates.
 	}
 	if !a.PolicyGateResult.Eligible {
 		return fmt.Errorf("approval policyGateResult not eligible")
+	}
+	if reg != nil {
+		entry := reg.FindByLane(a.LaneID)
+		if entry != nil && entry.Provenance.ProvenanceID != "" && a.Provenance.ProvenanceID != "" {
+			if err := provenance.VerifyApprovalProvenance(a.Provenance, entry.Provenance); err != nil {
+				return fmt.Errorf("invalid approval provenance: %w", err)
+			}
+		}
+		if a.Provenance.ProvenanceID != "" && provenance.IsStaleProvenance(a.Provenance, now, 0) {
+			return fmt.Errorf("stale approval provenance")
+		}
 	}
 	return nil
 }

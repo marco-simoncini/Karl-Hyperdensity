@@ -51,6 +51,10 @@ func GeneratePending(in GenerateInput) ([]ActionApproval, error) {
 		ns, name := splitTargetRef(live.TargetRef)
 		leaseRef := fmt.Sprintf("%s/ResourceLease/%s-scale-approval", ns, name)
 		rfRef := "simulation/ResourceFuture/" + strings.ReplaceAll(live.TargetRef, "/", "-")
+		prov := in.Registry.Provenance
+		if e := reg.FindByLane(live.Lane); e != nil && e.Provenance.ProvenanceID != "" {
+			prov = e.Provenance
+		}
 		out = append(out, ActionApproval{
 			ActionID:          id,
 			ResourceFutureRef: rfRef,
@@ -64,6 +68,7 @@ func GeneratePending(in GenerateInput) ([]ActionApproval, error) {
 			NoApply:           true,
 			NoMutation:        true,
 			NoAutonomousOrchestration: true,
+			Provenance:        prov,
 		})
 	}
 	return out, nil

@@ -1,5 +1,7 @@
-// Package controlgraph provides the unified KHR control-plane graph (KHR-X).
+// Package controlgraph provides the unified KHR control-plane graph (KHR-X/Y).
 package controlgraph
+
+import "github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/provenance"
 
 const (
 	GraphID = "khr-control-graph-v1"
@@ -21,7 +23,8 @@ const (
 	RelCertifies  = "certifies"
 	RelGates      = "gates"
 	RelApproves   = "approves"
-	RelCorrelates = "correlates"
+	RelCorrelates  = "correlates"
+	RelProvenance  = "provenance"
 
 	StateObserved = "observed"
 	StateStale    = "stale"
@@ -41,7 +44,8 @@ type Node struct {
 	Stale           bool           `json:"stale"`
 	Orphan          bool           `json:"orphan"`
 	ObservedAt      string         `json:"observedAt,omitempty"`
-	Attributes      map[string]any `json:"attributes,omitempty"`
+	Attributes      map[string]any    `json:"attributes,omitempty"`
+	Provenance      provenance.Record `json:"provenance,omitempty"`
 }
 
 // Edge is a directed relationship between graph nodes.
@@ -84,6 +88,9 @@ type Graph struct {
 	NoApply                   bool           `json:"noApply"`
 	Nodes                     []Node         `json:"nodes"`
 	Edges                     []Edge         `json:"edges"`
-	Lineage                   LineageSummary `json:"lineage"`
-	Health                    GraphHealth    `json:"health"`
+	Lineage                   LineageSummary     `json:"lineage"`
+	Health                    GraphHealth        `json:"health"`
+	Provenance                provenance.Record  `json:"provenance,omitempty"`
+	LineageIntegrity          bool               `json:"lineageIntegrity"`
+	ProvenanceValidation      provenance.ValidationSummary `json:"provenanceValidation,omitempty"`
 }

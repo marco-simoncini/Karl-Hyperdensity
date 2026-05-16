@@ -1,0 +1,14 @@
+{
+  "modelId": "khr-trust-provenance-v1",
+  "sprint": "KHR-Y",
+  "validatedAt": "2026-05-16T18:19:11Z",
+  "provenanceState": "trusted",
+  "lineageIntegrity": true,
+  "registryIntegrity": true,
+  "approvalProvenanceValid": true,
+  "graphLineageVerified": true,
+  "readOnly": true,
+  "noAutonomousOrchestration": true,
+  "noMutation": true,
+  "noApply": true
+}

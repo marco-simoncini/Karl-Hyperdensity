@@ -1,0 +1,48 @@
+{
+  "registryId": "khr-certification-registry-v1",
+  "sprint": "KHR-Y",
+  "generatedAt": "2026-05-16T18:18:39Z",
+  "readOnly": true,
+  "noAutonomousOrchestration": true,
+  "entries": [
+    {
+      "laneId": "native-live",
+      "laneType": "native-live",
+      "providerBinding": "khr.native",
+      "certificationState": "certified-preview",
+      "continuityScore": 1,
+      "liveScaleConfidence": "high",
+      "lastCertifiedAt": "2026-05-16T18:18:39Z",
+      "evidenceRef": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification-summary.json",
+      "validForSeconds": 86400,
+      "attestation": {
+        "noRestart": true,
+        "noRollout": true,
+        "noRecreate": true,
+        "noInterruption": true,
+        "shellContinuityPreserved": true,
+        "rollbackObserved": true
+      },
+      "provenance": {
+        "provenanceId": "khr-prov-e3efc1675b93e680",
+        "generatedBy": "khr-cert-registry",
+        "generatedAt": "2026-05-16T18:18:39Z",
+        "sourceCluster": "karl-metal-01@ovh",
+        "sourceNamespace": "khr-runtime-sandbox",
+        "sourceLane": "native-live",
+        "lineageHash": "lineage:63599e98624c5a2dc785a741",
+        "evidenceFingerprint": "sha256:e21601bbbe1dca2c86a40e2d8313bbff9bd8b3223e489a40673ab6067f6e17aa"
+      }
+    }
+  ],
+  "provenance": {
+    "provenanceId": "khr-prov-e3efc1675b93e680",
+    "generatedBy": "khr-cert-registry",
+    "generatedAt": "2026-05-16T18:18:39Z",
+    "sourceCluster": "karl-metal-01@ovh",
+    "sourceNamespace": "khr-runtime-sandbox",
+    "sourceLane": "native-live",
+    "lineageHash": "lineage:63599e98624c5a2dc785a741",
+    "evidenceFingerprint": "sha256:e21601bbbe1dca2c86a40e2d8313bbff9bd8b3223e489a40673ab6067f6e17aa"
+  }
+}

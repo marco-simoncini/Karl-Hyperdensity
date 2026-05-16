@@ -3,6 +3,7 @@ package actionapproval
 
 import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/policygates"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/provenance"
 )
 
 const (
@@ -33,6 +34,7 @@ type ActionApproval struct {
 	NoApply            bool                      `json:"noApply"`
 	NoMutation         bool                      `json:"noMutation"`
 	NoAutonomousOrchestration bool               `json:"noAutonomousOrchestration"`
+	Provenance                provenance.Record  `json:"provenance,omitempty"`
 }
 
 // Bundle groups approvals for evidence export.

@@ -9,6 +9,7 @@ import (
 
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/lanediscovery"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/nativelive"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/provenance"
 )
 
 const (
@@ -42,6 +43,7 @@ type LaneEntry struct {
 	EvidenceRef         string          `json:"evidenceRef"`
 	ValidForSeconds     int64           `json:"validForSeconds"`
 	Attestation         LaneAttestation `json:"attestation"`
+	Provenance          provenance.Record `json:"provenance,omitempty"`
 }
 
 // Registry is a read-only certification registry artifact.
@@ -51,7 +53,8 @@ type Registry struct {
 	GeneratedAt               string      `json:"generatedAt"`
 	ReadOnly                  bool        `json:"readOnly"`
 	NoAutonomousOrchestration bool        `json:"noAutonomousOrchestration"`
-	Entries                   []LaneEntry `json:"entries"`
+	Entries                   []LaneEntry         `json:"entries"`
+	Provenance                provenance.Record `json:"provenance,omitempty"`
 }
 
 // FindByLane returns the first entry matching lane id or lane type.
@@ -125,16 +128,59 @@ func GenerateFromSummary(
 	validForSeconds int64,
 	certifiedAt time.Time,
 ) Registry {
-	return Registry{
+	return GenerateFromSummaryWithEvidence(sprint, summary, evidenceRef, validForSeconds, certifiedAt, nil, "")
+}
+
+// GenerateFromSummaryWithEvidence attaches KHR-Y provenance from certification evidence bytes.
+func GenerateFromSummaryWithEvidence(
+	sprint string,
+	summary nativelive.CertificationSummary,
+	evidenceRef string,
+	validForSeconds int64,
+	certifiedAt time.Time,
+	evidenceBytes []byte,
+	cluster string,
+) Registry {
+	if certifiedAt.IsZero() {
+		certifiedAt = time.Now().UTC()
+	}
+	entry := EntryFromCertificationSummary(summary, evidenceRef, validForSeconds, certifiedAt)
+	if len(evidenceBytes) > 0 {
+		src := provenance.SourceContext{
+			Cluster: cluster, Namespace: "khr-runtime-sandbox", Lane: lanediscovery.LaneNativeLive,
+		}
+		entry.Provenance = provenance.NewRecord("khr-cert-registry", src, evidenceRef, evidenceBytes, certifiedAt)
+	}
+	reg := Registry{
 		RegistryID:                RegistryID,
 		Sprint:                    sprint,
-		GeneratedAt:               time.Now().UTC().Format(time.RFC3339),
+		GeneratedAt:               certifiedAt.UTC().Format(time.RFC3339),
 		ReadOnly:                  true,
 		NoAutonomousOrchestration: true,
-		Entries: []LaneEntry{
-			EntryFromCertificationSummary(summary, evidenceRef, validForSeconds, certifiedAt),
-		},
+		Entries:                   []LaneEntry{entry},
 	}
+	if len(evidenceBytes) > 0 {
+		reg.Provenance = entry.Provenance
+	}
+	return reg
+}
+
+// VerifyIntegrity checks registry entry fingerprints against certification evidence.
+func VerifyIntegrity(reg Registry, evidenceBytes []byte) error {
+	for _, e := range reg.Entries {
+		if e.Provenance.EvidenceFingerprint == "" {
+			return fmt.Errorf("lane %s missing provenance", e.LaneID)
+		}
+		if err := provenance.VerifyFingerprint(e.Provenance, evidenceBytes); err != nil {
+			return fmt.Errorf("registry entry %s: %w", e.LaneID, err)
+		}
+	}
+	if reg.Provenance.EvidenceFingerprint != "" {
+		if err := provenance.VerifyFingerprint(reg.Provenance, evidenceBytes); err != nil {
+			return fmt.Errorf("registry provenance: %w", err)
+		}
+	}
+	return nil
 }
 
 // LoadJSON reads a registry from disk.

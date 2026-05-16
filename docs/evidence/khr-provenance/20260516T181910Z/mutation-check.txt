@@ -1,0 +1,2 @@
+no-apply: provenance validation only
+no-orchestration: read-only validation

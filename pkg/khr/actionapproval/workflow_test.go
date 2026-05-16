@@ -8,8 +8,23 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/lanediscovery"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/nativelive"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/policygates"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/provenance"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcefuture"
 )
+
+func certifiedRegistryWithProvenance() certregistry.Registry {
+	evidence := []byte(`{"status":"certified"}`)
+	now := time.Now().UTC()
+	return certregistry.GenerateFromSummaryWithEvidence("KHR-Y", nativelive.CertificationSummary{
+		CertificationID: nativelive.CertificationID,
+		Lane:            nativelive.LaneNativeLive,
+		Status:          nativelive.CertificationCertified,
+		Invariants:      nativelive.Invariants{NoRestart: true, NoRollout: true, NoRecreate: true},
+		Metrics:         nativelive.CertificationMetrics{RollbackLatencyMs: nativelive.RollbackLatencyMs{CPU: 1}},
+		Scores:          nativelive.CertificationScores{ContinuityScore: 1},
+		ContinuityProof: nativelive.ContinuityCertificationProof{ShellContinuityPreserved: true},
+	}, "evidence/cert", 86400, now, evidence, "karl-metal-01@ovh")
+}
 
 func certifiedRegistry() certregistry.Registry {
 	now := time.Now().UTC()
@@ -106,6 +121,22 @@ func TestStaleCertificationBlocksApproval(t *testing.T) {
 	_, err := Approve(p, &reg, policygates.DefaultNativeLiveGates(), "op", now)
 	if err == nil {
 		t.Fatal("expected stale block")
+	}
+}
+
+func TestInvalidApprovalProvenance(t *testing.T) {
+	reg := certifiedRegistryWithProvenance()
+	now := time.Now().UTC()
+	pending, _ := GeneratePending(GenerateInput{
+		Simulation: eligibleSimulation(), Registry: reg,
+		Gates: policygates.DefaultNativeLiveGates(), Now: now,
+	})
+	pending[0].Provenance = provenance.NewRecord("tamper", provenance.SourceContext{
+		Cluster: "other-cluster", Lane: lanediscovery.LaneNativeLive,
+	}, "x", []byte("wrong"), now)
+	_, err := Approve(pending[0], &reg, policygates.DefaultNativeLiveGates(), "op", now)
+	if err == nil {
+		t.Fatal("expected provenance mismatch on approve")
 	}
 }
 

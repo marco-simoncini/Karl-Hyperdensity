@@ -1,0 +1,18 @@
+{
+  "modelId": "khr-trust-provenance-v1",
+  "sprint": "KHR-Y",
+  "validatedAt": "2026-05-16T18:19:11Z",
+  "provenanceState": "mismatch",
+  "lineageIntegrity": true,
+  "registryIntegrity": true,
+  "approvalProvenanceValid": false,
+  "graphLineageVerified": true,
+  "trustWarnings": [
+    "approval provenance mismatch with certification",
+    "invalid approval provenance: approval provenance mismatch with certification"
+  ],
+  "readOnly": true,
+  "noAutonomousOrchestration": true,
+  "noMutation": true,
+  "noApply": true
+}

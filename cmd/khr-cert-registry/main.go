@@ -1,4 +1,4 @@
-// Command khr-cert-registry generates read-only certification registry JSON (KHR-V).
+// Command khr-cert-registry generates read-only certification registry JSON (KHR-V/Y).
 package main
 
 import (
@@ -15,8 +15,9 @@ func main() {
 	certPath := flag.String("cert", "", "path to certification-summary.json")
 	evidenceRef := flag.String("evidence-ref", "", "evidence reference path or URI")
 	validFor := flag.Int64("valid-for-seconds", certregistry.DefaultValidForSeconds, "evidence freshness window")
-	sprint := flag.String("sprint", "KHR-V", "sprint label")
+	sprint := flag.String("sprint", "KHR-Y", "sprint label")
 	certifiedAt := flag.String("certified-at", "", "RFC3339 lastCertifiedAt (default: now)")
+	clusterContext := flag.String("cluster-context", "karl-metal-01@ovh", "source cluster context")
 	out := flag.String("out", "", "output registry JSON path (default: stdout)")
 	flag.Parse()
 	if *certPath == "" {
@@ -24,6 +25,11 @@ func main() {
 		os.Exit(2)
 	}
 	summary, err := certregistry.LoadSummaryJSON(*certPath)
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		os.Exit(1)
+	}
+	evidenceBytes, err := os.ReadFile(*certPath)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		os.Exit(1)
@@ -40,7 +46,7 @@ func main() {
 	if ref == "" {
 		ref = *certPath
 	}
-	reg := certregistry.GenerateFromSummary(*sprint, summary, ref, *validFor, at)
+	reg := certregistry.GenerateFromSummaryWithEvidence(*sprint, summary, ref, *validFor, at, evidenceBytes, *clusterContext)
 	data, err := json.MarshalIndent(reg, "", "  ")
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)

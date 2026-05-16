@@ -10,6 +10,7 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/certregistry"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/lanediscovery"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/policygates"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/provenance"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcefuture"
 )
 
@@ -57,6 +58,15 @@ func Build(in BuildInput) Graph {
 		}
 		if n.CorrelationID == "" {
 			n.CorrelationID = rootCorr
+		}
+		if n.Provenance.ProvenanceID == "" && in.ClusterContext != "" {
+			lane := attrString(n.Attributes, "lane")
+			if lane == "" {
+				lane = "native-live"
+			}
+			n.Provenance = provenance.NewRecord("khr-control-graph-node", provenance.SourceContext{
+				Cluster: in.ClusterContext, Namespace: "khr-runtime-sandbox", Lane: lane,
+			}, rootCorr, []byte(n.Ref+"|"+n.Kind), in.ObservedAt)
 		}
 		if n.State == "" {
 			n.State = StateObserved
@@ -168,15 +178,17 @@ func Build(in BuildInput) Graph {
 			if stale {
 				state = StateStale
 			}
-			addNode(Node{
+			certNode := Node{
 				ID: certID, Kind: KindCertification, Ref: e.EvidenceRef,
 				CorrelationID: lineageID(rootCorr, "cert", e.LaneID),
 				State: state, Stale: stale, ObservedAt: e.LastCertifiedAt,
+				Provenance: e.Provenance,
 				Attributes: map[string]any{
 					"laneId": e.LaneID, "certificationState": e.CertificationState,
 					"continuityScore": e.ContinuityScore,
 				},
-			})
+			}
+			addNode(certNode)
 			for ref, pid := range portByRef {
 				if strings.Contains(ref, "native-live") || e.LaneID == lanediscovery.LaneNativeLive {
 					addEdge(certID, pid, RelCertifies)
@@ -252,6 +264,7 @@ func Build(in BuildInput) Graph {
 			CorrelationID: lineageID(rootCorr, "approval", a.ActionID),
 			ObservedAt: a.ExpiresAt,
 			State: state, Stale: stale,
+			Provenance: a.Provenance,
 			Attributes: map[string]any{
 				"approvalState": a.ApprovalState, "laneId": a.LaneID,
 			},
@@ -270,8 +283,23 @@ func Build(in BuildInput) Graph {
 		}
 	}
 
+	attachGraphProvenance(&g, in, rootCorr)
+	addProvenanceEdges(&g, addEdge)
 	AnnotateHealth(&g)
+	sum, _ := VerifyLineageIntegrity(g, in.Now)
+	g.ProvenanceValidation = sum
+	g.LineageIntegrity = sum.LineageIntegrity
 	return g
+}
+
+func attrString(attrs map[string]any, key string) string {
+	if attrs == nil {
+		return ""
+	}
+	if v, ok := attrs[key].(string); ok {
+		return v
+	}
+	return ""
 }
 
 func rootCorrelationID(cluster string, at time.Time) string {

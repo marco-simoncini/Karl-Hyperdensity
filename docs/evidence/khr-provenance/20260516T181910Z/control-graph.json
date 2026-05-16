@@ -1,0 +1,2631 @@
+{
+  "graphId": "khr-control-graph-v1",
+  "sprint": "KHR-X",
+  "clusterContext": "karl-metal-01@ovh",
+  "observedAt": "2026-05-16T18:12:37Z",
+  "correlationId": "khr-corr-12f2e20a48af",
+  "readOnly": true,
+  "noAutonomousOrchestration": true,
+  "noMutation": true,
+  "noApply": true,
+  "nodes": [
+    {
+      "id": "khr-node-Host-d00755ca880a0315",
+      "kind": "Host",
+      "ref": "karl-host-karl-lab-metal-01",
+      "correlationId": "khr-corr-12f2e20a48af",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "nodeName": "karl-lab-metal-01",
+        "provider": "khr.native",
+        "ready": true
+      }
+    },
+    {
+      "id": "khr-node-Shell-f1c41c4d6353ce95",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "correlationId": "khr-lineage-c6111a5a1e43",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-centos-stream-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-2c50fb3da06a0f95",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "correlationId": "khr-lineage-2a86491a8eaf",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-centos7-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-bd1398d64b7e1977",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "correlationId": "khr-lineage-99e51c151591",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-debian-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-fb89ff546ecc6161",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-01",
+      "correlationId": "khr-lineage-9dff4d9b0d20",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-c9404cdccab566f8",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-02",
+      "correlationId": "khr-lineage-c1daed9021c2",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-factory-02",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-c9affc050ad06c8d",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-optimized-01",
+      "correlationId": "khr-lineage-b437d0822b33",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-optimized-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-66e61a3553865cd7",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "correlationId": "khr-lineage-2803c8f15bc5",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-3e01f2eda97d8827",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "correlationId": "khr-lineage-fbbe70cdcafa",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-rocky-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-c306bee500bd38db",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "correlationId": "khr-lineage-9de169e1f7ad",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "paolo-studyrhel-10-r19-rhel-memory-materialized",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-5f31584789a8280b",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r2",
+      "correlationId": "khr-lineage-e8920403216d",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "paolo-studyrhel-10-r2",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-743673492f295a9e",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r6-memory",
+      "correlationId": "khr-lineage-e0dfc53cedda",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "paolo-studyrhel-10-r6-memory",
+        "namespace": "karl-hyperdensity-evidence",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-0a2fba0b89dd5436",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-playground/Shell/linux-vm-hd-donor-v1",
+      "correlationId": "khr-lineage-0d56961248e0",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-hd-donor-v1",
+        "namespace": "karl-hyperdensity-playground",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-a34e286ebe97f9ab",
+      "kind": "Shell",
+      "ref": "karl-hyperdensity-playground/Shell/linux-vm-hd-receiver-v1",
+      "correlationId": "khr-lineage-8e6d463a35d0",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-hd-receiver-v1",
+        "namespace": "karl-hyperdensity-playground",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-c7f7962dfa8406e3",
+      "kind": "Shell",
+      "ref": "karl/Shell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "correlationId": "khr-lineage-d1dfacf32a7d",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "hyperdensity-linux-ga-evidence-fixture-v1",
+        "namespace": "karl",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-3ac1875672bbca34",
+      "kind": "Shell",
+      "ref": "karl/Shell/hyperdensity-wave1-ubuntu-gui-01",
+      "correlationId": "khr-lineage-6cfc511700ae",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "hyperdensity-wave1-ubuntu-gui-01",
+        "namespace": "karl",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-98894abeea159ed6",
+      "kind": "Shell",
+      "ref": "karl/Shell/linux-shell-v1-cpu-ram-reference-02",
+      "correlationId": "khr-lineage-e0e03d40ad0a",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-shell-v1-cpu-ram-reference-02",
+        "namespace": "karl",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-5800a2602cb0ba06",
+      "kind": "Shell",
+      "ref": "karl/Shell/master-win11",
+      "correlationId": "khr-lineage-d2284d60ebcc",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "master-win11",
+        "namespace": "karl",
+        "osFamily": "windows",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-a44cf1a5fc4c384a",
+      "kind": "Shell",
+      "ref": "karl/Shell/paolo-studyrhel-10",
+      "correlationId": "khr-lineage-bfda0b658dbe",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "paolo-studyrhel-10",
+        "namespace": "karl",
+        "osFamily": "linux",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-6e97e4a7d8d96d5e",
+      "kind": "Shell",
+      "ref": "karl/Shell/win11-pool-0",
+      "correlationId": "khr-lineage-7bcb5f74de1e",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "win11-pool-0",
+        "namespace": "karl",
+        "osFamily": "windows",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-a24b7c5c0334ea4b",
+      "kind": "Shell",
+      "ref": "karl/Shell/windows-hyper",
+      "correlationId": "khr-lineage-08375dcf0794",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "windows-hyper",
+        "namespace": "karl",
+        "osFamily": "windows",
+        "vmType": "vm"
+      }
+    },
+    {
+      "id": "khr-node-Shell-06d5090116879625",
+      "kind": "Shell",
+      "ref": "khr-runtime-sandbox/Shell/khr-native-live-target-5df65659bd-2xjxg",
+      "correlationId": "khr-lineage-6e98009bddc2",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "khr-native-live-target-5df65659bd-2xjxg",
+        "namespace": "khr-runtime-sandbox",
+        "osFamily": "linux",
+        "vmType": "container"
+      }
+    },
+    {
+      "id": "khr-node-Shell-1d32e937b9b1cfd3",
+      "kind": "Shell",
+      "ref": "khr-runtime-sandbox/Shell/khr-runtime-linux-target-86795b9868-q45wk",
+      "correlationId": "khr-lineage-fa296f0480b2",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "khr-runtime-linux-target-86795b9868-q45wk",
+        "namespace": "khr-runtime-sandbox",
+        "osFamily": "linux",
+        "vmType": "container"
+      }
+    },
+    {
+      "id": "khr-node-Cell-695ca5ed22aaced7",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "correlationId": "khr-lineage-9a41a225480f",
+      "lineageParentId": "khr-node-Shell-f1c41c4d6353ce95",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-centos-stream-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-b8b6a61d830d477d",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "correlationId": "khr-lineage-48dada3e4d67",
+      "lineageParentId": "khr-node-Shell-2c50fb3da06a0f95",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-centos7-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-a1520c6d9d8f2ac9",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "correlationId": "khr-lineage-b04a3f05211d",
+      "lineageParentId": "khr-node-Shell-bd1398d64b7e1977",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-debian-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-4db5e29a20f25f35",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "correlationId": "khr-lineage-bc28e623d386",
+      "lineageParentId": "khr-node-Shell-fb89ff546ecc6161",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-f8efeee219cc6702",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "correlationId": "khr-lineage-5a606549034a",
+      "lineageParentId": "khr-node-Shell-c9404cdccab566f8",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-factory-02",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-6f81f7f4f57a1128",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "correlationId": "khr-lineage-8b478c552dcb",
+      "lineageParentId": "khr-node-Shell-c9affc050ad06c8d",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-optimized-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-784e4e4ed283b455",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "correlationId": "khr-lineage-9010659ae182",
+      "lineageParentId": "khr-node-Shell-66e61a3553865cd7",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-1157bf01609722a0",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "correlationId": "khr-lineage-66cf5657cee3",
+      "lineageParentId": "khr-node-Shell-3e01f2eda97d8827",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-memory-hyperdensity-rocky-factory-01",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-56eeadc91b598f06",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "correlationId": "khr-lineage-ff59c2e9d0b6",
+      "lineageParentId": "khr-node-Shell-c306bee500bd38db",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "paolo-studyrhel-10-r19-rhel-memory-materialized",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-8caa2d10aede5fb6",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "correlationId": "khr-lineage-4f8df9a88d5e",
+      "lineageParentId": "khr-node-Shell-5f31584789a8280b",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "paolo-studyrhel-10-r2",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-87bf82702f28bbf3",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "correlationId": "khr-lineage-d4c901838693",
+      "lineageParentId": "khr-node-Shell-743673492f295a9e",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "paolo-studyrhel-10-r6-memory",
+        "namespace": "karl-hyperdensity-evidence",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-026248006fbb5fec",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "correlationId": "khr-lineage-206d0ba600e7",
+      "lineageParentId": "khr-node-Shell-0a2fba0b89dd5436",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-hd-donor-v1",
+        "namespace": "karl-hyperdensity-playground",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": true
+      }
+    },
+    {
+      "id": "khr-node-Cell-6ce7819c48ebc782",
+      "kind": "Cell",
+      "ref": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "correlationId": "khr-lineage-acd56e23fcc3",
+      "lineageParentId": "khr-node-Shell-a34e286ebe97f9ab",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-vm-hd-receiver-v1",
+        "namespace": "karl-hyperdensity-playground",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": true
+      }
+    },
+    {
+      "id": "khr-node-Cell-83cf5c15ec06ca6c",
+      "kind": "Cell",
+      "ref": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "correlationId": "khr-lineage-b4aeeb1af9b5",
+      "lineageParentId": "khr-node-Shell-c7f7962dfa8406e3",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "hyperdensity-linux-ga-evidence-fixture-v1",
+        "namespace": "karl",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": true
+      }
+    },
+    {
+      "id": "khr-node-Cell-aee5a364490bc563",
+      "kind": "Cell",
+      "ref": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "correlationId": "khr-lineage-645b03d15d1e",
+      "lineageParentId": "khr-node-Shell-3ac1875672bbca34",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "hyperdensity-wave1-ubuntu-gui-01",
+        "namespace": "karl",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-83d263d2bdb989ef",
+      "kind": "Cell",
+      "ref": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "correlationId": "khr-lineage-b3780de26ce3",
+      "lineageParentId": "khr-node-Shell-98894abeea159ed6",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "linux-shell-v1-cpu-ram-reference-02",
+        "namespace": "karl",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-6b154c15bdf7f87b",
+      "kind": "Cell",
+      "ref": "karl/Cell/master-win11",
+      "correlationId": "khr-lineage-e9b0baf4cbb5",
+      "lineageParentId": "khr-node-Shell-5800a2602cb0ba06",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "master-win11",
+        "namespace": "karl",
+        "nodeName": "",
+        "osFamily": "windows",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-2d365a6aa396a6da",
+      "kind": "Cell",
+      "ref": "karl/Cell/paolo-studyrhel-10",
+      "correlationId": "khr-lineage-f1885588aed2",
+      "lineageParentId": "khr-node-Shell-a44cf1a5fc4c384a",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "paolo-studyrhel-10",
+        "namespace": "karl",
+        "nodeName": "",
+        "osFamily": "linux",
+        "running": false
+      }
+    },
+    {
+      "id": "khr-node-Cell-5e514a3683601b6e",
+      "kind": "Cell",
+      "ref": "karl/Cell/win11-pool-0",
+      "correlationId": "khr-lineage-6b7682377b29",
+      "lineageParentId": "khr-node-Shell-6e97e4a7d8d96d5e",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "win11-pool-0",
+        "namespace": "karl",
+        "nodeName": "",
+        "osFamily": "windows",
+        "running": true
+      }
+    },
+    {
+      "id": "khr-node-Cell-525e624ffa108779",
+      "kind": "Cell",
+      "ref": "karl/Cell/windows-hyper",
+      "correlationId": "khr-lineage-6fb8d39204db",
+      "lineageParentId": "khr-node-Shell-a24b7c5c0334ea4b",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "windows-hyper",
+        "namespace": "karl",
+        "nodeName": "",
+        "osFamily": "windows",
+        "running": true
+      }
+    },
+    {
+      "id": "khr-node-Cell-1aa385b9ad0212a1",
+      "kind": "Cell",
+      "ref": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "correlationId": "khr-lineage-99c07e5dce60",
+      "lineageParentId": "khr-node-Shell-06d5090116879625",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "khr-native-live-target-5df65659bd-2xjxg",
+        "namespace": "khr-runtime-sandbox",
+        "nodeName": "karl-lab-metal-01",
+        "osFamily": "linux",
+        "running": true
+      }
+    },
+    {
+      "id": "khr-node-Cell-2b649ba9471e56b7",
+      "kind": "Cell",
+      "ref": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "correlationId": "khr-lineage-9dfbfb3d819d",
+      "lineageParentId": "khr-node-Shell-1d32e937b9b1cfd3",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "name": "khr-runtime-linux-target-86795b9868-q45wk",
+        "namespace": "khr-runtime-sandbox",
+        "nodeName": "karl-lab-metal-01",
+        "osFamily": "linux",
+        "running": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-bfca29a38142bd93",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos-stream-factory-01-port",
+      "correlationId": "khr-lineage-3cded1580ad4",
+      "lineageParentId": "khr-node-Cell-695ca5ed22aaced7",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-a093552ed23cc968",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos-stream-factory-01-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-6c9c6e28c060",
+      "lineageParentId": "khr-node-ResourcePort-bfca29a38142bd93",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-f9011fff7c2c4300",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos7-factory-01-port",
+      "correlationId": "khr-lineage-a8fefb4f01f1",
+      "lineageParentId": "khr-node-Cell-b8b6a61d830d477d",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-8c8fbd3ba42c7600",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos7-factory-01-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-4dfd6559178c",
+      "lineageParentId": "khr-node-ResourcePort-f9011fff7c2c4300",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-75277b223e4aa644",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-debian-factory-01-port",
+      "correlationId": "khr-lineage-107a746ed110",
+      "lineageParentId": "khr-node-Cell-a1520c6d9d8f2ac9",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-b923f77b65c2aecb",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-debian-factory-01-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-a7499fde30d3",
+      "lineageParentId": "khr-node-ResourcePort-75277b223e4aa644",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-f57a54aa5a50ebb3",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-factory-01-port",
+      "correlationId": "khr-lineage-7cd0ee3b406d",
+      "lineageParentId": "khr-node-Cell-4db5e29a20f25f35",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-41aa4861df7709c9",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-factory-01-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-aa906f9e447b",
+      "lineageParentId": "khr-node-ResourcePort-f57a54aa5a50ebb3",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-3bc8755582cac11b",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-factory-02-port",
+      "correlationId": "khr-lineage-e60a7fb69c1d",
+      "lineageParentId": "khr-node-Cell-f8efeee219cc6702",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-6727da094b520ce3",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-factory-02-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-0232e0cefbc3",
+      "lineageParentId": "khr-node-ResourcePort-3bc8755582cac11b",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-46b6c2c0844280c7",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-optimized-01-port",
+      "correlationId": "khr-lineage-7ba5a33e9314",
+      "lineageParentId": "khr-node-Cell-6f81f7f4f57a1128",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-07173855e6f318c8",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-optimized-01-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-bcf8dca10620",
+      "lineageParentId": "khr-node-ResourcePort-46b6c2c0844280c7",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-c73458f5745308db",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01-port",
+      "correlationId": "khr-lineage-b5bbc3c5b568",
+      "lineageParentId": "khr-node-Cell-784e4e4ed283b455",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-d7760bde88d267bc",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-76ddb9ca5acb",
+      "lineageParentId": "khr-node-ResourcePort-c73458f5745308db",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-c679d5e689894bbb",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-rocky-factory-01-port",
+      "correlationId": "khr-lineage-2cc98442d482",
+      "lineageParentId": "khr-node-Cell-1157bf01609722a0",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-8e1fc83adf17a53c",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-rocky-factory-01-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-a13be4db0d2f",
+      "lineageParentId": "khr-node-ResourcePort-c679d5e689894bbb",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-fd89d4b8df4e34fd",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r19-rhel-memory-materialized-port",
+      "correlationId": "khr-lineage-4995b9372a0c",
+      "lineageParentId": "khr-node-Cell-56eeadc91b598f06",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-1a52a5785054e225",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r19-rhel-memory-materialized-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-91fcb30b10e7",
+      "lineageParentId": "khr-node-ResourcePort-fd89d4b8df4e34fd",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-22aa2ffb0a8a0792",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r2-port",
+      "correlationId": "khr-lineage-2e61a2e3926b",
+      "lineageParentId": "khr-node-Cell-8caa2d10aede5fb6",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-491c47a077f5544e",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r2-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-839c6e256995",
+      "lineageParentId": "khr-node-ResourcePort-22aa2ffb0a8a0792",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-029eb7beba28998a",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r6-memory-port",
+      "correlationId": "khr-lineage-0b451a0147f7",
+      "lineageParentId": "khr-node-Cell-87bf82702f28bbf3",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-e0b1b5755b356f93",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r6-memory-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-56801d9b2b4c",
+      "lineageParentId": "khr-node-ResourcePort-029eb7beba28998a",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-11f8335e4eec939f",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-playground/ResourcePort/linux-vm-hd-donor-v1-port",
+      "correlationId": "khr-lineage-265d702538dc",
+      "lineageParentId": "khr-node-Cell-026248006fbb5fec",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "compatibility-fallback",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-748160f190149768",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-playground/ResourcePort/linux-vm-hd-donor-v1-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-8b61e53a351a",
+      "lineageParentId": "khr-node-ResourcePort-11f8335e4eec939f",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-6e494f9b125f0446",
+      "kind": "ResourcePort",
+      "ref": "karl-hyperdensity-playground/ResourcePort/linux-vm-hd-receiver-v1-port",
+      "correlationId": "khr-lineage-ba1caadfb4d1",
+      "lineageParentId": "khr-node-Cell-6ce7819c48ebc782",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "compatibility-fallback",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-c15b9f63946a4a16",
+      "kind": "ResourceLease",
+      "ref": "karl-hyperdensity-playground/ResourcePort/linux-vm-hd-receiver-v1-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-a52fb3e567ab",
+      "lineageParentId": "khr-node-ResourcePort-6e494f9b125f0446",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-a9f6f8a4424ab46b",
+      "kind": "ResourcePort",
+      "ref": "karl/ResourcePort/hyperdensity-linux-ga-evidence-fixture-v1-port",
+      "correlationId": "khr-lineage-d2df9ff19398",
+      "lineageParentId": "khr-node-Cell-83cf5c15ec06ca6c",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "compatibility-fallback",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-1f94e11a4b679d49",
+      "kind": "ResourceLease",
+      "ref": "karl/ResourcePort/hyperdensity-linux-ga-evidence-fixture-v1-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-4e6d53ee394e",
+      "lineageParentId": "khr-node-ResourcePort-a9f6f8a4424ab46b",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-62bd38a8e6599c53",
+      "kind": "ResourcePort",
+      "ref": "karl/ResourcePort/hyperdensity-wave1-ubuntu-gui-01-port",
+      "correlationId": "khr-lineage-205b486ae5d5",
+      "lineageParentId": "khr-node-Cell-aee5a364490bc563",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-afaf74e8c84e45fe",
+      "kind": "ResourceLease",
+      "ref": "karl/ResourcePort/hyperdensity-wave1-ubuntu-gui-01-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-fdeab9eaf6ee",
+      "lineageParentId": "khr-node-ResourcePort-62bd38a8e6599c53",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-3d444e03671ac1f4",
+      "kind": "ResourcePort",
+      "ref": "karl/ResourcePort/linux-shell-v1-cpu-ram-reference-02-port",
+      "correlationId": "khr-lineage-13fbd4294540",
+      "lineageParentId": "khr-node-Cell-83d263d2bdb989ef",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-252913ab3b42b9cb",
+      "kind": "ResourceLease",
+      "ref": "karl/ResourcePort/linux-shell-v1-cpu-ram-reference-02-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-d61c1fb7cdb9",
+      "lineageParentId": "khr-node-ResourcePort-3d444e03671ac1f4",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-e6612b6a1ca16bea",
+      "kind": "ResourcePort",
+      "ref": "karl/ResourcePort/master-win11-port",
+      "correlationId": "khr-lineage-8a6607da9401",
+      "lineageParentId": "khr-node-Cell-6b154c15bdf7f87b",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "unsupported",
+        "lane": "windows-vm-session",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-8f5f2caeca8910bc",
+      "kind": "ResourceLease",
+      "ref": "karl/ResourcePort/master-win11-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-4de651bbf88c",
+      "lineageParentId": "khr-node-ResourcePort-e6612b6a1ca16bea",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-9a2f34a45901a840",
+      "kind": "ResourcePort",
+      "ref": "karl/ResourcePort/paolo-studyrhel-10-port",
+      "correlationId": "khr-lineage-f1697bfddf57",
+      "lineageParentId": "khr-node-Cell-2d365a6aa396a6da",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "linux-vm-compatibility",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-4b1610d9a174e265",
+      "kind": "ResourceLease",
+      "ref": "karl/ResourcePort/paolo-studyrhel-10-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-8c334ff2903d",
+      "lineageParentId": "khr-node-ResourcePort-9a2f34a45901a840",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-ee090b7bbb8d51d2",
+      "kind": "ResourcePort",
+      "ref": "karl/ResourcePort/win11-pool-0-port",
+      "correlationId": "khr-lineage-2684bc4435b5",
+      "lineageParentId": "khr-node-Cell-5e514a3683601b6e",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "windows-vm-session",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-07f73165272d61c4",
+      "kind": "ResourceLease",
+      "ref": "karl/ResourcePort/win11-pool-0-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-b694a755daff",
+      "lineageParentId": "khr-node-ResourcePort-ee090b7bbb8d51d2",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-56f0711ac7a129da",
+      "kind": "ResourcePort",
+      "ref": "karl/ResourcePort/windows-hyper-port",
+      "correlationId": "khr-lineage-33356469c34c",
+      "lineageParentId": "khr-node-Cell-525e624ffa108779",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "observation-only",
+        "lane": "windows-vm-session",
+        "liveScale": false,
+        "providerBinding": "kubevirt.compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-8d58a7236d355ca6",
+      "kind": "ResourceLease",
+      "ref": "karl/ResourcePort/windows-hyper-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-c548b9c1670d",
+      "lineageParentId": "khr-node-ResourcePort-56f0711ac7a129da",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-9da4eafed74e93c5",
+      "kind": "ResourcePort",
+      "ref": "khr-runtime-sandbox/ResourcePort/khr-native-live-target-5df65659bd-2xjxg-port",
+      "correlationId": "khr-lineage-5c1060d1aa49",
+      "lineageParentId": "khr-node-Cell-1aa385b9ad0212a1",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "native-live",
+        "lane": "native-live",
+        "liveScale": true,
+        "providerBinding": "khr.native"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-92e7a5b6d73137bb",
+      "kind": "ResourceLease",
+      "ref": "khr-runtime-sandbox/ResourcePort/khr-native-live-target-5df65659bd-2xjxg-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-0cf436b175b3",
+      "lineageParentId": "khr-node-ResourcePort-9da4eafed74e93c5",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-ResourcePort-fb66fc2ccc834c37",
+      "kind": "ResourcePort",
+      "ref": "khr-runtime-sandbox/ResourcePort/khr-runtime-linux-target-86795b9868-q45wk-port",
+      "correlationId": "khr-lineage-488c9933a6d9",
+      "lineageParentId": "khr-node-Cell-2b649ba9471e56b7",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "classification": "live-in-place-capable",
+        "lane": "linux-container-cgroup",
+        "liveScale": true,
+        "providerBinding": "khr.native"
+      }
+    },
+    {
+      "id": "khr-node-ResourceLease-7bd7b122b42ab766",
+      "kind": "ResourceLease",
+      "ref": "khr-runtime-sandbox/ResourcePort/khr-runtime-linux-target-86795b9868-q45wk-port/ResourceLease/observed",
+      "correlationId": "khr-lineage-0edddd16d7a1",
+      "lineageParentId": "khr-node-ResourcePort-fb66fc2ccc834c37",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "dryRunOnly": true,
+        "simulationOnly": true
+      }
+    },
+    {
+      "id": "khr-node-Certification-a54f82e5a6599af3",
+      "kind": "Certification",
+      "ref": "docs/evidence/khr-native-live-lane/certification-summary.json",
+      "correlationId": "khr-lineage-5090ba534689",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:02:13Z",
+      "attributes": {
+        "certificationState": "certified-preview",
+        "continuityScore": 1,
+        "laneId": "native-live"
+      }
+    },
+    {
+      "id": "khr-node-PolicyGate-c11623c9681aece6",
+      "kind": "PolicyGate",
+      "ref": "policy/native-live",
+      "correlationId": "khr-lineage-d8e176ef744e",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "evidenceFreshnessRequired": true,
+        "noRestart": true
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-2b65de64e30a1a19",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "correlationId": "khr-lineage-fff99525ee92",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-cfd2877dd1e645c0",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "correlationId": "khr-lineage-991c96102c28",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-61ff5a16c1929be5",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "correlationId": "khr-lineage-89a3dbad66df",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-09969858f5bd5712",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "correlationId": "khr-lineage-4cb1c1efbebb",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-2f7bc75478838b96",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "correlationId": "khr-lineage-3eb1d6fc6b47",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-866e2e64a8b54b8f",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "correlationId": "khr-lineage-4f077f30225a",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-a756208e08e37619",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "correlationId": "khr-lineage-5ab61e915106",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-9525c2c39447550b",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "correlationId": "khr-lineage-fce57d2f2566",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-455ea04b392b1358",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "correlationId": "khr-lineage-e7b3868af165",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-b5def985a8ba2ce9",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "correlationId": "khr-lineage-a14afb7bb9c6",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-d5fb4f16d0ffe1b0",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "correlationId": "khr-lineage-6fa2f39d40cd",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-b55421781f0675ef",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "correlationId": "khr-lineage-a454f4d5e821",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-14db0e0f4ab9f3d8",
+      "kind": "ResourceFuture",
+      "ref": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "correlationId": "khr-lineage-117ce0ed14df",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-533847497ef2e38d",
+      "kind": "ResourceFuture",
+      "ref": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "correlationId": "khr-lineage-7a74fda3c099",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-f7b67b413c167320",
+      "kind": "ResourceFuture",
+      "ref": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "correlationId": "khr-lineage-4187a8ff4e8a",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-de24ac2f7c927356",
+      "kind": "ResourceFuture",
+      "ref": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "correlationId": "khr-lineage-0f8c2c52e98c",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-4919490581dcf29a",
+      "kind": "ResourceFuture",
+      "ref": "karl/Cell/master-win11",
+      "correlationId": "khr-lineage-3bdcc87bc333",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "windows-vm-session"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-634303060d142872",
+      "kind": "ResourceFuture",
+      "ref": "karl/Cell/paolo-studyrhel-10",
+      "correlationId": "khr-lineage-c97b584e969f",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-vm-compatibility"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-5e7af55463850507",
+      "kind": "ResourceFuture",
+      "ref": "karl/Cell/win11-pool-0",
+      "correlationId": "khr-lineage-4164bd0a9aa1",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "windows-vm-session"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-27aa3d2048af9256",
+      "kind": "ResourceFuture",
+      "ref": "karl/Cell/windows-hyper",
+      "correlationId": "khr-lineage-a2784a2bc1a4",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "windows-vm-session"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-f5d38a247c3151e8",
+      "kind": "ResourceFuture",
+      "ref": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "correlationId": "khr-lineage-be8209228187",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "eligible",
+        "eligible": true,
+        "lane": "native-live"
+      }
+    },
+    {
+      "id": "khr-node-ResourceFuture-c42c1af384dd6e70",
+      "kind": "ResourceFuture",
+      "ref": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "correlationId": "khr-lineage-2b50530688df",
+      "state": "observed",
+      "stale": false,
+      "orphan": false,
+      "observedAt": "2026-05-16T18:12:37Z",
+      "attributes": {
+        "eligibilityState": "blocked",
+        "eligible": false,
+        "lane": "linux-container-cgroup"
+      }
+    },
+    {
+      "id": "khr-node-ActionApproval-83fd8c5b223315a3",
+      "kind": "ActionApproval",
+      "ref": "khr-approval-0e107c2892d72b25",
+      "correlationId": "khr-lineage-75011c2f6690",
+      "state": "orphan",
+      "stale": false,
+      "orphan": true,
+      "observedAt": "2026-05-16T19:08:10Z",
+      "attributes": {
+        "approvalState": "pending",
+        "laneId": "native-live"
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "khr-edge-f7fdbad604875e7a",
+      "from": "khr-node-Shell-f1c41c4d6353ce95",
+      "to": "khr-node-Cell-695ca5ed22aaced7",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-9795a73bfe96359d",
+      "from": "khr-node-Shell-2c50fb3da06a0f95",
+      "to": "khr-node-Cell-b8b6a61d830d477d",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-632b23d679582bc8",
+      "from": "khr-node-Shell-bd1398d64b7e1977",
+      "to": "khr-node-Cell-a1520c6d9d8f2ac9",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-03d3a85f2aa9a33a",
+      "from": "khr-node-Shell-fb89ff546ecc6161",
+      "to": "khr-node-Cell-4db5e29a20f25f35",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-86697bafd3fb4ef8",
+      "from": "khr-node-Shell-c9404cdccab566f8",
+      "to": "khr-node-Cell-f8efeee219cc6702",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-778c2d5432855ec9",
+      "from": "khr-node-Shell-c9affc050ad06c8d",
+      "to": "khr-node-Cell-6f81f7f4f57a1128",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-6001ac24e40d10d9",
+      "from": "khr-node-Shell-66e61a3553865cd7",
+      "to": "khr-node-Cell-784e4e4ed283b455",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-6b8f26eff40ff7e6",
+      "from": "khr-node-Shell-3e01f2eda97d8827",
+      "to": "khr-node-Cell-1157bf01609722a0",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-5a9e1a4efd1ab655",
+      "from": "khr-node-Shell-c306bee500bd38db",
+      "to": "khr-node-Cell-56eeadc91b598f06",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-7ab11dd5d44a3a13",
+      "from": "khr-node-Shell-5f31584789a8280b",
+      "to": "khr-node-Cell-8caa2d10aede5fb6",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-e695eccf43566654",
+      "from": "khr-node-Shell-743673492f295a9e",
+      "to": "khr-node-Cell-87bf82702f28bbf3",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-1fb2bd5a02583de5",
+      "from": "khr-node-Shell-0a2fba0b89dd5436",
+      "to": "khr-node-Cell-026248006fbb5fec",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-427efd7faeb3f4b6",
+      "from": "khr-node-Shell-a34e286ebe97f9ab",
+      "to": "khr-node-Cell-6ce7819c48ebc782",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-91b36330170f362a",
+      "from": "khr-node-Shell-c7f7962dfa8406e3",
+      "to": "khr-node-Cell-83cf5c15ec06ca6c",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-ef269f338d5c0b67",
+      "from": "khr-node-Shell-3ac1875672bbca34",
+      "to": "khr-node-Cell-aee5a364490bc563",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-ce0311852989f635",
+      "from": "khr-node-Shell-98894abeea159ed6",
+      "to": "khr-node-Cell-83d263d2bdb989ef",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-d6f8309455aaa0f3",
+      "from": "khr-node-Shell-5800a2602cb0ba06",
+      "to": "khr-node-Cell-6b154c15bdf7f87b",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-54cce4481754123d",
+      "from": "khr-node-Shell-a44cf1a5fc4c384a",
+      "to": "khr-node-Cell-2d365a6aa396a6da",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-6be30ef7da6b4b3f",
+      "from": "khr-node-Shell-6e97e4a7d8d96d5e",
+      "to": "khr-node-Cell-5e514a3683601b6e",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-2ad1efe59de3badb",
+      "from": "khr-node-Shell-a24b7c5c0334ea4b",
+      "to": "khr-node-Cell-525e624ffa108779",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-4f29700a79dcad85",
+      "from": "khr-node-Shell-06d5090116879625",
+      "to": "khr-node-Cell-1aa385b9ad0212a1",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-551a9be382d82846",
+      "from": "khr-node-Host-d00755ca880a0315",
+      "to": "khr-node-Cell-1aa385b9ad0212a1",
+      "relationship": "hosts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-67ae4ee03357b678",
+      "from": "khr-node-Shell-1d32e937b9b1cfd3",
+      "to": "khr-node-Cell-2b649ba9471e56b7",
+      "relationship": "projects",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-7994c44209714b5a",
+      "from": "khr-node-Host-d00755ca880a0315",
+      "to": "khr-node-Cell-2b649ba9471e56b7",
+      "relationship": "hosts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-16343fc3b68c9ce0",
+      "from": "khr-node-Cell-695ca5ed22aaced7",
+      "to": "khr-node-ResourcePort-bfca29a38142bd93",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-057207dc55da4a51",
+      "from": "khr-node-ResourcePort-bfca29a38142bd93",
+      "to": "khr-node-ResourceLease-a093552ed23cc968",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-177404c69caa3091",
+      "from": "khr-node-Cell-b8b6a61d830d477d",
+      "to": "khr-node-ResourcePort-f9011fff7c2c4300",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-3ea505bdbf44cf81",
+      "from": "khr-node-ResourcePort-f9011fff7c2c4300",
+      "to": "khr-node-ResourceLease-8c8fbd3ba42c7600",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-c027e9133b2d980b",
+      "from": "khr-node-Cell-a1520c6d9d8f2ac9",
+      "to": "khr-node-ResourcePort-75277b223e4aa644",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-1c8b74ef4b04ec19",
+      "from": "khr-node-ResourcePort-75277b223e4aa644",
+      "to": "khr-node-ResourceLease-b923f77b65c2aecb",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-b81272c6bef788cb",
+      "from": "khr-node-Cell-4db5e29a20f25f35",
+      "to": "khr-node-ResourcePort-f57a54aa5a50ebb3",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-0fd817bef0a7b08b",
+      "from": "khr-node-ResourcePort-f57a54aa5a50ebb3",
+      "to": "khr-node-ResourceLease-41aa4861df7709c9",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-d172d70ec30beced",
+      "from": "khr-node-Cell-f8efeee219cc6702",
+      "to": "khr-node-ResourcePort-3bc8755582cac11b",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-ed02419803194ca0",
+      "from": "khr-node-ResourcePort-3bc8755582cac11b",
+      "to": "khr-node-ResourceLease-6727da094b520ce3",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-e8b69d90184a8579",
+      "from": "khr-node-Cell-6f81f7f4f57a1128",
+      "to": "khr-node-ResourcePort-46b6c2c0844280c7",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-1f3dca096fdecf38",
+      "from": "khr-node-ResourcePort-46b6c2c0844280c7",
+      "to": "khr-node-ResourceLease-07173855e6f318c8",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-5ec38240768ccb89",
+      "from": "khr-node-Cell-784e4e4ed283b455",
+      "to": "khr-node-ResourcePort-c73458f5745308db",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-b89215c31a58a8d6",
+      "from": "khr-node-ResourcePort-c73458f5745308db",
+      "to": "khr-node-ResourceLease-d7760bde88d267bc",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-3fe31a379ae5b202",
+      "from": "khr-node-Cell-1157bf01609722a0",
+      "to": "khr-node-ResourcePort-c679d5e689894bbb",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-0c6645c40a3702c6",
+      "from": "khr-node-ResourcePort-c679d5e689894bbb",
+      "to": "khr-node-ResourceLease-8e1fc83adf17a53c",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-ff80c099698b3318",
+      "from": "khr-node-Cell-56eeadc91b598f06",
+      "to": "khr-node-ResourcePort-fd89d4b8df4e34fd",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-dd1b4c3b3154b3d1",
+      "from": "khr-node-ResourcePort-fd89d4b8df4e34fd",
+      "to": "khr-node-ResourceLease-1a52a5785054e225",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-38f27fbc57b6124e",
+      "from": "khr-node-Cell-8caa2d10aede5fb6",
+      "to": "khr-node-ResourcePort-22aa2ffb0a8a0792",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-29827a443253e39a",
+      "from": "khr-node-ResourcePort-22aa2ffb0a8a0792",
+      "to": "khr-node-ResourceLease-491c47a077f5544e",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-040204774627ea60",
+      "from": "khr-node-Cell-87bf82702f28bbf3",
+      "to": "khr-node-ResourcePort-029eb7beba28998a",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-20fac90af82aa13f",
+      "from": "khr-node-ResourcePort-029eb7beba28998a",
+      "to": "khr-node-ResourceLease-e0b1b5755b356f93",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-1fbf2b2961c12908",
+      "from": "khr-node-Cell-026248006fbb5fec",
+      "to": "khr-node-ResourcePort-11f8335e4eec939f",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-57683fd3811f9068",
+      "from": "khr-node-ResourcePort-11f8335e4eec939f",
+      "to": "khr-node-ResourceLease-748160f190149768",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-a060dd7293eb9383",
+      "from": "khr-node-Cell-6ce7819c48ebc782",
+      "to": "khr-node-ResourcePort-6e494f9b125f0446",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-0f608159b3159062",
+      "from": "khr-node-ResourcePort-6e494f9b125f0446",
+      "to": "khr-node-ResourceLease-c15b9f63946a4a16",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-847e3cb3ee0c98bc",
+      "from": "khr-node-Cell-83cf5c15ec06ca6c",
+      "to": "khr-node-ResourcePort-a9f6f8a4424ab46b",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-f8867432e95d97b1",
+      "from": "khr-node-ResourcePort-a9f6f8a4424ab46b",
+      "to": "khr-node-ResourceLease-1f94e11a4b679d49",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-1d6462acb57dac2c",
+      "from": "khr-node-Cell-aee5a364490bc563",
+      "to": "khr-node-ResourcePort-62bd38a8e6599c53",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-f4c402a76a74e1c3",
+      "from": "khr-node-ResourcePort-62bd38a8e6599c53",
+      "to": "khr-node-ResourceLease-afaf74e8c84e45fe",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-abd6fb4afb50751b",
+      "from": "khr-node-Cell-83d263d2bdb989ef",
+      "to": "khr-node-ResourcePort-3d444e03671ac1f4",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-b1627f785a6426ef",
+      "from": "khr-node-ResourcePort-3d444e03671ac1f4",
+      "to": "khr-node-ResourceLease-252913ab3b42b9cb",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-d26d901db197d253",
+      "from": "khr-node-Cell-6b154c15bdf7f87b",
+      "to": "khr-node-ResourcePort-e6612b6a1ca16bea",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-6cca9de4db89b131",
+      "from": "khr-node-ResourcePort-e6612b6a1ca16bea",
+      "to": "khr-node-ResourceLease-8f5f2caeca8910bc",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-3fc52ea60b490083",
+      "from": "khr-node-Cell-2d365a6aa396a6da",
+      "to": "khr-node-ResourcePort-9a2f34a45901a840",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-e0ef927a252cf3eb",
+      "from": "khr-node-ResourcePort-9a2f34a45901a840",
+      "to": "khr-node-ResourceLease-4b1610d9a174e265",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-380388c12d2af6e3",
+      "from": "khr-node-Cell-5e514a3683601b6e",
+      "to": "khr-node-ResourcePort-ee090b7bbb8d51d2",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-a08270016ecf4548",
+      "from": "khr-node-ResourcePort-ee090b7bbb8d51d2",
+      "to": "khr-node-ResourceLease-07f73165272d61c4",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-fd63dca6c8fcab1f",
+      "from": "khr-node-Cell-525e624ffa108779",
+      "to": "khr-node-ResourcePort-56f0711ac7a129da",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-36f8842e23bea4d9",
+      "from": "khr-node-ResourcePort-56f0711ac7a129da",
+      "to": "khr-node-ResourceLease-8d58a7236d355ca6",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-e6d814a8466ce2a2",
+      "from": "khr-node-Cell-1aa385b9ad0212a1",
+      "to": "khr-node-ResourcePort-9da4eafed74e93c5",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-419b3f0a8d5dfcfa",
+      "from": "khr-node-ResourcePort-9da4eafed74e93c5",
+      "to": "khr-node-ResourceLease-92e7a5b6d73137bb",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-8cc147dc969d8282",
+      "from": "khr-node-Cell-2b649ba9471e56b7",
+      "to": "khr-node-ResourcePort-fb66fc2ccc834c37",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-f35127aebdc2346e",
+      "from": "khr-node-ResourcePort-fb66fc2ccc834c37",
+      "to": "khr-node-ResourceLease-7bd7b122b42ab766",
+      "relationship": "binds",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-b3a9d9da916a0647",
+      "from": "khr-node-Certification-a54f82e5a6599af3",
+      "to": "khr-node-ResourcePort-fd89d4b8df4e34fd",
+      "relationship": "certifies",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-89ee5231bf62b8ae",
+      "from": "khr-node-PolicyGate-c11623c9681aece6",
+      "to": "khr-node-Certification-a54f82e5a6599af3",
+      "relationship": "gates",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-b68a355a29f595c1",
+      "from": "khr-node-ResourcePort-bfca29a38142bd93",
+      "to": "khr-node-ResourceFuture-2b65de64e30a1a19",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-cfce26a0459a08e7",
+      "from": "khr-node-ResourcePort-f9011fff7c2c4300",
+      "to": "khr-node-ResourceFuture-cfd2877dd1e645c0",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-33272544bd6d0cb4",
+      "from": "khr-node-ResourcePort-75277b223e4aa644",
+      "to": "khr-node-ResourceFuture-61ff5a16c1929be5",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-aa9e11fa6b2981db",
+      "from": "khr-node-ResourcePort-f57a54aa5a50ebb3",
+      "to": "khr-node-ResourceFuture-09969858f5bd5712",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-d9644243d1462181",
+      "from": "khr-node-ResourcePort-3bc8755582cac11b",
+      "to": "khr-node-ResourceFuture-2f7bc75478838b96",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-f2b38d395fac4302",
+      "from": "khr-node-ResourcePort-46b6c2c0844280c7",
+      "to": "khr-node-ResourceFuture-866e2e64a8b54b8f",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-651fcab7c49d6167",
+      "from": "khr-node-ResourcePort-c73458f5745308db",
+      "to": "khr-node-ResourceFuture-a756208e08e37619",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-c475727cf8917196",
+      "from": "khr-node-ResourcePort-c679d5e689894bbb",
+      "to": "khr-node-ResourceFuture-9525c2c39447550b",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-18d9b37d211c1e85",
+      "from": "khr-node-ResourcePort-fd89d4b8df4e34fd",
+      "to": "khr-node-ResourceFuture-455ea04b392b1358",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-0665e392dbb77561",
+      "from": "khr-node-ResourcePort-22aa2ffb0a8a0792",
+      "to": "khr-node-ResourceFuture-b5def985a8ba2ce9",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-d1d461a84159e46d",
+      "from": "khr-node-ResourcePort-029eb7beba28998a",
+      "to": "khr-node-ResourceFuture-d5fb4f16d0ffe1b0",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-b561650fdbf4b263",
+      "from": "khr-node-ResourcePort-11f8335e4eec939f",
+      "to": "khr-node-ResourceFuture-b55421781f0675ef",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-45a8c67feff43643",
+      "from": "khr-node-ResourcePort-6e494f9b125f0446",
+      "to": "khr-node-ResourceFuture-14db0e0f4ab9f3d8",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-562fdb3657ab88a5",
+      "from": "khr-node-ResourcePort-a9f6f8a4424ab46b",
+      "to": "khr-node-ResourceFuture-533847497ef2e38d",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-450a603dfd0bcd17",
+      "from": "khr-node-ResourcePort-62bd38a8e6599c53",
+      "to": "khr-node-ResourceFuture-f7b67b413c167320",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-02fb97c62813e8e3",
+      "from": "khr-node-ResourcePort-3d444e03671ac1f4",
+      "to": "khr-node-ResourceFuture-de24ac2f7c927356",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-f2d5938f08b4d299",
+      "from": "khr-node-ResourcePort-e6612b6a1ca16bea",
+      "to": "khr-node-ResourceFuture-4919490581dcf29a",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-142566ef30242d61",
+      "from": "khr-node-ResourcePort-9a2f34a45901a840",
+      "to": "khr-node-ResourceFuture-634303060d142872",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-d18f483775650d2a",
+      "from": "khr-node-ResourcePort-ee090b7bbb8d51d2",
+      "to": "khr-node-ResourceFuture-5e7af55463850507",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-44c79068c0cea400",
+      "from": "khr-node-ResourcePort-56f0711ac7a129da",
+      "to": "khr-node-ResourceFuture-27aa3d2048af9256",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-890a2abdc213a8a8",
+      "from": "khr-node-ResourcePort-9da4eafed74e93c5",
+      "to": "khr-node-ResourceFuture-f5d38a247c3151e8",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    },
+    {
+      "id": "khr-edge-4ab040aa732a5c00",
+      "from": "khr-node-ResourcePort-fb66fc2ccc834c37",
+      "to": "khr-node-ResourceFuture-c42c1af384dd6e70",
+      "relationship": "forecasts",
+      "correlationId": "khr-corr-12f2e20a48af"
+    }
+  ],
+  "lineage": {
+    "rootCorrelationId": "khr-corr-12f2e20a48af",
+    "correlationIds": [
+      "khr-lineage-bfda0b658dbe",
+      "khr-lineage-5a606549034a",
+      "khr-lineage-76ddb9ca5acb",
+      "khr-lineage-c548b9c1670d",
+      "khr-lineage-fff99525ee92",
+      "khr-lineage-6fa2f39d40cd",
+      "khr-lineage-bc28e623d386",
+      "khr-lineage-99c07e5dce60",
+      "khr-lineage-b5bbc3c5b568",
+      "khr-lineage-4de651bbf88c",
+      "khr-lineage-33356469c34c",
+      "khr-lineage-0cf436b175b3",
+      "khr-lineage-3eb1d6fc6b47",
+      "khr-lineage-e9b0baf4cbb5",
+      "khr-lineage-e0dfc53cedda",
+      "khr-lineage-4cb1c1efbebb",
+      "khr-lineage-a2784a2bc1a4",
+      "khr-lineage-fbbe70cdcafa",
+      "khr-lineage-6fb8d39204db",
+      "khr-lineage-c6111a5a1e43",
+      "khr-lineage-d2284d60ebcc",
+      "khr-lineage-4e6d53ee394e",
+      "khr-lineage-8a6607da9401",
+      "khr-lineage-2684bc4435b5",
+      "khr-lineage-5ab61e915106",
+      "khr-lineage-2a86491a8eaf",
+      "khr-lineage-107a746ed110",
+      "khr-lineage-b694a755daff",
+      "khr-lineage-c1daed9021c2",
+      "khr-lineage-7bcb5f74de1e",
+      "khr-lineage-d4c901838693",
+      "khr-lineage-8b61e53a351a",
+      "khr-lineage-89a3dbad66df",
+      "khr-lineage-9de169e1f7ad",
+      "khr-lineage-08375dcf0794",
+      "khr-lineage-a7499fde30d3",
+      "khr-lineage-2e61a2e3926b",
+      "khr-lineage-be8209228187",
+      "khr-lineage-9dff4d9b0d20",
+      "khr-lineage-13fbd4294540",
+      "khr-lineage-f1697bfddf57",
+      "khr-lineage-a14afb7bb9c6",
+      "khr-lineage-9a41a225480f",
+      "khr-lineage-66cf5657cee3",
+      "khr-lineage-b3780de26ce3",
+      "khr-lineage-9dfbfb3d819d",
+      "khr-lineage-a52fb3e567ab",
+      "khr-lineage-5c1060d1aa49",
+      "khr-lineage-991c96102c28",
+      "khr-lineage-117ce0ed14df",
+      "khr-lineage-645b03d15d1e",
+      "khr-lineage-205b486ae5d5",
+      "khr-lineage-fce57d2f2566",
+      "khr-lineage-3bdcc87bc333",
+      "khr-lineage-b04a3f05211d",
+      "khr-lineage-206d0ba600e7",
+      "khr-lineage-b4aeeb1af9b5",
+      "khr-lineage-4dfd6559178c",
+      "khr-lineage-2cc98442d482",
+      "khr-lineage-a13be4db0d2f",
+      "khr-lineage-0b451a0147f7",
+      "khr-lineage-ba1caadfb4d1",
+      "khr-lineage-e8920403216d",
+      "khr-lineage-6b7682377b29",
+      "khr-lineage-a8fefb4f01f1",
+      "khr-lineage-bcf8dca10620",
+      "khr-lineage-fdeab9eaf6ee",
+      "khr-lineage-4187a8ff4e8a",
+      "khr-lineage-d1dfacf32a7d",
+      "khr-lineage-7a74fda3c099",
+      "khr-lineage-fa296f0480b2",
+      "khr-lineage-e60a7fb69c1d",
+      "khr-lineage-0edddd16d7a1",
+      "khr-lineage-5090ba534689",
+      "khr-lineage-c97b584e969f",
+      "khr-corr-12f2e20a48af",
+      "khr-lineage-2803c8f15bc5",
+      "khr-lineage-f1885588aed2",
+      "khr-lineage-a454f4d5e821",
+      "khr-lineage-8e6d463a35d0",
+      "khr-lineage-acd56e23fcc3",
+      "khr-lineage-d8e176ef744e",
+      "khr-lineage-e7b3868af165",
+      "khr-lineage-0f8c2c52e98c",
+      "khr-lineage-48dada3e4d67",
+      "khr-lineage-3cded1580ad4",
+      "khr-lineage-7ba5a33e9314",
+      "khr-lineage-56801d9b2b4c",
+      "khr-lineage-0d56961248e0",
+      "khr-lineage-8b478c552dcb",
+      "khr-lineage-91fcb30b10e7",
+      "khr-lineage-4164bd0a9aa1",
+      "khr-lineage-ff59c2e9d0b6",
+      "khr-lineage-6c9c6e28c060",
+      "khr-lineage-839c6e256995",
+      "khr-lineage-488c9933a6d9",
+      "khr-lineage-6e98009bddc2",
+      "khr-lineage-9010659ae182",
+      "khr-lineage-d2df9ff19398",
+      "khr-lineage-2b50530688df",
+      "khr-lineage-e0e03d40ad0a",
+      "khr-lineage-99e51c151591",
+      "khr-lineage-6cfc511700ae",
+      "khr-lineage-aa906f9e447b",
+      "khr-lineage-4f8df9a88d5e",
+      "khr-lineage-0232e0cefbc3",
+      "khr-lineage-4995b9372a0c",
+      "khr-lineage-4f077f30225a",
+      "khr-lineage-b437d0822b33",
+      "khr-lineage-75011c2f6690",
+      "khr-lineage-7cd0ee3b406d",
+      "khr-lineage-265d702538dc",
+      "khr-lineage-d61c1fb7cdb9",
+      "khr-lineage-8c334ff2903d"
+    ]
+  },
+  "health": {
+    "nodeCount": 114,
+    "edgeCount": 92,
+    "orphanCount": 1,
+    "staleCount": 0,
+    "orphanNodeIds": [
+      "khr-node-ActionApproval-83fd8c5b223315a3"
+    ],
+    "consistent": false,
+    "issues": [
+      "orphan ActionApproval khr-approval-0e107c2892d72b25"
+    ]
+  }
+}
