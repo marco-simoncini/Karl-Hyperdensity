@@ -105,9 +105,19 @@ Accepts sibling `../rdp-GW` evidence or committed relay under Hyperdensity `docs
 
 ---
 
+## Federation (KHR-AU)
+
+Aggregated by `scripts/khr_runtime_observation_federation_check.sh` — see `RUNTIME_OBSERVATION_FEDERATION.md`.
+
+rdp-GW summaries expose `observationSource`, `federationCorrelationId` for cross-repo merge.
+
+---
+
 ## Related
 
 - `CONTINUITY_LINEAGE_CONTRACT.md`
 - `ACCESS_GRAPH_CONTRACT.md`
+- `RUNTIME_OBSERVATION_FEDERATION.md`
 - rdp-GW `RDPGW_SANDBOX_LIVE_EVIDENCE.md`
+- rdp-GW `RDPGW_FEDERATION_OBSERVATION.md`
 - Dashboard `DASHBOARD_CONTINUITY_PROJECTION.md`

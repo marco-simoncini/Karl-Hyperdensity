@@ -297,6 +297,10 @@ if [[ -x "${ROOT_DIR}/scripts/khr_native_live_freeze_check.sh" ]]; then
   "${ROOT_DIR}/scripts/khr_native_live_freeze_check.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/khr_runtime_observation_federation_check.sh" ]]; then
+  "${ROOT_DIR}/scripts/khr_runtime_observation_federation_check.sh"
+fi
+
 schema_count="$(ls -1 schemas/*.json | wc -l | tr -d ' ')"
 example_count="$(ls -1 examples/*.json | wc -l | tr -d ' ')"
 doc_count="${#required_files[@]}"
