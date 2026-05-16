@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-AO |
+| **Sprint** | KHR-AO / KHR-AP |
 | **Contract set** | `khr-tp-contract-v1` |
 | **Mode** | Read-only Technical Preview |
 | **Production** | **NOT production ready** |
@@ -83,7 +83,66 @@ Legacy keys may appear in `compatibility[]` (read-only audit):
 | **rdp-GW** | `GET /karl-gw/v1/accessgraph/session?id=...` |
 | **KARL-APP** | `AccessGraphDescriptor`, `AppLaunchIntentDescriptor` |
 | **karl-directoryservice** | `IdentityGraphNode`, `IdentityEntitlementEdge` |
+| **Karl-Dashboard** | `accessGraphSummary` on KHR projection / TP readiness |
 | **Karl-Hyperdensity** | This contract (source of truth) |
+
+---
+
+## Dashboard projection expectations (KHR-AP)
+
+Cockpit exposes **read-only** metadata only — no new mutating actions, no graph editor UI.
+
+| Field | Value |
+|-------|-------|
+| `accessGraphAvailable` | `true` when rdp-GW contract is advertised |
+| `accessGraphEndpoint` | `/karl-gw/v1/accessgraph/session?id={sessionId}` |
+| `accessGraphNodeTypes` | Six node kinds (see Nodes table) |
+| `accessGraphReadOnly` | always `true` |
+| `noRevoke` / `noDisconnect` | always `true` on projection block |
+
+Parent Fabric `khrProjection.accessGraphSummary` and `tpReadinessSummary.accessGraphSummary` document the path:
+
+**User → ShellLease → GatewayRoute → GatewaySession → App/WindowsApp**
+
+See Karl-Dashboard: `docs/khr/DASHBOARD_ACCESS_GRAPH_PROJECTION.md`.
+
+---
+
+## rdp-GW accessgraph endpoint contract (KHR-AP)
+
+| Item | Detail |
+|------|--------|
+| **Method** | `GET` |
+| **Path** | `/karl-gw/v1/accessgraph/session` |
+| **Query** | `id` (required) |
+| **Body** | `nodes[]`, `edges[]`, `compatibility[]` |
+| **Stability** | Golden: `cmd/rdpgw/khr/testdata/khr_accessgraph_session_golden.json` |
+| **Docs** | rdp-GW `docs/khr/RDPGW_ACCESS_GRAPH_API.md` |
+
+---
+
+## KARL-APP launch intent relation (KHR-AP)
+
+| Descriptor | Relation |
+|------------|----------|
+| `AppLaunchIntentDescriptor` | Entry point for app launch correlation; links to `AccessGraphDescriptor` via shared `sessionKey` |
+| `WindowsAppDescriptor` | Maps to `WindowsAppRef` node in graph export |
+| `AccessGraphDescriptor` | Client-side mirror of rdp-GW graph JSON |
+
+No session mutation; launch intent is documentation/stub only in KHR-AP.
+
+---
+
+## Directory identity relation (KHR-AP)
+
+| Model | Relation |
+|-------|----------|
+| `IdentityGraphNode` (`UserIdentityRef`) | Root of directory-side graph |
+| `IdentityEntitlementEdge` (`leases`) | User → ShellLease entitlement |
+| `IdentityEntitlementEdge` (`routes`) | ShellLease → ShellClass / route policy (compatibility) |
+| `build_identity_access_graph_stub` | Aligns with Hyperdensity ShellLease `userRef` semantics |
+
+No auth enforcement; OIDC flows unchanged.
 
 ---
 
