@@ -1,0 +1,37 @@
+# Hyperdensity Parent Fabric — resource exchange candidate-runtime revalidation (Sprint 84)
+
+## Summary
+
+After Sprint 84 sets `ResourceExchangeObservationCandidateRuntimeUsedV1=true`, shadow re-validation confirms **wrapper ≡ candidate ≡ legacy** for all **24** full-helper cases. Production remains on **wrappers only**; candidate branch stays **inactive** until `ResourceExchangeObservationWiredV1=true`.
+
+---
+
+## Matrix
+
+| Helper | Cases |
+|--------|-------|
+| CPU | **8** |
+| ready | **8** |
+| restart | **8** |
+| **Total** | **24** |
+
+---
+
+## Assertions
+
+- `wrapper == candidate == legacy` for every case.
+- Production `resource_exchange_*` uses wrappers, **not** direct candidate helpers.
+- `ResourceExchangeObservationWiredV1 = false` → candidate branch **inactive**.
+- `ResourceExchangeObservationCandidateRuntimeUsedV1 = true` does **not** change effective runtime path.
+
+---
+
+## Next activation sprint
+
+Flipping `ResourceExchangeObservationWiredV1=true` requires **separate** sprint approval, post-flip hardening, and parity — not bundled with Sprint 84.
+
+---
+
+## Related
+
+- `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_RESOURCE_EXCHANGE_CANDIDATE_RUNTIME_STAGING.md`
