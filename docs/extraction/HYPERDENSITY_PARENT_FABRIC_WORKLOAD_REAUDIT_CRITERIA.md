@@ -31,9 +31,10 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **52** | Three pure-candidates in `parentfabric/workload` + golden + Dashboard parity | `copy-deferred` (full file) |
 | **53** | Dashboard production-internal adapter v1 + tests — **not wired** | `copy-deferred` (full file) |
 | **54** | Shadow tests legacy vs adapter v1 — **not wired** | `copy-deferred` (full file) |
-| **55** | Wiring proposal + call-site inventory (51 sites) — **not wired** | `copy-deferred` (full file) |
+| **55** | Wiring proposal + call-site inventory (51 sites) | `copy-deferred` (full file) |
+| **56** | Path-only wiring (6 non-apply files) — `PathWiredV1=true`, `ProductionWiredV1=false` | `copy-deferred` (full file) |
 
-Re-audit may proceed only after criteria 1–9 satisfied for **remaining** functions. Sprint 55 documents wiring plan; **no** call-site changes.
+Re-audit for remaining functions unchanged. Sprint 56 does **not** approve full-file copy or observation wiring.
 
 ## Related
 

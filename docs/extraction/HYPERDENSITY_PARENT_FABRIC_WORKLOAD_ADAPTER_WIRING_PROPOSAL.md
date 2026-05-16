@@ -2,7 +2,7 @@
 
 ## Status
 
-**Proposal-only.** Sprint 55 does **not** wire adapter v1 to any production call site. **`hyperdensityWorkloadAdapterProductionWiredV1`** remains **`false`**. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
+**Sprint 55 was proposal-only.** **Sprint 56** executes **path-only** wiring on approved non-apply files — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_PATH_WIRING.md`**. **`hyperdensityWorkloadAdapterProductionWiredV1`** remains **`false`** (sub-flag `PathWiredV1` only). **`hyperdensityWorkloadAdapterProductionWiredV1`** remains **`false`**. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
 
 **Sprint 54 shadow PASS does not authorize automatic wiring.** A dedicated **wiring sprint** with explicit approval is required.
 

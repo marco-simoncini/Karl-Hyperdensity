@@ -11,8 +11,9 @@ Define what **must remain in Karl-Dashboard** (adapter-bound / runtime-bound) vs
 | **52** | Three pure-candidates in Hyperdensity `parentfabric/workload` |
 | **53** | Dashboard **production-internal** adapter v1 — **not wired** |
 | **54** | Shadow tests (legacy vs adapter) — **still not wired** |
-| **55** | Wiring proposal + call-site inventory — **not wired** |
-| **Future** | Explicit path-only wiring sprint |
+| **55** | Wiring proposal + call-site inventory |
+| **56** | Path-only wiring (6 approved files) — `PathWiredV1=true` |
+| **Future** | Observation wiring sprint |
 
 ## Adapter-bound (stays in Dashboard)
 
