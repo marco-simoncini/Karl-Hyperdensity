@@ -1,0 +1,39 @@
+{
+  "restartCountBefore": 0,
+  "restartCountAfter": 0,
+  "restartCountDelta": 0,
+  "rolloutCount": 0,
+  "rolloutDetected": false,
+  "recreateDetected": false,
+  "interruptionDetected": false,
+  "interruptionWindowMs": 0,
+  "applyLatencyMs": {
+    "cpu": 208,
+    "ramUp": 209,
+    "ramDown": 215
+  },
+  "rollbackLatencyMs": {
+    "ramDown": 5,
+    "ramUp": 5,
+    "cpu": 4
+  },
+  "nativeLiveLaneCount": 1,
+  "liveInPlaceEligible": true,
+  "rollbackPass": true,
+  "shellContinuityPreserved": true,
+  "appContinuityPreserved": true,
+  "userSessionContinuityObserved": true,
+  "sessionContinuityPreserved": true,
+  "continuityState": "preserved",
+  "continuityEvidence": {
+    "shellSessionId": "shell-session-fb0c9b50374980e0",
+    "appSessionId": "shell-session-fb0c9b50374980e0/app",
+    "userSessionId": "shell-session-fb0c9b50374980e0/user",
+    "shellContinuityState": "preserved",
+    "appContinuityState": "preserved",
+    "userSessionContinuityState": "preserved",
+    "continuityState": "preserved",
+    "source": "sandbox-pod-observation",
+    "readOnly": true
+  }
+}

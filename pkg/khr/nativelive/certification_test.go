@@ -9,17 +9,22 @@ import (
 
 func passRun() RunMetrics {
 	return RunMetrics{
-		RestartCountBefore:   0,
-		RestartCountAfter:    0,
-		RolloutDetected:      false,
-		RecreateDetected:     false,
-		InterruptionDetected: false,
-		InterruptionWindowMs: 0,
-		NativeLiveLaneCount:  1,
-		LiveInPlaceEligible:  true,
-		RollbackPass:         true,
-		ApplyLatencyMs:       ApplyLatencyMs{CPU: 10, RAMUp: 8, RAMDown: 7},
-		RollbackLatencyMs:    RollbackLatencyMs{CPU: 5, RAMUp: 4, RAMDown: 3},
+		RestartCountBefore:             0,
+		RestartCountAfter:              0,
+		RolloutDetected:                false,
+		RecreateDetected:               false,
+		InterruptionDetected:           false,
+		InterruptionWindowMs:           0,
+		NativeLiveLaneCount:            1,
+		LiveInPlaceEligible:            true,
+		RollbackPass:                   true,
+		ShellContinuityPreserved:       true,
+		AppContinuityPreserved:         true,
+		UserSessionContinuityPreserved: true,
+		SessionContinuityPreserved:     true,
+		ContinuityState:                "preserved",
+		ApplyLatencyMs:                 ApplyLatencyMs{CPU: 10, RAMUp: 8, RAMDown: 7},
+		RollbackLatencyMs:              RollbackLatencyMs{CPU: 5, RAMUp: 4, RAMDown: 3},
 	}
 }
 
@@ -83,6 +88,18 @@ func TestCheckRegression_InterruptionWindow(t *testing.T) {
 	}
 }
 
+func TestCheckRegression_ShellContinuityInterrupted(t *testing.T) {
+	r := passRun()
+	r.ShellContinuityPreserved = false
+	summary := AggregateRuns("KHR-U", []RunMetrics{r})
+	if err := CheckRegression(summary); err == nil {
+		t.Fatal("expected regression on shell continuity")
+	}
+	if summary.ContinuityProof.ShellContinuityPreserved {
+		t.Fatal("expected shell continuity proof false")
+	}
+}
+
 func TestFingerprintsMatch_RepeatableRuns(t *testing.T) {
 	summary := AggregateRuns("KHR-T", []RunMetrics{passRun(), passRun()})
 	if !FingerprintsMatch(summary) {
@@ -100,7 +117,10 @@ func TestCompareBaseline_Pass(t *testing.T) {
 			NoRestart: true, NoRollout: true, NoRecreate: true,
 			InterruptionWindowMs: 0, InterruptionDetected: false,
 		},
-		Scores:           CertificationScores{ContinuityScore: 1.0, LiveScaleConfidence: ConfidenceHigh},
+		Scores: CertificationScores{
+			ResourceContinuityScore: 1.0, SessionContinuityScore: 1.0,
+			ContinuityScore: 1.0, LiveScaleConfidence: ConfidenceHigh,
+		},
 		ExpectedRunCount: 1,
 	}
 	match, diffs := CompareBaseline(summary, baseline)

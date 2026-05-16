@@ -11,6 +11,8 @@
     "interruptionDetected": false
   },
   "scores": {
+    "resourceContinuityScore": 1,
+    "sessionContinuityScore": 1,
     "continuityScore": 1,
     "liveScaleConfidence": "high"
   }

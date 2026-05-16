@@ -1,0 +1,118 @@
+{
+  "mode": "resourcelease-guarded-apply",
+  "applied": true,
+  "blocked": false,
+  "applyState": "applied",
+  "reason": "sandbox cpu.max applied under /home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox/cgroup/khr-native-live-cpu-scale",
+  "dryRun": {
+    "mode": "resourcelease-dryrun",
+    "allowed": true,
+    "blocked": false,
+    "dryRunDecision": "allowed",
+    "reason": "dry-run only: no cgroup writes performed",
+    "baseline": {
+      "id": "cpu-run-1",
+      "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox",
+      "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox/apply-marker.txt",
+      "extra": {
+        "source": "karl-host-runtime"
+      }
+    },
+    "rollbackPlan": [
+      "revert cgroup cpu.max/memory.max to prior values captured pre-apply"
+    ],
+    "verificationPlan": [
+      "read back cgroup limits",
+      "compare cgroup.events pressure",
+      "confirm process RSS/CPU throttle metrics"
+    ],
+    "rollbackPlanRef": "khr-runtime-sandbox/RollbackPlan/khr-sandbox-rollback",
+    "rollbackPlanStatus": "planned",
+    "verificationPlanRef": "sandbox/VerificationPlan/resourcelease-dryrun",
+    "verificationPlanStatus": "planned",
+    "sourceResourcePortRef": "cluster/ResourcePort/khr-runtime-sandbox-khr-native-live-target-5df65659bd-2xjxg-port",
+    "leaseKind": "transfer",
+    "resource": "cpu",
+    "requestedAmount": {
+      "milliCpu": 200
+    },
+    "clusterContext": "karl-metal-01@ovh",
+    "namespace": "khr-runtime-sandbox",
+    "noMutation": true,
+    "noApply": true,
+    "matchedResourcePort": "khr-runtime-sandbox-khr-native-live-target-5df65659bd-2xjxg-port",
+    "resourcePortCheck": "compatible"
+  },
+  "baseline": {
+    "id": "cpu-run-1",
+    "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox",
+    "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox/apply-marker.txt",
+    "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox/cgroup/khr-native-live-cpu-scale",
+    "cpuMaxBefore": "max",
+    "resource": "cpu",
+    "transferMode": "envelope",
+    "extra": {
+      "allowPathPrefix": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox",
+      "source": "karl-host-runtime"
+    }
+  },
+  "baselineRef": "khr-runtime-sandbox/Baseline/cpu-run-1",
+  "applyEvidenceRef": "khr-runtime-sandbox/ApplyEvidence/cpu-run-1",
+  "verification": {
+    "state": "pass",
+    "observedCpuMax": "20000 100000",
+    "expectedCpuMax": "20000 100000",
+    "noRestart": true,
+    "noRollout": true,
+    "noRecreate": true,
+    "noProductionMutation": true,
+    "liveScalePolicy": {
+      "noRestart": true,
+      "noRollout": true,
+      "noRecreate": true,
+      "noProductionMutation": true,
+      "liveInPlace": true
+    },
+    "sessionContinuityPreserved": true,
+    "shellContinuityPreserved": true,
+    "appContinuityPreserved": true,
+    "continuityEvidence": {
+      "shellContinuityState": "",
+      "appContinuityState": "",
+      "continuityState": "",
+      "source": "",
+      "readOnly": false
+    }
+  },
+  "rollbackState": "idle",
+  "safetyGates": [
+    "linux-only",
+    "sandbox-namespace-allowlist",
+    "label-allowlist",
+    "cluster-context-guard",
+    "dry-run-required",
+    "cpu-and-ram-live-scale",
+    "sandbox-cpu-cap-500m",
+    "sandbox-memory-delta-cap",
+    "no-restart",
+    "no-rollout",
+    "no-recreate",
+    "no-production-mutation",
+    "shell-continuity-observation"
+  ],
+  "cgroupPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox/cgroup/khr-native-live-cpu-scale",
+  "noProductionMutation": true,
+  "namespace": "khr-runtime-sandbox",
+  "clusterContext": "karl-metal-01@ovh",
+  "flightRecorder": [
+    {
+      "at": "2026-05-16T17:54:51.765313392Z",
+      "phase": "resourcelease-guarded-apply",
+      "message": "applied",
+      "data": "sandbox cpu.max applied under /home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox/cgroup/khr-native-live-cpu-scale",
+      "runtimeSessionId": "khr-session-86fdd8c38f661baa",
+      "hostRuntimeInstanceId": "khr-inst-8f2f54d6560ddfdc",
+      "correlationId": "khr-guarded-apply"
+    }
+  ]
+}

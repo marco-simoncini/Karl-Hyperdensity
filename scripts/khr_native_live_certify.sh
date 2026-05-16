@@ -29,7 +29,7 @@ done
 
 (cd "${ROOT}" && go build -o "${CERTIFY_BIN}" ./cmd/khr-native-live-certify)
 
-CERTIFY_ARGS=(-sprint=KHR-T -baseline="${BASELINE}" -out="${CERT_DIR}/certification-summary.json")
+CERTIFY_ARGS=(-sprint=KHR-U -baseline="${BASELINE}" -out="${CERT_DIR}/certification-summary.json")
 if [[ "${KHR_NATIVE_LIVE_REQUIRE_BASELINE:-1}" == "1" ]]; then
   CERTIFY_ARGS+=(-require-baseline-match)
 fi
@@ -43,7 +43,7 @@ jq -n \
   --argjson runs "${RUNS}" \
   --slurpfile summary "${CERT_DIR}/certification-summary.json" \
   '{
-    sprint: "KHR-T",
+    sprint: "KHR-U",
     certificationId: $summary[0].certificationId,
     certificationRunId: $certId,
     cluster: $cluster,

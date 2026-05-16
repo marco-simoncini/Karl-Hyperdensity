@@ -1,0 +1,16 @@
+{
+  "id": "ram-down-run-1",
+  "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox",
+  "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox/apply-marker.txt",
+  "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox/cgroup/khr-native-live-memory-down",
+  "memoryMaxBefore": "max",
+  "memoryHighBefore": "max",
+  "memoryMaxApplied": "251658240",
+  "memoryHighApplied": "251658240",
+  "resource": "memory",
+  "transferMode": "scaleDown",
+  "extra": {
+    "allowPathPrefix": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T175442Z/run-1/sandbox",
+    "source": "karl-host-runtime"
+  }
+}

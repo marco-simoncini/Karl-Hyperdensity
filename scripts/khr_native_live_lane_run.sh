@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# KHR-T: single native-live lane evidence run; writes run-metrics.json (deterministic inputs).
+# KHR-T/U: single native-live lane evidence run; writes run-metrics.json (resource + shell continuity).
 set -euo pipefail
 
 ROOT="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
@@ -12,6 +12,8 @@ CFG="${ROOT}/examples/khr/runtime-sandbox/karl-host-runtime-config-native-live.y
 CFG_APPLY="${ROOT}/examples/khr/runtime-sandbox/karl-host-runtime-config-guarded-apply.yaml"
 BIN="${ROOT}/bin/karl-host-runtime"
 CERTIFY_BIN="${ROOT}/bin/khr-native-live-certify"
+CONTINUITY_BIN="${ROOT}/bin/khr-continuity-proof"
+SNAPSHOT_BIN="${ROOT}/bin/khr-continuity-snapshot"
 WORKLOAD="${ROOT}/examples/khr/runtime-sandbox/native-live-workload.yaml"
 
 RUN_DIR="${1:?run output directory required}"
@@ -19,6 +21,12 @@ SANDBOX_DIR="${RUN_DIR}/sandbox"
 mkdir -p "${RUN_DIR}" "${SANDBOX_DIR}" "${ROOT}/bin"
 (cd "${ROOT}" && go build -o "${BIN}" ./cmd/karl-host-runtime)
 (cd "${ROOT}" && go build -o "${CERTIFY_BIN}" ./cmd/khr-native-live-certify)
+(cd "${ROOT}" && go build -o "${CONTINUITY_BIN}" ./cmd/khr-continuity-proof)
+(cd "${ROOT}" && go build -o "${SNAPSHOT_BIN}" ./cmd/khr-continuity-snapshot)
+
+capture_continuity_snapshot() {
+  "${SNAPSHOT_BIN}" -cluster-context="${CTX}" -namespace="${NS}" -out="$1"
+}
 
 annotate_lease() {
   local src="$1" dest="$2" ref="$3"
@@ -129,6 +137,8 @@ annotate_lease "${ROOT}/examples/khr/runtime-sandbox/resourcelease-native-live-m
   -cluster-context="${CTX}" -lease-input="${LEASE_CPU}" -sandbox-dir="${SANDBOX_DIR}" \
   -baseline-id="dry-${RUN_DIR##*/}" > "${RUN_DIR}/dryrun-cpu.json"
 
+capture_continuity_snapshot "${RUN_DIR}/continuity-before.json"
+
 WINDOW_START="$(now_ms)"
 LAT_CPU="$(timed_apply cpu "${LEASE_CPU}" "cpu-${RUN_DIR##*/}" "${RUN_DIR}/apply-cpu.json")"
 jq -e '.applied == true and .verification.noRestart == true and .verification.noRollout == true and .verification.noRecreate == true' \
@@ -162,6 +172,18 @@ if [[ "${INTERRUPTION_MS}" -gt 0 ]]; then
   INTERRUPTION_DETECTED="true"
 fi
 
+capture_continuity_snapshot "${RUN_DIR}/continuity-after.json"
+"${CONTINUITY_BIN}" -before="${RUN_DIR}/continuity-before.json" -after="${RUN_DIR}/continuity-after.json" \
+  -out="${RUN_DIR}/continuity-proof.json"
+cp "${RUN_DIR}/continuity-proof.json" "${RUN_DIR}/shell-continuity-proof.json"
+cp "${RUN_DIR}/continuity-proof.json" "${RUN_DIR}/session-continuity-proof.json"
+
+SHELL_CONT="$(jq -r '.shellContinuityPreserved' "${RUN_DIR}/continuity-proof.json")"
+APP_CONT="$(jq -r '.appContinuityPreserved' "${RUN_DIR}/continuity-proof.json")"
+SESSION_CONT="$(jq -r '.sessionContinuityPreserved' "${RUN_DIR}/continuity-proof.json")"
+CONT_STATE="$(jq -r '.continuityEvidence.continuityState' "${RUN_DIR}/continuity-proof.json")"
+CONT_EVIDENCE="$(jq '.continuityEvidence' "${RUN_DIR}/continuity-proof.json")"
+
 jq -n \
   --argjson restartBefore "${RESTART_BEFORE}" \
   --argjson restartAfter "${RESTART_AFTER}" \
@@ -180,6 +202,11 @@ jq -n \
   --argjson latRbRamDown "${LAT_RB_RAM_DOWN}" \
   --argjson latRbRamUp "${LAT_RB_RAM_UP}" \
   --argjson latRbCpu "${LAT_RB_CPU}" \
+  --argjson shellCont "${SHELL_CONT}" \
+  --argjson appCont "${APP_CONT}" \
+  --argjson sessionCont "${SESSION_CONT}" \
+  --arg continState "${CONT_STATE}" \
+  --argjson contEvidence "${CONT_EVIDENCE}" \
   '{
     restartCountBefore: $restartBefore,
     restartCountAfter: $restartAfter,
@@ -193,5 +220,11 @@ jq -n \
     rollbackLatencyMs: { ramDown: $latRbRamDown, ramUp: $latRbRamUp, cpu: $latRbCpu },
     nativeLiveLaneCount: $nativeLane,
     liveInPlaceEligible: $liveEligible,
-    rollbackPass: $rollbackPass
+    rollbackPass: $rollbackPass,
+    shellContinuityPreserved: $shellCont,
+    appContinuityPreserved: $appCont,
+    userSessionContinuityObserved: $sessionCont,
+    sessionContinuityPreserved: $sessionCont,
+    continuityState: $continState,
+    continuityEvidence: $contEvidence
   }' > "${RUN_DIR}/run-metrics.json"

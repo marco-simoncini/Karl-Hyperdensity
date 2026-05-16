@@ -1,0 +1,2 @@
+deployment.apps/khr-native-live-target unchanged
+deployment "khr-native-live-target" successfully rolled out

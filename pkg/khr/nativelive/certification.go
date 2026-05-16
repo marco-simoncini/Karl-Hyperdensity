@@ -6,6 +6,8 @@ import (
 	"encoding/json"
 	"fmt"
 	"sort"
+
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/shellcontinuity"
 )
 
 const (
@@ -47,8 +49,14 @@ type RunMetrics struct {
 	ApplyLatencyMs        ApplyLatencyMs    `json:"applyLatencyMs"`
 	RollbackLatencyMs     RollbackLatencyMs `json:"rollbackLatencyMs"`
 	NativeLiveLaneCount   int   `json:"nativeLiveLaneCount"`
-	LiveInPlaceEligible   bool  `json:"liveInPlaceEligible"`
-	RollbackPass          bool  `json:"rollbackPass"`
+	LiveInPlaceEligible            bool                    `json:"liveInPlaceEligible"`
+	RollbackPass                   bool                    `json:"rollbackPass"`
+	ShellContinuityPreserved       bool                    `json:"shellContinuityPreserved"`
+	AppContinuityPreserved         bool                    `json:"appContinuityPreserved"`
+	UserSessionContinuityPreserved bool                    `json:"userSessionContinuityObserved"`
+	SessionContinuityPreserved     bool                    `json:"sessionContinuityPreserved"`
+	ContinuityState                string                  `json:"continuityState,omitempty"`
+	ContinuityEvidence             shellcontinuity.Evidence `json:"continuityEvidence,omitempty"`
 }
 
 // Invariants is the no-interruption contract for native-live certification.
@@ -71,10 +79,20 @@ type CertificationMetrics struct {
 	RunCount             int               `json:"runCount"`
 }
 
-// CertificationScores are read-only continuity/confidence signals (KHR-T).
+// ContinuityCertificationProof groups KHR-U shell/session/app continuity proofs.
+type ContinuityCertificationProof struct {
+	ResourceContinuityPreserved bool `json:"resourceContinuityPreserved"`
+	ShellContinuityPreserved    bool `json:"shellContinuityPreserved"`
+	AppContinuityPreserved      bool `json:"appContinuityPreserved"`
+	SessionContinuityPreserved  bool `json:"sessionContinuityPreserved"`
+}
+
+// CertificationScores are read-only continuity/confidence signals (KHR-T/U).
 type CertificationScores struct {
-	ContinuityScore     float64 `json:"continuityScore"`
-	LiveScaleConfidence string  `json:"liveScaleConfidence"`
+	ResourceContinuityScore float64 `json:"resourceContinuityScore"`
+	SessionContinuityScore  float64 `json:"sessionContinuityScore"`
+	ContinuityScore         float64 `json:"continuityScore"`
+	LiveScaleConfidence     string  `json:"liveScaleConfidence"`
 }
 
 // RunFingerprint is a deterministic, volatility-stripped run signature.
@@ -94,8 +112,9 @@ type CertificationSummary struct {
 	Invariants           Invariants           `json:"invariants"`
 	Metrics              CertificationMetrics `json:"metrics"`
 	Scores               CertificationScores  `json:"scores"`
-	RunFingerprints      []RunFingerprint     `json:"runFingerprints"`
-	BaselineMatch        bool                 `json:"baselineMatch"`
+	RunFingerprints      []RunFingerprint            `json:"runFingerprints"`
+	ContinuityProof      ContinuityCertificationProof  `json:"continuityProof"`
+	BaselineMatch        bool                          `json:"baselineMatch"`
 	BaselineDiff         []string             `json:"baselineDiff,omitempty"`
 	ReadOnly             bool                 `json:"readOnly"`
 	NoAutomation         bool                 `json:"noAutomation"`
@@ -148,6 +167,7 @@ func AggregateRuns(sprint string, runs []RunMetrics) CertificationSummary {
 			Fingerprint: FingerprintRun(r),
 		})
 	}
+	cp := aggregateContinuityProof(runs, inv)
 	return CertificationSummary{
 		CertificationID:             CertificationID,
 		Sprint:                      sprint,
@@ -159,6 +179,7 @@ func AggregateRuns(sprint string, runs []RunMetrics) CertificationSummary {
 		Metrics:                     metrics,
 		Scores:                      scores,
 		RunFingerprints:             fps,
+		ContinuityProof:             cp,
 		ReadOnly:                    true,
 		NoAutomation:                true,
 		NoAutonomousOrchestration:   true,
@@ -266,6 +287,15 @@ func RegressionReasons(runs []RunMetrics, inv Invariants) []string {
 		if r.InterruptionWindowMs > 0 {
 			reasons = append(reasons, fmt.Sprintf("run %d: interruption window %dms", r.RunIndex, r.InterruptionWindowMs))
 		}
+		if !r.ShellContinuityPreserved {
+			reasons = append(reasons, fmt.Sprintf("run %d: shell continuity interrupted", r.RunIndex))
+		}
+		if !r.AppContinuityPreserved {
+			reasons = append(reasons, fmt.Sprintf("run %d: app continuity interrupted", r.RunIndex))
+		}
+		if !r.SessionContinuityPreserved {
+			reasons = append(reasons, fmt.Sprintf("run %d: session continuity interrupted", r.RunIndex))
+		}
 	}
 	if !inv.NoRestart {
 		reasons = append(reasons, "invariant: noRestart violated")
@@ -297,32 +327,64 @@ func CheckRegression(summary CertificationSummary) error {
 	return fmt.Errorf("native-live certification regression: %s", summary.RegressionReasons[0])
 }
 
-// ScoreCertification computes continuity and confidence (read-only).
+func aggregateContinuityProof(runs []RunMetrics, inv Invariants) ContinuityCertificationProof {
+	cp := ContinuityCertificationProof{
+		ResourceContinuityPreserved: inv.NoRestart && inv.NoRollout && inv.NoRecreate && !inv.InterruptionDetected,
+		ShellContinuityPreserved:    true,
+		AppContinuityPreserved:      true,
+		SessionContinuityPreserved:  true,
+	}
+	for _, r := range runs {
+		if !r.ShellContinuityPreserved {
+			cp.ShellContinuityPreserved = false
+		}
+		if !r.AppContinuityPreserved {
+			cp.AppContinuityPreserved = false
+		}
+		if !r.SessionContinuityPreserved {
+			cp.SessionContinuityPreserved = false
+		}
+	}
+	return cp
+}
+
+// ScoreCertification computes resource + session continuity scores (read-only).
 func ScoreCertification(inv Invariants, metrics CertificationMetrics, runs []RunMetrics) CertificationScores {
-	score := 1.0
+	resource := 1.0
 	if !inv.NoRestart {
-		score -= 0.4
+		resource -= 0.4
 	}
 	if !inv.NoRollout {
-		score -= 0.3
+		resource -= 0.3
 	}
 	if !inv.NoRecreate {
-		score -= 0.2
+		resource -= 0.2
 	}
 	if inv.InterruptionDetected || inv.InterruptionWindowMs > 0 {
-		score -= 0.5
+		resource -= 0.5
 	}
 	if metrics.RestartCountDelta > 0 {
-		score -= 0.2
+		resource -= 0.2
 	}
-	if score < 0 {
-		score = 0
+	if resource < 0 {
+		resource = 0
+	}
+	session := 1.0
+	for _, r := range runs {
+		if !r.ShellContinuityPreserved || !r.AppContinuityPreserved || !r.SessionContinuityPreserved {
+			session = 0
+			break
+		}
+	}
+	combined := resource
+	if session < combined {
+		combined = session
 	}
 	confidence := ConfidenceHigh
-	if score < 0.85 {
+	if combined < 0.85 {
 		confidence = ConfidenceMedium
 	}
-	if score < 0.5 {
+	if combined < 0.5 {
 		confidence = ConfidenceLow
 	}
 	for _, r := range runs {
@@ -331,7 +393,12 @@ func ScoreCertification(inv Invariants, metrics CertificationMetrics, runs []Run
 			break
 		}
 	}
-	return CertificationScores{ContinuityScore: score, LiveScaleConfidence: confidence}
+	return CertificationScores{
+		ResourceContinuityScore: resource,
+		SessionContinuityScore:  session,
+		ContinuityScore:         combined,
+		LiveScaleConfidence:     confidence,
+	}
 }
 
 // FingerprintRun returns a deterministic hash for a run (excludes wall-clock noise).
@@ -345,10 +412,14 @@ func FingerprintRun(r RunMetrics) string {
 		NativeLiveLanes      int   `json:"nativeLiveLaneCount"`
 		LiveEligible         bool  `json:"liveInPlaceEligible"`
 		RollbackPass         bool  `json:"rollbackPass"`
+		ShellContinuity      bool  `json:"shellContinuityPreserved"`
+		AppContinuity        bool  `json:"appContinuityPreserved"`
+		SessionContinuity    bool  `json:"sessionContinuityPreserved"`
 	}{
 		r.RestartCountDelta, r.RolloutDetected, r.RecreateDetected,
 		r.InterruptionDetected, r.InterruptionWindowMs,
 		r.NativeLiveLaneCount, r.LiveInPlaceEligible, r.RollbackPass,
+		r.ShellContinuityPreserved, r.AppContinuityPreserved, r.SessionContinuityPreserved,
 	}
 	b, _ := json.Marshal(payload)
 	sum := sha256.Sum256(b)
@@ -401,6 +472,12 @@ func compareScores(got, want CertificationScores) []string {
 	}
 	if want.ContinuityScore > 0 && got.ContinuityScore < want.ContinuityScore {
 		d = append(d, "scores.continuityScore below baseline")
+	}
+	if want.ResourceContinuityScore > 0 && got.ResourceContinuityScore < want.ResourceContinuityScore {
+		d = append(d, "scores.resourceContinuityScore below baseline")
+	}
+	if want.SessionContinuityScore > 0 && got.SessionContinuityScore < want.SessionContinuityScore {
+		d = append(d, "scores.sessionContinuityScore below baseline")
 	}
 	return d
 }

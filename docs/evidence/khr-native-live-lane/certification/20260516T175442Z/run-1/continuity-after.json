@@ -1,0 +1,11 @@
+{
+  "namespace": "khr-runtime-sandbox",
+  "podName": "khr-native-live-target-5df65659bd-2xjxg",
+  "podUID": "c4a3d6cc-c3b5-4e49-814e-d679098687ba",
+  "containerID": "containerd://b23c2dc93f9c63a36d819525a3c3a12f7491de70ece534fe1e98cd2daf91d482",
+  "shellRef": "khr-runtime-sandbox/Shell/khr-native-live-target-5df65659bd-2xjxg",
+  "cellRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+  "shellSessionId": "shell-session-fb0c9b50374980e0",
+  "appSessionId": "shell-session-fb0c9b50374980e0/app",
+  "userSessionId": "shell-session-fb0c9b50374980e0/user"
+}

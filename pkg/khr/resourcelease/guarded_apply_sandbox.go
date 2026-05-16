@@ -11,6 +11,7 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/cgroup"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/host"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/shellcontinuity"
 )
 
 const (
@@ -26,8 +27,10 @@ const (
 // GuardedApplySandboxOptions configures opt-in sandbox ResourceLease apply.
 type GuardedApplySandboxOptions struct {
 	DryRunAgainstPortOptions
-	ApplyResourceLease bool
-	SandboxConfirm     bool
+	ApplyResourceLease  bool
+	SandboxConfirm      bool
+	ContinuityBefore    *shellcontinuity.Snapshot
+	ContinuityAfter     *shellcontinuity.Snapshot
 }
 
 // VerificationOutcome is post-apply cgroup observation.
@@ -42,8 +45,12 @@ type VerificationOutcome struct {
 	NoRestart              bool            `json:"noRestart"`
 	NoRollout              bool            `json:"noRollout"`
 	NoRecreate             bool            `json:"noRecreate"`
-	NoProductionMutation   bool            `json:"noProductionMutation"`
-	LiveScalePolicy        LiveScalePolicy `json:"liveScalePolicy,omitempty"`
+	NoProductionMutation         bool                    `json:"noProductionMutation"`
+	LiveScalePolicy              LiveScalePolicy         `json:"liveScalePolicy,omitempty"`
+	SessionContinuityPreserved   bool                    `json:"sessionContinuityPreserved,omitempty"`
+	ShellContinuityPreserved     bool                    `json:"shellContinuityPreserved,omitempty"`
+	AppContinuityPreserved       bool                    `json:"appContinuityPreserved,omitempty"`
+	ContinuityEvidence           shellcontinuity.Evidence `json:"continuityEvidence,omitempty"`
 }
 
 // GuardedApplySandboxResult is CLI output for resourcelease-guarded-apply.
@@ -119,6 +126,7 @@ func GuardedApplyAgainstResourcePorts(opts GuardedApplySandboxOptions) (GuardedA
 		"no-rollout",
 		"no-recreate",
 		"no-production-mutation",
+		"shell-continuity-observation",
 	}
 
 	if gate := validateGuardedApplyGate(opts); !gate.Allowed {
@@ -200,6 +208,10 @@ func applySandboxCPU(opts GuardedApplySandboxOptions, res GuardedApplySandboxRes
 		return finishGuardedBlocked(res, fmt.Sprintf("cpu.max mismatch: got %q want %q", observed, expected)), nil
 	}
 	res.Verification.State = VerificationStatePass
+	applyContinuityVerification(opts, &res)
+	if res.Verification.State == VerificationStateFail {
+		return finishGuardedBlocked(res, "continuity verification failed"), nil
+	}
 	res.Applied = true
 	res.Blocked = false
 	res.ApplyState = ApplyStateApplied
@@ -266,11 +278,26 @@ func applySandboxMemory(opts GuardedApplySandboxOptions, res GuardedApplySandbox
 		return finishGuardedBlocked(res, fmt.Sprintf("memory mismatch: max=%q high=%q want %q", obsMax, obsHigh, expected)), nil
 	}
 	res.Verification.State = VerificationStatePass
+	applyContinuityVerification(opts, &res)
+	if res.Verification.State == VerificationStateFail {
+		return finishGuardedBlocked(res, "continuity verification failed"), nil
+	}
 	res.Applied = true
 	res.Blocked = false
 	res.ApplyState = ApplyStateApplied
 	res.Reason = fmt.Sprintf("sandbox memory.high/memory.max applied (%s) under %s", mode, cgPath)
 	return res, nil
+}
+
+func applyContinuityVerification(opts GuardedApplySandboxOptions, res *GuardedApplySandboxResult) {
+	if opts.ContinuityBefore == nil || opts.ContinuityAfter == nil {
+		res.Verification.SessionContinuityPreserved = true
+		res.Verification.ShellContinuityPreserved = true
+		res.Verification.AppContinuityPreserved = true
+		return
+	}
+	proof := shellcontinuity.Compare(*opts.ContinuityBefore, *opts.ContinuityAfter)
+	ApplyContinuityProof(&res.Verification, proof)
 }
 
 func parseMemoryBaseline(val string) (bytes int64, unlimited bool, err error) {
