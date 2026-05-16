@@ -37,8 +37,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **58** | Pilot observation hardening + live proposal (no new wiring) | `copy-deferred` (full file) |
 | **59** | Live observation staged in `live.go`; `LiveObservationWiredV1=false` | `copy-deferred` (full file) |
 | **60** | Live wrapper shadow hardening (7 cases); flip not allowed | `copy-deferred` (full file) |
+| **61** | `LiveObservationWiredV1=true`; true branch legacy-equivalent | `copy-deferred` (full file) |
 
-Re-audit for remaining functions unchanged. Sprint 57–60 do **not** complete general observation wiring.
+Re-audit for remaining functions unchanged. Sprint 57–61 do **not** complete general observation wiring.
 
 ## Related
 

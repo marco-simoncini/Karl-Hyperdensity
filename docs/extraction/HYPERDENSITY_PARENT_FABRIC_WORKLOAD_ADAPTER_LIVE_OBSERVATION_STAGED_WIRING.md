@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 59** introduces **staged** live read-only observation wiring in Karl-Dashboard: `hyperdensity_parent_fabric_live.go` calls dedicated wrappers while **`hyperdensityWorkloadAdapterLiveObservationWiredV1 = false`** preserves **legacy fallback** behavior. **Sprint 60** adds shadow hardening (wrapper ≡ legacy) without enabling the flag — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_SHADOW_HARDENING.md`**.
+**Sprint 59** introduces **staged** live read-only observation wiring in Karl-Dashboard: `hyperdensity_parent_fabric_live.go` calls dedicated wrappers while **`hyperdensityWorkloadAdapterLiveObservationWiredV1 = false`** preserves **legacy fallback** behavior. **Sprint 60** adds shadow hardening. **Sprint 61** flips **`LiveObservationWiredV1 = true`** — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_FLIP.md`**.
 
 ---
 

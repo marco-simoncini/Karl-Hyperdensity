@@ -2,7 +2,7 @@
 
 ## Summary
 
-**`hyperdensityWorkloadAdapterLiveObservationWiredV1 = true`** is **forbidden** until **all** criteria below are satisfied in a **dedicated flip sprint** (proposed Sprint 61).
+**Sprint 61** executed the dedicated flip: **`hyperdensityWorkloadAdapterLiveObservationWiredV1 = true`**. Criteria below were satisfied in Sprint 60; flip applied in Sprint 61.
 
 ---
 
@@ -22,13 +22,14 @@
 
 ---
 
-## Sprint 60 status
+## Sprint 60–61 status
 
-| Item | Status |
-|------|--------|
-| Shadow hardening | **Done** (criteria 1, 3) |
-| `LiveObservationWiredV1` | **`false`** |
-| Flip allowed | **No** |
+| Item | Sprint 60 | Sprint 61 |
+|------|-----------|-----------|
+| Shadow hardening | **Done** | **PASS** (post-flip) |
+| `LiveObservationWiredV1` | **`false`** | **`true`** |
+| Flip executed | **No** | **Yes** |
+| Broad `ObservationWiredV1` | **`false`** | **`false`** |
 
 ---
 

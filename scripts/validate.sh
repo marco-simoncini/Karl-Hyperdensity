@@ -116,6 +116,7 @@ required_files=(
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_STAGED_WIRING.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_SHADOW_HARDENING.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_FLIP_CRITERIA.md"
+  "docs/extraction/HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_FLIP.md"
   "pkg/hyperdensity/contractkit/go.mod"
   "pkg/hyperdensity/contractkit/testdata/dashboard/hyperdensity_parity_manifest_m1_m7.json"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"

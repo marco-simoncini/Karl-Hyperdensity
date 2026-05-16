@@ -32,7 +32,9 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 59:** **Live observation staged** in `live.go` via wrappers; **`LiveObservationWiredV1=false`** (legacy fallback).
 
-**Sprint 60:** **Live observation shadow hardening** — wrapper ≡ legacy (7 cases); flip criteria documented; flag remains **false**.
+**Sprint 60:** **Live observation shadow hardening** — wrapper ≡ legacy (7 cases); flip criteria documented.
+
+**Sprint 61:** **`LiveObservationWiredV1 = true`** — dedicated flip; true branch legacy-equivalent; broad observation still **false**.
 
 ---
 
