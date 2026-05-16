@@ -16,11 +16,17 @@ type LocalObjectReference struct {
 	Name string `json:"name"`
 }
 
-// CellSpec is the spec subset used by KHR for envelope planning context.
+// CellSpec is the KHR-D Cell spec subset.
 type CellSpec struct {
 	ShellRef               LocalObjectReference  `json:"shellRef"`
 	HostRef                *LocalObjectReference `json:"hostRef,omitempty"`
 	RuntimeProviderRef     LocalObjectReference  `json:"runtimeProviderRef"`
+	ProviderBinding        string                `json:"providerBinding,omitempty"`
+	RuntimeClass           string                `json:"runtimeClass,omitempty"`
+	Owner                  *KHROwner             `json:"owner,omitempty"`
+	Resources              *KHRResources         `json:"resources,omitempty"`
+	NetworkRefs            []KHRNamedRef         `json:"networkRefs,omitempty"`
+	StorageRefs            []KHRStorageRef       `json:"storageRefs,omitempty"`
 	ResourcePortProfileRef *LocalObjectReference `json:"resourcePortProfileRef,omitempty"`
 	ResourcePorts          json.RawMessage       `json:"resourcePorts,omitempty"`
 	ProviderHandle         json.RawMessage       `json:"providerHandle,omitempty"`

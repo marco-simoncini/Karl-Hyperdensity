@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   name: shellclasses.runtime.karl.io
   labels:
-    karl.io/contract-track: khr-v1alpha1
+    karl.io/contract-track: khr-v1alpha1-shell-cell-foundation
 spec:
   group: runtime.karl.io
   scope: Cluster
@@ -34,17 +34,16 @@ spec:
               required:
                 - id
                 - complianceFamily
+                - defaultProviderBinding
+                - defaultRuntimeClass
               properties:
                 id:
-                  description: Stable program identifier (e.g. linux.workspace.v1).
                   type: string
-                  pattern: ^[a-z0-9][a-z0-9._-]*[a-z0-9]$
                 displayName:
                   type: string
                 description:
                   type: string
                 complianceFamily:
-                  description: Evidence / compliance lane for Hyperdensity and KHR.
                   type: string
                   enum:
                     - linux.cgroup.envelope
@@ -53,14 +52,53 @@ spec:
                     - windows.app
                     - vm.native.candidate
                     - cloud.adaptive
+                defaultProviderBinding:
+                  type: string
+                defaultRuntimeClass:
+                  type: string
+                defaultResources:
+                  type: object
+                  properties:
+                    cpu:
+                      type: object
+                      properties:
+                        request:
+                          type: string
+                        limit:
+                          type: string
+                    memory:
+                      type: object
+                      properties:
+                        request:
+                          type: string
+                        limit:
+                          type: string
+                defaultNetworkRefs:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      ref:
+                        type: string
+                defaultStorageRefs:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      ref:
+                        type: string
+                      mode:
+                        type: string
                 supportedRuntimeProviders:
                   type: array
                   items:
                     type: string
                 defaultResourcePortProfileRef:
                   type: object
-                  required:
-                    - name
                   properties:
                     name:
                       type: string
@@ -69,4 +107,24 @@ spec:
                   x-kubernetes-preserve-unknown-fields: true
             status:
               type: object
-              x-kubernetes-preserve-unknown-fields: true
+              properties:
+                phase:
+                  type: string
+                  enum:
+                    - Pending
+                    - Ready
+                    - Degraded
+                    - Observed
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                      reason:
+                        type: string
+                      message:
+                        type: string

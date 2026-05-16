@@ -1,0 +1,46 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "Cell",
+  "metadata": {
+    "name": "api",
+    "namespace": "karl"
+  },
+  "spec": {
+    "shellRef": { "name": "linux-dev-01" },
+    "runtimeProviderRef": { "name": "linux.pod.v1" },
+    "providerBinding": "kubernetes.cni",
+    "runtimeClass": "kubernetes-workload",
+    "owner": {
+      "user": "platform",
+      "tenant": "karl"
+    },
+    "resources": {
+      "cpu": { "request": "250m", "limit": "1" },
+      "memory": { "request": "512Mi", "limit": "2Gi" }
+    },
+    "networkRefs": [
+      { "name": "primary", "ref": "karlnetwork/default" }
+    ],
+    "storageRefs": [
+      { "name": "emptydir", "ref": "emptydir/scratch", "mode": "scratch" }
+    ],
+    "hostRef": { "name": "node-01" }
+  },
+  "status": {
+    "phase": "Observed",
+    "conditions": [
+      {
+        "type": "Observed",
+        "status": "True",
+        "reason": "ParentFabricProjection",
+        "message": "Read-only cell binding sketch"
+      }
+    ],
+    "observedResourcePorts": [
+      { "name": "api-port", "namespace": "karl" }
+    ],
+    "observedResourceLeases": [
+      { "name": "api-observed", "namespace": "karl" }
+    ]
+  }
+}

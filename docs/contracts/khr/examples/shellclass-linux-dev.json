@@ -1,0 +1,39 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "ShellClass",
+  "metadata": {
+    "name": "linux-dev"
+  },
+  "spec": {
+    "id": "linux.dev.v1",
+    "displayName": "Linux Developer Shell",
+    "complianceFamily": "linux.cgroup.envelope",
+    "defaultProviderBinding": "khr.native",
+    "defaultRuntimeClass": "kubernetes-workload",
+    "supportedRuntimeProviders": [
+      "khr.native",
+      "kubevirt.compatibility",
+      "kubernetes.cni"
+    ],
+    "defaultResources": {
+      "cpu": { "request": "500m", "limit": "2" },
+      "memory": { "request": "1Gi", "limit": "4Gi" }
+    },
+    "defaultNetworkRefs": [
+      { "name": "primary", "ref": "karlnetwork/default" }
+    ],
+    "defaultStorageRefs": [
+      { "name": "scratch", "ref": "storageclass/longhorn", "mode": "scratch" }
+    ]
+  },
+  "status": {
+    "phase": "Ready",
+    "conditions": [
+      {
+        "type": "ClassReady",
+        "status": "True",
+        "reason": "ContractOnly"
+      }
+    ]
+  }
+}

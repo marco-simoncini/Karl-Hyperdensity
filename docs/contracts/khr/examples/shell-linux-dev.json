@@ -1,0 +1,43 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "Shell",
+  "metadata": {
+    "name": "linux-dev-01",
+    "namespace": "karl-sandbox"
+  },
+  "spec": {
+    "shellClassRef": { "name": "linux-dev" },
+    "providerBinding": "khr.native",
+    "runtimeClass": "kubernetes-workload",
+    "owner": {
+      "user": "dev-user",
+      "tenant": "karl-sandbox"
+    },
+    "resources": {
+      "cpu": { "request": "500m", "limit": "2" },
+      "memory": { "request": "1Gi", "limit": "4Gi" }
+    },
+    "networkRefs": [
+      { "name": "primary", "ref": "karlnetwork/default" }
+    ],
+    "storageRefs": [
+      { "name": "workspace", "ref": "pvc/linux-dev-workspace", "mode": "persistent" }
+    ],
+    "displayName": "Linux Dev Shell 01"
+  },
+  "status": {
+    "phase": "Observed",
+    "conditions": [
+      {
+        "type": "Ready",
+        "status": "False",
+        "reason": "NoController",
+        "message": "KHR-D contract only; no reconciler"
+      }
+    ],
+    "observedResourcePorts": [
+      { "name": "linux-dev-01-port", "namespace": "karl-sandbox" }
+    ],
+    "observedResourceLeases": []
+  }
+}

@@ -3,7 +3,7 @@ kind: CustomResourceDefinition
 metadata:
   name: cells.runtime.karl.io
   labels:
-    karl.io/contract-track: khr-v1alpha1
+    karl.io/contract-track: khr-v1alpha1-shell-cell-foundation
 spec:
   group: runtime.karl.io
   scope: Namespaced
@@ -29,7 +29,10 @@ spec:
           jsonPath: .spec.shellRef.name
         - name: Provider
           type: string
-          jsonPath: .spec.runtimeProviderRef.name
+          jsonPath: .spec.providerBinding
+        - name: Phase
+          type: string
+          jsonPath: .status.phase
       schema:
         openAPIV3Schema:
           type: object
@@ -41,16 +44,10 @@ spec:
               required:
                 - shellRef
                 - runtimeProviderRef
+                - providerBinding
+                - runtimeClass
               properties:
                 shellRef:
-                  type: object
-                  required:
-                    - name
-                  properties:
-                    name:
-                      type: string
-                hostRef:
-                  description: Cluster-scoped Host name materializing this Cell.
                   type: object
                   required:
                     - name
@@ -64,21 +61,118 @@ spec:
                   properties:
                     name:
                       type: string
+                providerBinding:
+                  type: string
+                runtimeClass:
+                  type: string
+                owner:
+                  type: object
+                  properties:
+                    user:
+                      type: string
+                    tenant:
+                      type: string
+                resources:
+                  type: object
+                  properties:
+                    cpu:
+                      type: object
+                      properties:
+                        request:
+                          type: string
+                        limit:
+                          type: string
+                    memory:
+                      type: object
+                      properties:
+                        request:
+                          type: string
+                        limit:
+                          type: string
+                networkRefs:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                      - ref
+                    properties:
+                      name:
+                        type: string
+                      ref:
+                        type: string
+                storageRefs:
+                  type: array
+                  items:
+                    type: object
+                    required:
+                      - name
+                      - ref
+                    properties:
+                      name:
+                        type: string
+                      ref:
+                        type: string
+                      mode:
+                        type: string
+                hostRef:
+                  type: object
+                  properties:
+                    name:
+                      type: string
                 resourcePortProfileRef:
                   type: object
                   properties:
                     name:
                       type: string
                 resourcePorts:
-                  description: Inline capability snapshot (optional; may duplicate ResourcePort profile).
                   type: object
                   x-kubernetes-preserve-unknown-fields: true
                 providerHandle:
-                  description: Opaque backend binding (Pod name, VMI id, cloud instance id, etc.).
                   type: object
                   x-kubernetes-preserve-unknown-fields: true
                 priorityClass:
                   type: string
             status:
               type: object
-              x-kubernetes-preserve-unknown-fields: true
+              properties:
+                phase:
+                  type: string
+                  enum:
+                    - Pending
+                    - Provisioning
+                    - Ready
+                    - Degraded
+                    - Terminating
+                    - Observed
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                      reason:
+                        type: string
+                      message:
+                        type: string
+                observedResourcePorts:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      namespace:
+                        type: string
+                observedResourceLeases:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      name:
+                        type: string
+                      namespace:
+                        type: string
