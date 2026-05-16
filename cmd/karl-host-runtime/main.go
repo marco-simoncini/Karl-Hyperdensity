@@ -1,0 +1,121 @@
+package main
+
+import (
+	"encoding/json"
+	"flag"
+	"fmt"
+	"os"
+
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/flightrecorder"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/host"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcelease"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourceport"
+)
+
+func main() {
+	mode := flag.String("mode", "register-host", "register-host|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
+	configPath := flag.String("config", "", "path to KarlHostRuntimeConfig YAML/JSON")
+	leasePath := flag.String("lease-input", "", "ResourceLease JSON for dry-run/apply")
+	portPath := flag.String("resource-port-input", "", "ResourcePort JSON for dry-run/apply")
+	namespace := flag.String("namespace", "karl-sandbox", "sandbox namespace for apply gate")
+	sandboxDir := flag.String("sandbox-dir", "", "local sandbox directory for guarded apply")
+	baselineID := flag.String("baseline-id", "sandbox-default", "rollback baseline id")
+	shellRef := flag.String("shell-ref", "karl-sandbox/Shell/demo", "Shell ref for ResourcePort candidate")
+	cellRef := flag.String("cell-ref", "karl-sandbox/Cell/demo", "Cell ref for ResourcePort candidate")
+	portName := flag.String("port-name", "demo-port", "ResourcePort candidate name")
+	flag.Parse()
+
+	cfg, err := loadConfig(*configPath)
+	if err != nil {
+		fmt.Fprintf(os.Stderr, "config: %v\n", err)
+		os.Exit(2)
+	}
+	if errs := host.ValidateConfig(cfg); len(errs) > 0 {
+		fmt.Fprintf(os.Stderr, "config invalid: %v\n", errs)
+		os.Exit(2)
+	}
+
+	switch *mode {
+	case "register-host":
+		emit(host.RegisterHost(cfg))
+	case "report-capabilities":
+		emit(host.ReportCapabilities(cfg))
+	case "emit-resourceport":
+		emit(resourceport.ReportCandidate(cfg, *shellRef, *cellRef, *namespace, *portName))
+	case "dry-run-lease":
+		lease, port, err := loadLeasePort(*leasePath, *portPath)
+		if err != nil {
+			fatal(err)
+		}
+		flightrecorder.Record("dry-run", "lease evaluation", "")
+		emit(resourcelease.DryRun(lease, port, &resourcelease.CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"}))
+	case "apply-lease":
+		lease, port, err := loadLeasePort(*leasePath, *portPath)
+		if err != nil {
+			fatal(err)
+		}
+		labels := map[string]string{"karl.io/khr-sandbox": "true"}
+		res, err := resourcelease.GuardedApply(cfg, lease, port, &resourcelease.CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"}, *namespace, labels, *sandboxDir)
+		if err != nil {
+			fatal(err)
+		}
+		flightrecorder.Record("apply", res.Reason, "")
+		emit(res)
+	case "rollback":
+		dir := *sandboxDir
+		if dir == "" {
+			dir = os.TempDir()
+		}
+		bl, _ := resourcelease.CaptureBaseline(*baselineID, dir)
+		emit(resourcelease.RollbackBaseline(bl))
+	case "flight-recorder":
+		emit(flightrecorder.Snapshot())
+	default:
+		fmt.Fprintf(os.Stderr, "unknown mode %q\n", *mode)
+		os.Exit(2)
+	}
+}
+
+func loadConfig(path string) (*host.Config, error) {
+	if path == "" {
+		return nil, fmt.Errorf("-config is required")
+	}
+	return host.LoadConfig(path)
+}
+
+func loadLeasePort(leasePath, portPath string) (*crdv1alpha1.ResourceLease, *crdv1alpha1.ResourcePort, error) {
+	if leasePath == "" || portPath == "" {
+		return nil, nil, fmt.Errorf("-lease-input and -resource-port-input are required")
+	}
+	leaseRaw, err := os.ReadFile(leasePath)
+	if err != nil {
+		return nil, nil, err
+	}
+	portRaw, err := os.ReadFile(portPath)
+	if err != nil {
+		return nil, nil, err
+	}
+	var lease crdv1alpha1.ResourceLease
+	var port crdv1alpha1.ResourcePort
+	if err := json.Unmarshal(leaseRaw, &lease); err != nil {
+		return nil, nil, err
+	}
+	if err := json.Unmarshal(portRaw, &port); err != nil {
+		return nil, nil, err
+	}
+	return &lease, &port, nil
+}
+
+func emit(v any) {
+	b, err := json.MarshalIndent(v, "", "  ")
+	if err != nil {
+		fatal(err)
+	}
+	fmt.Println(string(b))
+}
+
+func fatal(err error) {
+	fmt.Fprintf(os.Stderr, "%v\n", err)
+	os.Exit(1)
+}

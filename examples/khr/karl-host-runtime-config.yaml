@@ -1,0 +1,16 @@
+apiVersion: khr.karl.io/v1alpha1
+kind: KarlHostRuntimeConfig
+metadata:
+  name: karl-host-runtime-sandbox
+spec:
+  hostId: karl-host-runtime-dev-001
+  linuxOnly: true
+  sandboxMode: true
+  sandboxApplyEnabled: false
+  allowedNamespaces:
+    - karl-sandbox
+  allowedLabels:
+    karl.io/khr-sandbox: "true"
+  cgroupRoot: /sys/fs/cgroup
+  allowPathPrefixes:
+    - /sys/fs/cgroup/karl.slice

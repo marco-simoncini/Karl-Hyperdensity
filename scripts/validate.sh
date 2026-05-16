@@ -219,6 +219,10 @@ if [[ -x "${ROOT_DIR}/scripts/validate_shelllease_gatewayroute_schema.sh" ]]; th
   "${ROOT_DIR}/scripts/validate_shelllease_gatewayroute_schema.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/validate_karl_host_runtime.sh" ]]; then
+  "${ROOT_DIR}/scripts/validate_karl_host_runtime.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/validate_crds.sh" ]]; then
   "${ROOT_DIR}/scripts/validate_crds.sh"
 fi
