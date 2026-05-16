@@ -120,3 +120,10 @@ Sprint 85 is readiness-only for `ResourceExchangeObservationWiredV1=true`. No fl
 ## Sprint 86 (resource_exchange activation)
 
 Sprint 86 sets ResourceExchangeObservationWiredV1=true. Candidate branch active in resource_exchange wrappers only. ObservationWiredV1/ProductionWiredV1 remain false. See ACTIVATION.md and POST_ACTIVATION_HARDENING.md.
+
+
+---
+
+## Sprint 87 (resource_exchange boundary closure)
+
+Sprint 87 closes resource_exchange observation Sprint 78–86 as boundary complete. No flag/runtime changes. Broad observation remains false. Next phase: KHR architecture memory and storage/network semantics. See MIGRATION_BOUNDARY.md, REMAINING_SURFACE_DECISION.md, KHR_ROADMAP_TRANSITION_NOTE.md.

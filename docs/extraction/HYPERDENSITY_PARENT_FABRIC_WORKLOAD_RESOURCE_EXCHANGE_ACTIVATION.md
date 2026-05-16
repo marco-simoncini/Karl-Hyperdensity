@@ -81,3 +81,10 @@ Resource_exchange **boundary closure** or remaining-surface decision (rollback/V
 ## Related
 
 - `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_RESOURCE_EXCHANGE_POST_ACTIVATION_HARDENING.md`
+
+
+---
+
+## Sprint 87 (resource_exchange boundary closure)
+
+Sprint 87 closes resource_exchange observation Sprint 78–86 as boundary complete. No flag/runtime changes. Broad observation remains false. Next phase: KHR architecture memory and storage/network semantics. See MIGRATION_BOUNDARY.md, REMAINING_SURFACE_DECISION.md, KHR_ROADMAP_TRANSITION_NOTE.md.
