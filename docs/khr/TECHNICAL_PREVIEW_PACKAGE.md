@@ -20,7 +20,7 @@ This document defines the **Technical Preview (TP) package** consumable without 
 | **Karl-Inventory** | Posture/observation schema + guides | `docs/khr/TECHNICAL_PREVIEW_INVENTORY_GUIDE.md`, `docs/contracts/khr/runtime-posture.schema.json` |
 | **Karl-OS-ISO** | CRD foundation + host-runtime preview (disabled) | `docs/khr/KHR_TECHNICAL_PREVIEW_ISO_GUIDE.md`, `docs/khr/KHR_TECHNICAL_PREVIEW_PROFILE.md`, `docs/khr/KHR_BOOTSTRAP_FLOW.md` |
 | **Karl-OS-ISO_subiquity** | Host install UI — TP wording alignment only | `docs/khr/KHR_SUBIQUITY_ALIGNMENT.md` |
-| **Karl-Installer** | Post-cluster profiles (spec; AG = docs) | `docs/khr/KHR_INSTALLER_ALIGNMENT_PLAN.md`, `docs/khr/KHR_INSTALLER_PROFILE_MATRIX.md` |
+| **Karl-Installer** | Post-cluster profile selector (AH) | `KHR_INSTALLER_PROFILE_MATRIX.md`, `KARL_INSTALLER_PROFILE` / `-profile` |
 
 | Validation (Hyperdensity) | Command |
 |---------------------------|---------|

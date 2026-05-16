@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-AG |
+| **Sprint** | KHR-AG / **KHR-AH** |
 | **Consumer** | Karl-Hyperdensity CLIs, evidence scripts, sandbox lanes |
 | **Cluster (reference)** | `karl-metal-01@ovh` |
 | **Production** | **NOT production ready** |
@@ -15,9 +15,9 @@ Defines what Hyperdensity **expects** from ISO / installer / subiquity bootstrap
 
 | Source | Delivers | Hyperdensity assumes |
 |--------|----------|----------------------|
-| **Karl-OS-ISO** | `install_khr_crds`, disabled `karl-host-runtime`, boundary docs | CRD APIs exist after provision apply |
+| **Karl-OS-ISO** | `install_khr_crds`, disabled runtime, `profile-manifest.yaml`, boundary docs | CRD APIs after provision; manifest defines profile contract |
 | **Karl-OS-ISO_subiquity** | Host OS only | No KHR runtime enable at autoinstall |
-| **Karl-Installer** | Profile-dependent KubeVirt/CDI (legacy default today) | VM path optional for TP; not required for native-live lane |
+| **Karl-Installer** | `KARL_INSTALLER_PROFILE` / `-profile` (KHR-AH); default = legacy | See `KHR_INSTALLER_PROFILE_EXPECTATIONS.md` |
 | **Operator** | Sandbox NS + labels + manual script invocation | `khr-runtime-sandbox`, `khr.karl.io/sandbox=true` |
 
 ---
@@ -98,7 +98,7 @@ export KHR_RUNTIME_NAMESPACE=khr-runtime-sandbox
 | ID | Blocker |
 |----|---------|
 | B-HD-01 | Cluster CRD presence not automated in ISO CI verify |
-| B-HD-02 | Installer always deploys KubeVirt — confuses TP “optional KV” story |
+| B-HD-02 | ~~Installer always deploys KubeVirt~~ | **Mitigated (KHR-AH):** `karl2-khr-technical-preview` skips KV installer path |
 | B-HD-03 | No unified bootstrap version manifest across four repos |
 | B-HD-04 | Subiquity autoinstall does not surface TP profile selection |
 | B-HD-05 | Beta sign-off requires operator attestation + evidence bundle, not bootstrap alone |
@@ -111,5 +111,7 @@ export KHR_RUNTIME_NAMESPACE=khr-runtime-sandbox
 |----------|------|
 | `KHR_BOOTSTRAP_FLOW.md` | Karl-OS-ISO |
 | `KHR_INSTALLER_PROFILE_MATRIX.md` | Karl-Installer |
+| `KHR_INSTALLER_PROFILE_EXPECTATIONS.md` | Karl-Hyperdensity |
+| `KHR_BOOTSTRAP_VERSION_MANIFEST.md` | Karl-OS-ISO |
 | `KHR_SUBIQUITY_ALIGNMENT.md` | Karl-OS-ISO_subiquity |
 | `TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md` | Karl-Hyperdensity (this repo) |
