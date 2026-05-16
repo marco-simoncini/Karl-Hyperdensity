@@ -104,3 +104,10 @@ Sprint 84 sets `ResourceExchangeObservationCandidateRuntimeUsedV1=true` while `R
 ## Sprint 85 (activation readiness)
 
 Sprint 85 is readiness-only for `ResourceExchangeObservationWiredV1=true`. No flag changes. Sprint 86 may execute activation flip if approved. See `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_RESOURCE_EXCHANGE_ACTIVATION_READINESS.md`.
+
+
+---
+
+## Sprint 86 (resource_exchange activation)
+
+Sprint 86 sets ResourceExchangeObservationWiredV1=true. Candidate branch active in resource_exchange wrappers only. ObservationWiredV1/ProductionWiredV1 remain false. See ACTIVATION.md and POST_ACTIVATION_HARDENING.md.
