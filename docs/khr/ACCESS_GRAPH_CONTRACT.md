@@ -146,7 +146,14 @@ No auth enforcement; OIDC flows unchanged.
 
 ---
 
+## Identity / Access Lease (KHR-AQ)
+
+Access graph exports may include `accessLeaseRef`, `identityBindingRef`, `policyBindingRefs`, and `privilegeLeaseRefs` (read-only). See **`IDENTITY_ACCESS_LEASE_CONTRACT.md`**.
+
+---
+
 ## Related
 
+- `IDENTITY_ACCESS_LEASE_CONTRACT.md`
 - `SHELLLEASE_GATEWAYROUTE_CONTRACT.md`
 - rdp-GW `SHELLLEASE_GATEWAYROUTE_COMPATIBILITY.md`
