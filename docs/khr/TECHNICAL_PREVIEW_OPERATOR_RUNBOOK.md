@@ -90,6 +90,7 @@ Run from Hyperdensity repo root. Each script is **operator-initiated**; none aut
 | Action approval | `./scripts/khr_action_approval_evidence.sh` | `docs/evidence/khr-action-approval/` |
 | Control graph | `./scripts/khr_control_graph_evidence.sh` | `docs/evidence/khr-control-graph/` |
 | Provenance | `./scripts/khr_provenance_evidence.sh` | `docs/evidence/khr-provenance/` |
+| Access graph continuity | rdp-GW `./scripts/khr_accessgraph_continuity_evidence.sh` + `./scripts/khr_access_graph_continuity_bundle_check.sh` | `rdp-GW/docs/evidence/khr-accessgraph-continuity/` |
 
 Full sandbox pipeline (opt-in live):
 
@@ -183,6 +184,26 @@ Never delete production namespace resources via KHR scripts.
 | Policy gate blocked | Expected for stale/uncertified lanes — read `blockedReason` |
 | Dashboard TP API disabled | Set `HYPERDENSITY_KHR_TP_READINESS_ENABLED=true` or use Hyperdensity bundle script |
 | ISO host-runtime enabled accidentally | `systemctl disable karl-host-runtime`; restore example config defaults |
+
+---
+
+## 10b. rdp-GW access graph continuity (KHR-AT, optional live)
+
+Live-readonly evidence against **sandbox** rdp-GW is **preferred** but not required for every TP run (fixture-readonly remains valid offline).
+
+```bash
+# rdp-GW repo — local sandbox or port-forward (see RDPGW_SANDBOX_LIVE_EVIDENCE.md)
+export RDP_GW_BASE_URL=http://127.0.0.1:9443
+export KHR_RUNTIME_CLUSTER_CONTEXT=karl-metal-01@ovh
+./scripts/khr_accessgraph_continuity_evidence.sh
+
+# Hyperdensity — bundle check (prefers live-readonly summary when present)
+./scripts/khr_access_graph_continuity_bundle_check.sh
+```
+
+Expect `summary.json`: `source=live-readonly`, `trustLevel=live-readonly`, `readOnly=true`, `mutating=false`, `noRevoke=true`, `noDisconnect=true`, `productionReady=false`.
+
+**No revoke, disconnect, auth enforcement, or session mutation.** Not production.
 
 ---
 

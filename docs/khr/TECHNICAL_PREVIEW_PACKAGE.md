@@ -173,6 +173,16 @@ Wave 2 alignment starts in **rdp-GW** without changing Hyperdensity CRDs or cont
 
 Validation: rdp-GW `go test ./cmd/rdpgw/...` including `cmd/rdpgw/khr`.
 
+### Access graph continuity evidence (KHR-AT)
+
+| Trust | `source` | When |
+|-------|----------|------|
+| **live-readonly** (preferred) | `live-readonly` | Sandbox rdp-GW reachable (`RDP_GW_BASE_URL`) |
+| **fixture-readonly** | `fixture-readonly` | CI/offline; golden fallback |
+
+Hyperdensity: `./scripts/khr_access_graph_continuity_bundle_check.sh` — accepts both; ranks live above fixture.  
+Docs: `ACCESS_GRAPH_CONTINUITY_EVIDENCE.md`, rdp-GW `RDPGW_SANDBOX_LIVE_EVIDENCE.md`.
+
 ---
 
 ## Residual blockers (TP package)
