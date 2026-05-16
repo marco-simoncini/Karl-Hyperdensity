@@ -1,0 +1,30 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "ShellLease",
+  "metadata": {
+    "name": "demo-user-lease",
+    "namespace": "karl-sandbox"
+  },
+  "spec": {
+    "shellRef": {
+      "name": "linux-dev-01",
+      "namespace": "karl-sandbox"
+    },
+    "userRef": "dev-user@karl",
+    "tenant": "karl-sandbox",
+    "leaseMode": "ephemeral",
+    "accessProfile": "developer-standard",
+    "expiresAt": "2026-12-31T23:59:59Z"
+  },
+  "status": {
+    "phase": "Observed",
+    "conditions": [
+      {
+        "type": "Ready",
+        "status": "False",
+        "reason": "NoController",
+        "message": "KHR-E contract only"
+      }
+    ]
+  }
+}

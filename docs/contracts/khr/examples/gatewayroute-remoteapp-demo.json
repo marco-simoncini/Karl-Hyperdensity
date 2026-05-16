@@ -1,0 +1,38 @@
+{
+  "apiVersion": "gateway.karl.io/v1alpha1",
+  "kind": "GatewayRoute",
+  "metadata": {
+    "name": "finance-remoteapp",
+    "namespace": "karl-sandbox"
+  },
+  "spec": {
+    "shellLeaseRef": {
+      "name": "demo-user-lease",
+      "namespace": "karl-sandbox"
+    },
+    "protocol": "rdp-remoteapp",
+    "targetRef": "windowsapp/finance-excel",
+    "gateway": "karl.rdpgw.v1/default",
+    "policyRefs": [
+      "policy/windows-remoteapp-strict"
+    ],
+    "tokenRef": "token/sketch-not-issued",
+    "gatewayClass": "karl.rdpgw.v1",
+    "displayName": "Finance Excel RemoteApp",
+    "rdp": {
+      "remoteApplicationMode": true,
+      "remoteApplicationProgram": "||FinanceExcel",
+      "remoteApplicationName": "Microsoft Excel"
+    }
+  },
+  "status": {
+    "phase": "Observed",
+    "conditions": [
+      {
+        "type": "RouteReady",
+        "status": "False",
+        "reason": "NoController"
+      }
+    ]
+  }
+}

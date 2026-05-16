@@ -1,9 +1,10 @@
+# Contract-only CRD (KHR-E access foundation). No controller ships with this definition.
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
 metadata:
   name: shellleases.runtime.karl.io
   labels:
-    karl.io/contract-track: khr-v1alpha1
+    karl.io/contract-track: khr-v1alpha1-shell-access-foundation
 spec:
   group: runtime.karl.io
   scope: Namespaced
@@ -23,6 +24,16 @@ spec:
       storage: true
       subresources:
         status: {}
+      additionalPrinterColumns:
+        - name: Shell
+          type: string
+          jsonPath: .spec.shellRef.name
+        - name: Mode
+          type: string
+          jsonPath: .spec.leaseMode
+        - name: Phase
+          type: string
+          jsonPath: .status.phase
       schema:
         openAPIV3Schema:
           type: object
@@ -33,6 +44,7 @@ spec:
               type: object
               required:
                 - shellRef
+                - leaseMode
               properties:
                 shellRef:
                   type: object
@@ -41,13 +53,30 @@ spec:
                   properties:
                     name:
                       type: string
+                    namespace:
+                      type: string
+                userRef:
+                  type: string
+                tenant:
+                  type: string
+                leaseMode:
+                  type: string
+                  enum:
+                    - ephemeral
+                    - persistent
+                    - scheduled
+                accessProfile:
+                  type: string
+                expiresAt:
+                  type: string
+                  format: date-time
                 shellPoolRef:
                   type: object
                   properties:
                     name:
                       type: string
                 holder:
-                  description: Subject bound to the lease (user, group, service identity).
+                  description: Deprecated; use userRef + tenant (KHR-E).
                   type: object
                   properties:
                     kind:
@@ -73,8 +102,6 @@ spec:
                   type: array
                   items:
                     type: object
-                    required:
-                      - name
                     properties:
                       name:
                         type: string
@@ -88,4 +115,26 @@ spec:
                   x-kubernetes-preserve-unknown-fields: true
             status:
               type: object
+              properties:
+                phase:
+                  type: string
+                  enum:
+                    - Pending
+                    - Active
+                    - Expired
+                    - Revoked
+                    - Observed
+                conditions:
+                  type: array
+                  items:
+                    type: object
+                    properties:
+                      type:
+                        type: string
+                      status:
+                        type: string
+                      reason:
+                        type: string
+                      message:
+                        type: string
               x-kubernetes-preserve-unknown-fields: true

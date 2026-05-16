@@ -1,0 +1,34 @@
+{
+  "apiVersion": "gateway.karl.io/v1alpha1",
+  "kind": "GatewayRoute",
+  "metadata": {
+    "name": "win-daas-rdp",
+    "namespace": "karl-sandbox"
+  },
+  "spec": {
+    "shellLeaseRef": {
+      "name": "demo-user-lease",
+      "namespace": "karl-sandbox"
+    },
+    "protocol": "rdp",
+    "targetRef": "kubevirt/evidence/win-daas-01",
+    "gateway": "karl.rdpgw.v1/default",
+    "policyRefs": [
+      "policy/windows-daas-rdp"
+    ],
+    "tokenRef": "token/sketch-not-issued",
+    "gatewayClass": "karl.rdpgw.v1",
+    "displayName": "Windows DaaS full desktop"
+  },
+  "status": {
+    "phase": "Observed",
+    "conditions": [
+      {
+        "type": "RouteReady",
+        "status": "False",
+        "reason": "NoController",
+        "message": "KHR-E contract only; KubeVirt path unchanged"
+      }
+    ]
+  }
+}
