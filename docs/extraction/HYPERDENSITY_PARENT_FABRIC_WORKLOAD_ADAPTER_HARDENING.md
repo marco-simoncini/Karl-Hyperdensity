@@ -32,7 +32,8 @@
 | **51** | Test-only adapter stubs (`*_test.go`) |
 | **52** | Three pure-candidates in Hyperdensity `parentfabric/workload` |
 | **53** | Dashboard production-internal adapter — **not wired** |
-| **Future** | Call-site shadow tests or explicit wiring sprint |
+| **54** | Dashboard shadow tests (legacy vs adapter v1) — **still not wired** |
+| **Future** | Explicit wiring sprint only |
 
 ## Related
 

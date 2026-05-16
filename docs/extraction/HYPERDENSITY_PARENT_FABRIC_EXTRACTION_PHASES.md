@@ -20,6 +20,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 53:** Dashboard **production-internal adapter v1** (path + observation) + tests; **not wired** to handlers; Hyperdensity hardening doc only.
 
+**Sprint 54:** Dashboard **shadow tests** (legacy vs adapter v1 on path + observed-state); **still not wired**; Hyperdensity shadow-test doc only.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

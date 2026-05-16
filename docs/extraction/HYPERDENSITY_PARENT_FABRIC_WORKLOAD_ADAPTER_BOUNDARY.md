@@ -9,8 +9,9 @@ Define what **must remain in Karl-Dashboard** (adapter-bound / runtime-bound) vs
 | **50** | Boundary docs + Dashboard classification fixture — no Go adapter |
 | **51** | Dashboard **test-only** adapter stubs (`*_test.go`) — **no production wiring** |
 | **52** | Three pure-candidates in Hyperdensity `parentfabric/workload` |
-| **53** | Dashboard **production-internal** adapter v1 — **not wired** (see hardening doc) |
-| **Future** | Call-site shadow tests or explicit wiring sprint |
+| **53** | Dashboard **production-internal** adapter v1 — **not wired** |
+| **54** | Shadow tests (legacy vs adapter) — **still not wired** |
+| **Future** | Explicit wiring sprint only |
 
 ## Adapter-bound (stays in Dashboard)
 

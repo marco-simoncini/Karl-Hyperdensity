@@ -30,8 +30,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **51** | Dashboard test-only adapter stubs + golden manifest | `copy-deferred` |
 | **52** | Three pure-candidates in `parentfabric/workload` + golden + Dashboard parity | `copy-deferred` (full file) |
 | **53** | Dashboard production-internal adapter v1 + tests — **not wired** | `copy-deferred` (full file) |
+| **54** | Shadow tests legacy vs adapter v1 — **not wired** | `copy-deferred` (full file) |
 
-Re-audit may proceed only after criteria 1–9 satisfied for **remaining** functions; Sprint 52 satisfies **pure allowlist copy** only (3/46). Sprint 53 satisfies **production adapter shell** but not criterion 1 (full adapter wired).
+Re-audit may proceed only after criteria 1–9 satisfied for **remaining** functions. Sprint 54 proves adapter parity on samples but does **not** satisfy production wiring criterion.
 
 ## Related
 
