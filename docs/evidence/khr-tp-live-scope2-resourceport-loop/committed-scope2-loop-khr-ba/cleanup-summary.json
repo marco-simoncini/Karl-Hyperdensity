@@ -1,0 +1,12 @@
+{
+  "phase": "khr-tp-live-scope2-resourceport-loop-cleanup",
+  "sprint": "KHR-BA",
+  "runId": "committed-scope2-loop-khr-ba",
+  "status": "PASS",
+  "resourcePortLoopEnabledPersistent": false,
+  "resourcePortLoopEnabledAfterCleanup": false,
+  "sandboxApplyEnabled": false,
+  "resourceLeaseApplyEnabled": false,
+  "productionReady": false,
+  "at": "2026-05-16T21:39:12Z"
+}

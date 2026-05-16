@@ -1,0 +1,22 @@
+{
+  "phase": "khr-tp-live-scope2-resourceport-loop-verify",
+  "sprint": "KHR-BA",
+  "runId": "committed-scope2-loop-khr-ba",
+  "status": "PASS",
+  "readyForScope1": true,
+  "readyForScope2": "manual-loop-pass",
+  "readyForScope2Active": false,
+  "readyForScope3": false,
+  "scope3BlockedReason": "ResourceLease dry-run/apply blocked until dedicated scope-3 sprint",
+  "resourcePortObservationAvailable": true,
+  "resourcePortLoopEnabled": false,
+  "clusterConfigLoopEnabled": false,
+  "resourceLeaseApplyEnabled": false,
+  "sandboxApplyEnabled": false,
+  "emissionMode": "observed-json",
+  "productionGatewayUntouched": true,
+  "noResourceLeaseDryRunApply": true,
+  "readOnly": true,
+  "mutating": false,
+  "at": "2026-05-16T21:39:10Z"
+}

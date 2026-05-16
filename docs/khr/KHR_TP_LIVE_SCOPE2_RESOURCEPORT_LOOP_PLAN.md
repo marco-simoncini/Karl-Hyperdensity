@@ -5,7 +5,7 @@
 | **Sprint** | KHR-AZ |
 | **Cluster** | `karl-metal-01@ovh` |
 | **Namespace** | `khr-runtime-sandbox` only |
-| **Mode** | **Plan + read-only preflight** — **no loop enable** in KHR-AZ |
+| **Mode** | **KHR-AZ:** preflight only — **KHR-BA:** bounded manual loop (`observed-json`) |
 
 ---
 
@@ -84,7 +84,42 @@ Expected:
 | `resourceLeaseApplyEnabled` | `false` |
 | `loopEnabled` | `false` |
 
-`readyForScope2` is **never** `true` until a dedicated loop execution sprint completes with sign-off.
+`readyForScope2` is **never** boolean `true`. After KHR-BA manual loop PASS, use `readyForScope2=manual-loop-pass` (not “active”).
+
+---
+
+## Manual loop execution (KHR-BA)
+
+```bash
+export KHR_RUNTIME_CLUSTER_CONTEXT=karl-metal-01@ovh
+export KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP=true
+export KHR_SCOPE2_LOOP_ITERATIONS=2          # 1-3 only
+export KHR_SCOPE2_LOOP_TIMEOUT_SEC=120
+export KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID=committed-scope2-loop-khr-ba
+
+./scripts/khr_tp_live_scope2_preflight.sh
+./scripts/khr_tp_live_scope2_resourceport_loop_run.sh
+./scripts/khr_tp_live_scope2_resourceport_loop_verify.sh
+./scripts/khr_tp_live_scope2_resourceport_loop_cleanup.sh
+```
+
+| Guard | Value |
+|-------|-------|
+| Confirmation | `KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP=true` |
+| Emission | `observed-json` only (no `-emit-cr` / `-apply-cr`) |
+| Iterations | `KHR_SCOPE2_LOOP_ITERATIONS` ∈ {1,2,3} |
+| Timeout | `KHR_SCOPE2_LOOP_TIMEOUT_SEC` (default 120) |
+| Persistent config | Cluster ConfigMap **must** keep `resourcePortLoopEnabled: false` |
+
+Evidence: `docs/evidence/khr-tp-live-scope2-resourceport-loop/<runId>/` — `loop-summary.json`, `verify-summary.json`, `cleanup-summary.json`.
+
+### Scope-2 does **not** imply Scope-3
+
+| Scope | Status after KHR-BA |
+|-------|---------------------|
+| **scope-2** | `manual-loop-pass` — ResourcePort **observation** only |
+| **scope-3** | **blocked** — no ResourceLease dry-run |
+| **scope-4** | **blocked** — no guarded apply |
 
 ---
 

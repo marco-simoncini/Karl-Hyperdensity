@@ -314,6 +314,17 @@ if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh" ]]; then
     "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_run.sh" ]]; then
+  KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP="${KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP:-true}" \
+  KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \
+  KHR_SCOPE2_LOOP_ITERATIONS="${KHR_SCOPE2_LOOP_ITERATIONS:-2}" \
+    "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_run.sh"
+  KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \
+    "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_verify.sh"
+  KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \
+    "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_cleanup.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh" ]]; then
   KHR_DASHBOARD_PATH="${KHR_DASHBOARD_PATH:-${ROOT_DIR}/../Karl-Dashboard}" \
     "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh"

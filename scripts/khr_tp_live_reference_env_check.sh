@@ -256,14 +256,40 @@ record(
     str(dash_fixture),
 )
 
+scope2_loop = None
+scope2_loop_base = ROOT / "docs/evidence/khr-tp-live-scope2-resourceport-loop"
+committed_loop = scope2_loop_base / "committed-scope2-loop-khr-ba" / "verify-summary.json"
+if committed_loop.is_file():
+    scope2_loop = load(committed_loop)
+elif scope2_loop_base.is_dir():
+    for child in sorted(scope2_loop_base.iterdir(), reverse=True):
+        v = child / "verify-summary.json"
+        if v.is_file():
+            scope2_loop = load(v)
+            if scope2_loop:
+                break
+scope2_loop_ok = bool(
+    scope2_loop
+    and scope2_loop.get("status") == "PASS"
+    and scope2_loop.get("readyForScope2") == "manual-loop-pass"
+    and scope2_loop.get("readyForScope3") is False
+)
+record(
+    "scope2ManualLoopEvidence",
+    scope2_loop_ok,
+    f"runId={scope2_loop.get('runId') if scope2_loop else 'none'}",
+)
+
 ready_for_scope2: bool | str = False
-if scope2_pf_ok:
+if scope2_loop_ok:
+    ready_for_scope2 = "manual-loop-pass"
+elif scope2_pf_ok:
     ready_for_scope2 = "conditional/manual-preflight-pass"
 
 status = "PASS" if not errors else "FAIL"
 summary = {
     "phase": "khr-tp-live-reference-env",
-    "sprint": "KHR-AZ",
+    "sprint": "KHR-BA",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": "khr-tp-contract-v1",
@@ -275,8 +301,13 @@ summary = {
     "readyForScope0": preflight.get("readyForScope0") if preflight else scope1_ok,
     "readyForScope1": scope1_ok,
     "readyForScope2": ready_for_scope2,
-    "readyForScope2LoopExecution": False,
-    "resourcePortLoopEnabled": scope2_pf.get("resourcePortLoopEnabled", False) if scope2_pf else False,
+    "readyForScope2Active": False,
+    "readyForScope2LoopExecution": scope2_loop_ok,
+    "readyForScope3": False,
+    "resourcePortObservationAvailable": scope2_loop_ok,
+    "resourcePortLoopEnabled": scope2_loop.get("resourcePortLoopEnabled", False) if scope2_loop else (
+        scope2_pf.get("resourcePortLoopEnabled", False) if scope2_pf else False
+    ),
     "sandboxApplyEnabled": scope2_pf.get("sandboxApplyEnabled", False) if scope2_pf else False,
     "scope2BlockedReason": scope2_pf.get("scope2BlockedReason", "ResourcePort loop not enabled") if scope2_pf else "scope-2 preflight missing",
     "rdpgwDeployMode": deploy_mode,
