@@ -39,6 +39,7 @@ This is **deliberate policy**, not incomplete work by mistake.
 | `apply.go` wiring | **None** (Sprint 65–66 proposal + shadow only) |
 | Apply shadow ready | **Yes** (Sprint 66) |
 | Apply staged wrappers | **Yes** (Sprint 67; not used by `apply.go`) |
+| Apply wrapper hardening | **Yes** (Sprint 68; 8×4 matrix) |
 
 ## Related
 

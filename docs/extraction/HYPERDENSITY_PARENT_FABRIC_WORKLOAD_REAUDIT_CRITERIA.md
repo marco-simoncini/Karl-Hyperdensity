@@ -44,8 +44,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **65** | Apply-observation proposal + criteria; no `apply.go` wiring | `copy-deferred` (full file) |
 | **66** | Apply-observation shadow matrix; candidate not runtime-used | `copy-deferred` (full file) |
 | **67** | Apply-observation staged wrappers; `apply.go` still legacy | `copy-deferred` (full file) |
+| **68** | Apply wrapper hardening 8×4; no `apply.go` wiring | `copy-deferred` (full file) |
 
-Re-audit for remaining functions unchanged. Sprint 57–67 do **not** complete general observation wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–67).
+Re-audit for remaining functions unchanged. Sprint 57–68 do **not** complete general observation wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–68).
 
 ## Related
 

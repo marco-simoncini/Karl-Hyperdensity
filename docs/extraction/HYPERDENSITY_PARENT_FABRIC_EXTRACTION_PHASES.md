@@ -48,6 +48,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 67:** **Apply-observation staged wrappers** — `apply_observation_wiring_v1.go`; wrappers not used by `apply.go`; flags **false**.
 
+**Sprint 68:** **Apply wrapper hardening** — 8×4 matrix; `apply.go` still legacy; flags **false**.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
