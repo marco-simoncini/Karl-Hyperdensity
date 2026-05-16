@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 81** extends resource_exchange observation shadow coverage to **local observation-like helpers** classified in Sprint 79: `hyperdensityObservedPodContainerReady` and `hyperdensityObservedPodContainerRestartCount`. **Candidate parity only** — no wrappers, no production wiring.
+**Sprint 81** extends shadow coverage to ready/restart candidates. **Sprint 82** adds ready/restart **staged wrappers** and full-helper wiring readiness — see `FULL_HELPER_STAGED_WRAPPERS.md`. classified in Sprint 79: `hyperdensityObservedPodContainerReady` and `hyperdensityObservedPodContainerRestartCount`. **Candidate parity only** — no wrappers, no production wiring.
 
 ---
 

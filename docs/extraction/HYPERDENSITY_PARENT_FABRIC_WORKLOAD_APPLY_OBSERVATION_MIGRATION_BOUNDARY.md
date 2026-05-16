@@ -100,7 +100,7 @@ See **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_OBSERVATION_NEXT_SURFACE_DECISION.md`
 
 **Recommended next track:** `resource_exchange_observation_audit` (proposal/audit only) or `usage.go` classification — not broad observation.
 
-**Sprint 78–81:** audit through local helper shadow **complete**; production resource_exchange still legacy. Recommended next: local helper staged wrappers or call-site wiring readiness.
+**Sprint 78–82:** full-helper staged wrappers + wiring readiness **complete**. Recommended next: Sprint 83 call-site wiring (full-helper; flags false).
 
 ---
 

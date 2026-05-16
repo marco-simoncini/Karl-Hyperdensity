@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 80** introduces **staged wrappers** for resource_exchange pod CPU observation only. **Sprint 81** adds ready/restart **candidate** shadow matrix; no ready/restart wrappers. Wrappers exist in a dedicated wiring file and are validated by tests only. **Production `resource_exchange_*` call sites remain legacy** (`hyperdensityObservedPodCPURequest`). **`ResourceExchangeObservationWiredV1` and `CandidateRuntimeUsedV1` remain false.**
+**Sprint 80** introduces CPU staged wrapper. **Sprint 82** completes **full-helper** staged wrappers (CPU + ready + restart). Production remains legacy. Wrappers exist in a dedicated wiring file and are validated by tests only. **Production `resource_exchange_*` call sites remain legacy** (`hyperdensityObservedPodCPURequest`). **`ResourceExchangeObservationWiredV1` and `CandidateRuntimeUsedV1` remain false.**
 
 ---
 

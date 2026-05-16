@@ -58,8 +58,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **79** | Resource exchange shadow matrix (candidate parity; no wiring) | `copy-deferred` (full file) |
 | **80** | Resource exchange staged wrappers (wrapper parity; no production wiring) | `copy-deferred` (full file) |
 | **81** | Local helper shadow matrix (ready/restart candidates; no production wiring) | `copy-deferred` (full file) |
+| **82** | Full-helper staged wrappers + call-site wiring readiness | `copy-deferred` (full file) |
 
-Re-audit for remaining functions unchanged. Sprint 57–81: apply track complete; local helper shadow complete; **no** production wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–78).
+Re-audit for remaining functions unchanged. Sprint 57–82: apply track complete; full-helper readiness certified; **no** production wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64–78).
 
 ## Related
 

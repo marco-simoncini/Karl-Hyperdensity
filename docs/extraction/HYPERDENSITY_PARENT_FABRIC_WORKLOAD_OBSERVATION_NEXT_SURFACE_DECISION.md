@@ -67,7 +67,7 @@ Adapter files may appear in remaining-audit counts due to **delegation** to lega
 |----------|--------|
 | Is apply-observation complete? | **Yes** (Sprint 65–76) |
 | Is next sprint broad observation? | **No** |
-| Preferred next track | **local helper staged wrappers** or **call-site wiring readiness** (Sprint 81 shadow complete) |
+| Preferred next track | **resource_exchange_callsite_wiring** (Sprint 82 readiness complete; full-helper only) |
 | `ObservationWiredV1` | **`false`** (deliberate) |
 | `ProductionWiredV1` | **`false`** |
 
