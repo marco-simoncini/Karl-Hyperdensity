@@ -12,12 +12,13 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/flightrecorder"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/host"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/lanediscovery"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcefuture"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourcelease"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/resourceport"
 )
 
 func main() {
-	mode := flag.String("mode", "register-host", "register-host|host-status|host-heartbeat|lane-discovery|resourceport-loop|resourceport-cleanup|resourcelease-dryrun|resourcelease-guarded-apply|resourcelease-rollback|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
+	mode := flag.String("mode", "register-host", "register-host|host-status|host-heartbeat|lane-discovery|resourcefuture-simulate|resourceport-loop|resourceport-cleanup|resourcelease-dryrun|resourcelease-guarded-apply|resourcelease-rollback|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
 	nodeName := flag.String("node-name", "", "Kubernetes node name for host-status (default: hostname)")
 	clusterContext := flag.String("cluster-context", "", "required cluster context for resourceport-loop discovery")
 	emitCR := flag.Bool("emit-cr", false, "write local ResourcePort CR preview files (never kubectl apply by default)")
@@ -68,6 +69,11 @@ func main() {
 			fmt.Fprintf(os.Stderr, "config invalid: %v\n", errs)
 			os.Exit(2)
 		}
+	} else if *mode == "resourcefuture-simulate" {
+		if errs := host.ValidateConfigForResourceFutureSimulation(cfg); len(errs) > 0 {
+			fmt.Fprintf(os.Stderr, "config invalid: %v\n", errs)
+			os.Exit(2)
+		}
 	} else if errs := host.ValidateConfig(cfg); len(errs) > 0 {
 		fmt.Fprintf(os.Stderr, "config invalid: %v\n", errs)
 		os.Exit(2)
@@ -83,6 +89,21 @@ func main() {
 			Config:          cfg,
 			ClusterContext:  ctx,
 			RequiredContext: "karl-metal-01@ovh",
+		})
+		if err != nil {
+			fatal(err)
+		}
+		emit(res)
+	case "resourcefuture-simulate":
+		ctx := *clusterContext
+		if ctx == "" {
+			ctx = resourceport.CurrentKubeContext()
+		}
+		res, err := resourcefuture.Run(resourcefuture.Options{
+			Config:          cfg,
+			ClusterContext:  ctx,
+			RequiredContext: "karl-metal-01@ovh",
+			NodeName:        *nodeName,
 		})
 		if err != nil {
 			fatal(err)

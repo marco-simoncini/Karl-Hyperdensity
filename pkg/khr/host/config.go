@@ -30,7 +30,8 @@ type HostSpec struct {
 	AllowPathPrefixes        []string          `json:"allowPathPrefixes" yaml:"allowPathPrefixes"`
 	ResourcePortLoopEnabled       bool  `json:"resourcePortLoopEnabled" yaml:"resourcePortLoopEnabled"`
 	SandboxMaxMemoryDeltaBytes    int64 `json:"sandboxMaxMemoryDeltaBytes" yaml:"sandboxMaxMemoryDeltaBytes"`
-	LaneDiscoveryEnabled          bool  `json:"laneDiscoveryEnabled" yaml:"laneDiscoveryEnabled"`
+	LaneDiscoveryEnabled              bool `json:"laneDiscoveryEnabled" yaml:"laneDiscoveryEnabled"`
+	ResourceFutureSimulationEnabled   bool `json:"resourceFutureSimulationEnabled" yaml:"resourceFutureSimulationEnabled"`
 }
 
 // LoadConfig reads YAML or JSON from path.
@@ -84,6 +85,27 @@ func ValidateConfigForLaneDiscovery(cfg *Config) []string {
 	}
 	if !cfg.Spec.LaneDiscoveryEnabled {
 		errs = append(errs, "spec.laneDiscoveryEnabled must be true for lane-discovery mode")
+	}
+	return errs
+}
+
+// ValidateConfigForResourceFutureSimulation validates config for KHR-R simulation mode.
+func ValidateConfigForResourceFutureSimulation(cfg *Config) []string {
+	var errs []string
+	if cfg == nil {
+		return []string{"config is nil"}
+	}
+	if cfg.Spec.HostID == "" {
+		errs = append(errs, "spec.hostId is required")
+	}
+	if !cfg.Spec.SandboxMode {
+		errs = append(errs, "spec.sandboxMode must be true")
+	}
+	if !cfg.Spec.LaneDiscoveryEnabled {
+		errs = append(errs, "spec.laneDiscoveryEnabled must be true (simulation uses lane discovery input)")
+	}
+	if !cfg.Spec.ResourceFutureSimulationEnabled {
+		errs = append(errs, "spec.resourceFutureSimulationEnabled must be true")
 	}
 	return errs
 }
