@@ -12,7 +12,7 @@
 
 | Tier | Contracts | Policy through beta-1 |
 |------|-----------|------------------------|
-| **TP freeze** | `khr-projection-v1alpha1-readonly-y`, `khr-tp-readiness-summary-v1alpha1`, Host/Shell/Cell/ResourcePort/ResourceFuture CRDs + docs, **ResourceLease CRD/schema/projection (KHR-AE)**, Inventory posture schema (read-only fields) | Additive fields only; no removals; no semantic change to `readOnly: true` |
+| **TP freeze** | `khr-projection-v1alpha1-readonly-y`, `khr-tp-readiness-summary-v1alpha1`, Host/Shell/Cell/ResourcePort/ResourceFuture CRDs + docs, **ResourceLease CRD/schema/projection (KHR-AE)**, **ResourcePort + native-live lane semantics (KHR-AF)**, Inventory posture schema (read-only fields) | Additive fields only; no removals; no semantic change to `readOnly: true` |
 | **Experimental** | ResourceLease **sandbox cgroup apply execution**, certification registry enforcement semantics, native-live cert claims, action approval apply path | Apply behavior may change with evidence; contract shape frozen |
 | **Beta target** | Inventory `TPObservationExport`, tp-readiness default-on in reference env, registry refresh export | Freeze at beta-1 RC after gap closure |
 | **Deprecated** | Multus/NAD as target; unqualified KubeVirt-as-core wording | Documentation only |
@@ -46,6 +46,8 @@
 | Item | Reason |
 |------|--------|
 | ResourceLease cgroup apply **execution** | Sandbox-only; contract frozen KHR-AE |
+| Native-live cgroup apply **execution** | Sandbox-only; invariants frozen KHR-AF |
+| `certified` / `certified-preview` claims | Sandbox evidence only — not GA |
 | Guarded apply markers (other) | Sandbox-only; not production |
 | `certified-preview` semantics | Not GA |
 | Policy gate → apply coupling | Simulation only |

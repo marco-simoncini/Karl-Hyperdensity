@@ -90,7 +90,8 @@ fi
 
 record_contract "host" "runtime.karl.io/v1alpha1" "docs/khr/HOST_CONTRACT.md" "api/crds/runtime.karl.io/host.yaml" "pkg/khr/host/*_test.go" "docs/evidence/khr-host-heartbeat/*" "freeze-tp"
 record_contract "shell-cell" "runtime.karl.io/v1alpha1" "docs/khr/SHELL_CELL_CONTRACT.md" "api/crds/runtime.karl.io/shell.yaml" "pkg/khr/crdv1alpha1/*_test.go" "docs/evidence/khr-runtime-sandbox/*" "freeze-tp"
-record_contract "resourceport" "runtime.karl.io/v1alpha1" "docs/khr/RESOURCEPORT_CONTRACT.md" "api/crds/runtime.karl.io/resourceport.yaml" "pkg/khr/resourceport/*_test.go" "docs/evidence/khr-resourceport-loop/*" "freeze-tp"
+record_contract "resourceport" "runtime.karl.io/v1alpha1" "docs/khr/RESOURCEPORT_TP_FREEZE_CANDIDATE.md" "api/crds/runtime.karl.io/resourceport.yaml" "pkg/khr/resourceport/*_test.go" "docs/evidence/khr-resourceport-loop/*" "freeze-tp-candidate"
+record_contract "native-live-lane" "native-live / khr-native-live-certification-v1" "docs/khr/NATIVE_LIVE_TP_FREEZE_CANDIDATE.md" "-" "pkg/khr/nativelive/*_test.go" "docs/evidence/khr-native-live-lane/certification-summary.json" "freeze-tp-candidate"
 record_contract "resourcelease" "hyperdensity.karl.io/v1alpha1" "docs/khr/RESOURCELEASE_TP_FREEZE_CANDIDATE.md" "api/crds/hyperdensity.karl.io/resourcelease.yaml" "pkg/khr/resourcelease/*_test.go" "docs/evidence/khr-resourcelease-dryrun/*" "freeze-tp-candidate"
 record_contract "resourcefuture" "hyperdensity.karl.io/v1alpha1" "docs/khr/RESOURCEFUTURE_SIMULATION.md" "api/crds/hyperdensity.karl.io/resourcefuture.yaml" "pkg/khr/resourcefuture/*_test.go" "docs/evidence/khr-resourcefuture/*" "freeze-tp"
 record_contract "shelllease-gatewayroute" "runtime.karl.io/v1alpha1 / gateway.karl.io/v1alpha1" "docs/khr/SHELLLEASE_GATEWAYROUTE_CONTRACT.md" "api/crds/gateway.karl.io/gatewayroute.yaml" "pkg/khr/crdv1alpha1/*_test.go" "-" "freeze-tp"
