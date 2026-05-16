@@ -1,0 +1,3871 @@
+{
+  "mode": "resourcefuture-simulate",
+  "blocked": false,
+  "clusterContext": "karl-metal-01@ovh",
+  "observedAt": "2026-05-16T17:48:21Z",
+  "safety": {
+    "readOnly": true,
+    "noMutation": true,
+    "noApply": true,
+    "noRestart": true,
+    "noRollout": true,
+    "noRecreate": true,
+    "noAutonomousOrchestration": true,
+    "noProductionMutation": true,
+    "simulationOnly": true
+  },
+  "input": {
+    "hostStatus": {
+      "apiVersion": "runtime.karl.io/v1alpha1",
+      "kind": "Host",
+      "metadata": {
+        "name": "karl-host-runtime-karl-metal-01",
+        "labels": {
+          "khr.karl.io/sandbox": "true"
+        }
+      },
+      "spec": {
+        "hostId": "karl-host-runtime-karl-metal-01",
+        "nodeName": "karl-builder",
+        "provider": "khr.native",
+        "runtimeMode": "sandbox",
+        "labels": {
+          "khr.karl.io/sandbox": "true"
+        }
+      },
+      "status": {
+        "phase": "Observed",
+        "conditions": [
+          {
+            "type": "Ready",
+            "status": "False",
+            "reason": "NoController",
+            "message": "KHR-I status from karl-host-runtime only; no reconciler loop",
+            "lastTransitionTime": "2026-05-16T17:48:21Z"
+          },
+          {
+            "type": "SandboxOnly",
+            "status": "True",
+            "reason": "ProductionUnsupported",
+            "message": "Host registration is sandbox/read-only in KHR-I",
+            "lastTransitionTime": "2026-05-16T17:48:21Z"
+          }
+        ],
+        "capabilities": {
+          "hostId": "karl-host-runtime-karl-metal-01",
+          "cgroupVersion": "v2",
+          "runtimeProviders": [
+            "linux.systemd.stub",
+            "linux.cgroup.envelope.stub"
+          ],
+          "supportedModes": [
+            "envelope",
+            "static"
+          ],
+          "blockedSurfaces": [
+            "kubevirt",
+            "libvirt",
+            "qmp",
+            "windows",
+            "vm-mutation",
+            "autonomous-apply"
+          ]
+        },
+        "lastHeartbeatTime": "2026-05-16T17:48:21Z",
+        "runtimeVersion": "0.0.3-khr-n",
+        "safetyMode": "sandbox"
+      }
+    },
+    "laneDiscovery": {
+      "mode": "lane-discovery",
+      "blocked": false,
+      "clusterContext": "karl-metal-01@ovh",
+      "observedAt": "2026-05-16T17:48:19Z",
+      "safety": {
+        "readOnly": true,
+        "noPatch": true,
+        "noApply": true,
+        "noRestart": true,
+        "noRollout": true,
+        "noRecreate": true,
+        "noProductionMutation": true
+      },
+      "discoveredHosts": [
+        {
+          "hostId": "karl-host-karl-lab-metal-01",
+          "nodeName": "karl-lab-metal-01",
+          "provider": "khr.native",
+          "runtimeMode": "cluster-observed",
+          "labels": {
+            "beta.kubernetes.io/arch": "amd64",
+            "beta.kubernetes.io/os": "linux",
+            "cpu-feature.node.kubevirt.io/3dnowprefetch": "true",
+            "cpu-feature.node.kubevirt.io/abm": "true",
+            "cpu-feature.node.kubevirt.io/adx": "true",
+            "cpu-feature.node.kubevirt.io/aes": "true",
+            "cpu-feature.node.kubevirt.io/amd-psfd": "true",
+            "cpu-feature.node.kubevirt.io/amd-ssbd": "true",
+            "cpu-feature.node.kubevirt.io/amd-stibp": "true",
+            "cpu-feature.node.kubevirt.io/apic": "true",
+            "cpu-feature.node.kubevirt.io/arat": "true",
+            "cpu-feature.node.kubevirt.io/auto-ibrs": "true",
+            "cpu-feature.node.kubevirt.io/avx": "true",
+            "cpu-feature.node.kubevirt.io/avx2": "true",
+            "cpu-feature.node.kubevirt.io/avx512-bf16": "true",
+            "cpu-feature.node.kubevirt.io/avx512-vpopcntdq": "true",
+            "cpu-feature.node.kubevirt.io/avx512bitalg": "true",
+            "cpu-feature.node.kubevirt.io/avx512bw": "true",
+            "cpu-feature.node.kubevirt.io/avx512cd": "true",
+            "cpu-feature.node.kubevirt.io/avx512dq": "true",
+            "cpu-feature.node.kubevirt.io/avx512f": "true",
+            "cpu-feature.node.kubevirt.io/avx512ifma": "true",
+            "cpu-feature.node.kubevirt.io/avx512vbmi": "true",
+            "cpu-feature.node.kubevirt.io/avx512vbmi2": "true",
+            "cpu-feature.node.kubevirt.io/avx512vl": "true",
+            "cpu-feature.node.kubevirt.io/avx512vnni": "true",
+            "cpu-feature.node.kubevirt.io/bmi1": "true",
+            "cpu-feature.node.kubevirt.io/bmi2": "true",
+            "cpu-feature.node.kubevirt.io/clflush": "true",
+            "cpu-feature.node.kubevirt.io/clflushopt": "true",
+            "cpu-feature.node.kubevirt.io/clwb": "true",
+            "cpu-feature.node.kubevirt.io/clzero": "true",
+            "cpu-feature.node.kubevirt.io/cmov": "true",
+            "cpu-feature.node.kubevirt.io/cmp_legacy": "true",
+            "cpu-feature.node.kubevirt.io/cr8legacy": "true",
+            "cpu-feature.node.kubevirt.io/cx16": "true",
+            "cpu-feature.node.kubevirt.io/cx8": "true",
+            "cpu-feature.node.kubevirt.io/de": "true",
+            "cpu-feature.node.kubevirt.io/erms": "true",
+            "cpu-feature.node.kubevirt.io/f16c": "true",
+            "cpu-feature.node.kubevirt.io/flush-l1d": "true",
+            "cpu-feature.node.kubevirt.io/flushbyasid": "true",
+            "cpu-feature.node.kubevirt.io/fma": "true",
+            "cpu-feature.node.kubevirt.io/fpu": "true",
+            "cpu-feature.node.kubevirt.io/fsgsbase": "true",
+            "cpu-feature.node.kubevirt.io/fsrm": "true",
+            "cpu-feature.node.kubevirt.io/fxsr": "true",
+            "cpu-feature.node.kubevirt.io/fxsr_opt": "true",
+            "cpu-feature.node.kubevirt.io/gfni": "true",
+            "cpu-feature.node.kubevirt.io/hypervisor": "true",
+            "cpu-feature.node.kubevirt.io/ibpb": "true",
+            "cpu-feature.node.kubevirt.io/ibpb-brtype": "true",
+            "cpu-feature.node.kubevirt.io/ibrs": "true",
+            "cpu-feature.node.kubevirt.io/invpcid": "true",
+            "cpu-feature.node.kubevirt.io/invtsc": "true",
+            "cpu-feature.node.kubevirt.io/lahf_lm": "true",
+            "cpu-feature.node.kubevirt.io/lbrv": "true",
+            "cpu-feature.node.kubevirt.io/lfence-always-serializing": "true",
+            "cpu-feature.node.kubevirt.io/lm": "true",
+            "cpu-feature.node.kubevirt.io/mca": "true",
+            "cpu-feature.node.kubevirt.io/mce": "true",
+            "cpu-feature.node.kubevirt.io/misalignsse": "true",
+            "cpu-feature.node.kubevirt.io/mmx": "true",
+            "cpu-feature.node.kubevirt.io/mmxext": "true",
+            "cpu-feature.node.kubevirt.io/movbe": "true",
+            "cpu-feature.node.kubevirt.io/msr": "true",
+            "cpu-feature.node.kubevirt.io/mtrr": "true",
+            "cpu-feature.node.kubevirt.io/no-nested-data-bp": "true",
+            "cpu-feature.node.kubevirt.io/npt": "true",
+            "cpu-feature.node.kubevirt.io/nrip-save": "true",
+            "cpu-feature.node.kubevirt.io/null-sel-clr-base": "true",
+            "cpu-feature.node.kubevirt.io/nx": "true",
+            "cpu-feature.node.kubevirt.io/osvw": "true",
+            "cpu-feature.node.kubevirt.io/overflow-recov": "true",
+            "cpu-feature.node.kubevirt.io/pae": "true",
+            "cpu-feature.node.kubevirt.io/pat": "true",
+            "cpu-feature.node.kubevirt.io/pause-filter": "true",
+            "cpu-feature.node.kubevirt.io/pclmuldq": "true",
+            "cpu-feature.node.kubevirt.io/pdpe1gb": "true",
+            "cpu-feature.node.kubevirt.io/perfctr_core": "true",
+            "cpu-feature.node.kubevirt.io/perfmon-v2": "true",
+            "cpu-feature.node.kubevirt.io/pfthreshold": "true",
+            "cpu-feature.node.kubevirt.io/pge": "true",
+            "cpu-feature.node.kubevirt.io/pku": "true",
+            "cpu-feature.node.kubevirt.io/pni": "true",
+            "cpu-feature.node.kubevirt.io/popcnt": "true",
+            "cpu-feature.node.kubevirt.io/pse": "true",
+            "cpu-feature.node.kubevirt.io/pse36": "true",
+            "cpu-feature.node.kubevirt.io/rdpid": "true",
+            "cpu-feature.node.kubevirt.io/rdrand": "true",
+            "cpu-feature.node.kubevirt.io/rdseed": "true",
+            "cpu-feature.node.kubevirt.io/rdtscp": "true",
+            "cpu-feature.node.kubevirt.io/sbpb": "true",
+            "cpu-feature.node.kubevirt.io/sep": "true",
+            "cpu-feature.node.kubevirt.io/sha-ni": "true",
+            "cpu-feature.node.kubevirt.io/smap": "true",
+            "cpu-feature.node.kubevirt.io/smep": "true",
+            "cpu-feature.node.kubevirt.io/spec-ctrl": "true",
+            "cpu-feature.node.kubevirt.io/ssbd": "true",
+            "cpu-feature.node.kubevirt.io/sse": "true",
+            "cpu-feature.node.kubevirt.io/sse2": "true",
+            "cpu-feature.node.kubevirt.io/sse4.1": "true",
+            "cpu-feature.node.kubevirt.io/sse4.2": "true",
+            "cpu-feature.node.kubevirt.io/sse4a": "true",
+            "cpu-feature.node.kubevirt.io/ssse3": "true",
+            "cpu-feature.node.kubevirt.io/stibp": "true",
+            "cpu-feature.node.kubevirt.io/stibp-always-on": "true",
+            "cpu-feature.node.kubevirt.io/succor": "true",
+            "cpu-feature.node.kubevirt.io/svm": "true",
+            "cpu-feature.node.kubevirt.io/svme-addr-chk": "true",
+            "cpu-feature.node.kubevirt.io/syscall": "true",
+            "cpu-feature.node.kubevirt.io/tsc": "true",
+            "cpu-feature.node.kubevirt.io/tsc-deadline": "true",
+            "cpu-feature.node.kubevirt.io/tsc-scale": "true",
+            "cpu-feature.node.kubevirt.io/tsc_adjust": "true",
+            "cpu-feature.node.kubevirt.io/umip": "true",
+            "cpu-feature.node.kubevirt.io/vaes": "true",
+            "cpu-feature.node.kubevirt.io/vgif": "true",
+            "cpu-feature.node.kubevirt.io/virt-ssbd": "true",
+            "cpu-feature.node.kubevirt.io/vmcb-clean": "true",
+            "cpu-feature.node.kubevirt.io/vme": "true",
+            "cpu-feature.node.kubevirt.io/vnmi": "true",
+            "cpu-feature.node.kubevirt.io/vpclmulqdq": "true",
+            "cpu-feature.node.kubevirt.io/wbnoinvd": "true",
+            "cpu-feature.node.kubevirt.io/x2apic": "true",
+            "cpu-feature.node.kubevirt.io/xgetbv1": "true",
+            "cpu-feature.node.kubevirt.io/xsave": "true",
+            "cpu-feature.node.kubevirt.io/xsavec": "true",
+            "cpu-feature.node.kubevirt.io/xsaveerptr": "true",
+            "cpu-feature.node.kubevirt.io/xsaveopt": "true",
+            "cpu-feature.node.kubevirt.io/xsaves": "true",
+            "cpu-model-migration.node.kubevirt.io/Broadwell": "true",
+            "cpu-model-migration.node.kubevirt.io/Broadwell-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Broadwell-noTSX": "true",
+            "cpu-model-migration.node.kubevirt.io/Broadwell-noTSX-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Broadwell-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Broadwell-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Broadwell-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/Broadwell-v4": "true",
+            "cpu-model-migration.node.kubevirt.io/Cascadelake-Server": "true",
+            "cpu-model-migration.node.kubevirt.io/Cascadelake-Server-noTSX": "true",
+            "cpu-model-migration.node.kubevirt.io/Cascadelake-Server-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Cascadelake-Server-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Cascadelake-Server-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/Cascadelake-Server-v4": "true",
+            "cpu-model-migration.node.kubevirt.io/Cascadelake-Server-v5": "true",
+            "cpu-model-migration.node.kubevirt.io/Cooperlake": "true",
+            "cpu-model-migration.node.kubevirt.io/Cooperlake-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Cooperlake-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Denverton": "true",
+            "cpu-model-migration.node.kubevirt.io/Denverton-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Denverton-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Denverton-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/Dhyana": "true",
+            "cpu-model-migration.node.kubevirt.io/Dhyana-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Dhyana-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Genoa": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Genoa-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-IBPB": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Milan": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Milan-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Milan-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Rome": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Rome-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Rome-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Rome-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-Rome-v4": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/EPYC-v4": "true",
+            "cpu-model-migration.node.kubevirt.io/GraniteRapids": "true",
+            "cpu-model-migration.node.kubevirt.io/GraniteRapids-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/GraniteRapids-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Haswell": "true",
+            "cpu-model-migration.node.kubevirt.io/Haswell-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Haswell-noTSX": "true",
+            "cpu-model-migration.node.kubevirt.io/Haswell-noTSX-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Haswell-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Haswell-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Haswell-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/Haswell-v4": "true",
+            "cpu-model-migration.node.kubevirt.io/Icelake-Server": "true",
+            "cpu-model-migration.node.kubevirt.io/Icelake-Server-noTSX": "true",
+            "cpu-model-migration.node.kubevirt.io/Icelake-Server-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Icelake-Server-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Icelake-Server-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/Icelake-Server-v4": "true",
+            "cpu-model-migration.node.kubevirt.io/Icelake-Server-v5": "true",
+            "cpu-model-migration.node.kubevirt.io/Icelake-Server-v6": "true",
+            "cpu-model-migration.node.kubevirt.io/Icelake-Server-v7": "true",
+            "cpu-model-migration.node.kubevirt.io/IvyBridge": "true",
+            "cpu-model-migration.node.kubevirt.io/IvyBridge-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/IvyBridge-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/IvyBridge-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/KnightsMill": "true",
+            "cpu-model-migration.node.kubevirt.io/KnightsMill-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Nehalem": "true",
+            "cpu-model-migration.node.kubevirt.io/Nehalem-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Nehalem-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Nehalem-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Opteron_G3": "true",
+            "cpu-model-migration.node.kubevirt.io/Opteron_G3-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Opteron_G4": "true",
+            "cpu-model-migration.node.kubevirt.io/Opteron_G4-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Opteron_G5": "true",
+            "cpu-model-migration.node.kubevirt.io/Opteron_G5-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Penryn": "true",
+            "cpu-model-migration.node.kubevirt.io/Penryn-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/SandyBridge": "true",
+            "cpu-model-migration.node.kubevirt.io/SandyBridge-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/SandyBridge-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/SandyBridge-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/SapphireRapids": "true",
+            "cpu-model-migration.node.kubevirt.io/SapphireRapids-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/SapphireRapids-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/SapphireRapids-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/SierraForest": "true",
+            "cpu-model-migration.node.kubevirt.io/SierraForest-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Client": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Client-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Client-noTSX-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Client-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Client-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Client-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Client-v4": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Server": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Server-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Server-noTSX-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Server-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Server-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Server-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Server-v4": "true",
+            "cpu-model-migration.node.kubevirt.io/Skylake-Server-v5": "true",
+            "cpu-model-migration.node.kubevirt.io/Snowridge": "true",
+            "cpu-model-migration.node.kubevirt.io/Snowridge-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Snowridge-v2": "true",
+            "cpu-model-migration.node.kubevirt.io/Snowridge-v3": "true",
+            "cpu-model-migration.node.kubevirt.io/Snowridge-v4": "true",
+            "cpu-model-migration.node.kubevirt.io/Westmere": "true",
+            "cpu-model-migration.node.kubevirt.io/Westmere-IBRS": "true",
+            "cpu-model-migration.node.kubevirt.io/Westmere-v1": "true",
+            "cpu-model-migration.node.kubevirt.io/Westmere-v2": "true",
+            "cpu-model.node.kubevirt.io/Denverton-v2": "true",
+            "cpu-model.node.kubevirt.io/Denverton-v3": "true",
+            "cpu-model.node.kubevirt.io/Dhyana": "true",
+            "cpu-model.node.kubevirt.io/Dhyana-v1": "true",
+            "cpu-model.node.kubevirt.io/Dhyana-v2": "true",
+            "cpu-model.node.kubevirt.io/EPYC": "true",
+            "cpu-model.node.kubevirt.io/EPYC-IBPB": "true",
+            "cpu-model.node.kubevirt.io/EPYC-Rome": "true",
+            "cpu-model.node.kubevirt.io/EPYC-Rome-v1": "true",
+            "cpu-model.node.kubevirt.io/EPYC-Rome-v2": "true",
+            "cpu-model.node.kubevirt.io/EPYC-Rome-v3": "true",
+            "cpu-model.node.kubevirt.io/EPYC-Rome-v4": "true",
+            "cpu-model.node.kubevirt.io/EPYC-v1": "true",
+            "cpu-model.node.kubevirt.io/EPYC-v2": "true",
+            "cpu-model.node.kubevirt.io/EPYC-v3": "true",
+            "cpu-model.node.kubevirt.io/EPYC-v4": "true",
+            "cpu-model.node.kubevirt.io/IvyBridge": "true",
+            "cpu-model.node.kubevirt.io/IvyBridge-IBRS": "true",
+            "cpu-model.node.kubevirt.io/IvyBridge-v1": "true",
+            "cpu-model.node.kubevirt.io/IvyBridge-v2": "true",
+            "cpu-model.node.kubevirt.io/Nehalem": "true",
+            "cpu-model.node.kubevirt.io/Nehalem-IBRS": "true",
+            "cpu-model.node.kubevirt.io/Nehalem-v1": "true",
+            "cpu-model.node.kubevirt.io/Nehalem-v2": "true",
+            "cpu-model.node.kubevirt.io/Opteron_G3": "true",
+            "cpu-model.node.kubevirt.io/Opteron_G3-v1": "true",
+            "cpu-model.node.kubevirt.io/Penryn": "true",
+            "cpu-model.node.kubevirt.io/Penryn-v1": "true",
+            "cpu-model.node.kubevirt.io/SandyBridge": "true",
+            "cpu-model.node.kubevirt.io/SandyBridge-IBRS": "true",
+            "cpu-model.node.kubevirt.io/SandyBridge-v1": "true",
+            "cpu-model.node.kubevirt.io/SandyBridge-v2": "true",
+            "cpu-model.node.kubevirt.io/Westmere": "true",
+            "cpu-model.node.kubevirt.io/Westmere-IBRS": "true",
+            "cpu-model.node.kubevirt.io/Westmere-v1": "true",
+            "cpu-model.node.kubevirt.io/Westmere-v2": "true",
+            "cpu-timer.node.kubevirt.io/tsc-frequency": "4192141000",
+            "cpu-timer.node.kubevirt.io/tsc-scalable": "true",
+            "cpu-vendor.node.kubevirt.io/AMD": "true",
+            "cpumanager": "false",
+            "host-model-cpu.node.kubevirt.io/EPYC-Genoa": "true",
+            "host-model-required-features.node.kubevirt.io/cmp_legacy": "true",
+            "host-model-required-features.node.kubevirt.io/flush-l1d": "true",
+            "host-model-required-features.node.kubevirt.io/flushbyasid": "true",
+            "host-model-required-features.node.kubevirt.io/hypervisor": "true",
+            "host-model-required-features.node.kubevirt.io/ibpb-brtype": "true",
+            "host-model-required-features.node.kubevirt.io/invtsc": "true",
+            "host-model-required-features.node.kubevirt.io/lbrv": "true",
+            "host-model-required-features.node.kubevirt.io/overflow-recov": "true",
+            "host-model-required-features.node.kubevirt.io/pause-filter": "true",
+            "host-model-required-features.node.kubevirt.io/perfmon-v2": "true",
+            "host-model-required-features.node.kubevirt.io/pfthreshold": "true",
+            "host-model-required-features.node.kubevirt.io/sbpb": "true",
+            "host-model-required-features.node.kubevirt.io/spec-ctrl": "true",
+            "host-model-required-features.node.kubevirt.io/ssbd": "true",
+            "host-model-required-features.node.kubevirt.io/stibp": "true",
+            "host-model-required-features.node.kubevirt.io/succor": "true",
+            "host-model-required-features.node.kubevirt.io/tsc-deadline": "true",
+            "host-model-required-features.node.kubevirt.io/tsc-scale": "true",
+            "host-model-required-features.node.kubevirt.io/tsc_adjust": "true",
+            "host-model-required-features.node.kubevirt.io/vgif": "true",
+            "host-model-required-features.node.kubevirt.io/virt-ssbd": "true",
+            "host-model-required-features.node.kubevirt.io/vmcb-clean": "true",
+            "host-model-required-features.node.kubevirt.io/x2apic": "true",
+            "hyperv.node.kubevirt.io/base": "true",
+            "hyperv.node.kubevirt.io/frequencies": "true",
+            "hyperv.node.kubevirt.io/ipi": "true",
+            "hyperv.node.kubevirt.io/reenlightenment": "true",
+            "hyperv.node.kubevirt.io/reset": "true",
+            "hyperv.node.kubevirt.io/runtime": "true",
+            "hyperv.node.kubevirt.io/synic": "true",
+            "hyperv.node.kubevirt.io/synic2": "true",
+            "hyperv.node.kubevirt.io/synictimer": "true",
+            "hyperv.node.kubevirt.io/time": "true",
+            "hyperv.node.kubevirt.io/tlbflush": "true",
+            "hyperv.node.kubevirt.io/vpindex": "true",
+            "kube-ovn/role": "master",
+            "kubernetes.io/arch": "amd64",
+            "kubernetes.io/hostname": "karl-lab-metal-01",
+            "kubernetes.io/os": "linux",
+            "kubevirt.io/cpumanager": "false",
+            "kubevirt.io/ksm-enabled": "false",
+            "kubevirt.io/schedulable": "true",
+            "machine-type.node.kubevirt.io/pc": "true",
+            "machine-type.node.kubevirt.io/pc-i440fx-rhel7.6.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel7.6.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel8.0.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel8.1.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel8.2.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel8.3.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel8.4.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel8.5.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel8.6.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel9.0.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel9.2.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel9.4.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel9.6.0": "true",
+            "machine-type.node.kubevirt.io/pc-q35-rhel9.8.0": "true",
+            "machine-type.node.kubevirt.io/q35": "true",
+            "node-role.kubernetes.io/master": "",
+            "scheduling.node.kubevirt.io/tsc-frequency-4192141000": "true",
+            "topology.hostpath.csi/node": "karl-lab-metal-01"
+          },
+          "ready": true,
+          "observedAt": "2026-05-16T17:48:19Z"
+        }
+      ],
+      "discoveredShells": [
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-centos-stream-factory-01",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos7-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-centos7-factory-01",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-debian-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-debian-factory-01",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-factory-01",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-02",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-factory-02",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-optimized-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-optimized-01",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-rocky-factory-01",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "paolo-studyrhel-10-r19-rhel-memory-materialized",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r2",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "paolo-studyrhel-10-r2",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r6-memory",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "paolo-studyrhel-10-r6-memory",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-playground/Shell/linux-vm-hd-donor-v1",
+          "namespace": "karl-hyperdensity-playground",
+          "name": "linux-vm-hd-donor-v1",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-playground/Shell/linux-vm-hd-receiver-v1",
+          "namespace": "karl-hyperdensity-playground",
+          "name": "linux-vm-hd-receiver-v1",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Shell/hyperdensity-linux-ga-evidence-fixture-v1",
+          "namespace": "karl",
+          "name": "hyperdensity-linux-ga-evidence-fixture-v1",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Shell/hyperdensity-wave1-ubuntu-gui-01",
+          "namespace": "karl",
+          "name": "hyperdensity-wave1-ubuntu-gui-01",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Shell/linux-shell-v1-cpu-ram-reference-02",
+          "namespace": "karl",
+          "name": "linux-shell-v1-cpu-ram-reference-02",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Shell/master-win11",
+          "namespace": "karl",
+          "name": "master-win11",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "windows",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Shell/paolo-studyrhel-10",
+          "namespace": "karl",
+          "name": "paolo-studyrhel-10",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "linux",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Shell/win11-pool-0",
+          "namespace": "karl",
+          "name": "win11-pool-0",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "windows",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Shell/windows-hyper",
+          "namespace": "karl",
+          "name": "windows-hyper",
+          "runtimeClass": "kubevirt-vm",
+          "osFamily": "windows",
+          "vmType": "vm",
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "khr-runtime-sandbox/Shell/khr-native-live-target-5df65659bd-2xjxg",
+          "namespace": "khr-runtime-sandbox",
+          "name": "khr-native-live-target-5df65659bd-2xjxg",
+          "runtimeClass": "container",
+          "osFamily": "linux",
+          "vmType": "container",
+          "providerBinding": "khr.native"
+        },
+        {
+          "ref": "khr-runtime-sandbox/Shell/khr-runtime-linux-target-86795b9868-q45wk",
+          "namespace": "khr-runtime-sandbox",
+          "name": "khr-runtime-linux-target-86795b9868-q45wk",
+          "runtimeClass": "container",
+          "osFamily": "linux",
+          "vmType": "container",
+          "providerBinding": "khr.native"
+        }
+      ],
+      "discoveredCells": [
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-centos-stream-factory-01",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos7-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-centos7-factory-01",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-debian-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-debian-factory-01",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-factory-01",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-02",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-factory-02",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-optimized-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-optimized-01",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-factory-01",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "linux-vm-memory-hyperdensity-rocky-factory-01",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+          "shellRef": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "paolo-studyrhel-10-r19-rhel-memory-materialized",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+          "shellRef": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r2",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "paolo-studyrhel-10-r2",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+          "shellRef": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r6-memory",
+          "namespace": "karl-hyperdensity-evidence",
+          "name": "paolo-studyrhel-10-r6-memory",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+          "shellRef": "karl-hyperdensity-playground/Shell/linux-vm-hd-donor-v1",
+          "namespace": "karl-hyperdensity-playground",
+          "name": "linux-vm-hd-donor-v1",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": true,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+          "shellRef": "karl-hyperdensity-playground/Shell/linux-vm-hd-receiver-v1",
+          "namespace": "karl-hyperdensity-playground",
+          "name": "linux-vm-hd-receiver-v1",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": true,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+          "shellRef": "karl/Shell/hyperdensity-linux-ga-evidence-fixture-v1",
+          "namespace": "karl",
+          "name": "hyperdensity-linux-ga-evidence-fixture-v1",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": true,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+          "shellRef": "karl/Shell/hyperdensity-wave1-ubuntu-gui-01",
+          "namespace": "karl",
+          "name": "hyperdensity-wave1-ubuntu-gui-01",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+          "shellRef": "karl/Shell/linux-shell-v1-cpu-ram-reference-02",
+          "namespace": "karl",
+          "name": "linux-shell-v1-cpu-ram-reference-02",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Cell/master-win11",
+          "shellRef": "karl/Shell/master-win11",
+          "namespace": "karl",
+          "name": "master-win11",
+          "vmType": "vm",
+          "osFamily": "windows",
+          "sessionType": "session-offline",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Cell/paolo-studyrhel-10",
+          "shellRef": "karl/Shell/paolo-studyrhel-10",
+          "namespace": "karl",
+          "name": "paolo-studyrhel-10",
+          "vmType": "vm",
+          "osFamily": "linux",
+          "running": false,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Cell/win11-pool-0",
+          "shellRef": "karl/Shell/win11-pool-0",
+          "namespace": "karl",
+          "name": "win11-pool-0",
+          "vmType": "vm",
+          "osFamily": "windows",
+          "sessionType": "rdp-session-candidate",
+          "running": true,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "karl/Cell/windows-hyper",
+          "shellRef": "karl/Shell/windows-hyper",
+          "namespace": "karl",
+          "name": "windows-hyper",
+          "vmType": "vm",
+          "osFamily": "windows",
+          "sessionType": "rdp-session-candidate",
+          "running": true,
+          "providerBinding": "kubevirt.compatibility"
+        },
+        {
+          "ref": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+          "shellRef": "khr-runtime-sandbox/Shell/khr-native-live-target-5df65659bd-2xjxg",
+          "namespace": "khr-runtime-sandbox",
+          "name": "khr-native-live-target-5df65659bd-2xjxg",
+          "vmType": "container",
+          "osFamily": "linux",
+          "nodeName": "karl-lab-metal-01",
+          "running": true,
+          "providerBinding": "khr.native"
+        },
+        {
+          "ref": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+          "shellRef": "khr-runtime-sandbox/Shell/khr-runtime-linux-target-86795b9868-q45wk",
+          "namespace": "khr-runtime-sandbox",
+          "name": "khr-runtime-linux-target-86795b9868-q45wk",
+          "vmType": "container",
+          "osFamily": "linux",
+          "nodeName": "karl-lab-metal-01",
+          "running": true,
+          "providerBinding": "khr.native"
+        }
+      ],
+      "discoveredResourcePorts": [
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos-stream-factory-01-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+          "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos7-factory-01-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos7-factory-01",
+          "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-debian-factory-01-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-debian-factory-01",
+          "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-factory-01-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-01",
+          "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-factory-02-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-02",
+          "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-optimized-01-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-optimized-01",
+          "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+          "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-rocky-factory-01-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-factory-01",
+          "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r19-rhel-memory-materialized-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+          "cellRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r2-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r2",
+          "cellRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r6-memory-port",
+          "shellRef": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r6-memory",
+          "cellRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-playground/ResourcePort/linux-vm-hd-donor-v1-port",
+          "shellRef": "karl-hyperdensity-playground/Shell/linux-vm-hd-donor-v1",
+          "cellRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "compatibility-fallback",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl-hyperdensity-playground/ResourcePort/linux-vm-hd-receiver-v1-port",
+          "shellRef": "karl-hyperdensity-playground/Shell/linux-vm-hd-receiver-v1",
+          "cellRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "compatibility-fallback",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl/ResourcePort/hyperdensity-linux-ga-evidence-fixture-v1-port",
+          "shellRef": "karl/Shell/hyperdensity-linux-ga-evidence-fixture-v1",
+          "cellRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "compatibility-fallback",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl/ResourcePort/hyperdensity-wave1-ubuntu-gui-01-port",
+          "shellRef": "karl/Shell/hyperdensity-wave1-ubuntu-gui-01",
+          "cellRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl/ResourcePort/linux-shell-v1-cpu-ram-reference-02-port",
+          "shellRef": "karl/Shell/linux-shell-v1-cpu-ram-reference-02",
+          "cellRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl/ResourcePort/master-win11-port",
+          "shellRef": "karl/Shell/master-win11",
+          "cellRef": "karl/Cell/master-win11",
+          "lane": "windows-vm-session",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "unsupported",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl/ResourcePort/paolo-studyrhel-10-port",
+          "shellRef": "karl/Shell/paolo-studyrhel-10",
+          "cellRef": "karl/Cell/paolo-studyrhel-10",
+          "lane": "linux-vm-compatibility",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl/ResourcePort/win11-pool-0-port",
+          "shellRef": "karl/Shell/win11-pool-0",
+          "cellRef": "karl/Cell/win11-pool-0",
+          "lane": "windows-vm-session",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "karl/ResourcePort/windows-hyper-port",
+          "shellRef": "karl/Shell/windows-hyper",
+          "cellRef": "karl/Cell/windows-hyper",
+          "lane": "windows-vm-session",
+          "providerBinding": "kubevirt.compatibility",
+          "classification": "observation-only",
+          "liveScaleCapabilityObserved": false
+        },
+        {
+          "ref": "khr-runtime-sandbox/ResourcePort/khr-native-live-target-5df65659bd-2xjxg-port",
+          "shellRef": "khr-runtime-sandbox/Shell/khr-native-live-target-5df65659bd-2xjxg",
+          "cellRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+          "lane": "native-live",
+          "providerBinding": "khr.native",
+          "classification": "native-live",
+          "liveScaleCapabilityObserved": true
+        },
+        {
+          "ref": "khr-runtime-sandbox/ResourcePort/khr-runtime-linux-target-86795b9868-q45wk-port",
+          "shellRef": "khr-runtime-sandbox/Shell/khr-runtime-linux-target-86795b9868-q45wk",
+          "cellRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+          "lane": "linux-container-cgroup",
+          "providerBinding": "khr.native",
+          "classification": "live-in-place-capable",
+          "liveScaleCapabilityObserved": true
+        }
+      ],
+      "laneCapabilities": [
+        {
+          "lane": "linux-vm-compatibility",
+          "classification": "observation-only",
+          "providerBinding": "kubevirt.compatibility",
+          "liveScaleCapabilityObserved": false,
+          "workloadCount": 17
+        },
+        {
+          "lane": "windows-vm-session",
+          "classification": "unsupported",
+          "providerBinding": "kubevirt.compatibility",
+          "liveScaleCapabilityObserved": false,
+          "workloadCount": 3
+        },
+        {
+          "lane": "native-live",
+          "classification": "native-live",
+          "providerBinding": "khr.native",
+          "liveScaleCapabilityObserved": true,
+          "workloadCount": 1
+        },
+        {
+          "lane": "linux-container-cgroup",
+          "classification": "live-in-place-capable",
+          "providerBinding": "khr.native",
+          "liveScaleCapabilityObserved": true,
+          "workloadCount": 1
+        }
+      ],
+      "blockedStates": [
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "requiresRestart",
+          "reason": "Windows VM stopped; lane unsupported for live scale observation",
+          "targetRef": "karl/Cell/master-win11",
+          "lane": "windows-vm-session"
+        },
+        {
+          "state": "observation-only",
+          "reason": "VM stopped; live scale not observable",
+          "targetRef": "karl/Cell/paolo-studyrhel-10",
+          "lane": "linux-vm-compatibility"
+        },
+        {
+          "state": "requiresRestart",
+          "reason": "kubevirt.compatibility: Windows VM memory/CPU change may require restart; live-in-place not asserted",
+          "targetRef": "karl/Cell/win11-pool-0",
+          "lane": "windows-vm-session"
+        },
+        {
+          "state": "requiresRestart",
+          "reason": "kubevirt.compatibility: Windows VM memory/CPU change may require restart; live-in-place not asserted",
+          "targetRef": "karl/Cell/windows-hyper",
+          "lane": "windows-vm-session"
+        }
+      ],
+      "summary": {
+        "blockedStates": 17,
+        "cells": 22,
+        "hosts": 1,
+        "resourcePorts": 22,
+        "shells": 22
+      }
+    },
+    "resourcePorts": [
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos-stream-factory-01-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+        "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos7-factory-01-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-centos7-factory-01",
+        "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-debian-factory-01-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-debian-factory-01",
+        "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-factory-01-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-01",
+        "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-factory-02-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-factory-02",
+        "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-optimized-01-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-optimized-01",
+        "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+        "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-rocky-factory-01-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/linux-vm-memory-hyperdensity-rocky-factory-01",
+        "cellRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r19-rhel-memory-materialized-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+        "cellRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r2-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r2",
+        "cellRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourcePort/paolo-studyrhel-10-r6-memory-port",
+        "shellRef": "karl-hyperdensity-evidence/Shell/paolo-studyrhel-10-r6-memory",
+        "cellRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-playground/ResourcePort/linux-vm-hd-donor-v1-port",
+        "shellRef": "karl-hyperdensity-playground/Shell/linux-vm-hd-donor-v1",
+        "cellRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "compatibility-fallback",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl-hyperdensity-playground/ResourcePort/linux-vm-hd-receiver-v1-port",
+        "shellRef": "karl-hyperdensity-playground/Shell/linux-vm-hd-receiver-v1",
+        "cellRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "compatibility-fallback",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl/ResourcePort/hyperdensity-linux-ga-evidence-fixture-v1-port",
+        "shellRef": "karl/Shell/hyperdensity-linux-ga-evidence-fixture-v1",
+        "cellRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "compatibility-fallback",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl/ResourcePort/hyperdensity-wave1-ubuntu-gui-01-port",
+        "shellRef": "karl/Shell/hyperdensity-wave1-ubuntu-gui-01",
+        "cellRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl/ResourcePort/linux-shell-v1-cpu-ram-reference-02-port",
+        "shellRef": "karl/Shell/linux-shell-v1-cpu-ram-reference-02",
+        "cellRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl/ResourcePort/master-win11-port",
+        "shellRef": "karl/Shell/master-win11",
+        "cellRef": "karl/Cell/master-win11",
+        "lane": "windows-vm-session",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "unsupported",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl/ResourcePort/paolo-studyrhel-10-port",
+        "shellRef": "karl/Shell/paolo-studyrhel-10",
+        "cellRef": "karl/Cell/paolo-studyrhel-10",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl/ResourcePort/win11-pool-0-port",
+        "shellRef": "karl/Shell/win11-pool-0",
+        "cellRef": "karl/Cell/win11-pool-0",
+        "lane": "windows-vm-session",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "karl/ResourcePort/windows-hyper-port",
+        "shellRef": "karl/Shell/windows-hyper",
+        "cellRef": "karl/Cell/windows-hyper",
+        "lane": "windows-vm-session",
+        "providerBinding": "kubevirt.compatibility",
+        "classification": "observation-only",
+        "liveScaleCapabilityObserved": false
+      },
+      {
+        "ref": "khr-runtime-sandbox/ResourcePort/khr-native-live-target-5df65659bd-2xjxg-port",
+        "shellRef": "khr-runtime-sandbox/Shell/khr-native-live-target-5df65659bd-2xjxg",
+        "cellRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+        "lane": "native-live",
+        "providerBinding": "khr.native",
+        "classification": "native-live",
+        "liveScaleCapabilityObserved": true
+      },
+      {
+        "ref": "khr-runtime-sandbox/ResourcePort/khr-runtime-linux-target-86795b9868-q45wk-port",
+        "shellRef": "khr-runtime-sandbox/Shell/khr-runtime-linux-target-86795b9868-q45wk",
+        "cellRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+        "lane": "linux-container-cgroup",
+        "providerBinding": "khr.native",
+        "classification": "live-in-place-capable",
+        "liveScaleCapabilityObserved": true
+      }
+    ],
+    "resourceLeases": [
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/linux-vm-memory-hyperdensity-centos-stream-factory-01-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/linux-vm-memory-hyperdensity-centos7-factory-01-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/linux-vm-memory-hyperdensity-debian-factory-01-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/linux-vm-memory-hyperdensity-factory-01-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/linux-vm-memory-hyperdensity-factory-02-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/linux-vm-memory-hyperdensity-optimized-01-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/linux-vm-memory-hyperdensity-rocky-factory-01-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/paolo-studyrhel-10-r19-rhel-memory-materialized-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/paolo-studyrhel-10-r2-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-evidence/ResourceLease/paolo-studyrhel-10-r6-memory-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-playground/ResourceLease/linux-vm-hd-donor-v1-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl-hyperdensity-playground/ResourceLease/linux-vm-hd-receiver-v1-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl/ResourceLease/hyperdensity-linux-ga-evidence-fixture-v1-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl/ResourceLease/hyperdensity-wave1-ubuntu-gui-01-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl/ResourceLease/linux-shell-v1-cpu-ram-reference-02-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl/ResourceLease/master-win11-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl/ResourceLease/paolo-studyrhel-10-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl/ResourceLease/win11-pool-0-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "karl/ResourceLease/windows-hyper-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "khr-runtime-sandbox/ResourceLease/khr-native-live-target-5df65659bd-2xjxg-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      },
+      {
+        "ref": "khr-runtime-sandbox/ResourceLease/khr-runtime-linux-target-86795b9868-q45wk-scale-sim",
+        "resource": "cpu",
+        "mode": "envelope",
+        "dryRunOnly": true
+      }
+    ],
+    "postureSummary": {
+      "sandbox": true,
+      "preview": true,
+      "productionUnsupported": true,
+      "laneCount": 4,
+      "blockedStateCount": 17,
+      "blockers": [
+        "KHR-R simulation only",
+        "no autonomous apply"
+      ]
+    }
+  },
+  "candidateScalePlans": [
+    {
+      "planId": "cpu-scale-up-linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-vm-memory-hyperdensity-centos7-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-memory-hyperdensity-centos7-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-vm-memory-hyperdensity-debian-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-memory-hyperdensity-debian-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-vm-memory-hyperdensity-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-memory-hyperdensity-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-vm-memory-hyperdensity-factory-02",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-memory-hyperdensity-factory-02",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-vm-memory-hyperdensity-optimized-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-memory-hyperdensity-optimized-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-vm-memory-hyperdensity-rocky-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-memory-hyperdensity-rocky-factory-01",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-paolo-studyrhel-10-r2",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-paolo-studyrhel-10-r2",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-paolo-studyrhel-10-r6-memory",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-paolo-studyrhel-10-r6-memory",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-vm-hd-donor-v1",
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-hd-donor-v1",
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-vm-hd-receiver-v1",
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-vm-hd-receiver-v1",
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-hyperdensity-linux-ga-evidence-fixture-v1",
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-hyperdensity-linux-ga-evidence-fixture-v1",
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-hyperdensity-wave1-ubuntu-gui-01",
+      "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-hyperdensity-wave1-ubuntu-gui-01",
+      "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-linux-shell-v1-cpu-ram-reference-02",
+      "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-linux-shell-v1-cpu-ram-reference-02",
+      "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-master-win11",
+      "targetRef": "karl/Cell/master-win11",
+      "lane": "windows-vm-session",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-master-win11",
+      "targetRef": "karl/Cell/master-win11",
+      "lane": "windows-vm-session",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "kubevirt.compatibility: memory scaleUp requires VM restart; not live-in-place"
+    },
+    {
+      "planId": "cpu-scale-up-paolo-studyrhel-10",
+      "targetRef": "karl/Cell/paolo-studyrhel-10",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-paolo-studyrhel-10",
+      "targetRef": "karl/Cell/paolo-studyrhel-10",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "planId": "cpu-scale-up-win11-pool-0",
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-win11-pool-0",
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "kubevirt.compatibility: memory scaleUp requires VM restart; not live-in-place"
+    },
+    {
+      "planId": "cpu-scale-up-windows-hyper",
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "live-in-place not eligible"
+    },
+    {
+      "planId": "ram-scale-up-windows-hyper",
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": false,
+      "simulationOnly": true,
+      "blocked": true,
+      "blockedReason": "kubevirt.compatibility: memory scaleUp requires VM restart; not live-in-place"
+    },
+    {
+      "planId": "cpu-scale-up-khr-native-live-target-5df65659bd-2xjxg",
+      "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "lane": "native-live",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": true,
+      "simulationOnly": true,
+      "blocked": false
+    },
+    {
+      "planId": "ram-scale-up-khr-native-live-target-5df65659bd-2xjxg",
+      "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "lane": "native-live",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": true,
+      "simulationOnly": true,
+      "blocked": false
+    },
+    {
+      "planId": "cpu-scale-up-khr-runtime-linux-target-86795b9868-q45wk",
+      "targetRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "lane": "linux-container-cgroup",
+      "resource": "cpu",
+      "direction": "scaleUp",
+      "mode": "envelope",
+      "deltaSummary": "+250m (simulated)",
+      "liveInPlaceEligible": true,
+      "simulationOnly": true,
+      "blocked": false
+    },
+    {
+      "planId": "ram-scale-up-khr-runtime-linux-target-86795b9868-q45wk",
+      "targetRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "lane": "linux-container-cgroup",
+      "resource": "memory",
+      "direction": "scaleUp",
+      "mode": "scaleUp",
+      "deltaSummary": "+64Mi (simulated)",
+      "liveInPlaceEligible": true,
+      "simulationOnly": true,
+      "blocked": false
+    }
+  ],
+  "saturationForecast": [
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "medium",
+      "score": 0.55,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu+memory",
+      "riskLevel": "medium",
+      "score": 0.5,
+      "horizon": "15m",
+      "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "medium",
+      "score": 0.55,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu+memory",
+      "riskLevel": "medium",
+      "score": 0.5,
+      "horizon": "15m",
+      "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "medium",
+      "score": 0.55,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu+memory",
+      "riskLevel": "medium",
+      "score": 0.5,
+      "horizon": "15m",
+      "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl/Cell/master-win11",
+      "lane": "windows-vm-session",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for windows/windows-vm-session"
+    },
+    {
+      "targetRef": "karl/Cell/master-win11",
+      "lane": "windows-vm-session",
+      "resource": "memory",
+      "riskLevel": "high",
+      "score": 0.85,
+      "horizon": "15m",
+      "reason": "ram scale forecast for windows/windows-vm-session"
+    },
+    {
+      "targetRef": "karl/Cell/paolo-studyrhel-10",
+      "lane": "linux-vm-compatibility",
+      "resource": "cpu",
+      "riskLevel": "high",
+      "score": 0.9,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl/Cell/paolo-studyrhel-10",
+      "lane": "linux-vm-compatibility",
+      "resource": "memory",
+      "riskLevel": "medium",
+      "score": 0.6,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-vm-compatibility"
+    },
+    {
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "resource": "cpu",
+      "riskLevel": "medium",
+      "score": 0.55,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for windows/windows-vm-session"
+    },
+    {
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "resource": "memory",
+      "riskLevel": "high",
+      "score": 0.85,
+      "horizon": "15m",
+      "reason": "ram scale forecast for windows/windows-vm-session"
+    },
+    {
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "resource": "cpu+memory",
+      "riskLevel": "high",
+      "score": 0.8,
+      "horizon": "15m",
+      "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+    },
+    {
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "resource": "cpu",
+      "riskLevel": "medium",
+      "score": 0.55,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for windows/windows-vm-session"
+    },
+    {
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "resource": "memory",
+      "riskLevel": "high",
+      "score": 0.85,
+      "horizon": "15m",
+      "reason": "ram scale forecast for windows/windows-vm-session"
+    },
+    {
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "resource": "cpu+memory",
+      "riskLevel": "high",
+      "score": 0.8,
+      "horizon": "15m",
+      "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+    },
+    {
+      "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "lane": "native-live",
+      "resource": "cpu",
+      "riskLevel": "low",
+      "score": 0.2,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/native-live"
+    },
+    {
+      "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "lane": "native-live",
+      "resource": "memory",
+      "riskLevel": "low",
+      "score": 0.25,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/native-live"
+    },
+    {
+      "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "lane": "native-live",
+      "resource": "cpu+memory",
+      "riskLevel": "low",
+      "score": 0.3,
+      "horizon": "15m",
+      "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+    },
+    {
+      "targetRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "lane": "linux-container-cgroup",
+      "resource": "cpu",
+      "riskLevel": "low",
+      "score": 0.2,
+      "horizon": "15m",
+      "reason": "cpu scale forecast for linux/linux-container-cgroup"
+    },
+    {
+      "targetRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "lane": "linux-container-cgroup",
+      "resource": "memory",
+      "riskLevel": "low",
+      "score": 0.25,
+      "horizon": "15m",
+      "reason": "ram scale forecast for linux/linux-container-cgroup"
+    }
+  ],
+  "blockedConstraints": [
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/master-win11",
+      "lane": "windows-vm-session",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "requiresRestart",
+      "targetRef": "karl/Cell/master-win11",
+      "lane": "windows-vm-session",
+      "reason": "kubevirt.compatibility: memory scaleUp requires VM restart; not live-in-place"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/paolo-studyrhel-10",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/paolo-studyrhel-10",
+      "lane": "linux-vm-compatibility",
+      "reason": "live-in-place not eligible for RAM scale"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "requiresRestart",
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "reason": "kubevirt.compatibility: memory scaleUp requires VM restart; not live-in-place"
+    },
+    {
+      "constraint": "live-in-place-required",
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "reason": "live-in-place not eligible"
+    },
+    {
+      "constraint": "requiresRestart",
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "reason": "kubevirt.compatibility: memory scaleUp requires VM restart; not live-in-place"
+    }
+  ],
+  "compatibilityFallbackPrediction": [
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl/Cell/master-win11",
+      "lane": "windows-vm-session",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl/Cell/paolo-studyrhel-10",
+      "lane": "linux-vm-compatibility",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    },
+    {
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "providerBinding": "kubevirt.compatibility",
+      "likely": true,
+      "reason": "compatibility provider path; live-in-place not guaranteed"
+    }
+  ],
+  "liveInPlaceEligibility": [
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "live-in-place not asserted on this lane"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "live-in-place not asserted on this lane"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "live-in-place not asserted on this lane"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl/Cell/master-win11",
+      "lane": "windows-vm-session",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl/Cell/paolo-studyrhel-10",
+      "lane": "linux-vm-compatibility",
+      "eligible": false,
+      "reason": "workload not running"
+    },
+    {
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "eligible": false,
+      "reason": "live-in-place not asserted on this lane"
+    },
+    {
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "eligible": false,
+      "reason": "live-in-place not asserted on this lane"
+    },
+    {
+      "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "lane": "native-live",
+      "eligible": true,
+      "reason": "native-live lane: live-in-place eligible (KHR-S)"
+    },
+    {
+      "targetRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "lane": "linux-container-cgroup",
+      "eligible": true,
+      "reason": "linux cgroup sandbox lane supports live-in-place simulation"
+    }
+  ],
+  "restartRequiredPrediction": [
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "medium",
+      "reason": "KubeVirt VM may require restart for some scale operations (simulation)"
+    },
+    {
+      "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "medium",
+      "reason": "KubeVirt VM may require restart for some scale operations (simulation)"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "medium",
+      "reason": "KubeVirt VM may require restart for some scale operations (simulation)"
+    },
+    {
+      "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl/Cell/master-win11",
+      "lane": "windows-vm-session",
+      "required": true,
+      "riskLevel": "high",
+      "reason": "Windows/kubevirt compatibility may require guest restart for resource change"
+    },
+    {
+      "targetRef": "karl/Cell/paolo-studyrhel-10",
+      "lane": "linux-vm-compatibility",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "stopped VM: restart prediction deferred"
+    },
+    {
+      "targetRef": "karl/Cell/win11-pool-0",
+      "lane": "windows-vm-session",
+      "required": true,
+      "riskLevel": "high",
+      "reason": "Windows/kubevirt compatibility may require guest restart for resource change"
+    },
+    {
+      "targetRef": "karl/Cell/windows-hyper",
+      "lane": "windows-vm-session",
+      "required": true,
+      "riskLevel": "high",
+      "reason": "Windows/kubevirt compatibility may require guest restart for resource change"
+    },
+    {
+      "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+      "lane": "native-live",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "native-live lane: restart not required for cgroup live scale"
+    },
+    {
+      "targetRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+      "lane": "linux-container-cgroup",
+      "required": false,
+      "riskLevel": "low",
+      "reason": "cgroup lane: restart not required for simulation"
+    }
+  ],
+  "forecasts": {
+    "cpuScale": [
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "medium",
+        "score": 0.55,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "medium",
+        "score": 0.55,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "medium",
+        "score": 0.55,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/master-win11",
+        "lane": "windows-vm-session",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for windows/windows-vm-session"
+      },
+      {
+        "targetRef": "karl/Cell/paolo-studyrhel-10",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu",
+        "riskLevel": "high",
+        "score": 0.9,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/win11-pool-0",
+        "lane": "windows-vm-session",
+        "resource": "cpu",
+        "riskLevel": "medium",
+        "score": 0.55,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for windows/windows-vm-session"
+      },
+      {
+        "targetRef": "karl/Cell/windows-hyper",
+        "lane": "windows-vm-session",
+        "resource": "cpu",
+        "riskLevel": "medium",
+        "score": 0.55,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for windows/windows-vm-session"
+      },
+      {
+        "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+        "lane": "native-live",
+        "resource": "cpu",
+        "riskLevel": "low",
+        "score": 0.2,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/native-live"
+      },
+      {
+        "targetRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+        "lane": "linux-container-cgroup",
+        "resource": "cpu",
+        "riskLevel": "low",
+        "score": 0.2,
+        "horizon": "15m",
+        "reason": "cpu scale forecast for linux/linux-container-cgroup"
+      }
+    ],
+    "ramScale": [
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/master-win11",
+        "lane": "windows-vm-session",
+        "resource": "memory",
+        "riskLevel": "high",
+        "score": 0.85,
+        "horizon": "15m",
+        "reason": "ram scale forecast for windows/windows-vm-session"
+      },
+      {
+        "targetRef": "karl/Cell/paolo-studyrhel-10",
+        "lane": "linux-vm-compatibility",
+        "resource": "memory",
+        "riskLevel": "medium",
+        "score": 0.6,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-vm-compatibility"
+      },
+      {
+        "targetRef": "karl/Cell/win11-pool-0",
+        "lane": "windows-vm-session",
+        "resource": "memory",
+        "riskLevel": "high",
+        "score": 0.85,
+        "horizon": "15m",
+        "reason": "ram scale forecast for windows/windows-vm-session"
+      },
+      {
+        "targetRef": "karl/Cell/windows-hyper",
+        "lane": "windows-vm-session",
+        "resource": "memory",
+        "riskLevel": "high",
+        "score": 0.85,
+        "horizon": "15m",
+        "reason": "ram scale forecast for windows/windows-vm-session"
+      },
+      {
+        "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+        "lane": "native-live",
+        "resource": "memory",
+        "riskLevel": "low",
+        "score": 0.25,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/native-live"
+      },
+      {
+        "targetRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+        "lane": "linux-container-cgroup",
+        "resource": "memory",
+        "riskLevel": "low",
+        "score": 0.25,
+        "horizon": "15m",
+        "reason": "ram scale forecast for linux/linux-container-cgroup"
+      }
+    ],
+    "mixedLane": [
+      {
+        "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu+memory",
+        "riskLevel": "medium",
+        "score": 0.5,
+        "horizon": "15m",
+        "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+      },
+      {
+        "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu+memory",
+        "riskLevel": "medium",
+        "score": 0.5,
+        "horizon": "15m",
+        "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+      },
+      {
+        "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+        "lane": "linux-vm-compatibility",
+        "resource": "cpu+memory",
+        "riskLevel": "medium",
+        "score": 0.5,
+        "horizon": "15m",
+        "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+      },
+      {
+        "targetRef": "karl/Cell/win11-pool-0",
+        "lane": "windows-vm-session",
+        "resource": "cpu+memory",
+        "riskLevel": "high",
+        "score": 0.8,
+        "horizon": "15m",
+        "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+      },
+      {
+        "targetRef": "karl/Cell/windows-hyper",
+        "lane": "windows-vm-session",
+        "resource": "cpu+memory",
+        "riskLevel": "high",
+        "score": 0.8,
+        "horizon": "15m",
+        "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+      },
+      {
+        "targetRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+        "lane": "native-live",
+        "resource": "cpu+memory",
+        "riskLevel": "low",
+        "score": 0.3,
+        "horizon": "15m",
+        "reason": "mixed lane forecast: compatibility path may split CPU/RAM outcomes"
+      }
+    ],
+    "windowsCompatibility": [
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos-stream-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-centos7-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-debian-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-factory-02",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-optimized-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-bootstrap-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/linux-vm-memory-hyperdensity-rocky-factory-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r19-rhel-memory-materialized",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r2",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-evidence/Cell/paolo-studyrhel-10-r6-memory",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-donor-v1",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "KubeVirt VM may require restart for some scale operations (simulation)"
+      },
+      {
+        "targetRef": "karl-hyperdensity-playground/Cell/linux-vm-hd-receiver-v1",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "KubeVirt VM may require restart for some scale operations (simulation)"
+      },
+      {
+        "targetRef": "karl/Cell/hyperdensity-linux-ga-evidence-fixture-v1",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "KubeVirt VM may require restart for some scale operations (simulation)"
+      },
+      {
+        "targetRef": "karl/Cell/hyperdensity-wave1-ubuntu-gui-01",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl/Cell/linux-shell-v1-cpu-ram-reference-02",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl/Cell/master-win11",
+        "lane": "windows-vm-session",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": true,
+        "reason": "Windows/kubevirt compatibility may require guest restart for resource change"
+      },
+      {
+        "targetRef": "karl/Cell/paolo-studyrhel-10",
+        "lane": "linux-vm-compatibility",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": false,
+        "reason": "stopped VM: restart prediction deferred"
+      },
+      {
+        "targetRef": "karl/Cell/win11-pool-0",
+        "lane": "windows-vm-session",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": true,
+        "reason": "Windows/kubevirt compatibility may require guest restart for resource change"
+      },
+      {
+        "targetRef": "karl/Cell/windows-hyper",
+        "lane": "windows-vm-session",
+        "providerBinding": "kubevirt.compatibility",
+        "likely": true,
+        "reason": "Windows/kubevirt compatibility may require guest restart for resource change"
+      }
+    ]
+  },
+  "summary": {
+    "blockedConstraints": 40,
+    "candidatePlans": 44,
+    "compatibilityFallbackCount": 20,
+    "liveInPlaceEligibleCount": 2,
+    "nativeLiveEligibleCount": 1,
+    "restartRequiredCount": 3,
+    "saturationEntries": 50
+  }
+}

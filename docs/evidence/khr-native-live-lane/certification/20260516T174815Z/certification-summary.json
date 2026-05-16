@@ -1,0 +1,49 @@
+{
+  "certificationId": "khr-native-live-certification-v1",
+  "sprint": "KHR-T",
+  "lane": "native-live",
+  "status": "certified",
+  "regressionDetected": false,
+  "invariants": {
+    "noRestart": true,
+    "noRollout": true,
+    "noRecreate": true,
+    "interruptionWindowMs": 0,
+    "interruptionDetected": false
+  },
+  "metrics": {
+    "restartCountDelta": 0,
+    "rolloutCount": 0,
+    "recreateDetected": false,
+    "applyLatencyMs": {
+      "cpu": 226,
+      "ramUp": 217,
+      "ramDown": 222
+    },
+    "rollbackLatencyMs": {
+      "ramDown": 5,
+      "ramUp": 5,
+      "cpu": 4
+    },
+    "interruptionWindowMs": 0,
+    "runCount": 2
+  },
+  "scores": {
+    "continuityScore": 1,
+    "liveScaleConfidence": "high"
+  },
+  "runFingerprints": [
+    {
+      "runIndex": 1,
+      "fingerprint": "cb56a241b6eec025"
+    },
+    {
+      "runIndex": 2,
+      "fingerprint": "cb56a241b6eec025"
+    }
+  ],
+  "baselineMatch": true,
+  "readOnly": true,
+  "noAutomation": true,
+  "noAutonomousOrchestration": true
+}

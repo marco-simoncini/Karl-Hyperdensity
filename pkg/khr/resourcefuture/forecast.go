@@ -99,6 +99,7 @@ func inferFromCell(cell lanediscovery.DiscoveredCell) (lane, provider, class str
 	h := lanediscovery.WorkloadHint{
 		Name: cell.Name, Namespace: cell.Namespace, OSFamily: cell.OSFamily,
 		VMType: cell.VMType, Running: cell.Running, SandboxPod: cell.VMType == "container",
+		NativeLive: lanediscovery.IsNativeLiveWorkload(cell.Name, nil, cell.Namespace),
 	}
 	l, p, c, ls, _ := lanediscovery.ClassifyWorkload(h)
 	return l, p, c, ls, ""

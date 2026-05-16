@@ -1,0 +1,17 @@
+{
+  "certificationId": "khr-native-live-certification-v1",
+  "lane": "native-live",
+  "status": "certified",
+  "expectedRunCount": 2,
+  "invariants": {
+    "noRestart": true,
+    "noRollout": true,
+    "noRecreate": true,
+    "interruptionWindowMs": 0,
+    "interruptionDetected": false
+  },
+  "scores": {
+    "continuityScore": 1,
+    "liveScaleConfidence": "high"
+  }
+}

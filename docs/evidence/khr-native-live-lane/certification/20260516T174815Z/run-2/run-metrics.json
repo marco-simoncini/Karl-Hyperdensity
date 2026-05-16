@@ -1,0 +1,23 @@
+{
+  "restartCountBefore": 0,
+  "restartCountAfter": 0,
+  "restartCountDelta": 0,
+  "rolloutCount": 0,
+  "rolloutDetected": false,
+  "recreateDetected": false,
+  "interruptionDetected": false,
+  "interruptionWindowMs": 0,
+  "applyLatencyMs": {
+    "cpu": 220,
+    "ramUp": 217,
+    "ramDown": 222
+  },
+  "rollbackLatencyMs": {
+    "ramDown": 5,
+    "ramUp": 5,
+    "cpu": 4
+  },
+  "nativeLiveLaneCount": 1,
+  "liveInPlaceEligible": true,
+  "rollbackPass": true
+}

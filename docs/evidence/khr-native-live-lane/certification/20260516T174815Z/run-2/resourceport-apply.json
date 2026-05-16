@@ -1,0 +1,171 @@
+{
+  "mode": "resourceport-loop",
+  "blocked": false,
+  "emissionMode": "cr-applied-sandbox",
+  "emitCR": true,
+  "emitCRApplied": true,
+  "applyCR": true,
+  "applyCRApplied": true,
+  "appliedCRNames": [
+    "khr-runtime-sandbox-khr-native-live-target-5df65659bd-2xjxg-port",
+    "khr-runtime-sandbox-khr-runtime-linux-target-86795b9868-q45wk-port"
+  ],
+  "sandboxConfirm": true,
+  "clusterContext": "karl-metal-01@ovh",
+  "namespace": "khr-runtime-sandbox",
+  "safetyMode": "sandbox",
+  "source": "host-runtime-loop",
+  "noProductionMutation": true,
+  "iterations": [
+    {
+      "index": 1,
+      "observedAt": "2026-05-16T17:48:30Z",
+      "targets": [
+        {
+          "namespace": "khr-runtime-sandbox",
+          "podName": "khr-native-live-target-5df65659bd-2xjxg",
+          "container": "target",
+          "labels": {
+            "app": "khr-native-live-target",
+            "khr.karl.io/native-live": "true",
+            "khr.karl.io/sandbox": "true",
+            "pod-template-hash": "5df65659bd"
+          },
+          "cgroupPath": "/sys/fs/cgroup/kubepods.slice",
+          "hostId": "karl-host-runtime-karl-metal-01"
+        },
+        {
+          "namespace": "khr-runtime-sandbox",
+          "podName": "khr-runtime-linux-target-86795b9868-q45wk",
+          "container": "pause",
+          "labels": {
+            "app": "khr-runtime-linux-target",
+            "khr.karl.io/sandbox": "true",
+            "pod-template-hash": "86795b9868"
+          },
+          "cgroupPath": "/sys/fs/cgroup/kubepods.slice",
+          "hostId": "karl-host-runtime-karl-metal-01"
+        }
+      ],
+      "resourcePorts": [
+        {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "ResourcePort",
+          "metadata": {
+            "name": "khr-native-live-target-5df65659bd-2xjxg-port",
+            "namespace": "khr-runtime-sandbox",
+            "labels": {
+              "karl.io/host-id": "karl-host-runtime-karl-metal-01",
+              "khr.karl.io/loop-source": "host-runtime-loop",
+              "khr.karl.io/sandbox": "true"
+            }
+          },
+          "spec": {
+            "provider": "khr.native",
+            "shellRef": "khr-runtime-sandbox/Shell/khr-native-live-target-5df65659bd-2xjxg",
+            "cellRef": "khr-runtime-sandbox/Cell/khr-native-live-target-5df65659bd-2xjxg",
+            "capabilities": [
+              "cpu.envelope",
+              "memory.envelope"
+            ],
+            "hotplug": {
+              "cpu": false,
+              "memory": false,
+              "disk": false,
+              "network": false
+            },
+            "ports": {
+              "cpu": {
+                "modes": [
+                  "envelope",
+                  "static"
+                ]
+              },
+              "memory": {
+                "modes": [
+                  "envelope",
+                  "static"
+                ]
+              }
+            }
+          },
+          "status": {
+            "observedAt": "2026-05-16T17:48:30Z",
+            "phase": "Observed"
+          }
+        },
+        {
+          "apiVersion": "runtime.karl.io/v1alpha1",
+          "kind": "ResourcePort",
+          "metadata": {
+            "name": "khr-runtime-linux-target-86795b9868-q45wk-port",
+            "namespace": "khr-runtime-sandbox",
+            "labels": {
+              "karl.io/host-id": "karl-host-runtime-karl-metal-01",
+              "khr.karl.io/loop-source": "host-runtime-loop",
+              "khr.karl.io/sandbox": "true"
+            }
+          },
+          "spec": {
+            "provider": "khr.native",
+            "shellRef": "khr-runtime-sandbox/Shell/khr-runtime-linux-target-86795b9868-q45wk",
+            "cellRef": "khr-runtime-sandbox/Cell/khr-runtime-linux-target-86795b9868-q45wk",
+            "capabilities": [
+              "cpu.envelope",
+              "memory.envelope"
+            ],
+            "hotplug": {
+              "cpu": false,
+              "memory": false,
+              "disk": false,
+              "network": false
+            },
+            "ports": {
+              "cpu": {
+                "modes": [
+                  "envelope",
+                  "static"
+                ]
+              },
+              "memory": {
+                "modes": [
+                  "envelope",
+                  "static"
+                ]
+              }
+            }
+          },
+          "status": {
+            "observedAt": "2026-05-16T17:48:30Z",
+            "phase": "Observed"
+          }
+        }
+      ]
+    }
+  ],
+  "flightRecorder": [
+    {
+      "at": "2026-05-16T17:48:30.209774478Z",
+      "phase": "loop-start",
+      "message": "resourceport loop",
+      "data": "cr-preview"
+    },
+    {
+      "at": "2026-05-16T17:48:30.209796438Z",
+      "phase": "loop-iteration",
+      "message": "iteration 1",
+      "data": "ports=2"
+    },
+    {
+      "at": "2026-05-16T17:48:31.326314724Z",
+      "phase": "apply-cr",
+      "message": "resourceport CR applied",
+      "data": "count=2"
+    },
+    {
+      "at": "2026-05-16T17:48:31.326318524Z",
+      "phase": "loop-complete",
+      "message": "resourceport loop finished"
+    }
+  ]
+}

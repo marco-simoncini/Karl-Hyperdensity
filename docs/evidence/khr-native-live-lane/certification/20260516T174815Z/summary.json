@@ -1,0 +1,19 @@
+{
+  "sprint": "KHR-T",
+  "certificationId": "khr-native-live-certification-v1",
+  "certificationRunId": "20260516T174815Z",
+  "cluster": "karl-metal-01@ovh",
+  "runCount": 2,
+  "status": "certified",
+  "regressionDetected": false,
+  "baselineMatch": true,
+  "continuityScore": 1,
+  "liveScaleConfidence": "high",
+  "invariants": {
+    "noRestart": true,
+    "noRollout": true,
+    "noRecreate": true,
+    "interruptionWindowMs": 0,
+    "interruptionDetected": false
+  }
+}

@@ -1,0 +1,44 @@
+{
+  "mode": "resourcelease-rollback",
+  "rolledBack": true,
+  "blocked": false,
+  "baseline": {
+    "id": "cpu-run-2",
+    "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T174815Z/run-2/sandbox",
+    "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T174815Z/run-2/sandbox/apply-marker.txt",
+    "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T174815Z/run-2/sandbox/cgroup/khr-native-live-cpu-scale",
+    "cpuMaxBefore": "max",
+    "cpuMaxApplied": "20000 100000",
+    "resource": "cpu",
+    "transferMode": "envelope",
+    "extra": {
+      "allowPathPrefix": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/certification/20260516T174815Z/run-2/sandbox",
+      "source": "karl-host-runtime"
+    }
+  },
+  "rollback": {
+    "rolledBack": true,
+    "blocked": false,
+    "actions": [
+      "restored cpu.max from baseline"
+    ]
+  },
+  "verification": {
+    "state": "pass",
+    "observedCpuMax": "max",
+    "expectedCpuMax": "max",
+    "noRestart": true,
+    "noRollout": true,
+    "noRecreate": true,
+    "noProductionMutation": true,
+    "liveScalePolicy": {
+      "noRestart": true,
+      "noRollout": true,
+      "noRecreate": true,
+      "noProductionMutation": true,
+      "liveInPlace": true
+    }
+  },
+  "rollbackState": "restored",
+  "noProductionMutation": true
+}

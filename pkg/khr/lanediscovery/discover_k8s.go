@@ -292,6 +292,7 @@ func buildFromCluster(context string) (Result, error) {
 
 	seenShell := map[string]bool{}
 	seenCell := map[string]bool{}
+	seenCellPort := map[string]bool{}
 	laneCounts := map[string]int{}
 
 	addWorkload := func(h WorkloadHint) {
@@ -326,6 +327,7 @@ func buildFromCluster(context string) (Result, error) {
 			Lane: lane, ProviderBinding: provider, Classification: class,
 			LiveScaleCapabilityObserved: liveScale,
 		})
+		seenCellPort[cellRef] = true
 		if block != nil {
 			res.BlockedStates = append(res.BlockedStates, *block)
 		}
@@ -349,14 +351,20 @@ func buildFromCluster(context string) (Result, error) {
 
 	clusterPorts, _ := discoverClusterResourcePorts(context)
 	for _, rp := range clusterPorts {
+		if seenCellPort[rp.CellRef] {
+			continue
+		}
+		lane, provider, class, liveScale := LaneLinuxContainerCgroup, "khr.native", ClassificationObservationOnly, true
+		if IsNativeLiveWorkload(rp.Name, nil, rp.Namespace) || strings.Contains(rp.CellRef, "khr-native-live-") {
+			lane, provider, class, liveScale = LaneNativeLive, "khr.native", ClassificationNativeLive, true
+		}
 		res.DiscoveredResourcePorts = append(res.DiscoveredResourcePorts, DiscoveredResourcePort{
 			Ref: fmt.Sprintf("%s/ResourcePort/%s", rp.Namespace, rp.Name),
 			ShellRef: rp.ShellRef, CellRef: rp.CellRef,
-			Lane: LaneLinuxContainerCgroup, ProviderBinding: rp.Provider,
-			Classification: ClassificationObservationOnly,
-			LiveScaleCapabilityObserved: true, ClusterObserved: true,
+			Lane: lane, ProviderBinding: provider, Classification: class,
+			LiveScaleCapabilityObserved: liveScale, ClusterObserved: true,
 		})
-		laneCounts[LaneLinuxContainerCgroup]++
+		laneCounts[lane]++
 	}
 
 	res.LaneCapabilities = summarizeLaneCapabilities(laneCounts, res.DiscoveredResourcePorts)
