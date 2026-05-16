@@ -1,0 +1,42 @@
+{
+  "apiVersion": "hyperdensity.karl.io/v1alpha1",
+  "kind": "ResourceLease",
+  "metadata": {
+    "name": "khr-native-live-memory-up",
+    "namespace": "khr-runtime-sandbox",
+    "labels": {
+      "khr.karl.io/sandbox": "true",
+      "khr.karl.io/native-live": "true"
+    },
+    "annotations": {
+      "khr.karl.io/resource-port-ref": "cluster/ResourcePort/khr-runtime-sandbox-demo-port"
+    }
+  },
+  "spec": {
+    "leaseKind": "transfer",
+    "transfer": {
+      "donor": {
+        "apiGroup": "runtime.karl.io",
+        "kind": "Cell",
+        "namespace": "khr-runtime-sandbox",
+        "name": "native-live"
+      },
+      "receiver": {
+        "apiGroup": "runtime.karl.io",
+        "kind": "Cell",
+        "namespace": "khr-runtime-sandbox",
+        "name": "native-live-receiver"
+      },
+      "resource": "memory",
+      "mode": "scaleUp",
+      "amount": { "bytes": 33554432 }
+    },
+    "governance": {
+      "dryRunOnly": true,
+      "rollbackPlanRef": {
+        "name": "khr-sandbox-rollback",
+        "namespace": "khr-runtime-sandbox"
+      }
+    }
+  }
+}

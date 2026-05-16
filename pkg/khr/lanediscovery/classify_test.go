@@ -2,6 +2,25 @@ package lanediscovery
 
 import "testing"
 
+func TestClassifyNativeLiveSandbox(t *testing.T) {
+	lane, provider, class, live, block := ClassifyWorkload(WorkloadHint{
+		Name: "khr-native-live-target", Namespace: "khr-runtime-sandbox",
+		OSFamily: "linux", VMType: "container", Running: true, SandboxPod: true, NativeLive: true,
+	})
+	if lane != LaneNativeLive || provider != "khr.native" || class != ClassificationNativeLive || !live || block != nil {
+		t.Fatalf("lane=%s provider=%s class=%s live=%v block=%+v", lane, provider, class, live, block)
+	}
+}
+
+func TestIsNativeLiveWorkload(t *testing.T) {
+	if !IsNativeLiveWorkload("khr-native-live-target", map[string]string{LabelNativeLive: "true"}, "khr-runtime-sandbox") {
+		t.Fatal("label native-live")
+	}
+	if !IsNativeLiveWorkload("khr-native-live-foo", nil, "khr-runtime-sandbox") {
+		t.Fatal("name prefix")
+	}
+}
+
 func TestClassifySandboxLinuxContainer(t *testing.T) {
 	lane, _, class, live, block := ClassifyWorkload(WorkloadHint{
 		Name: "khr-runtime-linux-target", Namespace: "khr-runtime-sandbox",

@@ -92,6 +92,7 @@ func Run(opts Options) (SimulationResult, error) {
 	res.Summary["saturationEntries"] = len(sat)
 	res.Summary["blockedConstraints"] = len(blocked)
 	res.Summary["liveInPlaceEligibleCount"] = countEligible(live)
+	res.Summary["nativeLiveEligibleCount"] = countEligibleLane(live, lanediscovery.LaneNativeLive)
 	res.Summary["restartRequiredCount"] = countRestartRequired(restart)
 	res.Summary["compatibilityFallbackCount"] = len(compat)
 	return res, nil
@@ -153,6 +154,16 @@ func countEligible(items []LiveInPlaceEligibility) int {
 	n := 0
 	for _, i := range items {
 		if i.Eligible {
+			n++
+		}
+	}
+	return n
+}
+
+func countEligibleLane(items []LiveInPlaceEligibility, lane string) int {
+	n := 0
+	for _, i := range items {
+		if i.Eligible && i.Lane == lane {
 			n++
 		}
 	}

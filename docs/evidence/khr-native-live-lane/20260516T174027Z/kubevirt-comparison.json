@@ -1,0 +1,17 @@
+[
+  {
+    "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos-stream-factory-01-port",
+    "lane": "linux-vm-compatibility",
+    "classification": "observation-only"
+  },
+  {
+    "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-centos7-factory-01-port",
+    "lane": "linux-vm-compatibility",
+    "classification": "observation-only"
+  },
+  {
+    "ref": "karl-hyperdensity-evidence/ResourcePort/linux-vm-memory-hyperdensity-debian-factory-01-port",
+    "lane": "linux-vm-compatibility",
+    "classification": "observation-only"
+  }
+]

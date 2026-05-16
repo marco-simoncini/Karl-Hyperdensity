@@ -1,0 +1,3 @@
+deployment.apps/khr-native-live-target created
+Waiting for deployment "khr-native-live-target" rollout to finish: 0 of 1 updated replicas are available...
+deployment "khr-native-live-target" successfully rolled out

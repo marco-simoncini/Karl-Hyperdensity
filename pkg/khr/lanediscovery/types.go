@@ -2,16 +2,20 @@ package lanediscovery
 
 // Lane identifiers (KHR-Q).
 const (
+	LaneNativeLive             = "native-live"
 	LaneLinuxContainerCgroup   = "linux-container-cgroup"
 	LaneLinuxVMCompatibility   = "linux-vm-compatibility"
-	LaneWindowsVMSession         = "windows-vm-session"
-	LaneKubevirtCompatibility    = "kubevirt-compatibility"
+	LaneWindowsVMSession       = "windows-vm-session"
+	LaneKubevirtCompatibility  = "kubevirt-compatibility"
+
+	LabelNativeLive = "khr.karl.io/native-live"
 )
 
 // Classification values for discovered workloads.
 const (
-	ClassificationLiveInPlaceCapable  = "live-in-place-capable"
-	ClassificationObservationOnly     = "observation-only"
+	ClassificationNativeLive            = "native-live"
+	ClassificationLiveInPlaceCapable    = "live-in-place-capable"
+	ClassificationObservationOnly       = "observation-only"
 	ClassificationCompatibilityFallback = "compatibility-fallback"
 	ClassificationUnsupported         = "unsupported"
 )

@@ -1,0 +1,48 @@
+{
+  "mode": "resourcelease-rollback",
+  "rolledBack": true,
+  "blocked": false,
+  "baseline": {
+    "id": "native-ram-down-20260516T174027Z",
+    "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/20260516T174027Z/sandbox",
+    "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/20260516T174027Z/sandbox/apply-marker.txt",
+    "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/20260516T174027Z/sandbox/cgroup/khr-native-live-memory-down",
+    "memoryMaxBefore": "max",
+    "memoryHighBefore": "max",
+    "memoryMaxApplied": "251658240",
+    "memoryHighApplied": "251658240",
+    "resource": "memory",
+    "transferMode": "scaleDown",
+    "extra": {
+      "allowPathPrefix": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/20260516T174027Z/sandbox",
+      "source": "karl-host-runtime"
+    }
+  },
+  "rollback": {
+    "rolledBack": true,
+    "blocked": false,
+    "actions": [
+      "restored memory.high/memory.max from baseline"
+    ]
+  },
+  "verification": {
+    "state": "pass",
+    "observedMemoryMax": "max",
+    "expectedMemoryMax": "max",
+    "observedMemoryHigh": "max",
+    "expectedMemoryHigh": "max",
+    "noRestart": true,
+    "noRollout": true,
+    "noRecreate": true,
+    "noProductionMutation": true,
+    "liveScalePolicy": {
+      "noRestart": true,
+      "noRollout": true,
+      "noRecreate": true,
+      "noProductionMutation": true,
+      "liveInPlace": true
+    }
+  },
+  "rollbackState": "restored",
+  "noProductionMutation": true
+}

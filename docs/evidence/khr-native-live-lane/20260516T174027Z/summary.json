@@ -1,0 +1,17 @@
+{
+  "sprint": "KHR-S",
+  "runId": "20260516T174027Z",
+  "cluster": "karl-metal-01@ovh",
+  "nativeLiveLaneCount": 1,
+  "kubevirtCompatibilityLaneCount": 17,
+  "liveInPlaceEligibleNative": 1,
+  "nativeLiveEligibleSummary": 1,
+  "noRestart": true,
+  "noRollout": true,
+  "noRecreate": true,
+  "sessionContinuity": true,
+  "interruptionDetected": false,
+  "latencyMsBefore": 1778953228817,
+  "latencyMsAfter": 1778953234003,
+  "rollbackPass": true
+}

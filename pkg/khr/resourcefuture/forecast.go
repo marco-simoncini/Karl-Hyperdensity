@@ -108,6 +108,9 @@ func liveInPlaceFor(lane, class string, running bool) (bool, string) {
 	if !running {
 		return false, "workload not running"
 	}
+	if lane == lanediscovery.LaneNativeLive || class == lanediscovery.ClassificationNativeLive {
+		return true, "native-live lane: live-in-place eligible (KHR-S)"
+	}
 	if lane == lanediscovery.LaneLinuxContainerCgroup && class == lanediscovery.ClassificationLiveInPlaceCapable {
 		return true, "linux cgroup sandbox lane supports live-in-place simulation"
 	}
@@ -115,6 +118,9 @@ func liveInPlaceFor(lane, class string, running bool) (bool, string) {
 }
 
 func restartFor(lane, osFamily string, running bool) (required bool, risk, reason string) {
+	if lane == lanediscovery.LaneNativeLive {
+		return false, "low", "native-live lane: restart not required for cgroup live scale"
+	}
 	if osFamily == "windows" || lane == lanediscovery.LaneWindowsVMSession {
 		return true, "high", "Windows/kubevirt compatibility may require guest restart for resource change"
 	}
@@ -133,7 +139,7 @@ func cpuForecast(cell lanediscovery.DiscoveredCell, lane string, liveEligible bo
 	if !cell.Running {
 		risk = "high"
 		score = 0.9
-	} else if lane != lanediscovery.LaneLinuxContainerCgroup {
+	} else 	if lane != lanediscovery.LaneNativeLive && lane != lanediscovery.LaneLinuxContainerCgroup {
 		risk = "medium"
 		score = 0.55
 	}

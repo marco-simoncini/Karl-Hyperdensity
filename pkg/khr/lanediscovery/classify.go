@@ -14,7 +14,19 @@ type WorkloadHint struct {
 	VMType     string // container | vm | unknown
 	Running    bool
 	SandboxPod bool
+	NativeLive bool // dedicated Linux/container sandbox lane (KHR-S)
 	NodeName   string
+}
+
+// IsNativeLiveWorkload reports whether labels/name identify the native-live prototype lane.
+func IsNativeLiveWorkload(name string, labels map[string]string, namespace string) bool {
+	if labels != nil && labels[LabelNativeLive] == "true" {
+		return true
+	}
+	if namespace == "khr-runtime-sandbox" && strings.HasPrefix(name, "khr-native-live-") {
+		return true
+	}
+	return false
 }
 
 // ClassifyWorkload returns lane, provider, classification, liveScale observed, and optional block.
@@ -23,7 +35,14 @@ func ClassifyWorkload(h WorkloadHint) (lane, provider, classification string, li
 	vmType := strings.ToLower(strings.TrimSpace(h.VMType))
 
 	switch {
-	case h.SandboxPod && os != "windows":
+	case h.NativeLive && h.SandboxPod && os != "windows" && vmType != "vm":
+		lane = LaneNativeLive
+		provider = "khr.native"
+		classification = ClassificationNativeLive
+		liveScale = h.Running
+		return lane, provider, classification, liveScale, nil
+
+	case h.SandboxPod && os != "windows" && vmType != "vm":
 		lane = LaneLinuxContainerCgroup
 		provider = "khr.native"
 		classification = ClassificationLiveInPlaceCapable

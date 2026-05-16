@@ -1,0 +1,14 @@
+{
+  "id": "native-cpu-20260516T174027Z",
+  "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/20260516T174027Z/sandbox",
+  "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/20260516T174027Z/sandbox/apply-marker.txt",
+  "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/20260516T174027Z/sandbox/cgroup/khr-native-live-cpu-scale",
+  "cpuMaxBefore": "max",
+  "cpuMaxApplied": "20000 100000",
+  "resource": "cpu",
+  "transferMode": "envelope",
+  "extra": {
+    "allowPathPrefix": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-native-live-lane/20260516T174027Z/sandbox",
+    "source": "karl-host-runtime"
+  }
+}

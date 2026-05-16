@@ -1,0 +1,8 @@
+[
+  {
+    "ref": "khr-runtime-sandbox/ResourcePort/khr-native-live-target-5df65659bd-2xjxg-port",
+    "lane": "native-live",
+    "classification": "native-live",
+    "liveScaleCapabilityObserved": true
+  }
+]

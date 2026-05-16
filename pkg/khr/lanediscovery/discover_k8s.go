@@ -18,12 +18,13 @@ type kubeVM struct {
 }
 
 type kubePod struct {
-	Namespace string
-	Name      string
-	Labels    map[string]string
-	NodeName  string
-	Running   bool
-	Sandbox   bool
+	Namespace  string
+	Name       string
+	Labels     map[string]string
+	NodeName   string
+	Running    bool
+	Sandbox    bool
+	NativeLive bool
 }
 
 type kubeNode struct {
@@ -170,12 +171,13 @@ func discoverPods(context string) ([]kubePod, error) {
 		}
 		running := p.Status.Phase == "Running"
 		out = append(out, kubePod{
-			Namespace: p.Metadata.Namespace,
-			Name:      p.Metadata.Name,
-			Labels:    p.Metadata.Labels,
-			NodeName:  p.Spec.NodeName,
-			Running:   running,
-			Sandbox:   sandbox,
+			Namespace:  p.Metadata.Namespace,
+			Name:       p.Metadata.Name,
+			Labels:     p.Metadata.Labels,
+			NodeName:   p.Spec.NodeName,
+			Running:    running,
+			Sandbox:    sandbox,
+			NativeLive: IsNativeLiveWorkload(p.Metadata.Name, p.Metadata.Labels, p.Metadata.Namespace),
 		})
 	}
 	return out, nil
@@ -341,7 +343,7 @@ func buildFromCluster(context string) (Result, error) {
 		addWorkload(WorkloadHint{
 			Name: p.Name, Namespace: p.Namespace, OSFamily: "linux",
 			VMType: "container", Running: p.Running, SandboxPod: p.Sandbox,
-			NodeName: p.NodeName,
+			NativeLive: p.NativeLive, NodeName: p.NodeName,
 		})
 	}
 
