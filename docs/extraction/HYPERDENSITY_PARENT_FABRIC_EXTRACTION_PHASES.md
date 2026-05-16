@@ -40,6 +40,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 63:** **Branch swap** — wrapper true branch uses candidate; `live.go` scope only; broad observation **false**.
 
+**Sprint 64:** **Observation re-audit** + broad policy — `ObservationWiredV1` remains **false**; apply/resource-exchange/rollback/VM remain legacy.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

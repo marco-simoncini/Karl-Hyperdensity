@@ -40,8 +40,9 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | **61** | `LiveObservationWiredV1=true`; true branch legacy-equivalent | `copy-deferred` (full file) |
 | **62** | Semantic live candidate shadow; `CandidateRuntimeUsedV1=false` | `copy-deferred` (full file) |
 | **63** | Branch swap: wrapper true branch → candidate; scoped to live | `copy-deferred` (full file) |
+| **64** | Observation re-audit; `ObservationWiredV1=false` policy | `copy-deferred` (full file) |
 
-Re-audit for remaining functions unchanged. Sprint 57–63 do **not** complete general observation wiring.
+Re-audit for remaining functions unchanged. Sprint 57–64 do **not** complete general observation wiring. **`ObservationWiredV1=false` is deliberate** (Sprint 64).
 
 ## Related
 

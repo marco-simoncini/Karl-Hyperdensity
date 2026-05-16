@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 62** introduces a **semantic candidate** for live pod observation. **Sprint 63** connects the candidate to wrapper **true branch** in `observation_wiring_v1.go`. **`live.go`** still calls wrappers only. Broad observation remains **false**.
+**Sprint 62** introduces a **semantic candidate** for live pod observation. **Sprint 63** connects the candidate to wrapper **true branch**. **Sprint 64** re-audit: broad **`ObservationWiredV1`** remains **false** by policy.
 
 ---
 

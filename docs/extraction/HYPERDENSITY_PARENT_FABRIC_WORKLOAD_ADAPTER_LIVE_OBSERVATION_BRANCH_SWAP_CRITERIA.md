@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 63** executed the dedicated branch swap. Criteria below were satisfied in Sprint 62; swap applied in Sprint 63.
+**Sprint 63** executed the dedicated branch swap. **Sprint 64** documents remaining surfaces and broad observation policy (`ObservationWiredV1` stays **false**).
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 63** swaps the **true branch** of live observation wrappers in `observation_wiring_v1.go` to use **semantic candidate helpers** introduced in Sprint 62. **`CandidateRuntimeUsedV1 = true`**, **`branchSwapAllowed = true`**. Broad **`ObservationWiredV1`** and **`ProductionWiredV1`** remain **`false`**. Behavior remains **legacy-equivalent** (candidate ≡ legacy per shadow matrix).
+**Sprint 63** swaps the **true branch** of live observation wrappers in `observation_wiring_v1.go` to use **semantic candidate helpers** introduced in Sprint 62. **`CandidateRuntimeUsedV1 = true`**, **`branchSwapAllowed = true`**. Broad **`ObservationWiredV1`** and **`ProductionWiredV1`** remain **`false`**. **Sprint 64** re-audit confirms this does **not** complete general observation wiring.
 
 ---
 
