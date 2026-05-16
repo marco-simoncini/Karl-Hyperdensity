@@ -20,9 +20,14 @@
 - No observed-state builders copied from Dashboard
 - No production import from Dashboard runtime
 
-## Sprint 52 note
+## Sprint 52–53 notes
 
-Three **pure-candidate** functions are now copy-contracted in Hyperdensity `parentfabric/workload`. Adapter stubs and full `workload_helpers.go` remain **copy-deferred**.
+| Sprint | Deliverable |
+|--------|-------------|
+| **52** | Three pure-candidates in Hyperdensity `parentfabric/workload` |
+| **53** | Dashboard **production-internal** adapter v1 — **not wired** to handlers |
+
+Sprint 51 test-only stubs remain; full `workload_helpers.go` stays **copy-deferred**.
 
 ## Re-audit gate (unchanged from Sprint 50 criteria)
 

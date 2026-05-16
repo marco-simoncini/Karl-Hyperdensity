@@ -12,6 +12,8 @@ Sprint 52 copies **exactly three** stdlib-only functions from Dashboard `hyperde
 
 **Full file verdict:** **`copy-deferred`** (unchanged).
 
+**Sprint 53:** Dashboard adds production-internal adapter v1 (path + observation) — **not wired**; does not change this three-function contract.
+
 ## Not copied (Dashboard-owned)
 
 | Category | Count | Status |
