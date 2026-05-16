@@ -1,0 +1,78 @@
+{
+  "phase": "khr-tp-live-scope3-preflight",
+  "sprint": "KHR-BB",
+  "runId": "committed-scope3-preflight-khr-bb",
+  "clusterContext": "karl-metal-01@ovh",
+  "namespace": "khr-runtime-sandbox",
+  "contractSetId": "khr-tp-contract-v1",
+  "status": "PASS",
+  "readOnly": true,
+  "mutating": false,
+  "automaticEnablement": false,
+  "productionReady": false,
+  "noAutonomousOrchestration": true,
+  "readyForScope1": true,
+  "readyForScope2": "manual-loop-pass",
+  "readyForScope3": "conditional/manual-preflight-pass",
+  "readyForScope3Active": false,
+  "readyForScope4": false,
+  "resourceLeaseDryRunExecuted": false,
+  "resourceLeaseApplyEnabled": false,
+  "resourcePortObservationAvailable": true,
+  "rollbackPlanDeclared": true,
+  "rollbackPlanExecuted": false,
+  "scope3BlockedReason": "ResourceLease dry-run not executed; deferred to dedicated sprint after sign-off",
+  "scope3PreflightNote": "KHR-BB preflight only \u2014 no dry-run execution, no apply, no cgroup mutation",
+  "checks": {
+    "clusterContext": {
+      "status": "PASS",
+      "detail": "current=karl-metal-01@ovh required=karl-metal-01@ovh"
+    },
+    "sandboxNamespaceLabel": {
+      "status": "PASS",
+      "detail": "namespace=khr-runtime-sandbox"
+    },
+    "scope1Ready": {
+      "status": "PASS",
+      "detail": "runId=khr-aw-scope1-20260516T210000Z"
+    },
+    "scope2ManualLoopPass": {
+      "status": "PASS",
+      "detail": "readyForScope2=manual-loop-pass"
+    },
+    "resourcePortObservedJson": {
+      "status": "PASS",
+      "detail": "emissionMode=observed-json"
+    },
+    "sampleResourceLeaseInput": {
+      "status": "PASS",
+      "detail": "lease=resourcelease-dryrun-allowed.json rollbackPlanRef=True dryRunOnly=True"
+    },
+    "dryRunExecutableAvailable": {
+      "status": "PASS",
+      "detail": "karl-host-runtime -mode=resourcelease-dryrun present in source"
+    },
+    "resourceLeaseApplyDisabled": {
+      "status": "PASS",
+      "detail": "sandboxApplyEnabled=false; lease governance dryRunOnly=true"
+    },
+    "noResourceLeaseDryRunExecuted": {
+      "status": "PASS",
+      "detail": "resourceLeaseDryRunExecuted=False"
+    },
+    "noProductionNamespaceMutation": {
+      "status": "PASS",
+      "detail": "{\"karl\": \"18 2\", \"karl-system\": \"7 652 6 11 1 1 48 1 2 5 5 11\", \"default\": \"1 1 21 21 21 21 21 20\", \"kube-system\": \"5 4 6 1 1 2 1 1 1 1\"}"
+    }
+  },
+  "errors": [],
+  "forbidden": {
+    "resourceLeaseDryRunLiveExecution": true,
+    "resourceLeaseApply": true,
+    "cgroupMutation": true,
+    "autonomousDryRunScheduler": true,
+    "productionNamespaceMutation": true
+  },
+  "evidencePath": "docs/evidence/khr-tp-live-scope3-preflight/committed-scope3-preflight-khr-bb",
+  "at": "2026-05-16T21:44:23Z"
+}

@@ -243,18 +243,6 @@ record("noProductionNamespaceMutation", prod_ok, prod_detail)
 dash_fixture = Path(os.environ.get("KHR_DASHBOARD_PATH", str(ROOT.parent / "Karl-Dashboard"))) / \
     "examples/khr-dashboard/tp-readiness-reference-env.json"
 dash = load(dash_fixture)
-dash_summary = (dash or {}).get("tpReadinessSummary", {})
-record(
-    "dashboardTpReadinessFixture",
-    bool(
-        dash
-        and dash_summary.get("readyForScope1") is True
-        and dash_summary.get("readyForScope2") is False
-        and dash_summary.get("productionReady") is False
-        and dash_summary.get("readyForScope2Preflight") == "conditional/manual-preflight-pass"
-    ),
-    str(dash_fixture),
-)
 
 scope2_loop = None
 scope2_loop_base = ROOT / "docs/evidence/khr-tp-live-scope2-resourceport-loop"
@@ -286,10 +274,54 @@ if scope2_loop_ok:
 elif scope2_pf_ok:
     ready_for_scope2 = "conditional/manual-preflight-pass"
 
+scope3_pf = None
+scope3_base = ROOT / "docs/evidence/khr-tp-live-scope3-preflight"
+committed_scope3 = scope3_base / "committed-scope3-preflight-khr-bb" / "scope3-preflight-summary.json"
+if committed_scope3.is_file():
+    scope3_pf = load(committed_scope3)
+elif scope3_base.is_dir():
+    for child in sorted(scope3_base.iterdir(), reverse=True):
+        p = child / "scope3-preflight-summary.json"
+        if p.is_file():
+            scope3_pf = load(p)
+            if scope3_pf:
+                break
+scope3_pf_ok = bool(
+    scope3_pf
+    and scope3_pf.get("status") == "PASS"
+    and scope3_pf.get("resourceLeaseDryRunExecuted") is False
+    and scope3_pf.get("readyForScope3Active") is False
+)
+record(
+    "scope3PreflightEvidence",
+    scope3_pf_ok,
+    f"runId={scope3_pf.get('runId') if scope3_pf else 'none'}",
+)
+
+ready_for_scope3: bool | str = False
+if scope3_pf_ok:
+    ready_for_scope3 = "conditional/manual-preflight-pass"
+
+dash_summary = (dash or {}).get("tpReadinessSummary", {})
+record(
+    "dashboardTpReadinessFixture",
+    bool(
+        dash
+        and dash_summary.get("readyForScope1") is True
+        and dash_summary.get("readyForScope2State") == "manual-loop-pass"
+        and dash_summary.get("readyForScope3") is False
+        and dash_summary.get("readyForScope3State") == "conditional/manual-preflight-pass"
+        and dash_summary.get("readyForScope3Active") is False
+        and dash_summary.get("readyForScope4") is False
+        and dash_summary.get("resourceLeaseDryRunExecuted") is False
+    ),
+    str(dash_fixture),
+)
+
 status = "PASS" if not errors else "FAIL"
 summary = {
     "phase": "khr-tp-live-reference-env",
-    "sprint": "KHR-BA",
+    "sprint": "KHR-BB",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": "khr-tp-contract-v1",
@@ -303,7 +335,11 @@ summary = {
     "readyForScope2": ready_for_scope2,
     "readyForScope2Active": False,
     "readyForScope2LoopExecution": scope2_loop_ok,
-    "readyForScope3": False,
+    "readyForScope3": ready_for_scope3,
+    "readyForScope3Active": False,
+    "readyForScope4": False,
+    "resourceLeaseDryRunExecuted": scope3_pf.get("resourceLeaseDryRunExecuted", False) if scope3_pf else False,
+    "resourceLeaseApplyEnabled": scope3_pf.get("resourceLeaseApplyEnabled", False) if scope3_pf else False,
     "resourcePortObservationAvailable": scope2_loop_ok,
     "resourcePortLoopEnabled": scope2_loop.get("resourcePortLoopEnabled", False) if scope2_loop else (
         scope2_pf.get("resourcePortLoopEnabled", False) if scope2_pf else False
@@ -322,7 +358,8 @@ summary = {
 print(f"[khr_tp_live_reference_env_check] summary={OUT / 'reference-env-summary.json'}")
 print(
     f"[khr_tp_live_reference_env_check] status={status} "
-    f"readyForScope1={summary['readyForScope1']} readyForScope2={summary['readyForScope2']}"
+    f"readyForScope1={summary['readyForScope1']} readyForScope2={summary['readyForScope2']} "
+    f"readyForScope3={summary['readyForScope3']}"
 )
 if status != "PASS":
     for e in errors:

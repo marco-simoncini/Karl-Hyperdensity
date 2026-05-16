@@ -314,6 +314,11 @@ if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh" ]]; then
     "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope3_preflight.sh" ]]; then
+  KHR_TP_LIVE_SCOPE3_RUN_ID="${KHR_TP_LIVE_SCOPE3_RUN_ID:-committed-scope3-preflight-khr-bb}" \
+    "${ROOT_DIR}/scripts/khr_tp_live_scope3_preflight.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_run.sh" ]]; then
   KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP="${KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP:-true}" \
   KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \

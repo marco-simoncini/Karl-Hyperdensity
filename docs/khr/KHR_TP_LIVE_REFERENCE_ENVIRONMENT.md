@@ -34,7 +34,8 @@ The **reference environment** is the stabilized Technical Preview live posture o
 | rdp-GW continuity | `docs/evidence/khr-accessgraph-continuity/*/summary.json` | `source=live-readonly` preferred |
 | rdp-GW cluster-sandbox | `docs/evidence/khr-rdpgw-cluster-sandbox/committed-cluster-sandbox-khr-ay/verify-summary.json` | **Preferred:** `deployMode=cluster-sandbox`, `accessGraphLiveReadonly=true` |
 | Scope-2 preflight | `docs/evidence/khr-tp-live-scope2-preflight/committed-scope2-preflight-khr-az/scope2-preflight-summary.json` | `readyForScope2=conditional/manual-preflight-pass`, `resourcePortLoopEnabled=false` |
-| Scope-2 manual loop | `docs/evidence/khr-tp-live-scope2-resourceport-loop/committed-scope2-loop-khr-ba/verify-summary.json` | `readyForScope2=manual-loop-pass`, `readyForScope3=false`, `emissionMode=observed-json` |
+| Scope-2 manual loop | `docs/evidence/khr-tp-live-scope2-resourceport-loop/committed-scope2-loop-khr-ba/verify-summary.json` | `readyForScope2=manual-loop-pass`, `emissionMode=observed-json` |
+| Scope-3 preflight | `docs/evidence/khr-tp-live-scope3-preflight/committed-scope3-preflight-khr-bb/scope3-preflight-summary.json` | `readyForScope3=conditional/manual-preflight-pass`, dry-run not executed, apply disabled |
 | rdp-GW deploy mode (fallback) | `docs/evidence/khr-rdpgw-scope1/*/deploy-summary.json` | `deployMode=local-gateway` with warning if cluster-sandbox unavailable |
 
 ---

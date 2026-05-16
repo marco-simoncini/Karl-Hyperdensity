@@ -322,6 +322,37 @@ gate(
 )
 
 
+def latest_scope3_preflight() -> dict[str, Any] | None:
+    base = ROOT / "docs/evidence/khr-tp-live-scope3-preflight"
+    committed = base / "committed-scope3-preflight-khr-bb" / "scope3-preflight-summary.json"
+    if committed.is_file():
+        return load_json(committed)
+    if not base.is_dir():
+        return None
+    for name in sorted(base.iterdir(), reverse=True):
+        p = name / "scope3-preflight-summary.json"
+        if p.is_file():
+            doc = load_json(p)
+            if doc and doc.get("status") == "PASS":
+                return doc
+    return None
+
+
+scope3_preflight = latest_scope3_preflight()
+scope3_pf_ok = bool(
+    scope3_preflight
+    and scope3_preflight.get("status") == "PASS"
+    and scope3_preflight.get("resourceLeaseDryRunExecuted") is False
+    and scope3_preflight.get("resourceLeaseApplyEnabled") is False
+    and scope3_preflight.get("readyForScope3Active") is False
+)
+gate(
+    "scope3PreflightEvidence",
+    scope3_pf_ok,
+    f"runId={scope3_preflight.get('runId') if scope3_preflight else 'none'}",
+)
+
+
 all_core = all(
     gates[g]["status"] == "PASS"
     for g in (
@@ -365,9 +396,19 @@ else:
     ready2 = False
     ready2_note = "scope-1 evidence required before scope-2 preflight"
 
+if scope3_pf_ok and scope2_loop_ok and scope1_ok:
+    ready3: bool | str = "conditional/manual-preflight-pass"
+    ready3_note = "KHR-BB scope-3 preflight PASS; dry-run execution deferred; scope-4 blocked"
+elif scope2_loop_ok and scope1_ok:
+    ready3 = False
+    ready3_note = "run khr_tp_live_scope3_preflight.sh for scope-3 readiness"
+else:
+    ready3 = False
+    ready3_note = "scope-2 manual-loop-pass required before scope-3 preflight"
+
 summary: dict[str, Any] = {
     "phase": "khr-tp-live-enablement-preflight",
-    "sprint": "KHR-BA",
+    "sprint": "KHR-BB",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": CONTRACT,
@@ -382,7 +423,8 @@ summary: dict[str, Any] = {
     "readyForScope2": ready2,
     "readyForScope2Active": False,
     "readyForScope2LoopExecution": scope2_loop_ok,
-    "readyForScope3": False,
+    "readyForScope3": ready3,
+    "readyForScope3Active": False,
     "readyForScope4": False,
     "scope2PlusBlockedReason": "ResourcePort loop execution requires dedicated sprint sign-off (KHR-AZ)",
     "readyForScope1Note": ready1_note,
@@ -390,6 +432,10 @@ summary: dict[str, Any] = {
     "scope1EvidenceRunId": scope1_verify.get("runId") if scope1_verify else None,
     "scope2PreflightRunId": scope2_preflight.get("runId") if scope2_preflight else None,
     "scope2LoopRunId": scope2_loop.get("runId") if scope2_loop else None,
+    "scope3PreflightRunId": scope3_preflight.get("runId") if scope3_preflight else None,
+    "readyForScope3Note": ready3_note,
+    "resourceLeaseDryRunExecuted": scope3_preflight.get("resourceLeaseDryRunExecuted", False) if scope3_preflight else False,
+    "resourceLeaseApplyEnabled": scope3_preflight.get("resourceLeaseApplyEnabled", False) if scope3_preflight else False,
     "resourcePortLoopEnabled": scope2_preflight.get("resourcePortLoopEnabled", False) if scope2_preflight else False,
     "sandboxApplyEnabled": scope2_preflight.get("sandboxApplyEnabled", False) if scope2_preflight else False,
     "gates": gates,
@@ -403,7 +449,7 @@ summary: dict[str, Any] = {
         "scope0": "read-only federation",
         "scope1": "runtime sandbox deploy (manual)",
         "scope2": "ResourcePort manual loop (manual-loop-pass when evidenced; not active)",
-        "scope3": "ResourceLease dry-run (blocked)",
+        "scope3": "ResourceLease dry-run preflight (conditional/manual; not executed)",
         "scope4": "guarded apply sandbox (blocked)",
     },
     "rdpgwEvidenceTrust": rdpgw_trust,
@@ -418,7 +464,7 @@ out.write_text(json.dumps(summary, indent=2) + "\n")
 print(f"[khr_tp_live_enablement_preflight] summary={out}")
 print(
     f"[khr_tp_live_enablement_preflight] readyForScope0={ready0} "
-    f"readyForScope1={ready1} readyForScope2={ready2} status={summary['status']}"
+    f"readyForScope1={ready1} readyForScope2={ready2} readyForScope3={ready3} status={summary['status']}"
 )
 if summary["status"] != "PASS":
     raise SystemExit(1)
