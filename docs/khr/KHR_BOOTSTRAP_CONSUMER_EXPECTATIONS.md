@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-AG / **KHR-AH** |
+| **Sprint** | KHR-AG / KHR-AH / **KHR-AI** |
 | **Consumer** | Karl-Hyperdensity CLIs, evidence scripts, sandbox lanes |
 | **Cluster (reference)** | `karl-metal-01@ovh` |
 | **Production** | **NOT production ready** |
@@ -98,7 +98,7 @@ export KHR_RUNTIME_NAMESPACE=khr-runtime-sandbox
 | ID | Blocker |
 |----|---------|
 | B-HD-01 | Cluster CRD presence not automated in ISO CI verify |
-| B-HD-02 | ~~Installer always deploys KubeVirt~~ | **Mitigated (KHR-AH):** `karl2-khr-technical-preview` skips KV installer path |
+| B-HD-02 | ~~Installer always deploys KubeVirt~~ | **Done (KHR-AH/AI):** karl2 skips KV; karl2 applies CRD foundation (KHR-AI) |
 | B-HD-03 | No unified bootstrap version manifest across four repos |
 | B-HD-04 | Subiquity autoinstall does not surface TP profile selection |
 | B-HD-05 | Beta sign-off requires operator attestation + evidence bundle, not bootstrap alone |
