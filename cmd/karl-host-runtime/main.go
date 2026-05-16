@@ -15,10 +15,13 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "register-host", "register-host|host-status|resourceport-loop|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
+	mode := flag.String("mode", "register-host", "register-host|host-status|resourceport-loop|resourceport-cleanup|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
 	nodeName := flag.String("node-name", "", "Kubernetes node name for host-status (default: hostname)")
 	clusterContext := flag.String("cluster-context", "", "required cluster context for resourceport-loop discovery")
 	emitCR := flag.Bool("emit-cr", false, "write local ResourcePort CR preview files (never kubectl apply by default)")
+	applyCR := flag.Bool("apply-cr", false, "kubectl apply ResourcePort CRs (opt-in; requires --emit-cr and sandbox confirmation)")
+	sandboxConfirm := flag.Bool("i-understand-this-is-sandbox", false, "explicit confirmation for sandbox CR apply")
+	cleanupCR := flag.Bool("cleanup-cr", false, "delete sandbox ResourcePorts managed by karl-host-runtime")
 	loopIterations := flag.Int("loop-iterations", 1, "resourceport-loop iteration count")
 	loopIntervalMs := flag.Int("loop-interval-ms", 0, "delay between loop iterations")
 	loopOutputDir := flag.String("loop-output-dir", "", "directory for CR preview files when --emit-cr=true")
@@ -76,7 +79,7 @@ func main() {
 		if ctx == "" {
 			ctx = resourceport.CurrentKubeContext()
 		}
-		res, err := resourceport.RunLoop(resourceport.LoopOptions{
+		loopOpts := resourceport.LoopOptions{
 			Config:          cfg,
 			Namespace:       *namespace,
 			Labels:          copyLabels(cfg.Spec.AllowedLabels),
@@ -86,12 +89,30 @@ func main() {
 			Iterations:      *loopIterations,
 			Interval:        time.Duration(*loopIntervalMs) * time.Millisecond,
 			EmitCR:          *emitCR,
+			ApplyCR:         *applyCR,
+			SandboxConfirm:  *sandboxConfirm,
+			CleanupCR:       *cleanupCR,
 			OutputDir:       *loopOutputDir,
-		})
+		}
+		res, err := resourceport.RunLoop(loopOpts)
 		if err != nil {
 			fatal(err)
 		}
 		emit(res)
+	case "resourceport-cleanup":
+		ctx := *clusterContext
+		if ctx == "" {
+			ctx = resourceport.CurrentKubeContext()
+		}
+		clean, err := resourceport.CleanupAppliedCRs(resourceport.LoopOptions{
+			Config:         cfg,
+			Namespace:      *namespace,
+			ClusterContext: ctx,
+		})
+		if err != nil {
+			fatal(err)
+		}
+		emit(clean)
 	case "dry-run-lease":
 		lease, port, err := loadLeasePort(*leasePath, *portPath)
 		if err != nil {

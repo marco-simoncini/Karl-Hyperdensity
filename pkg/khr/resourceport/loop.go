@@ -1,9 +1,7 @@
 package resourceport
 
 import (
-	"encoding/json"
 	"fmt"
-	"os"
 	"path/filepath"
 	"strings"
 	"time"
@@ -14,9 +12,11 @@ import (
 )
 
 const (
-	EmissionModeJSONOnly  = "json-only"
-	EmissionModeCRPreview = "cr-preview"
-	LoopSourceRuntime     = "host-runtime-loop"
+	EmissionModeObservedJSON     = "observed-json"
+	EmissionModeJSONOnly         = EmissionModeObservedJSON // KHR-K alias
+	EmissionModeCRPreview        = "cr-preview"
+	EmissionModeCRAppliedSandbox = "cr-applied-sandbox"
+	LoopSourceRuntime            = "host-runtime-loop"
 )
 
 // SandboxTarget is a read-only observation target in the sandbox namespace.
@@ -39,9 +39,12 @@ type LoopOptions struct {
 	NodeName       string
 	Iterations     int
 	Interval       time.Duration
-	EmitCR         bool
-	OutputDir      string
-	Targets        []SandboxTarget
+	EmitCR          bool
+	ApplyCR         bool
+	SandboxConfirm  bool
+	CleanupCR       bool
+	OutputDir       string
+	Targets         []SandboxTarget
 }
 
 // LoopIteration is one observation cycle.
@@ -60,6 +63,14 @@ type LoopResult struct {
 	EmissionMode    string              `json:"emissionMode"`
 	EmitCR          bool                `json:"emitCR"`
 	EmitCRApplied   bool                `json:"emitCRApplied"`
+	ApplyCR         bool                `json:"applyCR"`
+	ApplyCRBlocked  bool                `json:"applyCRBlocked,omitempty"`
+	ApplyCRReason   string              `json:"applyCRReason,omitempty"`
+	ApplyCRApplied  bool                `json:"applyCRApplied"`
+	AppliedCRNames  []string            `json:"appliedCRNames,omitempty"`
+	SandboxConfirm  bool                `json:"sandboxConfirm"`
+	CleanupCR       bool                `json:"cleanupCR,omitempty"`
+	Cleanup         *CleanupResult      `json:"cleanup,omitempty"`
 	ClusterContext  string              `json:"clusterContext,omitempty"`
 	Namespace       string              `json:"namespace"`
 	SafetyMode      string              `json:"safetyMode"`
@@ -77,6 +88,9 @@ func RunLoop(opts LoopOptions) (LoopResult, error) {
 		Namespace:            opts.Namespace,
 		ClusterContext:       opts.ClusterContext,
 		EmitCR:               opts.EmitCR,
+		ApplyCR:              opts.ApplyCR,
+		SandboxConfirm:       opts.SandboxConfirm,
+		CleanupCR:            opts.CleanupCR,
 		Source:               LoopSourceRuntime,
 		SafetyMode:           "sandbox",
 		NoProductionMutation: true,
@@ -84,7 +98,7 @@ func RunLoop(opts LoopOptions) (LoopResult, error) {
 	if opts.EmitCR {
 		res.EmissionMode = EmissionModeCRPreview
 	} else {
-		res.EmissionMode = EmissionModeJSONOnly
+		res.EmissionMode = EmissionModeObservedJSON
 	}
 
 	if gate := validateLoopGate(opts); !gate.Allowed {
@@ -133,7 +147,9 @@ func RunLoop(opts LoopOptions) (LoopResult, error) {
 		flightrecorder.Record("loop-iteration", fmt.Sprintf("iteration %d", i), fmt.Sprintf("ports=%d", len(iter.ResourcePorts)))
 
 		if opts.EmitCR && opts.OutputDir != "" {
-			if err := writeCRPreview(opts.OutputDir, iter.ResourcePorts); err != nil {
+			meta := metaFromConfig(opts.Config, iter.ObservedAt, EmissionModeCRPreview, opts.Namespace)
+			crs := CandidatesToCRs(iter.ResourcePorts, meta)
+			if _, err := RenderCRFiles(opts.OutputDir, crs); err != nil {
 				return res, err
 			}
 			res.EmitCRApplied = true
@@ -142,6 +158,35 @@ func RunLoop(opts LoopOptions) (LoopResult, error) {
 		if i < opts.Iterations && opts.Interval > 0 {
 			time.Sleep(opts.Interval)
 		}
+	}
+
+	if opts.ApplyCR && len(res.Iterations) > 0 {
+		last := res.Iterations[len(res.Iterations)-1]
+		if gate := ValidateApplyCRGate(opts); !gate.Allowed {
+			res.ApplyCRBlocked = true
+			res.ApplyCRReason = gate.Reason
+			flightrecorder.Record("apply-cr-blocked", gate.Reason, "")
+		} else {
+			meta := metaFromConfig(opts.Config, last.ObservedAt, EmissionModeCRAppliedSandbox, opts.Namespace)
+			crs := CandidatesToCRs(last.ResourcePorts, meta)
+			names, err := ApplyCRDocuments(opts, crs)
+			if err != nil {
+				return res, err
+			}
+			res.ApplyCRApplied = true
+			res.AppliedCRNames = names
+			res.EmissionMode = EmissionModeCRAppliedSandbox
+			flightrecorder.Record("apply-cr", "resourceport CR applied", fmt.Sprintf("count=%d", len(names)))
+		}
+	}
+
+	if opts.CleanupCR {
+		clean, err := CleanupAppliedCRs(opts)
+		if err != nil {
+			return res, err
+		}
+		res.Cleanup = &clean
+		flightrecorder.Record("cleanup-cr", "resourceport CR cleanup", fmt.Sprintf("deleted=%d", clean.Deleted))
 	}
 
 	flightrecorder.Record("loop-complete", "resourceport loop finished", "")
@@ -179,23 +224,6 @@ func validateLoopGate(opts LoopOptions) loopGate {
 		return loopGate{Reason: fmt.Sprintf("cluster context %q != required %q", opts.ClusterContext, opts.RequiredContext)}
 	}
 	return loopGate{Allowed: true}
-}
-
-func writeCRPreview(dir string, ports []Candidate) error {
-	if err := os.MkdirAll(dir, 0o755); err != nil {
-		return err
-	}
-	for _, p := range ports {
-		name := filepath.Join(dir, "resourceport-"+p.Metadata.Name+".json")
-		b, err := json.MarshalIndent(p, "", "  ")
-		if err != nil {
-			return err
-		}
-		if err := os.WriteFile(name, b, 0o644); err != nil {
-			return err
-		}
-	}
-	return nil
 }
 
 // ObserveCgroupPath returns a read-only cgroup path hint for a target (no writes).

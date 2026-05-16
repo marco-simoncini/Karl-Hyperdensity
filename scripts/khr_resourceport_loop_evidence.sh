@@ -22,7 +22,7 @@ khr_runtime_log "resourceport-loop JSON-only (enabled config)"
 "${BIN}" -mode=resourceport-loop -config="${CFG_LOOP}" -namespace="${NS}" \
   -cluster-context="${CTX}" -loop-iterations=2 -loop-interval-ms=300 \
   > "${RUN_DIR}/loop-pass.json"
-jq -e '.blocked == false and .emissionMode == "json-only"' "${RUN_DIR}/loop-pass.json" >/dev/null
+jq -e '.blocked == false and .emissionMode == "observed-json"' "${RUN_DIR}/loop-pass.json" >/dev/null
 
 khr_runtime_log "blocked namespace proof"
 "${BIN}" -mode=resourceport-loop -config="${CFG_LOOP}" -namespace=karl-system \
@@ -48,7 +48,7 @@ jq -n \
     status: $status,
     clusterContext: $ctx,
     namespace: $ns,
-    emissionMode: "json-only",
+    emissionMode: "observed-json",
     emitCR: false,
     noProductionMutation: true,
     noResourceLeaseApply: true,

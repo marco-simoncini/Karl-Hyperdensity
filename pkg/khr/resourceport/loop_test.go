@@ -123,7 +123,7 @@ func TestRunLoopCRPreviewLocalOnly(t *testing.T) {
 	if !res.EmitCRApplied || res.EmissionMode != EmissionModeCRPreview {
 		t.Fatalf("res=%+v", res)
 	}
-	if _, err := os.Stat(filepath.Join(dir, "resourceport-target-1-port.json")); err != nil {
+	if _, err := os.Stat(filepath.Join(dir, "resourceport-khr-runtime-sandbox-target-1-port.json")); err != nil {
 		t.Fatal(err)
 	}
 }
