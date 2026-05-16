@@ -1,0 +1,29 @@
+{
+  "applied": true,
+  "blocked": false,
+  "reason": "sandbox marker written only; no production cgroup mutation",
+  "sandboxOnly": true,
+  "baselineId": "sandbox-karl-host-runtime-karl-metal-01",
+  "writtenPaths": [
+    "/tmp/tmp.RSqDauckMh/apply-marker.txt"
+  ],
+  "dryRun": {
+    "allowed": true,
+    "blocked": false,
+    "reason": "dry-run only: no cgroup writes performed",
+    "expectedWrites": [
+      "(simulated) write cgroup cpu.max delta on donor slice",
+      "(simulated) write cgroup memory.max delta on donor slice",
+      "(simulated) mirror inverse delta on receiver slice"
+    ],
+    "rollbackPlan": [
+      "revert cgroup cpu.max/memory.max to prior values captured pre-apply"
+    ],
+    "verificationPlan": [
+      "read back cgroup limits",
+      "compare cgroup.events pressure",
+      "confirm process RSS/CPU throttle metrics"
+    ],
+    "resourcePortCheck": "compatible"
+  }
+}

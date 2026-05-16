@@ -1,12 +1,12 @@
 apiVersion: khr.karl.io/v1alpha1
 kind: KarlHostRuntimeConfig
 metadata:
-  name: karl-host-runtime-sandbox
+  name: karl-host-runtime-metal-sandbox-apply
 spec:
-  hostId: karl-host-runtime-dev-001
+  hostId: karl-host-runtime-karl-metal-01
   linuxOnly: true
   sandboxMode: true
-  sandboxApplyEnabled: false
+  sandboxApplyEnabled: true
   allowedNamespaces:
     - khr-runtime-sandbox
   allowedLabels:

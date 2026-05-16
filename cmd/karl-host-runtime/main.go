@@ -18,13 +18,27 @@ func main() {
 	configPath := flag.String("config", "", "path to KarlHostRuntimeConfig YAML/JSON")
 	leasePath := flag.String("lease-input", "", "ResourceLease JSON for dry-run/apply")
 	portPath := flag.String("resource-port-input", "", "ResourcePort JSON for dry-run/apply")
-	namespace := flag.String("namespace", "karl-sandbox", "sandbox namespace for apply gate")
+	namespace := flag.String("namespace", "khr-runtime-sandbox", "sandbox namespace for apply gate")
 	sandboxDir := flag.String("sandbox-dir", "", "local sandbox directory for guarded apply")
 	baselineID := flag.String("baseline-id", "sandbox-default", "rollback baseline id")
-	shellRef := flag.String("shell-ref", "karl-sandbox/Shell/demo", "Shell ref for ResourcePort candidate")
-	cellRef := flag.String("cell-ref", "karl-sandbox/Cell/demo", "Cell ref for ResourcePort candidate")
+	shellRef := flag.String("shell-ref", "khr-runtime-sandbox/Shell/demo", "Shell ref for ResourcePort candidate")
+	cellRef := flag.String("cell-ref", "khr-runtime-sandbox/Cell/demo", "Cell ref for ResourcePort candidate")
 	portName := flag.String("port-name", "demo-port", "ResourcePort candidate name")
 	flag.Parse()
+
+	switch *mode {
+	case "flight-recorder":
+		emit(flightrecorder.Snapshot())
+		return
+	case "rollback":
+		dir := *sandboxDir
+		if dir == "" {
+			dir = os.TempDir()
+		}
+		bl, _ := resourcelease.CaptureBaseline(*baselineID, dir)
+		emit(resourcelease.RollbackBaseline(bl))
+		return
+	}
 
 	cfg, err := loadConfig(*configPath)
 	if err != nil {
@@ -55,26 +69,28 @@ func main() {
 		if err != nil {
 			fatal(err)
 		}
-		labels := map[string]string{"karl.io/khr-sandbox": "true"}
+		labels := copyLabels(cfg.Spec.AllowedLabels)
 		res, err := resourcelease.GuardedApply(cfg, lease, port, &resourcelease.CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"}, *namespace, labels, *sandboxDir)
 		if err != nil {
 			fatal(err)
 		}
 		flightrecorder.Record("apply", res.Reason, "")
 		emit(res)
-	case "rollback":
-		dir := *sandboxDir
-		if dir == "" {
-			dir = os.TempDir()
-		}
-		bl, _ := resourcelease.CaptureBaseline(*baselineID, dir)
-		emit(resourcelease.RollbackBaseline(bl))
-	case "flight-recorder":
-		emit(flightrecorder.Snapshot())
 	default:
 		fmt.Fprintf(os.Stderr, "unknown mode %q\n", *mode)
 		os.Exit(2)
 	}
+}
+
+func copyLabels(in map[string]string) map[string]string {
+	if len(in) == 0 {
+		return map[string]string{"khr.karl.io/sandbox": "true"}
+	}
+	out := make(map[string]string, len(in))
+	for k, v := range in {
+		out[k] = v
+	}
+	return out
 }
 
 func loadConfig(path string) (*host.Config, error) {

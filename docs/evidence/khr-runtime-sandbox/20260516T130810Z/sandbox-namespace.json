@@ -1,0 +1,29 @@
+{
+    "apiVersion": "v1",
+    "kind": "Namespace",
+    "metadata": {
+        "annotations": {
+            "kubectl.kubernetes.io/last-applied-configuration": "{\"apiVersion\":\"v1\",\"kind\":\"Namespace\",\"metadata\":{\"annotations\":{},\"labels\":{\"karl.io/khr-runtime-sandbox\":\"true\",\"khr.karl.io/sandbox\":\"true\"},\"name\":\"khr-runtime-sandbox\"}}\n",
+            "ovn.kubernetes.io/cidr": "10.16.0.0/16",
+            "ovn.kubernetes.io/exclude_ips": "10.16.0.1",
+            "ovn.kubernetes.io/logical_switch": "ovn-default"
+        },
+        "creationTimestamp": "2026-05-16T13:08:11Z",
+        "labels": {
+            "karl.io/khr-runtime-sandbox": "true",
+            "khr.karl.io/sandbox": "true",
+            "kubernetes.io/metadata.name": "khr-runtime-sandbox"
+        },
+        "name": "khr-runtime-sandbox",
+        "resourceVersion": "38287772",
+        "uid": "5b0f36ee-5cfb-4aee-81d9-6c1657749fb5"
+    },
+    "spec": {
+        "finalizers": [
+            "kubernetes"
+        ]
+    },
+    "status": {
+        "phase": "Active"
+    }
+}

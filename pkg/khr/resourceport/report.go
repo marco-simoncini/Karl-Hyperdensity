@@ -43,7 +43,7 @@ func ReportCandidate(cfg *host.Config, shellRef, cellRef, namespace, name string
 			Name:      name,
 			Namespace: namespace,
 			Labels: map[string]string{
-				"karl.io/khr-sandbox": "true",
+				"khr.karl.io/sandbox": "true",
 				"karl.io/host-id":     cfg.Spec.HostID,
 			},
 		},

@@ -1,0 +1,14 @@
+{
+  "phase": "rollback",
+  "status": "PASS",
+  "namespace": "khr-runtime-sandbox",
+  "baselineRequired": true,
+  "rollbackResult": {
+  "rolledBack": true,
+  "blocked": false,
+  "actions": [
+    "restore sandbox apply marker"
+  ]
+},
+  "at": "2026-05-16T13:09:22Z"
+}

@@ -1,0 +1,45 @@
+{
+  "apiVersion": "runtime.karl.io/v1alpha1",
+  "kind": "ResourcePort",
+  "metadata": {
+    "name": "khr-runtime-sandbox-port",
+    "namespace": "khr-runtime-sandbox",
+    "labels": {
+      "karl.io/host-id": "karl-host-runtime-karl-metal-01",
+      "karl.io/khr-sandbox": "true"
+    }
+  },
+  "spec": {
+    "provider": "khr.native",
+    "shellRef": "khr-runtime-sandbox/Shell/runtime-sandbox",
+    "cellRef": "khr-runtime-sandbox/Cell/runtime-sandbox-linux",
+    "capabilities": [
+      "cpu.envelope",
+      "memory.envelope"
+    ],
+    "hotplug": {
+      "cpu": false,
+      "memory": false,
+      "disk": false,
+      "network": false
+    },
+    "ports": {
+      "cpu": {
+        "modes": [
+          "envelope",
+          "static"
+        ]
+      },
+      "memory": {
+        "modes": [
+          "envelope",
+          "static"
+        ]
+      }
+    }
+  },
+  "status": {
+    "observedAt": "2026-05-16T13:09:20Z",
+    "phase": "Observed"
+  }
+}

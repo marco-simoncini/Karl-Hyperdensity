@@ -1,0 +1,25 @@
+{
+  "applied": false,
+  "blocked": true,
+  "reason": "sandboxApplyEnabled is false (default)",
+  "sandboxOnly": true,
+  "dryRun": {
+    "allowed": true,
+    "blocked": false,
+    "reason": "dry-run only: no cgroup writes performed",
+    "expectedWrites": [
+      "(simulated) write cgroup cpu.max delta on donor slice",
+      "(simulated) write cgroup memory.max delta on donor slice",
+      "(simulated) mirror inverse delta on receiver slice"
+    ],
+    "rollbackPlan": [
+      "revert cgroup cpu.max/memory.max to prior values captured pre-apply"
+    ],
+    "verificationPlan": [
+      "read back cgroup limits",
+      "compare cgroup.events pressure",
+      "confirm process RSS/CPU throttle metrics"
+    ],
+    "resourcePortCheck": "compatible"
+  }
+}

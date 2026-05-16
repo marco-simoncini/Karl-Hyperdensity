@@ -1,0 +1,21 @@
+{
+  "phase": "preflight",
+  "status": "PASS",
+  "clusterContext": "karl-metal-01@ovh",
+  "namespace": "khr-runtime-sandbox",
+  "requiredLabel": "khr.karl.io/sandbox=true",
+  "sandboxApplyEnabledDefault": false,
+  "blockedSurfaces": ["kubevirt", "libvirt", "qmp", "windows", "autonomous-apply"],
+  "productionNamespacesBlocked": [
+  "karl-system",
+  "kube-system",
+  "kube-public",
+  "kube-node-lease",
+  "default",
+  "ingress",
+  "longhorn-system",
+  "kubevirt",
+  "cdi"
+],
+  "at": "2026-05-16T13:09:20Z"
+}

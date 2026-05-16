@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: khr-runtime-sandbox
+  labels:
+    khr.karl.io/sandbox: "true"
+    karl.io/khr-runtime-sandbox: "true"

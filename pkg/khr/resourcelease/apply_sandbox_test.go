@@ -32,14 +32,14 @@ func testHostCfg(enabled bool) *host.Config {
 	cfg.Spec.LinuxOnly = true
 	cfg.Spec.SandboxMode = true
 	cfg.Spec.SandboxApplyEnabled = enabled
-	cfg.Spec.AllowedNamespaces = []string{"karl-sandbox"}
-	cfg.Spec.AllowedLabels = map[string]string{"karl.io/khr-sandbox": "true"}
+	cfg.Spec.AllowedNamespaces = []string{"khr-runtime-sandbox"}
+	cfg.Spec.AllowedLabels = map[string]string{"khr.karl.io/sandbox": "true"}
 	return cfg
 }
 
 func TestGuardedApplyBlockedByDefault(t *testing.T) {
 	lease, port := testLeasePort(t)
-	res, err := GuardedApply(testHostCfg(false), lease, port, &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"}, "karl-sandbox", map[string]string{"karl.io/khr-sandbox": "true"}, t.TempDir())
+	res, err := GuardedApply(testHostCfg(false), lease, port, &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"}, "khr-runtime-sandbox", map[string]string{"khr.karl.io/sandbox": "true"}, t.TempDir())
 	if err != nil {
 		t.Fatal(err)
 	}
@@ -51,7 +51,7 @@ func TestGuardedApplyBlockedByDefault(t *testing.T) {
 func TestGuardedApplySandboxWhenEnabled(t *testing.T) {
 	lease, port := testLeasePort(t)
 	dir := t.TempDir()
-	res, err := GuardedApply(testHostCfg(true), lease, port, &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"}, "karl-sandbox", map[string]string{"karl.io/khr-sandbox": "true"}, dir)
+	res, err := GuardedApply(testHostCfg(true), lease, port, &CellContext{DonorPlatform: "linux", ReceiverPlatform: "linux"}, "khr-runtime-sandbox", map[string]string{"khr.karl.io/sandbox": "true"}, dir)
 	if err != nil {
 		t.Fatal(err)
 	}

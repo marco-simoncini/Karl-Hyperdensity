@@ -17,7 +17,12 @@
 
 ---
 
-## Allowlists
+## Allowlists (KHR-G cluster sandbox)
+
+| Item | Value |
+|------|-------|
+| Namespace | `khr-runtime-sandbox` |
+| Label | `khr.karl.io/sandbox=true` |
 
 - **Namespaces:** only listed namespaces may pass `SandboxApplyAllowed`.
 - **Labels:** every key in `allowedLabels` must match exactly on the workload.
