@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 68** expands shadow/hardening coverage for apply observation **staged wrappers** (Sprint 67). **Sprint 69** records wiring readiness. **Hardening-only through Sprint 68** — no `apply.go` wiring. All apply flags remain **false**.
+**Sprint 68** expands shadow/hardening coverage for apply observation **staged wrappers** (Sprint 67). **Sprint 69** records wiring readiness. **Sprint 70** wired `apply.go` call sites. **Sprint 71** post-wiring hardening. All apply flags remain **false**.
 
 ---
 

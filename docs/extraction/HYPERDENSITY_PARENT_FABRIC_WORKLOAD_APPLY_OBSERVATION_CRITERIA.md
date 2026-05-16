@@ -37,7 +37,8 @@ hyperdensityWorkloadAdapterApplyObservationWiredV1 = true
 - [x] Sprint 68 wrapper hardening (8×4) green.
 - [x] Sprint 69 wiring readiness certified (`readyForApplyGoCallSiteWiring`).
 - [x] Sprint 70 `apply.go` call-site wiring (4 wrappers; flags **false**).
-- [ ] `ApplyObservationWiredV1 = true` (separate flip sprint, after wiring stable).
+- [x] Sprint 71 post-wiring hardening green.
+- [ ] `ApplyObservationWiredV1 = true` (separate flip sprint).
 - [ ] `audit_workload_apply_observation.sh` reports zero forbidden patterns.
 - [ ] Golden `applyObservationWired: false` updated only when flip sprint approved.
 - [ ] Hyperdensity docs updated; no Dashboard `parentfabric` import.

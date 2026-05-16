@@ -42,6 +42,7 @@ This is **deliberate policy**, not incomplete work by mistake.
 | Apply wrapper hardening | **Yes** (Sprint 68; 8×4 matrix) |
 | Apply wiring readiness | **Yes** (Sprint 69) |
 | Apply call-site wiring | **Yes** (Sprint 70; flags **false**) |
+| Apply post-wiring hardening | **Yes** (Sprint 71) |
 
 ## Related
 

@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 66** designs and validates the **shadow matrix** for the four `apply.go` legacy observation call sites. **Sprint 67** staged wrappers. **Sprint 68** wrapper hardening (8×4). **No runtime wiring.** **`apply.go` remains legacy.**
+**Sprint 66** designs and validates the **shadow matrix** for the four `apply.go` legacy observation call sites. **Sprint 67** staged wrappers. **Sprint 68** wrapper hardening (8×4). **Sprint 70** wired `apply.go` to wrappers. **Sprint 71** post-wiring hardening. All apply flags remain **false**.
 
 ---
 
