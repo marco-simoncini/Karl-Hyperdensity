@@ -1,0 +1,2 @@
+no-apply: lane-discovery mode only emits JSON
+no-restart: no rollout restart commands executed
