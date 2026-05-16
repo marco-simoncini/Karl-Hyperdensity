@@ -131,6 +131,16 @@ OIDC login (unchanged) → gateway session (legacy/rdp-GW)
 
 ---
 
+## Access Graph (KHR-AO)
+
+Read-only graph export: `UserIdentityRef` → `ShellLeaseRef` → `GatewayRouteRef` → `GatewaySessionRef` → `AppSessionRef` / `WindowsAppRef`.
+
+See **`ACCESS_GRAPH_CONTRACT.md`** for nodes, edges (`leases`, `routes`, `opens`, `runs`, `owns`, `governedBy`), and invariants.
+
+rdp-GW: `GET /karl-gw/v1/accessgraph/session?id=...`
+
+---
+
 ## Non-goals
 
 - No token minting, no rdp-GW apply, no session broker controller
