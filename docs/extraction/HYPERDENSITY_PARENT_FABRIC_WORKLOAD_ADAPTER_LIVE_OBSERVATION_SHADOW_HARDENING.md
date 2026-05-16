@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 60** adds **shadow tests** proving Sprint 59 live observation wrappers are **equivalent** to legacy helpers. **Sprint 61** flips **`LiveObservationWiredV1 = true`**; shadow tests remain PASS (legacy-equivalent true branch). Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
+**Sprint 60** adds **shadow tests** proving Sprint 59 live observation wrappers are **equivalent** to legacy helpers. **Sprint 61** flips **`LiveObservationWiredV1 = true`**; shadow tests remain PASS. **Sprint 62** extends with semantic candidate shadow (10 cases). Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
 
 ---
 

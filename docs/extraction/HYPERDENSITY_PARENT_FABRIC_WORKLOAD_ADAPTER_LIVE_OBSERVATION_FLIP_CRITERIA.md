@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 61** executed the dedicated flip: **`hyperdensityWorkloadAdapterLiveObservationWiredV1 = true`**. Criteria below were satisfied in Sprint 60; flip applied in Sprint 61.
+**Sprint 61** executed the dedicated flip: **`hyperdensityWorkloadAdapterLiveObservationWiredV1 = true`**. **Sprint 62** adds semantic candidate (shadow only); branch swap deferred — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_BRANCH_SWAP_CRITERIA.md`**.
 
 ---
 

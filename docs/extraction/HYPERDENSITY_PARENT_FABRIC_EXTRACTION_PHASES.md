@@ -36,6 +36,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 61:** **`LiveObservationWiredV1 = true`** — dedicated flip; true branch legacy-equivalent; broad observation still **false**.
 
+**Sprint 62:** **Semantic candidate** shadow (10 cases); runtime wrappers unchanged; branch swap **not** allowed.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
