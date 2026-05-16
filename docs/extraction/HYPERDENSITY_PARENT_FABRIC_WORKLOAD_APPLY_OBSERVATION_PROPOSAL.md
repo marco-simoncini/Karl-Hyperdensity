@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 65** is **proposal-only**: inventory and criteria for a future **`ApplyObservationWiredV1`** phase. **Sprint 66** shadow matrix. **Sprint 67** staged wrappers. **Sprint 68** wrapper hardening. **Sprint 69** wiring readiness. **Sprint 70** may wire `apply.go` call sites. **`apply.go` remains legacy in Sprint 69.** Hyperdensity receives **no** new Go adapter code.
+**Sprint 65** is **proposal-only**: inventory and criteria for a future **`ApplyObservationWiredV1`** phase. **Sprint 66** shadow matrix. **Sprint 67** staged wrappers. **Sprint 68** wrapper hardening. **Sprint 69** wiring readiness. **Sprint 70** wired `apply.go` call sites to wrappers (flags **false**). Hyperdensity receives **no** new Go adapter code.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 69** formalizes **readiness** for future `apply.go` call-site wiring. **Readiness-only** — no `apply.go` changes, no flag flips. **Sprint 70** is the first allowed call-site wiring sprint.
+**Sprint 69** formalizes **readiness** for future `apply.go` call-site wiring. **Sprint 70** executed call-site wiring (see `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_CALLSITE_WIRING.md`). This document records Sprint 69 readiness snapshot.
 
 ---
 

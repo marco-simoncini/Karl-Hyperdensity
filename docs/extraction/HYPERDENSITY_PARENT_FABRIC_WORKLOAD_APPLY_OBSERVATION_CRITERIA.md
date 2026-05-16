@@ -36,7 +36,7 @@ hyperdensityWorkloadAdapterApplyObservationWiredV1 = true
 - [x] Sprint 67 staged wrappers present (`apply.go` still legacy).
 - [x] Sprint 68 wrapper hardening (8×4) green.
 - [x] Sprint 69 wiring readiness certified (`readyForApplyGoCallSiteWiring`).
-- [ ] Sprint 70 `apply.go` call-site wiring (first allowed).
+- [x] Sprint 70 `apply.go` call-site wiring (4 wrappers; flags **false**).
 - [ ] `ApplyObservationWiredV1 = true` (separate flip sprint, after wiring stable).
 - [ ] `audit_workload_apply_observation.sh` reports zero forbidden patterns.
 - [ ] Golden `applyObservationWired: false` updated only when flip sprint approved.

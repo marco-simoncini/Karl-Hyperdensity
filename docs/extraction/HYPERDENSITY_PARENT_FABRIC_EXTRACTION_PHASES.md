@@ -52,6 +52,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 69:** **Apply wiring readiness** — certified for Sprint 70 call-site wiring; flags **false**.
 
+**Sprint 70:** **Apply call-site wiring** — `apply.go` uses 4 wrappers; flags **false** (legacy-equivalent).
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
