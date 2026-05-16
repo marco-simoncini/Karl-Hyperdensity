@@ -35,3 +35,10 @@ Flipping `ResourceExchangeObservationWiredV1=true` requires **separate** sprint 
 ## Related
 
 - `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_RESOURCE_EXCHANGE_CANDIDATE_RUNTIME_STAGING.md`
+
+
+---
+
+## Sprint 85 (activation readiness)
+
+Sprint 85 is readiness-only for `ResourceExchangeObservationWiredV1=true`. No flag changes. Sprint 86 may execute activation flip if approved. See `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_RESOURCE_EXCHANGE_ACTIVATION_READINESS.md`.
