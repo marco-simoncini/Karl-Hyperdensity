@@ -1,0 +1,90 @@
+# KHR TP Live Reference Environment (KHR-AX)
+
+| Field | Value |
+|-------|-------|
+| **Sprint** | KHR-AX |
+| **Cluster** | `karl-metal-01@ovh` |
+| **Scopes** | **0 and 1 only** — scope-2+ **blocked** |
+| **Mode** | Read-only observation — **not production** |
+
+---
+
+## Definition
+
+The **reference environment** is the stabilized Technical Preview live posture on `karl-metal-01@ovh` where scope-0 federation and scope-1 sandbox evidence have PASS, without enabling ResourcePort loop, ResourceLease apply, or production namespaces.
+
+| Property | Value |
+|----------|-------|
+| **Cluster context** | `karl-metal-01@ovh` |
+| **Runtime namespace** | `khr-runtime-sandbox` (`khr.karl.io/sandbox=true`) |
+| **Gateway namespace** | `khr-rdpgw-sandbox` (`khr.karl.io/sandbox=true`) |
+| **contractSetId** | `khr-tp-contract-v1` |
+| **productionReady** | `false` (always) |
+| **noAutonomousOrchestration** | `true` (always) |
+
+---
+
+## Required evidence (stabilized)
+
+| Artifact | Path | Requirement |
+|----------|------|-------------|
+| Enablement preflight | `docs/evidence/khr-tp-live-enablement/<runId>/enablement-preflight-summary.json` | `status=PASS`, `readyForScope1=true` |
+| Scope-1 verify | `docs/evidence/khr-tp-live-scope1/committed-scope1-khr-aw/verify-summary.json` (or latest PASS) | `accessGraphLiveReadonly=true`, `readyForScope2=false` |
+| Federation | `docs/evidence/khr-runtime-observation-federation/*/federation-summary.json` | `status=PASS` |
+| rdp-GW continuity | `docs/evidence/khr-accessgraph-continuity/*/summary.json` | `source=live-readonly` preferred |
+| rdp-GW deploy mode | `docs/evidence/khr-rdpgw-scope1/*/deploy-summary.json` | `deployMode=local-gateway` or `cluster-sandbox` |
+
+---
+
+## Rollback policy
+
+| Rule | Detail |
+|------|--------|
+| **Scope-1 rollback** | `khr_tp_live_scope1_rollback.sh` removes sandbox **deployments** only |
+| **Namespaces** | Retained with `khr.karl.io/sandbox=true` labels |
+| **Production** | `karl`, `default`, `kube-system`, `karl-system` — **never** targeted for KHR live enablement |
+| **ISO/systemd** | `karl-host-runtime.service` remains **disabled** on ISO provision |
+
+Re-run scope-1 deploy after rollback only with `KHR_TP_LIVE_SCOPE1_I_UNDERSTAND_SANDBOX=true`.
+
+---
+
+## Reference env check
+
+```bash
+export KHR_RUNTIME_CLUSTER_CONTEXT=karl-metal-01@ovh
+./scripts/khr_tp_live_reference_env_check.sh
+```
+
+Output: `docs/evidence/khr-tp-live-reference-env/<runId>/reference-env-summary.json`
+
+---
+
+## Dashboard TP readiness (reference)
+
+| Item | Value |
+|------|-------|
+| Endpoint | `GET /api/hyperdensity/tp-readiness` |
+| Reference env flags | `HYPERDENSITY_KHR_TP_READINESS_ENABLED=true` + `HYPERDENSITY_KHR_TP_REFERENCE_ENV=true` |
+| Fixture | `examples/khr-dashboard/tp-readiness-reference-env.json` |
+
+See Karl-Dashboard `DASHBOARD_TP_READINESS_REFERENCE_ENV.md`.
+
+---
+
+## Forbidden (all reference env operations)
+
+- scope-2 ResourcePort loop enable
+- scope-3/4 ResourceLease dry-run/apply
+- Production namespace mutation
+- Autonomous orchestration
+- Dashboard mutating actions / action buttons
+- ISO default systemd enable
+
+---
+
+## Related
+
+- `KHR_TP_LIVE_ENABLEMENT_PLAN.md`
+- `KHR_TP_LIVE_SCOPE1_SANDBOX.md` (Hyperdensity + ISO)
+- rdp-GW `RDPGW_REFERENCE_ENVIRONMENT.md`

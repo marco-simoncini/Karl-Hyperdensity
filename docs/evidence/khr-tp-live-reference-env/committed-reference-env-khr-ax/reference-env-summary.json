@@ -1,0 +1,60 @@
+{
+  "phase": "khr-tp-live-reference-env",
+  "sprint": "KHR-AX",
+  "runId": "20260516T210425Z",
+  "clusterContext": "karl-metal-01@ovh",
+  "contractSetId": "khr-tp-contract-v1",
+  "status": "PASS",
+  "readOnly": true,
+  "mutating": false,
+  "productionReady": false,
+  "noAutonomousOrchestration": true,
+  "readyForScope0": true,
+  "readyForScope1": true,
+  "readyForScope2": false,
+  "scope2BlockedReason": "ResourcePort loop not enabled in KHR-AW",
+  "rdpgwDeployMode": "local-gateway",
+  "rdpgwEvidenceTrust": "live-readonly",
+  "namespaces": [
+    "khr-runtime-sandbox",
+    "khr-rdpgw-sandbox"
+  ],
+  "checks": {
+    "enablementPreflight": {
+      "status": "PASS",
+      "detail": "readyForScope1=conditional"
+    },
+    "scope1Evidence": {
+      "status": "PASS",
+      "detail": "runId=khr-aw-scope1-20260516T210000Z"
+    },
+    "readyForScope1": {
+      "status": "PASS",
+      "detail": "khr-aw-scope1-20260516T210000Z"
+    },
+    "readyForScope2Blocked": {
+      "status": "PASS",
+      "detail": "ResourcePort loop not enabled in KHR-AW"
+    },
+    "rdpgwLiveReadonlyEvidence": {
+      "status": "PASS",
+      "detail": "trust=live-readonly"
+    },
+    "rdpgwDeployMode": {
+      "status": "PASS",
+      "detail": "deployMode=local-gateway",
+      "deployMode": "local-gateway"
+    },
+    "noProductionNamespaceMutation": {
+      "status": "PASS",
+      "detail": "{\"deployGenerationsSnapshot\": {\"karl-system\": \"7 652 6 11 1 1 48 1 2 5 5 11\", \"kube-system\": \"5 4 6 1 1 2 1 1 1 1\", \"default\": \"1 1 21 21 21 21 21 20\"}, \"sandboxOnlyMutation\": true}"
+    },
+    "dashboardTpReadinessFixture": {
+      "status": "PASS",
+      "detail": "/home/m.simoncini/GitHub/Karl-Dashboard/examples/khr-dashboard/tp-readiness-reference-env.json"
+    }
+  },
+  "errors": [],
+  "evidencePath": "docs/evidence/khr-tp-live-reference-env/20260516T210425Z",
+  "at": "2026-05-16T21:04:26Z"
+}
