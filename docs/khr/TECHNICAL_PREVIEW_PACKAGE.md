@@ -21,6 +21,7 @@ This document defines the **Technical Preview (TP) package** consumable without 
 | **Karl-OS-ISO** | CRD foundation + host-runtime preview (disabled) | `docs/khr/KHR_TECHNICAL_PREVIEW_ISO_GUIDE.md`, `docs/khr/KHR_TECHNICAL_PREVIEW_PROFILE.md`, `docs/khr/KHR_BOOTSTRAP_FLOW.md` |
 | **Karl-OS-ISO_subiquity** | Host install UI — TP wording alignment only | `docs/khr/KHR_SUBIQUITY_ALIGNMENT.md` |
 | **Karl-Installer** | Profile selector + CRD foundation apply (AI) | `KARL_INSTALLER_PROFILE`, `KARL_INSTALLER_KHR_CRD_PATH`, karl2 applies `expectedCrds` |
+| **rdp-GW** | Read-only ShellLease / GatewayRoute compatibility (KHR-AM) | `docs/khr/RDPGW_KHR_ALIGNMENT_PLAN.md`, `GET /karl-gw/v1/shell/resolve`, `GET /karl-gw/v1/gatewayroute/resolve` |
 
 | Validation (Hyperdensity) | Command |
 |---------------------------|---------|
@@ -156,6 +157,21 @@ Live sandbox (optional, operator cluster):
 export KHR_RUNTIME_CLUSTER_CONTEXT=karl-metal-01@ovh
 KHR_RUNTIME_SANDBOX_LIVE=1 ./scripts/khr_runtime_sandbox_execute.sh
 ```
+
+---
+
+## rdp-GW gateway consumer (KHR-AM)
+
+Wave 2 alignment starts in **rdp-GW** without changing Hyperdensity CRDs or controllers:
+
+| Item | KHR-AM behavior |
+|------|-----------------|
+| Contract source | This repo: `SHELLLEASE_GATEWAYROUTE_CONTRACT.md`, CRDs, JSON schemas |
+| rdp-GW resolvers | Stub read-only; `contractSetId: khr-tp-contract-v1` |
+| Legacy poolId | Compatibility mapping only; not the long-term routing key |
+| Dashboard | Doc projection only (`DASHBOARD_GATEWAYROUTE_RDPGW_ALIGNMENT.md`) — no new UI |
+
+Validation: rdp-GW `go test ./cmd/rdpgw/...` including `cmd/rdpgw/khr`.
 
 ---
 
