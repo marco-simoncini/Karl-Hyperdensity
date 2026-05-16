@@ -30,6 +30,7 @@ This document defines the **Technical Preview (TP) package** consumable without 
 | Full validate hook | `./scripts/validate.sh` |
 | ISO boundaries (ISO repo) | `./scripts/guard_khr_iso_boundaries.sh` |
 | ISO TP bootstrap verify (ISO repo, read-only) | `./scripts/khr_iso_tp_verify.sh` |
+| Installer karl2 CRD evidence (optional) | `Karl-Installer/scripts/khr_crd_foundation_evidence.sh` → `docs/evidence/khr-installer-crd-foundation/` |
 | Bootstrap consumer contract (this repo) | `docs/khr/KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md` |
 
 ---

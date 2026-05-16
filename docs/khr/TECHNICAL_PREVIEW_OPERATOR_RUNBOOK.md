@@ -39,6 +39,28 @@ Wave-1 convergence map: ISO CRD foundation → optional Installer profile (`karl
 
 ---
 
+## 1c. Installer karl2 CRD foundation evidence (KHR-AJ)
+
+Validate **only** with explicit profile (not default legacy):
+
+```bash
+cd Karl-Installer
+export KARL_INSTALLER_PROFILE=karl2-khr-technical-preview
+export KARL_INSTALLER_KHR_CRD_PATH=/opt/karl/karl-engine/khr/crds   # or ISO tree path
+
+./scripts/khr_crd_foundation_evidence.sh   # always dry-run first
+
+export KHR_RUNTIME_CLUSTER_CONTEXT=karl-metal-01@ovh
+export KHR_INSTALLER_APPLY_CRDS_I_UNDERSTAND_THIS_IS_TP=true
+./scripts/khr_crd_foundation_evidence.sh   # real apply + 8 CRD verify
+```
+
+Evidence: `Karl-Installer/docs/evidence/khr-installer-crd-foundation/<runId>/summary.json`
+
+**Guards:** no host-runtime enable; no KubeVirt/CDI/virtctl in karl2 path (`kubevirtCalledInKarl2Profile: false` in summary).
+
+---
+
 ## 2. Preflight (read-only)
 
 ```bash

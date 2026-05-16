@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-AG / KHR-AH / **KHR-AI** |
+| **Sprint** | KHR-AG / KHR-AH / KHR-AI / **KHR-AJ** |
 | **Consumer** | Karl-Hyperdensity CLIs, evidence scripts, sandbox lanes |
 | **Cluster (reference)** | `karl-metal-01@ovh` |
 | **Production** | **NOT production ready** |
@@ -17,7 +17,7 @@ Defines what Hyperdensity **expects** from ISO / installer / subiquity bootstrap
 |--------|----------|----------------------|
 | **Karl-OS-ISO** | `install_khr_crds`, disabled runtime, `profile-manifest.yaml`, boundary docs | CRD APIs after provision; manifest defines profile contract |
 | **Karl-OS-ISO_subiquity** | Host OS only | No KHR runtime enable at autoinstall |
-| **Karl-Installer** | `KARL_INSTALLER_PROFILE` / `-profile` (KHR-AH); default = legacy | See `KHR_INSTALLER_PROFILE_EXPECTATIONS.md` |
+| **Karl-Installer** | karl2 CRD apply+verify via `khr_crd_foundation_evidence.sh` (KHR-AJ) | `docs/evidence/khr-installer-crd-foundation/`; no KV in karl2 |
 | **Operator** | Sandbox NS + labels + manual script invocation | `khr-runtime-sandbox`, `khr.karl.io/sandbox=true` |
 
 ---

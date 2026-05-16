@@ -28,6 +28,26 @@ require_file "docs/evidence/khr-native-live-lane/certification-summary.json" "na
 require_file "docs/evidence/khr-certification-registry/summary.json" "certification registry summary"
 require_file "docs/evidence/khr-provenance/summary.json" "provenance evidence summary"
 
+# Optional: Karl-Installer karl2 CRD foundation evidence (KHR-AJ).
+INSTALLER_CRD_EVIDENCE="${ROOT}/../Karl-Installer/docs/evidence/khr-installer-crd-foundation/summary.json"
+if [[ -f "${INSTALLER_CRD_EVIDENCE}" ]]; then
+  echo "[khr_tp_package_check] OK: installer CRD foundation evidence present"
+  if ! rg -q '"kubevirtCalledInKarl2Profile"[[:space:]]*:[[:space:]]*false' "${INSTALLER_CRD_EVIDENCE}" 2>/dev/null; then
+    echo "[khr_tp_package_check] FAIL: installer evidence must assert kubevirtCalledInKarl2Profile false" >&2
+    FAIL=1
+  fi
+  if ! rg -q '"productionReady"[[:space:]]*:[[:space:]]*false' "${INSTALLER_CRD_EVIDENCE}" 2>/dev/null; then
+    echo "[khr_tp_package_check] FAIL: installer evidence must assert productionReady false" >&2
+    FAIL=1
+  fi
+  if ! rg -q 'noAutonomousOrchestration' "${INSTALLER_CRD_EVIDENCE}" 2>/dev/null; then
+    echo "[khr_tp_package_check] FAIL: installer evidence must document noAutonomousOrchestration" >&2
+    FAIL=1
+  fi
+else
+  echo "[khr_tp_package_check] INFO: installer CRD evidence not present (optional): ${INSTALLER_CRD_EVIDENCE}"
+fi
+
 # Evidence summaries must assert read-only / no autonomous apply.
 for summary in \
   docs/evidence/khr-certification-registry/summary.json \
