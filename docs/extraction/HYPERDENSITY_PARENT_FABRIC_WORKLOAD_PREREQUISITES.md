@@ -15,9 +15,9 @@ Unblock a **future** re-audit of `hyperdensity_parent_fabric_workload_helpers.go
 
 ## Still required before workload copy
 
-1. **Dashboard adapter** for KubeVirt/K8s API path builders (explicit sprint).
-2. **Observed-state** builders remain runtime-bound — not in primitives.
-3. Optional alignment sprint: map Dashboard nested helpers → Hyperdensity `primitives` API (different signatures today).
+1. **Dashboard adapter implementation** for path + observation (Sprint 50 documents boundary only).
+2. **Observed-state** builders remain runtime-bound — classified in Dashboard M35 fixture.
+3. **Re-audit criteria** met (see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_REAUDIT_CRITERIA.md`**) — then narrow copy to pure allowlist (3 functions).
 
 ## Rules (unchanged)
 

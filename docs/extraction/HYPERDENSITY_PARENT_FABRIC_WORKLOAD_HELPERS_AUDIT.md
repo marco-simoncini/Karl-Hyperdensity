@@ -72,7 +72,11 @@ Remove `workload/doc.go` and audit/deferred docs; no Dashboard source changes re
 
 ## Sprint 49 follow-up
 
-Stdlib **`parentfabric/primitives`** added as prerequisite — does **not** change this file's **`copy-deferred`** verdict. See **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_PREREQUISITES.md`**.
+Stdlib **`parentfabric/primitives`** added as prerequisite — does **not** change **`copy-deferred`** verdict.
+
+## Sprint 50 follow-up
+
+Adapter boundary + classification fixture (Dashboard) — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_BOUNDARY.md`**, **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_REAUDIT_CRITERIA.md`**. Verdict remains **`copy-deferred`**.
 
 ## Related
 

@@ -33,6 +33,7 @@ Pure trees (`parentfabric`, `summary`, `governance`, `evidence`, `recommendation
 | Guard | Mechanism (Sprint 45) |
 |-------|---------------------|
 | **Import deny (static)** | `scripts/validate_parentfabric_pure_deps.sh` — patterns above; requires `executiontypes/`, `workload/`, `primitives/` subpackages |
+| **Workload adapter** | API path + observed-state stay Dashboard-only until adapter sprint; see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_BOUNDARY.md`** |
 | **Import deny (deps)** | Future: `go list -deps` on `pkg/hyperdensity/parentfabric/...` |
 
 ---

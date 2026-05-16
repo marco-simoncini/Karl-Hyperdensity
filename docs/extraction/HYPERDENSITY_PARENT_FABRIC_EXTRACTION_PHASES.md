@@ -12,6 +12,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 49:** **`parentfabric/primitives`** stdlib contract (nested map + quantity); Dashboard primitive loci audit; **workload_helpers still deferred**.
 
+**Sprint 50:** workload **adapter boundary** docs + Dashboard **classification fixture** (46 functions); **no** adapter code; **copy-deferred** unchanged.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
