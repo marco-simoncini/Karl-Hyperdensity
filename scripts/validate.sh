@@ -330,6 +330,11 @@ if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_run.sh" ]]; t
     "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_cleanup.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh" ]]; then
+  KHR_TP_LIVE_SCOPE4_RUN_ID="${KHR_TP_LIVE_SCOPE4_RUN_ID:-committed-scope4-preflight-khr-bd}" \
+    "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_verify.sh" ]]; then
   KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID="${KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID:-committed-scope3-dryrun-khr-bc}" \
     "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_verify.sh"

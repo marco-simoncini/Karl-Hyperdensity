@@ -1,0 +1,4 @@
+[khr_tp_live_scope4_preflight] runId=committed-scope4-preflight-khr-bd cluster=karl-metal-01@ovh namespace=khr-runtime-sandbox
+[khr_tp_live_scope4_preflight] PASS scope4-preflight-summary=/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json
+[khr_tp_live_scope4_preflight] runId=committed-scope4-preflight-khr-bd cluster=karl-metal-01@ovh namespace=khr-runtime-sandbox
+[khr_tp_live_scope4_preflight] PASS scope4-preflight-summary=/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json

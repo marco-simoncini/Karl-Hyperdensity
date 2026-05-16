@@ -1,0 +1,109 @@
+{
+  "phase": "khr-tp-live-scope4-preflight",
+  "sprint": "KHR-BD",
+  "runId": "committed-scope4-preflight-khr-bd",
+  "clusterContext": "karl-metal-01@ovh",
+  "namespace": "khr-runtime-sandbox",
+  "contractSetId": "khr-tp-contract-v1",
+  "status": "PASS",
+  "readOnly": true,
+  "mutating": false,
+  "automaticEnablement": false,
+  "productionReady": false,
+  "noAutonomousOrchestration": true,
+  "readyForScope1": true,
+  "readyForScope2": "manual-loop-pass",
+  "readyForScope3": "manual-dryrun-pass",
+  "readyForScope3Active": false,
+  "readyForScope4": "conditional/manual-preflight-pass",
+  "readyForScope4Active": false,
+  "guardedApplyExecuted": false,
+  "cgroupMutationObserved": false,
+  "dryRunDecision": "allowed",
+  "sourceResourcePortRef": "cluster/ResourcePort/khr-native-live-target-5df65659bd-2xjxg-port",
+  "rollbackPlanRef": "khr-runtime-sandbox/RollbackPlan/khr-sandbox-rollback",
+  "verificationPlanRef": "sandbox/VerificationPlan/resourcelease-dryrun",
+  "rollbackPlanDeclared": true,
+  "verificationPlanDeclared": true,
+  "operatorConfirmationRequired": true,
+  "applyCommandAvailable": true,
+  "scope3DryRunEvidenceRunId": "committed-scope3-dryrun-khr-bc",
+  "scope4BlockedReason": "Guarded apply not executed; deferred to dedicated sprint after sign-off",
+  "scope4PreflightNote": "KHR-BD preflight only \u2014 no guarded apply, no cgroup mutation",
+  "checks": {
+    "clusterContext": {
+      "status": "PASS",
+      "detail": "current=karl-metal-01@ovh required=karl-metal-01@ovh"
+    },
+    "sandboxNamespaceLabel": {
+      "status": "PASS",
+      "detail": "namespace=khr-runtime-sandbox"
+    },
+    "productionBlocklistUntouched": {
+      "status": "PASS",
+      "detail": "{\"karl\": \"18 2\", \"karl-system\": \"7 652 6 11 1 1 48 1 2 5 5 11\", \"default\": \"1 1 21 21 21 21 21 20\", \"kube-system\": \"5 4 6 1 1 2 1 1 1 1\"}"
+    },
+    "scope1Ready": {
+      "status": "PASS",
+      "detail": "runId=khr-aw-scope1-20260516T210000Z"
+    },
+    "scope2ManualLoopPass": {
+      "status": "PASS",
+      "detail": "readyForScope2=manual-loop-pass"
+    },
+    "scope3ManualDryRunPass": {
+      "status": "PASS",
+      "detail": "runId=committed-scope3-dryrun-khr-bc"
+    },
+    "dryRunDecisionAllowed": {
+      "status": "PASS",
+      "detail": "dryRunDecision=allowed"
+    },
+    "sourceResourcePortRefPresent": {
+      "status": "PASS",
+      "detail": "cluster/ResourcePort/khr-native-live-target-5df65659bd-2xjxg-port"
+    },
+    "rollbackPlanRefPresent": {
+      "status": "PASS",
+      "detail": "khr-runtime-sandbox/RollbackPlan/khr-sandbox-rollback"
+    },
+    "verificationPlanRefPresent": {
+      "status": "PASS",
+      "detail": "sandbox/VerificationPlan/resourcelease-dryrun"
+    },
+    "nativeLiveCertified": {
+      "status": "PASS",
+      "detail": "status=certified"
+    },
+    "provenanceValid": {
+      "status": "PASS",
+      "detail": "runId=20260516T181910Z"
+    },
+    "guardedApplyCommandAvailable": {
+      "status": "PASS",
+      "detail": "mode=resourcelease-guarded-apply config=karl-host-runtime-config-guarded-apply.yaml"
+    },
+    "guardedApplyNotExecuted": {
+      "status": "PASS",
+      "detail": "guardedApplyExecuted=False"
+    },
+    "operatorConfirmationRequired": {
+      "status": "PASS",
+      "detail": "KHR_TP_LIVE_SCOPE4_I_UNDERSTAND_GUARDED_APPLY=true required for execution sprint"
+    }
+  },
+  "errors": [],
+  "forbidden": {
+    "productionNamespace": true,
+    "autonomousApply": true,
+    "persistentScheduler": true,
+    "applyWithoutRollback": true,
+    "applyWithoutVerification": true,
+    "windowsApply": true,
+    "kubevirtTemplateMutation": true,
+    "guardedApplyLiveExecution": true,
+    "cgroupMutation": true
+  },
+  "evidencePath": "docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd",
+  "at": "2026-05-16T21:59:05Z"
+}

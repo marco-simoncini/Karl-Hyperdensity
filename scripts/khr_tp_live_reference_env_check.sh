@@ -326,6 +326,32 @@ record(
     f"runId={scope3_dryrun.get('runId') if scope3_dryrun else 'none'}",
 )
 
+scope4_pf = None
+scope4_base = ROOT / "docs/evidence/khr-tp-live-scope4-preflight"
+committed_scope4 = scope4_base / "committed-scope4-preflight-khr-bd" / "scope4-preflight-summary.json"
+if committed_scope4.is_file():
+    scope4_pf = load(committed_scope4)
+elif scope4_base.is_dir():
+    for child in sorted(scope4_base.iterdir(), reverse=True):
+        p = child / "scope4-preflight-summary.json"
+        if p.is_file():
+            scope4_pf = load(p)
+            if scope4_pf:
+                break
+scope4_pf_ok = bool(
+    scope4_pf
+    and scope4_pf.get("status") == "PASS"
+    and scope4_pf.get("readyForScope4") == "conditional/manual-preflight-pass"
+    and scope4_pf.get("readyForScope4Active") is False
+    and scope4_pf.get("guardedApplyExecuted") is False
+    and scope4_pf.get("cgroupMutationObserved") is False
+)
+record(
+    "scope4PreflightEvidence",
+    scope4_pf_ok,
+    f"runId={scope4_pf.get('runId') if scope4_pf else 'none'}",
+)
+
 ready_for_scope3: bool | str = False
 if scope3_dryrun_ok:
     ready_for_scope3 = "manual-dryrun-pass"
@@ -348,14 +374,24 @@ record(
         and dash_summary.get("noMutation") is True
         and dash_summary.get("resourceLeaseDryRunExecuted") is True
         and dash_summary.get("resourceLeaseApplyEnabled") is False
+        and dash_summary.get("readyForScope4") is False
+        and dash_summary.get("readyForScope4State") == "conditional/manual-preflight-pass"
+        and dash_summary.get("readyForScope4Active") is False
+        and dash_summary.get("guardedApplyExecuted") is False
+        and dash_summary.get("operatorConfirmationRequired") is True
+        and dash_summary.get("rollbackRequired") is True
     ),
     str(dash_fixture),
 )
 
+ready_for_scope4: bool | str = False
+if scope4_pf_ok:
+    ready_for_scope4 = "conditional/manual-preflight-pass"
+
 status = "PASS" if not errors else "FAIL"
 summary = {
     "phase": "khr-tp-live-reference-env",
-    "sprint": "KHR-BC",
+    "sprint": "KHR-BD",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": "khr-tp-contract-v1",
@@ -371,7 +407,9 @@ summary = {
     "readyForScope2LoopExecution": scope2_loop_ok,
     "readyForScope3": ready_for_scope3,
     "readyForScope3Active": False,
-    "readyForScope4": False,
+    "readyForScope4": ready_for_scope4,
+    "readyForScope4Active": False,
+    "guardedApplyExecuted": scope4_pf.get("guardedApplyExecuted", False) if scope4_pf_ok else False,
     "resourceLeaseDryRunExecuted": scope3_dryrun_ok,
     "dryRunObserved": scope3_dryrun_ok,
     "applyObserved": False,
