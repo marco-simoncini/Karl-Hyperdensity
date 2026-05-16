@@ -1,0 +1,119 @@
+{
+  "mode": "host-heartbeat",
+  "blocked": false,
+  "namespace": "khr-runtime-sandbox",
+  "clusterContext": "karl-metal-01@ovh",
+  "noMutation": true,
+  "noProductionMutation": true,
+  "staleDetected": true,
+  "iterations": [
+    {
+      "index": 1,
+      "observedAt": "2026-05-16T13:47:44Z",
+      "host": {
+        "apiVersion": "runtime.karl.io/v1alpha1",
+        "kind": "Host",
+        "metadata": {
+          "name": "karl-host-runtime-karl-metal-01",
+          "labels": {
+            "khr.karl.io/sandbox": "true"
+          }
+        },
+        "spec": {
+          "hostId": "karl-host-runtime-karl-metal-01",
+          "nodeName": "karl-builder",
+          "provider": "khr.native",
+          "runtimeMode": "sandbox",
+          "labels": {
+            "khr.karl.io/sandbox": "true"
+          }
+        },
+        "status": {
+          "phase": "Observed",
+          "conditions": [
+            {
+              "type": "Ready",
+              "status": "False",
+              "reason": "NoController",
+              "message": "KHR-I status from karl-host-runtime only; no reconciler loop",
+              "lastTransitionTime": "2026-05-16T13:47:44Z"
+            },
+            {
+              "type": "SandboxOnly",
+              "status": "True",
+              "reason": "ProductionUnsupported",
+              "message": "Host registration is sandbox/read-only in KHR-I",
+              "lastTransitionTime": "2026-05-16T13:47:44Z"
+            }
+          ],
+          "capabilities": {
+            "hostId": "karl-host-runtime-karl-metal-01",
+            "cgroupVersion": "v2",
+            "runtimeProviders": [
+              "linux.systemd.stub",
+              "linux.cgroup.envelope.stub"
+            ],
+            "supportedModes": [
+              "envelope",
+              "static"
+            ],
+            "blockedSurfaces": [
+              "kubevirt",
+              "libvirt",
+              "qmp",
+              "windows",
+              "vm-mutation",
+              "autonomous-apply"
+            ]
+          },
+          "lastApplyState": "idle",
+          "lastHeartbeatTime": "2026-05-16T13:47:44Z",
+          "runtimeVersion": "0.0.3-khr-n",
+          "safetyMode": "sandbox",
+          "runtimeSessionId": "khr-session-2e24a12108b829a3",
+          "hostRuntimeInstanceId": "khr-inst-675aeb64ff175e33",
+          "correlationId": "khr-session-2e24a12108b829a3-op-2"
+        }
+      },
+      "runtimeSession": {
+        "runtimeSessionId": "khr-session-2e24a12108b829a3",
+        "hostRuntimeInstanceId": "khr-inst-675aeb64ff175e33",
+        "correlationId": "khr-session-2e24a12108b829a3-op-3",
+        "startedAt": "2026-05-16T13:47:44Z",
+        "hostId": "karl-host-runtime-karl-metal-01"
+      },
+      "stale": true,
+      "staleReason": "prior heartbeat older than threshold",
+      "noMutation": true,
+      "lastApplyState": "idle"
+    }
+  ],
+  "flightRecorder": [
+    {
+      "at": "2026-05-16T13:47:44.560601818Z",
+      "phase": "host-heartbeat",
+      "message": "loop start",
+      "data": "khr-session-2e24a12108b829a3",
+      "runtimeSessionId": "khr-session-2e24a12108b829a3",
+      "hostRuntimeInstanceId": "khr-inst-675aeb64ff175e33",
+      "correlationId": "khr-session-2e24a12108b829a3-op-1"
+    },
+    {
+      "at": "2026-05-16T13:47:44.773146415Z",
+      "phase": "host-heartbeat",
+      "message": "tick",
+      "data": "index=1 applyState=idle ports=0",
+      "runtimeSessionId": "khr-session-2e24a12108b829a3",
+      "hostRuntimeInstanceId": "khr-inst-675aeb64ff175e33",
+      "correlationId": "khr-session-2e24a12108b829a3-op-1"
+    },
+    {
+      "at": "2026-05-16T13:47:44.773151006Z",
+      "phase": "host-heartbeat",
+      "message": "loop complete",
+      "runtimeSessionId": "khr-session-2e24a12108b829a3",
+      "hostRuntimeInstanceId": "khr-inst-675aeb64ff175e33",
+      "correlationId": "khr-session-2e24a12108b829a3-op-1"
+    }
+  ]
+}

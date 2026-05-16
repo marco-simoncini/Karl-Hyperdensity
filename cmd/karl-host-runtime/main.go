@@ -16,7 +16,7 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "register-host", "register-host|host-status|resourceport-loop|resourceport-cleanup|resourcelease-dryrun|resourcelease-guarded-apply|resourcelease-rollback|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
+	mode := flag.String("mode", "register-host", "register-host|host-status|host-heartbeat|resourceport-loop|resourceport-cleanup|resourcelease-dryrun|resourcelease-guarded-apply|resourcelease-rollback|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
 	nodeName := flag.String("node-name", "", "Kubernetes node name for host-status (default: hostname)")
 	clusterContext := flag.String("cluster-context", "", "required cluster context for resourceport-loop discovery")
 	emitCR := flag.Bool("emit-cr", false, "write local ResourcePort CR preview files (never kubectl apply by default)")
@@ -27,6 +27,10 @@ func main() {
 	loopIterations := flag.Int("loop-iterations", 1, "resourceport-loop iteration count")
 	loopIntervalMs := flag.Int("loop-interval-ms", 0, "delay between loop iterations")
 	loopOutputDir := flag.String("loop-output-dir", "", "directory for CR preview files when --emit-cr=true")
+	heartbeatIterations := flag.Int("heartbeat-iterations", 1, "host-heartbeat iteration count")
+	heartbeatIntervalMs := flag.Int("heartbeat-interval-ms", 0, "delay between heartbeat iterations")
+	heartbeatOutput := flag.String("heartbeat-output", "", "write Host status JSON to path each heartbeat tick")
+	priorHeartbeatAt := flag.String("prior-heartbeat-at", "", "RFC3339 timestamp for stale heartbeat simulation")
 	configPath := flag.String("config", "", "path to KarlHostRuntimeConfig YAML/JSON")
 	leasePath := flag.String("lease-input", "", "ResourceLease JSON for dry-run/apply")
 	portPath := flag.String("resource-port-input", "", "ResourcePort JSON for dry-run/apply")
@@ -66,6 +70,30 @@ func main() {
 	switch *mode {
 	case "register-host":
 		emit(host.RegisterHost(cfg))
+	case "host-heartbeat":
+		ctx := *clusterContext
+		if ctx == "" {
+			ctx = resourceport.CurrentKubeContext()
+		}
+		if *sandboxDir == "" {
+			*sandboxDir = filepath.Join(os.TempDir(), "khr-host-heartbeat")
+		}
+		res, err := host.RunHostHeartbeat(host.HeartbeatOptions{
+			Config:           cfg,
+			NodeName:         *nodeName,
+			Namespace:        *namespace,
+			ClusterContext:   ctx,
+			RequiredContext:  "karl-metal-01@ovh",
+			SandboxDir:       *sandboxDir,
+			Iterations:       *heartbeatIterations,
+			Interval:         time.Duration(*heartbeatIntervalMs) * time.Millisecond,
+			OutputPath:       *heartbeatOutput,
+			PriorHeartbeatAt: *priorHeartbeatAt,
+		})
+		if err != nil {
+			fatal(err)
+		}
+		emit(res)
 	case "host-status":
 		ports := []crdv1alpha1.ObjectRef{{
 			Name:      *portName,
@@ -153,6 +181,14 @@ func main() {
 		if *sandboxDir == "" {
 			*sandboxDir = filepath.Join(os.TempDir(), "khr-resourcelease-guarded-apply")
 		}
+		host.InitRuntimeSession(cfg)
+		host.SetCorrelationID("khr-guarded-apply")
+		sess := host.CurrentRuntimeSession()
+		flightrecorder.InitContext(flightrecorder.SessionContext{
+			RuntimeSessionID:      sess.RuntimeSessionID,
+			HostRuntimeInstanceID: sess.HostRuntimeInstanceID,
+			CorrelationID:         "khr-guarded-apply",
+		})
 		res, err := resourcelease.GuardedApplyAgainstResourcePorts(resourcelease.GuardedApplySandboxOptions{
 			DryRunAgainstPortOptions: resourcelease.DryRunAgainstPortOptions{
 				Config:          cfg,
@@ -184,6 +220,12 @@ func main() {
 		if len(cfg.Spec.AllowPathPrefixes) > 0 {
 			prefix = cfg.Spec.AllowPathPrefixes[0]
 		}
+		sess := host.CurrentRuntimeSession()
+		flightrecorder.InitContext(flightrecorder.SessionContext{
+			RuntimeSessionID:      sess.RuntimeSessionID,
+			HostRuntimeInstanceID: sess.HostRuntimeInstanceID,
+			CorrelationID:         "khr-rollback",
+		})
 		res, err := resourcelease.RollbackSandbox(resourcelease.RollbackSandboxOptions{
 			Config:          cfg,
 			BaselineID:      *baselineID,

@@ -1,0 +1,11 @@
+{
+  "sprint": "KHR-N",
+  "status": "PASS",
+  "clusterContext": "karl-metal-01@ovh",
+  "sandboxNamespace": "khr-runtime-sandbox",
+  "runtimeSessionId": "khr-session-436ec9b49c0c77ee",
+  "noMutation": true,
+  "noProductionMutation": true,
+  "runId": "20260516T134742Z",
+  "at": "2026-05-16T13:47:45Z"
+}

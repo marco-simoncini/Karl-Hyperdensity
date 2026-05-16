@@ -35,9 +35,15 @@ type HostStatus struct {
 	Conditions            []HostCondition     `json:"conditions,omitempty"`
 	Capabilities          json.RawMessage     `json:"capabilities,omitempty"`
 	ObservedResourcePorts []ObjectRef         `json:"observedResourcePorts,omitempty"`
+	ActiveResourcePorts   []ObjectRef         `json:"activeResourcePorts,omitempty"`
+	ActiveResourceLeases  []ObjectRef         `json:"activeResourceLeases,omitempty"`
+	LastApplyState        string              `json:"lastApplyState,omitempty"`
 	LastHeartbeatTime     string              `json:"lastHeartbeatTime,omitempty"`
 	RuntimeVersion        string              `json:"runtimeVersion,omitempty"`
 	SafetyMode            string              `json:"safetyMode,omitempty"`
+	RuntimeSessionID      string              `json:"runtimeSessionId,omitempty"`
+	HostRuntimeInstanceID string              `json:"hostRuntimeInstanceId,omitempty"`
+	CorrelationID         string              `json:"correlationId,omitempty"`
 }
 
 // HostCondition is a standard condition entry.
