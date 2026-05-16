@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 74** executes a **staging flip only**: `hyperdensityWorkloadAdapterApplyObservationCandidateRuntimeUsedV1 = true` in Dashboard. **`hyperdensityWorkloadAdapterApplyObservationWiredV1` remains `false`**. With the AND gate certified in Sprint 73, **runtime behavior stays legacy-equivalent** — the candidate branch is **not** active.
+**Sprint 74** executed a **staging flip only**. **Sprint 75** activated `ApplyObservationWiredV1=true` (candidate branch active).: `hyperdensityWorkloadAdapterApplyObservationCandidateRuntimeUsedV1 = true` in Dashboard. **`hyperdensityWorkloadAdapterApplyObservationWiredV1` remains `false`**. With the AND gate certified in Sprint 73, **runtime behavior stays legacy-equivalent** — the candidate branch is **not** active.
 
 ---
 

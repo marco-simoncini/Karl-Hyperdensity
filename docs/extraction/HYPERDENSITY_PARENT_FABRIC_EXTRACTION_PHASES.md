@@ -62,6 +62,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 74:** **Apply candidate-runtime staging flip** — `CandidateRuntimeUsedV1=true`, `ApplyObservationWiredV1=false`; AND gate → legacy path; no behavior change.
 
+**Sprint 75:** **Apply observation activation** — `ApplyObservationWiredV1=true`; candidate branch active; candidate ≡ legacy; broad observation **false**.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

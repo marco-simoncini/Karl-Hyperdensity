@@ -33,6 +33,7 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 14. **Sprint 72:** apply flip criteria — docs-only; flags **false**; no runtime changes.
 15. **Sprint 73:** candidate-runtime readiness — branch logic verified; no flip.
 16. **Sprint 74:** candidate-runtime staging flip — `CandidateRuntimeUsedV1=true`; Wired **false**; runtime legacy-equivalent.
+17. **Sprint 75:** apply observation activation — `ApplyObservationWiredV1=true`; candidate branch active; candidate ≡ legacy.
 
 ## Placeholder
 

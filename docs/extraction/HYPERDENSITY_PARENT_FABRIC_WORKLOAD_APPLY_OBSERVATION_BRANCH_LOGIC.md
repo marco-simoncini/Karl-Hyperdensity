@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 73** documented branch logic. **Sprint 74** flipped `CandidateRuntimeUsedV1=true`; AND gate keeps legacy path while `ApplyObservationWiredV1=false`. in apply observation staged wrappers (`apply_observation_wiring_v1.go`). **No code changes** in Sprint 73.
+**Sprint 73** documented branch logic. **Sprint 74** flipped `CandidateRuntimeUsedV1=true`. **Sprint 75** flipped `ApplyObservationWiredV1=true` — candidate branch **active**; candidate ≡ legacy. in apply observation staged wrappers (`apply_observation_wiring_v1.go`). **No code changes** in Sprint 73.
 
 ---
 
