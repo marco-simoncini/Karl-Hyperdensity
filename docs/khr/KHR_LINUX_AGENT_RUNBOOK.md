@@ -1,5 +1,13 @@
 # KHR Linux Agent — Runbook (Sprint 5–13)
 
+> **⚠ NOT production runtime**
+>
+> - **NOT** integrated in the Karl-Dashboard Parent Fabric runtime path.
+> - **NOT** a cluster controller or reconciler.
+> - **Experimental / sandbox only** — local CLI, dry-run, and evidence fixtures.
+>
+> Production VM/KubeVirt flows remain authoritative until KHR Phase 3+ wiring is explicitly activated.
+
 **Audience:** platform engineers evaluating the skeleton locally.
 
 ## Build
