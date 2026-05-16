@@ -8,6 +8,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 47:** **`SourceManifest`** anti-drift guard + Dashboard `go/ast` parity test; **no** new type copy; **no** production import wiring.
 
+**Sprint 48:** **`workload_helpers.go`** audit-first → **`copy-deferred`**; `parentfabric/workload` placeholder only. Phase 3 must **not** become bulk copy.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

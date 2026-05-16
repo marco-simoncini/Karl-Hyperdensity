@@ -37,9 +37,19 @@ check_pattern '"net/http"' 'net/http import'
 check_pattern 'github.com/openshift/console' 'openshift console import'
 check_pattern 'Karl-Dashboard' 'Karl-Dashboard string/import'
 check_pattern 'client-go' 'client-go string/import'
+check_pattern 'context.Context' 'context.Context reference'
+check_pattern 'http.Request' 'http.Request reference'
+check_pattern 'rest.Config' 'rest.Config reference'
+check_pattern 'dynamic.Interface' 'dynamic.Interface reference'
+check_pattern 'clientset' 'clientset reference'
 
 if [[ ! -d "${PF_DIR}/executiontypes" ]]; then
   echo "[validate_parentfabric_pure_deps] ERROR: missing ${PF_DIR}/executiontypes (Sprint 46)" >&2
+  exit 1
+fi
+
+if [[ ! -d "${PF_DIR}/workload" ]]; then
+  echo "[validate_parentfabric_pure_deps] ERROR: missing ${PF_DIR}/workload (Sprint 48)" >&2
   exit 1
 fi
 
@@ -48,4 +58,4 @@ if [[ "${failures}" -ne 0 ]]; then
   exit 1
 fi
 
-echo "[validate_parentfabric_pure_deps] PASS: checked ${#gofiles[@]} file(s) under pkg/hyperdensity/parentfabric (includes executiontypes)"
+echo "[validate_parentfabric_pure_deps] PASS: checked ${#gofiles[@]} file(s) under pkg/hyperdensity/parentfabric (includes executiontypes, workload)"

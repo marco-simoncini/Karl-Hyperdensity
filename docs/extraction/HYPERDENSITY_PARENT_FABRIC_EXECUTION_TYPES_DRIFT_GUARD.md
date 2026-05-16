@@ -37,8 +37,13 @@ Dashboard does **not** import Hyperdensity root. It parses `hyperdensity_parent_
 - Hyperdensity: `go test ./pkg/hyperdensity/parentfabric/executiontypes/...` + `scripts/validate.sh`
 - Dashboard: `TestHyperdensityParentFabricExecutionTypesDrift` in `test_hyperdensity_parity.sh`
 
+## Sprint 48 note
+
+`executiontypes` remains the **first stable** copy-contract. `workload_helpers.go` was audited separately and classified **`copy-deferred`** — see workload audit docs.
+
 ## Related
 
+- `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_HELPERS_AUDIT.md`
 - `HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_CONTRACT.md`
 - `HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_AUDIT.md`
 - Dashboard `HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_DRIFT_GUARD_M32.md`

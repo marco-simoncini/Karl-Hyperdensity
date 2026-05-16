@@ -8,7 +8,8 @@ Describe how **Phase 1–2** (mechanical file audit + pure-helper identification
 
 1. **`pkg/hyperdensity/parentfabric/...` skeleton** — stdlib-only placeholders (see **`HYPERDENSITY_PARENT_FABRIC_PURE_PACKAGE_SKELETON.md`**).
 2. **`scripts/validate_parentfabric_pure_deps.sh`** — fail CI if forbidden import strings appear under `parentfabric/`.
-3. **Sprint 46:** `hyperdensity_parent_fabric_execution_types.go` → partial copy in `parentfabric/executiontypes` (see audit/contract docs). Dashboard source file **not** moved; production import **not** added.
+3. **Sprint 46–47:** `hyperdensity_parent_fabric_execution_types.go` → partial copy in `parentfabric/executiontypes` + drift manifest.
+4. **Sprint 48:** `hyperdensity_parent_fabric_workload_helpers.go` → audit-first → **`copy-deferred`** (see workload audit/deferred docs). **No** helpers copy.
 
 ## How to audit candidates (Phase 2)
 

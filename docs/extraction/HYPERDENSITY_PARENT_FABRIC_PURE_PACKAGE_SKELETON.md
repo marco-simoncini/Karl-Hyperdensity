@@ -1,4 +1,4 @@
-# Hyperdensity Parent Fabric — pure package skeleton (Sprint 45–46)
+# Hyperdensity Parent Fabric — pure package skeleton (Sprint 45–48)
 
 ## Purpose
 
@@ -12,7 +12,8 @@ Record the **`pkg/hyperdensity/parentfabric/...`** **stdlib-only skeleton** adde
 | `pkg/hyperdensity/parentfabric/version.go` | `ParentFabricPackageVersion`, `ParentFabricRuntimeOwnership`, `ParentFabricExtractionMode` |
 | `pkg/hyperdensity/parentfabric/version_test.go` | Asserts constants are set; ownership remains **dashboard** string literal |
 | `pkg/hyperdensity/parentfabric/{summary,governance,evidence,recommendation}/doc.go` | Reserved subtrees (comments only) |
-| `pkg/hyperdensity/parentfabric/executiontypes/` | **Sprint 46** — partial copy-contract (`HyperdensityExecutionSummary`, engine spine) + golden |
+| `pkg/hyperdensity/parentfabric/executiontypes/` | **Sprint 46–47** — partial copy-contract + drift manifest |
+| `pkg/hyperdensity/parentfabric/workload/` | **Sprint 48** — placeholder only (`copy-deferred` audit for workload helpers) |
 
 ## Rules (unchanged from Sprint 44)
 
