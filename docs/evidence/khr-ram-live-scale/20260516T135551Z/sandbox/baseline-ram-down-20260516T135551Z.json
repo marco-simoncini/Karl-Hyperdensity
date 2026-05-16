@@ -1,0 +1,16 @@
+{
+  "id": "ram-down-20260516T135551Z",
+  "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-ram-live-scale/20260516T135551Z/sandbox",
+  "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-ram-live-scale/20260516T135551Z/sandbox/apply-marker.txt",
+  "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-ram-live-scale/20260516T135551Z/sandbox/cgroup/khr-runtime-sandbox-lease-memory-down",
+  "memoryMaxBefore": "max",
+  "memoryHighBefore": "max",
+  "memoryMaxApplied": "234881024",
+  "memoryHighApplied": "234881024",
+  "resource": "memory",
+  "transferMode": "scaleDown",
+  "extra": {
+    "allowPathPrefix": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-ram-live-scale/20260516T135551Z/sandbox",
+    "source": "karl-host-runtime"
+  }
+}

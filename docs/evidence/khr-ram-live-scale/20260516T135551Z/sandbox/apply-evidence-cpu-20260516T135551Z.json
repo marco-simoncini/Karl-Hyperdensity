@@ -1,0 +1,6 @@
+{
+  "at": "2026-05-16T13:55:53Z",
+  "baselineId": "cpu-20260516T135551Z",
+  "cgroupPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-ram-live-scale/20260516T135551Z/sandbox/cgroup/khr-runtime-sandbox-lease-allowed",
+  "cpuMaxApplied": "25000 100000"
+}
