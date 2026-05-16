@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 73** is **readiness/proposal-only** for a future flip of `hyperdensityWorkloadAdapterApplyObservationCandidateRuntimeUsedV1 = true`. **No flag flip, no wiring, no runtime changes** in Sprint 73.
+**Sprint 73** was **readiness/proposal-only**. **Sprint 74** executed staging flip (`CandidateRuntimeUsedV1=true`; Wired **false**; runtime legacy). for a future flip of `hyperdensityWorkloadAdapterApplyObservationCandidateRuntimeUsedV1 = true`. **No flag flip, no wiring, no runtime changes** in Sprint 73.
 
 **Sprint 72** documented flip criteria and risks. This sprint certifies readiness and clarifies candidate-runtime semantics.
 

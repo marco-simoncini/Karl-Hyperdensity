@@ -31,7 +31,8 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 12. **Sprint 70:** apply call-site wiring — 4 wrappers in `apply.go`; flags **false**.
 13. **Sprint 71:** apply post-wiring hardening — 8×4; flags **false**.
 14. **Sprint 72:** apply flip criteria — docs-only; flags **false**; no runtime changes.
-15. **Sprint 73:** candidate-runtime readiness — branch logic verified; flags **false**; no runtime changes.
+15. **Sprint 73:** candidate-runtime readiness — branch logic verified; no flip.
+16. **Sprint 74:** candidate-runtime staging flip — `CandidateRuntimeUsedV1=true`; Wired **false**; runtime legacy-equivalent.
 
 ## Placeholder
 

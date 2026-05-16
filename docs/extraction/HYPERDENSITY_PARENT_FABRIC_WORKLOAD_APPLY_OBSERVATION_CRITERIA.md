@@ -40,7 +40,7 @@ hyperdensityWorkloadAdapterApplyObservationWiredV1 = true
 - [x] Sprint 71 post-wiring hardening green.
 - [x] Sprint 72 flip criteria + risks documented (no flip).
 - [x] Sprint 73 candidate-runtime readiness + branch logic (no flip).
-- [ ] `ApplyObservationCandidateRuntimeUsedV1 = true` (dedicated flip sprint).
+- [x] Sprint 74 `ApplyObservationCandidateRuntimeUsedV1 = true` (staging flip; Wired **false**).
 - [ ] `ApplyObservationWiredV1 = true` (dedicated flip sprint).
 - [ ] `audit_workload_apply_observation.sh` reports zero forbidden patterns.
 - [ ] Golden `applyObservationWired: false` updated only when flip sprint approved.
