@@ -2,7 +2,12 @@
 
 ## Status
 
-**Document-only.** No Go `interface` types in `parentfabric` packages, no Dashboard implementation, no runtime wiring, no copy from `workload_helpers.go` in Sprint 50.
+| Sprint | Hyperdensity | Dashboard |
+|--------|--------------|-----------|
+| **50** | Document-only — no Go `interface` in `parentfabric` | Classification fixture only |
+| **51** | Stub readiness doc only | **Test-only** stubs in `*_test.go` (`testWorkloadPathAdapter`, `testWorkloadObservationAdapter`) — **no production wiring** |
+
+No copy from `workload_helpers.go` to Hyperdensity in Sprint 50–51.
 
 ## WorkloadPathAdapter (conceptual)
 
@@ -31,7 +36,7 @@ Responsible for **observed-state** extraction from untyped API object maps.
 
 Return types remain **Dashboard DTOs** until a dedicated pure DTO migration sprint.
 
-## What is NOT in these adapters (Sprint 50)
+## What is NOT in these adapters (Sprint 50–51)
 
 - Execution mode / ready-reason / mechanism selection (remain **do-not-move** in Dashboard).
 - The three **pure-candidate** kind helpers (`hyperdensityAppsWorkloadResource`, …) — candidates for Hyperdensity `primitives` or `workload` **after** adapter boundary is implemented.

@@ -13,7 +13,8 @@ All of the following must be true before changing verdict from **`copy-deferred`
 | 5 | **`executiontypes`** drift manifest green (Dashboard AST test). |
 | 6 | **Classification fixture** complete — every function in source file categorized (Sprint 50). |
 | 7 | **Dashboard adapter classification test** PASS in parity runner. |
-| 8 | **No production import** of `pkg/hyperdensity/parentfabric` until an explicit **wiring sprint** approves it. |
+| 8 | **Dashboard adapter stub test** PASS (`TestHyperdensityParentFabricWorkloadAdapterStub`, Sprint 51). |
+| 9 | **No production import** of `pkg/hyperdensity/parentfabric` until an explicit **wiring sprint** approves it. |
 
 ## What re-audit does **not** mean
 
@@ -21,9 +22,14 @@ All of the following must be true before changing verdict from **`copy-deferred`
 - Moving KubeVirt/K8s path strings into Hyperdensity.
 - Changing API responses, JSON ordering, or apply behavior.
 
-## Sprint 50 outcome
+## Sprint 50–51 outcome
 
-Criteria **documented** + Dashboard classification **fixture/test** — verdict remains **`copy-deferred`**.
+| Sprint | Delivered | Verdict |
+|--------|-----------|---------|
+| **50** | Criteria documented + classification fixture/test | `copy-deferred` |
+| **51** | Dashboard test-only adapter stubs + golden manifest | `copy-deferred` |
+
+Re-audit may proceed only after criteria 1–9 satisfied; Sprint 51 satisfies **#8** (stub test), not full adapter production implementation.
 
 ## Related
 

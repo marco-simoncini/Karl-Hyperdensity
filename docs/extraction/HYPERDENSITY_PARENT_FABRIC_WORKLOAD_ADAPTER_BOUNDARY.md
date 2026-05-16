@@ -2,7 +2,13 @@
 
 ## Purpose
 
-Define what **must remain in Karl-Dashboard** (adapter-bound / runtime-bound) vs what **may** eventually live in **Karl-Hyperdensity** pure-core when `hyperdensity_parent_fabric_workload_helpers.go` is re-audited. **Sprint 50 is documentation only** — no Go adapter package, no runtime wiring, no copy from Dashboard.
+Define what **must remain in Karl-Dashboard** (adapter-bound / runtime-bound) vs what **may** eventually live in **Karl-Hyperdensity** pure-core when `hyperdensity_parent_fabric_workload_helpers.go` is re-audited.
+
+| Sprint | Scope |
+|--------|--------|
+| **50** | Boundary docs + Dashboard classification fixture — no Go adapter |
+| **51** | Dashboard **test-only** adapter stubs (`*_test.go`) — **no production wiring** |
+| **Future** | Production adapter package or pure-core copy — explicit sprint only |
 
 ## Adapter-bound (stays in Dashboard)
 

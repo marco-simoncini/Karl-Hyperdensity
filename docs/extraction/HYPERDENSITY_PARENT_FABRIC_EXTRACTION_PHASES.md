@@ -14,6 +14,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 50:** workload **adapter boundary** docs + Dashboard **classification fixture** (46 functions); **no** adapter code; **copy-deferred** unchanged.
 
+**Sprint 51:** Dashboard **test-only adapter stubs** + golden manifest; Hyperdensity **stub readiness** doc; **no** production wiring; **copy-deferred** unchanged.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
