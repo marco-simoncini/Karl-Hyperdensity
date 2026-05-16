@@ -96,6 +96,7 @@ required_files=(
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_PURE_CANDIDATE_AUDIT.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_AUDIT.md"
   "docs/extraction/HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_CONTRACT.md"
+  "docs/extraction/HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_DRIFT_GUARD.md"
   "pkg/hyperdensity/contractkit/go.mod"
   "pkg/hyperdensity/contractkit/testdata/dashboard/hyperdensity_parity_manifest_m1_m7.json"
   "testdata/dashboard/parent_fabric_summary_redacted.golden.json"

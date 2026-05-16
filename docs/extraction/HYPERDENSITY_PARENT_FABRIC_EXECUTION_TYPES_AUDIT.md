@@ -1,4 +1,4 @@
-# Hyperdensity Parent Fabric — execution types source audit (Sprint 46)
+# Hyperdensity Parent Fabric — execution types source audit (Sprint 46–47)
 
 ## Source file
 
@@ -64,8 +64,14 @@ Sample deferred type names (first 20 of 152):
 - Revert Hyperdensity `executiontypes` package and docs; remove Dashboard contract test from parity runner.
 - Dashboard source file unchanged — zero runtime rollback.
 
+## Sprint 47 — drift guard (no new copy)
+
+- Hyperdensity `SourceManifest` documents import set, type count, and json tags for the copied slice.
+- Manifest does **not** read Dashboard at runtime; Dashboard AST test validates source locally.
+
 ## Related
 
+- `HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_DRIFT_GUARD.md`
 - `HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_CONTRACT.md`
 - `pkg/hyperdensity/parentfabric/executiontypes/`
 - Dashboard `docs/hyperdensity/HYPERDENSITY_PARENT_FABRIC_EXECUTION_TYPES_SOURCE_AUDIT_M31.md`

@@ -6,6 +6,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 46 (Phase 3 minimal):** first candidate `hyperdensity_parent_fabric_execution_types.go` → **`parentfabric/executiontypes`** copy-contract + golden; Dashboard source **unchanged**; **no** production import wiring.
 
+**Sprint 47:** **`SourceManifest`** anti-drift guard + Dashboard `go/ast` parity test; **no** new type copy; **no** production import wiring.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files
