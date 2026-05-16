@@ -1,0 +1,7 @@
+{
+  "clusterContext": "karl-metal-01@ovh",
+  "namespace": "khr-runtime-sandbox",
+  "deleted": 1,
+  "selector": "karl.io/managed-by=karl-host-runtime,karl.io/sandbox-namespace=khr-runtime-sandbox",
+  "noProductionMutation": true
+}

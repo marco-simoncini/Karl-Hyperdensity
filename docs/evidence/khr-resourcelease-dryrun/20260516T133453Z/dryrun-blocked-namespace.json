@@ -1,0 +1,30 @@
+{
+  "mode": "resourcelease-dryrun",
+  "allowed": false,
+  "blocked": true,
+  "dryRunDecision": "blocked",
+  "reason": "production namespace blocked: karl-system",
+  "blockedReason": "production namespace blocked: karl-system",
+  "baseline": {
+    "id": "sandbox-default",
+    "sandboxDir": "/tmp/khr-resourcelease-dryrun",
+    "markerPath": "/tmp/khr-resourcelease-dryrun/apply-marker.txt",
+    "extra": {
+      "source": "karl-host-runtime"
+    }
+  },
+  "rollbackPlan": [
+    "revert cgroup cpu.max/memory.max to prior values captured pre-apply"
+  ],
+  "verificationPlan": [
+    "read back cgroup limits",
+    "compare cgroup.events pressure",
+    "confirm process RSS/CPU throttle metrics"
+  ],
+  "rollbackPlanStatus": "planned",
+  "verificationPlanStatus": "planned",
+  "clusterContext": "karl-metal-01@ovh",
+  "namespace": "karl-system",
+  "noMutation": true,
+  "noApply": true
+}

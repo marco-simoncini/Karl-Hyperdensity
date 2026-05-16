@@ -1,0 +1,11 @@
+{
+  "sprint": "KHR-L",
+  "status": "PASS",
+  "clusterContext": "karl-metal-01@ovh",
+  "sandboxNamespace": "khr-runtime-sandbox",
+  "matchedResourcePort": "khr-runtime-sandbox-khr-runtime-linux-target-86795b9868-q45wk-port",
+  "noResourceLeaseApply": true,
+  "noProductionMutation": true,
+  "runId": "20260516T133453Z",
+  "at": "2026-05-16T13:34:56Z"
+}

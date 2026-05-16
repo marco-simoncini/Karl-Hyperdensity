@@ -1,0 +1,24 @@
+{
+  "apiVersion": "hyperdensity.karl.io/v1alpha1",
+  "kind": "ResourceLease",
+  "metadata": {
+    "name": "khr-runtime-sandbox-lease-missing-port",
+    "namespace": "khr-runtime-sandbox",
+    "labels": {
+      "khr.karl.io/sandbox": "true"
+    },
+    "annotations": {
+      "khr.karl.io/resource-port-ref": "cluster/ResourcePort/does-not-exist-in-sandbox"
+    }
+  },
+  "spec": {
+    "leaseKind": "transfer",
+    "transfer": {
+      "donor": { "kind": "Cell", "namespace": "khr-runtime-sandbox", "name": "demo" },
+      "receiver": { "kind": "Cell", "namespace": "khr-runtime-sandbox", "name": "demo-receiver" },
+      "resource": "cpu",
+      "mode": "envelope",
+      "amount": { "milliCpu": 100 }
+    }
+  }
+}

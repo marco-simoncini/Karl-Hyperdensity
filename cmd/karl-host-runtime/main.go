@@ -15,7 +15,7 @@ import (
 )
 
 func main() {
-	mode := flag.String("mode", "register-host", "register-host|host-status|resourceport-loop|resourceport-cleanup|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
+	mode := flag.String("mode", "register-host", "register-host|host-status|resourceport-loop|resourceport-cleanup|resourcelease-dryrun|report-capabilities|emit-resourceport|dry-run-lease|apply-lease|rollback|flight-recorder")
 	nodeName := flag.String("node-name", "", "Kubernetes node name for host-status (default: hostname)")
 	clusterContext := flag.String("cluster-context", "", "required cluster context for resourceport-loop discovery")
 	emitCR := flag.Bool("emit-cr", false, "write local ResourcePort CR preview files (never kubectl apply by default)")
@@ -34,6 +34,7 @@ func main() {
 	shellRef := flag.String("shell-ref", "khr-runtime-sandbox/Shell/demo", "Shell ref for ResourcePort candidate")
 	cellRef := flag.String("cell-ref", "khr-runtime-sandbox/Cell/demo", "Cell ref for ResourcePort candidate")
 	portName := flag.String("port-name", "demo-port", "ResourcePort candidate name")
+	resourcePortRef := flag.String("resource-port-ref", "", "cluster ResourcePort ref for resourcelease-dryrun (optional)")
 	flag.Parse()
 
 	switch *mode {
@@ -98,6 +99,38 @@ func main() {
 		if err != nil {
 			fatal(err)
 		}
+		emit(res)
+	case "resourcelease-dryrun":
+		if *leasePath == "" {
+			fatal(fmt.Errorf("-lease-input is required for resourcelease-dryrun"))
+		}
+		leaseRaw, err := os.ReadFile(*leasePath)
+		if err != nil {
+			fatal(err)
+		}
+		var lease crdv1alpha1.ResourceLease
+		if err := json.Unmarshal(leaseRaw, &lease); err != nil {
+			fatal(err)
+		}
+		ctx := *clusterContext
+		if ctx == "" {
+			ctx = resourceport.CurrentKubeContext()
+		}
+		res, err := resourcelease.DryRunAgainstResourcePorts(resourcelease.DryRunAgainstPortOptions{
+			Config:          cfg,
+			Lease:           &lease,
+			Namespace:       *namespace,
+			Labels:          copyLabels(cfg.Spec.AllowedLabels),
+			ClusterContext:  ctx,
+			RequiredContext: "karl-metal-01@ovh",
+			ResourcePortRef: *resourcePortRef,
+			SandboxDir:      *sandboxDir,
+			BaselineID:      *baselineID,
+		})
+		if err != nil {
+			fatal(err)
+		}
+		flightrecorder.Record("resourcelease-dryrun", res.DryRunDecision, res.Reason)
 		emit(res)
 	case "resourceport-cleanup":
 		ctx := *clusterContext
