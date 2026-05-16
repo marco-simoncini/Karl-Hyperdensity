@@ -8,7 +8,9 @@ import (
 	"path/filepath"
 	"time"
 
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/certregistry"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/policygates"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/flightrecorder"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/host"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/lanediscovery"
@@ -43,6 +45,7 @@ func main() {
 	cellRef := flag.String("cell-ref", "khr-runtime-sandbox/Cell/demo", "Cell ref for ResourcePort candidate")
 	portName := flag.String("port-name", "demo-port", "ResourcePort candidate name")
 	resourcePortRef := flag.String("resource-port-ref", "", "cluster ResourcePort ref for resourcelease-dryrun (optional)")
+	certRegistryPath := flag.String("cert-registry", "", "KHR-V: certification registry JSON for gated resourcefuture-simulate")
 	flag.Parse()
 
 	switch *mode {
@@ -99,12 +102,24 @@ func main() {
 		if ctx == "" {
 			ctx = resourceport.CurrentKubeContext()
 		}
-		res, err := resourcefuture.Run(resourcefuture.Options{
+		opts := resourcefuture.Options{
 			Config:          cfg,
 			ClusterContext:  ctx,
 			RequiredContext: "karl-metal-01@ovh",
 			NodeName:        *nodeName,
-		})
+		}
+		if *certRegistryPath != "" {
+			reg, err := certregistry.LoadJSON(*certRegistryPath)
+			if err != nil {
+				fatal(err)
+			}
+			opts.Policy = resourcefuture.PolicyContext{
+				Registry: &reg,
+				Gates:    policygates.DefaultNativeLiveGates(),
+				Now:      time.Now().UTC(),
+			}
+		}
+		res, err := resourcefuture.Run(opts)
 		if err != nil {
 			fatal(err)
 		}

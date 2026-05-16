@@ -75,10 +75,14 @@ type CompatibilityFallbackPrediction struct {
 
 // LiveInPlaceEligibility predicts live-in-place scale eligibility.
 type LiveInPlaceEligibility struct {
-	TargetRef string `json:"targetRef"`
-	Lane      string `json:"lane"`
-	Eligible  bool   `json:"eligible"`
-	Reason    string `json:"reason,omitempty"`
+	TargetRef         string `json:"targetRef"`
+	Lane              string `json:"lane"`
+	Eligible          bool   `json:"eligible"`
+	Reason            string `json:"reason,omitempty"`
+	EligibilityState  string `json:"eligibilityState,omitempty"`
+	BlockedReason     string `json:"blockedReason,omitempty"`
+	StaleEvidence     bool   `json:"staleEvidence,omitempty"`
+	UncertifiedLane   bool   `json:"uncertifiedLane,omitempty"`
 }
 
 // RestartRequiredPrediction forecasts restart/reboot requirement.
@@ -125,6 +129,19 @@ type SimulatedLeaseRef struct {
 	DryRunOnly bool `json:"dryRunOnly,omitempty"`
 }
 
+// CertificationRegistrySummary embeds read-only registry projection (KHR-V).
+type CertificationRegistrySummary struct {
+	RegistryID string `json:"registryId,omitempty"`
+	EntryCount int    `json:"entryCount"`
+	ReadOnly   bool   `json:"readOnly"`
+}
+
+// PolicyGateSummary reports active gate configuration (KHR-V).
+type PolicyGateSummary struct {
+	Gates    map[string]bool `json:"gates"`
+	ReadOnly bool            `json:"readOnly"`
+}
+
 // SimulationResult is CLI JSON for resourcefuture-simulate.
 type SimulationResult struct {
 	Mode                            string                            `json:"mode"`
@@ -133,6 +150,8 @@ type SimulationResult struct {
 	ClusterContext                  string                            `json:"clusterContext,omitempty"`
 	ObservedAt                      string                            `json:"observedAt"`
 	Safety                          SafetyPolicy                      `json:"safety"`
+	CertificationRegistry           CertificationRegistrySummary        `json:"certificationRegistry,omitempty"`
+	PolicyGates                     PolicyGateSummary                   `json:"policyGates,omitempty"`
 	Input                           SimulateInput                     `json:"input"`
 	CandidateScalePlans             []CandidateScalePlan              `json:"candidateScalePlans"`
 	SaturationForecast              []SaturationForecastEntry         `json:"saturationForecast"`

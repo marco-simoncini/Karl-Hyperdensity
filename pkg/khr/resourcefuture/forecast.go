@@ -2,12 +2,26 @@ package resourcefuture
 
 import (
 	"fmt"
+	"time"
 
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/certregistry"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/lanediscovery"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/policygates"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/windowslane"
 )
 
-func buildForecasts(cells []lanediscovery.DiscoveredCell, ports []lanediscovery.DiscoveredResourcePort) (
+// PolicyContext enables KHR-V certification registry gating on forecasts.
+type PolicyContext struct {
+	Registry *certregistry.Registry
+	Gates    policygates.Gates
+	Now      time.Time
+}
+
+func (p PolicyContext) active() bool {
+	return p.Registry != nil
+}
+
+func buildForecasts(cells []lanediscovery.DiscoveredCell, ports []lanediscovery.DiscoveredResourcePort, policy PolicyContext) (
 	plans []CandidateScalePlan,
 	saturation []SaturationForecastEntry,
 	blocked []BlockedConstraint,
@@ -34,9 +48,12 @@ func buildForecasts(cells []lanediscovery.DiscoveredCell, ports []lanediscovery.
 			lane, provider, class, _, _ = inferFromCell(cell)
 		}
 
-		eligible, eligReason := liveInPlaceFor(lane, class, cell.Running)
+		eligible, eligReason, eligState, blockedReason, stale, uncertified :=
+			evaluateLiveInPlace(lane, class, cell.Running, policy)
 		liveInPlace = append(liveInPlace, LiveInPlaceEligibility{
 			TargetRef: cell.Ref, Lane: lane, Eligible: eligible, Reason: eligReason,
+			EligibilityState: eligState, BlockedReason: blockedReason,
+			StaleEvidence: stale, UncertifiedLane: uncertified,
 		})
 
 		restartReq, risk, restartReason := restartFor(lane, cell.OSFamily, cell.Running)
@@ -105,17 +122,40 @@ func inferFromCell(cell lanediscovery.DiscoveredCell) (lane, provider, class str
 	return l, p, c, ls, ""
 }
 
-func liveInPlaceFor(lane, class string, running bool) (bool, string) {
+func evaluateLiveInPlace(lane, class string, running bool, policy PolicyContext) (
+	eligible bool, reason, eligibilityState, blockedReason string, staleEvidence, uncertifiedLane bool,
+) {
 	if !running {
-		return false, "workload not running"
+		return false, "workload not running", policygates.EligibilityBlocked, "workload not running", false, false
 	}
+	if policy.active() {
+		if policygates.RequiresRegistry(lane) || class == lanediscovery.ClassificationNativeLive {
+			out := policygates.Evaluate(lane, policy.Registry, policy.Gates, policy.Now)
+			if out.Eligible {
+				return true, "certified lane: policy gates passed (KHR-V)", policygates.EligibilityEligible, "", false, false
+			}
+			return false, out.BlockedReason, policygates.EligibilityBlocked, out.BlockedReason,
+				out.StaleEvidence, out.UncertifiedLane
+		}
+		out := policygates.Evaluate(lane, policy.Registry, policy.Gates, policy.Now)
+		if !out.Eligible {
+			return false, out.BlockedReason, policygates.EligibilityBlocked, out.BlockedReason,
+				out.StaleEvidence, true
+		}
+	}
+	return liveInPlaceLegacy(lane, class)
+}
+
+func liveInPlaceLegacy(lane, class string) (bool, string, string, string, bool, bool) {
 	if lane == lanediscovery.LaneNativeLive || class == lanediscovery.ClassificationNativeLive {
-		return true, "native-live lane: live-in-place eligible (KHR-S)"
+		return true, "native-live lane: live-in-place eligible (KHR-S)", policygates.EligibilityEligible, "", false, false
 	}
 	if lane == lanediscovery.LaneLinuxContainerCgroup && class == lanediscovery.ClassificationLiveInPlaceCapable {
-		return true, "linux cgroup sandbox lane supports live-in-place simulation"
+		return true, "linux cgroup sandbox lane supports live-in-place simulation",
+			policygates.EligibilityEligible, "", false, false
 	}
-	return false, "live-in-place not asserted on this lane"
+	return false, "live-in-place not asserted on this lane", policygates.EligibilityBlocked,
+		"live-in-place not asserted on this lane", false, true
 }
 
 func restartFor(lane, osFamily string, running bool) (required bool, risk, reason string) {

@@ -27,7 +27,7 @@ func TestBuildForecastsLinuxSandbox(t *testing.T) {
 		Classification: lanediscovery.ClassificationLiveInPlaceCapable,
 		LiveScaleCapabilityObserved: true,
 	}}
-	plans, _, blocked, _, live, restart, bundle := buildForecasts(cells, ports)
+	plans, _, blocked, _, live, restart, bundle := buildForecasts(cells, ports, PolicyContext{})
 	if len(plans) == 0 || len(bundle.CPUScale) == 0 {
 		t.Fatalf("plans=%d cpu=%d", len(plans), len(bundle.CPUScale))
 	}
@@ -51,7 +51,7 @@ func TestBuildForecastsWindowsBlockedRAM(t *testing.T) {
 		CellRef: cells[0].Ref, Lane: lanediscovery.LaneWindowsVMSession,
 		Classification: lanediscovery.ClassificationCompatibilityFallback,
 	}}
-	plans, _, blocked, compat, live, restart, bundle := buildForecasts(cells, ports)
+	plans, _, blocked, compat, live, restart, bundle := buildForecasts(cells, ports, PolicyContext{})
 	if !restart[0].Required {
 		t.Fatal("windows restart expected")
 	}

@@ -7,6 +7,7 @@ import (
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/crdv1alpha1"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/host"
 	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/lanediscovery"
+	"github.com/marco-simoncini/Karl-Hyperdensity/pkg/khr/policygates"
 )
 
 // Options configures resourcefuture-simulate.
@@ -15,6 +16,7 @@ type Options struct {
 	ClusterContext  string
 	RequiredContext string
 	NodeName        string
+	Policy          PolicyContext
 }
 
 // Run executes read-only ResourceFuture simulation (KHR-R).
@@ -77,8 +79,21 @@ func Run(opts Options) (SimulationResult, error) {
 		PostureSummary: posture,
 	}
 
+	policy := opts.Policy
+	if policy.active() && policy.Now.IsZero() {
+		policy.Now = time.Now().UTC()
+	}
+	if policy.active() {
+		res.CertificationRegistry = CertificationRegistrySummary{
+			RegistryID: policy.Registry.RegistryID,
+			EntryCount: len(policy.Registry.Entries),
+			ReadOnly:   true,
+		}
+		res.PolicyGates = policyGateSummary(policy.Gates)
+	}
+
 	plans, sat, blocked, compat, live, restart, bundle := buildForecasts(
-		ld.DiscoveredCells, ld.DiscoveredResourcePorts,
+		ld.DiscoveredCells, ld.DiscoveredResourcePorts, policy,
 	)
 	res.CandidateScalePlans = plans
 	res.SaturationForecast = sat
@@ -95,7 +110,53 @@ func Run(opts Options) (SimulationResult, error) {
 	res.Summary["nativeLiveEligibleCount"] = countEligibleLane(live, lanediscovery.LaneNativeLive)
 	res.Summary["restartRequiredCount"] = countRestartRequired(restart)
 	res.Summary["compatibilityFallbackCount"] = len(compat)
+	if policy.active() {
+		res.Summary["gatedEligibleCount"] = countEligibleState(live, policygates.EligibilityEligible)
+		res.Summary["staleEvidenceCount"] = countStale(live)
+		res.Summary["uncertifiedLaneCount"] = countUncertified(live)
+	}
 	return res, nil
+}
+
+func policyGateSummary(g policygates.Gates) PolicyGateSummary {
+	return PolicyGateSummary{
+		ReadOnly: true,
+		Gates: map[string]bool{
+			"noRestart": g.NoRestart, "noRollout": g.NoRollout, "noRecreate": g.NoRecreate,
+			"noInterruption": g.NoInterruption, "shellContinuityRequired": g.ShellContinuityRequired,
+			"rollbackRequired": g.RollbackRequired, "evidenceFreshnessRequired": g.EvidenceFreshnessRequired,
+		},
+	}
+}
+
+func countEligibleState(items []LiveInPlaceEligibility, state string) int {
+	n := 0
+	for _, i := range items {
+		if i.EligibilityState == state {
+			n++
+		}
+	}
+	return n
+}
+
+func countStale(items []LiveInPlaceEligibility) int {
+	n := 0
+	for _, i := range items {
+		if i.StaleEvidence {
+			n++
+		}
+	}
+	return n
+}
+
+func countUncertified(items []LiveInPlaceEligibility) int {
+	n := 0
+	for _, i := range items {
+		if i.UncertifiedLane {
+			n++
+		}
+	}
+	return n
 }
 
 func validateGate(opts Options) struct {

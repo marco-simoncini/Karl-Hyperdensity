@@ -1,0 +1,9 @@
+{
+  "sprint": "KHR-V",
+  "runId": "20260516T180212Z",
+  "cluster": "karl-metal-01@ovh",
+  "registryEvidenceRef": "docs/evidence/khr-native-live-lane/certification-summary.json",
+  "readOnly": true,
+  "noApply": true,
+  "noAutonomousOrchestration": true
+}

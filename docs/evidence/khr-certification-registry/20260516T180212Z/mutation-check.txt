@@ -1,0 +1,2 @@
+no-apply: resourcefuture-simulate only
+no-patch: no kubectl apply
