@@ -1,0 +1,90 @@
+# KHR-AK: canonical Technical Preview contract manifest (Hyperdensity source of truth).
+apiVersion: khr.karl.io/v1alpha1
+kind: KHRContractManifest
+metadata:
+  name: khr-technical-preview-contracts
+  labels:
+    khr.karl.io/technical-preview: "true"
+spec:
+  contractSetId: khr-tp-contract-v1
+  contractVersion: "1.0.0"
+  manifestVersion: khr-contract-manifest-v1
+  sprint: KHR-AK
+  productionReady: false
+  autonomousOrchestration: false
+
+  expectedCrds:
+    - hosts.runtime.karl.io
+    - shellclasses.runtime.karl.io
+    - shells.runtime.karl.io
+    - cells.runtime.karl.io
+    - resourceports.runtime.karl.io
+    - shellleases.runtime.karl.io
+    - gatewayroutes.gateway.karl.io
+    - resourceleases.hyperdensity.karl.io
+
+  schemaVersions:
+    - api: runtime.karl.io/v1alpha1
+      document: docs/khr/HOST_CONTRACT.md
+    - api: hyperdensity.karl.io/v1alpha1
+      document: docs/khr/RESOURCELEASE_TP_FREEZE_CANDIDATE.md
+    - api: gateway.karl.io/v1alpha1
+      document: docs/khr/SHELLLEASE_GATEWAYROUTE_CONTRACT.md
+    - api: inventory.runtime-posture
+      document: Karl-Inventory/docs/contracts/khr/runtime-posture.schema.json
+
+  projectionMinVersion:
+    id: khr-projection-v1alpha1-readonly-y
+    document: "Karl-Dashboard/docs/hyperdensity/KHR_PROJECTION_V1.md"
+
+  freezeCandidates:
+    - id: resourcelease
+      document: docs/khr/RESOURCELEASE_TP_FREEZE_CANDIDATE.md
+      crd: resourceleases.hyperdensity.karl.io
+    - id: resourceport
+      document: docs/khr/RESOURCEPORT_TP_FREEZE_CANDIDATE.md
+      crd: resourceports.runtime.karl.io
+    - id: native-live
+      document: docs/khr/NATIVE_LIVE_TP_FREEZE_CANDIDATE.md
+      evidence: docs/evidence/khr-native-live-lane/certification-summary.json
+
+  experimentalContracts:
+    - id: resourcefuture
+      document: docs/khr/RESOURCEFUTURE_SIMULATION.md
+      note: simulation-only; no production apply
+    - id: evidence-ingest
+      document: docs/ingest/KHR_EVIDENCE_INGEST_CONTRACT.md
+      note: experimental ingest path
+
+  evidenceRequirements:
+    installerCrdFoundation:
+      profile: karl2-khr-technical-preview
+      script: Karl-Installer/scripts/khr_crd_foundation_evidence.sh
+      requiredFields:
+        - contractSetId
+        - expectedCrds
+        - actualCrds
+        - crdDiffEmpty
+        - kubevirtCalledInKarl2Profile
+    nativeLiveCertification:
+      path: docs/evidence/khr-native-live-lane/certification-summary.json
+      requiredInvariants:
+        - noRestart
+        - noRollout
+        - noRecreate
+    certificationRegistry:
+      path: docs/evidence/khr-certification-registry/summary.json
+    provenance:
+      path: docs/evidence/khr-provenance/summary.json
+
+  bootstrapCompatibility:
+    isoProfileManifest: Stage-2/custom-files/karl-os-opt/karl/khr/profile-manifest.yaml
+    installerProfiles:
+      - karl1-kubevirt-legacy
+      - karl2-khr-technical-preview
+      - hybrid-transition
+    karl2Excludes:
+      - kubevirt
+      - cdi
+      - virtctl
+      - host-runtime-enable

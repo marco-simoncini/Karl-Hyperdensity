@@ -24,6 +24,7 @@ echo "[khr_tp_package_check] Checking TP package anchors..."
 require_file "docs/khr/TECHNICAL_PREVIEW_READINESS.md" "TP readiness doc"
 require_file "docs/khr/TECHNICAL_PREVIEW_PACKAGE.md" "TP package doc"
 require_file "docs/khr/TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md" "TP operator runbook"
+require_file "docs/contracts/khr/khr-contract-manifest.yaml" "KHR contract manifest"
 require_file "docs/evidence/khr-native-live-lane/certification-summary.json" "native-live certification summary"
 require_file "docs/evidence/khr-certification-registry/summary.json" "certification registry summary"
 require_file "docs/evidence/khr-provenance/summary.json" "provenance evidence summary"
@@ -43,6 +44,13 @@ if [[ -f "${INSTALLER_CRD_EVIDENCE}" ]]; then
   if ! rg -q 'noAutonomousOrchestration' "${INSTALLER_CRD_EVIDENCE}" 2>/dev/null; then
     echo "[khr_tp_package_check] FAIL: installer evidence must document noAutonomousOrchestration" >&2
     FAIL=1
+  fi
+  if ! rg -q '"contractSetId"[[:space:]]*:[[:space:]]*"khr-tp-contract-v1"' "${INSTALLER_CRD_EVIDENCE}" 2>/dev/null; then
+    echo "[khr_tp_package_check] FAIL: installer evidence must include contractSetId khr-tp-contract-v1" >&2
+    FAIL=1
+  fi
+  if ! rg -q '"crdDiffEmpty"[[:space:]]*:[[:space:]]*true' "${INSTALLER_CRD_EVIDENCE}" 2>/dev/null; then
+    echo "[khr_tp_package_check] INFO: installer evidence crdDiffEmpty not true (apply may have been skipped)"
   fi
 else
   echo "[khr_tp_package_check] INFO: installer CRD evidence not present (optional): ${INSTALLER_CRD_EVIDENCE}"

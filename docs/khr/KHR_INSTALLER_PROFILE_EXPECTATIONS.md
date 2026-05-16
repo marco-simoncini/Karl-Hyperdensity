@@ -2,7 +2,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-AH / KHR-AI / **KHR-AJ** |
+| **Sprint** | KHR-AH / KHR-AI / KHR-AJ / **KHR-AK** |
+| **Contract set** | `khr-tp-contract-v1` — `docs/contracts/khr/khr-contract-manifest.yaml` |
 | **Installer selector** | `KARL_INSTALLER_PROFILE` or `-profile` (Karl-Installer) |
 | **ISO manifest** | `profile-manifest.yaml` — `crdAssetPath`, `expectedCrds` |
 | **Production** | **NOT production ready** |
@@ -30,8 +31,9 @@ What Karl-Hyperdensity expects when operators select an installer profile after 
 | Dry-run | `KARL_INSTALLER_KHR_CRD_DRY_RUN=true` — apply dry-run only, skip verify |
 | Asset path | `KARL_INSTALLER_KHR_CRD_PATH` or `/opt/karl/karl-engine/khr/crds` or ISO tree path |
 | Hyperdensity | Sandbox preflight + evidence on `khr-runtime-sandbox`; native-live does not require KubeVirt |
-| Evidence | `Karl-Installer/scripts/khr_crd_foundation_evidence.sh` (dry-run → confirmed apply on `karl-metal-01@ovh`) |
-| Verify | 8 CRDs in `crd-verify.json`; `kubevirtCalledInKarl2Profile: false` in summary |
+| Evidence | `khr_crd_foundation_evidence.sh` — includes manifest snapshot + `crd-skew.json` |
+| Verify | `contractSetId` + `crdDiffEmpty: true`; `kubevirtCalledInKarl2Profile: false` |
+| Skew guard | ISO `profile-manifest.yaml` must match Hyperdensity contract manifest `expectedCrds` |
 
 ---
 
