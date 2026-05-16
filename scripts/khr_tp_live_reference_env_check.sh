@@ -183,6 +183,41 @@ record(
     fallbackWarning=deploy_warnings[0] if deploy_warnings else "",
 )
 
+# Scope-2 preflight (KHR-AZ — loop not enabled)
+scope2_pf = None
+scope2_base = ROOT / "docs/evidence/khr-tp-live-scope2-preflight"
+committed_scope2 = scope2_base / "committed-scope2-preflight-khr-az" / "scope2-preflight-summary.json"
+if committed_scope2.is_file():
+    scope2_pf = load(committed_scope2)
+elif scope2_base.is_dir():
+    for child in sorted(scope2_base.iterdir(), reverse=True):
+        p = child / "scope2-preflight-summary.json"
+        if p.is_file():
+            scope2_pf = load(p)
+            if scope2_pf:
+                break
+scope2_pf_ok = bool(
+    scope2_pf
+    and scope2_pf.get("status") == "PASS"
+    and scope2_pf.get("resourcePortLoopEnabled") is False
+    and scope2_pf.get("loopEnabled") is False
+)
+record(
+    "scope2PreflightEvidence",
+    scope2_pf_ok,
+    f"runId={scope2_pf.get('runId') if scope2_pf else 'none'}",
+)
+record(
+    "resourcePortLoopDisabled",
+    scope2_pf is None or scope2_pf.get("resourcePortLoopEnabled") is False,
+    f"resourcePortLoopEnabled={scope2_pf.get('resourcePortLoopEnabled') if scope2_pf else 'unknown'}",
+)
+record(
+    "sandboxApplyDisabled",
+    scope2_pf is None or scope2_pf.get("sandboxApplyEnabled") is False,
+    f"sandboxApplyEnabled={scope2_pf.get('sandboxApplyEnabled') if scope2_pf else 'unknown'}",
+)
+
 # Production namespace mutation proof (read-only kubectl generations)
 prod_ok = True
 prod_detail = "kubectl unavailable"
@@ -208,21 +243,27 @@ record("noProductionNamespaceMutation", prod_ok, prod_detail)
 dash_fixture = Path(os.environ.get("KHR_DASHBOARD_PATH", str(ROOT.parent / "Karl-Dashboard"))) / \
     "examples/khr-dashboard/tp-readiness-reference-env.json"
 dash = load(dash_fixture)
+dash_summary = (dash or {}).get("tpReadinessSummary", {})
 record(
     "dashboardTpReadinessFixture",
     bool(
         dash
-        and dash.get("tpReadinessSummary", {}).get("readyForScope1") is True
-        and dash.get("tpReadinessSummary", {}).get("readyForScope2") is False
-        and dash.get("tpReadinessSummary", {}).get("productionReady") is False
+        and dash_summary.get("readyForScope1") is True
+        and dash_summary.get("readyForScope2") is False
+        and dash_summary.get("productionReady") is False
+        and dash_summary.get("readyForScope2Preflight") == "conditional/manual-preflight-pass"
     ),
     str(dash_fixture),
 )
 
+ready_for_scope2: bool | str = False
+if scope2_pf_ok:
+    ready_for_scope2 = "conditional/manual-preflight-pass"
+
 status = "PASS" if not errors else "FAIL"
 summary = {
     "phase": "khr-tp-live-reference-env",
-    "sprint": "KHR-AX",
+    "sprint": "KHR-AZ",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": "khr-tp-contract-v1",
@@ -233,8 +274,11 @@ summary = {
     "noAutonomousOrchestration": True,
     "readyForScope0": preflight.get("readyForScope0") if preflight else scope1_ok,
     "readyForScope1": scope1_ok,
-    "readyForScope2": False,
-    "scope2BlockedReason": scope1_verify.get("scope2BlockedReason", "scope-2+ blocked in KHR-AX") if scope1_verify else "scope-2+ blocked",
+    "readyForScope2": ready_for_scope2,
+    "readyForScope2LoopExecution": False,
+    "resourcePortLoopEnabled": scope2_pf.get("resourcePortLoopEnabled", False) if scope2_pf else False,
+    "sandboxApplyEnabled": scope2_pf.get("sandboxApplyEnabled", False) if scope2_pf else False,
+    "scope2BlockedReason": scope2_pf.get("scope2BlockedReason", "ResourcePort loop not enabled") if scope2_pf else "scope-2 preflight missing",
     "rdpgwDeployMode": deploy_mode,
     "rdpgwEvidenceTrust": trust,
     "namespaces": ["khr-runtime-sandbox", "khr-rdpgw-sandbox"],
@@ -245,7 +289,10 @@ summary = {
 }
 (OUT / "reference-env-summary.json").write_text(json.dumps(summary, indent=2) + "\n")
 print(f"[khr_tp_live_reference_env_check] summary={OUT / 'reference-env-summary.json'}")
-print(f"[khr_tp_live_reference_env_check] status={status} readyForScope1={summary['readyForScope1']}")
+print(
+    f"[khr_tp_live_reference_env_check] status={status} "
+    f"readyForScope1={summary['readyForScope1']} readyForScope2={summary['readyForScope2']}"
+)
 if status != "PASS":
     for e in errors:
         print(f"[khr_tp_live_reference_env_check] FAIL: {e}", file=__import__("sys").stderr)

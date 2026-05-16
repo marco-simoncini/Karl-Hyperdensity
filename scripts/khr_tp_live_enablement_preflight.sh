@@ -259,6 +259,37 @@ gate(
 )
 
 
+def latest_scope2_preflight() -> dict[str, Any] | None:
+    base = ROOT / "docs/evidence/khr-tp-live-scope2-preflight"
+    committed = base / "committed-scope2-preflight-khr-az" / "scope2-preflight-summary.json"
+    if committed.is_file():
+        return load_json(committed)
+    if not base.is_dir():
+        return None
+    for name in sorted(base.iterdir(), reverse=True):
+        p = name / "scope2-preflight-summary.json"
+        if p.is_file():
+            doc = load_json(p)
+            if doc and doc.get("status") == "PASS":
+                return doc
+    return None
+
+
+scope2_preflight = latest_scope2_preflight()
+scope2_pf_ok = bool(
+    scope2_preflight
+    and scope2_preflight.get("status") == "PASS"
+    and scope2_preflight.get("resourcePortLoopEnabled") is False
+    and scope2_preflight.get("loopEnabled") is False
+    and scope2_preflight.get("resourceLeaseApplyEnabled") is False
+)
+gate(
+    "scope2PreflightEvidence",
+    scope2_pf_ok,
+    f"runId={scope2_preflight.get('runId') if scope2_preflight else 'none'}",
+)
+
+
 all_core = all(
     gates[g]["status"] == "PASS"
     for g in (
@@ -289,9 +320,19 @@ if not all_core:
 elif not scope1_ok and ready1 == "conditional":
     blocked_reason = None
 
+if scope2_pf_ok and scope1_ok:
+    ready2: bool | str = "conditional/manual-preflight-pass"
+    ready2_note = "scope-2 preflight PASS; ResourcePort loop enable deferred to dedicated sprint"
+elif scope1_ok:
+    ready2 = False
+    ready2_note = "run khr_tp_live_scope2_preflight.sh for scope-2 readiness"
+else:
+    ready2 = False
+    ready2_note = "scope-1 evidence required before scope-2 preflight"
+
 summary: dict[str, Any] = {
     "phase": "khr-tp-live-enablement-preflight",
-    "sprint": "KHR-AW",
+    "sprint": "KHR-AZ",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": CONTRACT,
@@ -303,12 +344,17 @@ summary: dict[str, Any] = {
     "noAutonomousOrchestration": True,
     "readyForScope0": ready0,
     "readyForScope1": ready1,
-    "readyForScope2": False,
+    "readyForScope2": ready2,
+    "readyForScope2LoopExecution": False,
     "readyForScope3": False,
     "readyForScope4": False,
-    "scope2PlusBlockedReason": "explicit runtime deploy sprint required (KHR-TP-Live)",
+    "scope2PlusBlockedReason": "ResourcePort loop execution requires dedicated sprint sign-off (KHR-AZ)",
     "readyForScope1Note": ready1_note,
+    "readyForScope2Note": ready2_note,
     "scope1EvidenceRunId": scope1_verify.get("runId") if scope1_verify else None,
+    "scope2PreflightRunId": scope2_preflight.get("runId") if scope2_preflight else None,
+    "resourcePortLoopEnabled": scope2_preflight.get("resourcePortLoopEnabled", False) if scope2_preflight else False,
+    "sandboxApplyEnabled": scope2_preflight.get("sandboxApplyEnabled", False) if scope2_preflight else False,
     "gates": gates,
     "forbidden": {
         "productionNamespaceEnablement": True,
@@ -319,7 +365,7 @@ summary: dict[str, Any] = {
     "liveScopes": {
         "scope0": "read-only federation",
         "scope1": "runtime sandbox deploy (manual)",
-        "scope2": "ResourcePort loop (blocked)",
+        "scope2": "ResourcePort loop preflight (conditional/manual; loop blocked)",
         "scope3": "ResourceLease dry-run (blocked)",
         "scope4": "guarded apply sandbox (blocked)",
     },
@@ -335,7 +381,7 @@ out.write_text(json.dumps(summary, indent=2) + "\n")
 print(f"[khr_tp_live_enablement_preflight] summary={out}")
 print(
     f"[khr_tp_live_enablement_preflight] readyForScope0={ready0} "
-    f"readyForScope1={ready1} status={summary['status']}"
+    f"readyForScope1={ready1} readyForScope2={ready2} status={summary['status']}"
 )
 if summary["status"] != "PASS":
     raise SystemExit(1)

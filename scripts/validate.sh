@@ -309,6 +309,11 @@ if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh" ]]; then
   "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh" ]]; then
+  KHR_TP_LIVE_SCOPE2_RUN_ID="${KHR_TP_LIVE_SCOPE2_RUN_ID:-committed-scope2-preflight-khr-az}" \
+    "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh" ]]; then
   KHR_DASHBOARD_PATH="${KHR_DASHBOARD_PATH:-${ROOT_DIR}/../Karl-Dashboard}" \
     "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh"
