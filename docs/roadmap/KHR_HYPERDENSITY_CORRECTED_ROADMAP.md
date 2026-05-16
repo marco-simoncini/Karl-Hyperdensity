@@ -18,10 +18,23 @@ This roadmap **supersedes sequencing intent** in `docs/roadmap/KHR_HYPERDENSITY_
 
 ---
 
+## Host runtime milestone (KHR-F / G) — complete
+
+| Item | State |
+|------|-------|
+| `karl-host-runtime` Linux MVP skeleton | Shipped (KHR-F) |
+| Sandbox execution on `karl-metal-01@ovh` | **PASS** — evidence [`docs/evidence/khr-runtime-sandbox/summary.json`](../evidence/khr-runtime-sandbox/summary.json) |
+| Production host mutation | **Unsupported** |
+| ISO `karl-host-runtime` | Preview / **disabled** by default |
+
+---
+
 ## Near-term milestones (engineering order)
 
 | Step | Outcome |
 |------|---------|
+| **H+1** | Host registration **CR + status** (cluster contract; sandbox namespace first) |
+| **H+2** | **ResourcePort controller loop** (observe/report candidates; no production apply) |
 | M1 | Golden JSON: Dashboard parent-fabric summary → Hyperdensity `contracts` testdata |
 | M2 | `pkg/hyperdensity/blockers` exported IDs == Dashboard gate strings |
 | M3 | First pure merge function ported with `_test.go` from Dashboard |
