@@ -70,7 +70,7 @@ Regression if flags flipped without re-hardening. Confusion that wired call site
 
 ## 9. Future branch-swap path
 
-Separate sprint(s): see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_APPLY_OBSERVATION_FLIP_CRITERIA.md`** (Sprint 72). Recommended: candidate runtime flip first, then `ApplyObservationWiredV1=true`.
+**Sprint 72** flip criteria; **Sprint 73** candidate-runtime readiness. See `FLIP_CRITERIA.md`, `CANDIDATE_RUNTIME_READINESS.md`, `BRANCH_LOGIC.md`.
 
 ## Related
 

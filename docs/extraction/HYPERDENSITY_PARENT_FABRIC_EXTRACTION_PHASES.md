@@ -58,6 +58,8 @@ Phased approach for **real** extraction of Parent Fabric / Hyperdensity surfaces
 
 **Sprint 72:** **Apply flip criteria** — docs-only; flip criteria + risks; flags **false**; no runtime changes.
 
+**Sprint 73:** **Apply candidate-runtime readiness** — branch logic + readiness golden; flags **false**; no runtime changes.
+
 ---
 
 ## Phase 1 — Audit real Dashboard files

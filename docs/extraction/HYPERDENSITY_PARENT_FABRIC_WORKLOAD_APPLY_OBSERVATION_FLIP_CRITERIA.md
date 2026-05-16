@@ -106,7 +106,7 @@ hyperdensityWorkloadAdapterApplyObservationCandidateRuntimeUsedV1 = true
 | 9 | **`ProductionWiredV1` remains `false`** | |
 | 10 | **Wrapper implementation** routes to candidate when both apply flags true | Verify in `apply_observation_wiring_v1.go` only |
 
-**Recommended:** Sprint 73 = candidate-runtime flip (if approved), separate from `ApplyObservationWiredV1` flip.
+**Recommended:** dedicated candidate-runtime flip sprint (after Sprint 73 readiness), separate from `ApplyObservationWiredV1` flip. **Sprint 73** = readiness only (no flip).
 
 ---
 
