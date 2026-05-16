@@ -91,6 +91,46 @@ See rdp-GW: `docs/khr/RDPGW_KHR_ALIGNMENT_PLAN.md`, `docs/khr/SHELLLEASE_GATEWAY
 
 ---
 
+## Identity / session / app semantics (KHR-AN)
+
+Wave 2 adds **read-only correlation** across ShellLease, user session, and application session — no mutating auth or disconnect/revoke automation.
+
+| Concept | Semantics |
+|---------|-----------|
+| **UserSessionRef** | Gateway/user session bound to `subjectId`, optional legacy `poolId`, ShellLease correlation string |
+| **AppSessionRef** | RemoteApp / Windows app session via `WindowsAppRef` |
+| **GatewaySessionIdentity** | Bundle: user + optional app + ShellLease + `GatewaySession` |
+| **UserIdentityRef** | Directory/OIDC subject (directoryservice stub) |
+
+### Correlation expectations
+
+| Consumer | Endpoint / artifact | Behavior |
+|----------|---------------------|----------|
+| **rdp-GW** | `GET /karl-gw/v1/session/resolve?id=...` | `readOnly`, `noDisconnect`, `noRevoke` |
+| **KARL-APP** | `AppSessionDescriptor`, `WindowsAppDescriptor` | AppShell compatibility; no session mutation |
+| **karl-directoryservice** | `SessionIdentityCorrelation` | ShellLease ↔ user; OIDC-compatible fields |
+| **Hyperdensity** | ShellLease `userRef` in CR spec | Contract source; no controller change in KHR-AN |
+
+### Compatibility identity flow
+
+```
+OIDC login (unchanged) → gateway session (legacy/rdp-GW)
+       → poolId (legacy) ──compat──► ShellPoolRef / ShellLeaseRef
+       → RemoteApp fields ──compat──► WindowsAppRef / AppSessionRef
+       → session/resolve (read-only) ──► UserSessionRef + AppSessionRef correlation
+```
+
+**poolId** remains legacy-only. **GatewayRoute** + **ShellLease** are target models for session-path and access reservation.
+
+### Explicitly not in KHR-AN
+
+- No new auth enforcement in directoryservice
+- No token mutation flows
+- No automated revoke/disconnect
+- No production enable claims
+
+---
+
 ## Non-goals
 
 - No token minting, no rdp-GW apply, no session broker controller
