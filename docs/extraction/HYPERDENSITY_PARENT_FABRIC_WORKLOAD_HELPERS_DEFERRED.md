@@ -36,6 +36,7 @@ No `helpers.go`, golden, or copy-contract in Karl-Hyperdensity for Sprint 48.
 17. **Sprint 75:** apply observation activation — `ApplyObservationWiredV1=true`; candidate branch active; candidate ≡ legacy.
 18. **Sprint 76:** post-activation hardening — 8×4; flags unchanged; broad observation **false**.
 19. **Sprint 77:** migration boundary — apply track complete; broad observation **false**.
+20. **Sprint 78:** resource_exchange observation audit — **full file verdict unchanged: `copy-deferred`**; no helpers copy.
 
 ## Placeholder
 

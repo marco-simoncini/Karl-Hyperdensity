@@ -100,6 +100,8 @@ See **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_OBSERVATION_NEXT_SURFACE_DECISION.md`
 
 **Recommended next track:** `resource_exchange_observation_audit` (proposal/audit only) or `usage.go` classification — not broad observation.
 
+**Sprint 78 update:** `resource_exchange_observation_audit` **complete** (audit/proposal only). See `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_RESOURCE_EXCHANGE_OBSERVATION_AUDIT.md`. **No** resource_exchange wiring. Recommended next: `resource_exchange_observation_shadow_matrix`.
+
 ---
 
 ## 9. Rollback posture

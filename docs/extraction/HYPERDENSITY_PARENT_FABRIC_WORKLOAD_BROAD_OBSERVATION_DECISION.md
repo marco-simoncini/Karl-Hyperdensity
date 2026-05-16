@@ -47,6 +47,8 @@ This is **deliberate policy**, not incomplete work by mistake.
 | Apply candidate-runtime readiness | **Yes** (Sprint 73; docs-only) |
 | Apply post-activation hardening | **Yes** (Sprint 76) |
 | Apply migration boundary complete | **Yes** (Sprint 77) |
+| Resource exchange audit complete | **Yes** (Sprint 78, audit-only) |
+| Resource exchange wired | **No** |
 
 ## Related
 

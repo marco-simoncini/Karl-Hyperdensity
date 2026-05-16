@@ -4,6 +4,8 @@
 
 **Sprint 77** classifies **remaining** legacy observation surfaces after apply-observation track completion. **`ObservationWiredV1` remains `false`.** Next sprint must **not** be broad observation.
 
+**Sprint 78** completed **resource_exchange observation audit** (proposal only). **No** wiring. See `HYPERDENSITY_PARENT_FABRIC_WORKLOAD_RESOURCE_EXCHANGE_OBSERVATION_AUDIT.md`.
+
 ---
 
 ## 1. resource_exchange
@@ -65,7 +67,7 @@ Adapter files may appear in remaining-audit counts due to **delegation** to lega
 |----------|--------|
 | Is apply-observation complete? | **Yes** (Sprint 65–76) |
 | Is next sprint broad observation? | **No** |
-| Preferred next track | **resource_exchange_observation_audit** or **usage.go classification** |
+| Preferred next track | **resource_exchange_observation_shadow_matrix** (Sprint 78 audit complete) or **usage.go classification** |
 | `ObservationWiredV1` | **`false`** (deliberate) |
 | `ProductionWiredV1` | **`false`** |
 
