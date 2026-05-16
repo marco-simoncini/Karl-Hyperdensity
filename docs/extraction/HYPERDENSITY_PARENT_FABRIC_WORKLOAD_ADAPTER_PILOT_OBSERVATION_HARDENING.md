@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Sprint 58** hardens **Sprint 57** pilot-only observation wiring with stronger end-to-end tests and documentation. **Sprint 59** stages live observation wrappers (flag false). Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
+**Sprint 58** hardens **Sprint 57** pilot-only observation wiring with stronger end-to-end tests and documentation. **Sprint 59** stages live observation wrappers (flag false). **Sprint 60** shadow-hardens live wrappers. Full **`workload_helpers.go`** verdict remains **`copy-deferred`**.
 
 ---
 

@@ -2,7 +2,7 @@
 
 ## Summary
 
-**Live observation may be considered in a future sprint.** Sprint 58 **only inventories and proposes**. **Sprint 59** stages live wrappers in `live.go` with **`LiveObservationWiredV1 = false`** (legacy fallback) — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_STAGED_WIRING.md`**. No behavior activation until a future sprint flips the live flag.
+**Live observation may be considered in a future sprint.** Sprint 58 **only inventories and proposes**. **Sprint 59** stages live wrappers in `live.go` with **`LiveObservationWiredV1 = false`**. **Sprint 60** shadow-hardens wrappers vs legacy. No behavior activation until flip criteria met — see **`HYPERDENSITY_PARENT_FABRIC_WORKLOAD_ADAPTER_LIVE_OBSERVATION_FLIP_CRITERIA.md`**.
 
 ---
 
@@ -48,7 +48,8 @@
 | 57 | Pilot-only observation wiring |
 | 58 | Hardening + live proposal (no new wiring) |
 | 59 | Staged live wrappers; flag **false** |
-| 60+ | Flip `LiveObservationWiredV1` after shadow tests (TBD) |
+| 60 | Live wrapper shadow hardening (flag **false**) |
+| 61+ | Flip `LiveObservationWiredV1` only if Sprint 60 PASS + flip criteria |
 
 ## Related
 
