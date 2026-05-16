@@ -42,6 +42,7 @@ hyperdensityWorkloadAdapterApplyObservationWiredV1 = true
 - [x] Sprint 73 candidate-runtime readiness + branch logic (no flip).
 - [x] Sprint 74 `ApplyObservationCandidateRuntimeUsedV1 = true` (staging flip; Wired **false**).
 - [x] Sprint 75 `ApplyObservationWiredV1 = true` (activation; candidate branch active; broad **false**).
+- [x] Sprint 76 post-activation hardening green.
 - [ ] `audit_workload_apply_observation.sh` reports zero forbidden patterns.
 - [ ] Golden `applyObservationWired: false` updated only when flip sprint approved.
 - [ ] Hyperdensity docs updated; no Dashboard `parentfabric` import.

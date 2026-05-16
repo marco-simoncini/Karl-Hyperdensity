@@ -111,7 +111,7 @@ Both flags **true** → **candidate** path active in all four apply observation 
 
 ## 10. Next hardening step
 
-Post-activation monitoring sprint: re-run 8×4 under load fixtures; document any drift if candidate helpers diverge from legacy; keep broad observation blocked until dedicated policy sprint.
+**Sprint 76** post-activation hardening (8×4 under activation state). Next boundary is **not** automatic broad observation — see `POST_ACTIVATION_HARDENING.md`.
 
 ---
 

@@ -45,6 +45,7 @@ This is **deliberate policy**, not incomplete work by mistake.
 | Apply post-wiring hardening | **Yes** (Sprint 71) |
 | Apply flip criteria | **Yes** (Sprint 72; docs-only) |
 | Apply candidate-runtime readiness | **Yes** (Sprint 73; docs-only) |
+| Apply post-activation hardening | **Yes** (Sprint 76) |
 
 ## Related
 
