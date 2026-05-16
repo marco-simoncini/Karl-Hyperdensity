@@ -1,0 +1,31 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: karl-host-runtime-scope1-config
+  namespace: khr-runtime-sandbox
+  labels:
+    khr.karl.io/sandbox: "true"
+    khr.karl.io/tp-live-scope: "scope-1"
+data:
+  karl-host-runtime-scope1.yaml: |
+    apiVersion: khr.karl.io/v1alpha1
+    kind: KarlHostRuntimeConfig
+    metadata:
+      name: karl-host-runtime-tp-live-scope1
+      annotations:
+        khr.karl.io/hostRuntimeEnabled: "true"
+    spec:
+      hostId: karl-host-runtime-karl-metal-01-scope1
+      linuxOnly: true
+      sandboxMode: true
+      sandboxApplyEnabled: false
+      resourcePortLoopEnabled: false
+      laneDiscoveryEnabled: false
+      resourceFutureSimulationEnabled: false
+      allowedNamespaces:
+        - khr-runtime-sandbox
+      allowedLabels:
+        khr.karl.io/sandbox: "true"
+      cgroupRoot: /sys/fs/cgroup
+      allowPathPrefixes:
+        - /sys/fs/cgroup/karl.slice

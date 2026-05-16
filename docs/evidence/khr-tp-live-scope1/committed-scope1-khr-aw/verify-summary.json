@@ -1,0 +1,23 @@
+{
+  "phase": "khr-tp-live-scope1-verify",
+  "sprint": "KHR-AW",
+  "runId": "khr-aw-scope1-20260516T210000Z",
+  "clusterContext": "karl-metal-01@ovh",
+  "status": "PASS",
+  "scope": "scope-1",
+  "karlHostRuntimePreviewReady": true,
+  "rdpgwSandboxReady": true,
+  "rdpgwDeployMode": "local-gateway",
+  "accessGraphLiveReadonly": true,
+  "resourcePortLoopEnabled": false,
+  "sandboxApplyEnabled": false,
+  "autonomousOrchestration": false,
+  "readyForScope2": false,
+  "scope2BlockedReason": "ResourcePort loop not enabled in KHR-AW",
+  "readOnly": true,
+  "mutating": false,
+  "noRevoke": true,
+  "noDisconnect": true,
+  "productionReady": false,
+  "at": "2026-05-16T20:58:30Z"
+}

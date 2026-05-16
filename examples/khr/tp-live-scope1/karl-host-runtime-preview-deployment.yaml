@@ -1,0 +1,42 @@
+# karl-host-runtime preview — sandbox namespace only (KHR-AW scope-1).
+# Operator runs binary locally for register-host/status; pod holds config + sandbox label proof.
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: karl-host-runtime-preview
+  namespace: khr-runtime-sandbox
+  labels:
+    app: karl-host-runtime-preview
+    khr.karl.io/sandbox: "true"
+    khr.karl.io/tp-live-scope: "scope-1"
+    khr.karl.io/component: karl-host-runtime
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: karl-host-runtime-preview
+  template:
+    metadata:
+      labels:
+        app: karl-host-runtime-preview
+        khr.karl.io/sandbox: "true"
+        khr.karl.io/tp-live-scope: "scope-1"
+    spec:
+      containers:
+        - name: preview
+          image: registry.k8s.io/pause:3.9
+          resources:
+            requests:
+              cpu: 10m
+              memory: 16Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi
+          volumeMounts:
+            - name: config
+              mountPath: /config
+              readOnly: true
+      volumes:
+        - name: config
+          configMap:
+            name: karl-host-runtime-scope1-config

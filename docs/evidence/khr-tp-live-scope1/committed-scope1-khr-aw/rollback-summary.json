@@ -1,0 +1,18 @@
+{
+  "phase": "khr-tp-live-scope1-rollback",
+  "sprint": "KHR-AW",
+  "runId": "khr-aw-scope1-20260516T210000Z",
+  "clusterContext": "karl-metal-01@ovh",
+  "status": "PASS",
+  "scope": "scope-1",
+  "deploymentsRemoved": [
+    "khr-runtime-sandbox/karl-host-runtime-preview",
+    "khr-rdpgw-sandbox/rdpgw-khr-sandbox"
+  ],
+  "namespacesRetained": [
+    "khr-runtime-sandbox",
+    "khr-rdpgw-sandbox"
+  ],
+  "productionNamespacesMutated": false,
+  "at": "2026-05-16T20:58:40Z"
+}

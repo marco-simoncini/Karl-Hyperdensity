@@ -231,6 +231,34 @@ if RDP_GW:
 gate("rdpgwContinuityEvidence", rdpgw_ok, f"trust={rdpgw_trust}")
 
 
+def latest_scope1_verify() -> dict[str, Any] | None:
+    base = ROOT / "docs/evidence/khr-tp-live-scope1"
+    if not base.is_dir():
+        return None
+    for name in sorted(base.iterdir(), reverse=True):
+        v = name / "verify-summary.json"
+        if v.is_file():
+            doc = load_json(v)
+            if doc:
+                return doc
+    return None
+
+
+scope1_verify = latest_scope1_verify()
+scope1_ok = bool(
+    scope1_verify
+    and scope1_verify.get("status") == "PASS"
+    and scope1_verify.get("accessGraphLiveReadonly") is True
+    and scope1_verify.get("resourcePortLoopEnabled") is False
+    and scope1_verify.get("readyForScope2") is False
+)
+gate(
+    "scope1SandboxEvidence",
+    scope1_ok,
+    f"runId={scope1_verify.get('runId') if scope1_verify else 'none'}",
+)
+
+
 all_core = all(
     gates[g]["status"] == "PASS"
     for g in (
@@ -246,16 +274,24 @@ all_core = all(
 )
 
 ready0 = all_core and gates["federation"]["status"] == "PASS"
-ready1 = "conditional" if all_core else "blocked"
-blocked_reason = (
-    None
-    if all_core
-    else "core readiness gates not PASS; scope-1 requires manual operator sprint after scope-0"
-)
+if scope1_ok:
+    ready1: bool | str = True
+    ready1_note = "scope-1 sandbox deploy/verify evidence PASS (KHR-AW)"
+elif all_core:
+    ready1 = "conditional"
+    ready1_note = "gates PASS; run khr_tp_live_scope1_deploy.sh for scope-1 evidence"
+else:
+    ready1 = False
+    ready1_note = "core gates not PASS"
+blocked_reason = None
+if not all_core:
+    blocked_reason = "core readiness gates not PASS"
+elif not scope1_ok and ready1 == "conditional":
+    blocked_reason = None
 
 summary: dict[str, Any] = {
     "phase": "khr-tp-live-enablement-preflight",
-    "sprint": "KHR-AV",
+    "sprint": "KHR-AW",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": CONTRACT,
@@ -271,7 +307,8 @@ summary: dict[str, Any] = {
     "readyForScope3": False,
     "readyForScope4": False,
     "scope2PlusBlockedReason": "explicit runtime deploy sprint required (KHR-TP-Live)",
-    "readyForScope1Note": "conditional/manual — operator must execute sandbox deploy; no auto-enable in KHR-AV",
+    "readyForScope1Note": ready1_note,
+    "scope1EvidenceRunId": scope1_verify.get("runId") if scope1_verify else None,
     "gates": gates,
     "forbidden": {
         "productionNamespaceEnablement": True,

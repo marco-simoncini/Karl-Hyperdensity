@@ -301,6 +301,10 @@ if [[ -x "${ROOT_DIR}/scripts/khr_runtime_observation_federation_check.sh" ]]; t
   "${ROOT_DIR}/scripts/khr_runtime_observation_federation_check.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope1_test.sh" ]]; then
+  "${ROOT_DIR}/scripts/khr_tp_live_scope1_test.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh" ]]; then
   "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh"
 fi

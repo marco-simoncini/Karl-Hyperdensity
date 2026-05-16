@@ -1,0 +1,111 @@
+{
+  "phase": "khr-tp-live-scope1-deploy",
+  "sprint": "KHR-AW",
+  "runId": "khr-aw-scope1-20260516T210000Z",
+  "clusterContext": "karl-metal-01@ovh",
+  "contractSetId": "khr-tp-contract-v1",
+  "status": "PASS",
+  "scope": "scope-1",
+  "namespace": "khr-runtime-sandbox",
+  "hostRuntimeEnabled": true,
+  "hostRuntimeEnabledScope": "khr-runtime-sandbox-only",
+  "resourcePortLoopEnabled": false,
+  "sandboxApplyEnabled": false,
+  "autonomousOrchestration": false,
+  "productionReady": false,
+  "readOnly": true,
+  "mutating": false,
+  "deployments": {
+    "karlHostRuntimePreview": "khr-runtime-sandbox/karl-host-runtime-preview",
+    "rdpgwSandbox": "khr-rdpgw-sandbox/rdpgw-khr-sandbox"
+  },
+  "registerHost": {
+    "tool": "karl-host-runtime",
+    "version": "0.0.3-khr-n",
+    "hostId": "karl-host-runtime-karl-metal-01-scope1",
+    "hostname": "karl-builder",
+    "platform": "linux",
+    "cgroupVersion": "v2",
+    "sandboxMode": true,
+    "sandboxApplyEnabled": false,
+    "allowedNamespaces": [
+      "khr-runtime-sandbox"
+    ],
+    "allowedLabels": {
+      "khr.karl.io/sandbox": "true"
+    },
+    "registeredAt": "2026-05-16T20:57:57Z",
+    "productionSafe": false
+  },
+  "hostStatus": {
+    "apiVersion": "runtime.karl.io/v1alpha1",
+    "kind": "Host",
+    "metadata": {
+      "name": "karl-host-runtime-karl-metal-01-scope1",
+      "labels": {
+        "khr.karl.io/sandbox": "true"
+      }
+    },
+    "spec": {
+      "hostId": "karl-host-runtime-karl-metal-01-scope1",
+      "nodeName": "karl-builder",
+      "provider": "khr.native",
+      "runtimeMode": "sandbox",
+      "labels": {
+        "khr.karl.io/sandbox": "true"
+      }
+    },
+    "status": {
+      "phase": "Observed",
+      "conditions": [
+        {
+          "type": "Ready",
+          "status": "False",
+          "reason": "NoController",
+          "message": "KHR-I status from karl-host-runtime only; no reconciler loop",
+          "lastTransitionTime": "2026-05-16T20:57:57Z"
+        },
+        {
+          "type": "SandboxOnly",
+          "status": "True",
+          "reason": "ProductionUnsupported",
+          "message": "Host registration is sandbox/read-only in KHR-I",
+          "lastTransitionTime": "2026-05-16T20:57:57Z"
+        }
+      ],
+      "capabilities": {
+        "hostId": "karl-host-runtime-karl-metal-01-scope1",
+        "cgroupVersion": "v2",
+        "runtimeProviders": [
+          "linux.systemd.stub",
+          "linux.cgroup.envelope.stub"
+        ],
+        "supportedModes": [
+          "envelope",
+          "static"
+        ],
+        "blockedSurfaces": [
+          "kubevirt",
+          "libvirt",
+          "qmp",
+          "windows",
+          "vm-mutation",
+          "autonomous-apply"
+        ]
+      },
+      "observedResourcePorts": [
+        {
+          "name": "demo-port",
+          "namespace": "khr-runtime-sandbox"
+        }
+      ],
+      "lastHeartbeatTime": "2026-05-16T20:57:57Z",
+      "runtimeVersion": "0.0.3-khr-n",
+      "safetyMode": "sandbox"
+    }
+  },
+  "rdpgwDeploy": "invoked",
+  "rdpgwBaseUrl": "http://127.0.0.1:9443",
+  "evidencePath": "docs/evidence/khr-tp-live-scope1/khr-aw-scope1-20260516T210000Z",
+  "at": "2026-05-16T20:58:01Z"
+}

@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: khr-rdpgw-sandbox
+  labels:
+    khr.karl.io/sandbox: "true"
+    khr.karl.io/tp-live-scope: "scope-1"
+    khr.karl.io/component: rdpgw
+    app.kubernetes.io/part-of: karl-khr-tp
