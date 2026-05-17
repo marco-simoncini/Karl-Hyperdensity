@@ -27,7 +27,8 @@ Versioned, **read-only** cross-repo index of committed Technical Preview live ev
 | `scope4CertificationState` | `committed-scope4-certification-khr-bf` + governance `KHR-BG` |
 | `governanceState` | `committed-scope4-governance-khr-bg` |
 | `providerProfile` | Dashboard LIVE_PASS (`khr-native`) |
-| `dashboardLivePassRef` | Karl-Dashboard `committed-khr-bs-20260517T073046Z` |
+| `dashboardLivePassRef` | Karl-Dashboard `committed-khr-bs-20260517T073046Z` (backend projection) |
+| `dashboardUiPreviewEvidenceRef` | Karl-Dashboard `committed-khr-ca-v1` (UI preview; fixture or live) |
 | `rdpgwClusterSandboxRef` | rdp-GW `committed-cluster-sandbox-khr-ay` |
 | `installerCrdFoundationRef` | Karl-Installer `karl2-khr-technical-preview` evidence |
 | `hybridTransitionRef` | Karl-Installer `hybrid-transition` evidence |
@@ -69,7 +70,7 @@ export KHR_TP_REFERENCE_SNAPSHOT_RUN_ID=committed-khr-bt-v1
 - No autonomous orchestration
 - No global ISO/installer/Dashboard defaults change
 - Scope-4 guarded apply **not active** (`readyForScope4Active=false`)
-- No Dashboard UI changes
+- No Dashboard cockpit layout rewrite (KHR-CA UI preview evidence is API-only)
 
 ## Related
 

@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / KHR-BY / **KHR-BZ** |
+| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / KHR-BY / KHR-BZ / **KHR-CA** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -267,6 +267,25 @@ Inventory observation on projection (`inventoryObservationSummary`) remains read
 
 Normative Dashboard doc: `DASHBOARD_UI_KHR_PROJECTION_CONSUMPTION_PLAN.md`  
 Adapter package: `kubernetes-console/internal/khrui/`
+
+---
+
+## KHR-CA: Dashboard evidence classification (backend vs UI preview)
+
+| Evidence type | Endpoint | Karl-Dashboard path | Typical `evidenceStatus` |
+|---------------|----------|---------------------|--------------------------|
+| **Backend projection live** | `GET /api/hyperdensity/khr-backend/projection` | `docs/evidence/khr-dashboard-reference-env-activation/` | `LIVE_PASS` (KHR-BS) |
+| **UI projection preview live** | `GET /api/hyperdensity/khr-ui/projection-preview` | `docs/evidence/khr-dashboard-ui-projection-preview/` | `LIVE_PASS` / `REMEDIATION_PASS` (KHR-CA) |
+| **UI preview fixture** | (offline) | `committed-khr-ca-v1` | `FIXTURE_PASS` |
+
+Rules:
+
+- Backend evidence proves Shell/Cell/Lease **backend envelope** and `khr-native` activation on reference console.
+- UI preview evidence proves **cockpit shell-list adapter** output (`shellRows`) with dual-flag gating; does **not** migrate workload pages.
+- `REMEDIATION_PASS` is valid when live image/env is not yet on dual-flag preview — remediation plan only, no Hyperdensity runtime change.
+- Both evidence classes require `readOnly=true`, `actionCount=0`, no top-level mutation fields.
+
+Normative Dashboard doc: `DASHBOARD_UI_KHR_PROJECTION_PREVIEW_EVIDENCE.md`
 
 ---
 
