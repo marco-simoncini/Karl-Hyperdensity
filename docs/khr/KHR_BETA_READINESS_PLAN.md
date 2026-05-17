@@ -147,6 +147,23 @@ Fixture: `examples/khr-dashboard/cockpit-component-preview.json`
 
 ---
 
+## Cockpit shell-workload-list mount skeleton (KHR-CI)
+
+| Item | Status |
+|------|--------|
+| Plan | Karl-Dashboard `DASHBOARD_COCKPIT_SHELL_WORKLOAD_LIST_MOUNT_PLAN.md` |
+| Next beta milestone | **Mounted** read-only `shell-workload-list` in Command Center (reference / baremetal only) |
+| Mount flag | `HYPERDENSITY_KHR_COCKPIT_SHELL_LIST_MOUNT_ENABLED=false` (default) |
+| Preview vs mount | Preview API can show KHR rows; mounted UI requires fourth flag |
+| Consumption | Read-only table; **no action semantics** |
+| Legacy fallback | Mandatory when mount off, projection incomplete, or fetch error |
+| Live evidence | **Not in KHR-CI** — skeleton + tests only |
+| `globalDefaultsChanged` | `false` |
+
+Fixture: `examples/khr-dashboard/shell-workload-list-mounted-preview.json`
+
+---
+
 ## Beta Candidate 0 (KHR-BV)
 
 | Item | Path |

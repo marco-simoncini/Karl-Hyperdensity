@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH … KHR-CG / **KHR-CH** |
+| **Sprint** | KHR-BH … KHR-CG / KHR-CH / **KHR-CI** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -391,12 +391,52 @@ Live proof: `source=live-readonly`, `component=shell-workload-list`, `dataSource
 
 ---
 
+## KHR-CI: Cockpit shell-workload-list mount skeleton (reference-only)
+
+Next beta milestone after preview LIVE_PASS: **mounted** read-only component in the real Command Center slot — still **no action semantics**.
+
+| Concept | Semantics |
+|---------|-----------|
+| Preview API | `cockpit-component-preview` — may return KHR rows while UI stays legacy |
+| Mounted UI | Command Center slot uses KHR table only when mount flag is on |
+| Mount flag | `HYPERDENSITY_KHR_COCKPIT_SHELL_LIST_MOUNT_ENABLED` (default **false**) |
+| `mountedPath` | `legacy-object-activation` vs `khr-shell-workload-list` |
+| `previewApiOnly` | `true` when mount inactive (preview ≠ mounted UI) |
+
+### Quadruple-flag gating (normative)
+
+Mount is active only when **all** are `true`:
+
+1. Backend projection
+2. UI projection
+3. Component preview
+4. **Cockpit shell list mount** (KHR-CI, default **false**)
+
+If mount flag is `false`, cockpit **must** keep `HyperdensityObjectActivationCenter` (legacy equilibrium shells). Fetch errors → same fallback.
+
+### No action semantics (mounted path)
+
+| Rule | Value |
+|------|-------|
+| `actionCount` | `0` |
+| `noMutation` | `true` |
+| Mutating fields | Forbidden in preview JSON (`actions`, `applyEnabled`, …) |
+| Apply / restart / delete | **Not in mount UI** |
+
+No runtime or CRD changes in Hyperdensity for KHR-CI — Dashboard-only guarded skeleton + docs.
+
+Normative Dashboard doc: `DASHBOARD_COCKPIT_SHELL_WORKLOAD_LIST_MOUNT_PLAN.md`  
+Fixture: `shell-workload-list-mounted-preview.json`
+
+---
+
 ## Related
 
 - Karl-Dashboard `DASHBOARD_BACKEND_KHR_MIGRATION_PLAN.md`
 - Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_CONSUMPTION_PLAN.md`
 - Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_PREVIEW.md`
 - Karl-Dashboard `DASHBOARD_COCKPIT_COMPONENT_MIGRATION_PLAN.md`
+- Karl-Dashboard `DASHBOARD_COCKPIT_SHELL_WORKLOAD_LIST_MOUNT_PLAN.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_MODEL.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_PROPAGATION.md`
 - Karl-Dashboard `DASHBOARD_KHR_BACKEND_PROJECTION_API.md`
