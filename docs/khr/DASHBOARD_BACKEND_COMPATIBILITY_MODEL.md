@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI / KHR-BJ |
+| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / **KHR-BK** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -149,9 +149,41 @@ Regression in any of the above is a **contract freeze violation** for TP.
 
 ---
 
+## KHR-BK: provider profile expectations
+
+Dashboard deployment profiles (docs/fixtures only — **no Hyperdensity CRD/runtime change**):
+
+| Dashboard profile | Installer / ISO profile | KubeVirt boundary |
+|-------------------|----------------------|-------------------|
+| `khr-native` | `karl2-khr-technical-preview` | **Not required** for projection; optional `kubevirt.compatibility` only |
+| `public-cloud-kubevirt-compatibility` | `karl1-kubevirt-legacy` | **Required binding** `kubevirt.compatibility` with `compatibility=true` |
+| `hybrid-transition` | `hybrid-transition` | Same as public cloud + KHR CRD foundation |
+
+### Native vs public cloud semantics
+
+| Dimension | `khr-native` | `public-cloud-kubevirt-compatibility` |
+|-----------|--------------|----------------------------------------|
+| Primary worldview | Shell / Cell / Lease | Shell / Cell / Lease (KHR-first) |
+| KubeVirt role | Optional compatibility provider | Compatibility provider for VM fleets |
+| Future default | **Yes** (greenfield) | **No** — preserves existing installs |
+| ISO `defaultInstallerProfile` | Unchanged (`karl1-kubevirt-legacy`) | Unchanged |
+
+### KubeVirt compatibility boundary
+
+1. Hyperdensity and Dashboard **never** treat KubeVirt as the primary Shell model.
+2. All kubevirt provider ids in projection JSON require `compatibility=true` (KHR-BJ guard).
+3. Public cloud / hybrid profiles **may** list `kubevirt.compatibility` in required bindings; native profile **must not**.
+4. Retaining KubeVirt in cluster/installer does **not** imply production enablement or autonomous orchestration.
+
+Fixtures: Karl-Dashboard `examples/khr-dashboard/provider-profile-*.json`  
+Normative Dashboard doc: `DASHBOARD_PROVIDER_PROFILE_MODEL.md`
+
+---
+
 ## Related
 
 - Karl-Dashboard `DASHBOARD_BACKEND_KHR_MIGRATION_PLAN.md`
+- Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_MODEL.md`
 - Karl-Dashboard `DASHBOARD_KHR_BACKEND_PROJECTION_API.md`
 - `KHR_PROJECTION_V1.md` (Dashboard docs/hyperdensity)
 - `RUNTIME_OBSERVATION_FEDERATION.md`
