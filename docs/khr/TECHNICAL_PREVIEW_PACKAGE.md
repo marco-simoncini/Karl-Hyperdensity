@@ -206,6 +206,16 @@ Scripts (Karl-Dashboard): `khr_dashboard_khr_enabled_image_resolve.sh`, `khr_das
 **Committed reference activation (KHR-BS):** `docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/` — `LIVE_PASS`, image `khr-reference-df0ae11f9`, `rollbackVerified=true`.  
 Artifacts: `rollout-plan.json`, `live-summary.json`, `rollback-plan.json`, `summary.json` under `docs/evidence/khr-dashboard-reference-env-activation/<runId>/`.
 
+### KHR TP Reference Snapshot v1 (KHR-BT)
+
+| Item | Path |
+|------|------|
+| **Master index** | `docs/khr/KHR_TP_REFERENCE_SNAPSHOT_V1.md` |
+| **Snapshot JSON** | `docs/evidence/khr-tp-reference-snapshot-v1/committed-khr-bt-v1/snapshot-summary.json` |
+| **Cross-repo index** | `.../cross-repo-evidence-index.json` |
+
+Read-only aggregation of Scope 1–4, governance, Dashboard LIVE_PASS, rdp-GW cluster-sandbox, Installer CRD/hybrid, ISO post-install — **no new mutation** in KHR-BT.
+
 Reference env checklist: `KHR_TP_LIVE_REFERENCE_ENVIRONMENT.md`. Rollout doc: `DASHBOARD_KHR_ENABLED_CONSOLE_ROLLOUT.md`.
 
 ---

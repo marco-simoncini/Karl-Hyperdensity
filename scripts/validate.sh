@@ -372,6 +372,11 @@ if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh" ]]; then
     "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/validate_khr_tp_reference_snapshot_v1.sh" ]]; then
+  KHR_TP_REFERENCE_SNAPSHOT_RUN_ID="${KHR_TP_REFERENCE_SNAPSHOT_RUN_ID:-committed-khr-bt-v1}" \
+    "${ROOT_DIR}/scripts/validate_khr_tp_reference_snapshot_v1.sh"
+fi
+
 schema_count="$(ls -1 schemas/*.json | wc -l | tr -d ' ')"
 example_count="$(ls -1 examples/*.json | wc -l | tr -d ' ')"
 doc_count="${#required_files[@]}"

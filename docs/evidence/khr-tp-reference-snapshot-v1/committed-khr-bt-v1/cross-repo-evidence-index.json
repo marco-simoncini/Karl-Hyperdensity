@@ -1,0 +1,298 @@
+{
+  "entries": [
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.enablement",
+      "relativePath": "docs/evidence/khr-tp-live-enablement/20260517T072602Z/enablement-preflight-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-enablement/20260517T072602Z/enablement-preflight-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "20260517T072602Z",
+        "readyForScope4": "manual-guarded-apply-pass",
+        "readyForScope3": "manual-dryrun-pass",
+        "readyForScope2": "manual-loop-pass",
+        "readyForScope1": true,
+        "rollbackVerified": true
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope1",
+      "relativePath": "docs/evidence/khr-tp-live-scope1/committed-scope1-khr-aw/verify-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope1/committed-scope1-khr-aw/verify-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "khr-aw-scope1-20260516T210000Z",
+        "readyForScope2": false
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope2Preflight",
+      "relativePath": "docs/evidence/khr-tp-live-scope2-preflight/committed-scope2-preflight-khr-az/scope2-preflight-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope2-preflight/committed-scope2-preflight-khr-az/scope2-preflight-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope2-preflight-khr-az",
+        "readyForScope2": "conditional/manual-preflight-pass",
+        "readyForScope1": true
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope2Loop",
+      "relativePath": "docs/evidence/khr-tp-live-scope2-resourceport-loop/committed-scope2-loop-khr-ba/verify-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope2-resourceport-loop/committed-scope2-loop-khr-ba/verify-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope2-loop-khr-ba",
+        "readyForScope3": false,
+        "readyForScope2": "manual-loop-pass",
+        "readyForScope1": true
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope3Preflight",
+      "relativePath": "docs/evidence/khr-tp-live-scope3-preflight/committed-scope3-preflight-khr-bb/scope3-preflight-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope3-preflight/committed-scope3-preflight-khr-bb/scope3-preflight-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope3-preflight-khr-bb",
+        "readyForScope4": false,
+        "readyForScope3": "conditional/manual-preflight-pass",
+        "readyForScope2": "manual-loop-pass",
+        "readyForScope1": true
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope3Dryrun",
+      "relativePath": "docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/verify-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/verify-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope3-dryrun-khr-bc",
+        "readyForScope4": false,
+        "readyForScope3": "manual-dryrun-pass",
+        "readyForScope2": "manual-loop-pass",
+        "readyForScope1": true
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope4Preflight",
+      "relativePath": "docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope4-preflight-khr-bd",
+        "readyForScope4": "conditional/manual-preflight-pass",
+        "readyForScope3": "manual-dryrun-pass",
+        "readyForScope2": "manual-loop-pass",
+        "readyForScope1": true
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope4Apply",
+      "relativePath": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/verify-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/verify-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope4-guarded-apply-khr-be",
+        "readyForScope4": "manual-guarded-apply-pass",
+        "readyForScope3": "manual-dryrun-pass",
+        "readyForScope2": "manual-loop-pass",
+        "readyForScope1": true,
+        "rollbackVerified": true
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope4Certification",
+      "relativePath": "docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope4-certification-khr-bf",
+        "readyForScope4": "manual-guarded-apply-pass",
+        "rollbackVerified": true
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope4Governance",
+      "relativePath": "docs/evidence/khr-scope4-governance/committed-scope4-governance-khr-bg/governance-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-scope4-governance/committed-scope4-governance-khr-bg/governance-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope4-governance-khr-bg",
+        "readyForScope4": "manual-guarded-apply-pass"
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.federation",
+      "relativePath": "docs/evidence/khr-runtime-observation-federation/20260517T072601Z/federation-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-runtime-observation-federation/20260517T072601Z/federation-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "20260517T072601Z"
+      }
+    },
+    {
+      "repo": "Karl-Dashboard",
+      "role": "dashboard.livePass",
+      "relativePath": "docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/live-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Dashboard/docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/live-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": "LIVE_PASS",
+      "summary": {
+        "runId": "committed-khr-bs-20260517T073046Z",
+        "providerProfile": "khr-native"
+      }
+    },
+    {
+      "repo": "Karl-Dashboard",
+      "role": "dashboard.liveSummary",
+      "relativePath": "docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Dashboard/docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": "LIVE_PASS",
+      "summary": {
+        "runId": "committed-khr-bs-20260517T073046Z",
+        "providerProfile": "khr-native"
+      }
+    },
+    {
+      "repo": "Karl-Dashboard",
+      "role": "dashboard.rollback",
+      "relativePath": "docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/rollback-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Dashboard/docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/rollback-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": "ROLLBACK_VERIFIED",
+      "summary": {
+        "runId": "committed-khr-bs-20260517T073046Z",
+        "rollbackVerified": true
+      }
+    },
+    {
+      "repo": "Karl-Dashboard",
+      "role": "dashboard.imageResolve",
+      "relativePath": "docs/evidence/khr-dashboard-console-image/committed-khr-bs-20260517T073046Z/image-resolution-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Dashboard/docs/evidence/khr-dashboard-console-image/committed-khr-bs-20260517T073046Z/image-resolution-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": "IMAGE_RESOLVED",
+      "summary": {
+        "runId": "committed-khr-bs-20260517T073046Z",
+        "imageResolved": true
+      }
+    },
+    {
+      "repo": "Karl-Dashboard",
+      "role": "dashboard.rolloutPlan",
+      "relativePath": "docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/rollout-plan.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Dashboard/docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/rollout-plan.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": "ROLLBACK_READY",
+      "summary": {
+        "runId": "committed-khr-bs-20260517T073046Z"
+      }
+    },
+    {
+      "repo": "Karl-Installer",
+      "role": "installer.crdFoundation",
+      "relativePath": "docs/evidence/khr-installer-crd-foundation/20260517T070416Z/summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Installer/docs/evidence/khr-installer-crd-foundation/20260517T070416Z/summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "20260517T070416Z"
+      }
+    },
+    {
+      "repo": "Karl-Installer",
+      "role": "installer.crdFoundationManifest",
+      "relativePath": "docs/evidence/khr-installer-crd-foundation/20260517T070416Z/khr-contract-manifest.yaml",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Installer/docs/evidence/khr-installer-crd-foundation/20260517T070416Z/khr-contract-manifest.yaml",
+      "present": true,
+      "status": "PASS",
+      "format": "yaml"
+    },
+    {
+      "repo": "Karl-Installer",
+      "role": "installer.hybrid",
+      "relativePath": "docs/evidence/khr-hybrid-transition/20260516T195854Z/summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Installer/docs/evidence/khr-hybrid-transition/20260516T195854Z/summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "20260516T195854Z"
+      }
+    },
+    {
+      "repo": "Karl-OS-ISO",
+      "role": "iso.postInstall",
+      "relativePath": "docs/evidence/khr-post-install-verify/summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-OS-ISO/docs/evidence/khr-post-install-verify/summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "20260517T072559Z"
+      }
+    },
+    {
+      "repo": "Karl-OS-ISO",
+      "role": "iso.profileManifest",
+      "relativePath": "Stage-2/custom-files/karl-os-opt/karl/khr/profile-manifest.yaml",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-OS-ISO/Stage-2/custom-files/karl-os-opt/karl/khr/profile-manifest.yaml",
+      "present": true,
+      "status": "PASS",
+      "format": "yaml"
+    },
+    {
+      "repo": "rdp-GW",
+      "role": "rdpgw.clusterSandbox",
+      "relativePath": "docs/evidence/khr-rdpgw-cluster-sandbox/committed-cluster-sandbox-khr-ay/verify-summary.json",
+      "absolutePath": "/home/m.simoncini/rdp-GW/docs/evidence/khr-rdpgw-cluster-sandbox/committed-cluster-sandbox-khr-ay/verify-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "readyForScope2": false,
+        "deployMode": "cluster-sandbox"
+      }
+    }
+  ]
+}

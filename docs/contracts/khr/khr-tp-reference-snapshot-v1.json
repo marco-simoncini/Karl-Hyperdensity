@@ -1,0 +1,55 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://karl.technology/schemas/khr-tp-reference-snapshot-v1.json",
+  "title": "KHR Technical Preview Reference Snapshot v1",
+  "description": "Read-only cross-repo evidence index for stabilized TP reference posture (KHR-BT). No runtime mutation.",
+  "type": "object",
+  "required": [
+    "contractVersion",
+    "contractSetId",
+    "clusterContext",
+    "readOnly",
+    "liveMutationPerformed",
+    "productionReady",
+    "autonomousOrchestration",
+    "globalDefaultsChanged",
+    "scopeReadiness",
+    "scope4CertificationState",
+    "governanceState",
+    "providerProfile",
+    "dashboardLivePassRef",
+    "rdpgwClusterSandboxRef",
+    "installerCrdFoundationRef",
+    "hybridTransitionRef",
+    "crossRepoEvidenceIndex"
+  ],
+  "properties": {
+    "contractVersion": { "const": "khr-tp-reference-snapshot-v1" },
+    "contractSetId": { "const": "khr-tp-contract-v1" },
+    "clusterContext": { "const": "karl-metal-01@ovh" },
+    "readOnly": { "const": true },
+    "liveMutationPerformed": { "const": false },
+    "productionReady": { "const": false },
+    "autonomousOrchestration": { "const": false },
+    "globalDefaultsChanged": { "const": false },
+    "providerProfile": { "enum": ["khr-native", "hybrid-transition", "public-cloud-kubevirt-compatibility"] },
+    "scopeReadiness": {
+      "type": "object",
+      "properties": {
+        "scope1": { "type": "string" },
+        "scope2": { "type": "string" },
+        "scope3": { "type": "string" },
+        "scope4": { "type": "string" },
+        "scope4Active": { "type": "boolean" }
+      }
+    },
+    "scope4CertificationState": { "type": "string" },
+    "governanceState": { "type": "string" },
+    "dashboardLivePassRef": { "type": "object" },
+    "rdpgwClusterSandboxRef": { "type": "object" },
+    "installerCrdFoundationRef": { "type": "object" },
+    "hybridTransitionRef": { "type": "object" },
+    "crossRepoEvidenceIndex": { "type": "array" }
+  },
+  "additionalProperties": true
+}

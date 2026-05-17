@@ -112,6 +112,10 @@ Doc: `DASHBOARD_REFERENCE_ENV_ACTIVATION_PROFILE.md`
 
 **Committed LIVE_PASS (KHR-BS):** Karl-Dashboard `docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/`.
 
+### KHR TP Reference Snapshot v1 (KHR-BT)
+
+Cross-repo read-only index: `KHR_TP_REFERENCE_SNAPSHOT_V1.md` → `docs/evidence/khr-tp-reference-snapshot-v1/committed-khr-bt-v1/snapshot-summary.json`.
+
 | Artifact | Path |
 |----------|------|
 | Rollout plan | `.../rollout-plan.json` (KHR-BQ) |
