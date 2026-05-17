@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** / **KHR-DS** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** / **KHR-DS** / **KHR-DT** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -307,6 +307,12 @@ Schema hardening + preflight only; no-op for Hyperdensity. Evidence: Karl-Instal
 ## rdp-GW quota unblock guarded restore (KHR-DS)
 
 Quota-safe manifest + guarded `karl-quota` restore; no-op for Hyperdensity. Evidence: Karl-Installer `docs/evidence/karl2-rdpgw-quota-unblock-guarded-restore/committed-khr-ds-v1/`.
+
+---
+
+## rdp-GW sustained LIVE REFERENCE enablement (KHR-DT)
+
+Sustained LIVE REFERENCE operating posture; Hyperdensity operating during gate. Evidence: Karl-Installer `docs/evidence/karl2-rdpgw-sustained-live-reference-enable/committed-khr-dt-v1/`.
 
 ---
 
