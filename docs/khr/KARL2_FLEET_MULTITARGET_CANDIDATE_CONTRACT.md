@@ -67,3 +67,15 @@ Evidence: Karl-Installer `docs/evidence/karl2-fleet-multitarget-guarded-executio
 | `karlAppExcludedFromProductionReadiness` | true |
 
 Evidence: Karl-Installer `docs/evidence/karl2-production-readiness-declaration/committed-khr-ef-v1/`. State: `docs/khr/production-readiness-state.json`.
+
+---
+
+## Production release (KHR-EG)
+
+| Field | Value |
+|-------|-------|
+| `karl2ProductionRelease` | true |
+| `productionReady` | true |
+| `promotionAllowed` | true |
+
+Evidence: Karl-Installer `docs/evidence/karl2-production-release-declaration/committed-khr-eg-v1/`. State: `docs/khr/production-release-state.json`.

@@ -1,0 +1,11 @@
+{
+  "sprint": "KHR-EG",
+  "karl2ProductionRelease": true,
+  "productionReady": true,
+  "promotionAllowed": true,
+  "releaseScope": "current-connected-reference-production",
+  "productionMode": "karl2-baremetal-khr-native-single-connected-reference-cluster",
+  "karlAppExcludedFromProductionReadiness": true,
+  "remainingBlockers": [],
+  "evidenceRef": "Karl-Installer/docs/evidence/karl2-production-release-declaration/committed-khr-eg-v1/"
+}
