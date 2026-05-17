@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-AX |
+| **Sprint** | KHR-AX / **KHR-BN** |
 | **Cluster** | `karl-metal-01@ovh` |
 | **Scopes** | **0 and 1 only** — scope-2+ **blocked** |
 | **Mode** | Read-only observation — **not production** |
@@ -76,6 +76,28 @@ Output: `docs/evidence/khr-tp-live-reference-env/<runId>/reference-env-summary.j
 | Fixture | `examples/khr-dashboard/tp-readiness-reference-env.json` |
 
 See Karl-Dashboard `DASHBOARD_TP_READINESS_REFERENCE_ENV.md`.
+
+---
+
+## KHR-native reference activation (KHR-BN)
+
+Reference env may activate **KHR-native** provider profile on Dashboard **without** changing global defaults:
+
+```bash
+export HYPERDENSITY_KHR_BACKEND_PROJECTION_ENABLED=true
+export HYPERDENSITY_KHR_TP_REFERENCE_ENV=true
+export HYPERDENSITY_KHR_PROVIDER_PROFILE=khr-native
+```
+
+| Profile | Reference env | Global default / legacy |
+|---------|---------------|-------------------------|
+| `khr-native` | Explicit activation on `karl-metal-01@ovh` | Future greenfield only |
+| `public-cloud-kubevirt-compatibility` | Remains compatibility profile for legacy installs | Unset env → `default-documented` |
+
+**No production claim:** `productionReady=false`, `autonomousOrchestration=false`, read-only projection only.
+
+Fixture: Karl-Dashboard `reference-env-khr-native-activation.json`  
+Doc: `DASHBOARD_REFERENCE_ENV_ACTIVATION_PROFILE.md`
 
 ---
 
