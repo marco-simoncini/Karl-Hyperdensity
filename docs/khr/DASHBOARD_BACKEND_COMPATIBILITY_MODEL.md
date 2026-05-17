@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / **KHR-BK** |
+| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / **KHR-BL** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -177,6 +177,24 @@ Dashboard deployment profiles (docs/fixtures only — **no Hyperdensity CRD/runt
 
 Fixtures: Karl-Dashboard `examples/khr-dashboard/provider-profile-*.json`  
 Normative Dashboard doc: `DASHBOARD_PROVIDER_PROFILE_MODEL.md`
+
+---
+
+## KHR-BL: expected provider profile projection fields
+
+Dashboard `GET /api/hyperdensity/khr-backend/projection` exposes read-only provider profile readiness (no Hyperdensity CRD/runtime change):
+
+| Field | `khr-native` | `public-cloud-kubevirt-compatibility` | `hybrid-transition` |
+|-------|--------------|---------------------------------------|----------------------|
+| `kubevirtRequired` | `false` | `true` | `true` |
+| `supportsKhrNative` | `true` | `false` | `true` |
+| `supportsKubeVirtCompatibility` | `true` | `true` | `true` |
+| `providerProfileCompatibilityMode` | `khr-native` | `kubevirt.compatibility` | `kubevirt.compatibility` |
+| `kubevirtProviderBinding` | `kubevirt.compatibility` (optional) | `kubevirt.compatibility` | `kubevirt.compatibility` |
+
+Same fields are mirrored on `tpReadinessSummary`. Resolution is Dashboard-side (`HYPERDENSITY_KHR_PROVIDER_PROFILE` / `KARL_INSTALLER_PROFILE` / documented default).
+
+Anti-regression: Karl-Dashboard `assertKHRProviderProfileProjectionContractV1` + `validate_khr_backend_projection_contract.sh`.
 
 ---
 
