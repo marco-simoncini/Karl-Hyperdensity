@@ -5,19 +5,41 @@ Karl-Inventory read-only ingest of KHR evidence bundles. **No Hyperdensity runti
 | Field | Value |
 |-------|-------|
 | **Sprint** | KHR-BW |
-| **Beta blocker** | `inventory-live-ingest` — **partially addressed** |
+| **Beta blocker** | `inventory-live-ingest` — **dashboard-visible** when projection passes (KHR-BX) |
 | **Inventory evidence** | `docs/evidence/khr-inventory-live-ingest/committed-khr-bw-v1/` |
 
 ---
 
 ## Expected observation fields
 
-| Field | Source | Hyperdensity use |
-|-------|--------|------------------|
-| `inventoryObservationSource` | `live-readonly` \| `fixture-readonly` | Federation trust level `inventory-observed` |
-| `postureObserved` | Derived from post-install + stub posture | Runtime posture federation |
+| Field | Source | Hyperdensity / Dashboard use |
+|-------|--------|------------------------------|
+| `observationId` | `khr-inventory-observation/<runId>` | Correlation id |
+| `observationSource` | `live-readonly` \| `fixture-readonly` | Same as `inventoryObservationSource` |
+| `observedAt` | RFC3339 timestamp | Evidence freshness |
+| `snapshotRef` | `{ runId, summaryPath }` | Anchor to Reference Snapshot v1 |
+| `inventoryObservationSource` | `live-readonly` \| `fixture-readonly` | Federation trust `inventory-observed` |
+| `postureObserved` | Post-install + stub posture | Runtime posture federation |
 | `scopeReadinessObserved` | Snapshot `scopeReadiness` | TP readiness correlation |
-| `continuityObserved` | Federation summary + governance | Continuity evidence bundles |
+| `continuityObserved` | Federation + governance | Continuity bundles |
+| `enforcement` | always `false` | No enforcement proof |
+| `mutationObserved` | always `false` | No mutation proof |
+
+### Dashboard projection (KHR-BX)
+
+Karl-Dashboard `GET /api/hyperdensity/khr-backend/projection` exposes read-only `inventoryObservationSummary`:
+
+| Field | Required |
+|-------|----------|
+| `available` | bool |
+| `source` | observation source |
+| `postureObserved` | bool |
+| `scopeReadinessObserved` | bool |
+| `continuityObserved` | bool |
+| `enforcement` | `false` |
+| `mutationObserved` | `false` |
+
+Fixture: `Karl-Dashboard/examples/khr-dashboard/inventory-live-ingest-summary.json`. **No Cockpit UI** in KHR-BX.
 
 ---
 

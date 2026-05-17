@@ -334,9 +334,13 @@ if [[ -x "${ROOT_DIR}/scripts/khr_beta_candidate_0_check.sh" ]]; then
 fi
 
 [[ -f "${ROOT_DIR}/docs/khr/INVENTORY_LIVE_INGEST_EXPECTATIONS.md" ]] || {
-  echo "[validate] FAIL: missing INVENTORY_LIVE_INGEST_EXPECTATIONS.md (KHR-BW)" >&2
+  echo "[validate] FAIL: missing INVENTORY_LIVE_INGEST_EXPECTATIONS.md (KHR-BX)" >&2
   exit 1
 }
+if ! grep -q 'inventoryObservationSummary' "${ROOT_DIR}/docs/khr/INVENTORY_LIVE_INGEST_EXPECTATIONS.md"; then
+  echo "[validate] FAIL: INVENTORY_LIVE_INGEST_EXPECTATIONS missing projection section" >&2
+  exit 1
+fi
 
 if [[ "${KHR_LIVE_VALIDATE:-}" == "1" ]]; then
   echo "[validate] KHR_LIVE_VALIDATE=1 — running live cluster validation (kubectl)"
