@@ -1,0 +1,14 @@
+{
+  "simulationId": "scope4-failure-failed-verification",
+  "failureClass": "failedVerification",
+  "readOnly": true,
+  "liveInjection": false,
+  "failedVerification": true,
+  "verification": {
+    "state": "fail",
+    "observedCpuMax": "max",
+    "expectedCpuMax": "20000 100000"
+  },
+  "applyState": "blocked",
+  "rollbackRequired": true
+}

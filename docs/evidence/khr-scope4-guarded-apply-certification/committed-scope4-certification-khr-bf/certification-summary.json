@@ -1,0 +1,84 @@
+{
+  "phase": "khr-scope4-guarded-apply-certification",
+  "sprint": "KHR-BF",
+  "runId": "committed-scope4-certification-khr-bf",
+  "status": "PASS",
+  "scope4CertificationState": "certified-evidence-backed",
+  "evidenceRef": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be",
+  "evidenceRunId": "committed-scope4-guarded-apply-khr-be",
+  "mutationType": "cpu.max",
+  "targetLane": "native-live",
+  "rollbackVerified": true,
+  "continuityPreserved": true,
+  "noRestart": true,
+  "noRollout": true,
+  "noRecreate": true,
+  "noDisconnect": true,
+  "noRevoke": true,
+  "notPersistent": true,
+  "notAutonomous": true,
+  "readyForScope4": "manual-guarded-apply-pass",
+  "readyForScope4Active": false,
+  "readyForScope4Enabled": false,
+  "guardedApplyEnabled": false,
+  "guardedApplyAutonomous": false,
+  "readOnly": true,
+  "liveMutationPerformed": false,
+  "checks": {
+    "artifact_applySummary": {
+      "status": "PASS",
+      "detail": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/apply-summary.json"
+    },
+    "artifact_verifySummary": {
+      "status": "PASS",
+      "detail": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/verify-summary.json"
+    },
+    "artifact_rollbackSummary": {
+      "status": "PASS",
+      "detail": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/rollback-summary.json"
+    },
+    "artifact_applyOutput": {
+      "status": "PASS",
+      "detail": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/apply-output.json"
+    },
+    "artifact_productionBefore": {
+      "status": "PASS",
+      "detail": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/production-before.json"
+    },
+    "artifact_productionAfterApply": {
+      "status": "PASS",
+      "detail": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/production-after-apply.json"
+    },
+    "applySummaryValid": {
+      "status": "PASS",
+      "detail": "mutationScope=cpu.max"
+    },
+    "verifySummaryValid": {
+      "status": "PASS",
+      "detail": ""
+    },
+    "rollbackSummaryValid": {
+      "status": "PASS",
+      "detail": ""
+    },
+    "noProductionMutation": {
+      "status": "PASS",
+      "detail": ""
+    },
+    "rdpgwContinuityEvidence": {
+      "status": "PASS",
+      "detail": "optional rdpgw-continuity-summary.json"
+    },
+    "applyOutputValid": {
+      "status": "PASS",
+      "detail": ""
+    },
+    "failureSemanticsFixtures": {
+      "status": "PASS",
+      "detail": "count=5"
+    }
+  },
+  "errors": [],
+  "evidencePath": "docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf",
+  "at": "2026-05-17T06:15:40Z"
+}

@@ -479,6 +479,41 @@ gate(
 )
 
 
+def latest_scope4_certification() -> dict[str, Any] | None:
+    base = ROOT / "docs/evidence/khr-scope4-guarded-apply-certification"
+    committed = base / "committed-scope4-certification-khr-bf" / "certification-summary.json"
+    if committed.is_file():
+        return load_json(committed)
+    if not base.is_dir():
+        return None
+    for name in sorted(base.iterdir(), reverse=True):
+        p = name / "certification-summary.json"
+        if p.is_file():
+            doc = load_json(p)
+            if doc and doc.get("status") == "PASS":
+                return doc
+    return None
+
+
+scope4_cert = latest_scope4_certification()
+scope4_cert_ok = bool(
+    scope4_cert
+    and scope4_cert.get("status") == "PASS"
+    and scope4_cert.get("scope4CertificationState") == "certified-evidence-backed"
+    and scope4_cert.get("readyForScope4Active") is False
+    and scope4_cert.get("guardedApplyEnabled") is False
+    and scope4_cert.get("guardedApplyAutonomous") is False
+    and scope4_cert.get("notAutonomous") is True
+    and scope4_cert.get("notPersistent") is True
+    and scope4_cert.get("liveMutationPerformed") is False
+)
+gate(
+    "scope4CertificationEvidence",
+    scope4_cert_ok,
+    f"runId={scope4_cert.get('runId') if scope4_cert else 'none'}",
+)
+
+
 all_core = all(
     gates[g]["status"] == "PASS"
     for g in (
@@ -537,8 +572,11 @@ else:
 
 dry_run_executed = bool(scope3_dryrun_ok)
 
-if scope4_apply_ok and scope4_rollback_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
+if scope4_cert_ok and scope4_apply_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
     ready4: bool | str = "manual-guarded-apply-pass"
+    ready4_note = "KHR-BF scope-4 certified evidence-backed; guarded apply not active/enabled/autonomous"
+elif scope4_apply_ok and scope4_rollback_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
+    ready4 = "manual-guarded-apply-pass"
     ready4_note = "KHR-BE scope-4 guarded apply evidence PASS with rollback verified; not active"
 elif scope4_pf_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
     ready4 = "conditional/manual-preflight-pass"
@@ -552,7 +590,7 @@ else:
 
 summary: dict[str, Any] = {
     "phase": "khr-tp-live-enablement-preflight",
-    "sprint": "KHR-BE",
+    "sprint": "KHR-BF",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": CONTRACT,
@@ -581,6 +619,8 @@ summary: dict[str, Any] = {
     "scope3DryRunRunId": scope3_dryrun.get("runId") if scope3_dryrun else None,
     "scope4PreflightRunId": scope4_preflight.get("runId") if scope4_preflight else None,
     "scope4ApplyRunId": scope4_apply.get("runId") if scope4_apply else None,
+    "scope4CertificationRunId": scope4_cert.get("runId") if scope4_cert else None,
+    "scope4CertificationState": scope4_cert.get("scope4CertificationState") if scope4_cert else None,
     "readyForScope3Note": ready3_note,
     "readyForScope4Note": ready4_note,
     "guardedApplyExecuted": scope4_apply_ok,

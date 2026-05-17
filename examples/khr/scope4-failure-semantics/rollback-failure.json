@@ -1,0 +1,10 @@
+{
+  "simulationId": "scope4-failure-rollback-failure",
+  "failureClass": "rollbackFailure",
+  "readOnly": true,
+  "liveInjection": false,
+  "rollbackFailure": true,
+  "rollbackVerified": false,
+  "rollbackState": "idle",
+  "blockedReason": "rollback verify mismatch: baseline not restored"
+}

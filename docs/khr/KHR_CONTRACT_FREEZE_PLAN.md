@@ -12,7 +12,7 @@
 
 | Tier | Contracts | Policy through beta-1 |
 |------|-----------|------------------------|
-| **TP freeze** | `khr-projection-v1alpha1-readonly-y`, `khr-tp-readiness-summary-v1alpha1`, Host/Shell/Cell/ResourcePort/ResourceFuture CRDs + docs, **ResourceLease CRD/schema/projection (KHR-AE)**, **ResourcePort + native-live lane semantics (KHR-AF)**, Inventory posture schema (read-only fields) | Additive fields only; no removals; no semantic change to `readOnly: true` |
+| **TP freeze** | `khr-projection-v1alpha1-readonly-y`, `khr-tp-readiness-summary-v1alpha1`, Host/Shell/Cell/ResourcePort/ResourceFuture CRDs + docs, **ResourceLease CRD/schema/projection (KHR-AE)**, **ResourcePort + native-live lane semantics (KHR-AF)**, **Scope-4 guarded-apply certification fields (KHR-BF)**, Inventory posture schema (read-only fields) | Additive fields only; no removals; no semantic change to `readOnly: true` |
 | **Experimental** | ResourceLease **sandbox cgroup apply execution**, certification registry enforcement semantics, native-live cert claims, action approval apply path | Apply behavior may change with evidence; contract shape frozen |
 | **Beta target** | Inventory `TPObservationExport`, tp-readiness default-on in reference env, registry refresh export | Freeze at beta-1 RC after gap closure |
 | **Deprecated** | Multus/NAD as target; unqualified KubeVirt-as-core wording | Documentation only |
@@ -35,7 +35,7 @@
 
 1. **Read-only projection fields** in `KHR_PROJECTION_V1.md` (Dashboard).
 2. **TP package docs** and operator runbook procedures.
-3. **Evidence anchor files** (`certification-summary.json`, registry/provenance summaries).
+3. **Evidence anchor files** (`certification-summary.json`, registry/provenance summaries, **scope4 guarded-apply certification summary (KHR-BF)**).
 4. **CRD OpenAPI shapes** as installed by `install_khr_crds` (no field deletion).
 5. **Guard scripts** (`guard_khr_docs_scope`, `guard_khr_iso_boundaries`, `khr_tp_package_check`).
 

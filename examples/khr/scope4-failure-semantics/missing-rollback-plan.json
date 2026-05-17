@@ -1,0 +1,10 @@
+{
+  "simulationId": "scope4-failure-missing-rollback-plan",
+  "failureClass": "missingRollbackPlan",
+  "readOnly": true,
+  "liveInjection": false,
+  "blockedReason": "rollbackPlanRef required for guarded apply",
+  "dryRunDecision": "blocked",
+  "applyState": "blocked",
+  "guardedApplyEnabled": false
+}

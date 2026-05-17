@@ -29,6 +29,7 @@ This document defines the **Technical Preview (TP) package** consumable without 
 | TP package check | `./scripts/khr_tp_package_check.sh` |
 | TP operator bundle | `./scripts/khr_tp_operator_bundle.sh` |
 | Full validate hook | `./scripts/validate.sh` |
+| Scope-4 certification check (read-only) | `./scripts/khr_scope4_certification_check.sh` |
 | ISO boundaries (ISO repo) | `./scripts/guard_khr_iso_boundaries.sh` |
 | ISO TP bootstrap verify (ISO repo, read-only) | `./scripts/khr_iso_tp_verify.sh` |
 | Installer karl2 CRD evidence (optional) | `khr_crd_foundation_evidence.sh` → `contractSetId` + `crdDiffEmpty` |
@@ -49,7 +50,7 @@ This document defines the **Technical Preview (TP) package** consumable without 
 | **Contracts** | Shell/Cell/ResourcePort/ResourceLease, projection v1alpha1-readonly-y (Dashboard doc) |
 | **CRDs** | Host, Shell, Cell, ResourcePort, ResourceLease (install via ISO or Hyperdensity manifests) |
 | **CLIs** | `karl-host-runtime`, `khr-cert-registry`, `khr-action-approval`, `khr-control-graph`, `khr-provenance-validate` |
-| **Evidence (committed)** | Native-live certification, certification registry, provenance validation summaries |
+| **Evidence (committed)** | Native-live certification, certification registry, provenance validation summaries, **Scope-4 guarded-apply certification (KHR-BF)** |
 | **Sandbox scripts** | `khr_runtime_sandbox_*.sh`, lane/cert/registry/provenance evidence scripts |
 | **Examples** | `examples/khr/runtime-sandbox/` manifests and fixtures |
 

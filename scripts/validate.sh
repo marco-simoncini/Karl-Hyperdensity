@@ -340,9 +340,19 @@ if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh" ]]; then
   fi
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/khr_scope4_certification_check.sh" ]]; then
+  KHR_SCOPE4_CERTIFICATION_RUN_ID="${KHR_SCOPE4_CERTIFICATION_RUN_ID:-committed-scope4-certification-khr-bf}" \
+    "${ROOT_DIR}/scripts/khr_scope4_certification_check.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh" ]]; then
-  KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID="${KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID:-committed-scope4-guarded-apply-khr-be}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh"
+  SCOPE4_CERT="${ROOT_DIR}/docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json"
+  if [[ ! -f "${SCOPE4_CERT}" ]]; then
+    KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID="${KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID:-committed-scope4-guarded-apply-khr-be}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh"
+  else
+    echo "[validate] skip scope4 apply verify (KHR-BF certification evidence present)"
+  fi
 fi
 
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_verify.sh" ]]; then

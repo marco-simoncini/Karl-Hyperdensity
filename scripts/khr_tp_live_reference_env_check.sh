@@ -393,6 +393,31 @@ record(
     f"runId={scope4_apply.get('runId') if scope4_apply else 'none'}",
 )
 
+scope4_cert = None
+cert_base = ROOT / "docs/evidence/khr-scope4-guarded-apply-certification"
+committed_cert = cert_base / "committed-scope4-certification-khr-bf" / "certification-summary.json"
+if committed_cert.is_file():
+    scope4_cert = load(committed_cert)
+elif cert_base.is_dir():
+    for child in sorted(cert_base.iterdir(), reverse=True):
+        p = child / "certification-summary.json"
+        if p.is_file():
+            scope4_cert = load(p)
+            if scope4_cert:
+                break
+scope4_cert_ok = bool(
+    scope4_cert
+    and scope4_cert.get("status") == "PASS"
+    and scope4_cert.get("scope4CertificationState") == "certified-evidence-backed"
+    and scope4_cert.get("guardedApplyEnabled") is False
+    and scope4_cert.get("guardedApplyAutonomous") is False
+)
+record(
+    "scope4CertificationEvidence",
+    scope4_cert_ok,
+    f"state={scope4_cert.get('scope4CertificationState') if scope4_cert else 'none'}",
+)
+
 ready_for_scope3: bool | str = False
 if scope3_dryrun_ok:
     ready_for_scope3 = "manual-dryrun-pass"
@@ -425,12 +450,19 @@ record(
         and dash_summary.get("rollbackObserved") is True
         and dash_summary.get("continuityPreserved") is True
         and dash_summary.get("applyScope") == "sandbox-only"
+        and dash_summary.get("scope4CertificationState") == "certified-evidence-backed"
+        and dash_summary.get("scope4EvidenceRef")
+        and dash_summary.get("guardedApplyEnabled") is False
+        and dash_summary.get("guardedApplyAutonomous") is False
+        and dash_summary.get("failedVerification") is False
+        and dash_summary.get("rollbackFailure") is False
+        and dash_summary.get("staleEvidence") is False
     ),
     str(dash_fixture),
 )
 
 ready_for_scope4: bool | str = False
-if scope4_apply_ok and scope4_rollback_ok:
+if scope4_cert_ok and scope4_apply_ok and scope4_rollback_ok:
     ready_for_scope4 = "manual-guarded-apply-pass"
 elif scope4_pf_ok:
     ready_for_scope4 = "conditional/manual-preflight-pass"
@@ -438,7 +470,7 @@ elif scope4_pf_ok:
 status = "PASS" if not errors else "FAIL"
 summary = {
     "phase": "khr-tp-live-reference-env",
-    "sprint": "KHR-BE",
+    "sprint": "KHR-BF",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": "khr-tp-contract-v1",
@@ -459,6 +491,7 @@ summary = {
     "guardedApplyExecuted": scope4_apply_ok,
     "rollbackVerified": scope4_rollback_ok,
     "continuityPreserved": scope4_apply.get("continuityPreserved", False) if scope4_apply_ok else False,
+    "scope4CertificationState": scope4_cert.get("scope4CertificationState") if scope4_cert_ok else None,
     "resourceLeaseDryRunExecuted": scope3_dryrun_ok,
     "dryRunObserved": scope3_dryrun_ok,
     "applyObserved": False,

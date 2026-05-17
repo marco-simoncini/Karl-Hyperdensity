@@ -1,0 +1,13 @@
+{
+  "simulationId": "scope4-failure-continuity-regression",
+  "failureClass": "continuityRegression",
+  "readOnly": true,
+  "liveInjection": false,
+  "continuityRegressionObserved": true,
+  "continuityPreserved": false,
+  "noRestart": false,
+  "noRollout": true,
+  "noRecreate": false,
+  "noDisconnect": false,
+  "noRevoke": true
+}

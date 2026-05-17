@@ -1,0 +1,10 @@
+{
+  "simulationId": "scope4-failure-stale-provenance",
+  "failureClass": "staleProvenance",
+  "readOnly": true,
+  "liveInjection": false,
+  "staleEvidence": true,
+  "provenanceTpState": "stale",
+  "blockedReason": "provenance validation stale — apply blocked",
+  "guardedApplyEnabled": false
+}

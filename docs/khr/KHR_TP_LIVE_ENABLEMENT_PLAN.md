@@ -99,12 +99,25 @@ Expected KHR-AV reference run:
 
 ---
 
-## Next sprint (KHR-TP-Live runtime)
+## Scope-4 certification (KHR-BF)
 
-1. Execute scope-1 manual sandbox deploy on `karl-metal-01@ovh`
-2. Capture deploy + rollback evidence under `docs/evidence/khr-tp-live-enablement/`
-3. Re-run preflight with `readyForScope1=true` only after operator sign-off
-4. Keep scope-2+ blocked until ResourcePort loop sprint
+After KHR-BE guarded-apply evidence:
+
+```bash
+./scripts/khr_scope4_certification_check.sh
+```
+
+Output: `docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json`
+
+| Field | Value |
+|-------|----------|
+| `scope4CertificationState` | `certified-evidence-backed` |
+| `readyForScope4` | `manual-guarded-apply-pass` |
+| `readyForScope4Active` | `false` |
+| `guardedApplyEnabled` | `false` |
+| `guardedApplyAutonomous` | `false` |
+
+Failure semantics (read-only simulate): `SCOPE4_FAILURE_SEMANTICS.md` — **no live failure injection**.
 
 ---
 
