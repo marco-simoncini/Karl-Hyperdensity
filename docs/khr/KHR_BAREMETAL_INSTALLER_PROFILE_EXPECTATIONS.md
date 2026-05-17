@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -247,6 +247,12 @@ Live reference-console rehearsal; no Hyperdensity runtime mutation. Evidence: Ka
 ## LIVE REFERENCE bounded preview window (KHR-DG)
 
 Bounded reference-preview window with periodic read-only probes; no Hyperdensity runtime mutation. Evidence: Karl-Installer `docs/evidence/karl2-live-reference-bounded-preview-window/committed-khr-dg-v1/`.
+
+---
+
+## LIVE module readiness scan (KHR-DH)
+
+Read-only operating-posture scan; Hyperdensity focus in `hyperdensity-readiness.json`. Evidence: Karl-Installer `docs/evidence/karl2-live-module-readiness-scan/committed-khr-dh-v1/`.
 
 ---
 
