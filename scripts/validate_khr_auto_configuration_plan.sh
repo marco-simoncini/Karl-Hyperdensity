@@ -73,6 +73,8 @@ else:
         "host-runtime-preview",
         "resourceport-loop",
         "resourcelease-dryrun",
+        "guarded-apply-preflight",
+        "guarded-apply",
         "guarded-apply-policy",
         "governance",
     ]

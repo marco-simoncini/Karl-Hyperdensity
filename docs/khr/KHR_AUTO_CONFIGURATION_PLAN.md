@@ -64,7 +64,8 @@ Phase 6  Governance              → Scope-4 governance bundle + snapshot v1 agg
 | **4 — ResourceLease dry-run** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_resourcelease_dryrun_evidence.sh` → `committed-khr-cp-v1` | `phase=resourcelease-dryrun`, `applyAllowed=false`, `mutationObserved=false`, consumes CO observed-json |
 | **4b — Guarded-apply preflight** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_guarded_apply_preflight_evidence.sh` → `committed-khr-cq-v1` | `phase=guarded-apply-preflight`, `applyExecuted=false`, consumes CP evidence |
 | **4c — TP dry-run (reference)** | `KHR_TP_LIVE_SCOPE3_RESOURCELEASE_DRYRUN_PLAN.md` | `committed-scope3-dryrun-khr-bc` | plan-only TP anchor |
-| **5 — Guarded apply (live)** | `KHR_TP_LIVE_SCOPE4_GUARDED_APPLY_PLAN.md` | `committed-scope4-certification-khr-bf` | **Blocked** until KHR-CR enables live apply |
+| **5 — Guarded apply (live)** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_guarded_apply_evidence.sh` → `committed-khr-cr-v1` | `phase=guarded-apply`, sandbox-only, single-target, rollback verified |
+| **5b — Scope-4 certification (TP)** | `KHR_TP_LIVE_SCOPE4_GUARDED_APPLY_PLAN.md` | `committed-scope4-certification-khr-bf` | TP reference anchor |
 | **6 — Governance** | `KHR_SCOPE4_OPERATIONAL_GOVERNANCE.md` | `committed-scope4-governance-khr-bg`, `committed-khr-bt-v1` snapshot | `scope4Active=false` in snapshot |
 
 Each phase is **read-only observable** before the next phase may be marked auto-ready in a future sprint.

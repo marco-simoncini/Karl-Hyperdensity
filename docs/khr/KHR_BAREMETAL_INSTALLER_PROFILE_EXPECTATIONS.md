@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL / KHR-CM / KHR-CN / KHR-CO / KHR-CP / **KHR-CQ** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -96,8 +96,21 @@
 | `dryRunEvidenceRef` | KHR-CP `committed-khr-cp-v1/` |
 | `applyAllowed` / `applyExecuted` | `false` |
 | `runtimeMutation` | `false` |
-| `guardedApplyBlocked` | `true` (`guarded-apply` rejected) |
 | Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-guarded-apply-preflight/committed-khr-cq-v1/` |
+
+---
+
+## Phase: guarded-apply (KHR-CR)
+
+| Field | Value |
+|-------|-------|
+| `phase` | `guarded-apply` |
+| `singleTargetOnly` | `true` |
+| `namespace` | `khr-runtime-sandbox` only |
+| `applyAllowed` / `applyExecuted` | `true` |
+| `runtimeMutation` | `true` (sandbox scope only) |
+| `rollbackExecuted` / `rollbackVerified` | `true` |
+| Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-guarded-apply/committed-khr-cr-v1/` |
 
 ---
 
