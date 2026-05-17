@@ -1,0 +1,8 @@
+{
+  "sprint": "KHR-EH",
+  "postReleaseWindowPassed": true,
+  "stableAcrossWindow": true,
+  "productionReady": true,
+  "promotionAllowed": true,
+  "releaseScope": "current-connected-reference-production"
+}

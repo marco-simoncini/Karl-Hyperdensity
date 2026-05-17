@@ -79,3 +79,15 @@ Evidence: Karl-Installer `docs/evidence/karl2-production-readiness-declaration/c
 | `promotionAllowed` | true |
 
 Evidence: Karl-Installer `docs/evidence/karl2-production-release-declaration/committed-khr-eg-v1/`. State: `docs/khr/production-release-state.json`.
+
+---
+
+## Production post-release operating window (KHR-EH)
+
+| Field | Value |
+|-------|-------|
+| `postReleaseWindowPassed` | true |
+| `stableAcrossWindow` | true |
+| `productionReady` | true |
+
+Evidence: Karl-Installer `docs/evidence/karl2-production-postrelease-operating-window/committed-khr-eh-v1/`. State: `docs/khr/production-postrelease-stability-state.json`.
