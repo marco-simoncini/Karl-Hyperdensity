@@ -119,6 +119,18 @@ Doc: `DASHBOARD_REFERENCE_ENV_ACTIVATION_PROFILE.md`
 | Deployment env audit | `.../deployment-env-audit.json` |
 | Remediation plan | `.../remediation-plan.md` (when required) |
 
+**Console image resolve (KHR-BR):**
+
+| `evidenceStatus` | Meaning |
+|------------------|---------|
+| `IMAGE_RESOLVED` | Pullable KHR-enabled console image identified |
+| `IMAGE_UNRESOLVED_BUILD_READY` | Sources buildable; image not published yet |
+| `IMAGE_BUILD_SOURCE_MISSING` | `kubernetes-console` tree incomplete |
+| `IMAGE_PULL_BLOCKED` | Image ref set but not pullable |
+| `LIVE_PASS` | After rollout + live projection verify |
+
+Script: `khr_dashboard_khr_enabled_image_resolve.sh` → `docs/evidence/khr-dashboard-console-image/<runId>/image-resolution-summary.json`
+
 **Controlled rollout (KHR-BQ):**
 
 ```bash

@@ -196,8 +196,11 @@ Docs: `ACCESS_GRAPH_CONTINUITY_EVIDENCE.md`, rdp-GW `RDPGW_SANDBOX_LIVE_EVIDENCE
 | **REMEDIATION_PASS** | `REMEDIATION_PASS` | Live connectivity without route/env — remediation plan only |
 | **ROLLBACK_READY** | `ROLLBACK_READY` / `APPLIED` | Rollout plan captured; reversible via `khr_dashboard_reference_env_rollout_rollback.sh` |
 | **ROLLOUT_BLOCKED** | `ROLLOUT_BLOCKED_IMAGE_MISSING` | No pullable KHR console image — plan + rollback JSON only; **no partial patch** |
+| **IMAGE_RESOLVED** | `IMAGE_RESOLVED` | Pullable KHR console image; ready for reference rollout |
+| **IMAGE_BUILD_SOURCE_MISSING** | `IMAGE_BUILD_SOURCE_MISSING` | Console build tree incomplete |
+| **IMAGE_PULL_BLOCKED** | `IMAGE_PULL_BLOCKED` | Image ref not pullable on build host |
 
-Scripts (Karl-Dashboard): `khr_dashboard_reference_env_rollout_{plan,verify,rollback}.sh`, `khr_dashboard_reference_env_live_evidence.sh`.  
+Scripts (Karl-Dashboard): `khr_dashboard_khr_enabled_image_resolve.sh`, `khr_dashboard_khr_enabled_image_build.sh`, `khr_dashboard_reference_env_rollout_{plan,verify,rollback}.sh`, `khr_dashboard_reference_env_live_evidence.sh`.  
 Artifacts: `rollout-plan.json`, `live-summary.json`, `rollback-plan.json`, `summary.json` under `docs/evidence/khr-dashboard-reference-env-activation/<runId>/`.
 
 Reference env checklist: `KHR_TP_LIVE_REFERENCE_ENVIRONMENT.md`. Rollout doc: `DASHBOARD_KHR_ENABLED_CONSOLE_ROLLOUT.md`.
