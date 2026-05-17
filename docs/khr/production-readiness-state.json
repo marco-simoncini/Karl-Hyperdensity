@@ -1,0 +1,18 @@
+{
+  "sprint": "KHR-EF",
+  "productionReady": true,
+  "promotionAllowed": true,
+  "readinessScope": "current-connected-reference-production",
+  "productionMode": "karl2-baremetal-khr-native-single-connected-reference-cluster",
+  "karlAppOutOfScope": true,
+  "karlAppExcludedFromProductionReadiness": true,
+  "karlAppBlockingProduction": false,
+  "karlAppRequiredForProductionDecision": false,
+  "remainingBlockers": [],
+  "enforcementEnabled": true,
+  "enforcementMode": "deny-only",
+  "fleetMultiTargetAuthorized": true,
+  "fleetApply": true,
+  "multiTargetApply": true,
+  "fleetMode": "single-connected-reference-cluster"
+}

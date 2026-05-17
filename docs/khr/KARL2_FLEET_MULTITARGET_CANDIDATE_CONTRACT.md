@@ -55,3 +55,15 @@ State: `docs/khr/enforcement-model-state.json`. No enforcement rollback in KHR-E
 | `allowedScope` | karl-metal-01@ovh |
 
 Evidence: Karl-Installer `docs/evidence/karl2-fleet-multitarget-guarded-execution/committed-khr-ee-v1/`. State: `docs/khr/fleet-multitarget-state.json`.
+
+---
+
+## Production readiness (KHR-EF)
+
+| Field | Value |
+|-------|-------|
+| `productionReady` | true |
+| `promotionAllowed` | true |
+| `karlAppExcludedFromProductionReadiness` | true |
+
+Evidence: Karl-Installer `docs/evidence/karl2-production-readiness-declaration/committed-khr-ef-v1/`. State: `docs/khr/production-readiness-state.json`.
