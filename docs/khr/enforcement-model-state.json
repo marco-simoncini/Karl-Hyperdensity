@@ -1,0 +1,11 @@
+{
+  "sprint": "KHR-EC",
+  "enforcementModelAuthorized": true,
+  "enforcementEnabled": true,
+  "enforcementExecuted": true,
+  "enforcementMode": "deny-only",
+  "allowedScope": "single-reference-cluster",
+  "sessionMutation": false,
+  "fleetApply": false,
+  "multiTargetApply": false
+}

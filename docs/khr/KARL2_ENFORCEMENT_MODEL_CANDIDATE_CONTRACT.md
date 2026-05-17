@@ -27,3 +27,16 @@ Hyperdensity enforcement apply paths remain disabled. Dashboard KHR backend proj
 ## Authorization
 
 `KARL2_ENFORCEMENT_MODEL_I_UNDERSTAND` guard required for any future enforcement execution sprint. `guardSatisfied=false` and `enforcementModelAuthorized=false` in KHR-EB.
+
+---
+
+## Guarded execution (KHR-EC)
+
+| Field | Value |
+|-------|-------|
+| `enforcementModelAuthorized` | true |
+| `enforcementEnabled` | true |
+| `enforcementMode` | deny-only |
+| `allowedScope` | single-reference-cluster |
+
+Evidence: Karl-Installer `docs/evidence/karl2-enforcement-model-guarded-execution/committed-khr-ec-v1/`. State: `docs/khr/enforcement-model-state.json`.
