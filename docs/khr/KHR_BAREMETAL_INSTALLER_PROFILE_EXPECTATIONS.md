@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -223,6 +223,12 @@ KARL 2.0 declared **LIVE REFERENCE** on `karl-metal-01@ovh` (not production). Ev
 ## LIVE REFERENCE operator acceptance (KHR-DC)
 
 Operator acceptance pack PASS: activation, smoke, and rollback checklists; `productionReady=false`. Evidence: Karl-Installer `docs/evidence/karl2-live-reference-operator-acceptance/committed-khr-dc-v1/`.
+
+---
+
+## LIVE REFERENCE release index (KHR-DD)
+
+Authoritative CO→DC audit manifest with pinned repo SHAs. Evidence: Karl-Installer `docs/evidence/karl2-live-reference-release-index/committed-khr-dd-v1/`.
 
 ---
 
