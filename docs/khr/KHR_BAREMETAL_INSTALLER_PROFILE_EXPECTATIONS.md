@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** / **KHR-DS** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -301,6 +301,12 @@ Route validated on `khr-dp-v1`; reference gateway rolled back inactive. Evidence
 ## rdp-GW sustained-readiness preflight (KHR-DR)
 
 Schema hardening + preflight only; no-op for Hyperdensity. Evidence: Karl-Installer `docs/evidence/karl2-rdpgw-sustained-readiness-preflight/committed-khr-dr-v1/`.
+
+---
+
+## rdp-GW quota unblock guarded restore (KHR-DS)
+
+Quota-safe manifest + guarded `karl-quota` restore; no-op for Hyperdensity. Evidence: Karl-Installer `docs/evidence/karl2-rdpgw-quota-unblock-guarded-restore/committed-khr-ds-v1/`.
 
 ---
 
