@@ -377,6 +377,20 @@ if [[ -x "${ROOT_DIR}/scripts/validate_khr_tp_reference_snapshot_v1.sh" ]]; then
     "${ROOT_DIR}/scripts/validate_khr_tp_reference_snapshot_v1.sh"
 fi
 
+# KHR-AM: Wave 2 ShellLease/GatewayRoute consumer docs (no CRD/runtime change)
+for _khr_am_doc in \
+  "${ROOT_DIR}/docs/khr/SHELLLEASE_GATEWAYROUTE_CONTRACT.md" \
+  "${ROOT_DIR}/docs/khr/TECHNICAL_PREVIEW_PACKAGE.md"; do
+  if [[ ! -f "${_khr_am_doc}" ]]; then
+    echo "[validate] FAIL: missing ${_khr_am_doc} (KHR-AM)" >&2
+    exit 1
+  fi
+  if ! grep -q 'KHR-AM' "${_khr_am_doc}"; then
+    echo "[validate] FAIL: ${_khr_am_doc} missing KHR-AM section" >&2
+    exit 1
+  fi
+done
+
 schema_count="$(ls -1 schemas/*.json | wc -l | tr -d ' ')"
 example_count="$(ls -1 examples/*.json | wc -l | tr -d ' ')"
 doc_count="${#required_files[@]}"
