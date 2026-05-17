@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -175,6 +175,19 @@
 | `component` | `audit-beta-gate` mounted read-only tile in Cockpit preview shell |
 | `runtimeMutation` | `false` — no rollout, no enforcement |
 | Evidence | Karl-Dashboard `docs/evidence/khr-dashboard-cockpit-audit-beta-mounted-preview/committed-khr-cx-v1/` |
+
+---
+
+## KARL 2.0 live reference state (KHR-CY)
+
+| Field | Value |
+|-------|-------|
+| `liveReferenceReady` | `true` on `karl-metal-01@ovh` reference path |
+| `productionReady` | `false` — not production default |
+| `rcReady` | `true` under sandbox/reference constraints only |
+| Evidence | Karl-Installer `docs/evidence/karl2-live-reference-bundle/committed-khr-cy-v1/` |
+
+No hyperdensity runtime mutation or rollout in CY.
 
 ---
 
