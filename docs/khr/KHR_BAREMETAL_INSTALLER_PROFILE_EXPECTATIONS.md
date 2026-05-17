@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -146,6 +146,16 @@
 | `source` | Installer `committed-khr-ct-v1` |
 | Evidence | Karl-Inventory `docs/evidence/khr-inventory-audit-snapshot-ingest/committed-khr-cu-v1/` |
 | `enforcementEnabled` | `false` |
+
+---
+
+## Dashboard projection: Inventory audit (KHR-CV)
+
+| Field | Value |
+|-------|-------|
+| `mode` | read-only backend projection |
+| `source` | KHR-CU observation |
+| Evidence | Karl-Dashboard `docs/evidence/khr-dashboard-inventory-audit-projection/committed-khr-cv-v1/` |
 
 ---
 
