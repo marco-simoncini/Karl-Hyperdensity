@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -135,6 +135,17 @@
 | `betaRuntimeReady` | from `audit-snapshot.json` when CO–CS all PASS |
 | `runtimeMutationScope` | `khr-runtime-sandbox` only |
 | Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-audit-snapshot/committed-khr-ct-v1/` |
+
+---
+
+## Inventory ingest: audit snapshot (KHR-CU)
+
+| Field | Value |
+|-------|-------|
+| `mode` | read-only observation ingest |
+| `source` | Installer `committed-khr-ct-v1` |
+| Evidence | Karl-Inventory `docs/evidence/khr-inventory-audit-snapshot-ingest/committed-khr-cu-v1/` |
+| `enforcementEnabled` | `false` |
 
 ---
 
