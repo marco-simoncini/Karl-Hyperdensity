@@ -2,8 +2,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-CK / **KHR-CL** |
-| **Scope** | CK plan-only; **CL installer profile implemented** (plan/dry-run only) |
+| **Sprint** | KHR-CK / KHR-CL / **KHR-CM** |
+| **Scope** | **CM:** guarded CRD foundation apply on `karl-metal-01@ovh`; host-runtime preview pending |
 | **Primary cluster** | `karl-metal-01@ovh` (baremetal reference) |
 | **First auto-configured module** | **Hyperdensity** |
 | **Production** | **NOT production ready** |
@@ -24,7 +24,7 @@ Define how **KARL 2.0** baremetal reference environments will be **auto-configur
 | Production / GA claims | **Forbidden** |
 | Public-cloud default profile change | **Forbidden** — `karl1-kubevirt-legacy` remains default |
 | Runtime mutation in this sprint | **None** — documentation + guards only |
-| Live rollout / cluster apply | **None** |
+| Live rollout beyond CRD foundation | **None** — phases 2–6 remain plan-only |
 
 ---
 
@@ -58,7 +58,7 @@ Phase 6  Governance              → Scope-4 governance bundle + snapshot v1 agg
 
 | Phase | Hyperdensity anchor | Evidence / script (existing) | Auto-config gate (future) |
 |-------|---------------------|------------------------------|---------------------------|
-| **1 — CRD foundation** | `KHR_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_profile_evidence.sh`, `khr_crd_foundation_evidence.sh`, ISO `profile-manifest.yaml` | `crdDiffEmpty=true`, `contractSetId=khr-tp-contract-v1`, installer `PLAN_PASS` |
+| **1 — CRD foundation** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_crd_foundation_evidence.sh` → `committed-khr-cm-v1` | `phase=crd-foundation`, `runtimeMutation=false`, `hostRuntimeEnabled=false`, `crdDiffEmpty=true` |
 | **2 — Host-runtime preview** | `KARL_HOST_RUNTIME_MVP.md` | `khr_runtime_sandbox_preflight.sh`, preview deploy manifests | `hostRuntimeEnabled=false` at ISO/install |
 | **3 — ResourcePort loop** | `KHR_TP_LIVE_SCOPE2_RESOURCEPORT_LOOP_PLAN.md` | `committed-scope2-loop-khr-ba`, rdp-GW cluster-sandbox dep | `resourcePortLoopEnabled=false` until explicit sprint |
 | **4 — Dry-run** | `KHR_TP_LIVE_SCOPE3_RESOURCELEASE_DRYRUN_PLAN.md` | `committed-scope3-dryrun-khr-bc` | `mutationObserved=false`, dry-run only |

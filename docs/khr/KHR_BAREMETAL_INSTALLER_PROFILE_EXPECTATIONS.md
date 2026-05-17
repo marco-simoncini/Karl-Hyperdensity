@@ -1,10 +1,10 @@
-# KHR Baremetal Installer Profile Expectations (KHR-CL)
+# KHR Baremetal Installer Profile Expectations (KHR-CL / KHR-CM)
 
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL |
-| **Mode** | Plan/dry-run + guarded reference only |
+| **Sprint** | KHR-CL / **KHR-CM** |
+| **Mode** | Plan/dry-run + guarded `crd-foundation` apply on reference cluster |
 
 ---
 
@@ -34,9 +34,25 @@
 
 ---
 
-## Guard
+## Guards
 
-`KARL_INSTALLER_BAREMETAL_KHR_NATIVE_I_UNDERSTAND=true` required. Without it, installer fails safe.
+| Env | Phase |
+|-----|-------|
+| `KARL_INSTALLER_BAREMETAL_KHR_NATIVE_I_UNDERSTAND=true` | All phases |
+| `KARL_INSTALLER_BAREMETAL_KHR_NATIVE_APPLY_CRDS_I_UNDERSTAND=true` | `crd-foundation` apply only |
+| Cluster context | `karl-metal-01@ovh` required for apply |
+
+---
+
+## Phase: crd-foundation (KHR-CM)
+
+| Field | Value |
+|-------|-------|
+| `phase` | `crd-foundation` |
+| `runtimeMutation` | `false` |
+| `hostRuntimeEnabled` | `false` |
+| `systemdEnable` | `false` |
+| Evidence | `docs/evidence/khr-baremetal-khr-native-crd-foundation/committed-khr-cm-v1/` |
 
 ---
 
