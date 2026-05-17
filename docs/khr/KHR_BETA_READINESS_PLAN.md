@@ -121,6 +121,20 @@ See Karl-Dashboard `DASHBOARD_BAREMETAL_STANDING_WINDOW.md`.
 
 See Karl-Dashboard `DASHBOARD_BAREMETAL_KHR_NATIVE_STANDING_PROFILE.md`.
 
+## Cockpit component migration phase 1 (KHR-CG)
+
+| Item | Status |
+|------|--------|
+| Plan | Karl-Dashboard `DASHBOARD_COCKPIT_COMPONENT_MIGRATION_PLAN.md` |
+| First component | `shell-workload-list` (read-only) |
+| Flag | `HYPERDENSITY_KHR_UI_COMPONENT_PREVIEW_ENABLED=false` (default) |
+| Consumption | Read-only rows + badges; **no action semantics** |
+| Legacy fallback | `legacyPathUsed=true` when component flag off |
+| Frontend rewrite | **No** — adapter + API preview only |
+
+Endpoint: `GET /api/hyperdensity/khr-ui/cockpit-component-preview`  
+Fixture: `examples/khr-dashboard/cockpit-component-preview.json`
+
 ---
 
 ## Beta Candidate 0 (KHR-BV)

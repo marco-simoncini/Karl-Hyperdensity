@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / KHR-BY / KHR-BZ / KHR-CA / **KHR-CB** |
+| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / KHR-BY / KHR-BZ / KHR-CA / KHR-CB / **KHR-CG** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -341,11 +341,48 @@ Fixture: `ui-projection-preview-khr-native.json`
 
 ---
 
+## KHR-CG: Cockpit component migration phase 1 (read-only)
+
+First **cockpit component** consumption path — shell/workload list only; no action semantics.
+
+| Endpoint | Role |
+|----------|------|
+| `GET /api/hyperdensity/khr-ui/cockpit-component-preview` | Shell/workload list rows + read-only badges (KHR-CG) |
+
+### Triple-flag gating (normative)
+
+Component preview is active **only** when all are `true`:
+
+1. `HYPERDENSITY_KHR_BACKEND_PROJECTION_ENABLED`
+2. `HYPERDENSITY_KHR_UI_PROJECTION_ENABLED`
+3. `HYPERDENSITY_KHR_UI_COMPONENT_PREVIEW_ENABLED` (default **false**)
+
+If component flag is `false`, response uses `dataSource=legacy-cockpit-component`, `legacyPathUsed=true`, empty `rows` — **legacy cockpit component path unchanged**.
+
+### Read-only component consumption
+
+| Field | Semantics |
+|-------|-----------|
+| `component` | `shell-workload-list` (phase 1 target) |
+| `rows[].providerProfileBadge` | e.g. `KHR-native` |
+| `rows[].compatibilityBadge` | e.g. `KubeVirt legacy` |
+| `rows[].readinessBadge` | e.g. `TP-reference-not-production` |
+| `actionCount` | Always `0` |
+| `noMutation` | Always `true` |
+
+No cockpit layout rewrite; adapter maps projection → existing list view model shape.
+
+Normative Dashboard doc: `DASHBOARD_COCKPIT_COMPONENT_MIGRATION_PLAN.md`  
+Fixture: `cockpit-component-preview.json`
+
+---
+
 ## Related
 
 - Karl-Dashboard `DASHBOARD_BACKEND_KHR_MIGRATION_PLAN.md`
 - Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_CONSUMPTION_PLAN.md`
 - Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_PREVIEW.md`
+- Karl-Dashboard `DASHBOARD_COCKPIT_COMPONENT_MIGRATION_PLAN.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_MODEL.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_PROPAGATION.md`
 - Karl-Dashboard `DASHBOARD_KHR_BACKEND_PROJECTION_API.md`
