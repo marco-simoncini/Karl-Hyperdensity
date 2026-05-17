@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / **KHR-BL** |
+| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / **KHR-BM** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -198,10 +198,38 @@ Anti-regression: Karl-Dashboard `assertKHRProviderProfileProjectionContractV1` +
 
 ---
 
+## KHR-BM: profile propagation chain expectations
+
+Canonical chain (read-only; no Hyperdensity runtime change):
+
+`KARL_INSTALLER_PROFILE` → ISO `profile-manifest.yaml` (`dashboardProviderProfile`) → `HYPERDENSITY_KHR_PROVIDER_PROFILE` → Dashboard `khr-backend/projection`.
+
+| Checkpoint | Expected field / rule |
+|------------|----------------------|
+| Profile source | `providerProfileSource` always explicit (`env:…`, `default-documented`, `fallback-invalid-profile`) |
+| Compatibility boundary | Public cloud / hybrid: `kubevirt.compatibility` with `compatibility=true` in bindings |
+| No KubeVirt primary model | Shell/Cell-first; KubeVirt is ProviderBinding only |
+| Unsafe fallback | Invalid dashboard env → `public-cloud-kubevirt-compatibility` — **never** `khr-native` |
+| Unset default | `default-documented` → `public-cloud-kubevirt-compatibility` (existing installs unchanged) |
+
+### KHR-BM checklist
+
+- [ ] `providerProfileSource` present on projection + `tpReadinessSummary`
+- [ ] `fallback-invalid-profile` never yields `khr-native`
+- [ ] `public-cloud-kubevirt-compatibility` has `kubevirtRequired=true` and `kubevirt.compatibility` mode
+- [ ] Dashboard env wins over installer env when both set
+- [ ] No action buttons / mutation / production enable in projection JSON
+
+Normative Dashboard doc: `DASHBOARD_PROVIDER_PROFILE_PROPAGATION.md`  
+Fixtures: `provider-profile-propagation-*.json`
+
+---
+
 ## Related
 
 - Karl-Dashboard `DASHBOARD_BACKEND_KHR_MIGRATION_PLAN.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_MODEL.md`
+- Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_PROPAGATION.md`
 - Karl-Dashboard `DASHBOARD_KHR_BACKEND_PROJECTION_API.md`
 - `KHR_PROJECTION_V1.md` (Dashboard docs/hyperdensity)
 - `RUNTIME_OBSERVATION_FEDERATION.md`
