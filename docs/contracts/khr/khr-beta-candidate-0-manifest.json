@@ -1,0 +1,169 @@
+{
+  "contractVersion": "khr-beta-candidate-0",
+  "releaseMarker": "khr-beta-candidate-0",
+  "pseudoTag": "khr-beta-candidate-0@committed-khr-bt-v1",
+  "sprint": "KHR-BV",
+  "contractSetId": "khr-tp-contract-v1",
+  "clusterContext": "karl-metal-01@ovh",
+  "readOnly": true,
+  "liveMutationPerformed": false,
+  "productionReady": false,
+  "autonomousOrchestration": false,
+  "globalDefaultsChanged": false,
+  "snapshotRef": {
+    "contractVersion": "khr-tp-reference-snapshot-v1",
+    "runId": "committed-khr-bt-v1",
+    "summaryPath": "docs/evidence/khr-tp-reference-snapshot-v1/committed-khr-bt-v1/snapshot-summary.json",
+    "indexPath": "docs/evidence/khr-tp-reference-snapshot-v1/committed-khr-bt-v1/cross-repo-evidence-index.json"
+  },
+  "validationMode": {
+    "default": "offline",
+    "offlineScripts": [
+      "scripts/validate.sh",
+      "scripts/khr_validate_reference_snapshot.sh",
+      "scripts/khr_beta_candidate_0_check.sh"
+    ],
+    "liveEnv": "KHR_LIVE_VALIDATE=1",
+    "liveOptional": true
+  },
+  "repoCommits": {
+    "Karl-Hyperdensity": "6ea531768f613af1a1434c3e6830020cf7987b24",
+    "Karl-Dashboard": "76543e9bbcf7e8503cf3577c485258847da09f70",
+    "Karl-Installer": "896e808d5c9dd2cf87edd466e54e425276e4587f",
+    "Karl-OS-ISO": "e4bc21a95253fe06fc43642a4635dd26003b1682",
+    "rdp-GW": "70b1b8164f1dba91618313cf9709e3d13a808538",
+    "Karl-Inventory": "6b7a2ae3dc3163f30fae55b6b1305d10d94f69ad"
+  },
+  "scope": {
+    "inScope": [
+      "khr-tp-contract-v1",
+      "reference-snapshot-v1",
+      "offline-validation-modes",
+      "scope1-4-committed-evidence",
+      "dashboard-live-pass-reference-env",
+      "rdpgw-readonly-resolvers",
+      "installer-crd-foundation-hybrid",
+      "iso-post-install-verify",
+      "inventory-observation-export-stub"
+    ],
+    "tpOnly": [
+      "scope4-active-enablement",
+      "reference-env-console-rollout",
+      "manual-resourceport-loop",
+      "grand-padre-ingest-automation",
+      "production-canary-auto-apply"
+    ],
+    "experimental": [
+      "access-graph-continuity-live-readonly",
+      "session-identity-resolve",
+      "federation-observation",
+      "windows-fluidvirt-planning",
+      "inventory-live-ingest-stub"
+    ],
+    "outOfScope": [
+      "production-enable",
+      "autonomous-orchestration",
+      "global-dashboard-default-change",
+      "mutating-gateway-revoke-disconnect",
+      "dashboard-shelllease-gatewayroute-ui",
+      "inventory-mandatory-agent",
+      "windows-parity-production",
+      "release-packaging-ga",
+      "persistence-disaster-recovery-product"
+    ]
+  },
+  "acceptanceCriteria": [
+    {
+      "id": "offline-validate-pass",
+      "description": "Default offline validate PASS on all repos without live cluster"
+    },
+    {
+      "id": "live-validate-optional",
+      "description": "Live cluster validation only when KHR_LIVE_VALIDATE=1"
+    },
+    {
+      "id": "no-production-enable",
+      "description": "productionReady=false and scope4Active=false in snapshot"
+    },
+    {
+      "id": "rollback-certification",
+      "description": "Dashboard rollbackVerified; scope4 certified-evidence-backed; governance certified"
+    },
+    {
+      "id": "dashboard-projection-sot",
+      "description": "Hyperdensity contracts are backend projection source-of-truth"
+    },
+    {
+      "id": "provider-profile-stable",
+      "description": "Provider profile propagation fixtures and validators PASS"
+    },
+    {
+      "id": "reference-snapshot-pass",
+      "description": "committed-khr-bt-v1 snapshot-summary status PASS"
+    }
+  ],
+  "betaBlockers": [
+    {
+      "id": "inventory-live-ingest",
+      "repo": "Karl-Inventory",
+      "description": "Live cluster ingest not implemented; export stub only"
+    },
+    {
+      "id": "dashboard-ui-consumption",
+      "repo": "Karl-Dashboard",
+      "description": "No ShellLease/GatewayRoute Cockpit UI; projection API only"
+    },
+    {
+      "id": "windows-parity",
+      "repo": "Karl-Hyperdensity",
+      "description": "Windows FluidVirt lane planning-only"
+    },
+    {
+      "id": "persistence-recovery",
+      "repo": "Karl-Hyperdensity",
+      "description": "Persistence/recovery not productized for beta"
+    },
+    {
+      "id": "release-packaging",
+      "repo": "Karl-Installer",
+      "description": "Installer/ISO GA packaging not beta-0"
+    }
+  ],
+  "evidenceRefs": {
+    "dashboardLivePass": {
+      "repo": "Karl-Dashboard",
+      "runId": "committed-khr-bs-20260517T073046Z",
+      "path": "docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/live-summary.json",
+      "evidenceStatus": "LIVE_PASS"
+    },
+    "rdpgwClusterSandbox": {
+      "repo": "rdp-GW",
+      "runId": "committed-cluster-sandbox-khr-ay",
+      "path": "docs/evidence/khr-rdpgw-cluster-sandbox/committed-cluster-sandbox-khr-ay/verify-summary.json"
+    },
+    "installerCrdFoundation": {
+      "repo": "Karl-Installer",
+      "runId": "20260517T070416Z",
+      "path": "docs/evidence/khr-installer-crd-foundation/20260517T070416Z/summary.json"
+    },
+    "hybridTransition": {
+      "repo": "Karl-Installer",
+      "runId": "20260516T195854Z",
+      "path": "docs/evidence/khr-hybrid-transition/20260516T195854Z/summary.json"
+    },
+    "isoPostInstall": {
+      "repo": "Karl-OS-ISO",
+      "path": "docs/evidence/khr-post-install-verify/summary.json"
+    },
+    "scope4Certification": {
+      "repo": "Karl-Hyperdensity",
+      "runId": "committed-scope4-certification-khr-bf",
+      "path": "docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json"
+    },
+    "scope4Governance": {
+      "repo": "Karl-Hyperdensity",
+      "runId": "committed-scope4-governance-khr-bg",
+      "path": "docs/evidence/khr-scope4-governance/committed-scope4-governance-khr-bg/governance-summary.json"
+    }
+  }
+}

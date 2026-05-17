@@ -51,6 +51,19 @@ Validate: `./scripts/khr_validate_reference_snapshot.sh` (included in default `.
 
 ---
 
+## Beta Candidate 0 (KHR-BV)
+
+| Item | Path |
+|------|------|
+| Scope | `KHR_BETA_CANDIDATE_0_SCOPE.md` |
+| Release marker | `KHR_BETA_CANDIDATE_0_RELEASE_MARKER.md` |
+| Manifest | `docs/contracts/khr/khr-beta-candidate-0-manifest.json` |
+| Check | `scripts/khr_beta_candidate_0_check.sh` |
+
+Pseudo-tag: `khr-beta-candidate-0@committed-khr-bt-v1`
+
+---
+
 ## Live re-validation (optional)
 
 Operators may run `KHR_LIVE_VALIDATE=1 ./scripts/validate.sh` to refresh cluster checks. Live FAIL does not revoke snapshot v1 freeze; file a new snapshot version to promote new evidence.

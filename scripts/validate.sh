@@ -55,6 +55,8 @@ required_files=(
   "docs/khr/KHR_BETA_READINESS_PLAN.md"
   "docs/khr/KHR_SNAPSHOT_V1_FREEZE_POLICY.md"
   "docs/khr/KHR_TP_REFERENCE_SNAPSHOT_V1.md"
+  "docs/khr/KHR_BETA_CANDIDATE_0_SCOPE.md"
+  "docs/khr/KHR_BETA_CANDIDATE_0_RELEASE_MARKER.md"
   "docs/khr/TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md"
   "docs/khr/KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md"
   "docs/khr/KHR_INSTALLER_PROFILE_EXPECTATIONS.md"
@@ -325,6 +327,10 @@ fi
 if [[ -x "${ROOT_DIR}/scripts/khr_validate_reference_snapshot.sh" ]]; then
   KHR_TP_REFERENCE_SNAPSHOT_RUN_ID="${KHR_TP_REFERENCE_SNAPSHOT_RUN_ID:-committed-khr-bt-v1}" \
     "${ROOT_DIR}/scripts/khr_validate_reference_snapshot.sh"
+fi
+
+if [[ -x "${ROOT_DIR}/scripts/khr_beta_candidate_0_check.sh" ]]; then
+  "${ROOT_DIR}/scripts/khr_beta_candidate_0_check.sh"
 fi
 
 if [[ "${KHR_LIVE_VALIDATE:-}" == "1" ]]; then

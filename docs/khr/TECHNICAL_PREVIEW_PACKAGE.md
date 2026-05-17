@@ -225,6 +225,14 @@ Read-only aggregation of Scope 1–4, governance, Dashboard LIVE_PASS, rdp-GW cl
 
 Docs: `KHR_VALIDATION_MODES.md`, `KHR_BETA_READINESS_PLAN.md`, `KHR_SNAPSHOT_V1_FREEZE_POLICY.md`.
 
+### Beta Candidate 0 (KHR-BV)
+
+| Item | Value |
+|------|-------|
+| **Pseudo-tag** | `khr-beta-candidate-0@committed-khr-bt-v1` |
+| **Manifest** | `docs/contracts/khr/khr-beta-candidate-0-manifest.json` |
+| **Check** | `scripts/khr_beta_candidate_0_check.sh` |
+
 Reference env checklist: `KHR_TP_LIVE_REFERENCE_ENVIRONMENT.md`. Rollout doc: `DASHBOARD_KHR_ENABLED_CONSOLE_ROLLOUT.md`.
 
 ---
