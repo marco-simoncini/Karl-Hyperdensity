@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL / KHR-CM / **KHR-CN** |
+| **Sprint** | KHR-CL / KHR-CM / KHR-CN / **KHR-CO** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -56,6 +56,20 @@
 | `runtimeMutation` | `false` |
 | Namespace | `khr-runtime-sandbox` (`khr.karl.io/sandbox=true`) |
 | Evidence | `docs/evidence/khr-baremetal-khr-native-host-runtime-preview/committed-khr-cn-v1/` |
+
+---
+
+## Phase: resourceport-loop (KHR-CO)
+
+| Field | Value |
+|-------|-------|
+| `phase` | `resourceport-loop` |
+| `resourcePortLoopObserved` | `true` |
+| `emissionMode` | `observed-json` |
+| `resourcePortLoopEnabled` | `false` (persistent) |
+| `resourceLeaseEnabled` | `false` |
+| `emitCR` / `applyCR` | `false` |
+| Evidence | `docs/evidence/khr-baremetal-khr-native-resourceport-loop/committed-khr-co-v1/` |
 
 ---
 
