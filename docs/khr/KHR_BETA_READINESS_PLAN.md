@@ -164,6 +164,23 @@ Fixture: `examples/khr-dashboard/shell-workload-list-mounted-preview.json`
 
 ---
 
+## Cockpit shell-workload-list mount live evidence (KHR-CJ)
+
+| Item | Status |
+|------|--------|
+| Live evidence | `docs/evidence/khr-dashboard-cockpit-shell-list-mount/committed-khr-cj-v1/` |
+| `evidenceStatus` | `LIVE_PASS` (reference env, read-only) |
+| `cockpitShellListMountedLiveEvidence` | **achieved** |
+| `uiPageMigrationPending` | **false** for `shell-workload-list` only; other cockpit components still pending |
+| Mount path | `khr-shell-workload-list` in Command Center |
+| Proof style | API-level + `mountedBackendPathVerified`; `uiDomAutomation=false` |
+| Rollback | `rollbackVerified=true` to `console:1.6.0` |
+| `globalDefaultsChanged` | `false` |
+
+See Karl-Dashboard `DASHBOARD_COCKPIT_SHELL_WORKLOAD_LIST_LIVE_EVIDENCE.md`.
+
+---
+
 ## Beta Candidate 0 (KHR-BV)
 
 | Item | Path |

@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH … KHR-CG / KHR-CH / **KHR-CI** |
+| **Sprint** | KHR-BH … KHR-CG / KHR-CH / KHR-CI / **KHR-CJ** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -430,6 +430,24 @@ Fixture: `shell-workload-list-mounted-preview.json`
 
 ---
 
+## KHR-CJ: Cockpit shell-workload-list mount LIVE_PASS (reference env)
+
+| Item | Detail |
+|------|--------|
+| Evidence | Karl-Dashboard `docs/evidence/khr-dashboard-cockpit-shell-list-mount/committed-khr-cj-v1/` |
+| Endpoint | `GET /api/hyperdensity/khr-ui/cockpit-component-preview` |
+| `evidenceStatus` | `LIVE_PASS` on `karl-metal-01@ovh` with mandatory rollback |
+| `cockpitShellListMountedLiveEvidence` | **achieved** (this component only) |
+| `uiPageMigrationPending` | **false** for `shell-workload-list` when mount active; other components still pending |
+| `mountedPath` | `khr-shell-workload-list` |
+| `uiDomAutomation` | `false` — API + render-path metadata only |
+| `mountedBackendPathVerified` | `true` |
+| `rollbackVerified` | `true` → `console:1.6.0` |
+
+Live proof: quadruple-flag reference activation, `dataSource=khr-backend-projection`, `shellListMountActive=true`, `actionCount=0`, KubeVirt as compatibility badge only, `globalDefaultsChanged=false`.
+
+---
+
 ## Related
 
 - Karl-Dashboard `DASHBOARD_BACKEND_KHR_MIGRATION_PLAN.md`
@@ -437,6 +455,7 @@ Fixture: `shell-workload-list-mounted-preview.json`
 - Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_PREVIEW.md`
 - Karl-Dashboard `DASHBOARD_COCKPIT_COMPONENT_MIGRATION_PLAN.md`
 - Karl-Dashboard `DASHBOARD_COCKPIT_SHELL_WORKLOAD_LIST_MOUNT_PLAN.md`
+- Karl-Dashboard `DASHBOARD_COCKPIT_SHELL_WORKLOAD_LIST_LIVE_EVIDENCE.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_MODEL.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_PROPAGATION.md`
 - Karl-Dashboard `DASHBOARD_KHR_BACKEND_PROJECTION_API.md`
