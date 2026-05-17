@@ -16,7 +16,8 @@ This document defines the **Technical Preview (TP) package** consumable without 
 | Repo | Role in TP package | Primary artifacts |
 |------|-------------------|-------------------|
 | **Karl-Hyperdensity** | Source of truth: CLIs, CRDs, evidence, sandbox scripts | `TECHNICAL_PREVIEW_READINESS.md`, `TECHNICAL_PREVIEW_PACKAGE.md`, `TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md`, `docs/evidence/khr-*`, `scripts/khr_*` |
-| **Karl-Dashboard** | Read-only KHR projection documentation | `docs/khr/TECHNICAL_PREVIEW_DASHBOARD_GUIDE.md`, `docs/hyperdensity/KHR_PROJECTION_V1.md` |
+| **Karl-Dashboard** | Read-only KHR projection documentation | `docs/khr/TECHNICAL_PREVIEW_DASHBOARD_GUIDE.md`, `docs/hyperdensity/KHR_PROJECTION_V1.md`, `DASHBOARD_BACKEND_KHR_MIGRATION_PLAN.md` (consumer) |
+| **Hyperdensity** | Dashboard backend compatibility model | `DASHBOARD_BACKEND_COMPATIBILITY_MODEL.md` (KHR-BH) |
 | **Karl-Inventory** | Posture/observation schema + guides | `docs/khr/TECHNICAL_PREVIEW_INVENTORY_GUIDE.md`, `docs/contracts/khr/runtime-posture.schema.json` |
 | **Karl-OS-ISO** | CRD foundation + host-runtime preview (disabled) | `docs/khr/KHR_TECHNICAL_PREVIEW_ISO_GUIDE.md`, `docs/khr/KHR_TECHNICAL_PREVIEW_PROFILE.md`, `docs/khr/KHR_BOOTSTRAP_FLOW.md` |
 | **Karl-OS-ISO_subiquity** | Host install UI — TP wording alignment only | `docs/khr/KHR_SUBIQUITY_ALIGNMENT.md` |
