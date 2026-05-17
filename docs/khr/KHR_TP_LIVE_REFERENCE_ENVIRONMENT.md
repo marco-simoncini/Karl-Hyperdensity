@@ -179,6 +179,8 @@ See Karl-Dashboard `DASHBOARD_KHR_ENABLED_CONSOLE_ROLLOUT.md` and `DASHBOARD_REF
 
 **Standing window (CE):** Karl-Dashboard `docs/evidence/khr-dashboard-baremetal-standing-window/committed-khr-ce-v1/` — extended bounded window (`standingWindowDurationSeconds=600` committed run; script default 1800), repeated probes (`window-probes-verified`), mandatory rollback (`window-closed-rollback-verified`). `rollbackRequired=true`, `globalDefaultsChanged=false`.
 
+**Standing window operations (CF):** Karl-Dashboard `DASHBOARD_BAREMETAL_STANDING_WINDOW_OPERATIONS.md` + `docs/evidence/khr-dashboard-baremetal-standing-window-ops/committed-khr-cf-v1/` — operator lifecycle (open/monitor/abort/close). `standingWindowOperationalState=window-inactive-baseline`, `rollbackIdempotent=true`, `operatorWindowLifecycle=inactive`, `globalDefaultsChanged=false`.
+
 **Global default:** ISO and unset Dashboard env still resolve to `public-cloud-kubevirt-compatibility`. Standing profile is **not** a global switch.
 
 ---

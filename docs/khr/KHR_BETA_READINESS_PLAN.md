@@ -107,6 +107,18 @@ Anchors: KHR-BS + KHR-CB + KHR-CD (`VERIFY_PASS`, soak PASS, `rollbackVerified=t
 
 See Karl-Dashboard `DASHBOARD_BAREMETAL_STANDING_WINDOW.md`.
 
+## Baremetal standing window operations (KHR-CF)
+
+| Item | Status |
+|------|--------|
+| Runbook | Karl-Dashboard `DASHBOARD_BAREMETAL_STANDING_WINDOW_OPERATIONS.md` |
+| Ops evidence | `docs/evidence/khr-dashboard-baremetal-standing-window-ops/committed-khr-cf-v1/` |
+| `standingWindowOperationalState` | `window-inactive-baseline` (post validation) |
+| `operatorWindowLifecycle` | `inactive` |
+| `abortRequired` | `false` at baseline |
+| `rollbackIdempotent` | `true` |
+| `globalDefaultsChanged` | `false` |
+
 See Karl-Dashboard `DASHBOARD_BAREMETAL_KHR_NATIVE_STANDING_PROFILE.md`.
 
 ---
