@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -259,6 +259,12 @@ Read-only operating-posture scan; Hyperdensity focus in `hyperdensity-readiness.
 ## rdp-GW gateway posture (KHR-DI)
 
 Access graph/continuity read-only via Dashboard projection; live gateway accepted inactive. Evidence: Karl-Installer `docs/evidence/karl2-rdpgw-live-reference-posture/committed-khr-di-v1/`. Posture: `LIVE_REFERENCE_PARTIAL_ACCEPTED`.
+
+---
+
+## Operating posture consolidation (KHR-DJ)
+
+`hyperdensityOperating=true`, read-only. Evidence: Karl-Installer `docs/evidence/karl2-live-reference-operating-posture/committed-khr-dj-v1/`.
 
 ---
 
