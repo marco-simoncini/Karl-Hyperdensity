@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -217,6 +217,12 @@ Operator runbook and read-only flag-on/rollback smoke; no hyperdensity mutation.
 ## LIVE REFERENCE release declaration (KHR-DB)
 
 KARL 2.0 declared **LIVE REFERENCE** on `karl-metal-01@ovh` (not production). Evidence: Karl-Installer `docs/evidence/karl2-live-reference-release-declaration/committed-khr-db-v1/`.
+
+---
+
+## LIVE REFERENCE operator acceptance (KHR-DC)
+
+Operator acceptance pack PASS: activation, smoke, and rollback checklists; `productionReady=false`. Evidence: Karl-Installer `docs/evidence/karl2-live-reference-operator-acceptance/committed-khr-dc-v1/`.
 
 ---
 
