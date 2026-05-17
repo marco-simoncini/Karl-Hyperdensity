@@ -177,6 +177,8 @@ See Karl-Dashboard `DASHBOARD_KHR_ENABLED_CONSOLE_ROLLOUT.md` and `DASHBOARD_REF
 
 **Standing profile (CD):** Karl-Dashboard `docs/evidence/khr-dashboard-baremetal-standing-profile/committed-khr-cd-v1/` — controlled apply on reference console, 300s soak (`applied-soak-verified`), mandatory rollback (`rollback-verified`). Anchors CC plan `committed-khr-cc-v1`.
 
+**Standing window (CE):** Karl-Dashboard `docs/evidence/khr-dashboard-baremetal-standing-window/committed-khr-ce-v1/` — extended bounded window (`standingWindowDurationSeconds=600` committed run; script default 1800), repeated probes (`window-probes-verified`), mandatory rollback (`window-closed-rollback-verified`). `rollbackRequired=true`, `globalDefaultsChanged=false`.
+
 **Global default:** ISO and unset Dashboard env still resolve to `public-cloud-kubevirt-compatibility`. Standing profile is **not** a global switch.
 
 ---

@@ -95,6 +95,18 @@ See Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_PREVIEW_EVIDENCE.md`.
 
 Anchors: KHR-BS + KHR-CB + KHR-CD (`VERIFY_PASS`, soak PASS, `rollbackVerified=true`) to `console:1.6.0`.
 
+## Baremetal standing reference window (KHR-CE)
+
+| Item | Status |
+|------|--------|
+| Window evidence | Karl-Dashboard `docs/evidence/khr-dashboard-baremetal-standing-window/committed-khr-ce-v1/` |
+| `standingWindowState` | `window-closed-rollback-verified` |
+| `standingWindowDurationSeconds` | `600` (committed); script default `1800` |
+| `rollbackRequired` | `true` (executed) |
+| `globalDefaultsChanged` | `false` |
+
+See Karl-Dashboard `DASHBOARD_BAREMETAL_STANDING_WINDOW.md`.
+
 See Karl-Dashboard `DASHBOARD_BAREMETAL_KHR_NATIVE_STANDING_PROFILE.md`.
 
 ---
