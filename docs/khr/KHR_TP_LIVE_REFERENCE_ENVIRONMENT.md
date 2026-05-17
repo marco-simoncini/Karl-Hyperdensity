@@ -108,6 +108,9 @@ Doc: `DASHBOARD_REFERENCE_ENV_ACTIVATION_PROFILE.md`
 | **Remediation** | `REMEDIATION_PASS` | `remediation-readonly` | Live port-forward + env audit; `remediation-plan.md` when env/route missing |
 | **Rollout blocked** | `ROLLOUT_BLOCKED_IMAGE_MISSING` | `rollout-blocked-readonly` | No KHR-enabled image — **no partial env patch** (KHR-BQ) |
 | **Rollback ready** | `ROLLBACK_READY` | plan/rollback JSON | Pre-rollout snapshot in `rollout-plan.json` / `rollback-plan.json` |
+| **Rollback verified** | `ROLLBACK_VERIFIED` | `rollback-summary.json` | Image `1.6.0` restored, activation env cleared, route inactive |
+
+**Committed LIVE_PASS (KHR-BS):** Karl-Dashboard `docs/evidence/khr-dashboard-reference-env-activation/committed-khr-bs-20260517T073046Z/`.
 
 | Artifact | Path |
 |----------|------|
