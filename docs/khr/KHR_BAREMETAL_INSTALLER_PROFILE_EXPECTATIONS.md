@@ -208,6 +208,12 @@ No hyperdensity runtime mutation in CZ.
 
 ---
 
+## Reference-preview flag-on dry smoke (KHR-DA)
+
+Operator runbook and read-only flag-on/rollback smoke; no hyperdensity mutation.
+
+---
+
 ## Phase: crd-foundation (KHR-CM)
 
 | Field | Value |
