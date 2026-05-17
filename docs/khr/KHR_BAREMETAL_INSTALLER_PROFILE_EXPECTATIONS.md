@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL / KHR-CM / KHR-CN / KHR-CO / **KHR-CP** |
+| **Sprint** | KHR-CL / KHR-CM / KHR-CN / KHR-CO / KHR-CP / **KHR-CQ** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -85,6 +85,19 @@
 | `rollbackPlanPresent` | `true` (not executable) |
 | `guardedApplyBlocked` | `true` (phase 5) |
 | Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-resourcelease-dryrun/committed-khr-cp-v1/` |
+
+---
+
+## Phase: guarded-apply-preflight (KHR-CQ)
+
+| Field | Value |
+|-------|-------|
+| `phase` | `guarded-apply-preflight` |
+| `dryRunEvidenceRef` | KHR-CP `committed-khr-cp-v1/` |
+| `applyAllowed` / `applyExecuted` | `false` |
+| `runtimeMutation` | `false` |
+| `guardedApplyBlocked` | `true` (`guarded-apply` rejected) |
+| Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-guarded-apply-preflight/committed-khr-cq-v1/` |
 
 ---
 
