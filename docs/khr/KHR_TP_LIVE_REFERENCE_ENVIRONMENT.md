@@ -99,6 +99,24 @@ export HYPERDENSITY_KHR_PROVIDER_PROFILE=khr-native
 Fixture: Karl-Dashboard `reference-env-khr-native-activation.json`  
 Doc: `DASHBOARD_REFERENCE_ENV_ACTIVATION_PROFILE.md`
 
+### Dashboard activation evidence (KHR-BO)
+
+| Artifact | Path | Requirement |
+|----------|------|-------------|
+| Reference env activation | `Karl-Dashboard/docs/evidence/khr-dashboard-reference-env-activation/<runId>/summary.json` | `status=PASS`, `providerProfile=khr-native` |
+| Projection capture | `.../projection.json` | `readOnly=true`, no top-level mutation fields |
+
+**Preferred:** `source=live-readonly` when console on `karl-metal-01@ovh` has activation env set.  
+**Acceptable:** `source=fixture-readonly` for CI/offline.
+
+```bash
+export KHR_DASHBOARD_REFERENCE_ENV_I_UNDERSTAND=true
+export DASHBOARD_BASE_URL=https://<console-host>   # optional live
+cd ../Karl-Dashboard && ./scripts/khr_dashboard_reference_env_activation_evidence.sh
+```
+
+See `DASHBOARD_REFERENCE_ENV_ACTIVATION_EVIDENCE.md`.
+
 ---
 
 ## Forbidden (all reference env operations)

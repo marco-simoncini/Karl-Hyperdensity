@@ -188,6 +188,17 @@ Validation: rdp-GW `go test ./cmd/rdpgw/...` including `cmd/rdpgw/khr`.
 Hyperdensity: `./scripts/khr_access_graph_continuity_bundle_check.sh` — accepts both; ranks live above fixture.  
 Docs: `ACCESS_GRAPH_CONTINUITY_EVIDENCE.md`, rdp-GW `RDPGW_SANDBOX_LIVE_EVIDENCE.md`.
 
+### Dashboard reference activation evidence (KHR-BO)
+
+| Trust | `source` | When |
+|-------|----------|------|
+| **live-readonly** (preferred) | `live-readonly` | Console on `karl-metal-01@ovh` with BN activation env + `DASHBOARD_BASE_URL` |
+| **fixture-readonly** | `fixture-readonly` | CI/offline |
+
+Artifact: `Karl-Dashboard/docs/evidence/khr-dashboard-reference-env-activation/<runId>/summary.json` — `providerProfile=khr-native`, `globalDefaultsChanged=false`, `mutationActions=false`.
+
+Reference env checklist: `KHR_TP_LIVE_REFERENCE_ENVIRONMENT.md` (preferred evidence row).
+
 ---
 
 ## Residual blockers (TP package)
