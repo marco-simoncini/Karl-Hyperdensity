@@ -46,7 +46,7 @@ Cross-repo scope definition for **Beta Candidate 0**, anchored on **Reference Sn
 | Session identity resolve | KHR-AN read-only correlation |
 | Federation observation | Cross-repo metadata only |
 | Windows FluidVirt lane | Planning-only in Hyperdensity |
-| Inventory live ingest | Stub/export only — **beta blocker** for full beta |
+| Inventory live ingest | File ingest (KHR-BW); cluster agent still experimental |
 
 ---
 
@@ -78,7 +78,7 @@ Validate: `./scripts/khr_beta_candidate_0_check.sh`
 
 | Blocker | Owner repo |
 |---------|------------|
-| Inventory live ingest | Karl-Inventory |
+| Inventory live ingest (agent) | Karl-Inventory — file ingest partially addressed KHR-BW |
 | Dashboard UI consumption of GatewayRoute/ShellLease | Karl-Dashboard |
 | Windows parity | Hyperdensity / Windows lane |
 | Persistence / recovery | Hyperdensity |

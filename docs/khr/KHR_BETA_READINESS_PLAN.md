@@ -51,6 +51,21 @@ Validate: `./scripts/khr_validate_reference_snapshot.sh` (included in default `.
 
 ---
 
+## Inventory live ingest (KHR-BW)
+
+| Item | Status |
+|------|--------|
+| Beta blocker `inventory-live-ingest` | **Partially addressed** |
+| Evidence | Karl-Inventory `docs/evidence/khr-inventory-live-ingest/committed-khr-bw-v1/` |
+| Source | `live-readonly` (committed Hyperdensity snapshot + federation) |
+| Enforcement | **None** — `enforcement=false`, `applyObserved=false` |
+
+Expected fields: `inventoryObservationSource`, `postureObserved`, `scopeReadinessObserved`, `continuityObserved`.
+
+See `INVENTORY_LIVE_INGEST_EXPECTATIONS.md`.
+
+---
+
 ## Beta Candidate 0 (KHR-BV)
 
 | Item | Path |

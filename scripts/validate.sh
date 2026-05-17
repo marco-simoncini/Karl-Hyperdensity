@@ -333,6 +333,11 @@ if [[ -x "${ROOT_DIR}/scripts/khr_beta_candidate_0_check.sh" ]]; then
   "${ROOT_DIR}/scripts/khr_beta_candidate_0_check.sh"
 fi
 
+[[ -f "${ROOT_DIR}/docs/khr/INVENTORY_LIVE_INGEST_EXPECTATIONS.md" ]] || {
+  echo "[validate] FAIL: missing INVENTORY_LIVE_INGEST_EXPECTATIONS.md (KHR-BW)" >&2
+  exit 1
+}
+
 if [[ "${KHR_LIVE_VALIDATE:-}" == "1" ]]; then
   echo "[validate] KHR_LIVE_VALIDATE=1 — running live cluster validation (kubectl)"
   if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh" ]]; then
