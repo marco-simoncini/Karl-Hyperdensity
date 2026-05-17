@@ -163,6 +163,23 @@ See Karl-Dashboard `DASHBOARD_KHR_ENABLED_CONSOLE_ROLLOUT.md` and `DASHBOARD_REF
 
 ---
 
+## Baremetal KHR-native standing reference profile (KHR-CC)
+
+| Dimension | Baremetal reference (`karl-metal-01@ovh`) | Public cloud / legacy installs |
+|-----------|---------------------------------------------|--------------------------------|
+| **Primary target** | `khr-native` (Shell/Cell/Lease-first) | `public-cloud-kubevirt-compatibility` |
+| **KubeVirt** | Optional compatibility provider | Required compatibility binding for VM fleets |
+| **Standing profile** | Plan-only in CC — **not applied** | N/A |
+| **Rollback baseline** | `console:1.6.0` (KHR-BS/CB proven) | Unchanged installer default |
+
+**Temporary rollout evidence (done):** KHR-BS backend projection `LIVE_PASS` + KHR-CB UI preview `LIVE_PASS`, both with mandatory rollback.
+
+**Standing profile (CC):** Karl-Dashboard `DASHBOARD_BAREMETAL_KHR_NATIVE_STANDING_PROFILE.md` + `standing-profile-plan.json` from `khr_dashboard_baremetal_standing_profile_plan.sh` — documents stable target image/env for future reference deploy without patching deployment in CC.
+
+**Global default:** ISO and unset Dashboard env still resolve to `public-cloud-kubevirt-compatibility`. Standing profile is **not** a global switch.
+
+---
+
 ## Forbidden (all reference env operations)
 
 - scope-2 ResourcePort loop enable

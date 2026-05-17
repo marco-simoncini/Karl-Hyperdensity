@@ -82,6 +82,21 @@ See Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_PREVIEW_EVIDENCE.md`.
 
 ---
 
+## Baremetal standing reference profile (KHR-CC)
+
+| Item | Status |
+|------|--------|
+| Profile | `khr-native` on baremetal reference only (`karl-metal-01@ovh`) |
+| Plan | Karl-Dashboard `docs/evidence/khr-dashboard-baremetal-standing-profile/committed-khr-cc-v1/` |
+| Applied to cluster | **No** — plan-only sprint |
+| Public cloud | Remains `kubevirt.compatibility` primary for legacy fleets |
+
+Anchors: KHR-BS + KHR-CB committed evidence with `rollbackVerified=true` to `console:1.6.0`.
+
+See Karl-Dashboard `DASHBOARD_BAREMETAL_KHR_NATIVE_STANDING_PROFILE.md`.
+
+---
+
 ## Beta Candidate 0 (KHR-BV)
 
 | Item | Path |
