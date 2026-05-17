@@ -191,6 +191,12 @@ No hyperdensity runtime mutation or rollout in CY.
 
 ---
 
+## Enterprise module alignment (KHR-CY-E)
+
+Migration-Factory, Licenziatore, DLP, Warden handoffs on branch `KHR`; `enterpriseAlignmentReady` required before KHR-CZ activation. Karl-App out of scope.
+
+---
+
 ## Phase: crd-foundation (KHR-CM)
 
 | Field | Value |
