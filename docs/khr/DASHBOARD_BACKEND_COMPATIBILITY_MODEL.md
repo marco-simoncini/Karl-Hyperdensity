@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / KHR-BY / KHR-BZ / **KHR-CA** |
+| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / KHR-BY / KHR-BZ / KHR-CA / **KHR-CB** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -267,6 +267,23 @@ Inventory observation on projection (`inventoryObservationSummary`) remains read
 
 Normative Dashboard doc: `DASHBOARD_UI_KHR_PROJECTION_CONSUMPTION_PLAN.md`  
 Adapter package: `kubernetes-console/internal/khrui/`
+
+---
+
+## KHR-CB: UI projection preview LIVE_PASS (reference env)
+
+| Artifact | Expected |
+|----------|----------|
+| `evidenceStatus` | `LIVE_PASS` |
+| `source` | `live-readonly` |
+| `dataSource` | `khr-backend-projection` |
+| `legacyPathUsed` | `false` |
+| `providerProfile` | `khr-native` |
+| `actionCount` | `0` |
+| `rollbackVerified` | `true` (mandatory rollback after evidence) |
+
+Committed: `docs/evidence/khr-dashboard-ui-projection-preview/committed-khr-cb-v1/`  
+Orchestrator: `khr_dashboard_ui_projection_preview_live_rollout.sh` (KHR-BS rollout pattern).
 
 ---
 

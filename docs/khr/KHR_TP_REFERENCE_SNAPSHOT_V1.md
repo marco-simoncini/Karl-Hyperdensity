@@ -28,7 +28,8 @@ Versioned, **read-only** cross-repo index of committed Technical Preview live ev
 | `governanceState` | `committed-scope4-governance-khr-bg` |
 | `providerProfile` | Dashboard LIVE_PASS (`khr-native`) |
 | `dashboardLivePassRef` | Karl-Dashboard `committed-khr-bs-20260517T073046Z` (backend projection) |
-| `dashboardUiPreviewEvidenceRef` | Karl-Dashboard `committed-khr-ca-v1` (UI preview; fixture or live) |
+| `dashboardUiPreviewEvidenceRef` | Karl-Dashboard `committed-khr-cb-v1` (`LIVE_PASS` + `rollbackVerified=true`) |
+| `dashboardUiPreviewFixtureRef` | Karl-Dashboard `committed-khr-ca-v1` (`FIXTURE_PASS` offline) |
 | `rdpgwClusterSandboxRef` | rdp-GW `committed-cluster-sandbox-khr-ay` |
 | `installerCrdFoundationRef` | Karl-Installer `karl2-khr-technical-preview` evidence |
 | `hybridTransitionRef` | Karl-Installer `hybrid-transition` evidence |

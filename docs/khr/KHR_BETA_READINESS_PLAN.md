@@ -20,7 +20,8 @@ Beta readiness is **evidence-backed** from **KHR TP Reference Snapshot v1** — 
 | Scope 3 dry-run | `committed-scope3-dryrun-khr-bc` | `dryrun-summary.json` PASS |
 | Scope 4 certification | `committed-scope4-certification-khr-bf` | `certified-evidence-backed` |
 | Governance | `committed-scope4-governance-khr-bg` | `certified` |
-| Dashboard LIVE_PASS | `committed-khr-bs-20260517T073046Z` | snapshot `dashboardLivePassRef` |
+| Dashboard LIVE_PASS (backend) | `committed-khr-bs-20260517T073046Z` | snapshot `dashboardLivePassRef` |
+| Dashboard UI preview LIVE_PASS | `committed-khr-cb-v1` | `docs/evidence/khr-dashboard-ui-projection-preview/` — KHR-CB |
 | rdp-GW sandbox | `committed-cluster-sandbox-khr-ay` | snapshot `rdpgwClusterSandboxRef` |
 | Installer CRD | `khr-installer-crd-foundation/20260517T070416Z` | snapshot |
 | ISO post-install | `khr-post-install-verify/summary.json` | snapshot |
@@ -64,6 +65,20 @@ Validate: `./scripts/khr_validate_reference_snapshot.sh` (included in default `.
 Expected fields: `observationId`, `observationSource`, `observedAt`, `snapshotRef`, `inventoryObservationSource`, `postureObserved`, `scopeReadinessObserved`, `continuityObserved`.
 
 See `INVENTORY_LIVE_INGEST_EXPECTATIONS.md`, Karl-Dashboard `DASHBOARD_INVENTORY_LIVE_INGEST_PROJECTION.md`.
+
+---
+
+## Dashboard UI projection preview live (KHR-CB)
+
+| Item | Status |
+|------|--------|
+| Endpoint | `GET /api/hyperdensity/khr-ui/projection-preview` |
+| Evidence | Karl-Dashboard `docs/evidence/khr-dashboard-ui-projection-preview/committed-khr-cb-v1/` |
+| `evidenceStatus` | `LIVE_PASS` (`source=live-readonly`, dual-flag active) |
+| Rollback | `rollback-summary.json` → `rollbackVerified=true` |
+| Distinct from | Backend projection LIVE_PASS (KHR-BS) — same rollout pattern, different endpoint |
+
+See Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_PREVIEW_EVIDENCE.md`.
 
 ---
 
