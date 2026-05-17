@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL / KHR-CM / KHR-CN / **KHR-CO** |
+| **Sprint** | KHR-CL / KHR-CM / KHR-CN / KHR-CO / **KHR-CP** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -70,6 +70,21 @@
 | `resourceLeaseEnabled` | `false` |
 | `emitCR` / `applyCR` | `false` |
 | Evidence | `docs/evidence/khr-baremetal-khr-native-resourceport-loop/committed-khr-co-v1/` |
+
+---
+
+## Phase: resourcelease-dryrun (KHR-CP)
+
+| Field | Value |
+|-------|-------|
+| `phase` | `resourcelease-dryrun` |
+| `observedJsonSource` | KHR-CO `loop-output.json` |
+| `applyAllowed` | `false` |
+| `mutationObserved` | `false` |
+| `persistentEnable` | `false` |
+| `rollbackPlanPresent` | `true` (not executable) |
+| `guardedApplyBlocked` | `true` (phase 5) |
+| Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-resourcelease-dryrun/committed-khr-cp-v1/` |
 
 ---
 

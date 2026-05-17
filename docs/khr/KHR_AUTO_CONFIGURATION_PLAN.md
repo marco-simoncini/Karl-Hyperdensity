@@ -61,7 +61,8 @@ Phase 6  Governance              → Scope-4 governance bundle + snapshot v1 agg
 | **1 — CRD foundation** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_crd_foundation_evidence.sh` → `committed-khr-cm-v1` | `phase=crd-foundation`, `runtimeMutation=false`, `hostRuntimeEnabled=false`, `crdDiffEmpty=true` |
 | **2 — Host-runtime preview** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_host_runtime_preview_evidence.sh` → `committed-khr-cn-v1` | `phase=host-runtime-preview`, `hostRuntimePreview=true`, `resourcePortLoopEnabled=false`, `resourceLeaseEnabled=false`, `systemdEnable=false` |
 | **3 — ResourcePort loop** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_resourceport_loop_evidence.sh` → `committed-khr-co-v1` | `phase=resourceport-loop`, `emissionMode=observed-json`, `resourcePortLoopObserved=true`, `persistentLoopEnabled=false` |
-| **4 — Dry-run** | `KHR_TP_LIVE_SCOPE3_RESOURCELEASE_DRYRUN_PLAN.md` | `committed-scope3-dryrun-khr-bc` | `mutationObserved=false`, dry-run only |
+| **4 — ResourceLease dry-run** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_resourcelease_dryrun_evidence.sh` → `committed-khr-cp-v1` | `phase=resourcelease-dryrun`, `applyAllowed=false`, `mutationObserved=false`, consumes CO observed-json |
+| **4b — TP dry-run (reference)** | `KHR_TP_LIVE_SCOPE3_RESOURCELEASE_DRYRUN_PLAN.md` | `committed-scope3-dryrun-khr-bc` | plan-only TP anchor; baremetal uses installer phase 4 |
 | **5 — Guarded apply policy** | `KHR_TP_LIVE_SCOPE4_GUARDED_APPLY_PLAN.md` | `committed-scope4-certification-khr-bf` | Certification evidence-backed; no active Scope-4 enable |
 | **6 — Governance** | `KHR_SCOPE4_OPERATIONAL_GOVERNANCE.md` | `committed-scope4-governance-khr-bg`, `committed-khr-bt-v1` snapshot | `scope4Active=false` in snapshot |
 
