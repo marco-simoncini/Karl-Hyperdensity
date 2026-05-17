@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -265,6 +265,12 @@ Access graph/continuity read-only via Dashboard projection; live gateway accepte
 ## Operating posture consolidation (KHR-DJ)
 
 `hyperdensityOperating=true`, read-only. Evidence: Karl-Installer `docs/evidence/karl2-live-reference-operating-posture/committed-khr-dj-v1/`.
+
+---
+
+## Hyperdensity operating window (KHR-DK)
+
+Bounded read-only stability window; `stableAcrossWindow=true`. Evidence: Karl-Installer `docs/evidence/karl2-hyperdensity-live-reference-operating-window/committed-khr-dk-v1/`.
 
 ---
 
