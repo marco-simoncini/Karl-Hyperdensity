@@ -41,3 +41,17 @@ Hyperdensity fleet/multi-target apply paths remain disabled. Dashboard KHR backe
 | `allowedScope` | `single-reference-cluster` |
 
 State: `docs/khr/enforcement-model-state.json`. No enforcement rollback in KHR-ED.
+
+---
+
+## Guarded execution (KHR-EE)
+
+| Field | Value |
+|-------|-------|
+| `fleetMultiTargetAuthorized` | true |
+| `fleetApply` | true |
+| `multiTargetApply` | true |
+| `fleetMode` | single-connected-reference-cluster |
+| `allowedScope` | karl-metal-01@ovh |
+
+Evidence: Karl-Installer `docs/evidence/karl2-fleet-multitarget-guarded-execution/committed-khr-ee-v1/`. State: `docs/khr/fleet-multitarget-state.json`.

@@ -1,0 +1,15 @@
+{
+  "sprint": "KHR-EE",
+  "fleetMultiTargetAuthorized": true,
+  "fleetApply": true,
+  "multiTargetApply": true,
+  "fleetExecution": true,
+  "fleetMode": "single-connected-reference-cluster",
+  "allowedScope": "karl-metal-01@ovh",
+  "candidateClusterCount": 1,
+  "crossClusterMutation": false,
+  "targetMutation": false,
+  "sessionMutation": false,
+  "enforcementEnabled": true,
+  "enforcementMode": "deny-only"
+}
