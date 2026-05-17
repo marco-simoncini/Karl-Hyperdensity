@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / KHR-BY / KHR-BZ / KHR-CA / KHR-CB / **KHR-CG** |
+| **Sprint** | KHR-BH … KHR-CG / **KHR-CH** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -374,6 +374,20 @@ No cockpit layout rewrite; adapter maps projection → existing list view model 
 
 Normative Dashboard doc: `DASHBOARD_COCKPIT_COMPONENT_MIGRATION_PLAN.md`  
 Fixture: `cockpit-component-preview.json`
+
+---
+
+## KHR-CH: Cockpit component preview LIVE_PASS (reference env)
+
+| Item | Detail |
+|------|--------|
+| Evidence | Karl-Dashboard `docs/evidence/khr-dashboard-cockpit-component-preview/committed-khr-ch-v1/` |
+| Endpoint | `GET /api/hyperdensity/khr-ui/cockpit-component-preview` |
+| `evidenceStatus` | `LIVE_PASS` on `karl-metal-01@ovh` with mandatory rollback |
+| `uiPageMigrationPending` | **true** — API/adapter proof only; cockpit page still legacy |
+| `frontendRewrite` | **false** |
+
+Live proof: `source=live-readonly`, `component=shell-workload-list`, `dataSource=khr-backend-projection`, badges present, `actionCount=0`, `rollbackVerified=true`.
 
 ---
 

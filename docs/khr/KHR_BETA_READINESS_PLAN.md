@@ -135,6 +135,16 @@ See Karl-Dashboard `DASHBOARD_BAREMETAL_KHR_NATIVE_STANDING_PROFILE.md`.
 Endpoint: `GET /api/hyperdensity/khr-ui/cockpit-component-preview`  
 Fixture: `examples/khr-dashboard/cockpit-component-preview.json`
 
+## Cockpit component preview live evidence (KHR-CH)
+
+| Item | Status |
+|------|--------|
+| Live evidence | `docs/evidence/khr-dashboard-cockpit-component-preview/committed-khr-ch-v1/` |
+| `evidenceStatus` | `LIVE_PASS` (reference env, read-only) |
+| UI page migration | **Still pending** — no cockpit layout/page switch |
+| Rollback | `rollbackVerified=true` to `console:1.6.0` |
+| `globalDefaultsChanged` | `false` |
+
 ---
 
 ## Beta Candidate 0 (KHR-BV)
