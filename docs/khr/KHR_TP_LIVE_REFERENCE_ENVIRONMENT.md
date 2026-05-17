@@ -99,21 +99,30 @@ export HYPERDENSITY_KHR_PROVIDER_PROFILE=khr-native
 Fixture: Karl-Dashboard `reference-env-khr-native-activation.json`  
 Doc: `DASHBOARD_REFERENCE_ENV_ACTIVATION_PROFILE.md`
 
-### Dashboard activation evidence (KHR-BO)
+### Dashboard activation evidence (KHR-BO / KHR-BP)
 
-| Artifact | Path | Requirement |
-|----------|------|-------------|
-| Reference env activation | `Karl-Dashboard/docs/evidence/khr-dashboard-reference-env-activation/<runId>/summary.json` | `status=PASS`, `providerProfile=khr-native` |
-| Projection capture | `.../projection.json` | `readOnly=true`, no top-level mutation fields |
+| Level | `evidenceStatus` | `source` | Requirement |
+|-------|------------------|----------|-------------|
+| **Live activation** | `LIVE_PASS` | `live-readonly` | `providerProfile=khr-native`, activation env on console |
+| **Fixture proof** | `PASS` | `fixture-readonly` | CI/offline contract validation |
+| **Remediation** | `REMEDIATION_PASS` | `remediation-readonly` | Live port-forward + env audit; `remediation-plan.md` when env/route missing |
 
-**Preferred:** `source=live-readonly` when console on `karl-metal-01@ovh` has activation env set.  
-**Acceptable:** `source=fixture-readonly` for CI/offline.
+| Artifact | Path |
+|----------|------|
+| Summary | `Karl-Dashboard/docs/evidence/khr-dashboard-reference-env-activation/<runId>/summary.json` |
+| Live connectivity | `.../live-connectivity.json` |
+| Deployment env audit | `.../deployment-env-audit.json` |
+| Remediation plan | `.../remediation-plan.md` (when required) |
+
+**Live script (KHR-BP):**
 
 ```bash
-export KHR_DASHBOARD_REFERENCE_ENV_I_UNDERSTAND=true
-export DASHBOARD_BASE_URL=https://<console-host>   # optional live
-cd ../Karl-Dashboard && ./scripts/khr_dashboard_reference_env_activation_evidence.sh
+export KHR_DASHBOARD_REFERENCE_ENV_LIVE_I_UNDERSTAND=true
+export KHR_RUNTIME_CLUSTER_CONTEXT=karl-metal-01@ovh
+cd ../Karl-Dashboard && ./scripts/khr_dashboard_reference_env_live_evidence.sh
 ```
+
+Uses `kubectl port-forward svc/karl-console-next-oidc -n karl-system` when `DASHBOARD_BASE_URL` is unreachable. **No automatic Deployment patch.**
 
 See `DASHBOARD_REFERENCE_ENV_ACTIVATION_EVIDENCE.md`.
 
