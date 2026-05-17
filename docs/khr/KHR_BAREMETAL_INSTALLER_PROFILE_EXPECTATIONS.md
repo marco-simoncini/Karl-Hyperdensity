@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -124,6 +124,17 @@
 | `rollbackProof` | `cpuMaxBefore`, `cpuMaxApplied`, `observedCpuMaxAfterRollback`, `expectedCpuMaxAfterRollback`, `baselineMatch` |
 | `negativePath` | missing guard, wrong namespace, missing rollback plan, multi-target — all rejected |
 | Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-guarded-apply-repeatability/committed-khr-cs-v1/` |
+
+---
+
+## Phase: audit snapshot + beta gate (KHR-CT)
+
+| Field | Value |
+|-------|-------|
+| `phase` | audit aggregation only — **no new apply**, **no runtime mutation** |
+| `betaRuntimeReady` | from `audit-snapshot.json` when CO–CS all PASS |
+| `runtimeMutationScope` | `khr-runtime-sandbox` only |
+| Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-audit-snapshot/committed-khr-ct-v1/` |
 
 ---
 

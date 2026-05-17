@@ -26,8 +26,11 @@ Beta readiness is **evidence-backed** from **KHR TP Reference Snapshot v1** — 
 | Installer CRD | `khr-installer-crd-foundation/20260517T070416Z` | snapshot |
 | ISO post-install | `khr-post-install-verify/summary.json` | snapshot |
 | Hybrid transition | `khr-hybrid-transition/20260516T195854Z` | snapshot |
+| Baremetal KHR-native audit (KHR-CT) | `khr-baremetal-khr-native-audit-snapshot/committed-khr-ct-v1` | `audit-snapshot.json` — CO–CS aggregated; `betaRuntimeReady` |
 
 Validate: `./scripts/khr_validate_reference_snapshot.sh` (included in default `./scripts/validate.sh`).
+
+Karl-Installer baremetal beta gate: `./scripts/validate_khr_baremetal_audit_snapshot.sh` (offline; no cluster).
 
 ---
 
