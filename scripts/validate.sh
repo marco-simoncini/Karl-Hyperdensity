@@ -61,6 +61,7 @@ required_files=(
   "docs/khr/KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md"
   "docs/khr/KHR_INSTALLER_PROFILE_EXPECTATIONS.md"
   "docs/khr/KHR_AUTO_CONFIGURATION_PLAN.md"
+  "docs/khr/KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md"
   "docs/contracts/khr/khr-contract-manifest.yaml"
   "docs/khr/KHR_TECHNICAL_PREVIEW_POST_INSTALL_VERIFICATION.md"
   "docs/khr/BETA_READINESS_GAP_ANALYSIS.md"

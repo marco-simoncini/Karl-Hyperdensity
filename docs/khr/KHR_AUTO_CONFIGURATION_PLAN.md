@@ -2,8 +2,8 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-CK |
-| **Scope** | **Plan-only** — no runtime apply, no rollout, no global enable |
+| **Sprint** | KHR-CK / **KHR-CL** |
+| **Scope** | CK plan-only; **CL installer profile implemented** (plan/dry-run only) |
 | **Primary cluster** | `karl-metal-01@ovh` (baremetal reference) |
 | **First auto-configured module** | **Hyperdensity** |
 | **Production** | **NOT production ready** |
@@ -33,7 +33,7 @@ Define how **KARL 2.0** baremetal reference environments will be **auto-configur
 | Layer | Role in auto-configuration |
 |-------|---------------------------|
 | **Karl-OS-ISO** | Prepares CRD assets, profile manifest, boundary metadata — **does not** enable runtime or Dashboard flags globally |
-| **Karl-Installer** | Plan-only profile `karl2-baremetal-khr-native` → maps to `providerProfile=khr-native` (reference) |
+| **Karl-Installer** | Profile `karl2-baremetal-khr-native` → `providerProfile=khr-native`, `targetEnvironment=baremetal-reference` (KHR-CL: plan/dry-run) |
 | **Karl-Hyperdensity** | **First module** in bootstrap order — CRD foundation through governance evidence |
 | **Karl-Dashboard** | Reference env flags + cockpit `shell-workload-list` as first migrated component |
 | **Karl-Inventory** | Read-only auto ingest from snapshot / committed evidence |
@@ -58,7 +58,7 @@ Phase 6  Governance              → Scope-4 governance bundle + snapshot v1 agg
 
 | Phase | Hyperdensity anchor | Evidence / script (existing) | Auto-config gate (future) |
 |-------|---------------------|------------------------------|---------------------------|
-| **1 — CRD foundation** | `KHR_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_crd_foundation_evidence.sh`, ISO `profile-manifest.yaml` | `crdDiffEmpty=true`, `contractSetId=khr-tp-contract-v1` |
+| **1 — CRD foundation** | `KHR_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_profile_evidence.sh`, `khr_crd_foundation_evidence.sh`, ISO `profile-manifest.yaml` | `crdDiffEmpty=true`, `contractSetId=khr-tp-contract-v1`, installer `PLAN_PASS` |
 | **2 — Host-runtime preview** | `KARL_HOST_RUNTIME_MVP.md` | `khr_runtime_sandbox_preflight.sh`, preview deploy manifests | `hostRuntimeEnabled=false` at ISO/install |
 | **3 — ResourcePort loop** | `KHR_TP_LIVE_SCOPE2_RESOURCEPORT_LOOP_PLAN.md` | `committed-scope2-loop-khr-ba`, rdp-GW cluster-sandbox dep | `resourcePortLoopEnabled=false` until explicit sprint |
 | **4 — Dry-run** | `KHR_TP_LIVE_SCOPE3_RESOURCELEASE_DRYRUN_PLAN.md` | `committed-scope3-dryrun-khr-bc` | `mutationObserved=false`, dry-run only |
