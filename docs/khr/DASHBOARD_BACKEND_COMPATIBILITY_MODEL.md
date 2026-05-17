@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI |
+| **Sprint** | KHR-BH / KHR-BI / KHR-BJ |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -120,6 +120,32 @@ Hyperdensity expects the Dashboard KHR backend projection API to **never** expos
 - Mutating approval execution
 
 `resourceLeases[].dryRunOnly` may be `true`; `applyState` must remain observation-oriented in TP.
+
+---
+
+## KHR-BJ: source-of-truth expectations
+
+| Consumer | Must use |
+|----------|----------|
+| TP readiness fields | `buildHyperdensityKHRReadinessContractV1` (Dashboard) |
+| Federation / Hyperdensity preflight | Fixtures under `examples/khr-dashboard/khr-backend-projection-*.json` |
+| Reference env | `khr-backend-projection-reference-env-enabled.json` |
+
+Hyperdensity validation scripts MUST NOT treat legacy VM-first APIs as authoritative when `khr-backend/projection` is enabled in reference env.
+
+---
+
+## KHR-BJ: anti-regression requirements
+
+Dashboard CI enforces via `scripts/validate_khr_backend_projection_contract.sh`:
+
+1. **No action semantics** — no top-level mutation/orchestration fields.
+2. **KubeVirt compatibility** — any `kubevirt` provider id requires `compatibility=true`.
+3. **Lease apply disabled** — `scopeReadiness.resourceLeaseApplyEnabled=false` and `tpReadinessSummary.resourceLeaseApplyEnabled=false`.
+4. **Feature flag default** — `HYPERDENSITY_KHR_BACKEND_PROJECTION_ENABLED=false` unless reference/dev.
+5. **Golden stability** — `khr_backend_projection_golden.json` updated only with `KHR_UPDATE_GOLDEN=true`.
+
+Regression in any of the above is a **contract freeze violation** for TP.
 
 ---
 
