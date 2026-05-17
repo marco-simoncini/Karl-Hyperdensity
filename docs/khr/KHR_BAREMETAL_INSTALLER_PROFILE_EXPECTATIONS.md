@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** / **KHR-DS** / **KHR-DT** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** / **KHR-DS** / **KHR-DT** / **KHR-DU** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -313,6 +313,12 @@ Quota-safe manifest + guarded `karl-quota` restore; no-op for Hyperdensity. Evid
 ## rdp-GW sustained LIVE REFERENCE enablement (KHR-DT)
 
 Sustained LIVE REFERENCE operating posture; Hyperdensity operating during gate. Evidence: Karl-Installer `docs/evidence/karl2-rdpgw-sustained-live-reference-enable/committed-khr-dt-v1/`.
+
+---
+
+## All-modules sustained LIVE REFERENCE certification (KHR-DU)
+
+`LIVE_REFERENCE_SUSTAINED` all-modules certification. Evidence: Karl-Installer `docs/evidence/karl2-all-modules-sustained-live-reference-certification/committed-khr-du-v1/`.
 
 ---
 
