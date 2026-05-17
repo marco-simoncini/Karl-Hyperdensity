@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** / **KHR-DS** / **KHR-DT** / **KHR-DU** / **KHR-DV** / **KHR-DW** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** / **KHR-DS** / **KHR-DT** / **KHR-DU** / **KHR-DV** / **KHR-DW** / **KHR-DX** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -331,6 +331,12 @@ Promotion candidate boundary only; Hyperdensity operating during quick smoke. `p
 ## Production-default switch authorization boundary (KHR-DW)
 
 Authorization envelope only; production default unchanged. `guardSatisfied=false`, `switchExecuted=false`. Evidence: Karl-Installer `docs/evidence/karl2-production-default-switch-authorization-gate/committed-khr-dw-v1/`.
+
+---
+
+## Production-default switch guarded execution (KHR-DX)
+
+Guarded switch executed; `activeDefault=karl2-baremetal-khr-native`. Hyperdensity operating post-switch. Evidence: Karl-Installer `docs/evidence/karl2-production-default-switch-guarded-execution/committed-khr-dx-v1/`.
 
 ---
 
