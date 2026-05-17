@@ -514,6 +514,39 @@ gate(
 )
 
 
+def latest_scope4_governance() -> dict[str, Any] | None:
+    base = ROOT / "docs/evidence/khr-scope4-governance"
+    committed = base / "committed-scope4-governance-khr-bg" / "governance-summary.json"
+    if committed.is_file():
+        return load_json(committed)
+    if not base.is_dir():
+        return None
+    for name in sorted(base.iterdir(), reverse=True):
+        p = name / "governance-summary.json"
+        if p.is_file():
+            doc = load_json(p)
+            if doc and doc.get("status") == "PASS":
+                return doc
+    return None
+
+
+scope4_gov = latest_scope4_governance()
+scope4_gov_ok = bool(
+    scope4_gov
+    and scope4_gov.get("status") == "PASS"
+    and scope4_gov.get("scope4GovernanceState") == "certified"
+    and scope4_gov.get("operatorRevalidationRequired") is False
+    and scope4_gov.get("regressionDetected") is False
+    and scope4_gov.get("liveMutationPerformed") is False
+    and scope4_gov.get("readyForScope4Active") is False
+)
+gate(
+    "scope4GovernanceBundle",
+    scope4_gov_ok,
+    f"state={scope4_gov.get('scope4GovernanceState') if scope4_gov else 'none'}",
+)
+
+
 all_core = all(
     gates[g]["status"] == "PASS"
     for g in (
@@ -572,9 +605,12 @@ else:
 
 dry_run_executed = bool(scope3_dryrun_ok)
 
-if scope4_cert_ok and scope4_apply_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
+if scope4_gov_ok and scope4_cert_ok and scope4_apply_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
     ready4: bool | str = "manual-guarded-apply-pass"
-    ready4_note = "KHR-BF scope-4 certified evidence-backed; guarded apply not active/enabled/autonomous"
+    ready4_note = "KHR-BG scope-4 governance certified; certified-evidence-backed; not active/enabled/autonomous"
+elif scope4_cert_ok and scope4_apply_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
+    ready4: bool | str = "manual-guarded-apply-pass"
+    ready4_note = "KHR-BF scope-4 certified evidence-backed; run khr_scope4_governance_bundle.sh (KHR-BG)"
 elif scope4_apply_ok and scope4_rollback_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
     ready4 = "manual-guarded-apply-pass"
     ready4_note = "KHR-BE scope-4 guarded apply evidence PASS with rollback verified; not active"
@@ -621,6 +657,8 @@ summary: dict[str, Any] = {
     "scope4ApplyRunId": scope4_apply.get("runId") if scope4_apply else None,
     "scope4CertificationRunId": scope4_cert.get("runId") if scope4_cert else None,
     "scope4CertificationState": scope4_cert.get("scope4CertificationState") if scope4_cert else None,
+    "scope4GovernanceRunId": scope4_gov.get("runId") if scope4_gov else None,
+    "scope4GovernanceState": scope4_gov.get("scope4GovernanceState") if scope4_gov else None,
     "readyForScope3Note": ready3_note,
     "readyForScope4Note": ready4_note,
     "guardedApplyExecuted": scope4_apply_ok,

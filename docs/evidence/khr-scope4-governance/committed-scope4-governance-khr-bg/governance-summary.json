@@ -1,0 +1,89 @@
+{
+  "phase": "khr-scope4-operational-governance",
+  "sprint": "KHR-BG",
+  "runId": "committed-scope4-governance-khr-bg",
+  "status": "PASS",
+  "readOnly": true,
+  "liveMutationPerformed": false,
+  "scope4GovernanceState": "certified",
+  "scope4CertificationState": "certified-evidence-backed",
+  "certificationExpiry": "2026-11-13T06:23:00Z",
+  "staleCertification": false,
+  "regressionDetected": false,
+  "operatorRevalidationRequired": false,
+  "readyForScope4": "manual-guarded-apply-pass",
+  "readyForScope4Active": false,
+  "readyForScope4Enabled": false,
+  "guardedApplyEnabled": false,
+  "guardedApplyAutonomous": false,
+  "notAutonomous": true,
+  "notPersistent": true,
+  "mutationType": "cpu.max",
+  "targetLane": "native-live",
+  "applyScope": "sandbox-only",
+  "evidenceRetention": {
+    "applyAnchor": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be",
+    "certificationAnchor": "docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf",
+    "governanceBundle": "docs/evidence/khr-scope4-governance/committed-scope4-governance-khr-bg"
+  },
+  "aggregatedEvidence": {
+    "certificationSummary": "docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json",
+    "rollbackSummary": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/rollback-summary.json",
+    "continuityEvidence": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/continuity-proof-apply.json",
+    "provenanceEvidence": "docs/evidence/khr-provenance/summary.json",
+    "federationEvidence": "docs/evidence/khr-runtime-observation-federation/20260517T062248Z/federation-summary.json",
+    "policyGates": "docs/evidence/khr-control-graph/summary.json",
+    "approvalEvidence": "docs/evidence/khr-action-approval/summary.json",
+    "rdpgwContinuity": null
+  },
+  "checks": {
+    "certificationSummary": {
+      "status": "PASS",
+      "detail": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json",
+      "ref": "docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json"
+    },
+    "applySummary": {
+      "status": "PASS",
+      "detail": "KHR-BE apply",
+      "ref": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/apply-summary.json"
+    },
+    "verifySummary": {
+      "status": "PASS",
+      "detail": "KHR-BE verify",
+      "ref": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/verify-summary.json"
+    },
+    "rollbackSummary": {
+      "status": "PASS",
+      "detail": "rollbackVerified",
+      "ref": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/rollback-summary.json"
+    },
+    "continuityEvidence": {
+      "status": "PASS",
+      "detail": "continuityPreserved",
+      "ref": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/verify-summary.json"
+    },
+    "provenanceEvidence": {
+      "status": "PASS",
+      "detail": "runId=20260516T181910Z",
+      "ref": "docs/evidence/khr-provenance/summary.json"
+    },
+    "federationEvidence": {
+      "status": "PASS",
+      "detail": "docs/evidence/khr-runtime-observation-federation/20260517T062248Z/federation-summary.json",
+      "ref": "docs/evidence/khr-runtime-observation-federation/20260517T062248Z/federation-summary.json"
+    },
+    "policyGates": {
+      "status": "PASS",
+      "detail": "control-graph summary",
+      "ref": "docs/evidence/khr-control-graph/summary.json"
+    },
+    "approvalEvidence": {
+      "status": "PASS",
+      "detail": "action-approval summary",
+      "ref": "docs/evidence/khr-action-approval/summary.json"
+    }
+  },
+  "errors": [],
+  "evidencePath": "docs/evidence/khr-scope4-governance/committed-scope4-governance-khr-bg",
+  "at": "2026-05-17T06:23:00Z"
+}

@@ -345,6 +345,11 @@ if [[ -x "${ROOT_DIR}/scripts/khr_scope4_certification_check.sh" ]]; then
     "${ROOT_DIR}/scripts/khr_scope4_certification_check.sh"
 fi
 
+if [[ -x "${ROOT_DIR}/scripts/khr_scope4_governance_bundle.sh" ]]; then
+  KHR_SCOPE4_GOVERNANCE_RUN_ID="${KHR_SCOPE4_GOVERNANCE_RUN_ID:-committed-scope4-governance-khr-bg}" \
+    "${ROOT_DIR}/scripts/khr_scope4_governance_bundle.sh"
+fi
+
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh" ]]; then
   SCOPE4_CERT="${ROOT_DIR}/docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json"
   if [[ ! -f "${SCOPE4_CERT}" ]]; then

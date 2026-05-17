@@ -418,6 +418,32 @@ record(
     f"state={scope4_cert.get('scope4CertificationState') if scope4_cert else 'none'}",
 )
 
+scope4_gov = None
+gov_base = ROOT / "docs/evidence/khr-scope4-governance"
+committed_gov = gov_base / "committed-scope4-governance-khr-bg" / "governance-summary.json"
+if committed_gov.is_file():
+    scope4_gov = load(committed_gov)
+elif gov_base.is_dir():
+    for child in sorted(gov_base.iterdir(), reverse=True):
+        p = child / "governance-summary.json"
+        if p.is_file():
+            scope4_gov = load(p)
+            if scope4_gov:
+                break
+scope4_gov_ok = bool(
+    scope4_gov
+    and scope4_gov.get("status") == "PASS"
+    and scope4_gov.get("scope4GovernanceState") == "certified"
+    and scope4_gov.get("operatorRevalidationRequired") is False
+    and scope4_gov.get("regressionDetected") is False
+    and scope4_gov.get("liveMutationPerformed") is False
+)
+record(
+    "scope4GovernanceBundle",
+    scope4_gov_ok,
+    f"state={scope4_gov.get('scope4GovernanceState') if scope4_gov else 'none'}",
+)
+
 ready_for_scope3: bool | str = False
 if scope3_dryrun_ok:
     ready_for_scope3 = "manual-dryrun-pass"
@@ -457,6 +483,11 @@ record(
         and dash_summary.get("failedVerification") is False
         and dash_summary.get("rollbackFailure") is False
         and dash_summary.get("staleEvidence") is False
+        and dash_summary.get("scope4GovernanceState") == "certified"
+        and dash_summary.get("certificationExpiry")
+        and dash_summary.get("staleCertification") is False
+        and dash_summary.get("regressionDetected") is False
+        and dash_summary.get("operatorRevalidationRequired") is False
     ),
     str(dash_fixture),
 )
@@ -470,7 +501,7 @@ elif scope4_pf_ok:
 status = "PASS" if not errors else "FAIL"
 summary = {
     "phase": "khr-tp-live-reference-env",
-    "sprint": "KHR-BF",
+    "sprint": "KHR-BG",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": "khr-tp-contract-v1",
@@ -492,6 +523,7 @@ summary = {
     "rollbackVerified": scope4_rollback_ok,
     "continuityPreserved": scope4_apply.get("continuityPreserved", False) if scope4_apply_ok else False,
     "scope4CertificationState": scope4_cert.get("scope4CertificationState") if scope4_cert_ok else None,
+    "scope4GovernanceState": scope4_gov.get("scope4GovernanceState") if scope4_gov_ok else None,
     "resourceLeaseDryRunExecuted": scope3_dryrun_ok,
     "dryRunObserved": scope3_dryrun_ok,
     "applyObserved": False,

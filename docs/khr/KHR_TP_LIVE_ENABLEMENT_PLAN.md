@@ -121,6 +121,27 @@ Failure semantics (read-only simulate): `SCOPE4_FAILURE_SEMANTICS.md` — **no l
 
 ---
 
+## Scope-4 operational governance (KHR-BG)
+
+After KHR-BF certification:
+
+```bash
+./scripts/khr_scope4_governance_bundle.sh
+```
+
+Output: `docs/evidence/khr-scope4-governance/committed-scope4-governance-khr-bg/governance-summary.json`
+
+| Field | Value |
+|-------|-------|
+| `scope4GovernanceState` | `certified` \| `stale` \| `expired` \| `revoked` \| `regression-detected` |
+| `operatorRevalidationRequired` | `true` when stale/expired/revoked/regression |
+| `readyForScope4Active` | `false` |
+| `liveMutationPerformed` | `false` |
+
+See `KHR_SCOPE4_OPERATIONAL_GOVERNANCE.md` — **no new guarded apply** in KHR-BG.
+
+---
+
 ## Related
 
 | Repo | Document |
