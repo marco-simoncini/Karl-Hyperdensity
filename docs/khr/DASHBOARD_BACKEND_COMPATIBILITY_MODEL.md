@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / **KHR-BY** |
+| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / KHR-BY / **KHR-BZ** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -270,10 +270,46 @@ Adapter package: `kubernetes-console/internal/khrui/`
 
 ---
 
+## KHR-BZ: UI projection preview semantics
+
+Dashboard exposes read-only UI consumption preview without cockpit layout changes:
+
+| Endpoint | Role |
+|----------|------|
+| `GET /api/hyperdensity/khr-backend/projection` | Backend Shell/Cell/Lease envelope (KHR-BI+) |
+| `GET /api/hyperdensity/khr-ui/projection-preview` | Cockpit shell-list rows via `internal/khrui` (KHR-BZ) |
+
+### Dual-flag gating (normative)
+
+Preview adapter path is active **only** when:
+
+1. `HYPERDENSITY_KHR_BACKEND_PROJECTION_ENABLED=true`
+2. `HYPERDENSITY_KHR_UI_PROJECTION_ENABLED=true`
+
+If either flag is `false` (default), response uses `dataSource=legacy-parent-fabric`, `legacyPathUsed=true`, and **empty** `shellRows` — legacy VM/VMI/Pool UI paths are unchanged.
+
+### UI consumption preview
+
+- Maps `khr-backend/projection` shells/cells to cockpit `shellRows` (column contract in `shell-list-view-model.json`).
+- `providerProfile` (e.g. `khr-native`) is display-only on preview JSON.
+- KubeVirt workloads use `kubevirt.compatibility` with `legacyProviderBadge` "KubeVirt legacy".
+
+### No action semantics (preview)
+
+- `actionCount=0`, `noMutation=true`, `readOnly=true` on every response.
+- No `actions`, apply, disconnect, revoke, or orchestration fields.
+- Hyperdensity does not add runtime apply or CRD changes for BZ.
+
+Normative Dashboard doc: `DASHBOARD_UI_KHR_PROJECTION_PREVIEW.md`  
+Fixture: `ui-projection-preview-khr-native.json`
+
+---
+
 ## Related
 
 - Karl-Dashboard `DASHBOARD_BACKEND_KHR_MIGRATION_PLAN.md`
 - Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_CONSUMPTION_PLAN.md`
+- Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_PREVIEW.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_MODEL.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_PROPAGATION.md`
 - Karl-Dashboard `DASHBOARD_KHR_BACKEND_PROJECTION_API.md`
