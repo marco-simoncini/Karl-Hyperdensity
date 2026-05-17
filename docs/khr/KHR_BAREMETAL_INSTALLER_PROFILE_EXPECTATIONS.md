@@ -340,6 +340,12 @@ Guarded switch executed; `activeDefault=karl2-baremetal-khr-native`. Hyperdensit
 
 ---
 
+## Dashboard production rollout guarded execution (KHR-DY)
+
+Dashboard rollout boundary updated; Hyperdensity projection path unchanged. Evidence: Karl-Installer `docs/evidence/karl2-dashboard-production-rollout-guarded-execution/committed-khr-dy-v1/`.
+
+---
+
 ## Phase: crd-foundation (KHR-CM)
 
 | Field | Value |
