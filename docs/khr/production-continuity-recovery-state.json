@@ -1,0 +1,8 @@
+{
+  "sprint": "KHR-EI",
+  "productionContinuityStable": true,
+  "recoveryDryRunPassed": true,
+  "productionReady": true,
+  "promotionAllowed": true,
+  "releaseScope": "current-connected-reference-production"
+}

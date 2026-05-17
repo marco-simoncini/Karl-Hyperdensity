@@ -91,3 +91,15 @@ Evidence: Karl-Installer `docs/evidence/karl2-production-release-declaration/com
 | `productionReady` | true |
 
 Evidence: Karl-Installer `docs/evidence/karl2-production-postrelease-operating-window/committed-khr-eh-v1/`. State: `docs/khr/production-postrelease-stability-state.json`.
+
+---
+
+## Production continuity and recovery (KHR-EI)
+
+| Field | Value |
+|-------|-------|
+| `productionContinuityStable` | true |
+| `recoveryDryRunPassed` | true |
+| `productionReady` | true |
+
+Evidence: Karl-Installer `docs/evidence/karl2-production-continuity-recovery-attestation/committed-khr-ei-v1/`. State: `docs/khr/production-continuity-recovery-state.json`.
