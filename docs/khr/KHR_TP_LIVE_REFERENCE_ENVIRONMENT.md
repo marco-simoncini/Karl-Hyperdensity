@@ -99,22 +99,38 @@ export HYPERDENSITY_KHR_PROVIDER_PROFILE=khr-native
 Fixture: Karl-Dashboard `reference-env-khr-native-activation.json`  
 Doc: `DASHBOARD_REFERENCE_ENV_ACTIVATION_PROFILE.md`
 
-### Dashboard activation evidence (KHR-BO / KHR-BP)
+### Dashboard activation evidence (KHR-BO / KHR-BP / **KHR-BQ**)
 
 | Level | `evidenceStatus` | `source` | Requirement |
 |-------|------------------|----------|-------------|
-| **Live activation** | `LIVE_PASS` | `live-readonly` | `providerProfile=khr-native`, activation env on console |
+| **Live activation** | `LIVE_PASS` | `live-readonly` | KHR-enabled console image + activation env; `GET .../khr-backend/projection` HTTP 200, `providerProfile=khr-native` |
 | **Fixture proof** | `PASS` | `fixture-readonly` | CI/offline contract validation |
 | **Remediation** | `REMEDIATION_PASS` | `remediation-readonly` | Live port-forward + env audit; `remediation-plan.md` when env/route missing |
+| **Rollout blocked** | `ROLLOUT_BLOCKED_IMAGE_MISSING` | `rollout-blocked-readonly` | No KHR-enabled image — **no partial env patch** (KHR-BQ) |
+| **Rollback ready** | `ROLLBACK_READY` | plan/rollback JSON | Pre-rollout snapshot in `rollout-plan.json` / `rollback-plan.json` |
 
 | Artifact | Path |
 |----------|------|
-| Summary | `Karl-Dashboard/docs/evidence/khr-dashboard-reference-env-activation/<runId>/summary.json` |
+| Rollout plan | `.../rollout-plan.json` (KHR-BQ) |
+| Live summary | `.../live-summary.json` (KHR-BQ verify or LIVE_PASS live evidence) |
+| Rollback plan | `.../rollback-plan.json` (KHR-BQ) |
+| Summary | `.../summary.json` (KHR-BP live evidence) |
 | Live connectivity | `.../live-connectivity.json` |
 | Deployment env audit | `.../deployment-env-audit.json` |
 | Remediation plan | `.../remediation-plan.md` (when required) |
 
-**Live script (KHR-BP):**
+**Controlled rollout (KHR-BQ):**
+
+```bash
+export KHR_DASHBOARD_REFERENCE_ENV_ROLLOUT_I_UNDERSTAND=true
+export KHR_DASHBOARD_KHR_ENABLED_CONSOLE_IMAGE=<khr-console-image>  # required for apply
+cd ../Karl-Dashboard && ./scripts/khr_dashboard_reference_env_rollout_plan.sh
+export KHR_DASHBOARD_ROLLOUT_RUN_ID=<runId>
+./scripts/khr_dashboard_reference_env_rollout_verify.sh
+./scripts/khr_dashboard_reference_env_rollout_rollback.sh  # after evidence
+```
+
+**Live evidence (KHR-BP):**
 
 ```bash
 export KHR_DASHBOARD_REFERENCE_ENV_LIVE_I_UNDERSTAND=true
@@ -122,9 +138,9 @@ export KHR_RUNTIME_CLUSTER_CONTEXT=karl-metal-01@ovh
 cd ../Karl-Dashboard && ./scripts/khr_dashboard_reference_env_live_evidence.sh
 ```
 
-Uses `kubectl port-forward svc/karl-console-next-oidc -n karl-system` when `DASHBOARD_BASE_URL` is unreachable. **No automatic Deployment patch.**
+Uses `kubectl port-forward svc/karl-console-next-oidc -n karl-system` when `DASHBOARD_BASE_URL` is unreachable. Rollout scripts patch **only** approved reference Deployment; live evidence does **not** auto-patch.
 
-See `DASHBOARD_REFERENCE_ENV_ACTIVATION_EVIDENCE.md`.
+See Karl-Dashboard `DASHBOARD_KHR_ENABLED_CONSOLE_ROLLOUT.md` and `DASHBOARD_REFERENCE_ENV_ACTIVATION_EVIDENCE.md`.
 
 ---
 

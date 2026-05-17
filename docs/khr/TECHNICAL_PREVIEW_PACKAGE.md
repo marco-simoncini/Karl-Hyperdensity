@@ -188,18 +188,19 @@ Validation: rdp-GW `go test ./cmd/rdpgw/...` including `cmd/rdpgw/khr`.
 Hyperdensity: `./scripts/khr_access_graph_continuity_bundle_check.sh` — accepts both; ranks live above fixture.  
 Docs: `ACCESS_GRAPH_CONTINUITY_EVIDENCE.md`, rdp-GW `RDPGW_SANDBOX_LIVE_EVIDENCE.md`.
 
-### Dashboard reference activation evidence (KHR-BO / KHR-BP)
+### Dashboard reference activation evidence (KHR-BO / KHR-BP / **KHR-BQ**)
 
-| Level | When |
-|-------|------|
-| **live-readonly** (`LIVE_PASS`) | KHR console image deployed + activation env on `karl-console-next-oidc` + live `GET .../khr-backend/projection` |
-| **fixture-readonly** | CI/offline fixture script |
-| **remediation-readonly** (`REMEDIATION_PASS`) | Live port-forward OK but env/route gap — operator plan, no auto-patch |
+| Classification | `evidenceStatus` | When |
+|----------------|----------------|------|
+| **LIVE_PASS** | `LIVE_PASS` | KHR-enabled console image + reference env on `karl-console-next-oidc`; live projection HTTP 200, `providerProfile=khr-native`, `source=live-readonly` |
+| **REMEDIATION_PASS** | `REMEDIATION_PASS` | Live connectivity without route/env — remediation plan only |
+| **ROLLBACK_READY** | `ROLLBACK_READY` / `APPLIED` | Rollout plan captured; reversible via `khr_dashboard_reference_env_rollout_rollback.sh` |
+| **ROLLOUT_BLOCKED** | `ROLLOUT_BLOCKED_IMAGE_MISSING` | No pullable KHR console image — plan + rollback JSON only; **no partial patch** |
 
-Script: `khr_dashboard_reference_env_live_evidence.sh` (port-forward documented).  
-Artifact: `docs/evidence/khr-dashboard-reference-env-activation/<runId>/summary.json`.
+Scripts (Karl-Dashboard): `khr_dashboard_reference_env_rollout_{plan,verify,rollback}.sh`, `khr_dashboard_reference_env_live_evidence.sh`.  
+Artifacts: `rollout-plan.json`, `live-summary.json`, `rollback-plan.json`, `summary.json` under `docs/evidence/khr-dashboard-reference-env-activation/<runId>/`.
 
-Reference env checklist: `KHR_TP_LIVE_REFERENCE_ENVIRONMENT.md`.
+Reference env checklist: `KHR_TP_LIVE_REFERENCE_ENVIRONMENT.md`. Rollout doc: `DASHBOARD_KHR_ENABLED_CONSOLE_ROLLOUT.md`.
 
 ---
 
