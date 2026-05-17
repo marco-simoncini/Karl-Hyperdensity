@@ -181,6 +181,25 @@ See Karl-Dashboard `DASHBOARD_COCKPIT_SHELL_WORKLOAD_LIST_LIVE_EVIDENCE.md`.
 
 ---
 
+## KARL 2.0 baremetal auto-configuration plan (KHR-CK)
+
+| Item | Status |
+|------|--------|
+| Plan | `KHR_AUTO_CONFIGURATION_PLAN.md` |
+| Mode | **Plan-only** — no runtime mutation, no rollout, no global enable |
+| First auto-configured module | **Hyperdensity** (bootstrap phases 1–6) |
+| Installer profile (plan) | `karl2-baremetal-khr-native` → `providerProfile=khr-native` |
+| ISO boundary | Assets only — no global runtime enable |
+| Dashboard | Reference flags + `shell-workload-list` first migrated component |
+| Inventory | Read-only auto ingest from snapshot/evidence |
+| rdp-GW | `cluster-sandbox` reference gateway module |
+| `globalDefaultsChanged` | `false` |
+
+Fixture: `examples/khr/karl2-baremetal-auto-configuration-plan.json`  
+Validate: `./scripts/validate_khr_auto_configuration_plan.sh`
+
+---
+
 ## Beta Candidate 0 (KHR-BV)
 
 | Item | Path |

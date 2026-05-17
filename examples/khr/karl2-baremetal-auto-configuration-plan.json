@@ -1,0 +1,24 @@
+{
+  "contractVersion": "khr.hyperdensity.auto-configuration-plan.v1alpha1",
+  "sprint": "KHR-CK",
+  "planOnly": true,
+  "globalAutoEnable": false,
+  "globalDefaultsChanged": false,
+  "productionReady": false,
+  "primaryCluster": "karl-metal-01@ovh",
+  "firstAutoConfiguredModule": "hyperdensity",
+  "installerProfilePlan": "karl2-baremetal-khr-native",
+  "dashboardProviderProfile": "khr-native",
+  "bootstrapOrder": [
+    "crd-foundation",
+    "host-runtime-preview",
+    "resourceport-loop",
+    "resourcelease-dryrun",
+    "guarded-apply-policy",
+    "governance"
+  ],
+  "firstMigratedCockpitComponent": "shell-workload-list",
+  "cockpitShellListMountedLiveEvidence": "committed-khr-cj-v1",
+  "runtimeMutation": false,
+  "rolloutInSprint": false
+}

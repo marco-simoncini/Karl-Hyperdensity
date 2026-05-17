@@ -60,6 +60,7 @@ required_files=(
   "docs/khr/TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md"
   "docs/khr/KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md"
   "docs/khr/KHR_INSTALLER_PROFILE_EXPECTATIONS.md"
+  "docs/khr/KHR_AUTO_CONFIGURATION_PLAN.md"
   "docs/contracts/khr/khr-contract-manifest.yaml"
   "docs/khr/KHR_TECHNICAL_PREVIEW_POST_INSTALL_VERIFICATION.md"
   "docs/khr/BETA_READINESS_GAP_ANALYSIS.md"
@@ -411,6 +412,10 @@ for _khr_am_doc in \
     exit 1
   fi
 done
+
+if [[ -x "${ROOT_DIR}/scripts/validate_khr_auto_configuration_plan.sh" ]]; then
+  "${ROOT_DIR}/scripts/validate_khr_auto_configuration_plan.sh"
+fi
 
 schema_count="$(ls -1 schemas/*.json | wc -l | tr -d ' ')"
 example_count="$(ls -1 examples/*.json | wc -l | tr -d ' ')"
