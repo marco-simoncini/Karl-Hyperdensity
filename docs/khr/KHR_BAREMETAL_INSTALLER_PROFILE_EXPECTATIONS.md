@@ -197,6 +197,17 @@ Migration-Factory, Licenziatore, DLP, Warden handoffs on branch `KHR`; `enterpri
 
 ---
 
+## Reference env activation read-only (KHR-CZ)
+
+| Field | Value |
+|-------|-------|
+| **Status** | Read-only verification PASS on `karl-metal-01@ovh` |
+| **Evidence** | Karl-Installer `docs/evidence/karl2-reference-env-activation-readonly/committed-khr-cz-v1/` |
+
+No hyperdensity runtime mutation in CZ.
+
+---
+
 ## Phase: crd-foundation (KHR-CM)
 
 | Field | Value |
