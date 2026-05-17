@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -283,6 +283,12 @@ Bounded read-only stability window; `stableAcrossWindow=true`. Evidence: Karl-In
 ## rdp-GW alignment plan (KHR-DM)
 
 Path A LIVE REFERENCE only; production requires rdp-GW operating. Evidence: Karl-Installer `docs/evidence/karl2-rdpgw-alignment-plan/committed-khr-dm-v1/`. No-op for Hyperdensity.
+
+---
+
+## rdp-GW KHR route (KHR-DP)
+
+Route validated on `khr-dp-v1`; reference gateway rolled back inactive. Evidence: Karl-Installer `docs/evidence/karl2-rdpgw-khr-route-bounded-activation/committed-khr-dp-v1/`. No-op.
 
 ---
 
