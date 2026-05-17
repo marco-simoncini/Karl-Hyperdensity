@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -156,6 +156,15 @@
 | `mode` | read-only backend projection |
 | `source` | KHR-CU observation |
 | Evidence | Karl-Dashboard `docs/evidence/khr-dashboard-inventory-audit-projection/committed-khr-cv-v1/` |
+
+---
+
+## Cockpit audit beta preview (KHR-CW)
+
+| Field | Value |
+|-------|-------|
+| `component` | `audit-beta-gate` read-only status |
+| Evidence | Karl-Dashboard `docs/evidence/khr-dashboard-cockpit-audit-beta-preview/committed-khr-cw-v1/` |
 
 ---
 
