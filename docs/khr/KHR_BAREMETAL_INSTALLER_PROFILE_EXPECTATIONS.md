@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -111,6 +111,19 @@
 | `runtimeMutation` | `true` (sandbox scope only) |
 | `rollbackExecuted` / `rollbackVerified` | `true` |
 | Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-guarded-apply/committed-khr-cr-v1/` |
+
+---
+
+## Phase: guarded-apply repeatability (KHR-CS)
+
+| Field | Value |
+|-------|-------|
+| `phase` | `guarded-apply` (same as KHR-CR; **no new phase**) |
+| `scope` | Repeatability + evidence hardening only — **not** scope expansion |
+| `repeatabilityRuns` | `2` on same sandbox target |
+| `rollbackProof` | `cpuMaxBefore`, `cpuMaxApplied`, `observedCpuMaxAfterRollback`, `expectedCpuMaxAfterRollback`, `baselineMatch` |
+| `negativePath` | missing guard, wrong namespace, missing rollback plan, multi-target — all rejected |
+| Evidence | Karl-Installer `docs/evidence/khr-baremetal-khr-native-guarded-apply-repeatability/committed-khr-cs-v1/` |
 
 ---
 
