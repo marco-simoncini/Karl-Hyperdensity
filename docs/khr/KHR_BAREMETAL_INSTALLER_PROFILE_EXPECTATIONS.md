@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** / **KHR-DS** / **KHR-DT** / **KHR-DU** |
+| **Sprint** | KHR-CL … KHR-CQ / **KHR-CR** / **KHR-CS** / **KHR-CT** / **KHR-CU** / **KHR-CV** / **KHR-CW** / **KHR-CX** / **KHR-CY** / **KHR-DC** / **KHR-DD** / **KHR-DE** / **KHR-DF** / **KHR-DG** / **KHR-DH** / **KHR-DI** / **KHR-DJ** / **KHR-DK** / **KHR-DL** / **KHR-DM** / **KHR-DP** / **KHR-DQ** / **KHR-DR** / **KHR-DS** / **KHR-DT** / **KHR-DU** / **KHR-DV** |
 | **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
@@ -319,6 +319,12 @@ Sustained LIVE REFERENCE operating posture; Hyperdensity operating during gate. 
 ## All-modules sustained LIVE REFERENCE certification (KHR-DU)
 
 `LIVE_REFERENCE_SUSTAINED` all-modules certification. Evidence: Karl-Installer `docs/evidence/karl2-all-modules-sustained-live-reference-certification/committed-khr-du-v1/`.
+
+---
+
+## Production promotion candidate gate (KHR-DV)
+
+Promotion candidate boundary only; Hyperdensity operating during quick smoke. `productionReady=false`, `promotionAllowed=false`. Evidence: Karl-Installer `docs/evidence/karl2-production-promotion-candidate-gate/committed-khr-dv-v1/`.
 
 ---
 
