@@ -2,7 +2,7 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / **KHR-BM** |
+| **Sprint** | KHR-BH / KHR-BI / KHR-BJ / KHR-BK / KHR-BL / KHR-BM / **KHR-BY** |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
 | **Runtime / CRD** | **No changes** |
 
@@ -225,9 +225,55 @@ Fixtures: `provider-profile-propagation-*.json`
 
 ---
 
+## KHR-BY: Dashboard UI consumption expectations
+
+Dashboard remains the **same cockpit**; Hyperdensity does not change CRDs or runtime in BY. UI consumption is a **read-only projection consumer** in Karl-Dashboard only.
+
+### Source of truth for UI (when enabled)
+
+| Layer | Source | Flag (Dashboard) | Default |
+|-------|--------|------------------|---------|
+| Backend envelope | `GET /api/hyperdensity/khr-backend/projection` | `HYPERDENSITY_KHR_BACKEND_PROJECTION_ENABLED` | `false` |
+| Cockpit view model | `internal/khrui.AdaptBackendProjection` | `HYPERDENSITY_KHR_UI_PROJECTION_ENABLED` | `false` |
+
+Hyperdensity normative model (Shell / Cell / ProviderBinding) is projected by Dashboard; the UI adapter maps that envelope to existing column contracts (`shell-list-view-model.json`) without new Dashboard product or layout rewrite.
+
+### Compatibility provider views
+
+| Provider ID | UI badge / row semantics |
+|-------------|--------------------------|
+| `kubevirt.compatibility` | `legacyProviderBadge`: "KubeVirt legacy"; `runtimeProviderId` = binding id |
+| `multus.legacy.transitional` | "Multus transitional" |
+| `parent-fabric.observed` | "Compatibility provider" |
+| Windows RDP lane | `accessSummary.protocol=RDP` when legacy class indicates Windows |
+
+Cells attach to shells via `primaryCellRef` (namespace/name). Provider profile fields on the projection (`providerProfile`, `kubevirtRequired`, etc.) are **display-only** in BY — no installer or cluster mutation.
+
+### No action semantics (UI)
+
+KHR-BY requires:
+
+- No cockpit **action buttons** from KHR adapter (`actionCount=0`, `ExposedActions()` empty).
+- No `apply`, `disconnect`, `revoke`, or orchestration triggers in UI-adapted JSON.
+- `readOnly=true` and `noMutation=true` on adapter output.
+- When `HYPERDENSITY_KHR_UI_PROJECTION_ENABLED=false`, legacy VM/VMI/Pool discovery path is **unchanged** (`legacyPathUsed=true`).
+
+Inventory observation on projection (`inventoryObservationSummary`) remains read-only; `uiConsumption=false` in committed ingest evidence until a future UI sprint.
+
+### Hyperdensity validation (BY)
+
+- No runtime / CRD / operator change in this sprint.
+- `scripts/validate.sh` offline mode continues to pass with updated compatibility doc only.
+
+Normative Dashboard doc: `DASHBOARD_UI_KHR_PROJECTION_CONSUMPTION_PLAN.md`  
+Adapter package: `kubernetes-console/internal/khrui/`
+
+---
+
 ## Related
 
 - Karl-Dashboard `DASHBOARD_BACKEND_KHR_MIGRATION_PLAN.md`
+- Karl-Dashboard `DASHBOARD_UI_KHR_PROJECTION_CONSUMPTION_PLAN.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_MODEL.md`
 - Karl-Dashboard `DASHBOARD_PROVIDER_PROFILE_PROPAGATION.md`
 - Karl-Dashboard `DASHBOARD_KHR_BACKEND_PROJECTION_API.md`
