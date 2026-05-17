@@ -1,0 +1,14 @@
+{
+  "id": "scope4-committed-scope4-guarded-apply-khr-be",
+  "sandboxDir": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/sandbox-work",
+  "markerPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/sandbox-work/apply-marker.txt",
+  "cgroupCpuPath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/sandbox-work/cgroup/khr-native-live-cpu-scale",
+  "cpuMaxBefore": "max",
+  "cpuMaxApplied": "20000 100000",
+  "resource": "cpu",
+  "transferMode": "envelope",
+  "extra": {
+    "allowPathPrefix": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/sandbox-work",
+    "source": "karl-host-runtime"
+  }
+}

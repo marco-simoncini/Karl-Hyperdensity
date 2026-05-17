@@ -37,7 +37,8 @@ The **reference environment** is the stabilized Technical Preview live posture o
 | Scope-2 manual loop | `docs/evidence/khr-tp-live-scope2-resourceport-loop/committed-scope2-loop-khr-ba/verify-summary.json` | `readyForScope2=manual-loop-pass`, `emissionMode=observed-json` |
 | Scope-3 preflight | `docs/evidence/khr-tp-live-scope3-preflight/committed-scope3-preflight-khr-bb/scope3-preflight-summary.json` | preflight PASS; apply disabled |
 | Scope-3 manual dry-run | `docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/verify-summary.json` | `readyForScope3=manual-dryrun-pass`, `dryRunObserved=true`, `noMutation=true`, `noApply=true`, not active |
-| Scope-4 preflight | `docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json` | `readyForScope4=conditional/manual-preflight-pass`, `guardedApplyExecuted=false`, not active |
+| Scope-4 preflight | `docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json` | preflight PASS; apply disabled until execution sprint |
+| Scope-4 guarded apply | `docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/verify-summary.json` | `readyForScope4=manual-guarded-apply-pass`, rollback verified, sandbox-only, not active |
 | rdp-GW deploy mode (fallback) | `docs/evidence/khr-rdpgw-scope1/*/deploy-summary.json` | `deployMode=local-gateway` with warning if cluster-sandbox unavailable |
 
 ---

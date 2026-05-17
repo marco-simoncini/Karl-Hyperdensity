@@ -352,6 +352,47 @@ record(
     f"runId={scope4_pf.get('runId') if scope4_pf else 'none'}",
 )
 
+scope4_apply = None
+scope4_rollback = None
+scope4_apply_base = ROOT / "docs/evidence/khr-tp-live-scope4-guarded-apply"
+committed_scope4_apply = scope4_apply_base / "committed-scope4-guarded-apply-khr-be" / "verify-summary.json"
+if committed_scope4_apply.is_file():
+    scope4_apply = load(committed_scope4_apply)
+elif scope4_apply_base.is_dir():
+    for child in sorted(scope4_apply_base.iterdir(), reverse=True):
+        v = child / "verify-summary.json"
+        if v.is_file():
+            scope4_apply = load(v)
+            if scope4_apply:
+                break
+rb_path = scope4_apply_base / "committed-scope4-guarded-apply-khr-be" / "rollback-summary.json"
+if rb_path.is_file():
+    scope4_rollback = load(rb_path)
+elif scope4_apply_base.is_dir():
+    for child in sorted(scope4_apply_base.iterdir(), reverse=True):
+        r = child / "rollback-summary.json"
+        if r.is_file():
+            scope4_rollback = load(r)
+            if scope4_rollback:
+                break
+scope4_apply_ok = bool(
+    scope4_apply
+    and scope4_apply.get("status") == "PASS"
+    and scope4_apply.get("readyForScope4") == "manual-guarded-apply-pass"
+    and scope4_apply.get("continuityPreserved") is True
+    and scope4_apply.get("rollbackVerified") is True
+)
+scope4_rollback_ok = bool(
+    scope4_rollback
+    and scope4_rollback.get("status") == "PASS"
+    and scope4_rollback.get("rollbackVerified") is True
+)
+record(
+    "scope4ManualGuardedApplyEvidence",
+    scope4_apply_ok and scope4_rollback_ok,
+    f"runId={scope4_apply.get('runId') if scope4_apply else 'none'}",
+)
+
 ready_for_scope3: bool | str = False
 if scope3_dryrun_ok:
     ready_for_scope3 = "manual-dryrun-pass"
@@ -370,28 +411,34 @@ record(
         and dash_summary.get("readyForScope3Active") is False
         and dash_summary.get("readyForScope4") is False
         and dash_summary.get("dryRunObserved") is True
-        and dash_summary.get("applyObserved") is False
-        and dash_summary.get("noMutation") is True
+        and dash_summary.get("applyObserved") is True
+        and dash_summary.get("noMutation") is False
         and dash_summary.get("resourceLeaseDryRunExecuted") is True
         and dash_summary.get("resourceLeaseApplyEnabled") is False
         and dash_summary.get("readyForScope4") is False
-        and dash_summary.get("readyForScope4State") == "conditional/manual-preflight-pass"
+        and dash_summary.get("readyForScope4State") == "manual-guarded-apply-pass"
         and dash_summary.get("readyForScope4Active") is False
-        and dash_summary.get("guardedApplyExecuted") is False
+        and dash_summary.get("guardedApplyExecuted") is True
         and dash_summary.get("operatorConfirmationRequired") is True
         and dash_summary.get("rollbackRequired") is True
+        and dash_summary.get("guardedApplyObserved") is True
+        and dash_summary.get("rollbackObserved") is True
+        and dash_summary.get("continuityPreserved") is True
+        and dash_summary.get("applyScope") == "sandbox-only"
     ),
     str(dash_fixture),
 )
 
 ready_for_scope4: bool | str = False
-if scope4_pf_ok:
+if scope4_apply_ok and scope4_rollback_ok:
+    ready_for_scope4 = "manual-guarded-apply-pass"
+elif scope4_pf_ok:
     ready_for_scope4 = "conditional/manual-preflight-pass"
 
 status = "PASS" if not errors else "FAIL"
 summary = {
     "phase": "khr-tp-live-reference-env",
-    "sprint": "KHR-BD",
+    "sprint": "KHR-BE",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": "khr-tp-contract-v1",
@@ -409,7 +456,9 @@ summary = {
     "readyForScope3Active": False,
     "readyForScope4": ready_for_scope4,
     "readyForScope4Active": False,
-    "guardedApplyExecuted": scope4_pf.get("guardedApplyExecuted", False) if scope4_pf_ok else False,
+    "guardedApplyExecuted": scope4_apply_ok,
+    "rollbackVerified": scope4_rollback_ok,
+    "continuityPreserved": scope4_apply.get("continuityPreserved", False) if scope4_apply_ok else False,
     "resourceLeaseDryRunExecuted": scope3_dryrun_ok,
     "dryRunObserved": scope3_dryrun_ok,
     "applyObserved": False,

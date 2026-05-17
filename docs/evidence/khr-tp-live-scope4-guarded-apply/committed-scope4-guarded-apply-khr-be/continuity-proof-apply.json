@@ -1,0 +1,18 @@
+{
+  "shellContinuityPreserved": true,
+  "appContinuityPreserved": true,
+  "userSessionContinuityPreserved": true,
+  "sessionContinuityPreserved": true,
+  "interruptionDetected": false,
+  "continuityEvidence": {
+    "shellSessionId": "shell-session-fb0c9b50374980e0",
+    "appSessionId": "shell-session-fb0c9b50374980e0/app",
+    "userSessionId": "shell-session-fb0c9b50374980e0/user",
+    "shellContinuityState": "preserved",
+    "appContinuityState": "preserved",
+    "userSessionContinuityState": "preserved",
+    "continuityState": "preserved",
+    "source": "sandbox-pod-observation",
+    "readOnly": true
+  }
+}

@@ -331,8 +331,18 @@ if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_run.sh" ]]; t
 fi
 
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh" ]]; then
-  KHR_TP_LIVE_SCOPE4_RUN_ID="${KHR_TP_LIVE_SCOPE4_RUN_ID:-committed-scope4-preflight-khr-bd}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh"
+  SCOPE4_PF_COMMITTED="${ROOT_DIR}/docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json"
+  if [[ "${KHR_TP_LIVE_SCOPE4_PREFLIGHT_FORCE:-}" == "true" ]] || [[ ! -f "${SCOPE4_PF_COMMITTED}" ]]; then
+    KHR_TP_LIVE_SCOPE4_RUN_ID="${KHR_TP_LIVE_SCOPE4_RUN_ID:-committed-scope4-preflight-khr-bd}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh"
+  else
+    echo "[validate] skip scope4 preflight (committed BD evidence present)"
+  fi
+fi
+
+if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh" ]]; then
+  KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID="${KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID:-committed-scope4-guarded-apply-khr-be}" \
+    "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh"
 fi
 
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_verify.sh" ]]; then

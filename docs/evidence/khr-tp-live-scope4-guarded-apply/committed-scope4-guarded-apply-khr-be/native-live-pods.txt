@@ -1,0 +1,2 @@
+NAME                                      READY   STATUS    RESTARTS   AGE   IP            NODE                NOMINATED NODE   READINESS GATES
+khr-native-live-target-5df65659bd-2xjxg   1/1     Running   0          12h   10.16.2.160   karl-lab-metal-01   <none>           <none>

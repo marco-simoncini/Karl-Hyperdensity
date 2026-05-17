@@ -243,6 +243,13 @@ func main() {
 		if ctx == "" {
 			ctx = resourceport.CurrentKubeContext()
 		}
+		var observedPorts []crdv1alpha1.ResourcePort
+		if *observedPortsPath != "" {
+			observedPorts, err = resourcelease.LoadObservedResourcePortsFromFile(*observedPortsPath)
+			if err != nil {
+				fatal(err)
+			}
+		}
 		if *sandboxDir == "" {
 			*sandboxDir = filepath.Join(os.TempDir(), "khr-resourcelease-guarded-apply")
 		}
@@ -265,6 +272,7 @@ func main() {
 				ResourcePortRef: *resourcePortRef,
 				SandboxDir:      *sandboxDir,
 				BaselineID:      *baselineID,
+				Ports:           observedPorts,
 			},
 			ApplyResourceLease: *applyResourceLease,
 			SandboxConfirm:     *sandboxConfirm,

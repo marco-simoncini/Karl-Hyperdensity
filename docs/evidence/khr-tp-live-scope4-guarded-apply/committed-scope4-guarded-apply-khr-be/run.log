@@ -1,0 +1,4 @@
+[khr_tp_live_scope4] runId=committed-scope4-guarded-apply-khr-be mode=resourcelease-guarded-apply port=khr-native-live-target-5df65659bd-2xjxg-port baseline=scope4-committed-scope4-guarded-apply-khr-be timeoutSec=120
+[khr_tp_live_scope4] PASS apply-summary=/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/apply-summary.json cgroup=/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/sandbox-work/cgroup/khr-native-live-cpu-scale
+[khr_tp_live_scope4] rollback baseline=scope4-committed-scope4-guarded-apply-khr-be
+[khr_tp_live_scope4] PASS rollback-summary=/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/rollback-summary.json

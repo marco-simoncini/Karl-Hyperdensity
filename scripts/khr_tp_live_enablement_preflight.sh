@@ -424,6 +424,61 @@ gate(
 )
 
 
+def latest_scope4_apply_verify() -> dict[str, Any] | None:
+    base = ROOT / "docs/evidence/khr-tp-live-scope4-guarded-apply"
+    committed = base / "committed-scope4-guarded-apply-khr-be" / "verify-summary.json"
+    if committed.is_file():
+        return load_json(committed)
+    if not base.is_dir():
+        return None
+    for name in sorted(base.iterdir(), reverse=True):
+        v = name / "verify-summary.json"
+        if v.is_file():
+            doc = load_json(v)
+            if doc and doc.get("status") == "PASS":
+                return doc
+    return None
+
+
+def latest_scope4_rollback() -> dict[str, Any] | None:
+    base = ROOT / "docs/evidence/khr-tp-live-scope4-guarded-apply"
+    committed = base / "committed-scope4-guarded-apply-khr-be" / "rollback-summary.json"
+    if committed.is_file():
+        return load_json(committed)
+    if not base.is_dir():
+        return None
+    for name in sorted(base.iterdir(), reverse=True):
+        r = name / "rollback-summary.json"
+        if r.is_file():
+            doc = load_json(r)
+            if doc and doc.get("status") == "PASS":
+                return doc
+    return None
+
+
+scope4_apply = latest_scope4_apply_verify()
+scope4_rollback = latest_scope4_rollback()
+scope4_apply_ok = bool(
+    scope4_apply
+    and scope4_apply.get("status") == "PASS"
+    and scope4_apply.get("readyForScope4") == "manual-guarded-apply-pass"
+    and scope4_apply.get("readyForScope4Active") is False
+    and scope4_apply.get("guardedApplyObserved") is True
+    and scope4_apply.get("continuityPreserved") is True
+    and scope4_apply.get("applyScope") == "sandbox-only"
+)
+scope4_rollback_ok = bool(
+    scope4_rollback
+    and scope4_rollback.get("status") == "PASS"
+    and scope4_rollback.get("rollbackVerified") is True
+)
+gate(
+    "scope4ManualGuardedApplyEvidence",
+    scope4_apply_ok and scope4_rollback_ok,
+    f"runId={scope4_apply.get('runId') if scope4_apply else 'none'} rollback={scope4_rollback_ok}",
+)
+
+
 all_core = all(
     gates[g]["status"] == "PASS"
     for g in (
@@ -482,8 +537,11 @@ else:
 
 dry_run_executed = bool(scope3_dryrun_ok)
 
-if scope4_pf_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
-    ready4: bool | str = "conditional/manual-preflight-pass"
+if scope4_apply_ok and scope4_rollback_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
+    ready4: bool | str = "manual-guarded-apply-pass"
+    ready4_note = "KHR-BE scope-4 guarded apply evidence PASS with rollback verified; not active"
+elif scope4_pf_ok and scope3_dryrun_ok and scope2_loop_ok and scope1_ok:
+    ready4 = "conditional/manual-preflight-pass"
     ready4_note = "KHR-BD scope-4 preflight PASS; guarded apply not executed; not active"
 elif scope3_dryrun_ok and scope1_ok:
     ready4 = False
@@ -494,7 +552,7 @@ else:
 
 summary: dict[str, Any] = {
     "phase": "khr-tp-live-enablement-preflight",
-    "sprint": "KHR-BD",
+    "sprint": "KHR-BE",
     "runId": RUN_ID,
     "clusterContext": CLUSTER,
     "contractSetId": CONTRACT,
@@ -522,9 +580,12 @@ summary: dict[str, Any] = {
     "scope3PreflightRunId": scope3_preflight.get("runId") if scope3_preflight else None,
     "scope3DryRunRunId": scope3_dryrun.get("runId") if scope3_dryrun else None,
     "scope4PreflightRunId": scope4_preflight.get("runId") if scope4_preflight else None,
+    "scope4ApplyRunId": scope4_apply.get("runId") if scope4_apply else None,
     "readyForScope3Note": ready3_note,
     "readyForScope4Note": ready4_note,
-    "guardedApplyExecuted": scope4_preflight.get("guardedApplyExecuted", False) if scope4_preflight else False,
+    "guardedApplyExecuted": scope4_apply_ok,
+    "rollbackVerified": scope4_rollback_ok,
+    "continuityPreserved": scope4_apply.get("continuityPreserved", False) if scope4_apply else False,
     "resourceLeaseDryRunExecuted": dry_run_executed,
     "dryRunObserved": dry_run_executed,
     "applyObserved": False,
@@ -545,7 +606,7 @@ summary: dict[str, Any] = {
         "scope1": "runtime sandbox deploy (manual)",
         "scope2": "ResourcePort manual loop (manual-loop-pass when evidenced; not active)",
         "scope3": "ResourceLease manual dry-run (manual-dryrun-pass when evidenced; not active)",
-        "scope4": "ResourceLease guarded apply preflight (conditional/manual; not executed)",
+        "scope4": "ResourceLease guarded apply (manual-guarded-apply-pass when evidenced; not active)",
     },
     "rdpgwEvidenceTrust": rdpgw_trust,
     "federationPrimaryTrust": (fed or {}).get("primaryTrustLevel"),

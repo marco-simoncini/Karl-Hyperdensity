@@ -1,0 +1,14 @@
+{
+  "phase": "khr-tp-live-scope4-guarded-apply-rollback",
+  "sprint": "KHR-BE",
+  "runId": "committed-scope4-guarded-apply-khr-be",
+  "status": "PASS",
+  "rollbackObserved": true,
+  "rollbackVerified": true,
+  "baselineId": "scope4-committed-scope4-guarded-apply-khr-be",
+  "observedCpuMax": "max",
+  "expectedCpuMax": "max",
+  "cgroupMutationObserved": false,
+  "guardedApplyExecuted": true,
+  "at": "2026-05-17T06:08:18Z"
+}
