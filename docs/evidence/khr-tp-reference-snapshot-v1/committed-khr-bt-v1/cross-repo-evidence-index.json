@@ -78,6 +78,18 @@
     {
       "repo": "Karl-Hyperdensity",
       "role": "hyperdensity.scope3Dryrun",
+      "relativePath": "docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/dryrun-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/dryrun-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope3-dryrun-khr-bc"
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope3DryrunVerify",
       "relativePath": "docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/verify-summary.json",
       "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/verify-summary.json",
       "present": true,
@@ -86,7 +98,7 @@
       "summary": {
         "runId": "committed-scope3-dryrun-khr-bc",
         "readyForScope4": false,
-        "readyForScope3": "manual-dryrun-pass",
+        "readyForScope3": false,
         "readyForScope2": "manual-loop-pass",
         "readyForScope1": true
       }
@@ -269,7 +281,7 @@
       "status": "PASS",
       "evidenceStatus": null,
       "summary": {
-        "runId": "20260517T072559Z"
+        "runId": "20260517T075930Z"
       }
     },
     {

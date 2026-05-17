@@ -51,6 +51,10 @@ required_files=(
   "docs/khr/KHR_RELEASE_READINESS_MAP.md"
   "docs/khr/TECHNICAL_PREVIEW_READINESS.md"
   "docs/khr/TECHNICAL_PREVIEW_PACKAGE.md"
+  "docs/khr/KHR_VALIDATION_MODES.md"
+  "docs/khr/KHR_BETA_READINESS_PLAN.md"
+  "docs/khr/KHR_SNAPSHOT_V1_FREEZE_POLICY.md"
+  "docs/khr/KHR_TP_REFERENCE_SNAPSHOT_V1.md"
   "docs/khr/TECHNICAL_PREVIEW_OPERATOR_RUNBOOK.md"
   "docs/khr/KHR_BOOTSTRAP_CONSUMER_EXPECTATIONS.md"
   "docs/khr/KHR_INSTALLER_PROFILE_EXPECTATIONS.md"
@@ -301,45 +305,12 @@ if [[ -x "${ROOT_DIR}/scripts/khr_runtime_observation_federation_check.sh" ]]; t
   "${ROOT_DIR}/scripts/khr_runtime_observation_federation_check.sh"
 fi
 
+# Scope-1 manifest guards (offline; no cluster)
 if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope1_test.sh" ]]; then
   "${ROOT_DIR}/scripts/khr_tp_live_scope1_test.sh"
 fi
 
-if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh" ]]; then
-  "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh"
-fi
-
-if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh" ]]; then
-  KHR_TP_LIVE_SCOPE2_RUN_ID="${KHR_TP_LIVE_SCOPE2_RUN_ID:-committed-scope2-preflight-khr-az}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh"
-fi
-
-if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope3_preflight.sh" ]]; then
-  KHR_TP_LIVE_SCOPE3_RUN_ID="${KHR_TP_LIVE_SCOPE3_RUN_ID:-committed-scope3-preflight-khr-bb}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_scope3_preflight.sh"
-fi
-
-if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_run.sh" ]]; then
-  KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP="${KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP:-true}" \
-  KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \
-  KHR_SCOPE2_LOOP_ITERATIONS="${KHR_SCOPE2_LOOP_ITERATIONS:-2}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_run.sh"
-  KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_verify.sh"
-  KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_cleanup.sh"
-fi
-
-if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh" ]]; then
-  SCOPE4_PF_COMMITTED="${ROOT_DIR}/docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json"
-  if [[ "${KHR_TP_LIVE_SCOPE4_PREFLIGHT_FORCE:-}" == "true" ]] || [[ ! -f "${SCOPE4_PF_COMMITTED}" ]]; then
-    KHR_TP_LIVE_SCOPE4_RUN_ID="${KHR_TP_LIVE_SCOPE4_RUN_ID:-committed-scope4-preflight-khr-bd}" \
-      "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh"
-  else
-    echo "[validate] skip scope4 preflight (committed BD evidence present)"
-  fi
-fi
-
+# Scope-4 certification / governance (offline committed JSON)
 if [[ -x "${ROOT_DIR}/scripts/khr_scope4_certification_check.sh" ]]; then
   KHR_SCOPE4_CERTIFICATION_RUN_ID="${KHR_SCOPE4_CERTIFICATION_RUN_ID:-committed-scope4-certification-khr-bf}" \
     "${ROOT_DIR}/scripts/khr_scope4_certification_check.sh"
@@ -350,31 +321,66 @@ if [[ -x "${ROOT_DIR}/scripts/khr_scope4_governance_bundle.sh" ]]; then
     "${ROOT_DIR}/scripts/khr_scope4_governance_bundle.sh"
 fi
 
-if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh" ]]; then
-  SCOPE4_CERT="${ROOT_DIR}/docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json"
-  if [[ ! -f "${SCOPE4_CERT}" ]]; then
-    KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID="${KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID:-committed-scope4-guarded-apply-khr-be}" \
-      "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh"
-  else
-    echo "[validate] skip scope4 apply verify (KHR-BF certification evidence present)"
-  fi
-fi
-
-if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_verify.sh" ]]; then
-  KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID="${KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID:-committed-scope3-dryrun-khr-bc}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_verify.sh"
-  KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID="${KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID:-committed-scope3-dryrun-khr-bc}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_cleanup.sh"
-fi
-
-if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh" ]]; then
-  KHR_DASHBOARD_PATH="${KHR_DASHBOARD_PATH:-${ROOT_DIR}/../Karl-Dashboard}" \
-    "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh"
-fi
-
-if [[ -x "${ROOT_DIR}/scripts/validate_khr_tp_reference_snapshot_v1.sh" ]]; then
+# KHR-BU: default offline validation — reference snapshot + committed evidence (no live cluster)
+if [[ -x "${ROOT_DIR}/scripts/khr_validate_reference_snapshot.sh" ]]; then
   KHR_TP_REFERENCE_SNAPSHOT_RUN_ID="${KHR_TP_REFERENCE_SNAPSHOT_RUN_ID:-committed-khr-bt-v1}" \
-    "${ROOT_DIR}/scripts/validate_khr_tp_reference_snapshot_v1.sh"
+    "${ROOT_DIR}/scripts/khr_validate_reference_snapshot.sh"
+fi
+
+if [[ "${KHR_LIVE_VALIDATE:-}" == "1" ]]; then
+  echo "[validate] KHR_LIVE_VALIDATE=1 — running live cluster validation (kubectl)"
+  if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh" ]]; then
+    "${ROOT_DIR}/scripts/khr_tp_live_enablement_preflight.sh"
+  fi
+  if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh" ]]; then
+    KHR_TP_LIVE_SCOPE2_RUN_ID="${KHR_TP_LIVE_SCOPE2_RUN_ID:-committed-scope2-preflight-khr-az}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_scope2_preflight.sh"
+  fi
+  if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope3_preflight.sh" ]]; then
+    KHR_TP_LIVE_SCOPE3_RUN_ID="${KHR_TP_LIVE_SCOPE3_RUN_ID:-committed-scope3-preflight-khr-bb}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_scope3_preflight.sh"
+  fi
+  if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_run.sh" ]]; then
+    KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP="${KHR_TP_LIVE_SCOPE2_I_UNDERSTAND_MANUAL_LOOP:-true}" \
+    KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \
+    KHR_SCOPE2_LOOP_ITERATIONS="${KHR_SCOPE2_LOOP_ITERATIONS:-2}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_run.sh"
+    KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_verify.sh"
+    KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID="${KHR_TP_LIVE_SCOPE2_LOOP_RUN_ID:-committed-scope2-loop-khr-ba}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_scope2_resourceport_loop_cleanup.sh"
+  fi
+  if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh" ]]; then
+    SCOPE4_PF_COMMITTED="${ROOT_DIR}/docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json"
+    if [[ "${KHR_TP_LIVE_SCOPE4_PREFLIGHT_FORCE:-}" == "true" ]] || [[ ! -f "${SCOPE4_PF_COMMITTED}" ]]; then
+      KHR_TP_LIVE_SCOPE4_RUN_ID="${KHR_TP_LIVE_SCOPE4_RUN_ID:-committed-scope4-preflight-khr-bd}" \
+        "${ROOT_DIR}/scripts/khr_tp_live_scope4_preflight.sh"
+    else
+      echo "[validate] skip scope4 preflight (committed BD evidence present)"
+    fi
+  fi
+  if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh" ]]; then
+    SCOPE4_CERT="${ROOT_DIR}/docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json"
+    if [[ ! -f "${SCOPE4_CERT}" ]]; then
+      KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID="${KHR_TP_LIVE_SCOPE4_APPLY_RUN_ID:-committed-scope4-guarded-apply-khr-be}" \
+        "${ROOT_DIR}/scripts/khr_tp_live_scope4_guarded_apply_verify.sh"
+    else
+      echo "[validate] skip scope4 apply verify (KHR-BF certification evidence present)"
+    fi
+  fi
+  if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_verify.sh" ]]; then
+    KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID="${KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID:-committed-scope3-dryrun-khr-bc}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_verify.sh"
+    KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID="${KHR_TP_LIVE_SCOPE3_DRYRUN_RUN_ID:-committed-scope3-dryrun-khr-bc}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_scope3_dryrun_cleanup.sh"
+  fi
+  if [[ -x "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh" ]]; then
+    KHR_DASHBOARD_PATH="${KHR_DASHBOARD_PATH:-${ROOT_DIR}/../Karl-Dashboard}" \
+      "${ROOT_DIR}/scripts/khr_tp_live_reference_env_check.sh"
+  fi
+else
+  echo "[validate] offline mode (default): committed evidence via khr_validate_reference_snapshot.sh"
+  echo "[validate] optional live cluster checks: KHR_LIVE_VALIDATE=1 ./scripts/validate.sh"
 fi
 
 # KHR-AM: Wave 2 ShellLease/GatewayRoute consumer docs (no CRD/runtime change)

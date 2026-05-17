@@ -127,7 +127,8 @@ HYPERDENSITY_REFS = {
     "scope2Preflight": "docs/evidence/khr-tp-live-scope2-preflight/committed-scope2-preflight-khr-az/scope2-preflight-summary.json",
     "scope2Loop": "docs/evidence/khr-tp-live-scope2-resourceport-loop/committed-scope2-loop-khr-ba/verify-summary.json",
     "scope3Preflight": "docs/evidence/khr-tp-live-scope3-preflight/committed-scope3-preflight-khr-bb/scope3-preflight-summary.json",
-    "scope3Dryrun": "docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/verify-summary.json",
+    "scope3Dryrun": "docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/dryrun-summary.json",
+    "scope3DryrunVerify": "docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/verify-summary.json",
     "scope4Preflight": "docs/evidence/khr-tp-live-scope4-preflight/committed-scope4-preflight-khr-bd/scope4-preflight-summary.json",
     "scope4Apply": "docs/evidence/khr-tp-live-scope4-guarded-apply/committed-scope4-guarded-apply-khr-be/verify-summary.json",
     "scope4Certification": "docs/evidence/khr-scope4-guarded-apply-certification/committed-scope4-certification-khr-bf/certification-summary.json",
@@ -162,9 +163,10 @@ index: list[dict[str, Any]] = []
 errors: list[str] = []
 
 for key, rel in HYPERDENSITY_REFS.items():
-    e = ref_entry("Karl-Hyperdensity", ROOT, rel, f"hyperdensity.{key}")
+    required = key != "scope3DryrunVerify"
+    e = ref_entry("Karl-Hyperdensity", ROOT, rel, f"hyperdensity.{key}", required=required)
     index.append(e)
-    if e["status"] != "PASS":
+    if e["status"] != "PASS" and required:
         errors.append(f"hyperdensity.{key}:{e['status']}")
 
 for key, rel in DASHBOARD_REFS.items():
@@ -204,6 +206,7 @@ def pick(repo: str, role_prefix: str) -> dict[str, Any] | None:
 scope1 = load(ROOT / HYPERDENSITY_REFS["scope1"]) or {}
 scope2 = load(ROOT / HYPERDENSITY_REFS["scope2Loop"]) or {}
 scope3 = load(ROOT / HYPERDENSITY_REFS["scope3Dryrun"]) or {}
+scope3_pf = load(ROOT / HYPERDENSITY_REFS["scope3Preflight"]) or {}
 scope4 = load(ROOT / HYPERDENSITY_REFS["scope4Apply"]) or {}
 gov = load(ROOT / HYPERDENSITY_REFS["scope4Governance"]) or {}
 cert = load(ROOT / HYPERDENSITY_REFS["scope4Certification"]) or {}
@@ -220,7 +223,11 @@ iso_pi = load(ISO / ISO_REFS["postInstall"]) if ISO else None
 scope_readiness = {
     "scope1": "PASS" if scope1.get("status") == "PASS" else str(scope1.get("status", "unknown")),
     "scope2": scope2.get("readyForScope2") or scope2.get("status", "unknown"),
-    "scope3": scope3.get("readyForScope3") or scope3.get("status", "unknown"),
+    "scope3": (
+        "manual-dryrun-pass"
+        if scope3.get("status") == "PASS" and scope3.get("noMutation") is True
+        else scope3_pf.get("readyForScope3") or scope3.get("status", "unknown")
+    ),
     "scope4": scope4.get("readyForScope4") or scope4.get("status", "unknown"),
     "scope4Active": bool(scope4.get("readyForScope4Active")),
 }

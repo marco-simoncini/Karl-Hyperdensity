@@ -65,17 +65,17 @@
   },
   "isoPostInstallRef": {
     "repo": "Karl-OS-ISO",
-    "runId": "20260517T072559Z",
+    "runId": "20260517T075930Z",
     "crdPresentCount": 8,
     "hostRuntimeEnabled": false,
     "path": "docs/evidence/khr-post-install-verify/summary.json"
   },
   "repoGitRefs": {
-    "Karl-Hyperdensity": "1949a94",
-    "Karl-Dashboard": "b95c3b329",
-    "Karl-Installer": "9e09cb5",
-    "Karl-OS-ISO": "ddb8866f",
-    "rdp-GW": "c9022c8"
+    "Karl-Hyperdensity": "149ecd6",
+    "Karl-Dashboard": "e2df81542",
+    "Karl-Installer": "0c8c9bf",
+    "Karl-OS-ISO": "fec6f4d7",
+    "rdp-GW": "81acb9d"
   },
   "crossRepoEvidenceIndex": [
     {
@@ -156,6 +156,18 @@
     {
       "repo": "Karl-Hyperdensity",
       "role": "hyperdensity.scope3Dryrun",
+      "relativePath": "docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/dryrun-summary.json",
+      "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/dryrun-summary.json",
+      "present": true,
+      "status": "PASS",
+      "evidenceStatus": null,
+      "summary": {
+        "runId": "committed-scope3-dryrun-khr-bc"
+      }
+    },
+    {
+      "repo": "Karl-Hyperdensity",
+      "role": "hyperdensity.scope3DryrunVerify",
       "relativePath": "docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/verify-summary.json",
       "absolutePath": "/home/m.simoncini/GitHub/Karl-Hyperdensity/docs/evidence/khr-tp-live-scope3-dryrun/committed-scope3-dryrun-khr-bc/verify-summary.json",
       "present": true,
@@ -164,7 +176,7 @@
       "summary": {
         "runId": "committed-scope3-dryrun-khr-bc",
         "readyForScope4": false,
-        "readyForScope3": "manual-dryrun-pass",
+        "readyForScope3": false,
         "readyForScope2": "manual-loop-pass",
         "readyForScope1": true
       }
@@ -347,7 +359,7 @@
       "status": "PASS",
       "evidenceStatus": null,
       "summary": {
-        "runId": "20260517T072559Z"
+        "runId": "20260517T075930Z"
       }
     },
     {
@@ -375,5 +387,5 @@
   ],
   "errors": [],
   "status": "PASS",
-  "generatedAt": "2026-05-17T07:47:59Z"
+  "generatedAt": "2026-05-17T07:59:33Z"
 }

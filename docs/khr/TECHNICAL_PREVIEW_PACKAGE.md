@@ -216,6 +216,15 @@ Artifacts: `rollout-plan.json`, `live-summary.json`, `rollback-plan.json`, `summ
 
 Read-only aggregation of Scope 1–4, governance, Dashboard LIVE_PASS, rdp-GW cluster-sandbox, Installer CRD/hybrid, ISO post-install — **no new mutation** in KHR-BT.
 
+### Validation modes (KHR-BU)
+
+| Mode | Behavior |
+|------|----------|
+| **Offline (default)** | `validate.sh` uses `khr_validate_reference_snapshot.sh` + committed evidence — no cluster |
+| **Live** | `KHR_LIVE_VALIDATE=1` — scope preflight/verify against `karl-metal-01@ovh` |
+
+Docs: `KHR_VALIDATION_MODES.md`, `KHR_BETA_READINESS_PLAN.md`, `KHR_SNAPSHOT_V1_FREEZE_POLICY.md`.
+
 Reference env checklist: `KHR_TP_LIVE_REFERENCE_ENVIRONMENT.md`. Rollout doc: `DASHBOARD_KHR_ENABLED_CONSOLE_ROLLOUT.md`.
 
 ---

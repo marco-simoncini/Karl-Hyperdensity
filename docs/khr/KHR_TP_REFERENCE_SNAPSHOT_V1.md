@@ -32,6 +32,15 @@ Versioned, **read-only** cross-repo index of committed Technical Preview live ev
 | `installerCrdFoundationRef` | Karl-Installer `karl2-khr-technical-preview` evidence |
 | `hybridTransitionRef` | Karl-Installer `hybrid-transition` evidence |
 
+## Validation (KHR-BU)
+
+| Mode | Command |
+|------|---------|
+| Offline (default) | `./scripts/khr_validate_reference_snapshot.sh` or `./scripts/validate.sh` |
+| Live cluster | `KHR_LIVE_VALIDATE=1 ./scripts/validate.sh` |
+
+See `KHR_VALIDATION_MODES.md` and `KHR_SNAPSHOT_V1_FREEZE_POLICY.md`.
+
 ## Operator run (read-only)
 
 ```bash
