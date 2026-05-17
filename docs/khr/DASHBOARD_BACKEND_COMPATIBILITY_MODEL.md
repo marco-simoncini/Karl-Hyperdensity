@@ -2,9 +2,9 @@
 
 | Field | Value |
 |-------|-------|
-| **Sprint** | KHR-BH |
+| **Sprint** | KHR-BH / KHR-BI |
 | **Scope** | Formal semantics for Dashboard KHR-first migration |
-| **Runtime / CRD** | **No changes** in KHR-BH |
+| **Runtime / CRD** | **No changes** |
 
 ---
 
@@ -72,12 +72,60 @@ Projection functions in Dashboard `internal/khrcompat` mirror Hyperdensity `hype
 | CRDs / host-runtime apply | Karl-Hyperdensity + operator sprints |
 | Parent Fabric discovery | Karl-Dashboard `pkg/server` (legacy, frozen routes) |
 | KHR backend skeleton | Karl-Dashboard `internal/khrbackend` (KHR-BH) |
+| KHR backend projection API | `GET /api/hyperdensity/khr-backend/projection` (KHR-BI) |
 | Contract docs | Both repos; Hyperdensity is normative for Shell/Cell/Lease |
+
+---
+
+## KHR-BI: expected projection fields (Dashboard API)
+
+When `HYPERDENSITY_KHR_BACKEND_PROJECTION_ENABLED=true` (reference/dev only):
+
+| Field | Expected |
+|-------|----------|
+| `readOnly` | `true` |
+| `backendModel` | `khr-first` |
+| `compatibilityLayer` | `true` |
+| `providerBindings[]` | Includes `kubevirt.compatibility` with `compatibility=true` |
+| `shells[]` / `cells[]` | From Parent Fabric projection; kubevirt workloads use compatibility provider |
+| `shellLeases[]` | Read-only; no autonomous apply |
+| `gatewayRoutes[]` | Read-only; `noDisconnect` / `noRevoke` preserved |
+| `resourcePorts[]` / `resourceLeases[]` / `resourceFuture[]` | Observation/simulation only |
+| `accessGraphSummary` | Read-only |
+| `scopeReadiness` | Scope gates; `resourceLeaseApplyEnabled=false` |
+| `tpReadinessSummary` | `productionReady=false`, `autonomousOrchestration=false` |
+
+Fixture: Karl-Dashboard `examples/khr-dashboard/khr-backend-projection-api.json`
+
+---
+
+## Compatibility boundary
+
+| Inside boundary | Outside boundary |
+|-----------------|------------------|
+| Read-only JSON projection | CRD reconcile, host-runtime apply |
+| KubeVirt as `kubevirt.compatibility` | Production namespace enablement |
+| Multus/NAD as `multus.legacy.transitional` | NAD-first target fabric |
+| Operator scope readiness display | Dashboard action buttons / apply UI |
+
+---
+
+## No action semantics
+
+Hyperdensity expects the Dashboard KHR backend projection API to **never** expose:
+
+- Top-level `actions` or orchestration triggers
+- `applyEnabled=true` at envelope level
+- `autonomousApply` or production enablement flags
+- Mutating approval execution
+
+`resourceLeases[].dryRunOnly` may be `true`; `applyState` must remain observation-oriented in TP.
 
 ---
 
 ## Related
 
 - Karl-Dashboard `DASHBOARD_BACKEND_KHR_MIGRATION_PLAN.md`
+- Karl-Dashboard `DASHBOARD_KHR_BACKEND_PROJECTION_API.md`
 - `KHR_PROJECTION_V1.md` (Dashboard docs/hyperdensity)
 - `RUNTIME_OBSERVATION_FEDERATION.md`
