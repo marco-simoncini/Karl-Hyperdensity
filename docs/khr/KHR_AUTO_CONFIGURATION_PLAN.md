@@ -3,7 +3,7 @@
 | Field | Value |
 |-------|-------|
 | **Sprint** | KHR-CK / KHR-CL / **KHR-CM** |
-| **Scope** | **CM:** guarded CRD foundation apply on `karl-metal-01@ovh`; host-runtime preview pending |
+| **Scope** | **CN:** guarded host-runtime preview in `khr-runtime-sandbox`; ResourcePort loop pending |
 | **Primary cluster** | `karl-metal-01@ovh` (baremetal reference) |
 | **First auto-configured module** | **Hyperdensity** |
 | **Production** | **NOT production ready** |
@@ -59,7 +59,7 @@ Phase 6  Governance              → Scope-4 governance bundle + snapshot v1 agg
 | Phase | Hyperdensity anchor | Evidence / script (existing) | Auto-config gate (future) |
 |-------|---------------------|------------------------------|---------------------------|
 | **1 — CRD foundation** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_crd_foundation_evidence.sh` → `committed-khr-cm-v1` | `phase=crd-foundation`, `runtimeMutation=false`, `hostRuntimeEnabled=false`, `crdDiffEmpty=true` |
-| **2 — Host-runtime preview** | `KARL_HOST_RUNTIME_MVP.md` | `khr_runtime_sandbox_preflight.sh`, preview deploy manifests | `hostRuntimeEnabled=false` at ISO/install |
+| **2 — Host-runtime preview** | `KHR_BAREMETAL_INSTALLER_PROFILE_EXPECTATIONS.md` | `khr_baremetal_khr_native_host_runtime_preview_evidence.sh` → `committed-khr-cn-v1` | `phase=host-runtime-preview`, `hostRuntimePreview=true`, `resourcePortLoopEnabled=false`, `resourceLeaseEnabled=false`, `systemdEnable=false` |
 | **3 — ResourcePort loop** | `KHR_TP_LIVE_SCOPE2_RESOURCEPORT_LOOP_PLAN.md` | `committed-scope2-loop-khr-ba`, rdp-GW cluster-sandbox dep | `resourcePortLoopEnabled=false` until explicit sprint |
 | **4 — Dry-run** | `KHR_TP_LIVE_SCOPE3_RESOURCELEASE_DRYRUN_PLAN.md` | `committed-scope3-dryrun-khr-bc` | `mutationObserved=false`, dry-run only |
 | **5 — Guarded apply policy** | `KHR_TP_LIVE_SCOPE4_GUARDED_APPLY_PLAN.md` | `committed-scope4-certification-khr-bf` | Certification evidence-backed; no active Scope-4 enable |

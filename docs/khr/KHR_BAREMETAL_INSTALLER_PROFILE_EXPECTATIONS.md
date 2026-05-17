@@ -3,8 +3,8 @@
 | Field | Value |
 |-------|-------|
 | **Profile ID** | `karl2-baremetal-khr-native` |
-| **Sprint** | KHR-CL / **KHR-CM** |
-| **Mode** | Plan/dry-run + guarded `crd-foundation` apply on reference cluster |
+| **Sprint** | KHR-CL / KHR-CM / **KHR-CN** |
+| **Mode** | Phased: plan, `crd-foundation`, `host-runtime-preview` on reference cluster |
 
 ---
 
@@ -41,6 +41,21 @@
 | `KARL_INSTALLER_BAREMETAL_KHR_NATIVE_I_UNDERSTAND=true` | All phases |
 | `KARL_INSTALLER_BAREMETAL_KHR_NATIVE_APPLY_CRDS_I_UNDERSTAND=true` | `crd-foundation` apply only |
 | Cluster context | `karl-metal-01@ovh` required for apply |
+
+---
+
+## Phase: host-runtime-preview (KHR-CN)
+
+| Field | Value |
+|-------|-------|
+| `phase` | `host-runtime-preview` |
+| `hostRuntimePreview` | `true` |
+| `resourcePortLoopEnabled` | `false` |
+| `resourceLeaseEnabled` | `false` |
+| `systemdEnable` | `false` |
+| `runtimeMutation` | `false` |
+| Namespace | `khr-runtime-sandbox` (`khr.karl.io/sandbox=true`) |
+| Evidence | `docs/evidence/khr-baremetal-khr-native-host-runtime-preview/committed-khr-cn-v1/` |
 
 ---
 
